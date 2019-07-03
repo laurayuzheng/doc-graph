@@ -1,0 +1,1896 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Yunjie Liu</string-name>
+          <email>yunjieliu@lbl.gov</email>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Joaquin Correa</string-name>
+          <email>joaquincorrea@lbl.gov</email>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Kenneth Kunkel</string-name>
+          <email>ken.kunkel@noaa.gov</email>
+          <xref ref-type="aff" rid="aff5">5</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Evan Racah</string-name>
+          <email>eracah@lbl.gov</email>
+          <xref ref-type="aff" rid="aff3">3</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Amir Khosrowshahi</string-name>
+          <email>amir@nervanasys.com</email>
+          <xref ref-type="aff" rid="aff6">6</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Michael Wehner</string-name>
+          <email>mfwehner@lbl.gov</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Prabhat</string-name>
+          <email>prabhat@lbl.gov</email>
+          <xref ref-type="aff" rid="aff4">4</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>David Lavers</string-name>
+          <email>dlavers@ucsd.edu</email>
+          <xref ref-type="aff" rid="aff7">7</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>William Collins</string-name>
+          <email>wdcollins@lbl.gov</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Lawrence Berkeley Lab, Berkeley</institution>
+          ,
+          <addr-line>CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>National Energy Research, Scientific Computing Center, Lawrence Berkeley Lab, Berkeley</institution>
+          ,
+          <addr-line>CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>National Energy Research, Scientific Computing Center, Lawrence Berkeley Lab, Berkeley</institution>
+          ,
+          <addr-line>CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff3">
+          <label>3</label>
+          <institution>National Energy Research, Scientific Computing Center, Lawrence Berkeley Lab, Berkeley</institution>
+          ,
+          <addr-line>CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff4">
+          <label>4</label>
+          <institution>National Energy Research, Scientific Computing Center, Lawrence Berkeley Lab, Berkeley</institution>
+          ,
+          <addr-line>CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff5">
+          <label>5</label>
+          <institution>National Oceanic and</institution>
+          ,
+          <addr-line>Atmospheric Administration, Asheville, NC</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff6">
+          <label>6</label>
+          <institution>Nervana Systems</institution>
+          ,
+          <addr-line>San Diego, CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff7">
+          <label>7</label>
+          <institution>Scripps Institution of</institution>
+          ,
+          <addr-line>Oceanography, San Diego, CA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+      </contrib-group>
+      <fpage>2</fpage>
+      <lpage>9</lpage>
+      <abstract>
+        <p />
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>Detecting extreme events in large datasets is a major
+challenge in climate science research. Current algorithms for
+extreme event detection are build upon human expertise in
+1 de ning events based on subjective thresholds of relevant
+v physical variables. Often, multiple competing methods
+pro6 duce vastly di erent results on the same dataset. Accurate
+5 characterization of extreme events in climate simulations
+11 and observational data archives is critical for
+understand0 ing the trends and potential impacts of such events in a
+. climate change content. This study presents the rst
+appli5 cation of Deep Learning techniques as alternative
+method0 ology for climate extreme events detection. Deep neural
+6 networks are able to learn high-level representations of a
+:1 broad class of patterns from labeled data. In this work, we
+v developed deep Convolutional Neural Network (CNN)
+clasi si cation system and demonstrated the usefulness of Deep
+X Learning technique for tackling climate pattern detection
+r problems. Coupled with Bayesian based hyper-parameter
+a optimization scheme, our deep CNN system achieves
+89%99% of accuracy in detecting extreme events (Tropical
+Cyclones, Atmospheric Rivers and Weather Fronts).</p>
+      <p>Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.</p>
+      <p>KDD 2016 August 13-17, San Francisco, CA, USA
+c 2016 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ISBN 978-1-4503-2138-9. . . $15.00
+DOI: 10.475/123 4</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1. INTRODUCTION</title>
+      <p>Extreme climate events (such as hurricanes and heat waves)
+pose great potential risk on infrastructure and human health.
+Hurricane Joaquin, for example, hit Carolina in early
+October 2015, and dropped over 2 feet of precipitation in days,
+resulted in severe ooding and economic loss. An important
+scienti c goal in climate science research is to characterize
+extreme events in current day and future climate
+projections. However, understanding the developing mechanism
+and life cycle of these events as well as future trend requires
+accurately identifying such pattern in space and time.
+Satellites acquire 10s of TBs of global data every year to provide
+us with insights into the evolution of the climate system. In
+addition, high resolution climate models produces 100s of
+TBs of data from multi-decadal run to enable us to explore
+future climate scenarios under global warming. Detecting
+extreme climate events in terabytes of data presents an
+unprecedented challenge for climate science.</p>
+      <p>
+        Existing extreme climate events (e.g. hurricane)
+detection methods all build upon human expertise in de ning
+relevant events based on evaluating of relevant spatial and
+temporal variables on hard and subjective thresholds. For
+instance, tropical cyclones are strong rotating weather
+systems that are characterized by low pressure, warm
+temperature core structures with high wind. However, there is no
+universally accepted sets of criteria for what de nes a
+tropical cyclone [
+        <xref ref-type="bibr" rid="ref16">16</xref>
+        ]. The "Low" Pressure and "Warm"
+Temperature are interpreted di erently among climate scientists,
+therefore di erent thresholds are used to characterize them.
+Researchers [
+        <xref ref-type="bibr" rid="ref17 ref18 ref30 ref31 ref32 ref33">30, 31, 33, 32, 18, 17</xref>
+        ] have developed
+various algorithms to detect tropical cyclones in large climate
+dataset based on subjective thresholding of several relevant
+variables (e.g. sea level pressure, temperature, wind etc.).
+One of the general and promising extreme climate event
+detecting software, Toolkit for Extreme Climate Analysis
+(TECA) [
+        <xref ref-type="bibr" rid="ref17 ref18">18, 17</xref>
+        ], is able to detect tropical cyclones,
+extratropical cyclones and atmospheric rivers. TECA utilizes the
+MapReduce paradigm to nd pattern in Terabytes of
+climate data with in hours. However, many climate extreme
+events do not have a clear empirical de nition that is
+accepted universally by climate scientists (e.g. extra-tropical
+cyclone and mesoscale convective system), which precludes
+the development and application of algorithms for detection
+and tracking. This study attempts to search for an
+alternative methodology for extreme events detection by designing
+a neural network based system that is capable of learning a
+broad class of patterns from complex multi-variable climate
+data and avoiding subjective threshold.
+      </p>
+      <p>
+        Recent advances in deep learning have demonstrated
+exciting and promising results on pattern recognition tasks,
+such as ImageNet Large Scale Visual Recognition Challenge
+[
+        <xref ref-type="bibr" rid="ref10 ref22 ref28">10, 22, 28</xref>
+        ] and speech recognition [
+        <xref ref-type="bibr" rid="ref27 ref3 ref7 ref8">8, 3, 7, 27</xref>
+        ]. Many of
+the state-of-art deep learning architectures for visual
+pattern recognition are based on the hierarchical feature
+learning convolutional neural network (CNN). Modern CNN
+systems tend to be deep and large with many hidden layers
+and millions of neurons, making them exible in learning a
+broad class of patterns simultaneously from data. AlexNet
+(7 layers with 5 convolutonal layer and 2 fully connected
+layer) developed by [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ] provides the rst end to end
+trainable deep learning system on objective classi cation, which
+achieved 15.3% top-5 classi cation error rate on
+ILSVRC2012 data set. On the contrary, previous best performed
+non-neural network based systems achieved only 25.7%
+top5 classi cation error on the same data set. Shortly after that,
+Simonyan and Zisserman [
+        <xref ref-type="bibr" rid="ref22">22</xref>
+        ] further developed AlexNet and
+introduced an even deeper CNN (19 layers with 16
+convolutional layer and 3 fully connected layer) with smaller kernel
+( lter) and achieved an impressively 6.8% top-5 classi
+cation error rate on ILSVRC-2014 data set. Szegedy et al.[
+        <xref ref-type="bibr" rid="ref28">28</xref>
+        ]
+introduced the \inception" neural network concept (network
+includes sub-network) and developed an even deeper CNN
+(22 layers) that achieved comparable classi cation results on
+ImageNet benchmark. Build on deep CNN, Sermanet et al.
+[
+        <xref ref-type="bibr" rid="ref20">20</xref>
+        ] introduced an integrated system of classi cation and
+detection, in which features learned by convolutional layers are
+shared among classi cation and localization tasks and both
+tasks are performed simultaneously in a single network.
+Girshick et al. [
+        <xref ref-type="bibr" rid="ref4">4</xref>
+        ] took a completely di erent approach by
+combining a region proposal framework [
+        <xref ref-type="bibr" rid="ref29">29</xref>
+        ] with deep CNN and
+designed the state of art R-CNN object detection system.
+      </p>
+      <p>
+        In this paper, we formulate the problem of detecting
+extreme climate events as classic visual pattern recognition
+problem. We then build end to end trainable deep CNN
+systems, following the architecture introduced by [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ]. The
+model was trained to classify tropical cyclone, weather front
+and atmospheric river. Unlike the ImageNet challenge, where
+the training data are labeled natural images, our training
+data consist of several continuous spatial variables(e.g.
+pressure, temperature, precipitation) and are stacked together
+into image patches.
+2.
+      </p>
+    </sec>
+    <sec id="sec-3">
+      <title>RELATED WORK</title>
+      <p>
+        Climate data analysis requires an array of advanced
+methodology. Neural network based machine learning approach, as
+a generative analysis technique, has received much attention
+and been applied to tackle several climate problems in
+recent year. Chattopadhyay et al. [
+        <xref ref-type="bibr" rid="ref2">2</xref>
+        ] developed a nonlinear
+clustering method based on Self Organizational Map (SOM)
+to study the structure evolution of Madden{Julian
+oscillation (MJO). Their method does not require selecting leading
+modes or intraseasonal bandpass ltering in time and space
+like other methods do. The results show SOM based method
+is not only able to capture the gross feature in MJO
+structure and development but also reveals insights that other
+methods are not able to discover such as the dipole and
+tripole structure of outgoing long wave radiation and
+diabatic heating in MJO. Gorricha and Costa [
+        <xref ref-type="bibr" rid="ref6">6</xref>
+        ] used a three
+dimensional Self Organizational Map on categorizing and
+visualizing extreme precipitation patterns over an island in
+Spain. They found spatial precipitation patterns that
+traditional precipitation index approach is not able to discover,
+and concluded that three dimensional Self Organizational
+Map is very useful tool on exploratory spatial pattern
+analysis. More recently, Shi et al. [
+        <xref ref-type="bibr" rid="ref21">21</xref>
+        ] implemented a newly
+developed convolutional long short term memory (LSTM) deep
+neural network for precipitation nowcasting. Trained on two
+dimensional radar map time series, their system is able to
+outperform the current state-of-art precipitation
+nowcasting system on various evaluation metrics. Iglesias et al. [
+        <xref ref-type="bibr" rid="ref9">9</xref>
+        ]
+developed a multitask deep fully connected neural network
+on prediction heat waves trained on historical time series
+data. They demonstrate that neural network approach is
+signi cantly better than linear and logistic regression. And
+potentially can improve the performance of forecasting
+extreme heat waves. These studies show that neural network is
+a generative method and can be applied on various climate
+problems. In this study, we explore deep Convolutional
+Neural Network on solving climate pattern detection problem.
+      </p>
+    </sec>
+    <sec id="sec-4">
+      <title>Convolutional Neural Network</title>
+      <p>
+        A Deep CNN is typically comprised of several
+convolutional layers followed by a small amount of fully connected
+layers. In between two successive convolutional layers,
+subsampling operation (e.g. max pooling, mean pooling) is
+performed typically. Researchers have argued about the
+necessity of pooling layers, and argue that they can be simply
+replaced by convolutional layer with increased strides, thus
+simplify the network structure [
+        <xref ref-type="bibr" rid="ref26">26</xref>
+        ]. In either case, the inputs
+of a CNN is (m,n,p) images, where m and n is the width
+and height of an image in pixel, p is the number of color
+channel of each pixel. The output of a CNN is a vector of q
+probability units (class scores), corresponding to the
+number of categories to be classi ed (e.g. for binary classi er
+q=2).
+      </p>
+      <p>The convolutional layers perform convolution operation
+between kernels and the input images (or feature maps from
+previous layer). Typically, a convolutional layer contains k
+lters (kernels) with the size (i,j,p). Where i, j is the width
+and height of the lter. The lters are usually smaller than
+the width m and height n of input image. p always equal
+to the number of color channel of input image (e.g. a color
+image has three channels: red, green, and blue). Each of
+3.
+3.1</p>
+      <p>METHODS
+the lters is independently convolved with the input images
+(or feature maps from previous layer) followed by non-linear
+transformation and generates k feature maps, which serve
+as inputs for the next layer. In the process of convolution,
+a dot product is computed between the entry of lter and
+the local region that it is connected to in the input image
+(or feature map from previous layer). The parameters of
+convolutional layer are these learnable lters. The
+convolutional layer is the feature extractor, because the kernels
+slide across all the inputs and will produce larger outputs
+for certain sub-regions than for others. This allows features
+to be extracted from inputs and preserved in the feature
+maps, which are passed on to next layer, regardless of where
+the feature is located in the input. The pooling layer
+subsamples the feature maps generated from convolutional layer
+over a (s,t) contiguous region, where s, t is the width and
+height of the subsampling window. This results in the
+resolution of the feature maps becoming coarser with the depth
+of CNN. All feature maps are high-level representations of
+the input data in CNN. The fully connected layer has
+connections to all hidden units in previous layer. If it is the last
+layer within CNN architecture, the fully connected layer also
+does the high level reasoning based on the feature vectors
+from previous layer and produce nal class scores for image
+objects.</p>
+      <p>
+        Most of current deep neural network uses back
+propagation as learning rule [
+        <xref ref-type="bibr" rid="ref19">19</xref>
+        ]. The back propagation
+algorithm searches for minimum of loss function in weight space
+through gradient descent method.It partitions the nal total
+loss to each of the single neuron in the network and
+repeatedly adjusts the weights of neurons whose loss is high, and
+back propagate the error through the entire network from
+output to its inputs.
+3.2
+      </p>
+    </sec>
+    <sec id="sec-5">
+      <title>Hyper-parameter Optimization</title>
+      <p>
+        Training deep neural network is known to be hard [
+        <xref ref-type="bibr" rid="ref12 ref5">12, 5</xref>
+        ].
+E ectively and e ciently train deep neural network not only
+requires large amount of training data, but also requires
+carefully tuning model hyper-parameters (e.g. learning
+parameters, regularization parameters) [
+        <xref ref-type="bibr" rid="ref24">24</xref>
+        ]. The parameter
+tuning process, however, can be tedious and non-intuitive.
+Hyper-parameter optimization can be reduced to nd a set
+of parameters for a network that produces the best
+possible validation performance. As such, this process can be
+thought of as a typical optimization problem of nding a
+set, x, of parameter values from a bounded set X that
+minimize an objective function f (x), where x is a particular
+setting of the hyper-parameters and f (x) is the loss for a deep
+neural network with a particular set of training and testing
+data as function of the hyper-parameter inputs. Training
+a deep neural network is not only a costly (with respect to
+time) procedure, but a rather opaque process with respect
+to how the network performance varies with respect to its
+hyper-parameter inputs. Because training and validating
+a deep neural network is very complicated and expensive,
+Bayesian Optimization (which assumes f (x) is not known,
+is non-convex and is expensive to evaluate) is a well-suited
+algorithm for hyper-parameter optimization for our task at
+hand. Bayesian Optimization attempts to optimize f (x)
+by constructing two things: a probabilistic model of f (x)
+and an acquistion function that picks which point x in X
+to evaluate next. The probabilistic model is updated with
+Baye's rule with a Gaussian prior. The acquisition function
+f (x) = max(0; x)
+f (x) =
+      </p>
+      <p>
+        1
+1 + e x
+suggests hyper-parameter settings or points to evaluate by
+trying to balance evaluating parameter settings in regions,
+where f (x) is low and points in regions where the
+uncertainty in the probabilistic model is high. As a result the
+optimization procedure attempts to evaluate as few points
+as possible [
+        <xref ref-type="bibr" rid="ref1">1</xref>
+        ] [
+        <xref ref-type="bibr" rid="ref24">24</xref>
+        ].
+      </p>
+      <p>In order to implement Bayesian Optimization, we use a
+tool called Spearmint. Spearmint works by launching a
+Spearmint master process, which creates a database for
+collecting all model evaluation results. The master process then
+spawns many processes, which execute training and
+evaluation with respect to a set of hyper-parameters proposed by
+the acquisition function and then report their results to the
+database. From there, the master process uses the results
+in the database to propose further parameter settings and
+launch additional processes.
+3.3</p>
+    </sec>
+    <sec id="sec-6">
+      <title>CNN Configuration</title>
+      <p>
+        Following AlexNet [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ], we developed a deep CNN which
+has totally 4 learnable layers, including 2 convolutional
+layers and 2 fully connected layers. Each convolutional layer
+is followed by a max pooling layer. The model is
+constructed based on the open source python deep learning
+library NOEN. The con guration of our best performed
+architectures are shown in Table 1.
+      </p>
+      <p>
+        The networks are shallower and smaller comparing to the
+state-of-art architecture developed by [
+        <xref ref-type="bibr" rid="ref22 ref28">22, 28</xref>
+        ].The major
+limitations for exploring deeper and larger CNNs is the
+limited amount of labeled training data that we can obtain.
+However, a small network has the advantage of avoiding
+over- tting, especially when the amount of training data is
+small. We also chose comparatively large kernels ( lters) in
+the convolutional layer based on input data size, even though
+[
+        <xref ref-type="bibr" rid="ref22">22</xref>
+        ] suggests that deep architecture with small kernel ( lter)
+is essential for state of art performance. This is because
+climate patterns are comparatively simpler and larger in size
+as compared to objects in ImageNet dataset.
+      </p>
+      <p>
+        One key feature of deep learning architectures is that it
+is able to learn complex non-linear functions. The
+convolutional layers and rst fully connected layer in our deep CNNs
+all have Recti ed Linear Unit (ReLU) activation functions
+[
+        <xref ref-type="bibr" rid="ref15">15</xref>
+        ] as characteristic. ReLU is chosen due to its faster
+learning/training character [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ] as compared to other activation
+functions like tanh.
+      </p>
+      <p>Final fully connected layer has Logistic activation function
+as non-linearity, which also serves as classi er and outputs
+a probability distribution over class labels.
+(1)
+(2)
+3.4</p>
+    </sec>
+    <sec id="sec-7">
+      <title>Computational Platform</title>
+      <p>We performed our data processing, model training and
+testing on Edison, a Cray XC30 and Cori, a Cray XC40
+supercomputing systems at the National Energy Research
+Scienti c Computing Center (NERSC). Each of Edison
+computing node has 24 2.4 GHz Intel Xeon processors. Each of
+Cori computing node has 32 2.3 GHz Intel Haswell
+processors. In our work, we mainly used single node CPU backend
+of NEON. The hyper-parameter optimization was performed
+on a single node on Cori with tasks fully parallel on 32 cores.</p>
+    </sec>
+    <sec id="sec-8">
+      <title>DATA</title>
+      <p>
+        In this study, we use both climate simulations and
+reanalysis products. The reanalysis products are produced by
+assimilating observations into a climate model. A summary
+of the data source and its temporal and spatial resolution is
+listed in Table 2. Ground truth labeling of various events
+is obtained via multivariate threshold based criteria
+implemented in TECA [
+        <xref ref-type="bibr" rid="ref17 ref18">18, 17</xref>
+        ], and manual labeling by experts
+[
+        <xref ref-type="bibr" rid="ref11 ref13">11, 13</xref>
+        ]. Training data comprise of image patterns, where
+several relevant spatial variables are stacked together over
+a prescribed region that bounds a type of event. The
+dimension of the bounding box is based domain knowledge of
+events spatial extent in real word. For instance, tropical
+cyclone radius are typically with in range of 100 kilometers to
+500 kilometers, thus bounding box size of 500 kilometers by
+500 kilometers is likely to capture most of tropical cyclones.
+The chosen physical variables are also based on domain
+expertise. The prescribed bounding box is placed over the
+event. Relevant variables are extracted within the
+bounding box and stacked together. To facilitate model
+training, bounding box location is adjusted slightly such that all
+of events are located approximately at the center. Image
+patches are cropped and centered correspondingly. Because
+of the spatial dimension of climate events vary quite a lot
+and the spatial resolution of source data is non-uniform,
+nal training images prepared di er in their size among the
+three types of event. A summary of the attributes of training
+images is listed in Table 3.
+      </p>
+    </sec>
+    <sec id="sec-9">
+      <title>RESULTS AND DISCUSSION</title>
+      <p>Table 4 summarizes the performance of our deep CNN
+architecture on classifying tropical cyclones, atmospheric rivers
+and weather fronts. We obtained fairly high accuracy
+(89%99%) on extreme event classi cation. In addition, the
+systems do not su er from over- tting. We believe this is
+mostly because of the shallow and small size of the
+architecture (4 learnable layers) and the weight decay regularization.
+Deeper and larger architecture would be inappropriate for
+this study due to the limited amount of training data. Fairly
+good train and test classi cation results also suggest that the
+deep CNNs we developed are able to e ciently learn
+representations of climate pattern from labeled data and make
+predictions based on feature learned. Traditional threshold
+based detection method requires human expert carefully
+examine the extreme event and its environment, thus come
+up with thresholds for de ning the events. In contrast, as
+shown in this study, deep CNNs are able to learn climate
+pattern just from the labeled data, thus avoiding subjective
+thresholds.
+Tropical cyclones are rapid rotating weather systems that
+are characterized by low pressure center with strong wind
+circulating the center and warm temperature core in upper
+troposphere. Figure 1 shows examples of tropical cyclones
+simulated in climate models, that are correctly classi ed by
+deep CNN (warm core structure is not shown in this gure).
+Tropical cyclone features are rather well de ned, as can be
+seen from the distinct low pressure center and spiral ow
+of wind vectors around the center. These clear and distinct
+characteristics make tropical cyclone pattern relatively easy
+to learn and represent within CNN. Our deep CNNs achieved
+nearly perfect (99%) classi cation accuracy.</p>
+      <p>Figure 2 shows examples of tropical cyclones that are
+misclassi ed. After carefully examining these events, we believe
+they are weak systems (e.g. tropical depression), whose low
+pressure center and spiral structure of wind have not fully
+developed. The pressure distribution shows a large low
+pressure area without a clear minimum. Therefore, our deep
+CNN does not label them as strong tropical cyclones.
+in tropical oceans and move pole-ward. Figure 3 shows
+examples of correctly classi ed land falling atmospheric rivers
+that occur on the western Paci c Ocean and north Atlantic
+Ocean. The characteristics of narrow water vapor corridor
+is well de ned and clearly observable in these images.</p>
+      <p>Figure 4 are examples of mis-classi ed atmospheric rivers.
+Upon further investigation, we believe there are two main
+factors leading to mis-classi cation. Firstly, presence of
+weak atmospheric river systems. For instance, the left
+column of Figure 4 shows comparatively weak atmospheric
+rivers. The water vapor distribution clearly show a band of
+concentrated moisture cross mid-latitude ocean, but the
+signal is much weaker comparing to Figure 3. Thus, deep CNN
+does not predict them correctly. Secondly, the presence of
+other climate event may also a ect deep CNN
+representation of atmospheric rivers. In reality, the location and shape
+of atmospheric river are a ected by jet streams and
+extratropical cyclones. For example, Figure 4 right column shows
+rotating systems (likely extra-tropical cyclone) adjacent to
+the atmospheric river. This phenomenon presents challenge
+for deep CNN on representing atmospheric river.</p>
+      <p>In contrast to tropical cyclones, atmospheric rivers are
+distinctively di erent events. They are narrow corridors of
+concentrated moisture in atmosphere. They usually originate
+5.2
+Among the three types of climate events we are looking
+at, weather fronts have the most complex spatial pattern.
+Weather fronts typically form at the interface of warm air
+and cold air, and usually associated with heavy precipitation
+due moisture condensation of warm air up-lifting. In
+satellite images,a weather front is observable as a strip of clouds,
+but it is hardly visible on two dimensional elds such as
+temperature and pressure. In middle latitude (e.g. most U.S.),
+a portion of weather front are associated with extra-tropical
+cyclones. Figure 5 shows examples of correctly classi ed
+weather front by our deep CNN system. Visually, the
+narrow long regions of high precipitation line up approximately
+parallel to the temperature contour. This is a clear
+characteristics and comparatively easy for deep CNNs to learn.</p>
+      <p>Because patterns of weather fronts is rather complex and
+hardly show up in two dimensional elds, we decided to
+further investigate it in later work.</p>
+    </sec>
+    <sec id="sec-10">
+      <title>FUTURE WORK</title>
+      <p>In the present study, we trained deep CNNs separately for
+classifying tropical cyclones, atmospheric rivers and weather
+fronts individually. Ideally, we would like to train a single
+neural network for detecting all three types of events.
+Unlike object recognition in natural images, climate patterns
+detection have unique challenges. Firstly, climate events
+happen at vastly di erent spatial scales. For example, a
+tropical cyclone typically extends over less than 500
+kilometers in radius, while an atmospheric river can be several
+thousand kilometers long. Secondly, di erent climate events
+are characterized by di erent sets of physical variables. For
+example, atmospheric rivers correlate strongly with the
+vertical integration of water vapor, while tropical cyclones has a
+more complex multi-variable pattern involving sea level
+pressure, near surface wind and upper troposphere temperature.
+Future work will need to develop generative CNN
+architectures that are capable of discriminating between di erent
+variables based on the event type and capable of handling
+events at various spatial scale. Note that we have
+primarily addressed detection of extreme weather patterns, but
+not their localization. We will consider architectures for
+spatially localizing weather pattern in the future.</p>
+      <p>
+        Several researchers have pointed out that deeper and larger
+CNNs perform better for classi cation and detection tasks[
+        <xref ref-type="bibr" rid="ref22 ref28">22,
+28</xref>
+        ] compared to shallow networks. However, deep networks
+require huge amount of data to be e ectively trained, and to
+prevent model over tting. Datasets, such as ImageNet,
+provide millions of labeled images for training and testing deep
+and large CNNs. In contrast, we can only obtain a small
+amount of labeled training data, hence we are constrained
+on the class of deep CNNs that we can explore without
+suffering from over- tting. This limitation also points us to
+the need for developing unsupervised approaches for climate
+pattern detection. We believe that this will be critical for the
+majority of scienti c disciplines that typically lack labeled
+data.
+      </p>
+    </sec>
+    <sec id="sec-11">
+      <title>CONCLUSION</title>
+      <p>In this study, we explored deep learning as a
+methodology for detecting extreme weather patterns in climate data.
+We developed deep CNN architecture for classifying tropical
+cyclones, atmospheric rivers and weather fronts. The
+system achieves fairly high classi cation accuracy, range from
+89% to 99%. To the best of our knowledge, this is the rst
+time that deep CNN has been applied to tackle climate
+pattern recognition problems. This successful application could
+be a precursor for tackling a broad class of pattern
+detection problem in climate science. Deep neural network learns
+high-level representations from data directly, therefore
+potentially avoiding traditional subjective thresholding based
+criteria of climate variables for event detection. Results
+from this study will be used for quantifying climate extreme
+events trend in current day and future climate scenarios, as
+well as investigating the changes in dynamics and
+thermodynamics of extreme events in global warming contend. This
+information is critical for climate change adaptation, hazard
+risk prediction and climate change policy making.</p>
+    </sec>
+    <sec id="sec-12">
+      <title>ACKNOWLEDGMENTS</title>
+      <p>This research was conducted using "Neon", an open source
+library for deep learning from Nervana Systems.</p>
+      <p>This research used resources of the National Energy
+Research Scienti c Computing Center, a DOE O ce of
+Science User Facility supported by the O ce of Science of the
+U.S. Department of Energy under Contract No.
+DE-AC0205CH11231. This work was supported by the Director,
+Ofce of Science, O ce of Advanced Scienti c Computing
+Research, Applied Mathematics program of the U.S.
+Department of Energy under Contract No. DE-AC02-05CH11231.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Brochu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V. M.</given-names>
+            <surname>Cora</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>N. De</given-names>
+            <surname>Freitas</surname>
+          </string-name>
+          .
+          <article-title>A tutorial on bayesian optimization of expensive cost functions, with application to active user modeling and hierarchical reinforcement learning</article-title>
+          .
+          <source>arXiv preprint arXiv:1012.2599</source>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Chattopadhyay</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Vintzileos</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>C. Zhang.</surname>
+          </string-name>
+          <article-title>A description of the madden{julian oscillation based on a self-organizing map</article-title>
+          .
+          <source>Journal of Climate</source>
+          ,
+          <volume>26</volume>
+          (
+          <issue>5</issue>
+          ):
+          <volume>1716</volume>
+          {
+          <fpage>1732</fpage>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>G. E.</given-names>
+            <surname>Dahl</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Deng</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Acero</surname>
+          </string-name>
+          .
+          <article-title>Contextdependent pre-trained deep neural networks for largevocabulary speech recognition</article-title>
+          .
+          <source>Audio, Speech, and Language Processing</source>
+          , IEEE Transactions on,
+          <volume>20</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>30</volume>
+          {
+          <fpage>42</fpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Girshick</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Donahue</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Darrell</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Malik</surname>
+          </string-name>
+          .
+          <article-title>Rich feature hierarchies for accurate object detection and semantic segmentation</article-title>
+          .
+          <source>In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</source>
+          , pages
+          <fpage>580</fpage>
+          {
+          <fpage>587</fpage>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Glorot</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          .
+          <article-title>Understanding the di culty of training deep feedforward neural networks</article-title>
+          .
+          <source>In International conference on arti cial intelligence and statistics</source>
+          , pages
+          <volume>249</volume>
+          {
+          <fpage>256</fpage>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Gorricha</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Lobo</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Costa</surname>
+          </string-name>
+          .
+          <article-title>A framework for exploratory analysis of extreme weather events using geostatistical procedures and 3d self-organizing maps</article-title>
+          .
+          <source>International Journal on Advances in Intelligent Systems</source>
+          ,
+          <volume>6</volume>
+          (
+          <issue>1</issue>
+          ),
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Graves</surname>
+          </string-name>
+          , A.-r. Mohamed, and
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          .
+          <article-title>Speech recognition with deep recurrent neural networks</article-title>
+          .
+          <source>In Acoustics, Speech and Signal Processing (ICASSP)</source>
+          ,
+          <year>2013</year>
+          IEEE International Conference on, pages
+          <volume>6645</volume>
+          {
+          <fpage>6649</fpage>
+          . IEEE,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Deng</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G. E.</given-names>
+            <surname>Dahl</surname>
+          </string-name>
+          , A.-r. Mohamed,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Jaitly</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Senior</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Vanhoucke</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Nguyen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T. N.</given-names>
+            <surname>Sainath</surname>
+          </string-name>
+          , et al.
+          <article-title>Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups</article-title>
+          .
+          <source>Signal Processing Magazine</source>
+          , IEEE,
+          <volume>29</volume>
+          (
+          <issue>6</issue>
+          ):
+          <volume>82</volume>
+          {
+          <fpage>97</fpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Iglesias</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D. C.</given-names>
+            <surname>Kale</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Liu</surname>
+          </string-name>
+          .
+          <article-title>An examination of deep learning for extreme climate pattern analysis</article-title>
+          .
+          <source>In The 5th International Workshop on Climate Informatics</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Krizhevsky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>I. Sutskever</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>G. E.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          .
+          <article-title>Imagenet classi cation with deep convolutional neural networks</article-title>
+          .
+          <source>In Advances in Neural Information Processing Systems (NIPS)</source>
+          , pages
+          <fpage>1097</fpage>
+          {
+          <fpage>1105</fpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <given-names>K. E.</given-names>
+            <surname>Kunkel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D. R.</given-names>
+            <surname>Easterling</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D. A.</given-names>
+            <surname>Kristovich</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Gleason</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Stoecker</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Smith</surname>
+          </string-name>
+          .
+          <article-title>Meteorological causes of the secular variations in observed extreme precipitation events for the conterminous united states</article-title>
+          .
+          <source>Journal of Hydrometeorology</source>
+          ,
+          <volume>13</volume>
+          (
+          <issue>3</issue>
+          ):
+          <volume>1131</volume>
+          {
+          <fpage>1141</fpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Larochelle</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Louradour</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Lamblin</surname>
+          </string-name>
+          .
+          <article-title>Exploring strategies for training deep neural networks</article-title>
+          .
+          <source>The Journal of Machine Learning Research</source>
+          ,
+          <volume>10</volume>
+          :1{
+          <fpage>40</fpage>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>D. A.</given-names>
+            <surname>Lavers</surname>
+          </string-name>
+          , G. Villarini,
+          <string-name>
+            <given-names>R. P.</given-names>
+            <surname>Allan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E. F.</given-names>
+            <surname>Wood</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. J.</given-names>
+            <surname>Wade</surname>
+          </string-name>
+          .
+          <article-title>The detection of atmospheric rivers in atmospheric reanalyses and their links to british winter oods and the large-scale climatic circulation</article-title>
+          .
+          <source>Journal of Geophysical Research: Atmospheres</source>
+          ,
+          <volume>117</volume>
+          (
+          <issue>D20</issue>
+          ),
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>LeCun</surname>
+          </string-name>
+          , L. Bottou,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>P.</surname>
+          </string-name>
+          <article-title>Ha ner. Gradient-based learning applied to document recognition</article-title>
+          .
+          <source>Proceedings of the IEEE</source>
+          ,
+          <volume>86</volume>
+          (
+          <issue>11</issue>
+          ):
+          <volume>2278</volume>
+          {
+          <fpage>2324</fpage>
+          ,
+          <year>1998</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Nair</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>G. E.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          .
+          <article-title>Recti ed linear units improve restricted boltzmann machines</article-title>
+          .
+          <source>In Proceedings of the 27th International Conference on Machine Learning (ICML)</source>
+          , pages
+          <fpage>807</fpage>
+          {
+          <fpage>814</fpage>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [16]
+          <string-name>
+            <given-names>D. S.</given-names>
+            <surname>Nolan</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M. G.</given-names>
+            <surname>McGauley</surname>
+          </string-name>
+          .
+          <article-title>Tropical cyclogenesis in wind shear: Climatological relationships and physical processes</article-title>
+          .
+          <source>In Cyclones: Formation, Triggers, and Control</source>
+          , pages
+          <volume>1</volume>
+          {
+          <fpage>36</fpage>
+          . Nova Science Publishers,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <surname>Prabhat</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Byna</surname>
+            ,
+            <given-names>V.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Vishwanath</surname>
+            , E. Dart,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Wehner</surname>
+            ,
+            <given-names>W. D.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Collins</surname>
+          </string-name>
+          , et al.
+          <article-title>Teca: Petascale pattern recognition for climate science</article-title>
+          .
+          <source>In Computer Analysis of Images and Patterns</source>
+          , pages
+          <volume>426</volume>
+          {
+          <fpage>436</fpage>
+          . Springer,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [18]
+          <string-name>
+            <surname>Prabhat</surname>
+            ,
+            <given-names>O.</given-names>
+          </string-name>
+          <article-title>Rubel</article-title>
+          , S. Byna,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Wu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Wehner</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Bethel</surname>
+          </string-name>
+          , et al.
+          <article-title>Teca: A parallel toolkit for extreme climate analysis</article-title>
+          .
+          <source>In Third Worskhop on Data Mining in Earth System Science (DMESS) at the International Conference on Computational Science (ICCS)</source>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [19]
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Ruhmelhart</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Wiliams</surname>
+          </string-name>
+          .
+          <article-title>Learning representations by back-propagation errors</article-title>
+          .
+          <source>Nature</source>
+          ,
+          <volume>323</volume>
+          :
+          <fpage>533</fpage>
+          {
+          <fpage>536</fpage>
+          ,
+          <year>1986</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [20]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Sermanet</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Eigen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Mathieu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Fergus</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>LeCun. Overfeat</surname>
+          </string-name>
+          :
+          <article-title>Integrated recognition, localization and detection using convolutional networks</article-title>
+          .
+          <source>In International Conference on Learning Representations (ICLR)</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [21]
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Shi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          , D.-
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Yeung</surname>
+          </string-name>
+          , W.-K. Wong, and W.-c. Woo.
+          <article-title>Convolutional lstm network: A machine learning approach for precipitation nowcasting</article-title>
+          .
+          <source>In Advances in Neural Information Processing Systems: Twenty-Ninth Annual Conference on Neural Information Processing Systems (NIPS)</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [22]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Simonyan</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Zisserman</surname>
+          </string-name>
+          .
+          <article-title>Very deep convolutional networks for large-scale image recognition</article-title>
+          .
+          <source>In Internaltional Conference on Learning Representation (ICLR)</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [23]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Snoek</surname>
+          </string-name>
+          . Spearmint. Spearmint,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [24]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Snoek</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Larochelle</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R. P.</given-names>
+            <surname>Adams</surname>
+          </string-name>
+          .
+          <article-title>Practical bayesian optimization of machine learning algorithms</article-title>
+          .
+          <source>In Advances in neural information processing systems</source>
+          , pages
+          <volume>2951</volume>
+          {
+          <fpage>2959</fpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [25]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Snoek</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O.</given-names>
+            <surname>Rippel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Swersky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Kiros</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Satish</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Sundaram</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Patwary</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Prabhat</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Adams</surname>
+          </string-name>
+          .
+          <article-title>Scalable bayesian optimization using deep neural networks</article-title>
+          .
+          <source>In Proceedings of The 32nd International Conference on Machine Learning</source>
+          , pages
+          <volume>2171</volume>
+          {
+          <fpage>2180</fpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [26]
+          <string-name>
+            <given-names>J. T.</given-names>
+            <surname>Springenberg</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Dosovitskiy</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Brox</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Riedmiller</surname>
+          </string-name>
+          .
+          <article-title>Striving for simplicity: The all convolutional net</article-title>
+          .
+          <source>In International Conference on Learning Representation (ICLR)</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Sutskever</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O.</given-names>
+            <surname>Vinyals</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Q. V.</given-names>
+            <surname>Le</surname>
+          </string-name>
+          .
+          <article-title>Sequence to sequence learning with neural networks</article-title>
+          .
+          <source>In Advances in neural information processing systems</source>
+          , pages
+          <volume>3104</volume>
+          {
+          <fpage>3112</fpage>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Szegedy</surname>
+          </string-name>
+          , W. Liu,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Sermanet</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Reed</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Anguelov</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Erhan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Vanhoucke</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Rabinovich</surname>
+          </string-name>
+          .
+          <article-title>Going deeper with convolutions</article-title>
+          .
+          <source>In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</source>
+          , pages
+          <fpage>1</fpage>
+          <issue>{9</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <given-names>J. R.</given-names>
+            <surname>Uijlings</surname>
+          </string-name>
+          , K. E. van de Sande, T. Gevers,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. W.</given-names>
+            <surname>Smeulders</surname>
+          </string-name>
+          .
+          <article-title>Selective search for object recognition</article-title>
+          .
+          <source>International Journal of Computer Vision</source>
+          ,
+          <volume>104</volume>
+          (
+          <issue>2</issue>
+          ):
+          <volume>154</volume>
+          {
+          <fpage>171</fpage>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Vitart</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J. Anderson</surname>
+            , and
+            <given-names>W.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Stern</surname>
+          </string-name>
+          .
+          <article-title>Simulation of interannual variability of tropical storm frequency in an ensemble of gcm integrations</article-title>
+          .
+          <source>Journal of Climate</source>
+          ,
+          <volume>10</volume>
+          (
+          <issue>4</issue>
+          ):
+          <volume>745</volume>
+          {
+          <fpage>760</fpage>
+          ,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Vitart</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J. Anderson</surname>
+            , and
+            <given-names>W.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Stern</surname>
+          </string-name>
+          .
+          <article-title>Impact of largescale circulation on tropical storm frequency, intensity, and location, simulated by an ensemble of gcm integrations</article-title>
+          .
+          <source>Journal of Climate</source>
+          ,
+          <volume>12</volume>
+          (
+          <issue>11</issue>
+          ):
+          <volume>3237</volume>
+          {
+          <fpage>3254</fpage>
+          ,
+          <year>1999</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          [32]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Walsh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Fiorino</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Landsea</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>McInnes</surname>
+          </string-name>
+          .
+          <article-title>Objectively determined resolution-dependent threshold criteria for the detection of tropical cyclones in climate models and reanalyses</article-title>
+          .
+          <source>Journal of Climate</source>
+          ,
+          <volume>20</volume>
+          (
+          <issue>10</issue>
+          ):
+          <volume>2307</volume>
+          {
+          <fpage>2314</fpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          [33]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Walsh</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>I. G.</given-names>
+            <surname>Watterson. Tropical</surname>
+          </string-name>
+          cyclone
+          <article-title>-like vortices in a limited area model: comparison with observed climatology</article-title>
+          .
+          <source>Journal of Climate</source>
+          ,
+          <volume>10</volume>
+          (
+          <issue>9</issue>
+          ):
+          <volume>2240</volume>
+          {
+          <fpage>2259</fpage>
+          ,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          [34]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Wehner</surname>
+          </string-name>
+          , Prabhat,
+          <string-name>
+            <given-names>K. A.</given-names>
+            <surname>Reed</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Stone</surname>
+          </string-name>
+          , W. D. Collins, and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Bacmeister</surname>
+          </string-name>
+          .
+          <article-title>Resolution dependence of future tropical cyclone projections of cam5. 1 in the us clivar hurricane working group idealized con gurations</article-title>
+          .
+          <source>Journal of Climate</source>
+          ,
+          <volume>28</volume>
+          (
+          <issue>10</issue>
+          ):
+          <volume>3905</volume>
+          {
+          <fpage>3925</fpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+
