@@ -1,0 +1,3859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-title-group>
+        <journal-title>Sustainability</journal-title>
+      </journal-title-group>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.3390/su10030577</article-id>
+      <title-group>
+        <article-title>Social Network Analysis of Scientific Articles Published by Food Policy</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>József Popp</string-name>
+          <email>popp.jozsef@econ.unideb.hu</email>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Péter Balogh</string-name>
+          <email>balogh.peter@econ.unideb.hu</email>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Judit Oláh</string-name>
+          <email>olah.judit@econ.unideb.hu</email>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Sebastian Kot</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Mónika Harangi Rákos</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Péter Lengyel</string-name>
+          <email>lengyel.peter@econ.unideb.hu</email>
+        </contrib>
+      </contrib-group>
+      <pub-date>
+        <year>2018</year>
+      </pub-date>
+      <volume>10</volume>
+      <fpage>2</fpage>
+      <lpage>21</lpage>
+      <history>
+        <date date-type="accepted">
+          <day>21</day>
+          <month>2</month>
+          <year>2018</year>
+        </date>
+        <date date-type="received">
+          <day>8</day>
+          <month>2</month>
+          <year>2018</year>
+        </date>
+      </history>
+      <abstract>
+        <p>The article analyses co-authorship and co-citation networks in Food Policy, which is the most important agricultural policy journal in the field of agricultural economics. The paper highlights the principal researchers in this field together with their authorship and citation networks on the basis of 714 articles written between 2006 and 2015. Results suggest that the majority of the articles were written by a small number of researchers, indicating that groups and central authors play an important role in scientific advances. It also turns out that the number of articles and the central role played in the network are not related, contrary to expectations. Results also suggest that groups cite themselves more often than average, thereby boosting the scientific advancement of their own members.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>social network analysis</kwd>
+        <kwd>co-authorship</kwd>
+        <kwd>co-citation network</kwd>
+        <kwd>collaboration</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>1. Introduction</title>
+      <p>
+        The number of articles published globally in different scientific areas has increased exponentially
+in recent years, and the behavior of those involved in scientific production itself has changed over
+time [
+        <xref ref-type="bibr" rid="ref1">1</xref>
+        ]. Despite the clear importance of the topic, analyses of co-authorship and co-citation networks
+operating mainly in the field of agricultural economics or agribusiness, are scarce. As [2] state, the link
+between scientific collaboration in a research project and the impact of the research results have been
+investigated in only a small number of studies.
+      </p>
+      <p>During the analysis of co-authorship patterns in a single journal or conference, many authors
+adopt and implement methods from Social Network Analysis (SNA), the second stream of the research
+methodology which is relevant in this case [3].</p>
+      <p>
+        In an attempt to evaluate the quality of scientific publications, different efforts have been made to
+measure their influence [4]. We can agree that the benefits of collaboration between researchers are
+almost universal. Actual samples of behaviour in terms of cooperation can depend on the country of
+origin, disciplines, research institutions, or journals [5]. Publishing habits have changed dramatically in
+the past years, both in regard to Food Policy specifically and to all scientific journals in general. With the
+spread of the Internet and online journals, authors are now able to rapidly acquire access to published
+research and working papers. But how have these changes influenced the quantity of citations and
+the types of the cited articles? It is important to answer this question because the number of citations
+for the articles published in a journal, via statistics such as the impact factor or the Hirsch index,
+is increasingly being used as a metric of journal quality and stature [
+        <xref ref-type="bibr" rid="ref5">6</xref>
+        ]. In Ko˝míves and Dajnoki [
+        <xref ref-type="bibr" rid="ref6">7</xref>
+        ]’s
+summary of the most important metric elements of the different international and Hungarian higher
+educational ranking systems, the authors revealed that, for example, the Shanghai Jiao Tong University
+ranking, which is the best known ranking system of the world, pays much attention to publications
+and citations in the most important international journals—such as Nature or Science. The relevance of
+the different factors during the analysis of the position of each university in comparison with other
+higher educational institutions is still not finalized: as Hazelkorn [
+        <xref ref-type="bibr" rid="ref7">8</xref>
+        ] showed, we can still find debates
+about the relevance of the number of publications or citations. On the other hand, it is clear to all that
+the strength or the impact of the research or scientific cooperation cannot only be analyzed on the basis
+of the number of papers or citations alone—this process is much more complex [
+        <xref ref-type="bibr" rid="ref8">9</xref>
+        ].
+      </p>
+      <p>More specifically, we investigate the following hypotheses in this paper:</p>
+      <sec id="sec-1-1">
+        <title>Hypothesis (H1). Significant changes occurred in the subject matter examined by researchers in the 10-year-period from 2006 to 2015.</title>
+      </sec>
+      <sec id="sec-1-2">
+        <title>Hypothesis (H2). The majority of articles are written by various research groups rather than one single author.</title>
+      </sec>
+      <sec id="sec-1-3">
+        <title>Hypothesis (H3). The key members of the network have the best publication performance.</title>
+      </sec>
+      <sec id="sec-1-4">
+        <title>Hypothesis (H4). The articles by influential authors are cited more due to their centrality ranking.</title>
+        <p>Following this introduction, the paper is structured as follows. The literature review provides a
+brief description of the theoretical background of social network analysis in general, and particularly
+in scientific collaboration. The third section describes materials and methods used for the analysis.
+In the fourth section, the results are presented with descriptive statistics used to describe the basic
+features of the data in a study, followed by co-authorship network and co-citation network analysis.
+In the fifth section we summarize in a discussion and draw the main conclusions.</p>
+      </sec>
+    </sec>
+    <sec id="sec-2">
+      <title>2. Literature Review</title>
+      <sec id="sec-2-1">
+        <title>2.1. Collaboration, Competition, or Coopetition?</title>
+        <p>
+          During the analysis of the international cooperation in the fields of research and publications,
+scientists face several issues they have to resolve to ensure the success of their collaboration.
+We investigated the structural pathology of different networks. The importance of international
+cooperation and networks has significantly increased in the past three decades [
+          <xref ref-type="bibr" rid="ref9">10</xref>
+          ]. The risks of
+inter-organizational cooperation can cause different pathologies. These pathologies are able to bring
+benefits for international cooperating partners not only in business cases [
+          <xref ref-type="bibr" rid="ref10">11</xref>
+          ], but also in the case
+of scientific networks. [
+          <xref ref-type="bibr" rid="ref11">12</xref>
+          ] uses the word “coopetition” to describe the special habit or behavior of
+different companies: they partly cooperate with each other but on the other hand they are—at the
+same time—competitors as well. They work together on several issues, but they are all chasing
+the same customers. We can apply the same concept to international research communities as
+well—of course these communities are not interested in attracting “customers”, but they have to
+find those potential partners who are able to fund the research and the operation of higher educational
+institutions and research institutions. To become reliable partners for international cooperating
+partners, research groups have to implement and respect international research ethical norms—just as
+Sroka and Lo˝rinczy [
+          <xref ref-type="bibr" rid="ref12">13</xref>
+          ] wrote in their article when describing relevant expectations for companies
+facing business ethical rules and practices. That means the role of the research group leader will
+become more important—similarly to business life, where the role of the manager is a key component,
+too. As Sroka and Gajdzik [
+          <xref ref-type="bibr" rid="ref13">14</xref>
+          ] found that the manager is the key to the network’s success, we can
+define the leader of the research group as a key actor as well.
+        </p>
+        <p>
+          During the implementation of this aspect of the business world to the academic sector, institutions
+and researchers face almost the same problems. Cross-border cooperation between different institutions
+and individual researchers seems to be a good idea—but on the other hand, higher educational
+institutions and research institutions are rivals when the institution leaders try to attract future
+students, sponsors, partners, etc. As Hazelkorn [
+          <xref ref-type="bibr" rid="ref14">15</xref>
+          ] noted, the Shanghai Jiao Tong Ranking System is
+mainly based on the quality of the publications written by the researchers employed by each university.
+Publishing research of high quality and significant impact is fundamental to progress in the sciences
+and social sciences. From a career perspective, the perceived research performance of individual
+researchers can be crucial for hiring, tenure, and promotion decisions worldwide [
+          <xref ref-type="bibr" rid="ref15">16</xref>
+          ]. It is one thing to
+use impact factors to compare journals and quite another to use them to compare authors. Journal
+impact factors generally involve relatively large populations of articles and citations. Indeed, most
+metrics relating to impact and quality are based on citation data [
+          <xref ref-type="bibr" rid="ref16">17</xref>
+          ]. Of course, the ranking system
+also pays attention to many other factors (e.g., size, social and other impacts etc.) but the measurement
+of the publications’ quality is driven in the same way that we used to analyze it during our research:
+it is mainly based on the Scopus and WoS peer reviewed publications—and on Nature or Science
+publications. Analyzing the co-authorship patterns can be a useful way to enrich these evaluation
+methods, which can help to allocate resources to the research community which can use them in the
+best way [
+          <xref ref-type="bibr" rid="ref17">18</xref>
+          ]. The importance of fundraising can be crucial: some fields of research can get much
+support from the private sector. As Calero et al. [
+          <xref ref-type="bibr" rid="ref18">19</xref>
+          ] reported in the bio-pharmaceutical sector, the most
+important multinational companies spend about 15% of their sales on research and development.
+        </p>
+        <p>Publishing research of high quality and significant impact is fundamental to progress in the
+sciences and social sciences.</p>
+        <p>
+          Coopetition can be a good solution for higher educational institutions as well. The theory is
+mainly relevant for business enterprises, but it can be adapted to the academic sector as well. During
+the coopetition process, companies try to do the best for themselves. Sometimes they cooperate with
+each other and sometimes they compete. Sometimes they are able to reach their aims at the expense
+of the other company and sometimes not. The model is based on game theory—but the aim is not to
+create a win-lose situation [
+          <xref ref-type="bibr" rid="ref19">20</xref>
+          ].
+        </p>
+      </sec>
+      <sec id="sec-2-2">
+        <title>2.2. Social Network Analysis</title>
+        <p>
+          Analysis of social networks can be achieved by analyzing the structural characteristics of the
+network. We can identify the key features of social networks as the users and their connections [
+          <xref ref-type="bibr" rid="ref20">21</xref>
+          ].
+These links create the structure of the network. While not without their accompanying problems, as
+noted by [
+          <xref ref-type="bibr" rid="ref21">22</xref>
+          ], structural and topological attributes have been used in several studies to understand the
+nuances and the importance of human behavior in social networks [
+          <xref ref-type="bibr" rid="ref22">23</xref>
+          ].
+        </p>
+        <p>
+          Social Network Analysis (SNA) has developed as a specialty in parallel with scientometrics
+since the end of the 1970s. In a foundational work. Freeman [
+          <xref ref-type="bibr" rid="ref23">24</xref>
+          ] developed a set of measures of
+centrality based on betweenness. Freeman stated that “betweenness” as a structural characteristic
+of communication was described in the literature as the first measure of centrality [
+          <xref ref-type="bibr" rid="ref24 ref25">25,26</xref>
+          ]. The SNA
+point of view on social relationships in terms of network theory can consist of nodes and ties (also
+called edges, links, or connections). Nodes (or, as they are called in the ferial usage: junctions) are the
+individual actors creating the networks, and ties are the relationships between them. The resulting
+graph-based structures are often very complex. We can state that research in several academic fields
+has shown that social networks operate on different levels and play a crucial role in determining
+the way problems are solved, organizations are run, and the degree to which individuals succeed
+in achieving their goals [
+          <xref ref-type="bibr" rid="ref26">27</xref>
+          ]. SNA is a wide strategy during the investigation of social structure [3]
+and is used to gain patterns of relationships between the nodes mentioned above to ascertain an
+underlying social structure [
+          <xref ref-type="bibr" rid="ref27">28</xref>
+          ]. SNA integrated the narrative data analysis while it provided a way
+of examining the relation structure among the people, organisations, and the places they mentioned
+across each of the interviews. This versatile approach was particularly useful because it provided not
+only a possibility to analyze the specific links individuals had with one another, with places and with
+organizations [
+          <xref ref-type="bibr" rid="ref28">29</xref>
+          ], but also because one of the main aims of SNA is to identify the core actors in a
+network [
+          <xref ref-type="bibr" rid="ref29">30</xref>
+          ] and to find and interpret patterns of social ties among actors [
+          <xref ref-type="bibr" rid="ref30">31</xref>
+          ]. The role of SNA has
+increased recently because the topic plays an important role in several disciplines [
+          <xref ref-type="bibr" rid="ref31">3,32</xref>
+          ]. Network
+analysis permits the investigation of the characteristics of management to compare with other fields
+of knowledge, as well as the existing linkages between the most central and most prominent authors
+within the examined discipline. Finally, network analysis gives a greater understanding of which
+authors collaborate, of the social groups that emerge from the collaboration relationships, of the role
+played by the most important ‘star authors’, and of the impact of their belonging to certain institutions
+and journals [
+          <xref ref-type="bibr" rid="ref32">33</xref>
+          ].
+        </p>
+        <p>
+          Using the graph theory [
+          <xref ref-type="bibr" rid="ref33">34</xref>
+          ], SNA is able to make the web of social interactions visible, both on
+global and individual levels. The former seeks to describe the characteristics of these networks as
+a whole (e.g., distance, clusters, etc.), while the latter refers to the analysis of the individual actors
+(e.g., status, position, etc.). The status of every actor can be described by centrality, as evident from the
+methodological chapter below.
+        </p>
+      </sec>
+      <sec id="sec-2-3">
+        <title>2.3. Co-Author Network</title>
+        <p>
+          Co-author networks can be defined as a type of social network, and paper citation networks as a
+type of information science network. These two different types of networks are thoroughly studied,
+especially in the complex networks field [
+          <xref ref-type="bibr" rid="ref30 ref34 ref35 ref36">31,35–37</xref>
+          ]. Co-author and paper citation networks in different
+disciplines were studied by complex network researchers [
+          <xref ref-type="bibr" rid="ref37 ref38 ref39 ref40">38–41</xref>
+          ]. Co-authorship networks, as one of
+the most understandable and well-known forms of collaboration networks [
+          <xref ref-type="bibr" rid="ref41">42</xref>
+          ], are built on the social
+dimension of the relatedness of different authors [
+          <xref ref-type="bibr" rid="ref42">43</xref>
+          ]. Studies of cooperation networks can cluster
+forms based on co-authorships, and then identify the “invisible community” within a field [
+          <xref ref-type="bibr" rid="ref29">30</xref>
+          ].
+        </p>
+        <p>
+          The research and publishing method has changed dramatically over the past decades. 60–70 years
+ago, the most scientific research was done by individual researchers publishing single-authored articles.
+Later this changed significantly: while in 1950, only 8% of articles published in the American Economic
+Review were co-authored, the co-authorship rate increased to 55% by 1993 [
+          <xref ref-type="bibr" rid="ref43">44</xref>
+          ] and to 81% in 2014.
+This trend was noted in the 1980s as well: as McDowell and Melvin [
+          <xref ref-type="bibr" rid="ref44">45</xref>
+          ] stated, the percentage of
+co-authored articles in the field of economics increased between 1946 and 1976 from less than 5% to
+more than 30%. As an outcome of the trend towards co-authorship, academic interest in collaboration
+has increased among researchers [
+          <xref ref-type="bibr" rid="ref36 ref45 ref46 ref47 ref48">37,46–49</xref>
+          ]. Nowadays, science is more accessible and freer than
+it has ever been before and—because of globalization—there is a particularly growing interest in
+scientific collaboration. This collaboration can take various forms (e.g., research projects, publications
+in peer-reviewed journals or in conference papers). According to [
+          <xref ref-type="bibr" rid="ref49">50</xref>
+          ], collaboration is mostly facilitated
+by technological advances, geographical proximity, and the similarity of the actual research topics.
+        </p>
+        <p>
+          We can define the two most important aspects of collaborations that boost research outcomes: first
+the growing number of publications, and second the number of citations received. Citations of articles
+published in academic journals are central to the scholarly venture. Citations are considered a mark
+of the research contribution made by an article—a sign that the new scientific outcome is valuable
+to other scholars [
+          <xref ref-type="bibr" rid="ref50">51</xref>
+          ]. Based on the research completed by [
+          <xref ref-type="bibr" rid="ref51">52</xref>
+          ], we can declare that the number of
+references increases with the number of co-authors and this effect can become more efficient if the
+latter are from different institutions.
+        </p>
+        <p>
+          While the differences between research fields can mean differences in variables related to
+citations [
+          <xref ref-type="bibr" rid="ref52">53</xref>
+          ], several common factors come up. These are in line with the conclusions of [
+          <xref ref-type="bibr" rid="ref53">54</xref>
+          ] and
+include the length of the article [
+          <xref ref-type="bibr" rid="ref54">55</xref>
+          ], the number of co-authors [
+          <xref ref-type="bibr" rid="ref55 ref56">56,57</xref>
+          ], whether the publication is a
+review paper [
+          <xref ref-type="bibr" rid="ref54 ref57">55,58</xref>
+          ], the seniority of the authors [
+          <xref ref-type="bibr" rid="ref52 ref57">53,58</xref>
+          ], and the affiliation of the authors [
+          <xref ref-type="bibr" rid="ref54 ref58">55,59</xref>
+          ].
+        </p>
+        <p>When a scientist publishes together with their colleagues, they can establish a scientific network.
+After the analysis of such networks, we can acquire a useful picture of the relationships between
+individual authors.</p>
+        <p>
+          Differences between partners (potential co-authors) and their different motivations for
+undertaking and developing sustainable international and interorganizational cooperation are
+important issues in terms of the prospects for this cooperation [
+          <xref ref-type="bibr" rid="ref59">60</xref>
+          ]. We agree with the idea that the
+harmonization of international collaboration is primarily the result of improving its key determinant,
+which is people and higher educational and research institutions, and it has become clear that all the
+factors are related to the partnership [
+          <xref ref-type="bibr" rid="ref60">61</xref>
+          ]. Several studies have sought to determine the measurement
+of collaboration performance [
+          <xref ref-type="bibr" rid="ref61">62</xref>
+          ].
+        </p>
+        <p>
+          We can state that scientific networks are usually formed around prominent researchers. These
+well-known scientists mostly work as a hub in attracting a large number of researchers from several
+different universities and research institutions [
+          <xref ref-type="bibr" rid="ref49">50</xref>
+          ]. According to [
+          <xref ref-type="bibr" rid="ref46">47</xref>
+          ], research collaboration increases
+research quality and leads to more often cited co-authored papers. Narin et al. [
+          <xref ref-type="bibr" rid="ref62">63</xref>
+          ] found that
+internationally co-authored papers can result in twice as many citations as single-authored ones.
+Sooryamoorthy [
+          <xref ref-type="bibr" rid="ref63">64</xref>
+          ] also found a significant positive correlation between the number of co-authors
+and the number of citations linked to articles published by South African scientists.
+        </p>
+        <p>
+          Earlier studies have shown that scientific collaboration (especially the trends towards
+co-authorship) produces a higher research impact than a single researcher in terms of the number of
+articles [
+          <xref ref-type="bibr" rid="ref64">65</xref>
+          ] and citations [
+          <xref ref-type="bibr" rid="ref63">2,64</xref>
+          ]. This may come from the fact that a single researcher cannot effectively
+mobilize all the resources needed for conducting research [
+          <xref ref-type="bibr" rid="ref65">66</xref>
+          ].
+        </p>
+        <p>
+          Co-authorship analysis can be used to ascertain the position of an author in the cooperation
+network. It might provide important information on the scientists’ own contribution to the research
+output included in their official scientific biography. In conjunction with the h-core analysis, this helps
+to clarify details on the extent of the examined scientist’s real contribution to the research output
+shared by themselves and the achieved citation impact of these publications [
+          <xref ref-type="bibr" rid="ref66">67</xref>
+          ]. The leanness of the
+connections across the communities denotes the fact that most of the journals which belong to the same
+community tend to cite the same publications within their community, and rarely reference articles
+from other communities [
+          <xref ref-type="bibr" rid="ref67">68</xref>
+          ].
+        </p>
+        <p>
+          Journal rankings might also have an impact on global scientific collaboration because publishing in
+more prestigious scientific journals in many countries has a higher value in most academic performance
+indicators. Several authors and research groups have analyzed different discipline-specific journal
+rankings and quality (see e.g., [
+          <xref ref-type="bibr" rid="ref68 ref69">69,70</xref>
+          ]). Funding the different research groups might depend on the
+prestige of their publications and the number—and quality—of citations they receive.
+        </p>
+        <p>
+          Over the past few years, an improvement has appeared in bibliometrics, as a result of which
+citation impact will no longer be restricted to the “times cited” factor, but a more specific analysis
+will be carried out [
+          <xref ref-type="bibr" rid="ref70">71</xref>
+          ]. For example, during the preparation of different bibliometric analyses the
+citation context is considered, in order to get deeper and more detailed information on the impact
+of publications and how the analyzed cited publications are perceived [
+          <xref ref-type="bibr" rid="ref71">72</xref>
+          ]. Authors may cite the
+work of others (or themselves) for different reasons and these can vary from purely rational to mostly
+accidental [
+          <xref ref-type="bibr" rid="ref72">73</xref>
+          ]. Citation indexes are widely used in scientometrics during the evaluation of the
+quality and impact of scientific publications. However, although citation index based metrics remain a
+fundamental component in the evaluation process on the research performance of every single author
+or research community, it alone cannot reflect all the variable aspects of scientific communication [
+          <xref ref-type="bibr" rid="ref73">74</xref>
+          ].
+Most of the articles we analyzed during our research have dealt with specific distributions of citations.
+We can define a group of good examples: the sleeping beauties. These are articles which generate little
+or no citation impact over a longer period (e.g., 10 years), before they start to generate stupendous
+impact. According to [
+          <xref ref-type="bibr" rid="ref74">75</xref>
+          ], the phenomenon of sleeping beauties is also labeled (from the viewpoint
+of the authors or co-authors of the article citing the original publication) as resisted or premature
+discoveries, delayed recognition, or information awakening. Several authors have published articles
+on sleeping beauties’ studies, e.g., [
+          <xref ref-type="bibr" rid="ref75 ref76">76,77</xref>
+          ].
+        </p>
+        <p>
+          Bibliometrically, the collaboration of authors or author communities is not normally viewed or
+studied graphically, but rather described as a social phenomenon with different factors, including
+economic factors and factors from many other fields of research [
+          <xref ref-type="bibr" rid="ref77">78</xref>
+          ], intrascientific factors [
+          <xref ref-type="bibr" rid="ref24">25</xref>
+          ], scientific
+acknowledgement factors (describing the recognition of a scientific publication) [
+          <xref ref-type="bibr" rid="ref78">79</xref>
+          ], organizational
+factors [
+          <xref ref-type="bibr" rid="ref41">42</xref>
+          ], geographical factors [
+          <xref ref-type="bibr" rid="ref79">80</xref>
+          ], social stratification factors (describing the different groups of
+society) [
+          <xref ref-type="bibr" rid="ref80">81</xref>
+          ], sector factors [
+          <xref ref-type="bibr" rid="ref81">82</xref>
+          ], and—one of the most important factors from the viewpoint of the
+fundraising and sponsorship of research work—academic credit factors. The general trend observed in
+the most influential scientific journals is an increase in activities driven by collaboration both between
+researchers and between research institutions and universities, especially with regard to international
+co-authorship [5] and citation networks.
+        </p>
+        <p>
+          On the whole, co-authorship and citation networks can be defined as social networks as well,
+but we should always keep in mind that co-authorship implies a much stronger social bond than
+citation. A Citation Network (CN) is defined as a type of information network which represents the
+network of relatedness of subject matter [
+          <xref ref-type="bibr" rid="ref82">83</xref>
+          ]. A CN is a special kind of social network. The first
+analyses of this phenomenon was completed by [
+          <xref ref-type="bibr" rid="ref77">2,78</xref>
+          ] in his seminal paper titled “Networks of
+Scientific Papers”. Citation network analysis is a perfect tool for evaluation, but the combination
+of the knowledge coming from qualitative and quantitative reviews is the most efficient means of
+evaluating a research field [
+          <xref ref-type="bibr" rid="ref83">84</xref>
+          ]. Archambault, Campbell, Gingras and Larivière [
+          <xref ref-type="bibr" rid="ref84">85</xref>
+          ] have demonstrated
+a high correlation between the number of articles and the number of citations received by country.
+Their calculation was based on Scopus and on WoS, and thus drew the conclusion that both databases
+are suitable tools for analyses in scientometrics. Gavel and Iselid [
+          <xref ref-type="bibr" rid="ref85">86</xref>
+          ] nalyzed the paper coverage
+overlap between WoS and Scopus, based on 2006 data and showed that, at the time, 54% of active
+article titles in Scopus were also available in WoS and that 84% of active article titles in WoS were
+indexed in Scopus as well.
+        </p>
+        <p>
+          It is unarguable that high quality publications are needed to develop a personal researcher
+career [
+          <xref ref-type="bibr" rid="ref32">33</xref>
+          ]. When a researcher publishes together with their co-authors, they create a unique and
+individual co-author network. This co-author network includes all those who have added their
+own knowledge to the common database significantly and on merit during the preparation of the
+article. Imaging these personal networks together, we can create a sample on which the connections
+between the authors and co-authors can be analyzed. Earlier studies have shown that collaboration
+makes the research achievement of the co-authors better and more effective [2]. Actually, many
+scientometric studies have evidenced the significance of the different socio-economic variables (e.g.,
+HDI) in scientific production measurement based on the nationality or the country of residence and
+collaboration patterns [
+          <xref ref-type="bibr" rid="ref86">87</xref>
+          ]. Overall, countries with a high gross domestic product (in US dollars per
+capita) have invested more in scientific development aimed to promote an increase in publications [
+          <xref ref-type="bibr" rid="ref87">88</xref>
+          ]
+and to reach this aim.
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-3">
+      <title>3. Materials and Methods</title>
+      <p>
+        The sample that we used for our research was acquired from Scopus, the largest multidisciplinary
+bibliographical abstract and citation search database [
+        <xref ref-type="bibr" rid="ref88">89</xref>
+        ]. Despite the apparent importance of the
+topic, there has been little analytical research on co-authorship and co-citation networks in the field of
+agricultural economics. According to the InCites Journal Citation Reports, there were 17 journals in
+category of agricultural economics and policy in 2016. In this rank the top six journals are the following:
+1.
+2.
+3.
+4.
+5.
+6.
+      </p>
+      <p>Food Policy, IF = 3.086.</p>
+      <p>American Journal of Agricultural Economics, IF = 1.829.</p>
+      <p>Australian Journal of Agricultural and Resource Economics, IF = 1.826.</p>
+      <p>Journal of Agricultural Economics, IF = 1.795.</p>
+      <p>Agricultural Economics, IF = 1.758.</p>
+      <p>European Review of Agricultural Economics, IF = 1.6.</p>
+      <p>Food Policy with the highest impact factor was selected for our research because it is a
+multidisciplinary journal on issues in implementation and evaluation of policies for the food sector
+in developing, transition, and advanced economies considering papers from any of the social
+sciences. Furthermore, Food Policy prioritize economic and social aspects of empirical studies on
+international food policy debates and is the most relevant journal with its highest ranking in the field
+of agricultural economics.</p>
+      <p>The basis of our sample is comprised of the 714 papers published between 2006 and 2015.
+Altogether, these papers originated from 1708 different authors. If redundancies are also taken into
+consideration, this number is 2119. In our analysis, we also examined the 8749 citations referring to
+these papers, 6456 of which originated from different papers. Altogether, the examined sample consists
+of 6838 papers, not considering redundancies.</p>
+      <p>The database of our sample contains the following tables: affiliation (affiliation_id, name, city,
+country); articles (article_id, journal_id, volume, issue, first, last, title, source_type); articles_authors
+(article_id, author_id); authors (author_id, name, surname, givenname, initilas, affiliation_id); cited
+(article_id, cited_article_id); journals (journal_id, name); keywords (article_id, keyword); subjects
+(article_id, subject).</p>
+      <sec id="sec-3-1">
+        <title>Network Analysis</title>
+        <p>
+          Gephi is an open source network exploration and manipulation software. Developed modules
+can import, visualize, spatialize, filter, manipulate, and export all types of networks. The visualization
+module uses a special 3D render engine to render graphs in real-time. This technique uses the computer
+graphics card, as video games do, and leaves the CPU free for other computing. It can deal with large
+networks (i.e., over 20,000 nodes) and, because it is built on a multi-task model, it takes advantage of
+multi-core processors. The user interface is structured into Workspaces, where separate work can be
+done, and a powerful plugin system is currently being developed. Great attention has been taken to the
+extendibility of the software. An algorithm, filter, or tool can be easily added to the program, with little
+programming experience. Sets of nodes or edges can be obtained manually or by using the filter system.
+Filters can select nodes or edges with thresholds, ranges, and other properties. In practice, filter boxes
+are chained, each box takes in input, the output of the upper box [
+          <xref ref-type="bibr" rid="ref89">90</xref>
+          ]. Dynamic network visualization
+offers possibilities to understand structure transition or content propagation [
+          <xref ref-type="bibr" rid="ref90">91</xref>
+          ]. Exploring dynamic
+networks in an easy and intuitive way has been incorporated into Gephi from the beginning.
+        </p>
+        <p>
+          We used the Yifan Hu Multilevel layout algorithm which is an algorithm that brings together the
+good elements of force-directed algorithms and a multilevel algorithm to reduce algorithm complexity.
+This is one of the algorithms that works really well with large networks [
+          <xref ref-type="bibr" rid="ref91">92</xref>
+          ].
+        </p>
+        <p>Our network analysis comprises the analysis of the below centrality markers. Our betweenness
+centrality analysis reveals which participants’ cooperation keeps the relationship going. In other words,
+we will identify which participants are most able to control the information flowing in the network.
+In this regard, the key author will be the one that stands in between multiple other authors, as this
+means they have a high chance of standing on the path between two authors.</p>
+        <p>
+          Our closeness centrality research aims to identify which authors are able to reach all members of
+the network—primarily within their own clique—directly, rapidly, and easily, without relying on any
+third member. Authors can also be ranked based on their degree of centrality. This value reflects how
+many other authors the given author is linked to, i.e., it shows how many incoming or outgoing links
+the node (i.e., the author) has. This helps identify which authors have a central role with regards to
+publications in the subject area of our research [
+          <xref ref-type="bibr" rid="ref92">93</xref>
+          ].
+        </p>
+        <p>In order to be able to present visual graphs, we transferred the nodes and links into Excel, which
+was then imported into the program. The records (nodes) were provided by an existing table containing
+the ID number and full name of the author. We used the ID codes of the articles and the ID number of
+the author to identify the relationships between the nodes (i.e., the links). If an article was published
+by multiple authors, then the ID code of the article (along with the ID number of the author) is shown
+in the table once for each of the authors it was written by. These data provided a table that—based on
+the ID numbers—made it possible to identify which other authors each author is linked to.
+8 of 20</p>
+        <p>WWeeuusseeddIIBBMMSSPPSSSSSSttaattiissttiiccss2222..00ffoorrssttaattiissttiiccaallaannaallyyssiiss,,aannddmmaappppiinnggwwaassccoommpplleetteedduussiinnggtthhee
+oonnlliinneeaapppplliiccaattiioonn““MMaappssDDaattaa””.. MMaappssddaattaa iiss aa ddaattaa vviissuuaalliizzaattiioonn ppllaattffoorrmm ddeeddiiccaatteedd ttoo rreepprreesseennttiinngg
+44.. RReessuullttss</p>
+      </sec>
+      <sec id="sec-3-2">
+        <title>4.1. Descriptive Statistics</title>
+        <p>4.1. Descriptive Statistics</p>
+        <p>We created a map that shows where the authors published on the chosen topic. For this we
+We created a map that shows where the authors published on the chosen topic. For this we
+generated the geographical coordinates of research locations based on work material containing the
+generated the geographical coordinates of research locations based on work material containing the
+location (city and country) of the publications. Latitudinal and longitudinal values were imported into
+location (city and country) of the publications. Latitudinal and longitudinal values were imported
+the MapsData website—results are shown in Figure 1.
+into the MapsData website—results are shown in Figure 1.</p>
+        <p>own construction.</p>
+        <sec id="sec-3-2-1">
+          <title>Authors’ own construction. Figure 1. Spatial distributions of Research Institutes publishing articles in Food Policy. Source:</title>
+          <p>
+            we came to the conclusion that in the period analyzed, the majority of publications were issued by
+authors working in North American and European research institutes. According to several studies,
+authors working in North American and European research institutes. According to several studies,
+geographic distance and socioeconomic factors have influenced the manner of how collaboration
+geographic distance and socioeconomic factors have influenced the manner of how collaboration
+occurs among researchers from different countries. Parreira et al. found that highly collaborative
+occurs among researchers from different countries. Parreira et al. found that highly collaborative
+countries are those that belong to similar Trade blocs, have a similar Human Development Index,
+countries are those that belong to similar Trade blocs, have a similar Human Development Index, and
+and have similar scientific characteristics. The same paper concluded that another factor that has
+have similar scientific characteristics. The same paper concluded that another factor that has influenced
+influenced the collaboration among ecologists is geographic distance [
+            <xref ref-type="bibr" rid="ref1">1</xref>
+            ]. Geographically closer
+the collaboration among ecologists is geographic distance [
+            <xref ref-type="bibr" rid="ref1">1</xref>
+            ]. Geographically closer countries tend to
+countries tend to present a higher number of collaborative papers than distant countries.
+present a higher number of collaborative papers than distant countries. Globalization may contribute
+Globalization may contribute to the increase of research collaboration among distant countries. The
+to the increase of research collaboration among distant countries. The English language did not
+English language did not show a significant influence on the international collaboration because the
+show a significant influence on the international collaboration because the majority of published
+majority of published papers in international journals are already in English [
+            <xref ref-type="bibr" rid="ref93">94</xref>
+            ]. The agreements
+papers in international journals are already in English [
+            <xref ref-type="bibr" rid="ref93">94</xref>
+            ]. The agreements and treaties among these
+and treaties among these countries facilitate international trade and people mobility between
+countries facilitate international trade and people mobility between countries leading to expansion of
+countries leading to expansion of the scientific collaboration [
+            <xref ref-type="bibr" rid="ref94">95</xref>
+            ]. Topics in Food Policy are frequently
+the scientific collaboration [
+            <xref ref-type="bibr" rid="ref94">95</xref>
+            ]. Topics in Food Policy are frequently associated to global issues, thus
+associated to global issues, thus there is a growing necessity to form researchers with experience in
+there is a growing necessity to form researchers with experience in working worldwide.
+working worldwide.
+          </p>
+          <p>The 714 articles in our sample have been published by 2119 authors, including redundancies,
+The 714 articles in our sample have been published by 2119 authors, including redundancies,
+which means an average of 2.97 authors per article. Excluding redundancies, the articles have been
+which means an average of 2.97 authors per article. Excluding redundancies, the articles have been
+published by a total of 1708 authors. Thus, the individual authors contributed to an average of 2.39
+400
+350
+300
+250
+s
+e
+l
+c
+i
+t
+r
+A
+/
+s
+r
+o
+h
+t
+u
+A
+pSuustbalinisahbielidty 2b0y18a,10to,xtaFlOoRfPE1E7R08REaVuItEhWors. Thus, the individual authors contributed to an avera9geof o20f
+2.39 publications in the period analyzed. The sample also shows a continuous increase in the number
+pofuabulitchaotirosnpseirnatrhtieclpee, rwiohdicahnsaulygzgeeds.tsTahne isnacmrepalseeailnsothsehoawutshaorcso’ nwtiinlluinogunseisnsctroeacsoeoipnerthateen(uFimguberer 2o)f.
+liinnckreeadsteotoeaacnhapuuthbolirc/atairotnic.leThraistisotaotfe2m.8e7n,twishiinchlimneorweiothr lienstsersntaagtinoantaeldtruenntdils2. 021040.8 saw a significant
+increase to an author/article ratio of 2.87, which more or less stagnated until 2014.
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+No. Of Articles</p>
+          <p>No. Of Authors</p>
+          <p>No. Of Authors/No. Of Articles
+FFiigguurree 22..TThehenunmubmerbeorf poafpepraspaenrds aaunthdorasuitnhtohres eixnamt hineedexpaemrioinde.dSopuercreio:dA.uSthoourrsc’eo:wAnuctohnosrtrsu’cotiwonn.
+construction.</p>
+          <p>As we stated in H1, significant changes occurred in the subject categories examined by researchers
+As we stated in H1, significant changes occurred in the subject categories examined by
+in the period analyzed (Figure 3). Sorting by subject categories is necessarily somewhat arbitrary
+researchers in the period analyzed (Figure 3). Sorting by subject categories is necessarily somewhat
+as we based this allocation on the articles’ title, abstracts, and keywords to generate an initial list of
+arbitrary as we based this allocation on the articles’ title, abstracts, and keywords to generate an initial
+subject categories. The final list of 10 subject categories was refined in the course of a second pass.
+list of subject categories. The final list of 10 subject categories was refined in the course of a second
+This process, the resulting categories, and their headings are subjective. Furthermore, the boundaries
+pass. This process, the resulting categories, and their headings are subjective. Furthermore, the
+between subject categories are not always sharp. Articles dealing with agricultural policy, for example,
+boundaries between subject categories are not always sharp. Articles dealing with agricultural policy,
+often deal, to some extent, with farm size and restructuring issues or finance. Despite these caveats,
+for example, often deal, to some extent, with farm size and restructuring issues or finance. Despite
+the categorization presented here summarizes the main areas of Food Policy and their relative weights
+these caveats, the categorization presented here summarizes the main areas of Food Policy and their
+in the journal.
+relative weights in the journal.</p>
+          <p>With regard to the entire period, the keyword was food security with 67 articles, which represented
+With regard to the entire period, the keyword was food security with 67 articles, which
+26.91% of the 10 most significant keywords. Food security was followed by food safety (36, 14.46%),
+represented 26.91% of the 10 most significant keywords. Food security was followed by food safety
+poverty (25, 10.04%), nutrition (24, 9.64%), food policy (19, 7.63%), agriculture (17, 6.83%), obesity (17,
+(36, 14.46%), poverty (25, 10.04%), nutrition (24, 9.64%), food policy (19, 7.63%), agriculture (17,
+6.83%), food prices (16, 6.43%), food (15, 6.02%), and agricultural policy (13, 5.22%). These 10 keywords
+6.83%), obesity (17, 6.83%), food prices (16, 6.43%), food (15, 6.02%), and agricultural policy (13,
+made up 34.9% of the total sample; in other words, these were the issues of most interest to the
+5.22%). These 10 keywords made up 34.9% of the total sample; in other words, these were the issues
+agricultural economists around the world during the examined 10-year-period. It is worth mentioning
+of most interest to the agricultural economists around the world during the examined 10-year-period.
+the change in the significance of the above keywords over time. As shown in Figure 3, food security
+It is worth mentioning the change in the significance of the above keywords over time. As shown in
+and food safety subject categories were of more importance in 2007, whilst subject category poverty
+Sustainability 2018, 10, x FOR PEER REVIEW
+10 of 20
+100%
+90%
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+0%
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015</p>
+          <p>Avg.</p>
+          <p>Food security
+Food policy
+Food</p>
+          <p>Food safety
+Agriculture
+Agricultural policy</p>
+          <p>Poverty
+Obesity</p>
+          <p>Nutrition
+Food prices
+FFiigguurree 33.. TThhee 1100 mmoosstt ffrreeqquueenntt kkeeyywwoorrddss iinn tthheeeexxaammiinneeddppaappeerrssbbyyyyeeaarrss.. SSoouurrccee:: AAuutthhoorrss’’ oowwnn
+ccoonnssttrruuccttiioonn..
+4.2. Co-Authorship Network</p>
+        </sec>
+      </sec>
+      <sec id="sec-3-3">
+        <title>4.2. Co-Authorship Network</title>
+        <p>Before analyzing the links between authors, it is worth looking at the authors with the highest
+Before analyzing the links between authors, it is worth looking at the authors with the highest
+number of publications in the examined area, thus indicating the role of the network leaders (Table 1).
+number of publications in the examined area, thus indicating the role of the network leaders (Table 1).
+In the examined period, the most articles (12) were published by Thomas Jayne, Professor of
+In the examined period, the most articles (12) were published by Thomas Jayne, Professor of
+Agricultural Economics, researcher at Michigan State University, followed by Chinese researcher
+Agricultural Economics, researcher at Michigan State University, followed by Chinese researcher
+Jikun Huang (9), American researcher Scott Rozelle (8), and German researcher Matim Quaim (8). It
+Jikun Huang (9), American researcher Scott Rozelle (8), and German researcher Matim Quaim (8).
+can be noted that the 10 leading authors published 73 out of the total 714 articles (including
+coIt can be noted that the 10 leading authors published 73 out of the total 714 articles (including
+authored publications), which means a proportion of over 10%. This might be an indication that the
+co-authored publications), which means a proportion of over 10%. This might be an indication that
+majority of articles is written by a close circle of authors. Table 1 also shows that the authors with the
+the majority of articles is written by a close circle of authors. Table 1 also shows that the authors with
+most publications may not necessarily be the most important ones from a network perspective. As
+the most publications may not necessarily be the most important ones from a network perspective.
+indicated by the above degree values, Jikun Huang, Scott Rozelle, and Wim Verbeke published the
+As indicated by the above degree values, Jikun Huang, Scott Rozelle, and Wim Verbeke published
+most co-authored articles. It is also evident that Jikun Huang’s ranking is 40% higher than that of
+the most co-authored articles. It is also evident that Jikun Huang’s ranking is 40% higher than that of
+Thomas Jayne, who published the most articles, although the latter published 33% (3) more articles
+Thomas Jayne, who published the most articles, although the latter published 33% (3) more articles
+than the former. Similarly, although Wim Verbeke is ranked high, the number of his articles is
+than the former. Similarly, although Wim Verbeke is ranked high, the number of his articles is relatively
+relatively low, which suggests that he wrote relatively few articles but with many co-authors.
+low, which suggests that he wrote relatively few articles but with many co-authors.</p>
+        <p>As per Table 1, Wim Verbeke ranks first in terms of betweenness, which suggests his outstanding
+As per Table 1, Wim Verbeke ranks first in terms of betweenness, which suggests his outstanding
+“intermediary” role. Based on the definition in the Methodology section above, this means that Wim
+“intermediary” role. Based on the definition in the Methodology section above, this means that
+Verbeke is the easiest to reach in the network. George Chryssochoidis and Rodolfo Nayga’s
+Wim Verbeke is the easiest to reach in the network. George Chryssochoidis and Rodolfo Nayga’s
+intermediary role is also worth mentioning, which suggests the high number of co-authors working
+intermediary role is also worth mentioning, which suggests the high number of co-authors working
+with them. All in all, these results show that there is no correlation between the number of authors
+with them. All in all, these results show that there is no correlation between the number of authors
+and their role in the network. Some authors seem to publish many articles with few co-authors, whilst
+and their role in the network. Some authors seem to publish many articles with few co-authors, whilst
+others have an extended network of co-authors but relatively few publications. The same conclusions
+others have an extended network of co-authors but relatively few publications. The same conclusions
+can be drawn from the graphic representation below of the co-authorship network (Figures 4 and 5).
+can be drawn from the graphic representation below of the co-authorship network (Figures 4 and 5).
+There were no differences in the ten highest closeness centrality values, so these are not presented in
+There were no differences in the ten highest closeness centrality values, so these are not presented in
+are in the center places of certain subnetworks with the same distance as the other authors.
+are in the center places of certain subnetworks with the same distance as the other authors.</p>
+        <p>Figure 4 shows the central role of a number of authors as well as the existence of multiple larger
+Figure 4 shows the central role of a number of authors as well as the existence of multiple larger
+cliques within the network. It must be stated that most groups have no relationship, or only very loose
+cliques within the network. It must be stated that most groups have no relationship, or only very loose
+relationships with the largest cliques, which might be due to the fact that 84.7% of the authors only
+relationships with the largest cliques, which might be due to the fact that 84.7% of the authors only
+published one article in the examined period. Figure 5 shows the network of the largest clique, made
+published one article in the examined period. Figure 5 shows the network of the largest clique, made
+up of 48 authors and their co-authors. The size of the dots representing the members of the network
+up of 48 authors and their co-authors. The size of the dots representing the members of the network
+(authors) is in line with the degree ranking of the given member. Thus, the author ranking highest in
+(authors) is in line with the degree ranking of the given member. Thus, the author ranking highest in
+ththisisssuubb-n-neettwwoorrkk iiss WWiimm VVeerrbbeekkee,, wwhhoommwweekknnoowwtotohhaavveethtehehihgihgehsetsbtebtweteweenennenssesvsalvuael.ue.</p>
+        <p>FFiigguurree44..TThhee ccoo--aauutthhoorrsshhiipp nneettwwoorrkk..SSoouurrccee::AAuuththoorsr’s’oowwnncocnonstsrturcutciotino.n.</p>
+        <p>FigFuigruer5e.5T. hTehemmosotstmmoodduulalarritityyssuubbnneettwwoorrkk ((cclliiqquuee 11))..SSoouurrccee::AAuuththorosr’so’ wo wnncocnosntrsutrcuticotni o.n.</p>
+        <p>NeNxet,xot,uorutrhtihridrdhhyyppooththeessisiswwaassaannaallyyzzeedd bbyy aappppllyyiinnggmmuultlitvivarairaitaeteli nlienaerarrergergesresisosniocnalccaullcautiloantiso,ns,
+where we assumed that the authors with the most publications have a leading role in the network,
+where we assumed that the authors with the most publications have a leading role in the network, i.e.,
+i.e., there is a correlation between the number of articles and centrality values.
+there is a correlation between the number of articles and centrality values.</p>
+        <p>We have used the regression linked to the number of the author’s published articles to identify
+We have used the regression linked to the number of the author’s published articles to identify
+influencing factors. Table 2 makes it evident that the pagerank value and the betweenness value have a
+influencing factors. Table 2 makes it evident that the pagerank value and the betweenness value
+positive effect, whereas degree and closeness have a negative effect on the number of articles. In other
+have a positive effect, whereas degree and closeness have a negative effect on the number of articles.</p>
+        <p>words, an author’s central role in the network significantly affects the number of articles they are able to
+In other words, an author’s central role in the network significantly affects the number of articles
+publish. Our results are 1% significant, and our model is in line with all preliminary regression conditions.
+they are able to publish. Our results are 1% significant, and our model is in line with all preliminary
+regression conditiToanbsl.e 2. Regression of the factors affecting the number of published articles.</p>
+        <p>Unstandardized Stand.</p>
+        <p>Table 2. Regression of the factors affecting the number of published aCrotlilcinleesa.rity Statistics</p>
+        <p>Variables Coefficients Coefficients t Sig.</p>
+        <p>BetweDenenpeesnsdceennttrValairtyiable: no0.0o0f1articles; A0d.0ju00sted R Squ0.a0r9e8= 0.748; Br6e.7u6s7ch–Pagan0.t0e0s0t (LM = 02..619685; p = 1.433
+0P.a3g4e2r)a;nKkosenker test 2(L9M84.8=690.486; p60=.201.2916); F(4;01.790536) = 1265.74;9p.56≤70.001. S0o.u00rc0e: Auth0o.3rs9’7 own 2.516
+coDnestgrruecetion.
+Dependent Variable: no of articles; Adjusted R Square = 0.748; Breusch–Pagan test (LM = 2.165; p = 0.342); Koenker
+tesFt(uLrMth=er0m.48o6r;ep,=s0c.i2e1n6t);ifFi(c4;1c7li0q3u)=es12h6a5.v7e;pbee0.n00a1.nSaoluyrzced:A,ustihnocres’ 8o2w%n confsthruectaiount.hors in our sample
+worked in cliques of at least 3 authors. Table 3 lists the members of the three largest cliques, each of</p>
+        <p>Constant</p>
+        <sec id="sec-3-3-1">
+          <title>VCalorsieanbelsesscentrality</title>
+          <p>Betweenness centrality</p>
+          <p>Pageranks</p>
+          <p>ConstDanegtree
+Closeness centrality</p>
+          <p>B</p>
+          <p>Furthermore, scientific cliques have been analyzed, since 82% of the authors in our sample worked
+in cliques of at least 3 authors. Table 3 lists the members of the three largest cliques, each of which has
+at least 40 members. It is remarkable that only 139 authors (8% of all authors) were able to get into
+these cliques, which also means that most researchers in the sample were working in smaller groups
+that are visibly more peripheral in Figure 4.</p>
+          <p>The authors in each clique were listed in alphabetical order rather than based on their role in the network. Source:
+Authors’ own construction.</p>
+        </sec>
+      </sec>
+      <sec id="sec-3-4">
+        <title>4.3. Co-Citation Network</title>
+        <p>After analysing the relationships between authors, we also examined the network of citations,
+as we assumed that references to the individual authors and publications are an acknowledgement of
+the authors’ performance. The 714 articles in our sample were referenced in a total of 8856 articles,
+which means an average of 12 citations per article. Of all citations, 622 “refer back” to the sample
+articles, which means a 7% citation ratio within the journal.</p>
+        <p>Table 4 suggests that the most cited article is not necessarily the most important one from a
+network perspective, i.e., it does not necessarily rank higher in terms of pagerank—it is also important
+who the article was cited by. A good example of this is article number 9 in Figure 6. In terms of citation,
+the article only ranks ninth; however, it comes third with regards to pagerank. Comparing the results
+in Tables 3 and 4, it seems that the 10 most cited articles were not written by authors of the three most
+significant cliques. Of all these articles, only article No. 4 was written by members of one of the 3 most
+significant cliques (Maria Loireiro és Wendy Umberger in clique No 1).</p>
+        <p>Figure 6 shows the citation network of the 10 most cited articles from Table 4. Looking at this
+network article by article shows that each of the most cited articles were written by authors of one of
+the scientific cliques, which confirms the outstanding importance of cliques.</p>
+        <p>Finally, we have determined the influencing factors using the regression of the number of citations.
+Table 5 clearly shows that pagerank and betweenness values affect the number of citations positively,
+whereas closeness has a negative effect. In other words, an author’s central role in the network has
+a significant impact on the number of times they get cited. The results in Table 5 also show that
+researchers playing an intermediary role (based on high betweenness values) get more citations than
+their peers who are ranked higher based on other values of the network. Our results are 1% significant
+and our model is in line with all preliminary regression conditions.
+Fulponi
+Pingali
+Loureiro,</p>
+        <p>Umberger
+Hanjra, Qureshi</p>
+        <p>Barrett
+Costa-Font, Gil,</p>
+        <p>Traill</p>
+        <p>Batte, Hooker,
+Haab, Beaverson</p>
+        <p>Piesse, Thirtle
+Coley, Howard,</p>
+        <p>Winter
+Dependent Variable: no of articles; Adjusted R Square = 0.882; Breusch–Pagan test (LM = 7.493; p = 0.058); Koenker
+test (LM = 0.597; p = 0.897); F (3;6831) = 17069.5; p 0.001. Source: Authors’ own construction.</p>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>5. Discussion and Conclusions</title>
+      <p>5. Discussion and Conclusions</p>
+      <p>The main objective of this research is to interpret the social network of collaborations and network
+The main objective of this research is to interpret the social network of collaborations and
+of citations in the field of agricultural economics. We have analyzed the scientific collaboration network
+network of citations in the field of agricultural economics. We have analyzed the scientific
+of scientists who conduct research in the Food Policy journal. We have also explored the flow and
+collaboration network of scientists who conduct research in the Food Policy journal. We have also
+connectivity in the paper citation network that forms an unweighted directed graph. The data to
+explored the flow and connectivity in the paper citation network that forms an unweighted directed
+create the networks are extracted from the scientific literature database “Scopus”. The data covers
+graph. The data to create the networks are extracted from the scientific literature database ‘‘Scopus’’.
+the papers published in years 2006 through 2015. The results are presented for the average number
+The data covers the papers published in years 2006 through 2015. The results are presented for the
+of papers published by scientists, average number of citations received by scientists, mean number
+average number of papers published by scientists, average number of citations received by scientists,
+of co-authored papers, distribution of numbers of collaborators of authors, distribution of number
+mean number of co-authored papers, distribution of numbers of collaborators of authors, distribution
+of papers cited, and distribution of number of papers citing a given paper. Finally, the network
+of number of papers cited, and distribution of number of papers citing a given paper. Finally, the
+characteristics indicate that most of the research analyzed is performed by a small number of large
+network characteristics indicate that most of the research analyzed is performed by a small number
+communities and a large number of small communities.
+of large communities and a large number of small communities.</p>
+      <p>The proposed four hypotheses are mostly supported with high statistical significance. We found
+The proposed four hypotheses are mostly supported with high statistical significance. We found
+that significant changes occurred in the subject categories examined by researchers in the period
+that significant changes occurred in the subject categories examined by researchers in the period
+analyzed as stated in H1. For example, subject categories “food security” and “food safety subject
+analyzed as stated in H1. For example, subject categories “food security” and “food safety subject
+categories composed far a largest group of articles in 2007, whilst subject category “poverty” became
+categories composed far a largest group of articles in 2007, whilst subject category “poverty” became
+considerably smaller. One reason for this may have been the fact that subject category “poverty” was
+considerably smaller. One reason for this may have been the fact that subject category “poverty” was
+not in the focus of research in the year before the financial and economic crisis. Looking at later periods
+not in the focus of research in the year before the financial and economic crisis. Looking at later
+with decreasing food prices, this subject category disappeared again by 2015.
+periods with decreasing food prices, this subject category disappeared again by 2015.</p>
+      <p>
+        Based on our results, a large proportion of articles are written by a close group of authors
+Based on our results, a large proportion of articles are written by a close group of authors as
+as declared in H2. This conclusion is in line with international literature [
+        <xref ref-type="bibr" rid="ref32 ref49">33,50</xref>
+        ], i.e., it shows the
+declared in H2. This conclusion is in line with international literature [
+        <xref ref-type="bibr" rid="ref32 ref49">33,50</xref>
+        ], i.e., it shows the
+importance of cliques and significant authors in a scientific community.
+importance of cliques and significant authors in a scientific community.
+      </p>
+      <p>
+        Although co-authorship of published articles is only an indicator of collaboration [
+        <xref ref-type="bibr" rid="ref46">47</xref>
+        ],
+Although co-authorship of published articles is only an indicator of collaboration [
+        <xref ref-type="bibr" rid="ref46">47</xref>
+        ],
+collaborating scientists have focused on the phenomenon of papers written in co-authorship because
+collaborating scientists have focused on the phenomenon of papers written in co-authorship because
+publications may play the most important role in scientific development generally, and in the reward
+publications may play the most important role in scientific development generally, and in the reward
+structure for academics in particular [
+        <xref ref-type="bibr" rid="ref95">96</xref>
+        ]. Studies investigating co-authorship have taken two different
+structure for academics in particular [
+        <xref ref-type="bibr" rid="ref95">96</xref>
+        ]. Studies investigating co-authorship have taken two
+approaches. The first of these approaches is to analyze the reasons why authors collaborate and to
+different approaches. The first of these approaches is to analyze the reasons why authors collaborate
+and to analyze the consequences of such decisions [
+        <xref ref-type="bibr" rid="ref47 ref90">48,91</xref>
+        ]. The basis of the second approach is the
+analyze the consequences of such decisions [
+        <xref ref-type="bibr" rid="ref47 ref90">48,91</xref>
+        ]. The basis of the second approach is the idea that
+co-authorship is able to create a social network of researchers [
+        <xref ref-type="bibr" rid="ref35 ref45">36,46</xref>
+        ]. The results of the analysis show
+that indicators of centrality play important role in taking advantage of non-redundant resources in
+a network aimed to increase the level of co-authorship, thereby significantly affecting citations for
+publications. On the other hand, they found that prolific co-author count, team exploration, and
+publishing tenure all have indirect effects on the number of citations. Specifically, writing an article in
+co-authorship with prolific scholars helps scientists develop centralities and generates higher numbers
+of citations. Researchers with longer publishing tenure (who are used to publishing more) tend to
+have higher degrees of centrality in the analyzed networks [
+        <xref ref-type="bibr" rid="ref96">97</xref>
+        ].
+      </p>
+      <p>
+        We also confirmed H3 as we found a positive correlation between the number of publications and
+betweenness and pagerank values. Finally, the results of H4 show that centrality values clearly affect
+the number of citations. This is exactly in line with the results of studies by [
+        <xref ref-type="bibr" rid="ref73 ref97">74,98</xref>
+        ], which confirmed a
+positive correlation between centrality values and citation values.
+      </p>
+      <p>We are aware that our selection method has limitations. First, our sample is only valid for articles
+published in the selected Food Policy journal. The analysis presented in this paper suffers from
+limitations that could be dealt with in future work. Our sample of articles covers what has been
+published in the main international journal of agricultural economics but fails to include articles in
+another 16 journals in the category of agricultural economics and policy reported by InCites Journal
+Citation Reports. Furthermore, the list of journals to survey could also be expanded to include
+non-English language peer-reviewed journals in Europe. The dataset could even go beyond journal
+articles to capture conference papers and studies produced in an advisory capacity (for the World Bank,
+the European Commission, FAO etc.). The question arises whether these other types of publication are
+characterized by the same authors and co-authorship networks as the journal articles.</p>
+      <p>It can be observed that the journal literature is moving towards more method-driven articles
+resembling the conference paper literature in terms of collaboration and becomes increasingly distinct
+from the more issue-driven studies that are produced for international and financial institutions.
+Citation network analysis of conference papers and advisory studies discussed above can be of interest
+as well, presumably revealing more links between the relatively disconnected components in the
+co-authorship network, as authors who do not necessarily collaborate directly nevertheless make use
+of and cite each others’ work.</p>
+      <p>Author Contributions: József Popp and Péter Balogh conceived and designed the experiments; Judit Oláh
+and Mónika Harangi Rákos performed the experiments; Péter Balogh, Péter Lengyel and Mónika Harangi
+Rákos analyzed the data; Sebastian Kot and Péter Lengyel contributed analysis tools; József Popp, Judit Oláh,
+Sebastian Kot, Péter Lengyel, Péter Balogh, Mónika Harangi Rákos wrote the paper.</p>
+      <p>Conflicts of Interest: The authors declare no conflict of interest.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <source>1. 2. 3. 4</source>
+          . 5.
+          <string-name>
+            <surname>Parreira</surname>
+            ,
+            <given-names>M.R.</given-names>
+          </string-name>
+          ; Machado,
+          <string-name>
+            <given-names>K.B.</given-names>
+            ;
+            <surname>Logares</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            ;
+            <surname>Diniz-Filho</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.A.F.</given-names>
+            ;
+            <surname>Nabout</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J.C.</surname>
+          </string-name>
+          <article-title>The roles of geographic distance and socioeconomic factors on international collaboration among ecologists</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2017</year>
+          ,
+          <volume>113</volume>
+          ,
+          <fpage>1539</fpage>
+          -
+          <lpage>1550</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          <string-name>
+            <surname>Gazni</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Didegah</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          <article-title>Investigating different types of research collaboration and citation impact: A case study of Harvard University's publications</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2011</year>
+          ,
+          <volume>87</volume>
+          ,
+          <fpage>251</fpage>
+          -
+          <lpage>265</lpage>
+          . [CrossRef]
+          <string-name>
+            <surname>Otte</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Rousseau</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <article-title>Social network analysis: A powerful strategy, also for the information sciences</article-title>
+          .
+          <source>J. Inf. Sci</source>
+          .
+          <year>2002</year>
+          ,
+          <volume>28</volume>
+          ,
+          <fpage>441</fpage>
+          -
+          <lpage>453</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          <string-name>
+            <surname>Palacios-Huerta</surname>
+            ,
+            <given-names>I.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Volij</surname>
+            ,
+            <given-names>O.</given-names>
+          </string-name>
+          <article-title>The measurement of intellectual influence</article-title>
+          .
+          <source>Econometrica</source>
+          <year>2004</year>
+          ,
+          <volume>72</volume>
+          ,
+          <fpage>963</fpage>
+          -
+          <lpage>977</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          <string-name>
+            <surname>Bukowska</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Fałkowski</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Łopaciuk-Gonczaryk</surname>
+            ,
+            <given-names>B. Teaming</given-names>
+          </string-name>
+          <article-title>Up or Writing Alone-Authorship Strategies in Leading Polish Economic Journals</article-title>
+          . Working Papers No.
+          <volume>29</volume>
+          /
+          <year>2014</year>
+          (146); University of Warsaw, Faculty of Economic Sciences: Warsaw, Poland,
+          <year>2014</year>
+          ; pp.
+          <fpage>1</fpage>
+          -
+          <lpage>26</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          6.
+          <string-name>
+            <surname>Hilmer</surname>
+            ,
+            <given-names>C.E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Lusk</surname>
+            ,
+            <given-names>J.L.</given-names>
+          </string-name>
+          <article-title>Determinants of citations to the agricultural and applied economics association journals</article-title>
+          .
+          <source>Rev. Agric. Econ</source>
+          .
+          <year>2009</year>
+          ,
+          <volume>31</volume>
+          ,
+          <fpage>677</fpage>
+          -
+          <lpage>694</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          7. Ko˝míves, P.M.;
+          <string-name>
+            <surname>Dajnoki</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          <article-title>Ranking systems as the connection between the higher education and the labour market in Hungary</article-title>
+          .
+          <source>Procedia Econ. Financ</source>
+          .
+          <year>2015</year>
+          ,
+          <volume>32</volume>
+          ,
+          <fpage>292</fpage>
+          -
+          <lpage>297</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          8.
+          <string-name>
+            <surname>Hazelkorn</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          <article-title>The impact of league tables and ranking systems on higher education decision making</article-title>
+          .
+          <source>High. Educ. Manag. Policy</source>
+          <year>2007</year>
+          ,
+          <volume>19</volume>
+          ,
+          <fpage>1</fpage>
+          -
+          <lpage>24</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          9.
+          <string-name>
+            <surname>Börner</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Dall'Asta</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Ke</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Vespignani</surname>
+            ,
+            <given-names>A. Studying</given-names>
+          </string-name>
+          <article-title>the emerging global brain: Analyzing and visualizing the impact of co-authorship teams</article-title>
+          .
+          <source>Complexity</source>
+          <year>2005</year>
+          ,
+          <volume>10</volume>
+          ,
+          <fpage>57</fpage>
+          -
+          <lpage>67</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          10.
+          <string-name>
+            <surname>Cygler</surname>
+          </string-name>
+          , J.;
+          <string-name>
+            <surname>Sroka</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          <article-title>Structural pathologies in inter-organizational networks and their consequences</article-title>
+          .
+          <source>Procedia-Soc. Behav. Sci</source>
+          .
+          <year>2014</year>
+          ,
+          <volume>110</volume>
+          ,
+          <fpage>52</fpage>
+          -
+          <lpage>63</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          11.
+          <string-name>
+            <surname>Cygler</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          <article-title>Structural pathology in inter-organizational networks and the decision-making autonomy of its members</article-title>
+          . In Management of Network Organizations; Sroka,
+          <string-name>
+            <surname>W.</surname>
+          </string-name>
+          , Hittmár, Š., Eds.; Springer International Publishing: Cham, Switzerland,
+          <year>2015</year>
+          ; pp.
+          <fpage>181</fpage>
+          -
+          <lpage>195</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          12.
+          <string-name>
+            <surname>Sroka</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          <article-title>Coopetition in the steel industry-analysis of coopetition relations in the value net</article-title>
+          .
+          <source>Metalurgija</source>
+          <year>2013</year>
+          ,
+          <volume>52</volume>
+          ,
+          <fpage>127</fpage>
+          -
+          <lpage>130</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          13.
+          <string-name>
+            <surname>Sroka</surname>
+            , W.; Lo˝rinczy,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>The perception of ethics in business: Analysis of research results</article-title>
+          .
+          <source>Procedia Econ. Financ</source>
+          .
+          <year>2015</year>
+          ,
+          <volume>34</volume>
+          ,
+          <fpage>156</fpage>
+          -
+          <lpage>163</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          14.
+          <string-name>
+            <surname>Sroka</surname>
+          </string-name>
+          , W.;
+          <string-name>
+            <surname>Gajdzik</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          <article-title>Managerial challenges for networks and beyond</article-title>
+          . In Management of Network Organizations; Sroka,
+          <string-name>
+            <surname>W.</surname>
+          </string-name>
+          , Hittmár, Š., Eds.; Springer International Publishing: Cham, Switzerland,
+          <year>2015</year>
+          ; pp.
+          <fpage>121</fpage>
+          -
+          <lpage>134</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          15.
+          <string-name>
+            <surname>Hazelkorn</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          <article-title>Impact of Global Rankings on Higher Education Research and the Production of Knowledge</article-title>
+          . Occasional Paper No.
+          <volume>18</volume>
+          ;
+          <string-name>
+            <surname>United Nations</surname>
+            <given-names>Educational</given-names>
+          </string-name>
+          , Scientific and Cultural Organization: Paris, France,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          16.
+          <string-name>
+            <surname>Chang</surname>
+          </string-name>
+          , C.-L.;
+          <string-name>
+            <surname>McAleer</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>How should journal quality be ranked? An application to agricultural, energy, environmental and resource economics</article-title>
+          .
+          <source>J. Rev. Glob. Econ</source>
+          .
+          <year>2014</year>
+          ,
+          <volume>3</volume>
+          ,
+          <fpage>33</fpage>
+          -
+          <lpage>47</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          17.
+          <string-name>
+            <surname>Chang</surname>
+          </string-name>
+          , C.-L.;
+          <string-name>
+            <surname>McAleer</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>Bibliometric rankings of journals based on the Thomson Reuters citations database</article-title>
+          .
+          <source>J. Rev. Glob. Econ</source>
+          .
+          <year>2015</year>
+          ,
+          <volume>4</volume>
+          ,
+          <fpage>120</fpage>
+          -
+          <lpage>125</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          18.
+          <string-name>
+            <surname>Morel</surname>
+            ,
+            <given-names>C.M.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Serruya</surname>
+            ,
+            <given-names>S.J.</given-names>
+          </string-name>
+          ; Penna,
+          <string-name>
+            <given-names>G.O.</given-names>
+            ;
+            <surname>Guimarães</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>R.</surname>
+          </string-name>
+          <article-title>Co-authorship network analysis: A powerful tool for strategic planning of research, development and capacity building programs on neglected diseases</article-title>
+          .
+          <source>PLoS Negl. Trop. Dis</source>
+          .
+          <year>2009</year>
+          ,
+          <volume>3</volume>
+          ,
+          <fpage>e501</fpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          19.
+          <string-name>
+            <surname>Calero</surname>
+            , C.; van Leeuwen,
+            <given-names>T.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Tijssen</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <article-title>Research cooperation within the bio-pharmaceutical industry: Network analyses of co-publications within and between firms</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2007</year>
+          ,
+          <volume>71</volume>
+          ,
+          <fpage>87</fpage>
+          -
+          <lpage>99</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          20.
+          <string-name>
+            <surname>Brandenburger</surname>
+            ,
+            <given-names>A.M.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Nalebuff</surname>
+            ,
+            <given-names>B.J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Co-Opetition; Crown Business</surname>
+          </string-name>
+          : New York, NY, USA,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          21.
+          <string-name>
+            <surname>Oinas-Kukkonen</surname>
+          </string-name>
+          , H.;
+          <string-name>
+            <surname>Lyytinen</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Yoo</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          <article-title>Social networks and information systems: Ongoing and future research streams</article-title>
+          .
+          <source>J. Assoc. Inf. Syst</source>
+          .
+          <year>2010</year>
+          ,
+          <volume>11</volume>
+          ,
+          <fpage>61</fpage>
+          -
+          <lpage>68</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          22.
+          <string-name>
+            <surname>Batool</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Niazi</surname>
+            ,
+            <given-names>M.A.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Towards</surname>
+          </string-name>
+          <article-title>a methodology for validation of centrality measures in complex networks</article-title>
+          .
+          <source>PLoS ONE</source>
+          <year>2014</year>
+          ,
+          <volume>9</volume>
+          ,
+          <fpage>e90283</fpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          23.
+          <string-name>
+            <surname>Shapiro</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Varian</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          <article-title>A Strategic Guide to the Network Economy; Harvard Business</article-title>
+          School Press: Boston, MA, USA,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          24.
+          <string-name>
+            <surname>Freeman</surname>
+            ,
+            <given-names>L.C.</given-names>
+          </string-name>
+          <article-title>A set of measures of centrality based on betweenness</article-title>
+          .
+          <source>Sociometry</source>
+          <year>1977</year>
+          ,
+          <volume>40</volume>
+          ,
+          <fpage>35</fpage>
+          -
+          <lpage>41</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          25.
+          <string-name>
+            <surname>Bavelas</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          <article-title>A mathematical model for group structures</article-title>
+          .
+          <source>Hum. Organ</source>
+          .
+          <year>1948</year>
+          ,
+          <volume>7</volume>
+          ,
+          <fpage>16</fpage>
+          -
+          <lpage>30</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          26.
+          <string-name>
+            <surname>Shimbel</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          <article-title>Structural parameters of communication networks</article-title>
+          .
+          <source>Bull. Math. Biophys</source>
+          .
+          <year>1953</year>
+          ,
+          <volume>15</volume>
+          ,
+          <fpage>501</fpage>
+          -
+          <lpage>507</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          27.
+          <string-name>
+            <surname>Scott</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          <article-title>Social Network Analysis; Sage Publications Ltd</article-title>
+          .: London, UK,
+          <year>2017</year>
+          ,
+          <string-name>
+            <surname>ISBN</surname>
+          </string-name>
+          <year>152641225X</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          28.
+          <string-name>
+            <surname>Qi</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Fuller</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Wu</surname>
+            ,
+            <given-names>Q.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Wu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ; Zhang, C.
+          <article-title>-Q. Laplacian centrality: A new centrality measure for weighted networks</article-title>
+          .
+          <source>Inf. Sci</source>
+          .
+          <year>2012</year>
+          ,
+          <volume>194</volume>
+          ,
+          <fpage>240</fpage>
+          -
+          <lpage>253</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          29.
+          <string-name>
+            <surname>McKether</surname>
+            ,
+            <given-names>W.L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Friese</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          <article-title>Qualitative social network analysis with ATLAS. ti Increasing Power In A Black Community</article-title>
+          .
+          <source>In Proceedings of the ATLAS.ti User Conference</source>
+          <year>2015</year>
+          , Berlin, Germany,
+          <fpage>29</fpage>
+          -
+          <lpage>31</lpage>
+          August 2015; Universitätsverlag der TU Berlin: Berlin, Germany,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          30.
+          <string-name>
+            <surname>Zhao</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Zhao</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <article-title>An evolutionary analysis of collaboration networks in scientometrics</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2016</year>
+          ,
+          <volume>107</volume>
+          ,
+          <fpage>759</fpage>
+          -
+          <lpage>772</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          31.
+          <string-name>
+            <surname>De Nooy</surname>
+          </string-name>
+          , W.;
+          <string-name>
+            <surname>Mrvar</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Batagelj</surname>
+            ,
+            <given-names>V.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Granovetter</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Exploratory Social Network Analysis</surname>
+          </string-name>
+          ; Cambridge University Press: Cambridge, UK,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          32.
+          <string-name>
+            <surname>Butts</surname>
+            ,
+            <given-names>C.T.</given-names>
+          </string-name>
+          <article-title>Social network analysis: A methodological introduction</article-title>
+          .
+          <source>Asian J. Soc. Psychol</source>
+          .
+          <year>2008</year>
+          ,
+          <volume>11</volume>
+          ,
+          <fpage>13</fpage>
+          -
+          <lpage>41</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          33.
+          <string-name>
+            <surname>Acedo</surname>
+            ,
+            <given-names>F.J.</given-names>
+          </string-name>
+          ; Barroso,
+          <string-name>
+            <given-names>C.</given-names>
+            ;
+            <surname>Casanueva</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            ;
+            <surname>Galán</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J.L.</surname>
+          </string-name>
+          <article-title>Co-authorship in management and organizational studies: An empirical and network analysis</article-title>
+          .
+          <source>J. Manag. Stud</source>
+          .
+          <year>2006</year>
+          ,
+          <volume>43</volume>
+          ,
+          <fpage>957</fpage>
+          -
+          <lpage>983</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          34.
+          <string-name>
+            <surname>Wasserman</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Faust</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Social Network</surname>
+          </string-name>
+          <article-title>Analysis: Methods</article-title>
+          and Applications; Cambridge University Press: Cambridge, UK,
+          <year>1994</year>
+          , ISBN 0521387078.
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          35.
+          <string-name>
+            <surname>Newman</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          <article-title>Scientific collaboration networks. I. Network construction and fundamental results</article-title>
+          .
+          <source>Phys. Rev. E</source>
+          <year>2001</year>
+          ,
+          <volume>64</volume>
+          ,
+          <fpage>016131</fpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          36.
+          <string-name>
+            <surname>Newman</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          <article-title>Scientific collaboration networks. II. Shortest paths weighted networks and centrality</article-title>
+          .
+          <source>Phys. Rev. E</source>
+          <year>2001</year>
+          ,
+          <volume>64</volume>
+          ,
+          <fpage>016132</fpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          37.
+          <string-name>
+            <surname>Newman</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          <article-title>The structure of scientific collaboration networks</article-title>
+          .
+          <source>Proc. Natl. Acad. Sci. USA</source>
+          <year>2001</year>
+          ,
+          <volume>98</volume>
+          ,
+          <fpage>404</fpage>
+          -
+          <lpage>409</lpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          38.
+          <string-name>
+            <surname>Kot</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Grabara</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          <article-title>Publications analysis according to management disciplines based on scopus indexed journals from easter european countries</article-title>
+          .
+          <source>Pol. J. Manag. Stud</source>
+          .
+          <year>2017</year>
+          ,
+          <volume>16</volume>
+          ,
+          <fpage>147</fpage>
+          -
+          <lpage>159</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref38">
+        <mixed-citation>
+          39.
+          <string-name>
+            <surname>Leicht</surname>
+            ,
+            <given-names>E.A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Clarkson</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Shedden</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Newman</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          <article-title>Large-scale structure of time evolving citation networks</article-title>
+          .
+          <source>Eur. Phys. J. B</source>
+          <year>2007</year>
+          ,
+          <volume>59</volume>
+          ,
+          <fpage>75</fpage>
+          -
+          <lpage>83</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref39">
+        <mixed-citation>
+          40.
+          <string-name>
+            <surname>Newman</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Girvan</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>Finding and evaluating community structure in networks</article-title>
+          .
+          <source>Phys. Rev. E</source>
+          <year>2004</year>
+          ,
+          <volume>69</volume>
+          ,
+          <fpage>026113</fpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref40">
+        <mixed-citation>
+          41.
+          <string-name>
+            <surname>Shi</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Tseng</surname>
+            ,
+            <given-names>B.L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Adamic</surname>
+            ,
+            <given-names>L.A. Information</given-names>
+          </string-name>
+          <article-title>Diffusion in Computer Science Citation Networks</article-title>
+          .
+          <source>In Proceedings of the 3rd International AAAI Conference on Weblogs and Social Media</source>
+          , San Jose, CA, USA,
+          <fpage>17</fpage>
+          -
+          <lpage>20</lpage>
+          May
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref41">
+        <mixed-citation>
+          42.
+          <string-name>
+            <surname>Glänzel</surname>
+          </string-name>
+          , W.;
+          <string-name>
+            <surname>Schubert</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          <article-title>Analysing scientific networks through co-authorship</article-title>
+          .
+          <source>In Handbook of Quantitative Science and Technology Research</source>
+          ; Moed,
+          <string-name>
+            <given-names>H.F.</given-names>
+            ,
+            <surname>Glänzel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            ,
+            <surname>Schmoch</surname>
+          </string-name>
+          , U., Eds.; Springer: Dordrecht, The Netherland,
+          <year>2004</year>
+          ; pp.
+          <fpage>257</fpage>
+          -
+          <lpage>276</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref42">
+        <mixed-citation>
+          43.
+          <string-name>
+            <surname>Koopman</surname>
+          </string-name>
+          , R.;
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Scharnhorst</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Englebienne</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          <article-title>Ariadne's Thread: Interactive Navigation in a World of Networked Information</article-title>
+          .
+          <source>In Proceedings of the 33rd Annual ACM Conference Extended Abstracts on Human Factors in Computing Systems</source>
+          , Seoul, Korea,
+          <fpage>18</fpage>
+          -
+          <lpage>23</lpage>
+          April 2015; ACM: New York, NY, USA,
+          <year>2015</year>
+          ; pp.
+          <fpage>1833</fpage>
+          -
+          <lpage>1838</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref43">
+        <mixed-citation>
+          44.
+          <string-name>
+            <surname>Hudson</surname>
+            ,
+            <given-names>R.A</given-names>
+          </string-name>
+          . Sociolinguistics; Cambridge University Press: Cambridge, UK,
+          <year>1996</year>
+          , ISBN 0521563496.
+        </mixed-citation>
+      </ref>
+      <ref id="ref44">
+        <mixed-citation>
+          45.
+          <string-name>
+            <surname>McDowell</surname>
+            ,
+            <given-names>J.M.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Melvin</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>The determinants of co-authorship: An analysis of the economics literature</article-title>
+          .
+          <source>Rev. Econ. Stat</source>
+          .
+          <year>1983</year>
+          ,
+          <volume>65</volume>
+          ,
+          <fpage>155</fpage>
+          -
+          <lpage>160</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref45">
+        <mixed-citation>
+          46.
+          <string-name>
+            <surname>Barabási</surname>
+          </string-name>
+          , A.-L.;
+          <string-name>
+            <surname>Jeong</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Néda</surname>
+            ,
+            <given-names>Z.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Ravasz</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Schubert</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Vicsek</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          <article-title>Evolution of the social network of scientific collaborations</article-title>
+          .
+          <source>Phys. A Stat. Mech. Appl</source>
+          .
+          <year>2002</year>
+          ,
+          <volume>311</volume>
+          ,
+          <fpage>590</fpage>
+          -
+          <lpage>614</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref46">
+        <mixed-citation>
+          47.
+          <string-name>
+            <surname>Katz</surname>
+            ,
+            <given-names>J.S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Martin</surname>
+            ,
+            <given-names>B.R.</given-names>
+          </string-name>
+          <article-title>What is research collaboration? Res</article-title>
+          .
+          <source>Policy</source>
+          <year>1997</year>
+          ,
+          <volume>26</volume>
+          ,
+          <fpage>1</fpage>
+          -
+          <lpage>18</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref47">
+        <mixed-citation>
+          48.
+          <string-name>
+            <surname>Laband</surname>
+            ,
+            <given-names>D.N.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Tollison</surname>
+            ,
+            <given-names>R.D.</given-names>
+          </string-name>
+          <article-title>Intellectual collaboration</article-title>
+          .
+          <source>J. Polit. Econ</source>
+          .
+          <year>2000</year>
+          ,
+          <volume>108</volume>
+          ,
+          <fpage>632</fpage>
+          -
+          <lpage>662</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref48">
+        <mixed-citation>
+          49. Moody,
+          <string-name>
+            <surname>J.</surname>
+          </string-name>
+          <article-title>The structure of a social science collaboration network: Disciplinary cohesion from 1963 to 1999</article-title>
+          . Am.
+          <source>Sociol. Rev</source>
+          .
+          <year>2004</year>
+          ,
+          <volume>69</volume>
+          ,
+          <fpage>213</fpage>
+          -
+          <lpage>238</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref49">
+        <mixed-citation>
+          50.
+          <string-name>
+            <surname>Cabanac</surname>
+            ,
+            <given-names>G.</given-names>
+            ; Hubert, G.
+          </string-name>
+          ;
+          <string-name>
+            <surname>Milard</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          <article-title>Academic careers in Computer Science: Continuance and transience of lifetime co-authorships</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2015</year>
+          ,
+          <volume>102</volume>
+          ,
+          <fpage>135</fpage>
+          -
+          <lpage>150</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref50">
+        <mixed-citation>
+          51.
+          <string-name>
+            <surname>Reingewertz</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Lutmar</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          <article-title>Academic in-group bias: An empirical examination of the link between author and journal affiliation</article-title>
+          .
+          <source>J. Informetr</source>
+          .
+          <year>2018</year>
+          ,
+          <volume>12</volume>
+          ,
+          <fpage>74</fpage>
+          -
+          <lpage>86</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref51">
+        <mixed-citation>
+          52.
+          <string-name>
+            <surname>Persson</surname>
+            ,
+            <given-names>O.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Glänzel</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          ; Danell,
+          <string-name>
+            <surname>R.</surname>
+          </string-name>
+          <article-title>Inflationary bibliometric values: The role of scientific collaboration and the need for relative indicators in evaluative studies</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2004</year>
+          ,
+          <volume>60</volume>
+          ,
+          <fpage>421</fpage>
+          -
+          <lpage>432</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref52">
+        <mixed-citation>
+          53.
+          <string-name>
+            <surname>Slyder</surname>
+            ,
+            <given-names>J.B.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Stein</surname>
+            ,
+            <given-names>B.R.</given-names>
+          </string-name>
+          ; Sams,
+          <string-name>
+            <given-names>B.S.</given-names>
+            ;
+            <surname>Walker</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>D.M.</surname>
+          </string-name>
+          ;
+          <string-name>
+            <given-names>Jacob</given-names>
+            <surname>Beale</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            ;
+            <surname>Feldhaus</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J.J.</surname>
+          </string-name>
+          ; Copenheaver,
+          <string-name>
+            <surname>C.A.</surname>
+          </string-name>
+          <article-title>Citation pattern and lifespan: A comparison of discipline institution and individual</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2011</year>
+          ,
+          <volume>89</volume>
+          ,
+          <fpage>955</fpage>
+          -
+          <lpage>966</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref53">
+        <mixed-citation>
+          54.
+          <string-name>
+            <surname>Tahamtan</surname>
+            ,
+            <given-names>I.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Afshar</surname>
+            ,
+            <given-names>A.S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Ahamdzadeh</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          <article-title>Factors affecting number of citations: A comprehensive review of the literature</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2016</year>
+          ,
+          <volume>107</volume>
+          ,
+          <fpage>1195</fpage>
+          -
+          <lpage>1225</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref54">
+        <mixed-citation>
+          55.
+          <string-name>
+            <surname>Mingers</surname>
+          </string-name>
+          , J.;
+          <string-name>
+            <surname>Xu</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          <article-title>The drivers of citations in management science journals</article-title>
+          .
+          <source>Eur. J. Oper. Res</source>
+          .
+          <year>2010</year>
+          ,
+          <volume>205</volume>
+          ,
+          <fpage>422</fpage>
+          -
+          <lpage>430</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref55">
+        <mixed-citation>
+          56.
+          <string-name>
+            <surname>Chung</surname>
+            ,
+            <given-names>K.H.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Cox</surname>
+            ,
+            <given-names>R.A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Kim</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          <article-title>A. On the relation between intellectual collaboration and intellectual output: Evidence from the finance academe</article-title>
+          .
+          <source>Q. Rev. Econ. Financ</source>
+          .
+          <year>2009</year>
+          ,
+          <volume>49</volume>
+          ,
+          <fpage>893</fpage>
+          -
+          <lpage>916</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref56">
+        <mixed-citation>
+          57.
+          <string-name>
+            <surname>Vieira</surname>
+            ,
+            <given-names>E.S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Gomes</surname>
+            ,
+            <given-names>J.A.</given-names>
+          </string-name>
+          <article-title>Citations to scientific articles: Its distribution and dependence on the article features</article-title>
+          .
+          <source>J. Informetr</source>
+          .
+          <year>2010</year>
+          ,
+          <volume>4</volume>
+          ,
+          <fpage>1</fpage>
+          -
+          <lpage>13</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref57">
+        <mixed-citation>
+          58.
+          <string-name>
+            <surname>Walters</surname>
+            ,
+            <given-names>G.D.</given-names>
+          </string-name>
+          <article-title>Measuring the utility of journals in the crime-psychology field: Beyond the impact factor</article-title>
+          .
+          <source>J. Assoc. Inf. Sci. Technol</source>
+          .
+          <year>2006</year>
+          ,
+          <volume>57</volume>
+          ,
+          <fpage>1804</fpage>
+          -
+          <lpage>1813</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref58">
+        <mixed-citation>
+          59.
+          <string-name>
+            <surname>Leimu</surname>
+            , R.; Koricheva,
+            <given-names>J.</given-names>
+          </string-name>
+          <article-title>What determines the citation frequency of ecological papers? Trends Ecol</article-title>
+          .
+          <source>Evol</source>
+          .
+          <year>2005</year>
+          ,
+          <volume>20</volume>
+          ,
+          <fpage>28</fpage>
+          -
+          <lpage>32</lpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref59">
+        <mixed-citation>
+          60.
+          <string-name>
+            <surname>Castanho</surname>
+            ,
+            <given-names>R.A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Loures</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Cabezas</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Fernández-Pozo</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Cross-Border Cooperation</surname>
+          </string-name>
+          (CBC) in
+          <source>Southern Europe-An Iberian Case Study. The Eurocity Elvas-Badajoz. Sustainability</source>
+          <year>2017</year>
+          ,
+          <volume>9</volume>
+          ,
+          <fpage>360</fpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref60">
+        <mixed-citation>
+          61.
+          <string-name>
+            <surname>Kurowska-Pysz</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ;
+          <article-title>Szczepa n´ska-</article-title>
+          <string-name>
+            <surname>Woszczyna</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          <article-title>The Analysis of the Determinants of Sustainable Cross-Border Cooperation and Recommendations on Its Harmonization</article-title>
+          .
+          <source>Sustainability</source>
+          <year>2017</year>
+          ,
+          <volume>9</volume>
+          ,
+          <fpage>2226</fpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref61">
+        <mixed-citation>
+          62.
+          <string-name>
+            <surname>Yoon</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Lee</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Yoon</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Toulan</surname>
+            ,
+            <given-names>O.</given-names>
+          </string-name>
+          <article-title>Typology and Success Factors of Collaboration for Sustainable Growth in the IT Service Industry</article-title>
+          .
+          <source>Sustainability</source>
+          <year>2017</year>
+          ,
+          <volume>9</volume>
+          ,
+          <year>2017</year>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref62">
+        <mixed-citation>
+          63.
+          <string-name>
+            <surname>Narin</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Stevens</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Whitlow</surname>
+            ,
+            <given-names>E.S.</given-names>
+          </string-name>
+          <article-title>Scientific co-operation in Europe and the citation of multinationally authored papers</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>1991</year>
+          ,
+          <volume>21</volume>
+          ,
+          <fpage>313</fpage>
+          -
+          <lpage>323</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref63">
+        <mixed-citation>
+          64.
+          <string-name>
+            <surname>Sooryamoorthy</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <article-title>Do types of collaboration change citation? Collaboration and citation patterns of South African science publications</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2009</year>
+          ,
+          <volume>81</volume>
+          ,
+          <fpage>177</fpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref64">
+        <mixed-citation>
+          65.
+          <string-name>
+            <surname>Lee</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Bozeman</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          <article-title>The impact of research collaboration on scientific productivity</article-title>
+          .
+          <source>Soc. Stud. Sci</source>
+          .
+          <year>2005</year>
+          ,
+          <volume>35</volume>
+          ,
+          <fpage>673</fpage>
+          -
+          <lpage>702</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref65">
+        <mixed-citation>
+          66.
+          <string-name>
+            <surname>Kling</surname>
+          </string-name>
+          , R.;
+          <string-name>
+            <surname>McKim</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          <article-title>Not just a matter of time: Field differences and the shaping of electronic media in supporting scientific communication</article-title>
+          .
+          <source>J. Assoc. Inf. Sci. Technol</source>
+          .
+          <year>2000</year>
+          ,
+          <volume>51</volume>
+          ,
+          <fpage>1306</fpage>
+          -
+          <lpage>1320</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref66">
+        <mixed-citation>
+          67.
+          <string-name>
+            <surname>Glänzel</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          <article-title>Analysis of co-authorship patterns at the individual level</article-title>
+          .
+          <source>Transinformação</source>
+          <year>2014</year>
+          ,
+          <volume>26</volume>
+          ,
+          <fpage>229</fpage>
+          -
+          <lpage>238</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref67">
+        <mixed-citation>
+          68.
+          <string-name>
+            <surname>Onel</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Zeid</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Kamarthi</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          <article-title>The structure and analysis of nanotechnology co-author and citation networks</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2011</year>
+          ,
+          <volume>89</volume>
+          ,
+          <fpage>119</fpage>
+          -
+          <lpage>138</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref68">
+        <mixed-citation>
+          69.
+          <string-name>
+            <surname>Axarloglou</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Theoharakis</surname>
+            ,
+            <given-names>V.</given-names>
+          </string-name>
+          <article-title>Diversity in economics: An analysis of journal quality perceptions</article-title>
+          .
+          <source>J. Eur. Econ. Assoc</source>
+          .
+          <year>2003</year>
+          ,
+          <volume>1</volume>
+          ,
+          <fpage>1402</fpage>
+          -
+          <lpage>1423</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref69">
+        <mixed-citation>
+          70.
+          <string-name>
+            <surname>Barnett</surname>
+            ,
+            <given-names>A.H.</given-names>
+          </string-name>
+          ; Ault,
+          <string-name>
+            <given-names>R.W.</given-names>
+            ;
+            <surname>Kaserman</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>D.L.</surname>
+          </string-name>
+          <article-title>The rising incidence of co-authorship in economics: Further evidence</article-title>
+          .
+          <source>Rev. Econ. Stat</source>
+          .
+          <year>1988</year>
+          ,
+          <volume>70</volume>
+          ,
+          <fpage>539</fpage>
+          -
+          <lpage>543</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref70">
+        <mixed-citation>
+          71.
+          <string-name>
+            <surname>Bornmann</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Adam</surname>
+            ,
+            <given-names>Y.Y.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Fred</surname>
+            ,
+            <given-names>Y.Y.</given-names>
+          </string-name>
+          <article-title>Sequence analysis of annually normalized citation counts: An empirical analysis based on the characteristic scores and scales (CSS) method</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2017</year>
+          ,
+          <volume>113</volume>
+          ,
+          <fpage>1665</fpage>
+          -
+          <lpage>1680</lpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref71">
+        <mixed-citation>
+          72.
+          <string-name>
+            <surname>Small</surname>
+            ,
+            <given-names>H.</given-names>
+            ; Tseng, H.
+          </string-name>
+          ; Patek,
+          <string-name>
+            <surname>M.</surname>
+          </string-name>
+          <article-title>Discovering discoveries: Identifying biomedical discoveries using citation contexts</article-title>
+          .
+          <source>J. Informetr</source>
+          .
+          <year>2017</year>
+          ,
+          <volume>11</volume>
+          ,
+          <fpage>46</fpage>
+          -
+          <lpage>62</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref72">
+        <mixed-citation>
+          73.
+          <string-name>
+            <surname>Aksnes</surname>
+            ,
+            <given-names>D.W.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Rip</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          <article-title>Researchers' perceptions of citations</article-title>
+          .
+          <source>Res. Policy</source>
+          <year>2009</year>
+          ,
+          <volume>38</volume>
+          ,
+          <fpage>895</fpage>
+          -
+          <lpage>905</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref73">
+        <mixed-citation>
+          74.
+          <string-name>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>K.-H.; Tang</surname>
+          </string-name>
+          , M.-C.;
+          <string-name>
+            <surname>Wang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>C.-M.; Hsiang</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          <article-title>Exploring alternative metrics of scholarly performance in the social sciences and humanities in Taiwan</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2015</year>
+          ,
+          <volume>102</volume>
+          ,
+          <fpage>97</fpage>
+          -
+          <lpage>112</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref74">
+        <mixed-citation>
+          75.
+          <string-name>
+            <surname>Mir</surname>
+            ,
+            <given-names>T.A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Ausloos</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>Benford's law: A 'sleeping beauty'sleeping in the dirty pages of logarithmic tables</article-title>
+          .
+          <source>J. Assoc. Inf. Sci. Technol</source>
+          .
+          <year>2017</year>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref75">
+        <mixed-citation>
+          76.
+          <string-name>
+            <surname>Min</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Sun</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Pei</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Ding</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          <article-title>Measuring delayed recognition for papers: Uneven weighted summation and total citations</article-title>
+          .
+          <source>J. Informetr</source>
+          .
+          <year>2016</year>
+          ,
+          <volume>10</volume>
+          ,
+          <fpage>1153</fpage>
+          -
+          <lpage>1165</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref76">
+        <mixed-citation>
+          77.
+          <string-name>
+            <surname>Teixeira</surname>
+            ,
+            <given-names>A.A.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Vieira</surname>
+            ,
+            <given-names>P.C.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Abreu</surname>
+            ,
+            <given-names>A.P.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Sleeping</surname>
+          </string-name>
+          <article-title>Beauties and their princes in innovation studies</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>2017</year>
+          ,
+          <volume>110</volume>
+          ,
+          <fpage>541</fpage>
+          -
+          <lpage>580</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref77">
+        <mixed-citation>
+          78.
+          <string-name>
+            <surname>De Solla Price</surname>
+          </string-name>
+          , D.J.;
+          <string-name>
+            <surname>de Solla Price</surname>
+          </string-name>
+          , D.J.;
+          <string-name>
+            <surname>de Solla Price</surname>
+          </string-name>
+          , D.J.;
+          <string-name>
+            <surname>de Solla Price</surname>
+            ,
+            <given-names>D.J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Little</surname>
+            <given-names>Science</given-names>
+          </string-name>
+          , Big Science... and Beyond; Columbia University Press: New York, NY, USA,
+          <year>1986</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref78">
+        <mixed-citation>
+          79.
+          <string-name>
+            <surname>Cronin</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Shaw</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ; La Barre,
+          <string-name>
+            <surname>K.</surname>
+          </string-name>
+          <article-title>A cast of thousands: Coauthorship and subauthorship collaboration in the 20th century as manifested in the scholarly journal literature of psychology and philosophy</article-title>
+          .
+          <source>J. Assoc. Inf. Sci. Technol</source>
+          .
+          <year>2003</year>
+          ,
+          <volume>54</volume>
+          ,
+          <fpage>855</fpage>
+          -
+          <lpage>871</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref79">
+        <mixed-citation>
+          80.
+          <string-name>
+            <surname>Ding</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Foo</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ; Chowdhury,
+          <string-name>
+            <surname>G.</surname>
+          </string-name>
+          <article-title>A bibliometric analysis of collaboration in the field of information retrieval</article-title>
+          .
+          <source>Int. Inf. Lib. Rev</source>
+          .
+          <year>1998</year>
+          ,
+          <volume>30</volume>
+          ,
+          <fpage>367</fpage>
+          -
+          <lpage>376</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref80">
+        <mixed-citation>
+          81.
+          <string-name>
+            <surname>Kretschmer</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          <article-title>Coauthorship networks of invisible colleges and institutionalized communities</article-title>
+          .
+          <source>Scientometrics</source>
+          <year>1994</year>
+          ,
+          <volume>30</volume>
+          ,
+          <fpage>363</fpage>
+          -
+          <lpage>369</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref81">
+        <mixed-citation>
+          82.
+          <string-name>
+            <surname>Leydesdorff</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Etzkowitz</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          <article-title>Emergence of a Triple Helix of university-industry-government relations</article-title>
+          .
+          <source>Sci. Public Policy</source>
+          <year>1996</year>
+          ,
+          <volume>23</volume>
+          ,
+          <fpage>279</fpage>
+          -
+          <lpage>286</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref82">
+        <mixed-citation>
+          83.
+          <string-name>
+            <surname>Newman</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Networks</surname>
+          </string-name>
+          : An Introduction; Oxford University Press: Oxford, UK,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref83">
+        <mixed-citation>
+          84.
+          <string-name>
+            <surname>Whitley</surname>
+            ,
+            <given-names>B.E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Kite</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Adams</surname>
+          </string-name>
+          , H.L. Principles of Research in Behavioral Science; Routledge: New York, NY, USA; London, UK,
+          <year>2013</year>
+          , ISBN 10
+          <fpage>0415879280</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref84">
+        <mixed-citation>
+          85.
+          <string-name>
+            <surname>Archambault</surname>
+          </string-name>
+          , É.;
+          <string-name>
+            <surname>Campbell</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ; Gingras,
+          <string-name>
+            <given-names>Y.</given-names>
+            ;
+            <surname>Larivière</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>V.</surname>
+          </string-name>
+          <article-title>Comparing bibliometric statistics obtained from the Web of Science and Scopus</article-title>
+          .
+          <source>J. Assoc. Inf. Sci. Technol</source>
+          .
+          <year>2009</year>
+          ,
+          <volume>60</volume>
+          ,
+          <fpage>1320</fpage>
+          -
+          <lpage>1326</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref85">
+        <mixed-citation>
+          86.
+          <string-name>
+            <surname>Gavel</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Iselid</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          <article-title>Web of Science and Scopus: A journal title overlap study</article-title>
+          .
+          <source>Online Inf. Rev</source>
+          .
+          <year>2008</year>
+          ,
+          <volume>32</volume>
+          ,
+          <fpage>8</fpage>
+          -
+          <lpage>21</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref86">
+        <mixed-citation>
+          87.
+          <string-name>
+            <surname>Livingston</surname>
+          </string-name>
+          , G.;
+          <string-name>
+            <surname>Waring</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Pacheco</surname>
+            ,
+            <given-names>L.F.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Buchori</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ; Jiang,
+          <string-name>
+            <given-names>Y.</given-names>
+            ;
+            <surname>Gilbert</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            ;
+            <surname>Jha</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>S.</surname>
+          </string-name>
+          <article-title>Perspectives on the global disparity in ecological science</article-title>
+          .
+          <source>BioScience</source>
+          <year>2016</year>
+          ,
+          <volume>66</volume>
+          ,
+          <fpage>147</fpage>
+          -
+          <lpage>155</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref87">
+        <mixed-citation>
+          88.
+          <string-name>
+            <surname>Pan</surname>
+            ,
+            <given-names>R.K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Kaski</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Fortunato</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          <article-title>World citation and collaboration networks: Uncovering the role of geography in science</article-title>
+          .
+          <source>Sci. Rep</source>
+          .
+          <year>2012</year>
+          ,
+          <volume>2</volume>
+          ,
+          <fpage>902</fpage>
+          . [CrossRef] [PubMed]
+        </mixed-citation>
+      </ref>
+      <ref id="ref88">
+        <mixed-citation>
+          89.
+          <string-name>
+            <surname>Erfanmanesh</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <article-title>Status and quality of open access journals in Scopus</article-title>
+          .
+          <source>Collect. Build</source>
+          .
+          <year>2017</year>
+          ,
+          <volume>36</volume>
+          ,
+          <fpage>155</fpage>
+          -
+          <lpage>162</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref89">
+        <mixed-citation>
+          90.
+          <string-name>
+            <surname>Bastian</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Heymann</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ; Jacomy,
+          <string-name>
+            <surname>M.</surname>
+          </string-name>
+          <article-title>Gephi: An open source software for exploring and manipulating networks</article-title>
+          .
+          <source>In Proceedings of the 3rd International AAAI Conference on Weblogs and Social Media</source>
+          , San Jose, CA, USA,
+          <fpage>17</fpage>
+          -
+          <lpage>20</lpage>
+          May
+          <year>2009</year>
+          ; Volume
+          <volume>8</volume>
+          , pp.
+          <fpage>361</fpage>
+          -
+          <lpage>362</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref90">
+        <mixed-citation>
+          91. Moody, J.;
+          <string-name>
+            <surname>McFarland</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ;
+          <article-title>Bender-deMoll, S. Dynamic network visualization</article-title>
+          .
+          <source>Am. J. Sociol</source>
+          .
+          <year>2005</year>
+          ,
+          <volume>110</volume>
+          ,
+          <fpage>1206</fpage>
+          -
+          <lpage>1241</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref91">
+        <mixed-citation>
+          92.
+          <string-name>
+            <surname>Hu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Efficient</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>High-Quality</surname>
+          </string-name>
+          Force-Directed Graph Drawing. Math. J.
+          <year>2005</year>
+          ,
+          <volume>10</volume>
+          ,
+          <fpage>37</fpage>
+          -
+          <lpage>71</lpage>
+          . Available online: https:// pdfs.semanticscholar.
+          <source>org/be33/ebd01f336c04a1db20830576612ab45b1b9b.pdf (accessed on 12 December</source>
+          <year>2017</year>
+          ).
+        </mixed-citation>
+      </ref>
+      <ref id="ref92">
+        <mixed-citation>
+          93.
+          <string-name>
+            <surname>Freeman</surname>
+            ,
+            <given-names>L.C.</given-names>
+          </string-name>
+          <article-title>Centrality in social networks conceptual clarification</article-title>
+          .
+          <source>Soc. Netw</source>
+          .
+          <year>1978</year>
+          ,
+          <volume>1</volume>
+          ,
+          <fpage>215</fpage>
+          -
+          <lpage>239</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref93">
+        <mixed-citation>
+          94.
+          <string-name>
+            <surname>Van Weijen</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          <article-title>The Language of (Future) Scientific Communication</article-title>
+          .
+          <source>Res. Trends</source>
+          <year>2012</year>
+          ,
+          <volume>31</volume>
+          . Available online: https://www.researchtrends.com/issue-31
+          <string-name>
+            <surname>-</surname>
+          </string-name>
+          november
+          <article-title>-2012/the-language-of-future-scientific-communication (accessed on 12</article-title>
+          <year>December 2017</year>
+          ).
+        </mixed-citation>
+      </ref>
+      <ref id="ref94">
+        <mixed-citation>
+          95.
+          <string-name>
+            <surname>Foxley</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Regional Trade</surname>
+          </string-name>
+          <article-title>Blocs: The Way to the Future? Carnegie Endowment for International Peace</article-title>
+          : Washington, DC, USA,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref95">
+        <mixed-citation>
+          96.
+          <string-name>
+            <surname>Holder</surname>
+            ,
+            <given-names>M.E.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Langrehr</surname>
+            ,
+            <given-names>F.W.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Schroeder</surname>
+            ,
+            <given-names>D.M.</given-names>
+          </string-name>
+          <article-title>Finance journal coauthorship: How do coauthors in very select journals evaluate the experience? Financ</article-title>
+          . Pract. Educ.
+          <year>2000</year>
+          ,
+          <volume>10</volume>
+          ,
+          <fpage>142</fpage>
+          -
+          <lpage>152</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref96">
+        <mixed-citation>
+          97.
+          <string-name>
+            <surname>Li</surname>
+            ,
+            <given-names>E.Y.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Liao</surname>
+            ,
+            <given-names>C.H.</given-names>
+          </string-name>
+          ; Yen,
+          <string-name>
+            <surname>H.R.</surname>
+          </string-name>
+          <article-title>Co-authorship networks and research impact: A social capital perspective</article-title>
+          .
+          <source>Res. Policy</source>
+          <year>2013</year>
+          ,
+          <volume>42</volume>
+          ,
+          <fpage>1515</fpage>
+          -
+          <lpage>1530</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+      <ref id="ref97">
+        <mixed-citation>
+          98.
+          <string-name>
+            <surname>Fischbach</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Putzke</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ;
+          <string-name>
+            <surname>Schoder</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          <article-title>Co-authorship networks in electronic markets research</article-title>
+          .
+          <source>Electron. Mark</source>
+          .
+          <year>2011</year>
+          ,
+          <volume>21</volume>
+          ,
+          <fpage>19</fpage>
+          -
+          <lpage>40</lpage>
+          . [CrossRef]
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

@@ -1,0 +1,1883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <article-id pub-id-type="doi">10.5194/npg-21-1145-2014</article-id>
+      <title-group>
+        <article-title>Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>D. Das</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>J. Dy</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>J. Ross</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Z. Obradovic</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>A. R. Ganguly</string-name>
+          <email>a.ganguly@neu.edu</email>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Center for Data Analytics and Biomedical Informatics, Temple University</institution>
+          ,
+          <addr-line>Philadelphia, PA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Department of Electrical and Computer Engineering, Northeastern University</institution>
+          ,
+          <addr-line>Boston, MA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>Sustainability and Data Sciences Lab, Northeastern University</institution>
+          ,
+          <addr-line>Boston, MA</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+      </contrib-group>
+      <pub-date>
+        <day>1</day>
+        <month>12</month>
+        <year>2014</year>
+      </pub-date>
+      <fpage>1145</fpage>
+      <lpage>1157</lpage>
+      <history>
+        <date date-type="accepted">
+          <day>23</day>
+          <month>10</month>
+          <year>2014</year>
+        </date>
+        <date date-type="received">
+          <day>27</day>
+          <month>2</month>
+          <year>2014</year>
+        </date>
+        <date date-type="revised">
+          <day>21</day>
+          <month>8</month>
+          <year>2014</year>
+        </date>
+      </history>
+      <abstract>
+        <p>Climate projections simulated by Global Climate Models (GCMs) are often used for assessing the impacts of climate change. However, the relatively coarse resolutions of GCM outputs often preclude their application to accurately assessing the effects of climate change on finer regional-scale phenomena. Downscaling of climate variables from coarser to finer regional scales using statistical methods is often performed for regional climate projections. Statistical downscaling (SD) is based on the understanding that the regional climate is influenced by two factors - the large-scale climatic state and the regional or local features. A transfer function approach of SD involves learning a regression model that relates these features (predictors) to a climatic variable of interest (predictand) based on the past observations. However, often a single regression model is not sufficient to describe complex dynamic relationships between the predictors and predictand. We focus on the covariate selection part of the transfer function approach and propose a nonparametric Bayesian mixture of sparse regression models based on Dirichlet process (DP) for simultaneous clustering and discovery of covariates within the clusters while automatically finding the number of clusters. Sparse linear models are parsimonious and hence more generalizable than non-sparse alternatives, and lend themselves to domain relevant interpretation. Applications to synthetic data demonstrate the value of the new approach and preliminary results related to feature selection for statistical downscaling show that our method can lead to new insights.</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>1</p>
+    </sec>
+    <sec id="sec-2">
+      <title>Introduction</title>
+      <p>
+        Climate change is one of most challenging problems
+facing humankind. Its impacts are expected to influence
+policy decisions on critical infrastructures, management of
+natural resources, humanitarian aid, and emergency preparedness
+along with numerous regional-scale human economic and
+social activities. Therefore, it is imperative to accurately assess
+the impacts of climate change at regional scale in order to
+inform stakeholders for appropriate decision making related to
+mitigation policies. Global climate models (GCMs) are the
+most credible tools at present for future climate projection
+that accounts for the effects of greenhouse gas emissions
+under different socio-economic scenarios. Although GCMs
+perform reasonably well in projecting climate variables at
+a larger spatial scale ( &gt; 104 km2), they perform poorly for
+regional-scale climate projections. Such poor performance
+of the GCMs, coupled with the importance of regional
+climate projections for impact studies, has led to development
+of limited area models (LAMs) or regional climate models
+(RCMs), where finer spatial grids over a limited spatial area
+are embedded within a coarser GCM grid. This method is
+also known as dynamic downscaling. However, these
+models are complex, computationally expensive and require
+rerunning for each new region. Moreover, regional models
+inherit the basic gaps in understanding of climate physics
+that limit the performance of GCMs. A couple of recently
+published studies
+        <xref ref-type="bibr" rid="ref17 ref18 ref23">(Kumar et al., 2014; Knutti and Sedlácˇek,
+2013)</xref>
+        rigorously compared the projections of the latest
+generation of climate models (CMIP5) with the previous
+generation (CMIP3) but found no significant improvement in the
+majority of statistical performance metrics even with higher
+spatial resolutions and addition of new physical processes
+in the computational model. Uncertainties in sub-grid-scale
+cloud-microphysics and ocean eddy processes and poor
+understanding of the effect of carbon cycle and other
+biogeochemical processes on climate systems still limit the ability
+of the physics-based climate models to reliably project future
+climate
+        <xref ref-type="bibr" rid="ref2">(Bader et al., 2008)</xref>
+        , especially at regional scale.
+      </p>
+      <p>
+        A complementary approach for regional projection is
+statistical downscaling that uses statistical models to learn
+empirical statistical relationships between large-scale GCM
+features (predictors) and regional-scale climate variable(s)
+(predictands) to be projected. The statistical approaches of
+downscaling can be categorized into three broad classes – weather
+typing, weather generators, and the transfer function
+approaches
+        <xref ref-type="bibr" rid="ref27">(Wilby et al., 2004)</xref>
+        . Weather typing approaches
+have originally been developed for weather forecasting and
+generally involve classifying days into similar clusters or
+weather states based on their synoptic similarity. Typically,
+weather patterns are clustered based on their similarity with
+nearest neighbors while the statistical models they use vary
+in their definition of similarity measures. On the other hand,
+weather generators replicate the statistical properties of the
+daily predictand variable by using a stochastic model, such
+as Markov processes
+        <xref ref-type="bibr" rid="ref12">(Greene et al., 2011)</xref>
+        , that uses wet–dry
+and dry–wet transition probabilities as input for training
+while conditioning its parameters on large-scale predictors.
+      </p>
+      <p>
+        In this paper, however, we are interested in transfer
+function based regression models that learn a linear or nonlinear
+mapping between large scale predictors and regional scale
+predictand variables. Regression models are conceptually the
+simplest of the three classes since they provide a direct
+mapping between the predictor and predictand values. However,
+the success of the regression models depends on the accurate
+choice of predictors. Sparse regressions based on constrained
+L1-norm
+        <xref ref-type="bibr" rid="ref26">(Tibshirani, 1994)</xref>
+        of the coefficients became
+popular due to their ability to simultaneously select covariates
+and fit parsimonious linear models that are more
+generalizable and easily interpretable. Although sparse regression
+models have been applied widely in many disciplines, their
+application to climate, and especially to statistical
+downscaling, has remained very limited. In a recent paper
+        <xref ref-type="bibr" rid="ref8">(Ebtehaj
+et al., 2012)</xref>
+        , sparse regularization has been shown to be
+effective for downscaling rainfall fields for weather
+forecasting, whereas sparse variable selection has been used for
+statistical downscaling of climate variables
+        <xref ref-type="bibr" rid="ref22">(Phatak et al., 2011)</xref>
+        in a separate paper. To our knowledge, there is no other
+published work on use of sparse regularization for statistical
+downscaling.
+      </p>
+      <p>
+        However, large complex climate data sets often exhibit
+dynamic behavior
+        <xref ref-type="bibr" rid="ref11 ref15">(Kannan and Ghosh, 2010)</xref>
+        which may not be
+modeled well by a single regression model. Here we propose
+a nonparametric model for mixture of sparse regressions that
+can accommodate multiple sparse linear relationships
+inherent in the data set. Nonparametric models are more flexible
+than the finite mixture models
+        <xref ref-type="bibr" rid="ref5">(Bishop and Svenskn, 2002)</xref>
+        since they assume no prior knowledge about the number of
+distinct components in the data. We used a Dirichlet process
+mixture (DPM)
+        <xref ref-type="bibr" rid="ref1">(Antoniak, 1974)</xref>
+        with stick-breaking
+construction
+        <xref ref-type="bibr" rid="ref14">(Ishwaran and James, 2001)</xref>
+        to accommodate an
+unknown number of sparse regression models in the data. DPM
+start by assuming infinite components in the data but ends
+up discovering a finite number of components supported by
+the data. We used the Bayesian version of sparse regression
+        <xref ref-type="bibr" rid="ref21">(Park and Casella, 2008)</xref>
+        to smoothly integrate the sparse
+regression model with the DPM, which is a nonparametric
+Bayesian approach where each component is represented by
+a set of distribution parameters specific to the corresponding
+component.
+      </p>
+      <p>
+        Although the number of different components may not be
+known, prior knowledge often exists about whether a pair of
+observations belong to the same component. For example, it
+is reasonable to assume that two observations close in time
+from the same location may exhibit similar behavior. We
+allow soft “must link” constraints between pairs of data-points
+that encourage the pair to belong to the same mixture
+component. Such constraints are incorporated in our Bayesian
+model with the help of a Markov random field (MRF) prior
+over the cluster indicator variables
+        <xref ref-type="bibr" rid="ref17 ref23 ref3">(Ross and Dy, 2013; Basu
+et al., 2006)</xref>
+        .
+      </p>
+      <p>
+        Variational Bayesian (VB) inference has been shown to
+be much faster than stochastic alternatives for nonparametric
+Bayesian models
+        <xref ref-type="bibr" rid="ref6">(Blei and Jordan, 2006)</xref>
+        . The major
+contribution of this paper is to develop a fully Bayesian
+formulation for nonparametric mixture of a sparse regression model
+and designing an efficient variational inference algorithm to
+obtain posterior distributions over the regression coefficients
+of potentially multiple regression components as well as the
+component membership probabilities of each data-point.
+      </p>
+      <p>We have extensively demonstrated the performance of our
+algorithm on synthetic data. We have also applied our method
+to the feature selection problem for statistical downscaling
+of annual average rainfall over two regions on the west coast
+of the USA. Preliminary results from the application of our
+algorithm to select features for regression based statistical
+downscaling show that our method may lead to improved
+prediction and discovery of new insights.
+2</p>
+    </sec>
+    <sec id="sec-3">
+      <title>Background</title>
+      <p>In this section, we provide brief descriptions of the methods
+in the context they were used to build our model.
+2.1</p>
+    </sec>
+    <sec id="sec-4">
+      <title>Bayesian sparse regression</title>
+      <p>Let us assume that we are given a data set D D fxn; yn V n D
+1; : : : N g that has been generated from a linear model
+identified by sparse coefficients vector . In a non-Bayesian
+setting, sparsity is enforced by a constraint on the L1-norm of
+the coefficients which is given by
+yn D
+1
+&gt;xn C ; subject to jj jj1
+t;
+where N .0; 1/.</p>
+      <p>
+        However, in a Bayesian setting, the sparsity can be
+imposed by a Laplace prior (also known as double exponential
+distribution) on which is given by
+        <xref ref-type="bibr" rid="ref21">(Park and Casella, 2008)</xref>
+        :
+However, due to the analytical intractability of the Laplace
+prior, it is often represented in the following scale-mixture
+(of Gaussians) form using an additional random variable .
+      </p>
+      <p>D p j
+p. j ; / D Y
+jD1</p>
+      <p>D p j
+p. j ; / D Y
+jD1
+YD Z
+jD1
+D</p>
+      <sec id="sec-4-1">
+        <title>InvGa 2 2</title>
+        <p>p j j j j :
+exp
+p</p>
+        <p>j j j j
+j I 0;
+1
+j</p>
+        <p>
+          1
+j I 1; j
+2
+d j
+The Dirichlet process (DP) was first introduced in statistics
+literature as a measure on measures
+          <xref ref-type="bibr" rid="ref9">(Ferguson, 1973)</xref>
+          . It is
+parameterized by a base measure, G0, and a positive scaling
+parameter :
+Gj fG0; g
+        </p>
+        <p>
+          DP .G0; / :
+The notion of a DPM arises if we treat the kth draw from
+G as a parameter of the distribution over some observation
+          <xref ref-type="bibr" rid="ref1">(Antoniak, 1974)</xref>
+          representing a particular mixture
+component. DPMs can be interpreted as mixture models with an
+infinite number of mixture components in the sense that data
+exhibit a finite number of components but previously unseen
+components represented by new data can still be
+accommodated. More recently, a variational inference algorithm for
+DPMs was introduced
+          <xref ref-type="bibr" rid="ref6">(Blei and Jordan, 2006)</xref>
+          using the
+stick-breaking construction
+          <xref ref-type="bibr" rid="ref24">(Sethuraman, 1994)</xref>
+          which uses
+two infinite collections of random variables Vk Beta.1; /
+and k G0 to construct G as
+k D Vk
+G. /
+k 1
+Y 1
+jD1
+1
+X
+kD1
+k
+        </p>
+        <p>Vj
+; k :
+For a mixture of sparse regression models, if the parameters
+for each components are given by k, the subsequent data
+generation process for such a mixture model can be described
+in the following steps using a stick-breaking construction:
+(5)
+(6)
+(7)
+(1)
+(2)
+(4)
+For a fully hierarchical Bayesian setting, Gamma prior is
+imposed on parameter as well as on individual penalty
+parameters j . So the joint distribution over all the parameters can
+be given by
+p. ; ; ; / D Ga. I c0; d0/ YD nN
+jD1
+j I ; 0;
+1
+j
+1</p>
+      </sec>
+      <sec id="sec-4-2">
+        <title>InvGa</title>
+        <p>j I 1; j
+2
+o
+Ga j I a0; b0 :
+(3)
+2.2</p>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>Markov random fields</title>
+      <p>An MRF is represented by an undirected graphical model in
+which the nodes represent variables or groups of variables
+and the edges indicate dependence relationships. An
+important property of MRFs is that a collection of variables is
+conditionally independent of all others in the field given the
+variables in their Markov blanket. The Hammersley–Clifford
+theorem states that the distribution, p.Z/, over the variables
+in an MRF factorizes according to
+p.Z/ D</p>
+      <p>exp
+1
+Z</p>
+      <p>
+        !
+XHc .zc/ ;
+c2C
+where Z is a normalization constant called the partition
+function, C is the set of all cliques in the MRF, zc is the set of
+variables in clique c, and Hc is the energy function over clique c
+        <xref ref-type="bibr" rid="ref10">(Geman and Geman, 1984)</xref>
+        . A clique is a set of nodes in a
+graph that are fully connected. The smallest clique in a graph
+is an edge. The energy function captures the desired
+configuration of local variables. Partition function Z normalizes the
+probability measure and it is computed by summing the
+exponentiated energy functions of all possible configurations.
+      </p>
+      <sec id="sec-5-1">
+        <title>1. Draw vk</title>
+      </sec>
+      <sec id="sec-5-2">
+        <title>2. Draw k</title>
+        <p>Beta(1, ) k D f1; 2; : : : 1g
+G0, k D f1; 2; : : : 1g
+k 1
+3. Generate k D vk Q .1
+mD1</p>
+        <sec id="sec-5-2-1">
+          <title>4. For each data-point n:</title>
+          <p>vm/.
+a. Draw zn
+b. Draw yn</p>
+        </sec>
+        <sec id="sec-5-2-2">
+          <title>Mult( )</title>
+          <p>N .ynI xn; zn /.</p>
+          <p>
+            We can truncate the construction process at k D K by
+enforcing vK 1 D 0 which forces all k for k &gt; K to be zero
+(see step 3). The resulting construction is called a truncated
+DP (TDP), which can be shown to approximate the true DP
+quite well given K is large relative to the number of the
+datapoints
+            <xref ref-type="bibr" rid="ref14">(Ishwaran and James, 2001)</xref>
+            .
+3
+          </p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-6">
+      <title>Methodology</title>
+      <p>Now, let us assume that we are given a data set D D fxn; yn V
+n D 1; : : : N g which has been generated from a mixture of
+K different sparse models identified by sparse coefficients
+.1/, .2/, . . . , .K/. Let us also assume that the number
+of components K is unknown. We use a Bayesian
+formulation of the sparse regression model for each component .k/,
+with k D 1, 2, . . . K. Let us first state the Bayesian version
+of the kth sparse model. The linear regression model of the
+kth component can be represented by the following Gaussian
+distribution.
+p ynjxn; .k/</p>
+      <p>N ynI .k/&gt;xn; k 1
+(8)
+3.1</p>
+    </sec>
+    <sec id="sec-7">
+      <title>Mixture of sparse regressions</title>
+      <p>We introduce K-dimensional latent indicator variables fzn V
+n D 1; : : : N g to represent the component membership of
+each data-point fxn; yng. If the data-point belongs to the kth
+component, then znk will be 1 and all other elements of zn
+will be 0. We further denote Z D Tz1 z2 : : : znU. We can now
+rewrite Eq. (8) in terms of zn as</p>
+      <p>K
+Y n
+kD1
+p ynjxn;</p>
+      <p>For this mixture of sparse regressions model, each
+component has a separate parameter set f .k/; kg. Moreover, after
+adding the parameters related to the scale-mixture
+representation of the Laplace prior on .k/ (refer to Sect. 2.1), the
+set of parameters is finally given by k D f .k/; k; k; kg.
+The prior distribution G0 from which these parameters can
+be drawn jointly is given in Eq. (3). We can now use the
+stickbreaking construction described in Sect. 2.3 to formulate our
+mixture model. The overall generative process is then:
+p y; Z; v; n .k/o ; ; n .k/o ; n .k/o ; jX
+D p yjX; n .k/o ;</p>
+      <p>p.Zjv/p.vj /p . jm0/
+p n .k/o
+j ;</p>
+      <p>n .k/o p n .k/o j n .k/o
+p n .k/o ja0; b0 p . jc0; d0/ :</p>
+      <p>The graphical model that represents the dependence
+relationships between all the parameters involved in this current
+mixture model is shown in Fig. 1. The shaded circles
+denote observed variables; the unshaded circles denote
+unobserved variables. We have used a Gamma prior on having a
+hyper-parameter m0. We have omitted the hyper-parameters
+a0, b0, c0, d0, and m0 from the list of conditioning variables
+in the left side to avoid clutter. The individual distributions in
+Prior knowledge about must link constraints between pairs of
+data-points can be enforced via an MRF prior on the
+indicator variables zn, where each data-point is considered a node
+and each constraint between a pair of data-points is regarded
+as an edge between the respective nodes. We denote the
+collection of edges by C and the MRF prior is given by Eq. (4).
+We define the energy function as:
+H zi ; zj D
+( 1; zi&gt;zj D 1 and .i; j / is ML
+0;
+otherwise
+:
+(12)</p>
+      <sec id="sec-7-1">
+        <title>Eq. (10) are given below.</title>
+        <p>yjX; n .k/o ;</p>
+        <p>N K
+Y Y n
+nD1 kD1
+k 1
+vk Y 1</p>
+        <p>N
+vj
+Here ML means must link. This prior encourages similar
+values of indicator variables zi and zj if they happen to share a
+“must link” edge. Since the MRF prior is assigned only on
+the indicator variables Z, it only alters Eq. (11b) and the new
+prior on Z is given by
+(13)</p>
+        <p>with
+(15)
+(16)
+Let us consider all the unknown parameters in our model
+as latent variables and denote all the latent variables
+by H D fZ; v; f .k/g; ; f .k/g; f .k/g; g. Moreover, from
+now on, we will ignore feature variables X from the list of
+conditioning variables as they are observed. Using Jensen’s
+inequality, we can find a lower bound of the log-marginal
+ln p.y/ which is given as</p>
+        <p>Z
+ln p.y/ &gt;
+q.H/ ln
+p.y; H/
+q.H/
+dH
+for any arbitrary distribution q.H/. The variational inference
+is performed by restricting q.H/ within a parametric family
+so that the maximization of the lower bound given in Eq. (14)
+is tractable. We consider only those q.H/ that factorize over
+some disjoint groups of the component random variables of
+H in the following way:
+q.H/ D</p>
+        <p>L
+Y qj hj :
+jD1
+We can now maximize the lower bound given in Eq. (14) with
+respect to each component qj .hj / in Eq. (15) and obtain the
+parametric form of qj .hj / given by
+where the expectation is taken with respect to all the other
+factors fqi g for i 6D j . It can be shown that the q.H/ obtained
+this way is the closest approximation of the actual posterior
+p.Hjy/ in terms of KL-divergence out of all possible
+alternatives of the form given by Eq. (15). Therefore this is a
+deterministic but approximate posterior inference method, unlike
+stochastic inference methods such as MCMC, which samples
+from the actual posterior. However, variational inference is
+much faster and approximates the true posterior reasonably
+well for practical purposes.</p>
+        <p>
+          Once we apply Eq. (16) to the joint distribution described
+in Eqs. (10) and (11), we can get the update equations for
+the approximate posterior distributions for each of the latent
+variables involved.
+(17)
+(18)
+(19)
+(20)
+(21)
+(22)
+(23)
+n .k/o I k; 6.k/
+q
+with
+Here diag(h .k/i) corresponds to the LASSO
+          <xref ref-type="bibr" rid="ref26">(Tibshirani,
+1994)</xref>
+          shrinkage. The moments are given by1
+        </p>
+        <p>1hf .s/i means expected value of f .s/ with respect to the
+distribution of s.
+with</p>
+        <p>1 N
+ck D c0 C 2 X ETZUnk C p</p>
+        <p>nD1</p>
+        <p>I J
+d D d0 C 2 C 2</p>
+        <p>!
+where</p>
+        <p>N
+I D X yn2ETZUnk</p>
+        <p>nD1
+CETZUnkxn&gt;h
+.k/
+Relevant moments are given by hln vki D . k/
+. k C k/ and hln.1 vk/i D . k/ . k C k/. 5.
+Distribution of f .k/g:
+qv.v/ D
+with
+k D 1 C
+q
+with
+(24)
+(25)
+(27)
+(28)
+(29)
+where InvGaussian( j.k/; gk, hk / denotes inverse Gaussian
+j j
+distribution with mean gjk and shape parameter hjk having the
+(26)
+.k/
+and the relevant moment is h j i D ajk=bjk . 7. Distribution of
+:</p>
+        <p>K
+X hln .1
+kD1
+vk/i :
+Relevant moment is h i D wu .</p>
+        <p>The first part of the variational posterior of qZ.Z/ in
+Eq. (17) arises from the MRF prior and contributes towards
+enforcing “must link” constraints. Note that V in Eq. (17) is
+a set of sets and V is a component set of connected nodes
+within V. Basically, V denotes the set of connected
+components within the constraint graph described in Sect. 3.2.
+Therefore the partition function ZV needs to be computed
+only for the connected components, not for the entire graph.
+Computing ZV becomes tractable if the connected
+components are small (i.e., the constraint set is sparse).</p>
+        <p>
+          In order to automatically generate a sparse constraints
+set, we first implemented all the constraints in the form of
+edges and then used a graph partitioning algorithm
+          <xref ref-type="bibr" rid="ref13">(Hespanha, 2004)</xref>
+          to partition the constraint graph in such a way
+that none of the partitions are left with more than a
+predefined number of nodes. At the time of inference we used a
+“backtracking” algorithm
+          <xref ref-type="bibr" rid="ref25">(Tarjan, 1972)</xref>
+          to find the strongly
+connected components within the graph. To compute the
+expectation ETzU, we first computed the multinomial
+probabilities nk and then did an MRF update on each connected
+component by computing the probabilities of each
+possible state combination and summing the probability-weighted
+state matrices. The partition function is computed by
+summing the exponentiated sum of energy function of each state
+matrix. Note that isolated nodes (not part of any connected
+components) will not need their nk updated.
+        </p>
+        <p>The parameters of each of the distributions has
+dependency on moments of one or more of the other variables. We
+therefore find a locally optimum solution via an iterative
+process that starts with random initial values of the relevant
+moments and stops when the indicator variables Z stop
+changing. Note that once the approximate solution is reached, we
+can compute the marginal distributions over coefficients p.k/
+which is a Gaussian with mean .pk/ and variance 6p.kp/ for
+each k. We can thereby perform a t test to determine whether
+the corresponding feature has a non-zero coefficient.
+3.4</p>
+      </sec>
+    </sec>
+    <sec id="sec-8">
+      <title>Computational considerations</title>
+      <p>One computational bottleneck of the proposed VB algorithm
+is the inversion of the D D matrix in Eq. (21). If D &lt; N ,
+then faster matrix inversion can be achieved by first
+applying a Cholesky decomposition and then inverting the
+resulting upper triangular matrix. However, if D &gt; N , we can first
+apply a fast (approximate) singular value decomposition on
+6.k/ 1 and then use Woodbury matrix inversion identity so
+that we now have to invert a N N matrix instead.</p>
+      <p>We have truncated the infinite DP at K D 20 for most of
+our experiments. The speed of the algorithm can be further
+improved by parallelizing the updates for each of K
+components, which is straightforward as they are updated
+independent of each other. Another major computational challenge
+was the MRF updates. Apart from controlling the maximum
+size of the connected components, we parallelized the MRF
+updates over each subgraph by making the state generation
+independent of the previous state.
+4</p>
+    </sec>
+    <sec id="sec-9">
+      <title>Experiments</title>
+      <p>We have evaluated our method on both synthetic and climate
+data sets. Typical values used for the hyper-parameters were
+a0 D b0 D c0 D d0 D 0.01 and D 1. Selecting these values
+within a reasonable range does not affect the results
+significantly. We made sure that the cardinality of the largest
+connected component in the constraints graph never exceeds 8.
+4.1</p>
+    </sec>
+    <sec id="sec-10">
+      <title>Synthetic data set</title>
+      <p>We compared the performance of both constrained and
+unconstrained versions of our method with the non-parametric
+mixture of linear regression (NPMLR) model without any
+regularization. We set up three experiments: (1) to test
+whether or not our algorithm can learn the correct number
+of clusters; (2) to evaluate the effect of constraints; and (3) to
+check the sensitivity of our approach to noise.</p>
+      <p>For all our experiments involving synthetic data, we used
+N D 1000 data-points and D D 30 features. In our first set
+of experiments we tested our method for K D 2 . . . 5 actual
+clusters. Each column of the N D input matrix X is
+generated from a uniform distribution. For each value of K , we
+partitioned the input matrix X in K equal parts X1 . . . XK .
+Then for each partition Xk (k D 1 . . . K ), we generate sparse
+coefficients k by randomly selecting 10 out of 30
+components to be non-zero. We assign a value of 5 k (where k is the
+index of the cluster, k D 1, . . . , K ) to the non-zero
+components within the kth cluster so that two clusters are distinctly
+identifiable in case the indices of non-zero components of the
+clusters are the same. We then generate the output yk for the
+kth cluster using the linear regression model of Eq. (1). The
+fixed noise variance k 1 for the first experiment was
+generated by randomly choosing a number between 0 and 0.1 to
+introduce diversity. A final data set was obtained by
+merging fXk ; yk g for all k D 1 . . . K . The process is repeated
+30 times and mean and variance of the evaluation metrics
+were reported in the form of error bars for each value of K
+in Fig. 2. For all these experiments, the total number of
+constraints was kept at 20 per cluster while the size of the largest
+subgraph was kept below 7.</p>
+      <p>The second experiment was performed to evaluate the
+effect of number of “must link” constraints on the performance
+of the constrained version of the algorithm. Here, the actual
+number of clusters was fixed at K D 3 along with the base
+noise variance (0.1) and the number of constraints per
+cluster was varied from 0 to 30 incremented by 5, although the
+actual number of constraints may be less since we removed
+some constraints to achieve sparsity in the constraint graph.
+The result is reported in Fig. 3.</p>
+      <p>In our third experiment, we evaluated the effect of noise on
+the performance of our algorithm. Again, we kept the
+number of clusters fixed at K D 3 and the number of constraints
+fixed at 20 per cluster (for the constrained version). We varied
+the base noise level in each cluster from 0 to 0.5 and added
+a randomly generated value between 0 and 0.1 with the base
+noise level for each cluster to maintain diversity among the
+clusters. Average and variance of 30 repetitions are reported
+in Fig. 4.
+4.1.1</p>
+    </sec>
+    <sec id="sec-11">
+      <title>Evaluation metrics</title>
+      <p>We measured two aspects of the performance of our
+algorithm. First,we measured whether it can cluster the
+datapoints correctly. We put a data-point into one of the
+possible 20 components (since we truncated the infinite DP at
+K D 20 for all experiments) depending on the value of the
+row ETZUn (a vector) in the N 20 matrix ETZU estimated
+by the variational inference algorithm. The estimated cluster
+membership cOn (a scalar) is given by cOn D argmaxk ETZUnk .
+We retain all the valid components out of 20 possible, which
+have at least one member initially. Then we run an update
+algorithm to merge very small clusters with the closest larger
+ones. Note that the estimated cluster indices (a value
+between 1 and 20) may not correspond directly to the actual
+cluster indices (a value between 1 to actual value of K) since
+the variational inference algorithm is not aware of the actual
+order of the cluster indices (e.g., actual cluster index 1 may
+correspond to estimated cluster index 9). So we use a
+metric called normalized mutual information (NMI) that
+evaluates the match between estimated cluster memberships cO and
+actual ones c without needing direct correspondence. NMI
+is given by NMI.c; cO/ D Hp.cH/ .cH/H.c.cOjcO// , where H . / is the
+entropy. Higher NMI values mean that the clustering results are
+more similar to ground-truth. The metric reaches its
+maximum value of one when there is perfect agreement.</p>
+      <p>A second metric is used to evaluate the quality of the
+sparse regression model estimated within each discovered
+cluster. Here we are only interested in finding whether our
+algorithm picks the non-zero coefficients correctly. We use
+F score to measure the match between actual and estimated
+non-zero coefficients within each cluster. F score for the kth
+component is given by Fk D P2kPCkRRkk , where Pk is the
+precision and Rk is the recall of the estimated coefficients for the
+kth component. We reported the average of Fk values over all
+components discovered by our algorithm. Unlike the
+previous metric, here we need to know the direct correspondence
+between the cluster indices so that we can match the actual
+and estimated coefficient vectors. We developed an algorithm
+to find such a correspondence based on bipartite matching.
+4.1.2</p>
+    </sec>
+    <sec id="sec-12">
+      <title>Discussion of results</title>
+      <p>We can see the performance of all three algorithms are
+comparable in terms of identifying the clusters correctly,
+although the NMI value of NPMLR degrades significantly
+for K D 5. However, as desired, our method outperforms
+NPMLR in terms of correctly retrieving the sparse structure
+of regression coefficients within each cluster. There is a
+general downward trend of performance for all algorithms with
+increasing number of actual components in the data. This is
+an inherent problem with the DPM models as it tends to
+attach each new data-point to the largest current component,
+thereby favoring models with fewer components. Also, as the
+number of actual components grows, the probability of two
+components being similar increases.</p>
+      <p>The increased flexibility of non-parametric methods
+comes at a cost of hitting local optima being more likely and
+finding solutions that are not interpretable. Adding more
+constraints may decrease this probability but at the same time
+restricts the variational method from finding solutions
+leading to a larger lower bound, especially in the presence of
+more components in the data. Therefore increasing the
+number of constraints may result in more interpretable solutions,
+but not improved accuracy. It is also encouraging to see that
+our method is relatively robust to added noise, a major
+challenge with the real data sets, especially in terms of correctly
+identifying the sparse structure.
+4.2</p>
+    </sec>
+    <sec id="sec-13">
+      <title>Feature selection for downscaling rainfall</title>
+      <p>
+        A grand challenge in climate science relevant for
+adaptation and policy remains our inability to provide credible
+stakeholder-relevant “statistical downscaling”, or to develop
+statistical techniques for more accurate, precise and
+interpretable high-resolution projections with lower-resolution
+climate model data
+        <xref ref-type="bibr" rid="ref4">(Benestad et al., 2008)</xref>
+        . Regression
+models of statistical downscaling
+        <xref ref-type="bibr" rid="ref11 ref15 ref4">(Benestad et al., 2008; Ghosh,
+2010)</xref>
+        work by first selecting a set of climate variables that
+have information about the target variable, and then fitting a
+regression model to predict the target variable at higher
+resolution. In this application, selecting the right set of
+predictors is as important as building a prediction model since even
+a good prediction with a model that is physically not
+interpretable is less desirable as it may not generalize well. We
+focus on the feature selection problem for statistical
+downscaling of annual average rainfall. The use of annual averages
+reduces the amount of noise in the observed rainfall data,
+which enables us to examine the robustness of our methods
+with less ambiguity.
+      </p>
+      <p>
+        Existence of multiple states or patterns is acknowledged
+in regression-based statistical downscaling literature for
+rainfall
+        <xref ref-type="bibr" rid="ref11 ref15">(e.g., Kannan and Ghosh, 2010)</xref>
+        where parametric
+methods such as k-means were used to find distinct clusters. Here
+we used our model to simultaneously find clusters, if any,
+and select features for the purpose of statistical downscaling
+of station-observed annual average rainfall over two
+climatologically homogeneous regions over the continental US.
+Figure 5 shows the climatologically homogeneous regions over
+the US.
+      </p>
+      <p>
+        Since rainfall follows a log-normal distribution
+        <xref ref-type="bibr" rid="ref16">(Kedem
+and Chiu, 1987)</xref>
+        , the target variable we used is logarithm of
+annual average rainfall. In Fig. 6, we show the distribution of
+average rainfall over all sites in western US before and after
+taking the logarithm.
+      </p>
+      <p>
+        Potential features used can fall in one of two broad
+categories – local atmospheric variables and large-scale climate
+indices. Local covariates originate from each station and
+exhibit both spatial and temporal variability. Annual and
+seasonal averages of maximum temperature fall in this category
+along with sea level pressure (SLP), and convective available
+potential energy (CAPE). A dependence on any of these
+variables roughly indicates dominance of local convective
+rainfall in the region. Daily rainfall station data were obtained
+from US Historical Climatology Network (USHCN)
+        <xref ref-type="bibr" rid="ref7">(Easterling et al., 1996)</xref>
+        . All other features are described in Table 1.
+      </p>
+      <p>Climate indices are global variables that represent
+largescale signals in climate variables. A list of covariates used
+for each category is given in Table 1. A dependence on any
+of these variables roughly indicates rainfall due to large-scale
+circulation. In addition to these covariates, we have used
+elevation as a potential feature which falls under none of the
+above categories. This is the only feature that represents the
+geography of the region.</p>
+      <p>We could use the covariates between 1979 and 2011 as
+SLP and CAPE is available only for that period. Also, if more
+than 50 % of the daily observations in a year are found to
+be missing for any covariate at a specific location, we
+simply discarded all covariates for that year and for that specific
+location. We averaged monthly climate indices and daily
+local variables over a year. Finally the annual/seasonal
+average time-series of predictors for each station were merged
+for a homogeneous region under consideration. West (CA,</p>
+      <p>NV) and northwest (WA, OR, ID) regions are shown by gray
+shaded areas over the US map in Fig. 7 (left and right panels,
+respectively).</p>
+    </sec>
+    <sec id="sec-14">
+      <title>Results and discussion</title>
+      <p>We applied spatial “must-link” constraints among pairs of
+data-points from the same location. Ideally, if there are
+n points in a cluster, we will be required to put n2
+constraints to cover all pairs of data-points. To reduce
+complexity, initially we kept only those constraints that connect
+datapoints from consecutive years. However, this reduced set of
+constraints proved to be too restrictive and all data-points
+tended to merge into a single cluster. So, we kept
+removing the constraints in an intuitive manner until more than one
+cluster emerged for a region. We found more than one
+cluster for all regions except the southern region. We stopped
+removing constraints until new clusters stopped emerging
+for a region. Here we show only the clusters in the western
+and northwestern regions, since the majority of stations were
+mostly split into obtained clusters in these regions. In other
+regions, almost all stations had mixed membership. We
+assign a station to a cluster if more than 80 % of its data-points
+belong to that cluster.</p>
+      <p>A quick look at the histogram of target variable (right
+panel in Fig. 6) also supports the possibility of two distinct
+rainfall modes in the region. As mentioned earlier, we
+obtained one sparse linear model for each of the discovered
+components within a region. Since a non-zero coefficient in
+the sparse model implies dependence on the corresponding
+covariate, we can obtain interesting insights about the
+dependence of average rainfall on various atmospheric and climate
+indices from the coefficients of the individual sparse
+models within each cluster. Interestingly, in the northwest region
+there is only a single member station in the first component
+that exhibits dependence on the local temperature variables
+and SLP, whereas the larger cluster shows dependence on
+a larger number of climate indices. In the western region, the
+first cluster shows dependence on local temperature variables
+and the second cluster shows more dependence on
+largescale variables. Both clusters show dependence on elevation.
+While dependence on large-scale indices is not surprising
+for both these coastal regions due to the known effect of
+westerlies, dependence of smaller clusters (especially in the
+northwest) on local variables may hint at the existence of
+some regional small-scale atmospheric mechanisms. While
+spatially coherent clusters are more likely to occur in
+nature, geographical features such as mountains and lakes and
+even man-made structures such as large dams and reservoirs
+may abruptly disturb the spatial smoothness of clusters, since
+their presence may alter the climate pattern of the nearby
+areas with respect to the surrounding regions. However, before
+we can build statistical downscaling models, more rigorous
+statistical and physical analysis is required based on these
+preliminary insights obtained using our method. The clusters
+discovered here, and the corresponding covariates, can be
+utilized to develop individual non-linear prediction models per
+cluster.</p>
+      <p>DPMs automatically find the number of clusters K and
+adapt to varying values of K. However, DPMs prevent the
+model from “learning” an unnecessarily large value of K if
+a smaller K is sufficient to describe the model, thus
+managing complexity. Based on the results of experiments on the
+synthetic data set shown in Fig. 2, we found that the
+performance of the method degrades as the number of
+components K grows larger. We believe it is reasonable to expect
+that there will only be a limited number of distinct
+relationships between average rainfall and their covariates when we
+apply our method at the regional scale. However, even in
+situations where a large number of relationships exist within
+a particular region, our method may not be able to identify
+all of the distinct methods, but it can nevertheless be
+expected to outperform the use of a single model. The single
+model will attempt to learn a relationship that is the average
+of all distinct relations, while our approach will still attempt
+to distinguish among major categories of relationships even
+though some of them may be lumped together.
+5</p>
+    </sec>
+    <sec id="sec-15">
+      <title>Conclusions</title>
+      <p>In this paper, we propose a nonparametric Bayesian
+mixture of sparse regression models for simultaneous
+clustering and discovery of covariates within each cluster using a
+DP mixture model. Moreover, our model can accommodate
+prior knowledge about “must link” constraints between the
+pair of data-points using a Markov Random Field prior on
+the cluster membership variables. Our major contribution is
+to develop an efficient and scalable variational inference
+algorithm for inference on the fully Bayesian model. We
+applied our method to both synthetic and real climate data
+and successfully discovered multiple underlying behaviors
+in the data. Preliminary results of applying our method to
+feature selection for statistical downscaling of rainfall show
+promise towards finding new climate insights with
+appropriate caveats. Going forward, we would like to incorporate
+priors for diversity among the clusters in order to discourage
+merging of close but dissimilar clusters. We intend to extend
+our model for predictive analysis and build a full-scale
+statistical downscaling method using the features selected by the
+current model.</p>
+      <p>Acknowledgements. This work was funded by the NSF
+Expeditions in Computing grant “Understanding Climate Change: A
+Data Driven Approach”, award number 1029166. We thank the
+anonymous referees for their valuable suggestions and comments.</p>
+      <sec id="sec-15-1">
+        <title>Edited by: V. Kumar Reviewed by: three anonymous referees</title>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <string-name>
+            <surname>Antoniak</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          :
+          <article-title>Mixtures of Dirichlet processes with applications to Bayesian nonparametric problems</article-title>
+          , Ann. Stat.,
+          <volume>2</volume>
+          ,
+          <fpage>1152</fpage>
+          -
+          <lpage>1174</lpage>
+          ,
+          <year>1974</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          <string-name>
+            <surname>Bader</surname>
+            ,
+            <given-names>D. C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Covey</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gutkowski</surname>
+            Jr.,
+            <given-names>W. J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Held</surname>
+            ,
+            <given-names>I. M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kunkel</surname>
+            ,
+            <given-names>K. E.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Miller</surname>
+            ,
+            <given-names>R. L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tokmakian</surname>
+          </string-name>
+          , R. T., and Zhang, M. H.:
+          <article-title>Climate Models: An Assessment of Strengths and Limitations</article-title>
+          ,
+          <source>US Climate Change Science Program Synthesis and Assessment Product</source>
+          <volume>3</volume>
+          .1, Department of Energy,
+          <source>Office of Biological and Environmental Research</source>
+          ,
+          <volume>124</volume>
+          pp., available at: http://pubs.giss.nasa.gov/ docs/2008/2008_
+          <article-title>Bader_etal_1.pdf (last access: 20 July 2014</article-title>
+          ),
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          <string-name>
+            <surname>Basu</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bilenko</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Banerjee</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Mooney</surname>
+          </string-name>
+          , R.:
+          <article-title>Probabilistic semi-supervised clustering with constraints</article-title>
+          ,
+          <source>J. Mach. Learn. Res.</source>
+          ,
+          <volume>71</volume>
+          -
+          <fpage>98</fpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          <string-name>
+            <surname>Benestad</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hanssen-Bauer</surname>
+            ,
+            <given-names>I.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Chen</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          :
+          <string-name>
+            <surname>Empirical-Statistical</surname>
+            <given-names>Downscaling</given-names>
+          </string-name>
+          , World Scientific Publishing Company, New Jersey, London,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          <string-name>
+            <surname>Bishop</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Svenskn</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          :
+          <article-title>Bayesian hierarchical mixtures of experts</article-title>
+          ,
+          <source>in: Uncertainty in Artificial Intelligence</source>
+          , Morgan Kaufman, San Francisco, CA,
+          <fpage>57</fpage>
+          -
+          <lpage>64</lpage>
+          ,
+          <year>2002</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          <string-name>
+            <surname>Blei</surname>
+            ,
+            <given-names>D. M.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Jordan</surname>
+            ,
+            <given-names>M. I.</given-names>
+          </string-name>
+          :
+          <article-title>Variational inference for Dirichlet process mixtures</article-title>
+          ,
+          <source>Bayesian Anal.</source>
+          ,
+          <volume>1</volume>
+          ,
+          <fpage>121</fpage>
+          -
+          <lpage>143</lpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          <string-name>
+            <surname>Easterling</surname>
+            ,
+            <given-names>D. R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Karl</surname>
+            ,
+            <given-names>T. R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mason</surname>
+            ,
+            <given-names>E. H.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hughes</surname>
+          </string-name>
+          , P. Y., and
+          <string-name>
+            <surname>Bowman</surname>
+            ,
+            <given-names>D. P.</given-names>
+          </string-name>
+          :
+          <article-title>United States Historical Climatology Network (USHCN) Monthly Temperature</article-title>
+          and
+          <string-name>
+            <given-names>Precipitation</given-names>
+            <surname>Data</surname>
+          </string-name>
+          ,
+          <source>Tech. rep.</source>
+          , Oak Ridge National Laboratory, US Department of Energy, Oak Ridge, Tennessee, available at: http://cdiac.ornl. gov/epubs/ndp/ushcn/ushcn.html (last
+          <source>access: 2 April</source>
+          <year>2014</year>
+          ),
+          <year>1996</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          <string-name>
+            <surname>Ebtehaj</surname>
+            ,
+            <given-names>A. M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Foufoula-Georgiou</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Lerman</surname>
+          </string-name>
+          , G.:
+          <article-title>Sparse regularization for precipitation downscaling</article-title>
+          ,
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>117</volume>
+          ,
+          <fpage>1</fpage>
+          -
+          <lpage>12</lpage>
+          , doi:10.1029/2011JD017057,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          <string-name>
+            <surname>Ferguson</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          :
+          <article-title>A Bayesian analysis of some nonparametric problems</article-title>
+          , Ann. Stat.,
+          <volume>1</volume>
+          ,
+          <fpage>209</fpage>
+          -
+          <lpage>230</lpage>
+          ,
+          <year>1973</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          <string-name>
+            <surname>Geman</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Geman</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          :
+          <article-title>Stochastic relaxation, Gibbs distributions, and the Bayesian restoration of images</article-title>
+          , IEEE T.
+          <source>Pattern Anal., PAMI-6</source>
+          ,
+          <fpage>721</fpage>
+          -
+          <lpage>741</lpage>
+          ,
+          <year>1984</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          <string-name>
+            <surname>Ghosh</surname>
+            ,
+            <given-names>S.:</given-names>
+          </string-name>
+          <article-title>SVM-PGSL coupled approach for statistical downscaling to predict rainfall from GCM output</article-title>
+          ,
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>115</volume>
+          , D22102, doi:10.1029/2009JD013548,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          <string-name>
+            <surname>Greene</surname>
+            ,
+            <given-names>A. M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Robertson</surname>
+            ,
+            <given-names>A. W.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Smyth</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Triglia</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          :
+          <article-title>Downscaling projections of Indian monsoon rainfall using a nonhomogeneous hidden Markov model</article-title>
+          ,
+          <string-name>
+            <given-names>Q. J.</given-names>
+            <surname>Roy</surname>
+          </string-name>
+          .
+          <source>Meteorol. Soc.</source>
+          ,
+          <volume>137</volume>
+          ,
+          <fpage>347</fpage>
+          -
+          <lpage>359</lpage>
+          ,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          <string-name>
+            <surname>Hespanha</surname>
+            ,
+            <given-names>J. P.:</given-names>
+          </string-name>
+          <article-title>An efficient MATLAB Algorithm for Graph Partitioning</article-title>
+          ,
+          <source>Tech. rep.</source>
+          , University of California, Santa Barbara, available at: http://www.ece.ucsb.edu/~hespanha/techrep.html (last
+          <source>access: 2 April</source>
+          <year>2014</year>
+          ),
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          <string-name>
+            <surname>Ishwaran</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          <article-title>and</article-title>
+          <string-name>
+            <surname>James</surname>
+            ,
+            <given-names>L. F.</given-names>
+          </string-name>
+          :
+          <article-title>Gibbs sampling methods for stickbreaking priors</article-title>
+          ,
+          <source>J. Am. Stat. Assoc.</source>
+          ,
+          <volume>96</volume>
+          ,
+          <fpage>161</fpage>
+          -
+          <lpage>173</lpage>
+          ,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          <string-name>
+            <surname>Kannan</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Ghosh</surname>
+          </string-name>
+          , S.:
+          <article-title>Prediction of daily rainfall state in a river basin using statistical downscaling from GCM output</article-title>
+          ,
+          <source>Stoch. Env. Res. Risk. A.</source>
+          ,
+          <volume>25</volume>
+          ,
+          <fpage>457</fpage>
+          -
+          <lpage>474</lpage>
+          , doi:10.1007/s00477-010-0415- y,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          <string-name>
+            <surname>Kedem</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Chiu</surname>
+            ,
+            <given-names>L. S.</given-names>
+          </string-name>
+          :
+          <article-title>On the lognormality of rain rate, P. Natl</article-title>
+          .
+          <source>Acad. Sci. USA</source>
+          ,
+          <volume>84</volume>
+          ,
+          <fpage>901</fpage>
+          -
+          <lpage>905</lpage>
+          ,
+          <year>1987</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          <string-name>
+            <surname>Knutti</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          and Sedlácˇek, J.:
+          <article-title>Robustness and uncertainties in the new CMIP5 climate model projections</article-title>
+          ,
+          <source>Nat. Clim. Change</source>
+          ,
+          <volume>3</volume>
+          ,
+          <fpage>369</fpage>
+          -
+          <lpage>373</lpage>
+          , doi:10.1038/nclimate1716,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          <string-name>
+            <surname>Kumar</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kodra</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Ganguly</surname>
+            ,
+            <given-names>A. R.</given-names>
+          </string-name>
+          :
+          <article-title>Regional and seasonal intercomparison of CMIP3 and CMIP5 climate model ensembles for temperature and precipitation</article-title>
+          , Clim. Dynam.,
+          <volume>43</volume>
+          ,
+          <fpage>2491</fpage>
+          -
+          <lpage>2518</lpage>
+          , doi:10.1007/s00382-014
+          <source>-2070-3</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          <string-name>
+            <surname>Mesinger</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>DiMego</surname>
+          </string-name>
+          , G.,
+          <string-name>
+            <surname>Kalnay</surname>
+            , E., Mitchell,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shafran</surname>
+            ,
+            <given-names>P. C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ebisuzaki</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          , Jovic´,
+          <string-name>
+            <given-names>D.</given-names>
+            ,
+            <surname>Woollen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            ,
+            <surname>Rogers</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E.</given-names>
+            ,
+            <surname>Berbery</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E. H.</given-names>
+            ,
+            <surname>Ek</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. B.</given-names>
+            ,
+            <surname>Fan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            ,
+            <surname>Grumbine</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            ,
+            <surname>Higgins</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            ,
+            <surname>Li</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            ,
+            <surname>Lin</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            ,
+            <surname>Manikin</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.</given-names>
+            ,
+            <surname>Parrish</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            , and
+            <surname>Shi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>W.</surname>
+          </string-name>
+          : North American regional reanalysis,
+          <source>B. Am. Meteorol. Soc.</source>
+          ,
+          <volume>87</volume>
+          ,
+          <fpage>343</fpage>
+          -
+          <lpage>360</lpage>
+          , doi:10.1175/BAMS-87-3-
+          <issue>343</issue>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          <string-name>
+            <surname>NOAA: Climate</surname>
+            <given-names>Indices: Monthly</given-names>
+          </string-name>
+          <string-name>
+            <surname>Atmospheric</surname>
+          </string-name>
+          and Ocean Time Series, available at: http://www.esrl.noaa.gov/psd/data/ climateindices/list/,
+          <source>last access: 2 April</source>
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          <string-name>
+            <surname>Park</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Casella</surname>
+          </string-name>
+          , G.:
+          <article-title>The Bayesian LASSO</article-title>
+          ,
+          <string-name>
+            <surname>J. Am. Stat. Assoc.</surname>
+          </string-name>
+          ,
+          <volume>103</volume>
+          ,
+          <fpage>681</fpage>
+          -
+          <lpage>686</lpage>
+          , doi:10.1198/016214508000000337,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          <string-name>
+            <surname>Phatak</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bates</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Charles</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          :
+          <article-title>Statistical downscaling of rainfall data using sparse variable selection methods</article-title>
+          ,
+          <source>Environ. Modell. Softw.</source>
+          ,
+          <volume>26</volume>
+          ,
+          <fpage>1363</fpage>
+          -
+          <lpage>1371</lpage>
+          , doi:10.1016/j.envsoft.
+          <year>2011</year>
+          .
+          <volume>05</volume>
+          .007,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          <string-name>
+            <surname>Ross</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Dy</surname>
+          </string-name>
+          , J.:
+          <article-title>Nonparametric Mixture of Gaussian Processes with Constraints</article-title>
+          ,
+          <source>The 30th International Conference of Machine Learning</source>
+          , Atlanta,
+          <string-name>
+            <surname>GA</surname>
+          </string-name>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          <string-name>
+            <surname>Sethuraman</surname>
+            ,
+            <given-names>J.:</given-names>
+          </string-name>
+          <article-title>A constructive definition of Dirichlet priors</article-title>
+          ,
+          <source>Stat. Sinica</source>
+          ,
+          <volume>4</volume>
+          ,
+          <fpage>639</fpage>
+          -
+          <lpage>650</lpage>
+          ,
+          <year>1994</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          <string-name>
+            <surname>Tarjan</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          :
+          <article-title>Depth-first search and linear graph algorithms</article-title>
+          ,
+          <source>SIAM J. Comput.</source>
+          ,
+          <volume>1</volume>
+          ,
+          <fpage>146</fpage>
+          -
+          <lpage>160</lpage>
+          ,
+          <year>1972</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          <string-name>
+            <surname>Tibshirani</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          :
+          <article-title>Regression shrinkage and selection via the LASSO</article-title>
+          ,
+          <source>J. Roy. Stat. Soc. B</source>
+          ,
+          <volume>58</volume>
+          ,
+          <fpage>267</fpage>
+          -
+          <lpage>288</lpage>
+          ,
+          <year>1994</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          <string-name>
+            <surname>Wilby</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Charles</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zorita</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Timbal</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          :
+          <article-title>Guidelines for use of climate scenarios developed from statistical downscaling methods</article-title>
+          ,
+          <source>Tech. Rep. August</source>
+          ,
+          <article-title>Inter-Governmental Panel for Climate Change</article-title>
+          , available at: http://www.narccap.ucar.edu/doc/ tgica-guidance
+          <article-title>-2004.pdf (last access: 2 April 2014</article-title>
+          ),
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

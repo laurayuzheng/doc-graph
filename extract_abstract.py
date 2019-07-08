@@ -1,11 +1,16 @@
 from bs4 import BeautifulSoup
 import glob, os
+from pathlib import Path
 
 """
     This script extracts the title and the abstract from the XML file.
 """
 
 def extract(filename):
+    '''
+        extracts the abstract from the xml file based on the <abstract> or <p>
+        tags.
+    '''
     cont = True
 
     file = open(filename, 'r')
@@ -32,7 +37,7 @@ def extract(filename):
         abstract = abstracts[0].get_text()
     else:
         #print('there is no abstract tag! trying the body..')
-        print(paragraphs)
+        #print(paragraphs)
         # tries to find first non empty paragraph tag
         for p in paragraphs:
             if not p.get_text().isspace():
@@ -52,10 +57,12 @@ def extract(filename):
         file.write(abstract)
 
 if __name__ == "__main__":
-    read_path = '/Users/laurazheng/Desktop/NASA Project/xml-files/*.xml'
-    write_path = '/Users/laurazheng/Desktop/NASA Project/extracted_text/'
+    read_path = '/Users/laurazheng/Desktop/NASA Project/doc-graph/xml-files/*.xml'
+    write_path = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
     files = glob.glob(read_path)
 
     for filename in files:
         #print(filename)
-        extract(filename)
+        xml_file = Path(os.path.splitext(filename)[0] + '.txt')
+        if not xml_file.exists():
+            extract(filename)

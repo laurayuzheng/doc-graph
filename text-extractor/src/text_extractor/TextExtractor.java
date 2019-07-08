@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 import org.apache.commons.io.FilenameUtils;
 import org.jdom.Document;
@@ -19,10 +20,11 @@ import pl.edu.icm.cermine.exception.AnalysisException;
 public class TextExtractor {
 	
 	// paths to read pdfs from locally and to write xml files to
-	static String writePath = "/Users/laurazheng/Desktop/NASA Project/xml-files/";
+	static String writePath = "/Users/laurazheng/Desktop/NASA Project/doc-graph/xml-files/";
 	static String readPath = "/Users/laurazheng/Desktop/NASA Project/Papers/";
 
-	public static void main(String[] args) throws AnalysisException, IOException{		
+	public static void main(String[] args) throws AnalysisException, IOException{	
+		System.out.println("Working... ");
 		TextExtractor textExt = new TextExtractor();
 		
 		File dir = new File(readPath);
@@ -37,10 +39,13 @@ public class TextExtractor {
 		if (fileList != null) {
 			for (File child : fileList) {
 				title = FilenameUtils.removeExtension(child.getName());
-				textExt.writeXML(child.getName(), title + ".xml");
+				if (!textExt.checkXML(writePath + title)) {
+					textExt.writeXML(child.getName(), title + ".xml");
+				}
 			}
 		}
 //		textExt.writeXML("2016-Application_of_Deep_Convolutional_Neural_Networks_for_Detecting_Extreme_Weather_in_Climate_Datasets.pdf","CNN-extreme-weather.xml");
+		System.out.println("Finished!");
 	}
 	
 	private void writeXML(String filepath, String xmlName) throws AnalysisException, IOException{
@@ -49,7 +54,6 @@ public class TextExtractor {
 
 		extractor.setPDF(inputStream);
 		Element result = extractor.getContentAsNLM();
-//		System.out.println(result);
 		
 		Document doc = new Document();
 		doc.setRootElement(result);
@@ -59,6 +63,14 @@ public class TextExtractor {
 		xmlOutput.output(doc, new FileWriter(writePath + xmlName));
 		
 		System.out.println(xmlName + " Saved!");
+	}
+	
+	// checks whether or not the pdf has already been parsed to XML
+	private boolean checkXML(String paperName) {
+		boolean exists = false;
+		File temp = new File(paperName, ".xml");
+		exists = temp.exists();
+		return exists;
 	}
 	
 }
