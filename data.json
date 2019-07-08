@@ -1,0 +1,258 @@
+{
+    "nodes": [
+        {
+            "id": 1,
+            "label": "Adoption of Machine Learning Techniques in Ecology and Earth Science"
+        },
+        {
+            "id": 2,
+            "label": "Large-Scale Sentiment Analysis for News and Blogs"
+        },
+        {
+            "id": 2,
+            "label": "Large-Scale Sentiment Analysis for News and Blogs"
+        },
+        {
+            "id": 3,
+            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models"
+        },
+        {
+            "id": 3,
+            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models"
+        },
+        {
+            "id": 3,
+            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models"
+        },
+        {
+            "id": 4,
+            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
+        },
+        {
+            "id": 4,
+            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
+        },
+        {
+            "id": 4,
+            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
+        },
+        {
+            "id": 4,
+            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
+        },
+        {
+            "id": 5,
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+        },
+        {
+            "id": 5,
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+        },
+        {
+            "id": 5,
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+        },
+        {
+            "id": 5,
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+        },
+        {
+            "id": 5,
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+        },
+        {
+            "id": 6,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 6,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 6,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 6,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 6,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 6,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 7,
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        }
+    ],
+    "edges": [
+        {
+            "from": 1,
+            "to": 0,
+            "weight": 0.3135363269584388
+        },
+        {
+            "from": 2,
+            "to": 0,
+            "weight": 0.14167809564734463
+        },
+        {
+            "from": 2,
+            "to": 1,
+            "weight": 0.12496421539144452
+        },
+        {
+            "from": 3,
+            "to": 0,
+            "weight": 0.24513202849595112
+        },
+        {
+            "from": 3,
+            "to": 1,
+            "weight": 0.21155604931742233
+        },
+        {
+            "from": 3,
+            "to": 2,
+            "weight": 0.14442429464857312
+        },
+        {
+            "from": 4,
+            "to": 0,
+            "weight": 0.21176431355749037
+        },
+        {
+            "from": 4,
+            "to": 1,
+            "weight": 0.17773773011067606
+        },
+        {
+            "from": 4,
+            "to": 2,
+            "weight": 0.15158510279420268
+        },
+        {
+            "from": 4,
+            "to": 3,
+            "weight": 0.2958565674280056
+        },
+        {
+            "from": 5,
+            "to": 0,
+            "weight": 0.24078653895947433
+        },
+        {
+            "from": 5,
+            "to": 1,
+            "weight": 0.19137429465956848
+        },
+        {
+            "from": 5,
+            "to": 2,
+            "weight": 0.18436248029801905
+        },
+        {
+            "from": 5,
+            "to": 3,
+            "weight": 0.26334242770935506
+        },
+        {
+            "from": 5,
+            "to": 4,
+            "weight": 0.3133508225040423
+        },
+        {
+            "from": 6,
+            "to": 0,
+            "weight": 0.23625004683996934
+        },
+        {
+            "from": 6,
+            "to": 1,
+            "weight": 0.18357673438757674
+        },
+        {
+            "from": 6,
+            "to": 2,
+            "weight": 0.11774847385964474
+        },
+        {
+            "from": 6,
+            "to": 3,
+            "weight": 0.1936082415736312
+        },
+        {
+            "from": 6,
+            "to": 4,
+            "weight": 0.16751559173662206
+        },
+        {
+            "from": 6,
+            "to": 5,
+            "weight": 0.14881681602500513
+        },
+        {
+            "from": 7,
+            "to": 0,
+            "weight": 0.2391906735381725
+        },
+        {
+            "from": 7,
+            "to": 1,
+            "weight": 0.17650471823343516
+        },
+        {
+            "from": 7,
+            "to": 2,
+            "weight": 0.14203459671780472
+        },
+        {
+            "from": 7,
+            "to": 3,
+            "weight": 0.23341505859120384
+        },
+        {
+            "from": 7,
+            "to": 4,
+            "weight": 0.2453618632564502
+        },
+        {
+            "from": 7,
+            "to": 5,
+            "weight": 0.2028096373547274
+        },
+        {
+            "from": 7,
+            "to": 6,
+            "weight": 0.15127534150647778
+        }
+    ]
+}
