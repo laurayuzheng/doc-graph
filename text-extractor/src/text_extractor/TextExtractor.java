@@ -20,8 +20,9 @@ import pl.edu.icm.cermine.exception.AnalysisException;
 public class TextExtractor {
 	
 	// paths to read pdfs from locally and to write xml files to
-	static String writePath = "/Users/laurazheng/Desktop/NASA Project/doc-graph/xml-files/";
-	static String readPath = "/Users/laurazheng/Desktop/NASA Project/Papers/";
+	static String parentDirectory = (new File(System.getProperty("user.dir"))).getParent();
+	static String writePath = parentDirectory + "/xml-files/";
+	static String readPath = parentDirectory + "/Papers/";
 
 	public static void main(String[] args) throws AnalysisException, IOException{	
 		System.out.println("Working... ");
@@ -44,7 +45,6 @@ public class TextExtractor {
 				}
 			}
 		}
-//		textExt.writeXML("2016-Application_of_Deep_Convolutional_Neural_Networks_for_Detecting_Extreme_Weather_in_Climate_Datasets.pdf","CNN-extreme-weather.xml");
 		System.out.println("Finished!");
 	}
 	

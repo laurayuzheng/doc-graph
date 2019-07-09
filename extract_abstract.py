@@ -57,8 +57,9 @@ def extract(filename):
         file.write(abstract)
 
 if __name__ == "__main__":
-    read_path = '/Users/laurazheng/Desktop/NASA Project/doc-graph/xml-files/*.xml'
-    write_path = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    read_path = dir_path + '/xml-files/*.xml'
+    write_path = dir_path + '/extracted_text/'
     files = glob.glob(read_path)
 
     for filename in files:
