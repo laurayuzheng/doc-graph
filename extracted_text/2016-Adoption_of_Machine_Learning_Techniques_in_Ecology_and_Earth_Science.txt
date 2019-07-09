@@ -1,0 +1,12 @@
+Adoption of Machine Learning Techniques in Ecology and Earth Science
+
+Background
+The natural sciences, such as ecology and earth science, study complex interactions
+between biotic and abiotic systems in order to understand and make predictions.
+Machinelearning-based methods have an advantage over traditional statistical methods in studying
+these systems because the former do not impose unrealistic assumptions (such as
+linearity), are capable of inferring missing data, and can reduce long-term expert
+annotation burden. Thus, a wider adoption of machine learning methods in ecology and
+earth science has the potential to greatly accelerate the pace and quality of science.
+Despite these advantages, the full potential of machine learning techniques in ecology and
+earth science has not be fully realized.

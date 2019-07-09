@@ -23,7 +23,7 @@ def get_similarities(text_files):
 
 # how to construct data? need use a dictionary from pairwise_similarity above
 # arguments: m for similarity matrix
-def create_json(m):
+def create_json(m, text_files):
     ''' Description:
         - creates json file using python, loads it into a json file for vis.js
 
@@ -51,8 +51,9 @@ def create_json(m):
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-if __name__ == '__main__':
-    text_files = glob.glob(directory + '*.txt')
-    similarities = get_similarities(text_files)
-    #print(similarities.A)
-    create_json(similarities.A)
+#if __name__ == '__main__':
+#    text_files = glob.glob(directory + '*.txt')
+#    similarities = get_similarities(text_files)
+    # print(similarities.A)
+#    create_json(similarities.A)
+#    print('finished!')

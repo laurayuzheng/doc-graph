@@ -6,7 +6,7 @@ from pathlib import Path
     Extracts the title and the abstract from the XML file.
 '''
 
-def extract(filename):
+def extract(filename, write_path):
     ''' Description:
         - extracts the abstract based on the <abstract> or <p> tags.
 
@@ -39,7 +39,7 @@ def extract(filename):
         cont = False
 
     abstract = ''
-    if not abstracts[0].get_text().isspace():
+    if abstracts and not abstracts[0].get_text().isspace():
         abstract = abstracts[0].get_text()
     else:
         #print('there is no abstract tag! trying the body..')
@@ -63,15 +63,15 @@ def extract(filename):
         file.write('\n')
         file.write(abstract)
 
-if __name__ == "__main__":
-
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    read_path = dir_path + '/xml-files/*.xml'
-    write_path = dir_path + '/extracted_text/'
-    files = glob.glob(read_path)
-
-    # extracts from list of string paths
-    for filename in files:
-        xml_file = Path(os.path.splitext(filename)[0] + '.txt')
-        if not xml_file.exists():
-            extract(filename)
+#if __name__ == "__main__":
+#
+#    dir_path = os.path.dirname(os.path.realpath(__file__))
+#    read_path = dir_path + '/xml-files/*.xml'
+#    write_path = dir_path + '/extracted_text/'
+#    files = glob.glob(read_path)
+#
+#    # extracts from list of string paths
+#    for filename in files:
+#        xml_file = Path(os.path.splitext(filename)[0] + '.txt')
+#        if not xml_file.exists():
+#            extract(filename)

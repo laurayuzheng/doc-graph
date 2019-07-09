@@ -2,41 +2,53 @@
     "nodes": [
         {
             "id": 0,
-            "label": "Machine Learning for the Geosciences: Challenges and Oppor tunities"
+            "label": "Temporal neural networks for downscaling climate variability * and extremes"
         },
         {
             "id": 1,
-            "label": "Adoption of Machine Learning Techniques in Ecology and Earth Science"
+            "label": "Machine Learning for the Geosciences: Challenges and Oppor tunities"
         },
         {
             "id": 2,
-            "label": "Large-Scale Sentiment Analysis for News and Blogs"
+            "label": "Adoption of Machine Learning Techniques in Ecology and Earth Science"
         },
         {
             "id": 3,
-            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models"
+            "label": "Machine learning phases of matter"
         },
         {
             "id": 4,
-            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
+            "label": "Large-Scale Sentiment Analysis for News and Blogs"
         },
         {
             "id": 5,
-            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models"
         },
         {
             "id": 6,
-            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
         },
         {
             "id": 7,
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+        },
+        {
+            "id": 8,
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+        },
+        {
+            "id": 9,
             "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+        },
+        {
+            "id": 10,
+            "label": "SoilGrids250m: Global gridded soil information based on machine learning"
         }
     ],
     "edges": [
         {
-            "from": 1,
-            "to": 0
+            "from": 2,
+            "to": 1
         },
         {
             "from": 3,
@@ -47,8 +59,8 @@
             "to": 1
         },
         {
-            "from": 4,
-            "to": 0
+            "from": 3,
+            "to": 2
         },
         {
             "from": 4,
@@ -60,19 +72,31 @@
         },
         {
             "from": 5,
-            "to": 3
+            "to": 1
         },
         {
             "from": 5,
-            "to": 4
+            "to": 3
         },
         {
             "from": 6,
             "to": 0
         },
         {
+            "from": 6,
+            "to": 3
+        },
+        {
+            "from": 6,
+            "to": 5
+        },
+        {
             "from": 7,
             "to": 0
+        },
+        {
+            "from": 7,
+            "to": 1
         },
         {
             "from": 7,
@@ -80,11 +104,71 @@
         },
         {
             "from": 7,
-            "to": 4
+            "to": 5
         },
         {
             "from": 7,
+            "to": 6
+        },
+        {
+            "from": 8,
+            "to": 1
+        },
+        {
+            "from": 8,
+            "to": 3
+        },
+        {
+            "from": 9,
+            "to": 0
+        },
+        {
+            "from": 9,
+            "to": 1
+        },
+        {
+            "from": 9,
+            "to": 3
+        },
+        {
+            "from": 9,
             "to": 5
+        },
+        {
+            "from": 9,
+            "to": 6
+        },
+        {
+            "from": 10,
+            "to": 0
+        },
+        {
+            "from": 10,
+            "to": 1
+        },
+        {
+            "from": 10,
+            "to": 2
+        },
+        {
+            "from": 10,
+            "to": 3
+        },
+        {
+            "from": 10,
+            "to": 5
+        },
+        {
+            "from": 10,
+            "to": 6
+        },
+        {
+            "from": 10,
+            "to": 7
+        },
+        {
+            "from": 10,
+            "to": 9
         }
     ]
 }

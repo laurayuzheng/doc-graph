@@ -1,0 +1,3 @@
+Large-Scale Sentiment Analysis for News and Blogs
+
+Newspapers and blogs express opinion of news entities (people, places, things) while reporting on recent events. We present a system that assigns scores indicating positive or negative opinion to each distinct entity in the text corpus. Our system consists of a sentiment identi cation phase, which associates expressed opinions with each relevant entity, and a sentiment aggregation and scoring phase, which scores each entity relative to others in the same class. Finally, we evaluate the signi cance of our scoring techniques over large corpus of news and blogs.

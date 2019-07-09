@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-title-group>
+        <journal-title>Neural Networks</journal-title>
+      </journal-title-group>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.1016/j.neunet.2006.01.003</article-id>
+      <title-group>
+        <article-title>Temporal neural networks for downscaling climate variability * and extremes</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Yonas B. Dibike</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Paulin Coulibaly</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Department of Civil Engineering, School of Geography and Earth Sciences, McMaster University</institution>
+          ,
+          <addr-line>1280 Main Street West, Hamilton, Ont.</addr-line>
+          ,
+          <country country="CA">Canada</country>
+          <addr-line>L8S 4L7</addr-line>
+        </aff>
+      </contrib-group>
+      <pub-date>
+        <year>2006</year>
+      </pub-date>
+      <volume>19</volume>
+      <issue>2006</issue>
+      <fpage>135</fpage>
+      <lpage>144</lpage>
+      <abstract>
+        <p>This paper presents an application of temporal neural networks for downscaling global climate models (GCMs) output. Because of computational constraints, GCMs are usually run at coarse grid resolution (in the order of 100s of kilometres) and as a result they are inherently unable to present local sub-grid scale features and dynamics. Consequently, outputs from these models cannot be used directly in many climate change impact studies. This research explored the issues of 'downscaling' the outputs of GCMs using a temporal neural network (TNN) approach. The method is proposed for downscaling daily precipitation and temperature series for a region in northern Quebec, Canada. The downscaling models are developed and validated using large-scale predictor variables derived from the National Center for Environmental Prediction (NCEP) reanalysis data set. The performance of the temporal neural network downscaling model is also compared to a regression-based statistical downscaling model with emphasis on their ability in reproducing the observed climate variability and extremes. The downscaling results for the base period (1961-2000) suggest that the TNN is an efficient method for downscaling both daily precipitation as well as daily maximum and minimum temperature series. Furthermore, the different model test results indicate that the TNN model mostly outperforms the statistical models for the downscaling of daily precipitation extremes and variability. q 2006 Elsevier Ltd. All rights reserved. * This work was made possible through a grant from the Canadian Climate Change Action Fund, Environment Canada, and a grant from the Natural Sciences and Engineering Research Council of Canada. The authors would like to thank the Aluminum Company of Canada (Alcan) for providing the experiment data. * Corresponding author. Tel.: C1 905 525 9140x23354; fax: C1 905 546 0463. E-mail address: couliba@mcmaster.ca (P. Coulibaly).</p>
+      </abstract>
+      <kwd-group>
+        <kwd>Neural networks</kwd>
+        <kwd>Downscaling</kwd>
+        <kwd>Climate change</kwd>
+        <kwd>Global climate models</kwd>
+        <kwd>Climate variables</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>www.elsevier.com/locate/neunet</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1. Introduction</title>
+      <p>
+        The mathematical models used to simulate the present
+climate and project future climate with forcing by greenhouse
+gases and aerosols are generally referred to as global climate
+models (GCMs). However, the spatial resolution of GCMs
+remains quite coarse, in the order of 100s of kilometres, and at
+that scale, the regional and local details of the climate, which
+are influenced by spatial heterogeneities in the regional
+physiography, are lost. GCMs are therefore inherently unable
+to represent local sub-grid scale features and dynamics, such as
+local topographical features and convective cloud processes
+        <xref ref-type="bibr" rid="ref18 ref20">(Wigley, Jones, Briffa, &amp; Smith, 1990; Xu, 1999)</xref>
+        . Therefore,
+GCM simulations of local climate at individual grid points are
+often poor especially when the area has complex topography
+        <xref ref-type="bibr" rid="ref13">(Schubert, 1998)</xref>
+        . However, in most climate change impact
+studies, such as hydrological impacts of climate change, impact
+models are usually required to simulate sub-grid scale
+phenomenon and therefore require input data (such as
+precipitation and temperature) at similar sub-grid scale. For
+instance, precipitation scenarios at such finer temporal and
+spatial resolution are needed in order to improve the design and
+evaluate the future performance of urban drainage systems
+        <xref ref-type="bibr" rid="ref1">(Bronstert, Niehoff, &amp; Bu¨ rger, 2002)</xref>
+        . Therefore, there is the
+need to convert the GCM outputs into at least a reliable daily
+rainfall and temperature time series at the scale of the
+watershed for which the hydrological impact is going to be
+investigated. The methods used to convert GCM outputs into
+local meteorological variables that are required for reliable
+modeling of hydraulics and water recourses systems are usually
+referred to as ‘downscaling’ techniques.
+      </p>
+      <p>
+        There are various downscaling techniques available to
+convert GCM outputs into daily meteorological variables
+appropriate for hydrologic impact studies. The most widely
+used statistical downscaling models usually implement linear
+methods such as local scaling, multiple linear regression,
+Canonical correlation analysis or singular value
+decomposition
+        <xref ref-type="bibr" rid="ref11 ref14 ref2">(Conway, Wilby, &amp; Jones, 1996; Salathe, 2003;
+Schubert &amp; Henderson-Sellers, 1997)</xref>
+        . However, while
+changes in the frequency and intensity of extreme events
+are likely to have more of an impact on the environment and
+human activities, most research works are focused mainly on
+analyzing the ability of these downscaling models in
+reproducing the average conditions of the present and future
+climate events. Therefore, it is not yet clear which statistical
+downscaling method provides the most reliable estimates of
+daily rainfall and temperature as well as the intensity and
+frequency of extreme climate events for the future horizon
+        <xref ref-type="bibr" rid="ref20">(Xu, 1999)</xref>
+        . Nevertheless, the interest in non-linear regression
+methods, namely, artificial neural networks (ANNs), is
+nowadays increasing because of their high potential for
+complex, non-linear and time-varying input–output mapping.
+Although the weights of an ANN are similar to non-linear
+regression coefficients, the unique structure of the network
+and the non-linear transfer function associated with each
+hidden and output nodes allows ANNs to approximate highly
+non-linear relationships without a priori assumption.
+Moreover, while other regression techniques assume a functional
+form, ANNs allow the data to define the functional form.
+Therefore, ANNs are generally believed to be more powerful
+than the other regression-based downscaling techniques
+        <xref ref-type="bibr" rid="ref16">(von
+Storch, Hewitson, &amp; Mearns, 2000)</xref>
+        . The simplest form of
+ANN (i.e. multi-layer perceptron) is reported to give similar
+results compared to multiple regression downscaling methods
+        <xref ref-type="bibr" rid="ref12">(Schoof &amp; Pryor, 2001)</xref>
+        . It is also reported
+        <xref ref-type="bibr" rid="ref17">(Weichert &amp;
+Burger, 1998)</xref>
+        that ANN models account better heavy rainfall
+events, which may not be identified by a linear regression
+downscaling technique. Nevertheless, some studies have also
+shown that standard ANN method commonly used for
+hydrologic variables modeling is not well suited to temporal
+sequences processing, and often yield sub-optimal solutions
+        <xref ref-type="bibr" rid="ref3 ref4 ref5 ref9">(Coulibaly, Anctil, Aravena, &amp; Bobe´e, 2001a; Dibike &amp;
+Coulibaly, 2005)</xref>
+        . There are, however, other categories of
+neural networks that have memory structure to account for
+temporal relationships in the input–output mappings, and
+they appear to be more suitable for complex non-linear
+system modelling
+        <xref ref-type="bibr" rid="ref3 ref4 ref7 ref9">(Coulibaly, Anctil, Aravena, &amp; Bobe´e,
+2001b; Gautam &amp; Holz, 2000)</xref>
+        . More recently,
+        <xref ref-type="bibr" rid="ref15">Tatli, Dalfes,
+and Mente (2004</xref>
+        ) proposed recurrent neural network of
+Jordan type that uses not only large-scale predictors, but also
+the previous states of the relevant local-scale variables.
+      </p>
+      <p>
+        The purpose of this study is therefore to identify optimal
+temporal neural networks that can capture the complex
+relationship between selected large-scale predictors and
+locally observed meteorological variables (or predictands).
+Moreover, the paper aims to highlight the applicability of
+temporal neural networks as downscaling methods for
+improving daily precipitation and temperature estimates at
+a local-scale with emphasis on its ability to capture climate
+variability and extremes. The downscaling models are
+developed and validated using large-scale predictor variables
+derived from the National Center for Environmental
+Prediction (NCEP) reanalysis data set. The paper specifically
+focuses on the time lagged feed-forward neural networks
+(TLFN), which have temporal processing capability without
+resorting to complex and costly training methods. In
+addition, emphasis is given to evaluating and comparing
+the optimal TLFN method with the most commonly used
+regression-based downscaling method and the best models
+are applied to downscale the outputs of the Canadian global
+climate model (CGCM1) forced with IPCC IS92a emission
+scenario
+        <xref ref-type="bibr" rid="ref8">(IPCC, 2001)</xref>
+        .
+      </p>
+    </sec>
+    <sec id="sec-3">
+      <title>2. Downscaling methods: an overview</title>
+      <p>
+        Spatial ‘downscaling’ is the means of relating the
+largescale atmospheric predictor variables simulated by GCMs to
+local or station-scale meteorological records. There are a
+variety of downscaling techniques in the literature, but two
+major approaches can be identified at the moment, namely,
+dynamic downscaling and empirical (statistical) downscaling.
+Dynamic downscaling approach is a method of extracting
+local-scale information by developing regional climate models
+(RCMs) with the coarse GCM data used as boundary
+conditions. Empirical downscaling, on the other hand, starts
+with the premise that the regional climate is the result of
+interplay of the overall atmospheric and oceanic circulation as
+well as of regional topography, land–sea distribution and land
+use
+        <xref ref-type="bibr" rid="ref16">(von Storch et al., 2000)</xref>
+        . As such, empirical downscaling
+seeks to derive the local-scale information from the
+largerscale climate variables through inference from the cross-scale
+relationship using some random and/or deterministic functions.
+Formally, the concept of regional climate being conditioned by
+the large-scale state may be written as
+(1)
+R Z FðLÞ
+where R represents the predictand (a regional or local climate
+variable such as daily precipitation and temperature), L is the
+predictor (a set of large-scale climate variables such as mean
+sea level pressure, specific humidity, geopotential heights,
+etc.), and F a deterministic/stochastic function conditioned by
+L and has to be found empirically from observation or modeled
+data sets. The predictor value L may be taken at the same time
+as that of the predictand R or at some other time based on some
+sort of correlation analysis.
+      </p>
+      <p>
+        A diverse range of empirical downscaling techniques have
+been developed over the past few years and individual
+downscaling schemes differ according to the choice of
+mathematical transfer function, predictor variables or
+statistical fitting procedure. To date, linear and non-linear regression,
+artificial neural networks, canonical correlation and principal
+component analysis have all been used to derive predictor–
+predictand relationships
+        <xref ref-type="bibr" rid="ref14 ref2">(Conway et al., 1996; Schubert &amp;
+Henderson-Sellers, 1997)</xref>
+        . One of the well-recognized
+statistical downscaling tools that implements a regression-based
+method is the statistical down-scaling model (SDSM)
+        <xref ref-type="bibr" rid="ref19">(Wilby,
+Dawson, &amp; Barrow, 2002)</xref>
+        . SDSM is used in this study as a
+benchmark model as it appears to be one of the most widely
+used model for precipitation and temperature downscaling.
+SDSM calculates statistical relationships, based on multiple
+linear regression techniques, between large-scale (the
+predictors) and local climate variables (the predictand). These
+relationships are developed using observed weather data and,
+assuming that these relationships remain valid in the future,
+they can be used to obtain downscaled local information for
+some future time period by driving the relationships with
+predictors simulated by GCMs. Moreover, different types of
+data transformations (e.g. logarithms, squares, cubes, fourth
+powers) can be applied to the standard predictor variables prior
+to downscaling model calibration to produce non-linear
+regression models.
+      </p>
+      <p>While the main appeal of regression-based downscaling is
+the relative ease of their application; however, these models
+often explain only a fraction of the observed climate variability
+(especially, when the predictand is precipitation). SDSM
+implements bias correction and variance inflation techniques
+to reduce the standard error of estimate and increase the
+amount of variance explained by the model(s) to achieve the
+best possible downscaling performance. However, some
+preliminary studies have shown that SDSM is not as good in
+reproducing climate variability and extremes as capturing the
+average condition, especially when the predictand is
+precipitation. This paper attempts to show the possibility of using
+temporal neural network to improve downscaling results in
+terms of reproducing climate variability and extremes.</p>
+    </sec>
+    <sec id="sec-4">
+      <title>3. Temporal neural network method</title>
+      <p>
+        A neural network can be characterized by its architecture,
+which is represented by the network topology and pattern of
+connections between the nodes, its method of determining the
+connection weights, and the activation functions that it
+employs. Multi-layer perceptrons (MLPs), which constitute
+probably the most widely used network architecture, are
+composed of a hierarchy of processing units organized in a
+series of two or more mutually exclusive sets of neurons or
+layers. The information flow in the network is restricted to a
+flow, layer by layer, from the input to the output, hence also
+called feed-forward network. However, in temporal problems,
+measurements from physical systems are no longer an
+independent set of input samples, but functions of time. To
+exploit the time structure in the inputs, the neural network must
+have access to this time dimension. While feed-forward, neural
+networks are popular in many application areas, they are not
+well suited for temporal sequences processing due to the lack
+of time delay and/or feedback connections necessary to provide
+a dynamic model. They can be used as pseudo-dynamic models
+only by using successively lagging multiple inputs based on
+correlation and mutual information analysis of the input data.
+There are however various types of neural networks that have
+internal memory structures that can store the past values of
+input variables through time and there are different ways of
+introducing ‘memory’ in a neural network in order to develop a
+temporal neural network. Time lagged feed-forward networks
+(TLFN) and recurrent networks (RNN) are the two major
+groups of dynamic neural networks mostly used in time series
+analysis
+        <xref ref-type="bibr" rid="ref3 ref4 ref6">(Coulibaly et al., 2001a,b; Dibike, Solomatine, &amp;
+Abbott, 1999)</xref>
+        . However, the latter require complex training
+Fig. 1. Schematization of the Time lagged feed-forward neural network (TLFN)
+with one hidden layer, one input variable and a delay-line with memory depth
+of k.
+algorithms and hence are computationally costly. The analysis
+in this paper concerns temporal neural networks that can be
+easily trained for practical application.
+      </p>
+      <p>Time lagged feed-forward neural network (TLFN) is a
+neural network that can be formulated by replacing the neurons
+in the input layer of an MLP with a memory structure, which is
+sometimes called a tap delay-line. The size of the memory
+layer (the tap delay) depends on the number of past samples
+that are needed to describe the input characteristics in time and
+it has to be determined on a case-by-case basis. TLFN uses
+delay-line processing elements, which implement memory by
+simply holding past samples of the input signal as shown in
+Fig. 1. The output (y) of such a network with one hidden layer
+is given by
+yðnÞ Z 41</p>
+      <p>Z 41
+m
+X wjyjðnÞ C b0
+jZ1</p>
+      <p>!
+m
+X wj42
+jZ1</p>
+      <p>k
+X wjixðnK1Þ C bj
+jZ0
+!</p>
+      <p>!
+C b0
+where m is the size of the hidden layer, n is the time step, wj is
+the weight vector for the connection between the hidden and
+output layers, wji is the weight matrix for the connection
+between the input and hidden layers and f1 and f2 are transfer
+functions at the output and hidden layers, respectively. bj and
+b0 are additional network parameters (often called biases) to be
+determined during training of the networks with observed
+input/output data sets. For the case of multiple inputs (of size
+p), the delay-line with a memory depth k can be represented by
+cðnÞ Z ½XðnÞ; XðnK1Þ; .; XðnKk C 1Þ
+where XðnÞZ ðx1ðnÞ; x2ðnÞ; .; xpðnÞÞ and represents the input
+pattern at time step n, xj(n) is an individual input at the nth time
+step and c(n) is the combined input matrix to the processing
+elements at time step n. Such delay-line only ‘remembers’ k
+samples in the past.</p>
+      <p>
+        An interesting feature of the TLFN is that the tap delay-line
+at the input does not have any free parameters; therefore the
+network can still be trained with the classical backpropagation
+algorithm. The TLFN topology has been successfully used in
+non-linear system identification, time series prediction
+(2)
+(3)
+        <xref ref-type="bibr" rid="ref3 ref4">(Coulibaly et al., 2001b)</xref>
+        , and temporal pattern recognition
+        <xref ref-type="bibr" rid="ref10">(Principe, Euliano, &amp; Lefebvre, 2000)</xref>
+        . A major advantage of
+the TLFN is that it is less complex than the conventional time
+delay and recurrent networks and has the similar temporal
+patterns processing capability
+        <xref ref-type="bibr" rid="ref6">(Dibike et al., 1999)</xref>
+        .
+      </p>
+    </sec>
+    <sec id="sec-5">
+      <title>4. Study area and data</title>
+      <p>
+        The study area considered in this paper is the Serpent River
+basin located in the Saguenay watershed (Fig. 2) of Quebec,
+Canada. The basin has an area of 1760 km2 and is located in the
+eastern part of the watershed. The meteorological station at
+Chute-des-Passes (located at 49.98N, 71.258W) is the closest to
+the Serpent River basin; therefore, the meteorological data
+observed at this station is used for downscaling experiments.
+Forty years of daily total precipitation as well as daily
+maximum and minimum temperature records representing
+the current climate (i.e. 1961–2000) were prepared for the
+downscaling experiments. At the same time, observed daily
+data of large-scale predictor variables representing the current
+climate condition of the region is derived from the NCEP
+reanalysis dataset
+        <xref ref-type="bibr" rid="ref9">(Kistler et al., 2001)</xref>
+        .
+      </p>
+      <p>Climate variables corresponding to the future climate
+change scenario for the study area are extracted from the
+Canadian global climate model (CGCM1). The atmospheric
+component of the CGCM1 model has a surface grid resolution
+of roughly 3.78!3.78 (400 km). The CGCM1 output used for
+this study is the result of the IPCC ‘IS92a’ forcing scenario in
+which the change in greenhouse gases forcing corresponds to
+that observed from 1900 to 1990 and increases at a rate 1% per
+year thereafter until year 2100. The direct effect of sulphate
+aerosols is also included. CGCM1 outputs at the closest grid
+point to the study area (508N, 718W) are used as inputs for the
+downscaling models. The data is divided into four distinct
+periods, namely, the current (covering the 40 years period
+between 1961 and 2000), the 2020s (2010–2039), the 2050s
+(2040–2069) and the 2080s (2070–2099). The NCEP-derived
+predictor data have also been interpolated onto the same grid as
+that of the CGCM1. All predictors in these data sets have been
+normalized with respect to the 1961–1990 mean and standard
+deviation and were made available by the Canadian Climate
+Impacts Scenarios (CCIS) project.</p>
+    </sec>
+    <sec id="sec-6">
+      <title>5. Neural network design and training</title>
+      <p>
+        The neural network models in this study are developed
+using the Neuro-Solutions neural networks development
+environment
+        <xref ref-type="bibr" rid="ref10">(Principe et al., 2000)</xref>
+        . Inputs to the neural
+networks are the 25 predictor variables derived from the
+NCEP reanalysis dataset which are presented in Table 1 while
+the outputs are daily precipitation amounts, and daily
+maximum and minimum temperatures observed in the study
+area. All the three climate variables are modeled separately.
+First, TLFNs with different lag time (time delay) are trained
+with all (the 22) predictor variables as input to the networks
+and the best performing network is selected. Hyperbolic
+tangent activation function is used at both the hidden and
+output layers of the neural networks and the networks are
+trained using a variation of backpropation algorithm
+        <xref ref-type="bibr" rid="ref10">(Principe
+et al., 2000)</xref>
+        . In order to increase the generalizing ability of the
+trained networks, the most relevant input variables (predictors)
+are identified by performing sensitivity analysis on the selected
+TLFN. Sensitivity analysis provides a measure of the relative
+importance among the predictors (inputs of the neural network)
+by calculating how the model output varies in response to
+variation of an input. The relative sensitivity of the model to
+each input is calculated by dividing the standard deviation of
+the output by the standard deviation of the input, which is
+varied to create the output. The results provide a measure of the
+relative importance of each input (predictor) in the particular
+input–output transformation. The network is then retrained
+with the few selected (most relevant) predictor variables.
+Several training experiments are conducted with different
+combinations of time lags and number of neurons in the hidden
+layer till the optimum network is identified. For the case of
+downscaling of precipitation with TLFN, a time lag of 6 (days)
+and 20 neurons in the hidden layer gave the best performing
+network. In the case of temperature downscaling, TLFN with a
+time lag of 3 (days) and 12 neurons in the hidden layer has
+performed the best. This suggests that the predictand–
+predictors relationship is less complex in the case of
+temperature downscaling.
+      </p>
+    </sec>
+    <sec id="sec-7">
+      <title>6. Downscaling results</title>
+      <p>From the 40 years of observed data representing the current
+climate, the first 30 years (1961–1990) are considered for
+calibrating the downscaling models while the remaining 10
+years of data (1991–2000) are used to validate those models.
+The different parameters of each model are adjusted during
+calibration to get the best statistical agreement between
+observed and simulated meteorological variables. During the
+calibration of precipitation downscaling models, in addition to
+the mean daily precipitation and daily precipitation variability
+for each month, monthly average dry and wet-spell lengths
+constituted the performance criteria. For the cases of Tmax and
+Tmin, mean and variances of these variables corresponding to
+each month were considered as performance criteria.</p>
+      <p>For both SDSM and TLFN, selecting the most relevant
+predictor variables (set of inputs) is the first and important task
+in the downscaling process. In the case of SDSM, the screening
+is achieved with linear correlation analysis and scatter plots
+(between the predictors and the predictand variables).
+Observed daily data of large-scale predictor variables (NCEP
+data) is used to investigate the percentage of variance
+explained by each predictand–predictor pairs. For the TLFN,
+the predictor variables are selected using sensitivity analysis as
+described earlier. Even though the set of variables selected to
+each of the downscaling methods is not identical, some
+variables such as specific humidity at 500 hPa geopotential
+height, near surface meridional wind velocity component,
+850 hPa geopotential height and mean temperature at 2 m are
+identified as relevant input by most of the downscaling
+methods. A complete list of the most relevant predictor
+variables selected as input for downscaling each
+meteorological variable with the two downscaling methods is presented in
+Table 2.
+6.1. Validation results in downscaling NCEP data</p>
+      <p>To assess the accuracy of the downscaling models, the
+downscaling model validation statistics are presented in
+Table 3 in terms of seasonal model biases. These validation
+results indicate that except for the winter, the TLFN performed
+better than SDSM model in downscaling daily precipitation.
+More interestingly, during the autumn season—which is the
+Prec.
+main rainfall season in the region, the TLFN appears
+particularly more suitable than the SDSM model for
+downscaling daily precipitation. At the same time, both methods
+demonstrated good and comparable performance in
+downscaling daily maximum and minimum temperature values.</p>
+      <p>Moreover, additional precipitation and temperature extreme
+indices have been used to evaluate the performance of
+statistical downscaling models in capturing the extreme indices
+of these climate variables. Figs. 3–5 shows plots of observed
+versus downscaled seasonal values for the 90th percentiles of
+precipitation (Prec90) and daily maximum temperature
+(Tmax90) and the 10th percentile of daily minimum temperature
+(Tmin10) calculated for each of the 10 years of data including
+both the calibration (the first 30 years) and validation (the last
+1
+X
+X</p>
+      <p>X
+9</p>
+      <p>12
+20
+9</p>
+      <p>12
+15
+20
+(a)
+d
+e
+l
+a
+c
+s
+n
+ow-6
+D
+25</p>
+      <p>30
+25
+3</p>
+      <p>6
+-25</p>
+      <p>-25
+-30
+-35
+-40
+5
+30
+25
+-30
+(b)</p>
+      <p>-25
+d
+e
+l
+a
+c
+s
+n
+w
+o
+D
+d
+e
+l
+a
+c
+s
+n
+w
+o
+D
+-20</p>
+      <p>(d)</p>
+      <sec id="sec-7-1">
+        <title>Autumn -15 -10</title>
+      </sec>
+      <sec id="sec-7-2">
+        <title>Spring</title>
+        <p>-20
+-15
+-15
+-20
+-25
+-30
+-10
+-15
+-20
+-5
+-5
+25
+30
+35</p>
+      </sec>
+      <sec id="sec-7-3">
+        <title>Observed 15 20</title>
+      </sec>
+      <sec id="sec-7-4">
+        <title>Observed</title>
+        <p>Fig. 5. Observed versus downscaled (with SDSM and TLFN) data of the 10th percentile daily minimum temperature values (8C) for each season (a-winter, b-spring,
+c-summer and d-autumn). Solid symbols correspond to the data downscaled with TLFN while the open symbols corresponds to the data downscaled with SDSM.
+10 years) periods. The 90th percentile represent the values of
+daily precipitation and Tmax which are not exceeded 90% of the
+time (or are exceeded only 10% of the time) while the 10th
+percentile represent the values of daily Tmin which are not
+exceeded only 10% of the time (or are exceeded 90% of the
+time). The best downscaling is the one with its extreme indices
+laying closer to the 458 line when plotted on the graphs (Figs.
+3–5). Accordingly, the plots on Fig. 3 show that the
+TLFNdownscaling of daily precipitation resulted in a better
+estimation of the Prec90 values in all the seasons except that
+of summer. The plots on Figs. 4 and 5 also show that the
+performance of TLFN in terms of Tmax90 and Tmin10 is
+comparable to that of SDSM for all of the four seasons.
+6.2. Downscaling GCM outputs corresponding to a future
+climate scenario</p>
+        <p>Once the downscaling models have been calibrated and
+validated, the next step is to use these models to downscale the
+future climate change scenario simulated by the GCM. In this
+case, instead of the NCEP reanalysis data used as input to each
+of the downscaling models earlier, the large-scale predictor
+variables are taken from CGCM1 simulation output covering
+the four distinct periods corresponding to ‘business as usual’
+scenario explained earlier. The monthly statistics of current
+observed values and the current and future CGCM1
+simulations downscaled with TLFN and SDSM are
+summarized and plotted in Figs. 6 and 7. Fig. 6a shows that the monthly
+mean values of observed precipitation are quite close to that of
+the TLFN-downscaled data of the current time period (1961–
+2000) while Fig. 6b revels that the standard deviation of the
+downscaled data are slightly lower than the observed one. This
+indicates that the CGCM1 data downscaled with TLFN slightly
+underestimate the variability of the local precipitation. Fig. 6a
+and b also shows an increase both in the mean daily
+precipitation and precipitation variability between the current
+and the future time periods for almost all months of the year.</p>
+        <p>Similarly, Fig. 7a and b show that while the monthly means of
+the TLFN-downscaled temperature data for the current (1961–
+2000) time period are comparable to that of the observed data,
+they also show a consistently increasing trend in the
+downscaled values of both the Tmax and Tmin values. No significant
+trend is observed when it comes to the variability of monthly
+Tmax and Tmin values. Table 4 summarizes the downscaling
+results by presenting the simulated increase or decrease in
+seasonal values of average precipitation and daily maximum
+and minimum temperatures between the current (1961–2000)
+and the 2080s (2070–2100) time periods for each of the
+downscaling methods. The results show that both SDSM and
+TLFN predicted a significant increase in precipitation.</p>
+        <p>However, while TLFN predicted a seasonal variation in
+precipitation increase (with around 16% increase in summer</p>
+        <sec id="sec-7-4-1">
+          <title>Precipitation Scenario Downscaled with TLFN J F M</title>
+          <p>A
+M
+A
+S
+O
+N
+D
+J</p>
+        </sec>
+        <sec id="sec-7-4-2">
+          <title>Month J</title>
+        </sec>
+        <sec id="sec-7-4-3">
+          <title>Current</title>
+          <p>2020s
+2050s
+2080s</p>
+        </sec>
+        <sec id="sec-7-4-4">
+          <title>Observed</title>
+          <p>Precipitation Scenario Downscaled with TLFN
+6
+)
+m
+( 4
+m
+.
+c
+e
+r
+p
+y
+l
+ia 2
+d
+n
+a
+e
+M0
+12
+10
+.
+v
+de 8
+d
+ra 6
+d
+n
+tsa 4
+.
+rce 2
+p
+0
+J</p>
+          <p>F</p>
+          <p>M</p>
+          <p>A</p>
+          <p>M</p>
+        </sec>
+        <sec id="sec-7-4-5">
+          <title>Current 2020s J</title>
+        </sec>
+        <sec id="sec-7-4-6">
+          <title>Month 2050s J A</title>
+          <p>S
+O
+N
+D
+2080s</p>
+        </sec>
+        <sec id="sec-7-4-7">
+          <title>Observed</title>
+        </sec>
+        <sec id="sec-7-4-8">
+          <title>Tmax Scenario Downscaled with TLFN J F M</title>
+          <p>A
+M
+A
+S
+O
+N
+D</p>
+        </sec>
+        <sec id="sec-7-4-9">
+          <title>Current 2020s 2080s Observed</title>
+          <p>to around 54% in winter), SDSM resulted in a smaller seasonal
+variation of between 34% in winter and 49% in spring.</p>
+          <p>In general, while SDSM-downscaled data resulted in an
+increase of annual precipitation by about 44% by the 2080s, the
+TLFN-downscaled data resulted in an increase of about 27.6%.
+At the same time, downscaling result for daily Tmax and
+Tmin values corresponding to both downscaling models show
+a comparable and consistently increasing trend. For both the
+Tmax and Tmin, the highest increase is predicted for the winter
+season, ranging between 5.5 and 7.1 8C, while the lowest
+increase is predicted for the autumn season ranging between
+2.2 and 3.8 8C. Overall, downscaling with TLFN resulted in a
+slightly higher increase in temperature than SDSM. In general,
+the results suggest an average increase of 4–5 8C in the mean
+annual temperature values for the next 100 years. This typically
+implies major changes in the hydrologic regime particularly for
+cold and snowy region like the Serpent River basin considered
+in this study.</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-8">
+      <title>7. Conclusion</title>
+      <p>This study investigates the applicability of temporal
+neural networks as downscaling method for the generation
+of daily precipitation and temperature series at the
+Chutedes–Passes station located in the Saguenay watershed in
+Canada and compares the results with that of the most
+widely used multiple linear regression (SDSM) method. The
+study results show that the time lagged feed-forward network
+(TLFN) can be an effective method for downscaling daily
+precipitation and temperature data as compared to the
+commonly used method. The main advantage of this
+downscaling method is its ability to incorporate not only
+the concurrent, but also several antecedent predictor values
+as input and its temporal processing ability without any
+additional effort. The validation results in terms of biases and
+the plots of extreme climate indices of the observed and
+downscaled data showed that the TLFN is able to reproduce
+the observed mean and extremes of each climate variables
+as good as that of SDSM. In fact, TLFN performance
+in downscaling precipitation for most of the seasons was
+better than that of SDSM.</p>
+      <p>The downscaling results corresponding to the future
+‘business as usual’ climate change scenario show that while
+the TLFN model has estimated an increase in average annual
+precipitation by about 27.6% by the 2080s, the SDSM
+estimated an increase in annual precipitation by about 44%
+during the same time period. At the same time, downscaling
+result for daily temperature corresponding to both models show
+a comparable and consistently increasing trend, with the mean
+annual temperature increase ranging between 4 and 5 8C for the
+next 100 years. The results also show seasonal variation in the
+changes with the biggest increase in temperature being in
+winter and the smallest in autumn.</p>
+      <p>However, one should also remember that all the
+downscaling experiments in this study use the outputs from only one
+general circulation model (CGCM1). Previous studies showed
+that data taken from different GCMs could produce
+significantly different downscaling outputs. Therefore, caution
+should be exercised in interpreting the outcome of such
+downscaling experiments for practical applications.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <string-name>
+            <surname>Bronstert</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Niehoff</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          , &amp; Bu¨rger, G. (
+          <year>2002</year>
+          ).
+          <article-title>Effects of climate and land-use change on storm runoff generation: Present knowledge and modelling capabilities</article-title>
+          .
+          <source>Hydrological Processes</source>
+          ,
+          <volume>16</volume>
+          (
+          <issue>2</issue>
+          ),
+          <fpage>509</fpage>
+          -
+          <lpage>529</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          <string-name>
+            <surname>Conway</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wilby</surname>
+            ,
+            <given-names>R. L.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Jones</surname>
+            ,
+            <given-names>P. D.</given-names>
+          </string-name>
+          (
+          <year>1996</year>
+          ).
+          <article-title>Precipitation and air flow indices over the British Isles</article-title>
+          .
+          <source>Climate Research</source>
+          ,
+          <volume>7</volume>
+          ,
+          <fpage>169</fpage>
+          -
+          <lpage>183</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          <string-name>
+            <surname>Coulibaly</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Anctil</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Aravena</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          , &amp; Bobe´e,
+          <string-name>
+            <surname>B.</surname>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <article-title>ANN modeling of water table depth fluctuations</article-title>
+          .
+          <source>Water Resources Research</source>
+          ,
+          <volume>37</volume>
+          (
+          <issue>4</issue>
+          ),
+          <fpage>885</fpage>
+          -
+          <lpage>896</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          <string-name>
+            <surname>Coulibaly</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Anctil</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          , &amp; Bobe´e,
+          <string-name>
+            <surname>B.</surname>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <article-title>Multivariate reservoir inflow forecasting using temporal neural networks</article-title>
+          .
+          <source>Journal of Hydrologic Engineering</source>
+          , ASCE,
+          <volume>6</volume>
+          (
+          <issue>5</issue>
+          ),
+          <fpage>367</fpage>
+          -
+          <lpage>376</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          <string-name>
+            <surname>Dibike</surname>
+            ,
+            <given-names>Y. B.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Coulibaly</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          (
+          <year>2005</year>
+          ).
+          <article-title>Hydrologic impact of climate change in the Saguenay watershed: Comparison of downscaling methods and hydrologic models</article-title>
+          .
+          <source>Journal of Hydrology</source>
+          ,
+          <volume>307</volume>
+          (
+          <issue>1-4</issue>
+          ),
+          <fpage>145</fpage>
+          -
+          <lpage>163</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          <string-name>
+            <surname>Dibike</surname>
+            ,
+            <given-names>Y. B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Solomatine</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Abbott</surname>
+            ,
+            <given-names>M. B.</given-names>
+          </string-name>
+          (
+          <year>1999</year>
+          ).
+          <article-title>On the encapsulation of numerical-hydraulic models in artificial neural network</article-title>
+          .
+          <source>Journal of Hydraulic Research</source>
+          ,
+          <volume>37</volume>
+          (
+          <issue>2</issue>
+          ),
+          <fpage>147</fpage>
+          -
+          <lpage>161</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          <string-name>
+            <surname>Gautam</surname>
+            ,
+            <given-names>D. K.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Holz</surname>
+            ,
+            <given-names>K.-P.</given-names>
+          </string-name>
+          (
+          <year>2000</year>
+          ).
+          <article-title>Neural network based system identification approach for the modelling of water resources and environmental systems</article-title>
+          . In O. Schleider, &amp; A.
+          <string-name>
+            <surname>Zijderveld</surname>
+          </string-name>
+          (Eds.),
+          <source>Artificial intelligence methods in civil engineering applications</source>
+          (pp.
+          <fpage>87</fpage>
+          -
+          <lpage>100</lpage>
+          ). Germany: Cottbus.
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          <string-name>
+            <surname>IPCC</surname>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <source>Climate change</source>
+          <year>2001</year>
+          :
+          <article-title>The scientific basis</article-title>
+          . Cambridge, UK: Cambridge University Press.
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          <string-name>
+            <surname>Kistler</surname>
+            ,
+            <given-names>R. E.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kalnay</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          , Collins,
+          <string-name>
+            <given-names>S.</given-names>
+            ,
+            <surname>Saha</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.</given-names>
+            ,
+            <surname>White</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            ,
+            <surname>Woollen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            ,
+            <surname>Chelliah</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            ,
+            <surname>Ebisuzaki</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            ,
+            <surname>Kanamitsu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            ,
+            <surname>Kousky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V.</given-names>
+            ,
+            <surname>Dool</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H. V. D.</given-names>
+            ,
+            <surname>Jenne</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            , &amp;
+            <surname>Fiorino</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>M.</surname>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <article-title>The NCEP/NCAR 50-year reanalysis</article-title>
+          .
+          <source>Bulletin of the American Meteorological Society</source>
+          ,
+          <volume>82</volume>
+          (
+          <issue>2</issue>
+          ),
+          <fpage>247</fpage>
+          -
+          <lpage>267</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          <string-name>
+            <surname>Principe</surname>
+            ,
+            <given-names>J. C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Euliano</surname>
+            ,
+            <given-names>N. R.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Lefebvre</surname>
+            ,
+            <given-names>W. C.</given-names>
+          </string-name>
+          (
+          <year>2000</year>
+          ).
+          <article-title>Neural and adaptive systems: Fundamentals through simulations</article-title>
+          . New York: Wiley.
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          <string-name>
+            <surname>Salathe</surname>
+            ,
+            <given-names>E. P.</given-names>
+          </string-name>
+          (
+          <year>2003</year>
+          ).
+          <article-title>Comparison of various precipitation downscaling methods for the simulation of streamflow in a rainshadow river basin</article-title>
+          .
+          <source>International Journal of Climatology</source>
+          ,
+          <volume>23</volume>
+          ,
+          <fpage>887</fpage>
+          -
+          <lpage>901</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          <string-name>
+            <surname>Schoof</surname>
+            ,
+            <given-names>J. T.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Pryor</surname>
+            ,
+            <given-names>S. C.</given-names>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <article-title>Downscaling temperature and precipitation: A comparison of regression-based methods and artificial neural networks</article-title>
+          .
+          <source>International Journal of Climatology</source>
+          ,
+          <volume>21</volume>
+          ,
+          <fpage>773</fpage>
+          -
+          <lpage>790</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          <string-name>
+            <surname>Schubert</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          (
+          <year>1998</year>
+          ).
+          <article-title>Downscaling local extreme temperature changes in southeastern Australia from the CSIRO Mark2 GCM</article-title>
+          .
+          <source>International Journal of Climatology</source>
+          ,
+          <volume>18</volume>
+          ,
+          <fpage>1419</fpage>
+          -
+          <lpage>1438</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          <string-name>
+            <surname>Schubert</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Henderson-Sellers</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          (
+          <year>1997</year>
+          ).
+          <article-title>A statistical model to downscale local daily temperature extremes from synoptic-scale atmospheric circulation patterns in the Australian region</article-title>
+          .
+          <source>Climate Dynamics</source>
+          ,
+          <volume>13</volume>
+          ,
+          <fpage>223</fpage>
+          -
+          <lpage>234</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          <string-name>
+            <surname>Tatli</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Dalfes</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Mente</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          (
+          <year>2004</year>
+          ).
+          <article-title>A statistical downscaling method for monthly total precipitation over Turkey</article-title>
+          .
+          <source>International Journal of Climatology</source>
+          ,
+          <volume>24</volume>
+          ,
+          <fpage>161</fpage>
+          -
+          <lpage>180</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          <string-name>
+            <surname>von Storch</surname>
+          </string-name>
+          , H.,
+          <string-name>
+            <surname>Hewitson</surname>
+            <given-names>B.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Mearns</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          (
+          <year>2000</year>
+          ).
+          <article-title>Review of empirical downscaling techniques</article-title>
+          . In T. Iversen &amp;
+          <string-name>
+            <surname>B. A. K. Høiskar</surname>
+          </string-name>
+          (Eds.),
+          <article-title>Regional climate development under global warming</article-title>
+          .
+          <source>General technical report no. 4. Conference proceedings regclim spring meeting Jevnaker</source>
+          , Torbjørnrud, Norway (pp.
+          <fpage>29</fpage>
+          -
+          <lpage>46</lpage>
+          ).
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          <string-name>
+            <surname>Weichert</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Burger</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>1998</year>
+          ).
+          <article-title>Linear versus nonlinear techniques in downscaling</article-title>
+          .
+          <source>Climate Research</source>
+          ,
+          <volume>10</volume>
+          ,
+          <fpage>83</fpage>
+          -
+          <lpage>93</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          <string-name>
+            <surname>Wigley</surname>
+            ,
+            <given-names>T. M. L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jones</surname>
+            ,
+            <given-names>P. D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Briffa</surname>
+            ,
+            <given-names>K. R.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Smith</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>1990</year>
+          ).
+          <article-title>Obtaining subgrid scale information from coarse-resolution general circulation model output</article-title>
+          .
+          <source>Journal of Geophysical Research</source>
+          ,
+          <volume>95</volume>
+          ,
+          <fpage>1943</fpage>
+          -
+          <lpage>1953</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          <string-name>
+            <surname>Wilby</surname>
+            ,
+            <given-names>R. L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Dawson</surname>
+            ,
+            <given-names>C. W.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Barrow</surname>
+            ,
+            <given-names>E. M.</given-names>
+          </string-name>
+          (
+          <year>2002</year>
+          ).
+          <article-title>SDSM-A decision support tool for the assessment of regional climate change impacts</article-title>
+          .
+          <source>Environmental Modelling and Software</source>
+          ,
+          <volume>17</volume>
+          ,
+          <fpage>147</fpage>
+          -
+          <lpage>159</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          <string-name>
+            <surname>Xu</surname>
+            ,
+            <given-names>C. Y.</given-names>
+          </string-name>
+          (
+          <year>1999</year>
+          ).
+          <article-title>From GCM to river flow: A review of downscaling methods and hydrologic modeling approaches</article-title>
+          .
+          <source>Progress in Physical Geography</source>
+          ,
+          <volume>23</volume>
+          (
+          <issue>2</issue>
+          ),
+          <fpage>229</fpage>
+          -
+          <lpage>249</lpage>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

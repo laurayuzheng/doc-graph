@@ -1,0 +1,2737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-title-group>
+        <journal-title>February</journal-title>
+      </journal-title-group>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.1371/journal</article-id>
+      <title-group>
+        <article-title>SoilGrids250m: Global gridded soil information based on machine learning</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Tomislav Hengl</string-name>
+          <email>tom.hengl@isric.org</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Jorge Mendes de Jesus</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Gerard B. M. Heuvelink</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Maria Ruiperez Gonzalez</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Milan Kilibarda</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Aleksandar Blagotić</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Wei Shangguan</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Marvin N. Wright</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Xiaoyuan Geng</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Bernhard Bauer-Marschallinger</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Mario Antonio Guevara</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Rodrigo Vargas</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Robert A. MacMillan</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Niels H. Batjes</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Johan G. B. Leenaars</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Eloi Ribeiro</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Ichsani Wheeler</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Stephan Mantel</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Bas Kempen</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>0 Envirometrix Inc.</institution>
+          ,
+          <addr-line>Wageningen</addr-line>
+          ,
+          <country country="NL">the Netherlands</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Agriculture and Agri-Food Canada</institution>
+          ,
+          <addr-line>Ottawa (Ontario)</addr-line>
+          ,
+          <country country="CA">Canada</country>
+          ,
+          <institution>7 Department of Geodesy and Geoinformation, Vienna University of Technology</institution>
+          ,
+          <addr-line>Vienna</addr-line>
+          ,
+          <country country="AT">Austria</country>
+          ,
+          <institution>8 University of Delaware, Newark (DE), United States of America, 9 LandMapper Environmental Solutions Inc.</institution>
+          ,
+          <addr-line>Edmonton (Alberta)</addr-line>
+          ,
+          <country country="CA">Canada</country>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>Editor: Ben Bond-Lamberty, Pacific Northwest National Laboratory</institution>
+          ,
+          <country country="US">UNITED STATES</country>
+        </aff>
+      </contrib-group>
+      <pub-date>
+        <day>16</day>
+        <month>2</month>
+        <year>2017</year>
+      </pub-date>
+      <volume>16</volume>
+      <issue>2017</issue>
+      <history>
+        <date date-type="accepted">
+          <day>21</day>
+          <month>12</month>
+          <year>2016</year>
+        </date>
+        <date date-type="received">
+          <day>1</day>
+          <month>8</month>
+          <year>2016</year>
+        </date>
+      </history>
+      <abstract>
+        <p>This paper describes the technical development and accuracy assessment of the most recent and improved version of the SoilGrids system at 250m resolution (June 2016 update). SoilGrids provides global predictions for standard numeric soil properties (organic carbon, bulk density, Cation Exchange Capacity (CEC), pH, soil texture fractions and coarse fragments) at seven standard depths (0, 5, 15, 30, 60, 100 and 200 cm), in addition to predictions of depth to bedrock and distribution of soil classes based on the World Reference Base (WRB) and USDA classification systems (ca. 280 raster layers in total). Predictions were based on ca. 150,000 soil profiles used for training and a stack of 158 remote sensing-based soil covariates (primarily derived from MODIS land products, SRTM DEM derivatives, climatic images and global landform and lithology maps), which were used to fit an ensemble of machine learning methodsÐrandom forest and gradient boosting and/or multinomial logistic regressionÐas implemented in the R packages ranger, xgboost, nnet and caret. The results of 10±fold cross-validation show that the ensemble models explain between 56% (coarse fragments) and 83% (pH) of variation with an overall average of 61%. Improvements in the relative accuracy considering the amount of variation explained, in comparison to the previous version of SoilGrids at 1 km spatial resolution, range from 60 to 230%. Improvements can be attributed to: (1) the use of machine learning instead of linear regression, (2) to considerable investments in preparing finer resolution covariate layers and (3) to insertion of additional soil profiles. Further development of SoilGrids could include refinement of methods to incorporate input uncertainties and derivation of posterior probability distributions (per pixel), and further automation of spatial modeling so that soil maps can be generated for potentially hundreds of soil variables. Another area of future research is the development of methods for multiscale merging of SoilGrids predictions with local and/or national gridded soil products (e.g. up to</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>Data Availability Statement: SoilGrids are
+available under the Open Database License (ODbl)
+v1.0 and can be downloaded from www.soilgrids.
+org and/or ftp.soilgrids.org without restrictions.</p>
+      <p>SoilGrids250m data has already been released in
+July 2016 (see:
+http://www.isric.org/content/isricreleases-upgraded-soilgrids-system-two-timesimproved-accuracy-predictions) Access to
+SoilGrids maps is provided via a soil web mapping
+portal at SoilGrids.org; through a Web Coverage
+Service (WCS); and via the SoilInfo App, hence
+access to data is without restrictions. All the code
+used to generate SoilGrids250m predictions is fully
+documented via: https://github.com/
+ISRICWorldSoil/SoilGrids250m/.</p>
+      <p>Funding: ISRIC is a non-profit organization
+primarily funded by the Dutch government. The
+funders had no role in study design, data collection
+and analysis, decision to publish, or preparation of
+the manuscript. GILAB DOO provided support in
+the form of salaries for author AB, but did not have
+any additional role in the study design, data
+collection and analysis, decision to publish, or
+preparation of the manuscript. The specific roles of
+this author are articulated in the `author
+contributions' section.</p>
+      <p>Competing interests: Aleksandar Blagotić is
+employee and web-developer of GILAB DOO. There
+are no patents, products in development or
+marketed products to declare. This does not alter
+our adherence to all the PLOS ONE policies on
+sharing data and materials.
+50 m spatial resolution) so that increasingly more accurate, complete and consistent
+global soil information can be produced. SoilGrids are available under the Open Data
+Base License.</p>
+    </sec>
+    <sec id="sec-2">
+      <title>Introduction</title>
+      <p>
+        There is a growing demand for detailed soil information, especially for global estimation of
+soil organic carbon [1±3] and for modeling agricultural productivity [
+        <xref ref-type="bibr" rid="ref4 ref5">4, 5</xref>
+        ]. Spatial information
+about soil water parameters is likely to become increasingly critical in areas affected by climate
+change [
+        <xref ref-type="bibr" rid="ref6">6</xref>
+        ]. Soils and soil information are also particularly relevant for the Sustainable
+Development goal target 15.3 of achieving Land Degradation Neutrality (LDN), as specified by the
+United Nations Convention to Combat Desertification (UNCCD; http://www.unccd.int), and
+are one of the main areas of interest of the FAO's Global Soil Partnership initiative [
+        <xref ref-type="bibr" rid="ref7">7</xref>
+        ].
+Folberth et al. [8] have recently discovered that accurate soil information might be the key to
+predicting either buffering or amplifying impacts of climate change on food production.
+      </p>
+      <p>
+        To reduce the gap between soil data demand and availability, ISRIC (International Soil
+Reference Information Centre)ÐWorld Soil Information released a Global Soil Information
+system called “SoilGrids”. The first version of SoilGrids (predictions at 1 km spatial
+resolution released in 2014), was, at the time, a `proof of concept' demonstrating that global
+compilations of soil profiles can be used in an automated framework to produce complete and
+consistent spatial predictions of soil properties and classes [9]. Since the launch of the system
+in 2014, several colleagues have recognized and reported some of the limitations of the first
+version of the system. Mulder et al. [10] observed, using more detailed soil profile data and
+maps, that SoilGrids likely overestimated all low values for organic carbon content in France.
+Likewise, Griffiths et al. [
+        <xref ref-type="bibr" rid="ref8">11</xref>
+        ] reported underestimation of the pH in comparison to UK
+national data. The overestimation of low values happened mainly as an effect of limited
+fitting success (so that both high and low values are smoothed out). In addition, many of the
+artifacts visible in the Harmonized World Soil Database (HWSD) [12], which was used as
+one of the covariates to produce the first version of SoilGrids, e.g. country borders, were
+propagated to SoilGrids1km. Some users have also expressed concerns that the first version
+of SoilGrids did not provide predictions for arid and desert areas and hence can be
+considered an incomplete product [
+        <xref ref-type="bibr" rid="ref9">13</xref>
+        ].
+      </p>
+      <p>
+        To address these criticisms and concerns, we have re-designed and re-implemented
+SoilGrids with a particular emphasis on addressing methodological limitations of SoilGrids1km.
+Hence, our main objective was to build a more robust system with improved output data
+quality; especially considering spatial detail and attribute accuracy of spatial predictions. We
+implemented the following six key improvements:
+1. We replaced linear models with tree-based, non-linear machine learning models to account
+for non-linear relationshipsÐespecially for modeling soil property±depth relationshipsÐ
+but also to be able to better represent local soil±covariate relationships. Predictions are now
+primarily data-driven. Much less time is spent on choosing models, which also reduces the
+complexity of producing updates.
+2. We replaced single prediction models with an ensemble framework i.e. we use at least two
+methods for each soil variable to reduce overshooting effects.
+2 / 40
+3. We extended the initial list of covariates to include a wider diversity of MODIS land
+products and to better represent factors of soil formation. The spatial resolution of covariates
+was increased from 1 km to 250 m with the expectation that finer resolution will help
+increase the prediction accuracy.
+4. We re-implemented the global soil mask using state-of-the-art land cover products [
+        <xref ref-type="bibr" rid="ref10">14</xref>
+        ].
+      </p>
+      <p>The current soil mask now includes all previously excluded dryland and sand dune areas so
+that most of the land mask (&gt; 95%) is represented.
+5. The global compilation of soil profiles and samples used for model training was also
+extended. We added extra points for the Russian Federation, Brazil, Mexico and the Arctic
+circle; and re-visited data harmonization issues.
+6. We created and inserted expert-based pseudo-points for a selection of parameters to
+minimize extrapolation effects in undersampled geographic areas lacking field observations,
+such as deserts, semi-deserts, glaciers and permafrost areas.</p>
+      <p>We present here the technical development and accuracy assessment of the updated
+SoilGrids system at 250 m resolution. In the following sections we describe the workflows used to
+generate spatial predictions and report results of model fitting and accuracy assessment based
+on 10±fold cross-validation. We conclude the article by suggesting some possible applications
+of this new data set and identifying possible future improvements. SoilGrids250m map layers
+are available for download via www.SoilGrids.org under the Open Database License (ODbL).
+GeoTiffs can also be obtained from ftp://ftp.soilgrids.org/data/.</p>
+    </sec>
+    <sec id="sec-3">
+      <title>Methods and materials</title>
+      <sec id="sec-3-1">
+        <title>Target variables</title>
+        <p>SoilGrids provides predictions for the following list of standard soil properties and classes [9]:
+· Soil organic carbon content in ½ (g kg−1),
+· Soil pH in H2O and KCl solution,
+· Sand, silt and clay (weight %),
+· Bulk density (kg m−3) of the fine earth fraction (&lt; 2 mm),
+· Cation-exchange capacity (cmol + /kg) of the fine earth fraction,
+· Coarse fragments (volumetric %),
+· Depth to bedrock (cm) and occurrence of R horizon,
+· World Reference Base (WRB) classÐat present, we map 118 unique soil classes, e.g. Plinthic</p>
+        <p>
+          Acrisols, Albic Arenosols, Haplic Cambisols (Chromic), Calcic Gleysols and similar [
+          <xref ref-type="bibr" rid="ref11">15</xref>
+          ].
+        </p>
+        <p>This is about four times as many classes as in the previous version of SoilGrids,
+· United States Department of Agriculture (USDA) Soil Taxonomy subordersÐi.e. 67 soil
+classes [16].</p>
+        <p>We generated predictions at seven standard depths for all numeric soil properties (except
+for depth to bedrock and soil organic carbon stock): 0 cm, 5 cm, 15 cm, 30 cm, 60 cm, 100 cm
+and 200 cm, following the vertical discretisation as specified in the GlobalSoilMap
+specifications [17]. Averages over (standard) depth intervals, e.g. 0±5 cm or 0±30 cm, can be derived by
+taking a weighted average of the predictions within the depth interval using numerical
+3 / 40
+Fig 1. Standard soil depths following the GlobalSoilMap.net specifications and example of numerical
+integration following the trapezoidal rule.
+integration, such as the trapezoidal rule:</p>
+        <p>1
+b
+a a</p>
+        <p>Z b
+f x dx
+b
+1</p>
+        <p>1 XN1
+a 2 k1
+xk1
+xk
+f xk  f xk1
+1
+where N is the number of depths, xk is the k-th depth and f(xk) is the value of the target variable
+(i.e., soil property) at depth xk. For example, for the 0±30 cm depth interval, with soil pH values
+at the first four standard depths equal to 4.5, 5.0, 5.3 and 5.0, the pH is estimated as 3012
+5 0 4:5  5:0  15 5 5:0  5:3  30 15 5:3  5:0=30 0:5  5:083
+(Fig 1).</p>
+        <p>Based on predictions of soil organic carbon content, bulk density, and coarse fragments, we
+also derived soil organic carbon stock (tha−1) for the six GlobalSoilMap standard depth
+intervals following the standard approach [9, 18]. Fig 2 shows an example of observed vs predicted
+values and corresponding derived soil organic carbon stock for 0±1 m and 1±2 m depths.</p>
+        <p>Model fitting and spatial prediction of depth to bedrock is based also on water well drilling
+data. Model fitting and spatial prediction of soil depth to bedrock variables is explained in
+detail in Shangguan et al. [19].</p>
+        <p>We set the reference soil surface at the air/soil boundary, as per FAO [20], hence all soil
+material is included. Some national soil survey teams (and also earlier versions of the FAO
+4 / 40
+Fig 2. Example of soil variable-depth curves: Original sampled soil profiles (black rectangles) vs predicted SoilGrids values at seven standard
+depths (broken red line), and predicted soil organic carbon stock for depth intervals 0±100 and 100±200 cm. Locations of points from the USDA
+National Cooperative Soil Survey Soil Characterization database: mineral soil S1991CA055001 (-122.37ÊW, 38.25ÊN), and an organic soil profile
+S2012CA067002 (-121.62ÊW, 38.13ÊN).
+standards) define 0 cm depth at the start of the mineral soil, i.e. just below the O or the P (peat)
+horizon. Consider for example the following sample soil profile from Canada [21]:
+hor
+LFH
+Ae
+AB
+Bt
+top
+-12
+0
+11
+25
+bottom
+0
+11
+25
+44
+bd
+0.07
+1.3
+1.53
+1.62
+which shows that the vertical coordinates of the organic layer of this soil site are negative (LFH
+indicates LitterÐFermentationÐHumus); orgcarb indicates soil organic carbon, bd is the
+bulk density and top and bottom are the upper and lower horizon depth in cm). Therefore,
+to avoid vertical mismatches between different national systems, all systems that put the zero
+level at the start of the mineral soil have been adjusted to a reference with the zero level at the
+air/soil boundary. For the example soil profile from Canada this means that 12 cm was added
+to all top and bottom values (in the example above, there is a significant discontinuity in values
+in organic carbon that drops from 48.1% to 0.6% within 12 cm of depth).
+5 / 40
+Fig 3. Input profile data: World distribution of soil profiles used for model fitting (about 150,000 points shown on the map; see
+acknowledgments for a complete list of data sets used). Yellow points indicate pseudo-observations. For the majority of points shown on this map,
+laboratory data can be accessed from ISRIC's World Soil Information Service (WoSIS) at http://wfs.isric.org/geoserver/wosis/wfs.</p>
+      </sec>
+      <sec id="sec-3-2">
+        <title>Input profile data</title>
+        <p>For model building, we used soil profile data from ca. 150,000 unique sites spread over all
+continents (Fig 3; see acknowledgments for a full list). These have been imported, cleaned and
+merged into a single global compilation of soil points with unique column names and IDs.</p>
+        <p>Preparation of the global compilation of standardized soil training points took several
+months of work. The translation and cleaning up of soil properties and soil classes took a large
+amount of time. About 15±20% of the original soil profile data was only reported using a
+national classification system, e.g. the Canadian and Brazilian classification systems. Since
+some information is better than none, where possible we translated national classification
+systems to the two international (World Reference Base and USDA) classification systems. For
+translation we used published correlation tables either reported in Krasilnikov et al. [22] or
+reported on the agency websites; see e.g. correlation of Canadian Soil Taxonomy published
+(http://sis.agr.gc.ca/cansis/taxa/) and correlation of the Brazilian classification system (http://
+www.pedologiafacil.com.br/classificacao.php). We also consulted numerous local soil
+classification experts and requested their feedback and corrections in the (online) correlation tables
+(distributed via Google spreadsheets). Some national classification systems, such as the
+Australian soil classification system, are simply too different from the USDA and WRB systems to
+allow satisfactory correlation. These data were therefore not used. The full list of correlation
+tables is available from ISRIC's github account at https://github.com/ISRICWorldSoil.</p>
+        <p>Another time-consuming operation was merging laboratory measurements and field
+observations and their harmonization to a standard format. In some cases missing values in the
+original tables had been coded as "0" values, which can have a serious influence on prediction
+models; in other cases we implemented and applied functions to locate and correct typos and
+other gross errors. Some variables, such as soil organic carbon, needed to be converted either
+from soil organic matter (e.g. divide by 1.724) and/or by removing CaCO3 (Calcium
+carbonates) from total carbon. Nevertheless, the majority of soil variables from various national soil
+6 / 40
+profile data bases appeared to be compatible and relatively easy to mergeÐsoil scientists across
+continents do measure similar things, but often express the results using different
+measurement units, vocabularies and standards.</p>
+        <p>We imported all original tables as-is, next documented all conversion functions through R
+scripts (available via ISRIC's github account), to accommodate reproducible research and
+facilitate that conversion functions may, in the future, be further modified and improved. The
+majority of the points (excluding LUCAS points and other data sets with specific restricting
+terms of use) and legends used for model building and for producing SoilGrids are also
+available for public use via ISRIC's WoSIS Web Feature Service (http://www.isric.org/data/wosis)
+and/or the ISRIC's institutional github account.</p>
+      </sec>
+      <sec id="sec-3-3">
+        <title>Expert-based pseudo-observations</title>
+        <p>Even though the input training point data are extensive and cover most continents and
+climatic zones, some large areas that have extreme climatic conditions and/or have very
+restricted access, are significantly undersampled. This occurs largely in the following five types
+of areas:
+1. Semi-arid and arid lands, deserts and sand dunes,
+2. Mountain tops, steep slopes of mountains and similar inaccessible areas,
+3. Areas covered by ice and/or snow, i.e. glaciers,
+4. Inaccessible tropical forest,
+5. Areas governed by totalitarian and hostile regimes, with military conflicts or war.</p>
+        <p>It might seem obvious to soil surveyors that there is no soil organic carbon in the top 2 m of
+the active sand dunes of the Sahara, but any model fitted without observations in the Sahara
+could result in dubious extrapolation and questionable predictions. In addition, relationships
+across transitional areasÐfrom semi-arid zones to desertsÐcan be difficult to represent
+without enough points at both edges of the feature space. Some sand dunes in the USA have been
+actually sampled and analyzed in the laboratory. For example, Lei [23] has shown that sand
+dunes in the Mojave desert have an average pH of 8.1, 98% sand and 0% organic carbon.
+Again, although it might seem obvious that deserts consist mainly of sand, and that steep
+slopes without vegetation are either very shallow or show bedrock at the surface, the model is
+not aware of such expert knowledge and hence such features need to be `numerically
+represented' in the calibration dataset. We therefore decided, instead of masking out all such areas
+from soil mapping, to insert pseudo-observations and fill gaps in the feature space for the first
+four of the five types of areas listed above, i.e. to add pseudo-observations to the training
+dataset, which we then use for model building.</p>
+        <p>We used the following data sources to delineate sand dunes, bare rock and glaciers and
+produce their respective land masks:
+· Sand dunes maskÐTo delineate the global distribution of sand dunes we used mean annual
+long-term surface temperature generated from the MODIS LST data product (MOD11A2),
+long-term MODIS Mid-Infrared (MIR) band (MCD43A4) and a slope map. After visual
+inspection of the border of the Sahara desert, it was clear that sand dunes can be relatively
+accurately delineated using MIR reflectance, mean daily annual temperature (&gt; 25ÊC) and a
+slope map (&lt; 25 rad).
+· Bare rock maskÐTo delineate bare rock we also used the MODIS MIR band (MCD43A4)
+and a slope map. Bare rock or dominantly rocky areas show high MIR surface reflectance
+7 / 40
+and are associated with steep slopes (&gt; 32 rad). To the initial mask map estimated using
+MODIS MIR band and slope map, we also added bare rock areas from more detailed maps
+available for some countries, such as Iceland and northern Europe [19].
+· Glaciers maskÐTo represent global distribution of glaciers we used the GLIMS Geospatial
+Glacier Database [24].</p>
+        <p>For each of the three masks we then generated randomly 100±400 points based on the
+relative global extent and assigned soil properties and soil classes accordingly (e.g. in the case of
+WRB's Protic Arenosols for sand dunes, Lithic and Rendzic Leptosols for bare rock areas,
+Cryosols for areas adjacent to glaciers; in the case of USDA's Psamments for sand dunes,
+Orthents for bare rock areas and Turbels for glaciers; for sand dunes we also inserted estimated
+values of 0 soil organic carbon, 98% sand and 0% coarse fragments). For model training for
+predicting soil classes we also used pseudo-observations generated from the best available soil
+polygon maps: for poorly accessible tropical forest areas, such as Indonesia, we used the Land
+information system of Kalimantan [25], and for northern latitudes, i.e. to represent permafrost
+soils, the Northern Circumpolar Soil Carbon Database was used [26].</p>
+        <p>When inserting pseudo-observations we tried to follow three simple rules of thumb to
+minimize any negative effects:
+· keep the relative percentage of pseudo-points small i.e. try not to exceed 1±2% of the total
+number of training points,
+· only insert pseudo-points for which the actual ground value is known with high confidence,
+e.g. sand content in sand dune areas,
+· if polygon maps are used to insert pseudo-observations, we tried to use the most detailed soil
+polygon maps and focus on polygons with very high thematic purity.</p>
+      </sec>
+      <sec id="sec-3-4">
+        <title>Soil covariates</title>
+        <p>As covariate layers for producing SoilGrids250m predictions we used an extensive stack of
+covariates, which are primarily based on remote sensing data. These include (see e.g. Fig 4):
+· DEM-derived surfacesÐslope, profile curvature, Multiresolution Index of Valley Bottom</p>
+        <p>Flatness (VBF), deviation from Mean Value, valley depth, negative and positive Topographic
+Openness and SAGA Wetness IndexÐall based on the global merge of SRTMGL3 DEM and</p>
+        <p>
+          GMTED2010 [
+          <xref ref-type="bibr" rid="ref12">27</xref>
+          ]. All DEM derivatives were computed using SAGA GIS [
+          <xref ref-type="bibr" rid="ref13">28</xref>
+          ],
+· Long-term averaged monthly mean and standard deviation of the MODIS Enhanced
+Vege
+        </p>
+        <p>
+          tation Index (EVI). Derived using a stack of MOD13Q1 EVI images [
+          <xref ref-type="bibr" rid="ref14">29</xref>
+          ],
+· Long-term averaged mean monthly surface reflectances for MODIS bands 4 (NIR) and 7
+        </p>
+        <p>
+          (MIR). Derived using a stack of MCD43A4 images [
+          <xref ref-type="bibr" rid="ref15">30</xref>
+          ],
+· Long-term averaged monthly mean and standard deviation of the MODIS land surface
+tem
+        </p>
+        <p>perature (daytime and nighttime). Derived using a stack of MOD11A2 LST images [31],
+· Long-term averaged mean monthly hours under snow cover based on a stack of MOD10A2</p>
+        <p>
+          8-day snow occurrence images [32],
+· Land cover classes (cultivated land, forests, grasslands, shrublands, wetlands, tundra,
+artificial surfaces and bareland cover) for the year 2010 based on the GlobCover30 product by the
+National Geomatics Center of China [
+          <xref ref-type="bibr" rid="ref10">14</xref>
+          ]. Upscaled to 250 m resolution and expressed in
+percent of pixel coverage,
+8 / 40
+Fig 4. Examples of covariates used to generate SoilGrids: TWI is the Topographic Wetness Index (values multiplied by 100), EVI is the MODIS
+Enhanced Vegetation Index (values multiplied by 10,000), s.d. LST is the long-term standard deviation of MODIS Land Surface Temperatures
+(values in Celsius degrees). Location: San Francisco bay area, California. Size of the bounding box is 300 by 300 km.
+· Monthly precipitation images derived as the weighted average between the WorldClim
+        </p>
+        <p>monthly precipitation [33] and GPCP Version 2.2 [34],
+· Long-term averaged mean monthly hours under snow cover. Derived using a stack of</p>
+        <p>MOD10A2 8-day snow occurrence images,
+9 / 40
+· Lithologic units (acid plutonics, acid volcanic, basic plutonics, basic volcanics, carbonate
+sedimentary rocks, evaporite, ice and glaciers, intermediate plutonics, intermediate
+volcanics, metamorphics, mixed sedimentary rocks, pyroclastics, siliciclastic sedimentary rocks,
+unconsolidated sediment) based on Global Lithological Map GLiM [35],
+· Landform classes (breaks/foothills, flat plains, high mountains/deep canyons, hills, low
+hills, low mountains, smooth plains) based on the USGS's Map of Global Ecological Land</p>
+        <p>Units [36].
+· Global Water Table Depth in meters; after Fan et al. [37],
+· Long-term averaged mean monthly MODIS Flood Water based on the NRT Global MODIS</p>
+        <p>
+          Flood Mapping Flood Water product (http://oas.gsfc.nasa.gov/floodmap/),
+· Landsat-based estimated distribution of Mangroves; after Giri et al. [
+          <xref ref-type="bibr" rid="ref16">38</xref>
+          ],
+· Average soil and sedimentary-deposit thickness in meters; after Pelletier et al. [
+          <xref ref-type="bibr" rid="ref17">39</xref>
+          ].
+        </p>
+        <p>These covariates were selected to represent factors of soil formation according to Jenny
+[40]: climate, relief, living organisms, water dynamics and parent material. Out of the five
+main factors, water dynamics and living organisms (especially vegetation dynamics) are not
+trivial to represent as these operate over long periods of time and often exhibit chaotic
+behaviour. Using reflectance bands such as the mid-infrared MODIS bands from a single day, would
+have little use to soil mapping for areas with dynamic vegetation, i.e. with strong seasonal
+changes in vegetation cover. To account for seasonal fluctuation and for inter-annual
+variations in surface reflectance, we instead used long-term temporal signatures of the soil surface
+derived as monthly averages from long-term MODIS imagery (15 years of data). We assume
+here that, for each location in the world, long-term average seasonal signatures of surface
+reflectance or vegetation index provide a better indication of soil characteristics than only a
+single snapshot of surface reflectance. Computing temporal signatures of the land surface
+requires a considerable investment of time (comparable to the generation of climatic images vs
+temporary weather maps), but it is possibly the only way to represent the cumulative influence
+of living organisms on soil formation.</p>
+        <p>
+          For processing the covariates we used a combination of Open Source GIS software,
+primarily SAGA GIS [
+          <xref ref-type="bibr" rid="ref13">28</xref>
+          ], R packages raster [41], sp [42], GSIF and GDAL [43] for reprojecting,
+mosaicking and merging tiles. SAGA GIS and GDAL were found to be highly suitable for
+processing large data as parallelization of computing was relatively easy to implement.
+        </p>
+        <p>We updated the 1 km global soil mask map using the most detailed 30 m resolution global
+land cover map from 2010. This was combined with the global water mask [44] and the global
+sea mask map based on the SRTM DEM [45] to produce one consistent global soil mask that
+includes all land areas, expect for: (a) fresh water bodies such as lakes and rivers, and (b)
+permanent ice.</p>
+      </sec>
+      <sec id="sec-3-5">
+        <title>Spatial prediction framework</title>
+        <p>Spatial prediction, i.e. fitting of models and generation of maps, was fully implemented via the</p>
+        <sec id="sec-3-5-1">
+          <title>R environment for statistical computing. The process of generating SoilGrids predictions con</title>
+          <p>sists of four main steps (see Fig 5):
+· overlay points and covariates and prepare regression matrix,
+· fit spatial prediction models,
+10 / 40
+Fig 5. The (data-driven) statistical framework used for generating SoilGrids. SoilGrids are primarily based on publicly released soil profile
+compilations, NASA's MODIS and SRTM data products and Open Source software compiled with the ATLAS library: R (including contributed
+packages), and Open Source Geospatial Foundation (OSGeo) supported software tools.
+11 / 40
+· apply spatial prediction models using tiled raster stacks (covariates),
+· assess accuracy using cross-validation.</p>
+          <p>For practical purposes, we implemented these steps separately for each of the following
+groups of soil variables:
+· WRB soil groups and USDA soil suborders were modelled using ensemble models based
+on nnet::multinom (which fits multinomial log-linear models via neural networks)
+[46] and ranger::ranger (fits random forest) functions [47]. We mapped probabilities
+of occurrence for each individual soil class (118 probability maps for WRB and 67 for</p>
+          <p>USDA),
+· Soil properties (organic carbon, bulk density, CEC, pH, soil texture fractions and coarse
+fragments) were modelled as 3D variables using an ensemble of ranger::ranger and
+xgboost::xgboost (fits Gradient Boosting Tree) [48]. Soil depth is used as a covariate,
+so that the resulting models predict values of a target variable for any given depth, i.e. in
+3D,
+· Depth to bedrock was also modelled using ranger::ranger and xgboost::xgboost
+functions, but the output is a 2D map.</p>
+          <p>To optimize the model tuning parameters we consistently used the caret::train
+function [49], which is also suited for big data. The fine-tuning of the parameters is summarized in
+the following three steps:
+1. Randomly subset the regression matrix to e.g. 15,000 observations (usually 5±10% of the</p>
+          <p>total size),
+2. Fit and validate a list of models for a combination of tuning parameters,
+3. Select the optimal parameters (i.e. those that produce the lowest RMSE using repeated
+cross-validation) and fit the final model using all observations.</p>
+          <p>Models for WRB and USDA classes are defined as:</p>
+          <p>R&gt; TAXNWRB * DEMMRG5 + SLPMRG5 + . . . + ASSDAC3
+where DEMMRG5 + SLPMRG5 + . . . + ASSDAC3 are the covariate layers, TAXNWRB is the
+observed taxonomic class in the WRB system (target variable). An example of a soil property
+model is given by:</p>
+          <p>R&gt; ORCDRC * Depth + DEMMRG5 + . . . + ASSDAC3
+where DEMMRG5 + . . . + ASSDAC3 are the covariate layers, ORCDRC is the value of organic
+carbon observed (target variable), and Depth is the sampling / observation depth.</p>
+          <p>For each variable we fitted a separate model and merged predictions from at least two
+models to minimize overshooting effects [50]. The merging of predictions is done by using the
+average model accuracy estimated during the fine-tuning of model parameters, i.e. as a
+weighted average [50]:
+f x </p>
+          <p>PM</p>
+          <p>k1 wk
+kP1 wMk fkx ; wk </p>
+          <p>1
+sk2;CV</p>
+          <p>2
+where f x is the final ensemble prediction, M is the number of models, wk is the model weight
+and sk2;CV is the model squared prediction error obtained using cross-validation. In practice,
+both ranger::ranger and xgboost::xgboost report about the same error in most
+cases, hence the final prediction is often close to the unweighted average.</p>
+          <p>We also applied post-processing, mainly to remove artifacts: in the case of soil classes, we
+filter out all classes theoretically impossible to occur in a given area, such as Gypsisols in arctic
+climatic zones, using a simple soil-climate matrix (documented on the project github). For
+texture fractions we also applied a standardization function to ensure that all predictions are
+between 0 and 100, and that the fractions sum up to 100%, e.g.:</p>
+          <p>Sandc% </p>
+          <p>Sand
+Sand  Silt  Clay
+100
+3
+where Sandc is the corrected sand content.</p>
+          <p>SoilGrids can be considered as a Big Data project, especially in terms of data volumes and
+variety. The total size of all input and output data used to generate SoilGrids exceeds 30 TiB, so
+that a first step in preparing SoilGrids250m was to obtain a Synology 12-Bay NAS storage
+server with 60 TiB space. Handling such a large data set presented major challenges
+considering computational complexity and network bandwidth limitations. To optimize computing
+performance, especially spatial overlay, model fitting, predictions and export of predictions,
+we used exclusively parallelized versions of functions. For prediction, parallelization is already
+implemented internally via the ranger or xgboost software; for other processes we
+primarily used the snowfall package [51].</p>
+          <p>All processing was implemented on a single dedicated high performance server with 256
+GiB RAM, 8 TiB hard disk space, 48 cores (Intel Xeon 2xE5-2690v3 24c/48t 2.6±3.5 GHz) and
+running on Ubuntu 15.10 (Willy Werewolf) OS and R-cran 3.2.3 using ATLAS (Automatically
+Tuned Linear Algebra Software) 3.11.38 library. Even after parallelization, producing
+predictions for all soil variables and all depths took 10+ days of continuous computing, i.e. about 12
+thousand CPU hours (about 90% of the computing time is invested in generating predictions).</p>
+          <p>Because the current system is fully scalable, the next update of SoilGrids could be completed in
+shorter time frames, e.g. by boosting the number of computer cores, although this might also
+greatly increase the production costs.</p>
+        </sec>
+      </sec>
+      <sec id="sec-3-6">
+        <title>The tiling system</title>
+        <p>For tiling, we used the Equi7 Grid system [52] which splits the global land mass into seven
+separate planar grids (Europe and Asia are split into two land masses with some small overlap).
+The Equi7 Grid system was selected for several practical reasons [52]:
+1. The projections of the Equi7 Grid are equidistant and hence suitable for various geographic
+analyses, especially for derivation of buffer distances and for hydrological DEM modeling,
+i.e. to derive all DEM-based soil covariates,
+2. Areal and shape distortions stemming from the Equi7 Grid projection are relatively small,
+yielding a small grid oversampling factor,
+3. The Equi7 Grid systems ensures an efficient raster data storage while suppressing
+inaccuracies during spatial transformation. Especially for high-resolution global data, these are
+important features.</p>
+        <p>The global soil mask at 250 m resolution contains about 1.6 billion pixels (Africa: 330
+million, Europe: 110 million, North America: 230 million, South America: 210 million, Antartica:
+0.05 million, Oceania: 140 million, Asia: 360 million). We provide the final outputs in both the
+Equi7 Grid system and in geographical WGS84 coordinates. Final global mosaics in the
+13 / 40</p>
+        <sec id="sec-3-6-1">
+          <title>WGS84 system were produced by reprojecting all pixels using GDAL warp and translate func</title>
+          <p>tions [43]. The ground resolution of 250 m corresponds to a geographical resolution of 1/480
+decimal degrees. An image representing the whole world at this resolution comprises 172k
+columns and 72k rows.</p>
+          <p>Final predictions are available both as mosaics and as 1Ê tiles (16,360 tiles to represent the
+world land mask); tiles are considered more suitable for users interested in regional and
+national data, and mosaics (at resolutions of 20 km, 1 km and 250 m) are deemed suitable for
+global modellers.</p>
+        </sec>
+      </sec>
+      <sec id="sec-3-7">
+        <title>Accuracy assessment</title>
+        <p>For accuracy assessment of both numeric and categorical variables we used 10±fold repeated
+cross-validation. Each model is re-fitted 10 times using 90% of the data and predictions
+derived from the fitted models are compared with observations of the remaining 10%. For
+each of the 14 numeric soil properties we derived the coefficient of determination (R2Ðthe
+amount of variation explained by the model), mean error (ME) and root mean squared error
+(RMSE). The amount of variation explained by the model is derived as:</p>
+        <p>R2  1</p>
+        <p>SSE
+SST</p>
+        <p>100%
+where SSE is the sum of squared errors at cross-validation points and SST is the total sum of
+squares. A coefficient of determination close to 1 indicates a perfect model, i.e. 100% of
+variation has been explained by the model. Numeric variables with skew distributions were
+logtransformed prior to modeling and hence for these variables we report the amount of
+variation explained by the model after log-transformation. Also for the cross-validation
+correlation plots we used either log or linear scale depending on whether log-transformation was
+applied.</p>
+        <p>For predictions of soil WRB and USDA classes we calculated the map purity (0±100%) for
+the dominant soil class at cross-validation points and weighted kappa metrics [53] as
+implemented in the psych package. For the predicted probabilities of soil class occurrences (0±1
+probability values) we also derived the area under the receiver operating characteristic curve
+(AUC) and the True Positive Rate (TPR) statistic as implemented in the ROCR package [54,
+55]. Values of TPR range from 0 to 1. Values of AUC close to 1 show high prediction
+performance, while values around 0.5 and below are considered poor.</p>
+        <p>For soil WRB and USDA classes we also generated global maps of the scaled Shannon
+Entropy Index using the per-class probability maps [56, 57]:</p>
+        <p>X</p>
+        <p>K
+k1
+Hsx </p>
+        <p>pkx log K pkx
+where K is the number of possible classes, logK is the logarithm to base K and pk is probability
+of class k. The scaled Shannon Entropy Index (Hs) is in the range from 0±1, where 0 indicates
+no ambiguity (one of the pk equals one and all others are zero) and 1 indicates maximum
+confusion (all pk equal K1) [58]. Note that the scaled Shannon Entropy Index should not be
+confused with classification accuracy assessment: Hs is an internal accuracy measure derived
+from the model and not based on comparison of predictions with (cross-)validation data,
+such as the purity and kappa metrics. For Shannon index of 0 at some location accuracy
+could still be completely wrong because the soil class at that location could actually be a
+different one.
+4
+5
+14 / 40
+Fig 6. Fitted variable importance plots for target variables. Generated as an average of predictions using the ranger and xgboost packages (for soil
+types results are based on the ranger model only). DEPTH.f is depth from soil surface, T MOD3 and N MOD3 are mean monthly temperatures daytime
+and nighttime (red color), TWI, DEM, VBF and VDP are DEM-parameters (bisque color), M MOD4 are mean monthly MODIS NIR band reflectances (cyan
+color), P MRG3 are mean monthly precipitation (blue color), E MOD5 are mean monthly EVI derivatives (dark green color), VW MOD1 are monthly MODIS
+Precipitable Water Vapor images (orange color), C GLC5 are land cover classes (light green color), and ASSDAC3 is the average soil and
+sedimentarydeposit thickness (brown color).</p>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>Results</title>
+      <sec id="sec-4-1">
+        <title>Model fitting</title>
+        <sec id="sec-4-1-1">
+          <title>Summary results of model fitting are given in Figs 6 and 7 and Tables 1 and 2. The ranger</title>
+          <p>package reports model fitting success via the R-square based on Out-of-bag (OOB) samples,
+i.e. the amount of variation explained by the model, which ranged from a low of 0.59 for coarse
+fragments to a high of 0.85 for soil pH. R-square estimated using xgboost (derived using
+repeated cross-validation) was lower, ranging from 0.37 for coarse fragments to 0.60 for soil
+15 / 40
+Fig 7. Examples of relationships for target variables and the most important covariates: (top row) bulk density in kg m−3, (middle row) soil pH,
+and (bottom row) soil organic carbon in permilles (on log scale). Plots show target variables and the top three most important covariates as reported
+by the random forest model. DEPTH.f is the observed depth from soil surface, T09MOD3 is mean monthly temperature for September, TMDMOD3 is mean
+annual temperature, PRSMRG3 is total annual precipitation, M04MOD4 is mean monthly MODIS NIR band reflectance for April, P07MRG3 is mean monthly
+precipitation for July, T01MOD3 is mean monthly temperature for January, and T02MOD3 is mean monthly temperature for February.
+pH. On average, the two packages report R-square values between 0.4±0.8 with an overall
+average of 0.60. This number corresponds closely to our results produced using 10±fold cross
+validation with repeated fitting. Comparing these new results to average R-square values of 0.38
+for the original SoilGrids1km predictions reveals a significant improvement of close to + 50%.</p>
+        </sec>
+        <sec id="sec-4-1-2">
+          <title>The train function of the package caret usually picked a relatively high Mtry parame</title>
+          <p>ter (number of variables randomly sampled as candidates at each split) as optimal for soil
+properties: the optimized values ranged from 18 for coarse fragments to 22 for all other soil
+properties. Higher Mtry is recommend for cases where the number of covariates is large and
+16 / 40</p>
+          <p>N
+605,054
+604,019
+616,762
+613,750
+625,159
+303,139
+140,596
+393,585</p>
+          <p>Min</p>
+          <p>0
+multiple variables influence the target variables with equal importance [59]. For the Gradient</p>
+        </sec>
+        <sec id="sec-4-1-3">
+          <title>Boosting Tree method, train always selected the same combination of tuning parameters for</title>
+          <p>all soil properties: nrounds = 100, max_depth = 3, eta = 0.4, gamma = 0,
+colsample_bytree = 0.8 and min_child_weight = 1. This may be because we limited the
+combinations of tuning parameters to 10 to speed up processing speed. Higher values for
+xgboost tuning parameters are indicative of higher-level complexity of the model: many
+22.9%
+50.5%
+relationships between soil properties and covariates are non-linear and a greater number of
+splits is possibly required to represent this complexity.</p>
+          <p>Fig 6 shows the top 15 soil covariates for each target variable. This indicates that, for
+example, spatial pattern of soil pH is primarily influenced by precipitation and surface reflectance
+(MODIS Medium-Infrared band 6 for months April and May especially). Also, for most
+variables depth emerges as the most important covariate, especially for soil organic carbon, bulk
+density and coarse fragments. For soil types and soil textures, DEM-parameters, i.e. soil
+forming factors of relief, especially flow-based DEM-indices, emerge as second-most dominant
+covariates. These results largely correspond with conventional soil survey knowledge
+(surveyors have been using relief as a key guideline to delineate soil bodies for decades), but it is
+encouraging to have these findings supported by statistical modeling of real data on a global
+scale.</p>
+          <p>Although lithology is not in the list of top 15 most important predictors, spatial patterns of
+lithologic classes can often be distinctly recognized in the output predictions. This is especially
+true for soil texture fractions and coarse fragments. In general, for predicting soil chemical
+properties, climatic variables (especially precipitation) and surface reflectance seem to be the
+most important, while for soil classes and soil physical properties it is a combination of relief,
+vegetation dynamics and parent material.</p>
+          <p>Fig 7 shows some individual relationships between target variables and several of the most
+important covariates. For soil pH we observe that the relationship with total annual rainfall is
+close to linear; for soil organic carbon and depth the relationship is linear on a log-log scale.
+Many such individual correlations can also be interpreted and understood in terms of
+pedologic knowledge. For example, higher MIR reflectance may be associated with high
+concentration of salts in soil and hence higher pH; higher rainfall and cooler climates often result in
+higher organic carbon content because the speed of organic matter accumulation is higher
+than the speed of decomposition. For the majority of soil variables, however, relationships are
+not clearly linear and often many soil covariates are equally important.</p>
+          <p>We have also investigated possibilities for using kriging of residuals to improve predictions
+of soil properties. Because the majority of spatial variation has been explained by covariates
+and machine learning models, it appears that no significant spatial autocorrelation structure
+can be observed for residuals (i.e. almost all variograms show pure nugget effect structure) at
+distances &lt; 300 km for almost all continents and all variables. Although locally, where the
+point density is high, kriging of residuals could still be beneficial for mapping of CEC and
+depth to bedrock, overall kriging of residuals for global land mass does not seem to be
+necessary nor is it practical to implement for billions of pixels: it would only marginally improve the
+accuracy of predictions at high computing costs.</p>
+        </sec>
+      </sec>
+      <sec id="sec-4-2">
+        <title>Accuracy assessment</title>
+        <p>Table 1 shows summary results of cross-validation for soil properties (global assessment). In
+all cases there is no large overestimation of values, although for organic carbon and CEC the
+models seem to somewhat under-estimate the overall mean. For log-transformed variables we
+applied the accuracy assessment in the log-transformed space which yields asymmetric
+prediction intervals after back-tranformation. For example, predictions for organic carbon are
+±0.715 in log-space, which means that the 90% probability prediction interval for a case where
+the soil organic carbon prediction equals 20½ (2%) is 6±65½; for a case where the soil organic
+carbon prediction equals 150½ it is 46±485½. Prediction intervals are hence still fairly wide,
+which might make SoilGrids of limited usability for detailed spatial modeling e.g. at farm level.</p>
+        <p>Note also that because there is significant spatial clustering of the training points, it is possible
+18 / 40
+Fig 8. Correlation (density) plots produced as a result of 10±fold cross-validation. See also Table 1 for more details.
+that the validation results might be somewhat more optimistic than if we had validated
+predictions by using points collected following some (objective) probability sampling, as described in
+Brus et al. [60]. On the other hand, the cross-validation results do not show any serious
+systematic over- or underestimation (ME close to zero), which is also visible from the correlation
+plots (Fig 8).</p>
+        <p>Table 2 shows results for SoilGrids250m in comparison with the previous system at 1 km
+resolution. Improvements in average RMSE are between 30±80% and can largely be attributed to
+the use of machine learning algorithms in place of multiple linear regression, but also to
+investments in preparing finer resolution covariates and additional and improved soil profile data.
+19 / 40</p>
+        <p>The most challenging variables to model with this set of covariates are coarse fragments
+and depth to bedrock, although in no case is the R-square &lt; 50%. Nevertheless, the RMSE is
+still relatively high in comparison to many local soil mapping projects. Users should thus be
+aware that the uncertainty levels are still relatively high. There are also still problems with
+overestimation of low values, clearly visible for example in the case of soil organic carbon content.
+Overall, predictions for most properties are unbiased, i.e. most predictions are fairly
+symmetric around the 1:1 line (Fig 8).</p>
+        <p>For soil classes, out-of-bag average prediction accuracy, reported by the packages, was
+between 20±28% for the WRB classification system and between 34±48% for the USDA
+system. The 10±fold cross-validation results showed that the weighted kappa for WRB classes is
+42%, with map purity 28%; for USDA classes the kappa is 57%, while the map purity is 48%.
+Although WRB classes seem to be somewhat more challenging to model than USDA
+suborders, this comparison should be considered within the context of: (a) the number of classes,
+and (b) similarity between classes. The WRB classification contains about two times more
+classes than USDA suborders, and many WRB classes with highest confusion fall in
+taxonomically similar groups. Further evaluation of classification accuracy has shown that, at the
+level of WRB soil groups, map purity jumps to 60%, i.e. it becomes comparable to the USDA
+system. Remaining WRB soil groups with map purity &lt; 50% are Planosols, Phaeozems and
+Ferrasols.</p>
+        <sec id="sec-4-2-1">
+          <title>A more detailed assessment of prediction accuracy derived using the ROCR package, i.e. per</title>
+          <p>each individual class, shows that the average TPR is about 0.93 for USDA soil suborders
+(Table 3), and about 0.90 for WRB classes (Table 4). Also maps of the scaled Shannon Entropy
+index (Fig 9) indicate that produced soil class maps for USDA soil classification system are less
+uncertain than for the WRB system: WRB classification is critically uncertain for Australia and
+India, parts of Africa and highlands of Latin America. Maps of uncertainty closely reflect
+extrapolation areas and could be potentially very useful for planning new soil surveys aimed at
+mapping soil types. For example, Fig 10 shows that the highest confusion (lowest prediction
+accuracy) is systematically connected with distribution of river valleys, urban areas and
+hillslopes.</p>
+          <p>In summary, the cross-validation results for predicting class probabilities indicate relatively
+high correspondence between prediction probabilities and observed soil types, which is also
+confirmed visually by overlaying observed classes and prediction probabilities. Nevertheless, it
+appears from Tables 3 and 4 that for some classes, such as Cambisols, Luvisols, Fluvisols and
+Planosols in the WRB system, and Aquepts, Fluvents and Aquents in the USDA Soil
+Taxomony system, the confusion of predictions with other classes is still relatively high.</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>Discussion</title>
+      <p>In the following sections we address some remaining discussion points and suggest ways to
+improve SoilGrids and embark on new research directions. Although we have reached current
+effective limits imposed by software capabilities and availability of remote sensing data sources,
+the accuracy of SoilGrids could still be improved. Globally, by adding more covariates based
+on the most recent remote sensing data (see Fig 11), and locally, by combining global
+predictions with local prediction models. Global models could be further improved especially by
+revising (even re-designing) each of the three main components of the system:
+· Soil training data,
+· Statistical / Machine Learning models, and
+· Covariate layers.
+20 / 40
+21 / 40
+1st class
+Ochrepts
+Orthents
+Orthods
+Ustolls
+Borolls
+Turbels
+Argids
+Vitrands
+Xerolls
+Argids
+Xeralfs
+Udalfs
+Argids
+Ochrepts
+Orthods
+Gelods
+Udults
+Xerolls
+Ustalfs
+Udults
+Argids
+Ochrepts
+2nd class
+Cryepts
+Orthods
+Cryods
+Torrerts
+Cryolls
+Gelods
+Gypsids
+Ochrepts
+Torrands
+Xerolls
+Humults
+Ochrepts
+Fluvents
+Borolls
+Cryods
+Turbels
+Perox
+Udands
+Orthents</p>
+      <p>Udox
+Borolls
+Turbels</p>
+      <sec id="sec-5-1">
+        <title>Increasing and improving the quality and quantity of the training data</title>
+        <p>The most fruitful avenue for improving the current predictions is likely in improving the
+quality and quantity of soil profile data. ISRIC has invested decades in obtaining, digitizing,
+cleaning up and standardizing soil profile data. A large portion of these data (about 80,000 unique
+points) is publicly available via ISRIC's Web Feature Service WoSIS (http://wfs.isric.org/
+geoserver/wosis/wfs) [61]; remaining soil profile data sets not publicly available via ISRIC's
+WoSIS WFS can be obtained by contacting the corresponding original data providers as listed
+in the Acknowledgment section. This collection of soil profile data is of similar scope and
+utility when compared to other international data initiatives in meteorology (e.g. Global Historical
+Climatology Network) and biodiversity (http://gbif.org).</p>
+        <p>Although the training data shown in Fig 3 appear to be quite dense, there are still large gaps
+in terms of representation of the feature space. Tropics, wetlands, semi-arid to hyper-arid
+areas and mountains are still largely under-represented. There are undoubtedly millions of soil
+field observations in the world unused for global soil mapping activities that could be collated
+and used to improve predictions. FAO's Global Soil Partnership (http://www.fao.org/
+globalsoilpartnership/) has set as one of its main objectives the preparation of an international
+compilation of reference soil profiles to help catalyze using soil data for decision making.
+Hence, there are already some initiatives in this direction.</p>
+        <p>Harmonization of soil laboratory data and soil descriptive variables is another area that will
+need to be improved. For example, we had to standardize soil depths for several databases by
+re-aligning 0 depth to soil surface. Some soil databases only contain information about the
+mineral soil and put the zero level at the start of the mineral soil. But such soils might have an
+22 / 40
+2nd class
+Haplic Cambisols (Dystric)</p>
+        <p>Haplic Cambisols
+Haplic Ferralsols</p>
+        <p>Haplic Acrisols
+Haplic Fluvisols (Eutric)</p>
+        <p>Calcaric Regosols</p>
+        <p>Haplic Luvisols
+Gleyic Luvisols</p>
+        <p>Haplic Leptosols
+Haplic Kastanozems</p>
+        <p>Haplic Luvisols
+Haplic Leptosols
+Haplic Cambisols
+Haplic Podzols</p>
+        <p>Haplic Calcisols
+Haplic Chernozems</p>
+        <p>Haplic Lixisols
+Haplic Leptosols (Eutric)</p>
+        <p>Haplic Cambisols
+Haplic Vertisols
+Haplic Cambisols
+Haplic Ferralsols
+Haplic Cambisols
+Haplic Luvisols
+Haplic Cambisols</p>
+        <p>Haplic Luvisols
+Rendzic Leptosols
+Haplic Calcisols
+Haplic Calcisols
+Haplic Luvisols
+Haplic Acrisols
+Calcic Gleysols</p>
+        <p>Calcic Gleysols
+Haplic Kastanozems</p>
+        <p>Aric Regosols
+Solodic Planosols
+Mollic Gleysols
+Haplic Acrisols
+Haplic Ferralsols
+Haplic Ferralsols
+Haplic Vertisols
+Haplic Luvisols
+Haplic Luvisols
+Haplic Ferralsols
+Haplic Solonchaks
+(Continued)
+23 / 40
+PLOS ONE | DOI:10.1371/journal.pone.0169748</p>
+        <p>2nd class
+Luvic Phaeozems
+Acric Ferralsols
+Haplic Acrisols
+Haplic Luvisols
+Haplic Cambisols</p>
+        <p>Haplic Cambisols
+Haplic Kastanozems</p>
+        <p>Haplic Leptosols</p>
+        <p>Haplic Cambisols
+Haplic Kastanozems</p>
+        <p>Haplic Cambisols
+Haplic Acrisols
+Haplic Acrisols
+Haplic Acrisols
+Haplic Cryosols
+Haplic Solonetz
+Haplic Acrisols
+Haplic Luvisols
+Haplic Acrisols
+Haplic Calcisols
+Haplic Ferralsols</p>
+        <p>Albic Luvisols
+Haplic Acrisols
+Haplic Ferralsols
+Haplic Cambisols
+Leptic Phaeozems
+Haplic Kastanozems</p>
+        <p>Haplic Arenosols
+Petric Calcisols
+Haplic Acrisols
+Haplic Acrisols
+Turbic Cryosols
+Aluandic Andosols
+Haplic Cambisols
+Ferralic Arenosols</p>
+        <p>Haplic Luvisols
+Haplic Leptosols
+Haplic Ferralsols</p>
+        <p>Plinthic Acrisols
+Haplic Kastanozems</p>
+        <p>Haplic Acrisols
+Haplic Luvisols
+Haplic Acrisols
+Haplic Cambisols
+Haplic Arenosols
+Fibric Histosols
+Haplic Acrisols
+(Continued )
+24 / 40</p>
+        <p>ME (%)
+-0.4
+-0.1
+-0.4
+-0.2
+-0.3
+-0.4
+-0.2
+-0.3
+-0.2
+-0.1
+-0.2
+0.0
+0.0
+0.0
+-0.1
+-0.2
+-0.4
+-0.3
+-0.4
+-0.2
+-0.5
+-0.4
+-0.9
+-1.6
+-2.3
+-2.3</p>
+        <p>2nd class
+Haplic Calcisols
+Ferralic Arenosols
+Haplic Cambisols
+Haplic Ferralsols
+Haplic Ferralsols
+Calcaric Regosols</p>
+        <p>Haplic Lixisols</p>
+        <p>Haplic Calcisols
+Haplic Albeluvisols</p>
+        <p>Alic Nitisols
+Haplic Luvisols
+Haplic Ferralsols
+Gleyic Luvisols
+Haplic Acrisols
+Haplic Arenosols
+Haplic Acrisols
+Haplic Leptosols
+Haplic Phaeozems</p>
+        <p>Cutanic Alisols
+Haplic Luvisols
+Leptic Regosols
+Haplic Cambisols
+Haplic Gleysols
+Haplic Ferralsols
+Fibric Histosols
+Haplic Cambisols
+organic layer as well. Since the thickness of the organic horizon of these soil profiles is not
+reported, their vertical coordinates could not be corrected. There are many situations like this
+that require careful analysis of harmonization steps, so that any serious over or
+under-estimation can be avoided.</p>
+        <p>
+          It is also fundamentally important that we do not limit ourselves to legacy soil profile data
+only. The soil science community needs to actively begin investing in collecting new soil
+profile field observations, especially in the previously mentioned ecological and climatic zones
+that have been under-sampled. For example, the AfSIS project (http://africasoils.net) has spent
+already half a decade on collecting new samples for Africa. We believe that there is great
+potential in undertaking various types of feature space distribution analysis (see e.g. Minasny et al.
+[62] and Fitzpatrick et al. [
+          <xref ref-type="bibr" rid="ref18">63</xref>
+          ]) and optimizing new sampling of additional soil profiles using,
+for example, Latin Hypercube sampling principles. By adding only a few hundred new points
+that are carefully allocated in extrapolation areas, the accuracy of predictions is likely to
+improve more rapidly than if we double the number of points in areas already well
+represented. Collection of the new samples could even be implemented via crowd labour or
+crowdsourcing systems so that also local soil surveyors / enthusiasts could get involved (we are
+currently testing using MySoil observations contributed by non-specialists, kindly donated to
+SoilGrids by the British Geological Survey).
+25 / 40
+Fig 9. Maps of scaled Shannon Entropy index (Eq 5) for USDA and WRB soil classification maps.
+        </p>
+      </sec>
+      <sec id="sec-5-2">
+        <title>Improving the modeling framework</title>
+        <p>A major improvement from SoilGrids1km to SoilGrids250m is that we now consistently use
+machine learning techniques to generate predictions. In the previous version of SoilGrids we
+used various types of (Generalized) Linear Models in combination with natural splines to
+model soil property-depth relationships, but this resulted in soil property-depth relationships
+that were the same across the globe, which is unrealistic and suboptimal. To tackle such
+problems we now use dominantly tree-based modelsÐrandom forest and gradient tree boostingÐ
+to account for local relationships between soil variables and covariates. Fig 2 (left) shows that,
+26 / 40
+Fig 10. Example of scaled Shannon Entropy index for USDA and WRB soil classification maps with a zoom in on USA state Illinois near the
+city of Chicago. This figure uses the same legend as used in Fig 9.
+indeed, predictions produced using tree-based models adjust locally to observed values. The
+current version of SoilGrids is thus, we contend, able to better represent both global and local
+patterns.</p>
+        <p>It has already been demonstrated that random forest can outperform linear models,
+especially in being able to better represent complex non-linear relationships in large data sets [64±
+66]. Likewise, gradient tree boosting has already won several Kaggle.com competitions (Kaggle
+is a platform for predictive modeling and analytics competitions on which companies and
+researchers post their data and statisticians and data miners from all over the world compete
+to produce the best models). However, tackling the complexities of data size has been a major
+challenge. In the case of SoilGrids, the regression matrices had up to one million point pairs
+with over 150 covariates, hence their size and complexity well exceeds what can be handled
+with desktop computers. Ultimately, we decided to primarily rely on three R packagesÐ
+caret [49], ranger [47] and xgboost [48]Ðthat have proven to be capable of processing
+huge raster stacks. By using these three open source packages and a single dedicated server
+27 / 40
+Fig 11. List of some remote sensing data of relevance for global soil mapping projects (i.e. with a near to global
+coverage and with remote sensing technology of interest to soil mapping). Landsat 8 is part of the Landsat Data
+Continuity Mission (LDCM) maintained by NASA and the United States Geological Survey (USGS). ALOS Global Digital
+Surface Model is a product of the Japanese Aerospace Exploration Agency. Sentinel±1,2 is the Earth observation
+mission developed by the European Space Agency as part of the Copernicus Programme. WorldDEM™ is a commercial
+product distributed by Airbus Defence and Space.
+(current costs of about $800 / month) we were able to optimize and fit all models needed to
+generate SoilGrids within a few hours, and to generate all predictions for the entire world
+within 12 days.</p>
+        <p>Machine learning (ML) greatly simplifies model fitting: basically, a soil surveyor does not
+need to suggest or impose any relationshipsÐthe analyst only needs to list a target variable
+and covariates, and machine learning does the `magic' of optimizing model parameters. On
+the one hand this is an attractive property because using the ML framework for global soil
+mapping allows mapping hundreds of soil variables in parallel with little human interaction.</p>
+        <p>On the other hand it has also risks and limitations:
+· ML is sensitive to noise and errors in the data. Even a few typos in the input values can result</p>
+        <p>in significant blunders in output maps,
+· The computational intensity of ML, when compared to fitting linear models or similar, is an</p>
+        <p>order of magnitude greater. As the number of training points grows, the computational load
+28 / 40
+grows exponentially. At some stage, it becomes currently infeasible and overly expensive to
+compute predictions using machine learning,
+· Extrapolation of models fitted using ML remains risky. Without using pseudo-points to
+fillin data gaps in feature space for some parameters, machine learning can potentially produce
+worse maps (on average for most of the soil mask) than linear models,
+· Because the sampling locations are clearly biased towards agricultural areas, and because
+most of the training points come from the developed world (especially USA), it is very well
+possible that SoilGrids predictions are significantly biased in undersampled parts of the
+world. In principle, the best solution to this problem is to continuously add more points
+from undersampled areas, especially in Africa (tropical soils and wetlands) and the Russian</p>
+        <p>Federation,
+· With ML approaches it is difficult to derive spatially explicit measures of the prediction
+accuracy. We calculated accuracy measures using 10±fold cross-validation, but these are only
+global measures.
+· ML approaches have a high degree of ªblack boxº modeling and it is difficult to incorporate
+knowledge of soil forming processes in the prediction algorithm. But perhaps we can also
+learn from ML models by closer inspection and interpretation of how dominant covariates
+influence soil property and soil class predictions.</p>
+        <p>Could machine learning put soil mappers out of work? Probably not. Solid knowledge of
+soil science, spatial statistics and/or geostatistics in projects such as SoilGrids is needed more
+than ever. For example, it is clear that in order to improve SoilGrids, more focus will need to
+be put on improving the feature space representation (adding extra samples) and on
+improving visualization and interpretation of complex relationships. Such improvements are not
+possible without understanding principles of spatial sampling and soil-environment relationships.</p>
+        <p>Expert knowledge on soil-landscape relations and soil distribution remains important to
+evaluate the results and assess if predicted spatial patterns make sense from a pedological
+viewpoint. Even though the existing machine learning methods have proven to show improved
+predictive performance, much work remains to make them more robust, less sensitive to
+blunders, incorporate soil-landscape process knowledge and make them more suited for input data
+of variable accuracy.</p>
+        <p>With the current version of SoilGrids, we have also not yet adequately addressed the
+problem of vertical soil stratigraphy. At this stage, we remain unable to properly model how some
+soil horizons show smooth transition of soil properties, and some show clear and abrupt
+discontinuities (as in geological layers on a meso-scale). In the next update of SoilGrids we hope
+to improve modeling and prediction of occurrence of diagnostic soil horizons (e.g. Histic,
+Nitic, Albic etc) in 3D, so that transitions between horizons can be represented more
+accurately.</p>
+        <p>Preparation and conversion of soil class input data could also be much improved. Several
+research groups [67, 68] are now looking into automating soil classification (i.e. by using
+automated or semi-automated soil classification software). Eberhardt [69], for example,
+demonstrated using German soil profile data that soil classification can be completely automatized.</p>
+        <p>Future versions of SoilGrids could also try to derive soil classes by applying exact rules per
+pixel, instead of trying to predict them from point data. This might be an ambitious projectÐ
+often the classification systems (keys and rules of classification) can be very detailed and
+require a comprehensive combination of diagnostic properties, laboratory data, soil-moisture
+and temperature regimes, etc. in order to deduce the correct classification. This is without
+29 / 40
+considering the sensitivity of such classifiers to data gaps and uncertainties. Incorporating
+uncertainty into such complex soil classification algorithms is yet another challenge. So far, we
+have managed to produce global maps of the scaled Shannon Entropy index (Fig 9) that clearly
+indicate under-represented areas. A sensible approach to improving predictions of soil types
+would be to set the sampling intensity proportional to the Shannon Entropy index or
+completely focus on areas where the Shannon Entropy index is &gt; 80%. In that sense, there
+seems to be slightly more work needed for the WRB classification system than for the USDA
+system.</p>
+        <p>We have also so far explicitly avoided trying to model posterior distributions of target
+variables, i.e. map uncertainty for each soil variable. Although tools for modeling uncertainty in
+ML methods already exist (see e.g. Meinshausen [70]), these are hundreds of times more
+computationally intensive and will probably need to be re-implemented in some
+high-performance computing infrastructure. One future objective is to implement a framework to
+model uncertainties of all predictions using a robust statistical framework, such as quantile
+regression forests, but this might be highly challenging, especially when the data volumes
+grow larger.</p>
+        <p>
+          Another opportunity for improvement lies in using spatiotemporal modeling [71, 72] vs
+purely spatial modeling. Stockmann et al. [
+          <xref ref-type="bibr" rid="ref2">2</xref>
+          ] recently made progress in modeling global soil
+organic carbon dynamics, mainly using time-series of MODIS land cover images, but
+numerous challenges remain:
+· There might not be enough well-distributed soil profile data in the time-domain that support
+fitting of spatiotemporal (and/or dynamic) models. As we move back further in the past,
+there are fewer and fewer observations, so potential time-domain gaps are possibly an order
+of magnitude more serious than spatial data gaps,
+· Some soil properties such as soil water content, soil temperature, and even soil nutrients,
+change not simply within seasons, but also within weeks or days. At this stage, global fitting
+of spatiotemporal models for such variables that vary at short time scales might remain
+unattainable (until new global soil monitoring networks are established),
+· Legacy soil profile data exhibit a significant noise (diversity of methods, laboratories) so that,
+for example for soil organic carbon, where temporal dynamics are slow, it will be difficult to
+detect real changes in time in a situation where the signal-to-noise ratio is low,
+· It is almost impossible to properly validate spatiotemporal predictions produced for past
+periods of time. There are very few and sparse validation soil data collected using objective
+probability sampling designs (as described in Brus et al. [60]). Eventually, we might never
+know how accurate our models are in predicting the past status of soil from 50 or 100 years
+ago. One possible solution to this problem is linking soil science more directly with
+paleontology and archeology, but this will probably not work for all soil variables.
+        </p>
+      </sec>
+      <sec id="sec-5-3">
+        <title>Predicting at resolutions finer than 250 meter</title>
+        <p>Because the algorithms and software we have used in this work are already optimized for
+processing large data, this opens a possibility to further speed up model fitting and
+prediction and to generate predictions at ever finer resolutions. Fig 11 identifies some new remote
+sensing data land products of relevance to global soil mapping. Note that some remote
+sensing products, such as Landsat 8 and ASTER (distributed as scenes), require significant
+processing capacities before they can be assembled and prepared for use in global soil mapping.</p>
+        <p>Nevertheless, considering the amount of remote sensing data available publicly today, we
+30 / 40
+anticipate that the Open Source software used in this work will soon (12±24 months) be able
+to support generation of 30 m resolution SoilGrids, provided that enough resources exist to
+cover the costs of preparing soil covariates and producing global predictions at these fine
+resolutions.</p>
+        <p>Presently, the biggest challenges for upgrading SoilGrids to finer resolution are the
+resources required to prepare all required remote sensing input data and computational
+capacity needed to make fine resolution predictions globally. The software seems to be much less of
+a problem. Although R has been often criticized for not being suited for large GIS layers, our
+experience with SoilGrids has convinced us that, with proper combination of parallelization
+and tiling of objects, and by using packages implemented in C++ or similar, equally efficient
+computing can be achieved with ranger and xgboost (hence within R) or by using
+software such as h2o (based on Java). The remaining bottleneck of R we experienced was the
+size of models produced using random forestÐthe objects often exceeded 5±10 GiB and as
+such require significant RAM during predictions. Such memory problems in R could possibly
+be solved via the following two strategies:</p>
+        <sec id="sec-5-3-1">
+          <title>1. Disk caching: by using the ff or a similar packages to save the forests on disk,</title>
+          <p>2. Efficient tree representation: transform trees to a simpler structure with the same output.</p>
+          <p>In the case of random forest, the number of trees required for a given accuracy depends on
+the number of rows and columns, i.e. the number of observations (n) and covariates (p).
+Usually, for many rows only few trees are required, while for p n problems (for example in
+genetics) many more trees are needed. It should be generally fine to reduce the number of
+trees to fewer than 300 but this could be at the expense of loss in accuracy. Lopes [73] shows a
+framework, based on bootstrapping, to detect an optimal number of trees given some error
+threshold. For example, in many cases, even 150 trees is sufficient to achieve stable results after
+which a trade-off between computation time and accuracy offers no additional advantages.
+We have not tried fine-tuning the number of trees per property (we consistently use 300 trees
+as a practical compromise between precision and computing time) because this would have
+been an additional load to the project.</p>
+          <p>Another serious challenge to producing finer resolution SoilGrids is the current lack of
+adequately detailed geological data, i.e. data to represent the underlying lithology and
+mineralogy. We have thus far used the Global Lithological Map (GLiM) [35] as the key layer to
+represent parent material, but this layer is probably even coarser than 1 km resolution
+remote sensing covariates, and still contains numerous artifacts such as country/state
+borders. Although the OneGeology initiative is of obvious interest to global soil mapping
+projects, it has not, so far, delivered any globally consistent and complete information on parent
+material. Likewise, the latest most accurate DEM of the world (WorldDEM™) is an order of
+magnitude more accurate and more detailed than the SRTM DEM [74] and as such would
+be an ideal covariate for many regional and global soil mapping projects. However, it will
+likely remain a commercial product available to larger business only (civil engineering and
+mineral exploration), and hence of limited use to global soil mappers. In that sense, USA's
+NASA and USGS, with its MODIS, Landsat and similar civil-applications missions will
+likely remain the main source of spatial covariate data to support global soil mapping
+initiatives.</p>
+          <p>Other potentially useful covariates for predicting soil properties and classes could be maps
+of paleolithic i.e. pre-historic climatic conditions of soil formation, e.g. glacial landscapes and
+processes, past climate conditions and similar. These could likely become significant
+predictors of many current soil characteristics. Information on pre-historic climatic conditions and
+31 / 40
+land use is unfortunately often not available, especially not at detailed cartographic scales,
+although there are now several global products that represent, for example, dynamics of land
+use / changes of land cover (see e.g. HYDE data set by Klein et al. [75]) through the past 1500+
+years. As the spatial detail and completeness of such pre-historic maps increases, they will
+become potentially interesting covariates for global soil modeling.</p>
+        </sec>
+      </sec>
+      <sec id="sec-5-4">
+        <title>Merging global and local: A system for automated soil image fusion</title>
+        <p>SoilGrids is not expected to be as accurate or relevant as locally produced maps and models
+that make use of considerably greater amounts of local point data and finer local covariates.</p>
+        <p>This is especially the case for OECD countries that can draw upon orders of magnitude
+more soil profile data than were used in this work (for illustration, it is estimated that
+German Federal agencies alone have in possession 2±3 million complete soil profiles).</p>
+        <p>Comparison of SoilGrids with similar national or continent-wide products shows that there
+is a general match in spatial patterns for many physical and chemical soil properties,
+although there are still substantial differences (Fig 12). This indicates that promising
+possibilities exist for further combination of local and global predictions (see further
+discussion).</p>
+        <p>For both Tasmania and California, SoilGrids seems to show somewhat smoother
+predictions, with some smoothing of higher and lower values, which is especially visible in the
+crosshistogram scatter plots (Fig 12). SoilGrids tends to overestimate soil pH for parts of Tasmania
+covered with rainforests mainly. There were not many ground observations to support the
+prediction models for those areas, hence some systematic deviation could be expected and will
+likely occur in other similar areas as well. We did not run a systematic comparison of values
+for all soil properties, but Fig 12 indicates that merging SoilGrids250m with 100m resolution
+predictions using higher density of local soil profiles could help to gradually improve
+accuracies locally and to fill gaps in locally generated predictions.</p>
+        <p>Mulder et al. [10] correctly recognized that, in many areas in the world, locally produced
+predictions of soil properties could likely be significantly more accurate than SoilGrids. Our
+hope is, nevertheless, that SoilGrids250m will be used by national and regional soil data
+production teams with, or as a supplement to, local data, and that ultimately most users will use
+merged (ensemble) global-local predictions for final decision making. We especially
+recommend the following two frameworks for combining global and local data:
+1. SoilGrids predictions as covariate layers for producing finer resolution local predictions of</p>
+        <p>soil properties (i.e. as an input for downscaling),
+2. Ensemble predictions = SoilGrids + local soil spatial prediction models combined.</p>
+        <p>Option 2, i.e. produce ensemble predictions for smaller areas for which finer resolution
+and/or higher quality soil covariates are available, is possibly the most attractive option
+considering that local and global predictions can then be generated independently. In that sense,
+SoilGrids could also be considered to be just one (the coarsest) component of a global soil
+variation curve (Fig 13). But how many components to use to represent soil variation? Are two
+components enough? How to optimally merge components where the accuracy is unknown
+(not enough ground data for validation)? These will be areas of further research. In that
+context, Malone et al. [77] recently made progress in testing and developing methods for merging
+predictions from polygon-based maps and maps derived using spatial predictions. However,
+running such models in an automated way for large areas (i.e. a system for an automated soil
+image fusion) might take years before an operational system for global soil data fusion is fully
+functional.
+32 / 40
+Fig 12. Comparison between predicted soil pH: (above) SoilGrids (our predictions) for part of California and predictions based on the SSURGO
+data set (for 0±200 cm depth interval) developed by the National Cooperative Soil Survey, (below) SoilGrids (our predictions) for Tasmania and
+predictions based on the Soil and Landscape Grid of Australia [76] (for 0±5 cm depth interval). The correlation coefficients between the two data
+sources are 0.79 and 0.71, respectively. Crosses on the map indicate soil profiles used for generating SoilGrids.</p>
+      </sec>
+    </sec>
+    <sec id="sec-6">
+      <title>Conclusions</title>
+      <p>Soil has long been considered one of the least developed global environmental layers with data
+available only at coarse resolutions and with limited accuracy [78, 79]. ISRICÐWorld Soil
+Information has a vision and a mission to produce soil information and map products that are
+globally complete and consistent, scientifically robust, open, transparent and reproducible,
+continuously improved and updated, easy to discover and access, easy to use and meaningful
+to users. With this next generation SoilGrids250m we hope to continue to demonstrate
+progress in the production and distribution of improved global soil map products and to motivate,
+especially non-soil scientists, to use these new soil data in their models and spatial planning,
+i.e. directly as input for generation of soil functional properties and agro-ecological variables
+and indicators to support decision making. With its Open Data license and web-services, we
+aim to serve quality soil information freely and universally for science, society and a
+sustainable future.
+33 / 40
+Fig 13. SoilGrids can be considered the `coarsest' component of the global soil variation `signal' curve. Other components, e.g. finer
+products based on local / more detailed 250±100 m resolution imagery, could be added to produce a merged product.</p>
+      <p>We have demonstrated, using a series of cross-validation tests, that the new version of
+SoilGrids represents a significant improvement upon the previous products at 1 km
+resolution, especially in terms of spatial detail and attribute accuracy. Future work is required to
+determine if these improvements in accuracy could also help produce more accurate Global
+Gridded Crop Models (GGCMs) that allow for more reliable estimates of impact of climate
+change and land degradation on food production [8]. Data accessibility problems with
+SoilGrids have also been addressed: SoilGrids are now available for viewing in fusion with
+satellite imagery via the data portal SoilGrids.org (Fig 14). SoilGrids rasters can also be
+downloaded via FTP for smaller areas; at point locations through the SoilInfo App and the
+REST SoilGrids. There should be fewer and fewer obstacles for ecologists, agronomists,
+hydrologists, climatologists, foresters and spatial planners to discover, obtain and use soil
+data in their daily work.
+34 / 40
+Fig 14. Basic design and functionality of SoilGrids.org: Soil web-mapping browser that provides interactive viewing of 3D soil layers.
+Reference administrative data, basic functionality and output data license of SoilGrids.org are primarily based on OpenStreetMap.</p>
+    </sec>
+    <sec id="sec-7">
+      <title>Acknowledgments</title>
+      <p>
+        SoilGrids are based on numerous soil profile data sets that have been kindly contributed by
+various national and international agencies: the USA National Cooperative Soil Survey Soil
+Characterization database (http://ncsslabdatamart.sc.egov.usda.gov/) and profiles from the
+USA National Soil Information System (http://soils.usda.gov/technical/nasis/), Land Use/Land
+Cover Area Frame Survey (LUCAS) Topsoil Survey database [
+        <xref ref-type="bibr" rid="ref19">80</xref>
+        ] (http://eusoils.jrc.ec.europa.
+eu/content/lucas-2009-topsoil-data), Africa Soil Profiles database [
+        <xref ref-type="bibr" rid="ref20">81</xref>
+        ], Australian National
+Soil Information by CSIRO Land and Water [
+        <xref ref-type="bibr" rid="ref21 ref22">82, 83</xref>
+        ], Mexican National soil profile database
+[
+        <xref ref-type="bibr" rid="ref23">84</xref>
+        ] provided by the Mexican Instituto Nacional de EstadÂõstica y GeografÂõa / CONABIO,
+Brazilian national soil profile database [
+        <xref ref-type="bibr" rid="ref24">85</xref>
+        ] provided by the University of São Paulo, Chinese
+National Soil Profile database [
+        <xref ref-type="bibr" rid="ref25">86</xref>
+        ] provided by the Institute of Soil Science, Chinese Academy
+of Sciences, soil profile archive from the Canadian Soil Information System [
+        <xref ref-type="bibr" rid="ref26">87</xref>
+        ] and Forest
+Ecosystem Carbon Database (FECD), ISRIC-WISE [
+        <xref ref-type="bibr" rid="ref27">88</xref>
+        ], The Northern Circumpolar Soil
+Carbon Database [26], eSOTER profiles [
+        <xref ref-type="bibr" rid="ref28">89</xref>
+        ], SPADE [
+        <xref ref-type="bibr" rid="ref29">90</xref>
+        ], Unified State Register of soil resources
+RUSSIA (Version 1.0. MoscowÐ2014), National Database of Iran provided by the Tehran
+University, points from the Dutch Soil Information System (BIS) prepared by Wageningen
+Environmental Research, and others. We are also grateful to USA's NASA, USGS and USDA
+agencies for distributing vast amounts of remote sensing data (especially MODIS land
+products and SRTM DEM), and to the Open Source software developers of the packages ranger,
+35 / 40
+xgboost, caret, raster, GDAL, SAGA GIS and similar, and without which SoilGrids
+would most likely not be possible. Every effort has been made to trace copyright holders of the
+materials used to produce SoilGrids spatial predictions. Should we, despite all our efforts have
+overlooked contributors please contact ISRIC and we shall correct this unintentional omission
+without any delay and will acknowledge any overlooked contributions and contributors in
+future updates.
+      </p>
+    </sec>
+    <sec id="sec-8">
+      <title>Author Contributions</title>
+      <p>Conceptualization: TH JMJ GBMH MK WS MAG RAM JGBL IW BK.</p>
+      <p>Data curation: MRG WS XG RAM NHB JGBL SM.</p>
+      <p>Formal analysis: TH GBMH MK WS MNW BK.</p>
+      <p>Funding acquisition: TH GBMH.</p>
+      <p>Investigation: TH JMJ GBMH MRG WS BK.</p>
+      <p>Methodology: TH JMJ GBMH MRG MK WS MNW BBM RAM SM BK.</p>
+      <p>Project administration: TH JMJ MK.</p>
+      <p>Resources: JMJ MK AB BBM ER.</p>
+      <p>Software: TH JMJ MRG MK AB WS MNW ER BK.</p>
+      <p>Supervision: TH GBMH.</p>
+      <p>Validation: MRG XG MAG RV RAM NHB JGBL ER IW SM.</p>
+      <p>Visualization: TH JMJ AB MK ER.</p>
+      <p>Writing ± original draft: TH JMJ GBMH WS MNW BBM RAM NHB IW BK.
+Writing ± review &amp; editing: TH JMJ GBMH MK WS MNW BBM RAM NHB IW BK.
+36 / 40
+8. Folberth C, SkalskyÂ R, Moltchanova E, Balkovič J, Azevedo LB, Obersteiner M, et al. Uncertainty in soil
+data can outweigh climate impact signals in global crop yield simulations. Nature Communications.
+2016; 7. doi: 10.1038/ncomms11872
+9. Hengl T, Mendes de Jesus J, MacMillan RA, Batjes NH, Heuvelink GBM, Ribeiro E, et al. SoilGrids1km
+ÐGlobal Soil Information Based on Automated Mapping. PLoS ONE. 2014; 9(e105992). doi: 10.1371/
+journal.pone.0105992 PMID: 25171179
+10. Mulder V, Lacoste M, Richer-de Forges A, Martin M, Arrouays D. National versus global modelling the
+3D distribution of soil organic carbon in mainland France. Geoderma. 2016; 263:16±34. doi: 10.1016/j.
+geoderma.2015.08.035
+12. FAO/IIASA/ISRIC/ISS-CAS/JRC. Harmonized World Soil Database (version 1.2). Rome: FAO; 2012.
+16. U S Department of Agriculture. Keys to Soil Taxonomy. 12th ed. U.S. Government Printing Office;
+2014.
+17. Arrouays D, Grundy MG, Hartemink AE, Hempel JW, Heuvelink GBM, Young Hong S, et al. Chapter
+ThreeÐGlobalSoilMap: Toward a Fine-Resolution Global Grid of Soil Properties. In: Sparks DL, editor.</p>
+      <p>Soil carbon. vol. 125 of Advances in Agronomy. Academic Press; 2014. p. 93±134.
+18. Nelson DW, Sommers LE. Total carbon, organic carbon, and organic matter. In: Page AL, Miller RH,
+Keeney DR, editors. Methods of soil analysis, Part 2. 2nd ed. Agron. Monogr. 9. Madison, WI: ASA
+and SSSA; 1982. p. 539±579.
+19. Shangguan W, Hengl T, de Jesus JM, Yuan H, Dai Y. Mapping the global depth to bedrock for land
+surface modeling. Journal of Advances in Modeling Earth Systems. 2016; p. n/a±n/a.
+20. FAO. Guidelines for soil profile description. 4th ed. Rome: Food and Agriculture Organization of the</p>
+      <p>United Nations; 2006.
+21. Shaw C, Bhatti JS, Sabourin KJ. An Ecosystem Carbon Database for Canadian Forests. Information
+report. Edmonton, Alberta: Canadian Forest Service, Northern Forestry Centre; 2005.
+22. Krasilnikov P, Marti JJI, Arnold R, Shoba S, editors. A Handbook of Soil Terminology, Correlation and</p>
+      <p>Classification. Earthscan LLC; 2009.
+23. Lei SA. Soil Properties of the Kelso Sand Dunes in the Mojave Desert. The Southwestern Naturalist.</p>
+      <p>1998; 43(1):47±52.
+24. Raup B, Racoviteanu A, Khalsa SJS, Helm C, Armstrong R, Arnaud Y. The GLIMS geospatial glacier
+database: a new tool for studying glacier change. Global and Planetary Change. 2007; 56(1):101±110.
+doi: 10.1016/j.gloplacha.2006.07.018
+25. Mantel S, WoÈsten H, Verhagen J, et al. Biophysical land suitability for oil palm in Kalimantan, Indonesia.</p>
+      <p>ISRIC Report 2007/01. ISRICÐWorld Soil Information; 2007.
+26. Hugelius G, Tarnocai C, Broll G, Canadell JG, Kuhry P, Swanson DK. The Northern Circumpolar Soil
+Carbon Database: spatially distributed datasets of soil coverage and soil carbon storage in the northern
+permafrost regions. Earth System Science Data. 2013; 5(1):3±13.
+37 / 40
+31.</p>
+      <p>Wan Z. MODIS land surface temperature products users' guide. ICESS, University of California; 2006.
+32. Hall DK, Riggs GA. Accuracy assessment of the MODIS snow products. Hydrological Processes. 2007;
+21(12):1534±1547.
+33. Hijmans RJ, Cameron SE, Parra JL, Jones PG, Jarvis A. Very high resolution interpolated climate
+surfaces for global land areas. International Journal of Climatology. 2005; 25:1965±1978. doi: 10.1002/joc.
+1276
+34. Huffman GJ, Bolvin DT. GPCP version 2 combined precipitation data set documentation. vol. 1.
+Laboratory for Atmospheres, NASA Goddard Space Flight Center and Science Systems and Applications;
+2009.
+35. Hartmann J, Moosdorf N. The new global lithological map database GLiM: A representation of rock
+properties at the Earth surface. Geochemistry, Geophysics, Geosystems. 2012; 13(12):n/a±n/a. doi:
+10.1029/2012GC004370
+36. Sayre R, Dangermond J, Frye C, Vaughan R, Aniello P, Breyer S, et al. A new map of global ecological
+land unitsÐan ecophysiographic stratification approach. Washington, DC: USGS / Association of
+American Geographers; 2014.
+37. Fan Y, Li H, Miguez-Macho G. Global patterns of groundwater table depth. Science. 2013; 339
+(6122):940±943. doi: 10.1126/science.1229881 PMID: 23430651
+40. Jenny H. Factors of soil formation: a system of quantitative pedology. Dover books on Earth sciences.</p>
+      <p>Dover Publications; 1994.
+41. Hijmans RJ, van Etten J. raster: Geographic data analysis and modeling; 2012. Available from: http://</p>
+      <p>CRAN.R-project.org/package=raster.
+42. Pebesma EJ, Bivand RS. Classes and methods for spatial data in R. R news. 2005; 5(2):9±13.
+43. Mitchell T, Developers G. Geospatial Power Tools: GDAL Raster &amp; Vector Commands. Locate Press;
+2014.
+44. Carroll ML, Townshend JR, DiMiceli CM, Noojipady P, Sohlberg RA. A new global raster water mask at
+250 m resolution. International Journal of Digital Earth. 2009; 2( 4):291±308. doi: 10.1080/
+17538940902951401
+45. Rabus B, Eineder M, Roth A, Bamler R. The shuttle radar topography missionÐa new class of digital
+elevation models acquired by spaceborne radar. ISPRS Journal of Photogrammetry and Remote
+Sensing. 2003; 57(4):241±262. doi: 10.1016/S0924-2716(02)00124-7
+46. Venables WN, Ripley BD. Modern applied statistics with S. 4th ed. New York: Springer-Verlag; 2002.</p>
+      <p>Wright MN, Ziegler A. ranger: A Fast Implementation of Random Forests for High Dimensional Data in
+C++ and R. Journal of Statistical Software. 2016; p. 18.
+48. Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. ArXiv e-prints. 2016;.
+49. Kuhn M. Building Predictive Models in R Using the caret Package. Journal of Statistical Software. 2008;
+28(1):1±26.
+50. Sollich P, Krogh A. Learning with ensembles: How over-fitting can be useful. In: Proceedings of the
+1995 Conference. vol. 8; 1996. p. 190.
+51. Knaus J, Porzelius C, Binder H, Schwarzer G. Easier parallel computing in R with snowfall and
+sfCluster. The R Journal. 2009; 1(1):54±59.
+52. Bauer-Marschallinger B, Sabel D, Wagner W. Optimisation of global grids for high-resolution remote
+sensing data. Computers &amp; Geosciences. 2014; 72:84±93. doi: 10.1016/j.cageo.2014.07.005
+53. Cohen J. Weighted kappa: Nominal scale agreement provision for scaled disagreement or partial credit.</p>
+      <p>Psychological bulletin. 1968; 70(4):213. doi: 10.1037/h0026256 PMID: 19673146
+54. Sing T, Sander O, Beerenwinkel N, Lengauer T. ROCR: visualizing classifier performance in R.
+Bioinformatics. 2005; 21(20):3940±3941. doi: 10.1093/bioinformatics/bti623 PMID: 16096348
+55. Sing T, Sander O, Beerenwinkel N, Lengauer T. ROCR: Visualizing the Performance of Scoring
+Classifiers; 2016. Available from: http://CRAN.R-project.org/package=ROCR.
+56. Shannon CE. Communication in the presence of noise. Proceedings of the IRE. 1949; 37(1):10±21. doi:
+10.1109/JRPROC.1949.232969
+38 / 40
+57. Borda M. Fundamentals in Information Theory and Coding. Springer Berlin Heidelberg; 2011. Available
+from: https://books.google.nl/books?id=Lyte2yl1SPAC.
+58. Kempen B. Updating soil information with digital soil mapping [PhD thesis]. Wageningen University.</p>
+      <p>Wageningen; 2011. Available from: http://edepot.wur.nl/187198.
+59. Wright MN, Ziegler A. ranger: A Fast Implementation of Random Forests for High Dimensional Data in</p>
+      <p>C++ and R. ArXiv e-prints. 2015;.
+61. Ribeiro E, Batjes N, Leenaars JGB, van Oostrum A, editors. Towards the standardization and
+harmonization of world soil data. ISRIC Report 2015/03. Wageningen, the Netherlands: ISRICÐWorld Soil
+Information; 2015.
+62. Minasny B, McBratney AB. A conditioned Latin hypercube method for sampling in the presence of
+ancillary information. Computers &amp; Geosciences. 2006; 32(9):1378±1388. doi: 10.1016/j.cageo.2005.12.
+009
+64. Statnikov A, Wang L, Aliferis C. A comprehensive comparison of random forests and support vector
+machines for microarray-based cancer classification. BMC Bioinformatics. 2008; 9(1):319. doi: 10.
+1186/1471-2105-9-319 PMID: 18647401
+65. Kuhn M, Johnson K. Applied predictive modeling. Springer; 2013.
+66. Hengl T, Heuvelink GBM, Kempen B, Leenaars JGB, Walsh MG, Shepherd KD, et al. Mapping Soil
+Properties of Africa at 250 m Resolution: Random Forests Significantly Improve Current Predictions.</p>
+      <p>PLoS ONE. 2015; 10(e0125814). doi: 10.1371/journal.pone.0125814 PMID: 26110833
+67. LaÂng V, Fuchs M, Waltner I, MicheÂli E. Soil taxonomic distance, a tool for correlation: As exemplified by
+the Hungarian Brown Forest Soils and related WRB Reference Soil Groups. Geoderma. 2013;
+192:269±276. doi: 10.1016/j.geoderma.2012.07.023
+68. Brevik EC, Calzolari C, Miller BA, Pereira P, Kabala C, Baumgarten A, et al. Soil mapping, classification,
+and pedologic modeling: History and future directions. Geoderma. 2016; 264:256±274. doi: 10.1016/j.
+geoderma.2015.09.022
+69. Eberhardt E. Deriving WRB soil types using National German Soil Survey Guidelines. In: NCSS
+National Conference. NCSS Standards. Asheville, NC: United States Department of Agriculture
+USDANRCS; 2011. p. 1±2.
+70. Meinshausen N. Quantile regression forests. The Journal of Machine Learning Research. 2006; 7:983±
+999.
+71. Kilibarda M, Hengl T, Heuvelink G, GraÈler B, Pebesma E, Perčec Tadić M, et al. Spatio-temporal
+interpolation of daily temperatures for global land areas at 1 km resolution. Journal of Geophysical
+Research: Atmospheres. 2014; 119(5):2294±2313.
+72. Gasch C, Hengl T, GraÈler B, Meyer H, Magney T, Brown D. Spatio-temporal interpolation of soil water,
+temperature, and electrical conductivity in 3D+T: The Cook Agronomy Farm data set. Spatial Statistics.
+2015; 14(Part A):70±90. doi: 10.1016/j.spasta.2015.04.001
+73. Lopes ME. Measuring the Algorithmic Convergence of Random Forests via Bootstrap Extrapolation.</p>
+      <p>Davis CA: Department of Statistics, University of California; 2015.
+74. Baade J, Schmullius C. Uncertainties of a TanDEM-X derived Digital Surface Model 2014ÐA case
+study from the Roda catchment, Germany. In: Geoscience and Remote Sensing Symposium
+(IGARSS), 2014 IEEE International; 2014. p. 4327±4330.
+75. Klein Goldewijk K, Beusen A, Van Drecht G, De Vos M. The HYDE 3.1 spatially explicit database of
+human-induced global land-use change over the past 12,000 years. Global Ecology and Biogeography.
+2011; 20(1):73±86. doi: 10.1111/j.1466-8238.2010.00587.x
+76. Kidd D, Webb M, Malone B, Minasny B, McBratney A. Eighty-metre resolution 3D soil-attribute maps for</p>
+      <p>Tasmania, Australia. Soil Research. 2015; 53(8):932±955.
+77. Malone BP, Minasny B, Odgers NP, McBratney AB. Using model averaging to combine soil property
+rasters from legacy soil maps and from point data. Geoderma. 2014; 232:34±44. doi: 10.1016/j.
+geoderma.2014.04.033
+78. Sanchezet al. Digital Soil Map of the World. Science. 2009; 325:680±681. doi: 10.1126/science.</p>
+      <p>1175084 PMID: 19661405
+79. Grunwald S, Thompson JA, Boettinger JL. Digital Soil Mapping and Modeling at Continental Scales:
+Finding Solutions for Global Issues. Soil Science Society of America Journal. 2011; 75:1201±1213. doi:
+10.2136/sssaj2011.0025
+39 / 40</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          1.
+          <string-name>
+            <surname>Scharlemann</surname>
+            <given-names>JPW</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tanner</surname>
+            <given-names>EVJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hiederer</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kapos</surname>
+            <given-names>V</given-names>
+          </string-name>
+          .
+          <article-title>Global soil carbon: understanding and managing the largest terrestrial carbon pool</article-title>
+          .
+          <source>Carbon Management</source>
+          .
+          <year>2014</year>
+          ;
+          <volume>5</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>81</volume>
+          ±
+          <fpage>91</fpage>
+          . doi:
+          <volume>10</volume>
+          .4155/cmt.13.77
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          2.
+          <string-name>
+            <surname>Stockmann</surname>
+            <given-names>U</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Padarian</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>McBratney</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Minasny</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>de Brogniez</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Montanarella</surname>
+            <given-names>L</given-names>
+          </string-name>
+          , et al.
+          <article-title>Global soil organic carbon assessment</article-title>
+          .
+          <source>Global Food Security</source>
+          .
+          <year>2015</year>
+          ;
+          <volume>6</volume>
+          :9±
+          <fpage>16</fpage>
+          . http://dx.doi.org/10.1016/j.gfs.
+          <year>2015</year>
+          .
+          <volume>07</volume>
+          .001.
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          3.
+          <string-name>
+            <surname>Aksoy</surname>
+            <given-names>E</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Yigini</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Montanarella L. Combining</surname>
+          </string-name>
+          <article-title>Soil Databases for Topsoil Organic Carbon Mapping in Europe</article-title>
+          .
+          <source>PLoS ONE</source>
+          .
+          <year>2016</year>
+          ;
+          <volume>11</volume>
+          (
+          <issue>3</issue>
+          ):1±
+          <fpage>17</fpage>
+          . doi:
+          <volume>10</volume>
+          .1371/journal.pone.0152098
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          4.
+          <string-name>
+            <surname>Shani</surname>
+            <given-names>U</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ben-Gal</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tripler</surname>
+            <given-names>E</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Dudley</surname>
+            <given-names>LM</given-names>
+          </string-name>
+          .
+          <article-title>Plant response to the soil environment: An analytical model integrating yield, water, soil type, and salinity</article-title>
+          .
+          <source>Water resources research</source>
+          .
+          <year>2007</year>
+          ;
+          <volume>43</volume>
+          (
+          <issue>8</issue>
+          ). doi:
+          <volume>10</volume>
+          .1029/ 2006WR005313
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          5.
+          <string-name>
+            <surname>Shepherd</surname>
+            <given-names>KD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shepherd</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Walsh</surname>
+            <given-names>MG</given-names>
+          </string-name>
+          .
+          <article-title>Land health surveillance and response: A framework for evidence-informed land management</article-title>
+          .
+          <source>Agricultural Systems</source>
+          .
+          <year>2015</year>
+          ;
+          <volume>132</volume>
+          :
+          <fpage>93</fpage>
+          ±
+          <fpage>106</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.agsy.
+          <year>2014</year>
+          .
+          <volume>09</volume>
+          .002
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          6.
+          <string-name>
+            <surname>Pogson</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hastings</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Smith</surname>
+            <given-names>P</given-names>
+          </string-name>
+          .
+          <article-title>Sensitivity of crop model predictions to entire meteorological and soil input datasets highlights vulnerability to drought</article-title>
+          .
+          <source>Environmental Modelling &amp; Software</source>
+          .
+          <year>2012</year>
+          ;
+          <volume>29</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>37</volume>
+          ±
+          <fpage>43</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.envsoft.
+          <year>2011</year>
+          .
+          <volume>10</volume>
+          .008
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          7.
+          <string-name>
+            <surname>Montanarella</surname>
+            <given-names>L</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Vargas</surname>
+            <given-names>R</given-names>
+          </string-name>
+          .
+          <article-title>Global governance of soil resources as a necessary condition for sustainable development</article-title>
+          .
+          <source>Current Opinion in Environmental Sustainability</source>
+          .
+          <year>2012</year>
+          ;
+          <volume>4</volume>
+          (
+          <issue>5</issue>
+          ):
+          <volume>559</volume>
+          ±
+          <fpage>564</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j. cosust.
+          <year>2012</year>
+          .
+          <volume>06</volume>
+          .007
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          11.
+          <string-name>
+            <surname>Griffiths</surname>
+            <given-names>RI</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Thomson</surname>
+            <given-names>BC</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Plassart</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gweon</surname>
+            <given-names>HS</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Stone</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Creamer</surname>
+            <given-names>RE</given-names>
+          </string-name>
+          , et al.
+          <article-title>Mapping and validating predictions of soil bacterial biodiversity using European and national scale datasets</article-title>
+          .
+          <source>Applied Soil Ecology</source>
+          .
+          <year>2016</year>
+          ;
+          <volume>97</volume>
+          :
+          <fpage>61</fpage>
+          ±
+          <fpage>68</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.apsoil.
+          <year>2015</year>
+          .
+          <volume>06</volume>
+          .018
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          13.
+          <string-name>
+            <surname>Domisch</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Amatulli</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jetz</surname>
+            <given-names>W.</given-names>
+          </string-name>
+          <article-title>Near-global freshwater-specific environmental variables for biodiversity analyses in 1 km resolution</article-title>
+          .
+          <source>Scientific data</source>
+          .
+          <year>2015</year>
+          ;
+          <article-title>2</article-title>
+          . doi:
+          <volume>10</volume>
+          .1038/sdata.
+          <year>2015</year>
+          .73 PMID:
+          <fpage>26647296</fpage>
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          14.
+          <string-name>
+            <surname>Chen</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chen</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Liao</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Cao</surname>
+            <given-names>X</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chen</surname>
+            <given-names>L</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chen</surname>
+            <given-names>X</given-names>
+          </string-name>
+          , et al.
+          <article-title>Global land cover mapping at 30 m resolution: A POK-based operational approach</article-title>
+          .
+          <source>ISPRS Journal of Photogrammetry and Remote Sensing</source>
+          .
+          <year>2015</year>
+          ;
+          <volume>103</volume>
+          :7±
+          <fpage>27</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.isprsjprs.
+          <year>2014</year>
+          .
+          <volume>09</volume>
+          .002
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          15. IUSS Working Group WRB.
+          <article-title>World reference base for soil resources 2006: a framework for international classification, correlation and communication</article-title>
+          .
+          <source>World soil resources reports No. 103</source>
+          . Rome: Food and Agriculture Organization of the United Nations;
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          27.
+          <string-name>
+            <surname>Danielson</surname>
+            <given-names>JJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gesch</surname>
+            <given-names>DB</given-names>
+          </string-name>
+          .
+          <article-title>Global multi-resolution terrain elevation data 2010 (GMTED2010)</article-title>
+          .
+          <source>Open-File Report</source>
+          <year>2011</year>
+          ±1073. U.S. Geological Survey;
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          28.
+          <string-name>
+            <surname>Conrad</surname>
+            <given-names>O</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bechtel</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bock</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Dietrich</surname>
+            <given-names>H</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fischer</surname>
+            <given-names>E</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gerlitz</surname>
+            <given-names>L</given-names>
+          </string-name>
+          , et al.
+          <source>System for Automated Geoscientific Analyses (SAGA) v. 2.1.4. Geoscientific Model Development</source>
+          .
+          <year>2015</year>
+          ;
+          <volume>8</volume>
+          (
+          <issue>7</issue>
+          ):
+          <year>1991</year>
+          ±
+          <year>2007</year>
+          . doi:
+          <volume>10</volume>
+          .5194/ gmd-8-
+          <fpage>1991</fpage>
+          <string-name>
+            <surname>-</surname>
+          </string-name>
+          <fpage>2015</fpage>
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          29.
+          <string-name>
+            <surname>Savtchenko</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ouzounov</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ahmad</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Acker</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Leptoukh</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Koziana</surname>
+            <given-names>J</given-names>
+          </string-name>
+          , et al.
+          <article-title>Terra and Aqua MODIS products available from NASA GES DAAC</article-title>
+          .
+          <source>Advances in Space Research</source>
+          .
+          <year>2004</year>
+          ;
+          <volume>34</volume>
+          (
+          <issue>4</issue>
+          ):
+          <volume>710</volume>
+          ±
+          <fpage>714</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.asr.
+          <year>2004</year>
+          .
+          <volume>03</volume>
+          .012
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          30.
+          <string-name>
+            <surname>Mira</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Weiss</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Baret</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Courault</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hagolle</surname>
+            <given-names>O</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gallego-Elvira</surname>
+            <given-names>B</given-names>
+          </string-name>
+          , et al.
+          <article-title>The MODIS (collection V006) BRDF/albedo product MCD43D: temporal course evaluated over agricultural landscape</article-title>
+          .
+          <source>Remote Sensing of Environment</source>
+          .
+          <year>2015</year>
+          ;
+          <volume>170</volume>
+          :
+          <fpage>216</fpage>
+          ±
+          <fpage>228</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.rse.
+          <year>2015</year>
+          .
+          <volume>09</volume>
+          .021
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          38.
+          <string-name>
+            <surname>Giri</surname>
+            <given-names>C</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ochieng</surname>
+            <given-names>E</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tieszen</surname>
+            <given-names>LL</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zhu</surname>
+            <given-names>Z</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Singh</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Loveland</surname>
+            <given-names>T</given-names>
+          </string-name>
+          , et al.
+          <article-title>Status and distribution of mangrove forests of the world using earth observation satellite data</article-title>
+          .
+          <source>Global Ecology and Biogeography</source>
+          .
+          <year>2011</year>
+          ;
+          <volume>20</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>154</volume>
+          ±
+          <fpage>159</fpage>
+          . doi:
+          <volume>10</volume>
+          .1111/j.1466-
+          <fpage>8238</fpage>
+          .
+          <year>2010</year>
+          .
+          <volume>00584</volume>
+          .x
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          39.
+          <string-name>
+            <surname>Pelletier</surname>
+            <given-names>JD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Broxton</surname>
+            <given-names>PD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hazenberg</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zeng</surname>
+            <given-names>X</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Troch</surname>
+            <given-names>PA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Niu</surname>
+            <given-names>GY</given-names>
+          </string-name>
+          , et al.
+          <article-title>A gridded global data set of soil, immobile regolith, and sedimentary deposit thicknesses for regional and global land surface modeling</article-title>
+          .
+          <source>Journal of Advances in Modeling Earth Systems</source>
+          .
+          <year>2016</year>
+          ;
+          <article-title>8</article-title>
+          . doi:
+          <volume>10</volume>
+          .1002/2015MS000526 60.
+          <string-name>
+            <surname>Brus</surname>
+            <given-names>DJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kempen</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Heuvelink</surname>
+            <given-names>GBM</given-names>
+          </string-name>
+          .
+          <article-title>Sampling for validation of digital soil maps</article-title>
+          .
+          <source>European Journal of Soil Science</source>
+          .
+          <year>2011</year>
+          ;
+          <volume>62</volume>
+          (
+          <issue>3</issue>
+          ):
+          <volume>394</volume>
+          ±
+          <fpage>407</fpage>
+          . doi:
+          <volume>10</volume>
+          .1111/j.1365-
+          <fpage>2389</fpage>
+          .
+          <year>2011</year>
+          .
+          <volume>01364</volume>
+          .x
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          63.
+          <string-name>
+            <surname>Fitzpatrick</surname>
+            <given-names>MC</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gotelli</surname>
+            <given-names>NJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ellison</surname>
+            <given-names>AM</given-names>
+          </string-name>
+          .
+          <article-title>MaxEnt versus MaxLike: empirical comparisons with ant species distributions</article-title>
+          .
+          <source>Ecosphere</source>
+          .
+          <year>2013</year>
+          ;
+          <volume>4</volume>
+          (
+          <issue>5</issue>
+          ):
+          <fpage>art55</fpage>
+          ±. doi: 10.
+          <year>1890</year>
+          /ES13-00066.
+          <fpage>1</fpage>
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          80.
+          <string-name>
+            <surname>ToÂth</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jones</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Montanarella</surname>
+            <given-names>L</given-names>
+          </string-name>
+          , editors.
+          <source>LUCAS Topsoil Survey</source>
+          .
+          <article-title>Methodology, data and results</article-title>
+          .
+          <source>JRC Technical Reports EUR 26102. Luxembourg: Publications Office of the European Union</source>
+          ;
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          81.
+          <string-name>
+            <surname>Leenaars</surname>
+            <given-names>JGB</given-names>
+          </string-name>
+          .
+          <source>Africa Soil Profiles Database, Version</source>
+          <volume>1</volume>
+          .
+          <article-title>2. A compilation of geo-referenced and standardized legacy soil profile data for Sub Saharan Africa (with dataset). Wageningen, the Netherlands: Africa Soil Information Service (AfSIS) project</article-title>
+          and ISRICÐWorld Soil Information;
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          82.
+          <string-name>
+            <surname>Karssies L. CSIRO National</surname>
+          </string-name>
+          <article-title>Soil Archive and the National Soil Database (NatSoil). No. v1 in Data Collection</article-title>
+          . Canberra: CSIRO;
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          83.
+          <string-name>
+            <surname>Searle R. The</surname>
+          </string-name>
+          <article-title>Australian site data collation to support the GlobalSoilMap</article-title>
+          .
+          <article-title>GlobalSoilMap: Basis of the global spatial soil information system</article-title>
+          .
+          <year>2014</year>
+          ; p.
+          <fpage>127</fpage>
+          . doi:
+          <volume>10</volume>
+          .1201/b16500-
+          <fpage>26</fpage>
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          84.
+          <string-name>
+            <surname>Instituto Nacional de EstadÂõstica y GeografÂõa (INEGI). Conjunto de Datos de Perfiles de Suelos</surname>
+          </string-name>
+          ,
+          <source>Escala</source>
+          <volume>1</volume>
+          :
+          <fpage>250</fpage>
+          000
+          <string-name>
+            <surname>Serie</surname>
+            <given-names>II</given-names>
+          </string-name>
+          .
+          <article-title>(Continuo Nacional)</article-title>
+          . Aguascalientes, Ags. MeÂxico: INEGI;
+          <year>2000</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          85.
+          <string-name>
+            <surname>Cooper</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mendes</surname>
+            <given-names>LMS</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Silva</surname>
+            <given-names>WLC</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sparovek</surname>
+            <given-names>G.</given-names>
+          </string-name>
+          <article-title>A national soil profile database for Brazil available to international scientists</article-title>
+          .
+          <source>Soil Science Society of America Journal</source>
+          .
+          <year>2005</year>
+          ;
+          <volume>69</volume>
+          (
+          <issue>3</issue>
+          ):
+          <volume>649</volume>
+          ±
+          <fpage>652</fpage>
+          . doi:
+          <volume>10</volume>
+          .2136/ sssaj2004.0140
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          86.
+          <string-name>
+            <surname>Shangguan</surname>
+            <given-names>W</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Dai</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Liu</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zhu</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Duan</surname>
+            <given-names>Q</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wu</surname>
+            <given-names>L</given-names>
+          </string-name>
+          , et al.
+          <article-title>A China data set of soil properties for land surface modeling</article-title>
+          .
+          <source>Journal of Advances in Modeling Earth Systems</source>
+          .
+          <year>2013</year>
+          ;
+          <volume>5</volume>
+          (
+          <issue>2</issue>
+          ):
+          <volume>212</volume>
+          ±
+          <fpage>224</fpage>
+          . doi:
+          <volume>10</volume>
+          .1002/ jame.20026
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          87.
+          <string-name>
+            <surname>MacDonald</surname>
+            <given-names>KB</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Valentine</surname>
+            <given-names>KWG</given-names>
+          </string-name>
+          . CanSIS/NSDB. A
+          <article-title>general description</article-title>
+          . Ottawa: Centre for Land and Biological Resources Research, Research Branch, Agriculture Canada;
+          <year>1992</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          88.
+          <string-name>
+            <surname>Batjes</surname>
+            <given-names>NH</given-names>
+          </string-name>
+          .
+          <article-title>Harmonized soil profile data for applications at global and continental scales: Updates to the WISE database</article-title>
+          .
+          <source>Soil Use and Management</source>
+          .
+          <year>2009</year>
+          ;
+          <volume>25</volume>
+          (
+          <issue>2</issue>
+          ):
+          <volume>124</volume>
+          ±
+          <fpage>127</fpage>
+          . doi:
+          <volume>10</volume>
+          .1111/j.1475-
+          <fpage>2743</fpage>
+          .
+          <year>2009</year>
+          .
+          <volume>00202</volume>
+          .x
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          89.
+          <string-name>
+            <surname>Van Engelen</surname>
+            <given-names>VWP</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Dijkshoorn</surname>
+            <given-names>JA</given-names>
+          </string-name>
+          , editors.
+          <source>Global and National Soils and Terrain Digital Databases (SOTER)</source>
+          ,
+          <source>Procedures Manual, version 2.0. ISRIC Report</source>
+          <year>2012</year>
+          /04. Wageningen, the Netherlands: ISRICÐWorld Soil Information;
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          90.
+          <string-name>
+            <surname>Hollis</surname>
+            <given-names>JM</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jones</surname>
+            <given-names>RJA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Marshall</surname>
+            <given-names>CJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Holden</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Van de Veen</surname>
+            <given-names>JR</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Montanarella</surname>
+            <given-names>L</given-names>
+          </string-name>
+          .
+          <article-title>SPADE-2: The soil profile analytical database for Europe, version 1.0</article-title>
+          . Luxembourg:
+          <article-title>Office for official publications of the European Communities;</article-title>
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

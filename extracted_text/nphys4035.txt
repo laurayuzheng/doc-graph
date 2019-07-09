@@ -1,0 +1,164 @@
+Machine learning phases of matter
+
+-
+Condensed-matter physics is the study of the collective
+behaviour of infinitely complex assemblies of electrons, nuclei,
+magnetic moments, atoms or qubits1. This complexity is
+reflected in the size of the state space, which grows
+exponentially with the number of particles, reminiscent of the
+‘curse of dimensionality’ commonly encountered in machine
+learning2. Despite this curse, the machine learning community
+has developed techniques with remarkable abilities to
+recognize, classify, and characterize complex sets of data. Here, we
+show that modern machine learning architectures, such as fully
+connected and convolutional neural networks3, can identify
+phases and phase transitions in a variety of condensed-matter
+Hamiltonians. Readily programmable through modern
+software libraries4,5, neural networks can be trained to detect
+multiple types of order parameter, as well as highly non-trivial states
+with no conventional order, directly from raw state
+configurations sampled with Monte Carlo6,7.
+Conventionally, the study of phases in condensed-matter systems
+is performed with the help of tools that have been carefully designed
+to elucidate the underlying physical structures of various states.
+Among the most powerful are Monte Carlo simulations, which
+consist of two steps: a stochastic importance sampling over state
+space, and the evaluation of estimators for physical quantities
+calculated from these samples7. These estimators are constructed
+on the basis of a variety of physical motivations; for example, the
+availability of an experimental measure such as a specific heat; or,
+the encoding of a theoretical device such as an order parameter1.
+However, some technologically important states of matter, such
+as topologically ordered states1,8, can not be straightforwardly
+identified with standard estimators9,10.
+Machine learning, already explored as a tool in
+condensedmatter research11 16, provides a complementary paradigm to the
+above approach. The ability of modern machine learning techniques
+to classify, identify, or interpret massive data sets such as images
+foreshadows their suitability to provide physicists with similar
+analyses on the exponentially large data sets embodied in the state
+space of condensed-matter systems. We first demonstrate this on
+the prototypical example of the square-lattice ferromagnetic Ising
+mizoDdel, 1HsoD thaJtPfohriji Niz lajzt.ticWeesisteets, JthDe1staanted stphaeceIsiisngofvsairzieab2leNs.
+Standard Monte Carlo techniques provide samples of configurations
+for any temperature T , weighted by the Boltzmann distribution.
+The existence of a well-understood phase transition at temperature
+Tc (ref. 17), between a high-temperature paramagnetic phase and
+a low-temperature ferromagnetic phase, allows us the opportunity
+to attempt to classify the two di erent types of configurations
+without the use of Monte Carlo estimators. Instead, we construct
+a fully connected feed-forward neural network, implemented
+with TensorFlow4, to perform supervised learning directly on the
+thermalized and uncorrelated raw configurations sampled by a
+Monte Carlo simulation. As illustrated in Fig. 1a, the neural network
+is composed of an input layer with values determined by the spin
+configurations, a 100-unit hidden layer of sigmoid neurons, and
+an analogous output layer. When trained on a broad range of data
+at temperatures above and below Tc, the neural network is able
+to correctly classify data in a test set. Finite-size scaling is capable
+of systematically narrowing in on the thermodynamic value of Tc
+in a way analogous to measurements of the magnetization: a data
+collapse of the output layer (Fig. 1b) leads to an estimate of the
+critical exponent ' 1.0 0.2, while a size scaling of the crossing
+temperature T =J estimates Tc=J ' 2.266 0.002 (Fig. 1c). One
+can understand the training of the network through a simple toy
+model involving a hidden layer of only three analytically `trained'
+perceptrons, representing the possible combinations of high- and
+low-temperature magnetic states exclusively on the basis of their
+magnetization. Similarly, our 100-unit neural network relies on the
+magnetization of the configurations in the classification task. Details
+about the toy model, the 100-unit neural network, as well as a
+lowdimensional visualization of the training data, which may be used
+as a preprocessing step to generate the labels if they are not available
+a priori, are discussed in the Supplementary Figs 1, 2, and 4. We
+note that in a recent development, a closely related
+neural-networkbased approach allows for the determination of critical points using
+a confusion scheme18, which works even in the absence of labels.
+Finally, we mention that similar success rates occur if the model
+is modified to have antiferromagnetic couplings, H D J Phiji iz jz ,
+illustrating that the neural network is not only useful in identifying a
+global spin polarization, but an order parameter with other ordering
+wavevectors (here q D . , /).
+The power of neural networks lies in their ability to generalize
+to tasks beyond their original design. For example, what if one
+was presented with a data set of configurations from an Ising
+Hamiltonian where the lattice structure (and therefore its Tc)
+is not known? We illustrate this scenario by taking our above
+feed-forward neural network, already trained on configurations
+for the square-lattice ferromagnetic Ising model, and provide it
+a test set produced by Monte Carlo simulations of the triangular
+lattice ferromagnetic Ising Hamiltonian. In Fig. 1d f we present the
+averaged output layer versus T , the corresponding data collapse,
+and a size scaling of T =J , allowing us to successfully estimate the
+critical parameters Tc=J D 3.65 0.01 and ' 1.0 0.3 consistent
+with the exact values19.
+We now turn to the application of such techniques to problems
+of greater interest in modern condensed matter, such as disordered
+or topological phases, where no conventional order parameter
+exists. Coulomb phases, for example, are states of frustrated
+lattice models where local energetic constraints imposed by the
+Hamiltonian lead to extensively degenerate classical ground states.
+We consider a two-dimensional square-ice Hamiltonian given by
+H D J Pv Qv2, where the charge Qv D Pi2v iz is the sum over the
+Ising variables located in the lattice bonds incident on vertex v,
+as shown in Fig. 2. In a conventional approach, the ground states
+a
+d
+1.0
+0.8
+and the high-temperature states are distinguished by their spin spin
+correlation functions: power-law decay at T D 0, and exponential
+decay at T D 1. Instead we feed raw Monte Carlo configurations
+to train a neural network (Fig. 1a) to distinguish ground states
+from high-temperature states (Fig. 2a,b). For a square-ice system
+with N D 2 16 16 spins, we find that a neural network with
+100 hidden units successfully distinguishes the states with a 99%
+accuracy. The network does so solely based on spin configurations,
+with no information about the underlying lattice a feat di cult for
+the human eye, even if supplemented with a layout of the underlying
+Hamiltonian locality.
+We now examine an Ising lattice gauge theory, the prototypical
+example of a topological phase of matter, without an order
+parameter at T D 0 (refs 8,20). The Hamiltonian is H D J Pp Qi2p iz ,
+where the Ising spins live on the bonds of a two-dimensional square
+lattice with plaquettes p (see Fig. 2c). The ground state is again a
+degenerate manifold8,21 with exponentially decaying spin spin
+correlations. As in the square-ice model, we attempt to use the neural
+network in Fig. 1a to classify the high- and low-temperature states,
+but find that the training fails to classify the test sets to an accuracy
+of over 50% equivalent to simply guessing. Instead, we employ a
+convolutional neural network (CNN)3,22 which readily takes
+advantage of the two-dimensional structure as well as the translational
+invariance of the model. We optimize the CNN in Fig. 2d using
+Monte Carlo configurations from the Ising gauge theory at T D 0
+and T D 1. The CNN discriminates high-temperature from ground
+states with an accuracy of 100% in spite of the lack of an order
+parameter or qualitative di erences in the spin spin correlations.
+432
+We find that the discriminative power of the CNN relies on the
+detection of satisfied local energetic constraints of the theory, namely
+whether Qi2p iz is either C1 (satisfied) or 1 (unsatisfied) on
+each plaquette of the system (see the Supplementary Fig. 5). We
+construct an analytical model to explicitly exploit the presence of
+local constraints in the classification task, which discriminates our
+test sets with an accuracy of 100% (see Supplementary Fig. 6).
+Notice that, because there is no finite-temperature phase
+transition in the Ising gauge theory, we have restricted our analysis
+to temperatures T D 0 and T D 1, only. However, in finite systems,
+violations of the local constraints are strongly suppressed, and the
+system is expected to slowly cross over to the high-temperature
+phase. The crossover temperature T happens as the number of
+itmheprlmyianlglyTex=cJited1=dlenfepctNs (reNf. 2ex3p)..As2tJhe/pirsesoefntcheeoofrlodcearl odfefoenctes,
+is the mechanism through which the CNN decides whether a
+system is in its ground state or not, we expect that it will be
+able to detect the crossover temperature in a test set at small but
+finite temperatures. In Fig. 3 we present the results of the output
+neurons of our analytical model for di erent system sizes averaged
+over test sets at di erent temperatures. We estimate the inverse
+crossover temperature J based on the crossing point of the
+lowand high-temperature output neurons. As expected theoretically,
+this depends on the system size, and as shown in the inset in Fig. 3,
+a clear logarithmic crossover is apparent. This result showcases the
+ability of the CNN to detect not only phase transitions, but also
+non-trivial crossovers between topological phases and their
+hightemperature counterparts.
