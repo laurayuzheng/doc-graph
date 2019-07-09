@@ -39,10 +39,12 @@ def create_json(m):
 
     m_size = len(m)
     for i in range(0,m_size):
+        title = open(text_files[i]).readline().rstrip()
+        nodes.append({'id':i, 'label':title})
+
         for j in range(0,i):    # only need until i, since it is triangular
-            title = open(text_files[i]).readline().rstrip()
-            nodes.append({'id':i, 'label':title})
-            edges.append({'from':i, 'to':j, 'weight':m[i][j]})
+            if m[i][j] >= 0.2:
+                edges.append({'from':i, 'to':j})          #, 'weight':m[i][j]})
 
     data = {'nodes':nodes, 'edges':edges}
 
@@ -52,4 +54,5 @@ def create_json(m):
 if __name__ == '__main__':
     text_files = glob.glob(directory + '*.txt')
     similarities = get_similarities(text_files)
+    #print(similarities.A)
     create_json(similarities.A)
