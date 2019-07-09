@@ -9,7 +9,7 @@ def get_similarities(text_files):
         - gets the similarities between each documents
 
         Parameters:
-        - text_files is a string list of paths to each text file
+        - (string) text_files --> a list of paths to each text file
 
         Returns:
         - triangular matrix of similarities between documents
@@ -28,7 +28,7 @@ def create_json(m):
         - creates json file using python, loads it into a json file for vis.js
 
         Parameters:
-        - m --> matrix of similarities
+        - m --> (numpy 2d array) matrix of similarities
 
         Returns:
         - nothing
