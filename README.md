@@ -1,6 +1,10 @@
 # doc-graph
 doc-graph is a network visualization of publications based on their textual similarities.
 
+#### 7-12-2019 Update
+Added more documents to consider from arXiv. arXiv came with its own parsed XML that gave a clean title name and "summary", which I'm assuming is equivalent to the abstract. Here's a preview of the updated visualization, with no changes to the configuration in VisJS.
+![Visualization](/images/7-12-2019-visualization.png)
+
 ## I. Getting Started
 ### Overview
 
