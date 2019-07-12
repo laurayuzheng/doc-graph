@@ -1,0 +1,19 @@
+Disaggregation of SMAP L3 Brightness Temperatures to 9km using Kernel
+  Machines
+  In this study, a machine learning algorithm is used for disaggregation of
+SMAP brightness temperatures (T$_{\textrm{B}}$) from 36km to 9km. It uses image
+segmentation to cluster the study region based on meteorological and land cover
+similarity, followed by a support vector machine based regression that computes
+the value of the disaggregated T$_{\textrm{B}}$ at all pixels. High resolution
+remote sensing products such as land surface temperature, normalized difference
+vegetation index, enhanced vegetation index, precipitation, soil texture, and
+land-cover were used for disaggregation. The algorithm was implemented in Iowa,
+United States, from April to July 2015, and compared with the SMAP L3_SM_AP
+T$_{\textrm{B}}$ product at 9km. It was found that the disaggregated
+T$_{\textrm{B}}$ were very similar to the SMAP-T$_{\textrm{B}}$ product, even
+for vegetated areas with a mean difference $\leq$ 5K. However, the standard
+deviation of the disaggregation was lower by 7K than that of the AP product.
+The probability density functions of the disaggregated T$_{\textrm{B}}$ were
+similar to the SMAP-T$_{\textrm{B}}$. The results indicate that this algorithm
+may be used for disaggregating T$_{\textrm{B}}$ using complex non-linear
+correlations on a grid.

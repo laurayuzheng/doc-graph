@@ -1,0 +1,3172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Remote Sensor Design for Visual Recognition with Convolutional Neural Networks</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Lucas Jaffe</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Michael Zelinski</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Wesam Sakla</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>[55] K. Kishida, Property of average precision and its generalization: An examination of evaluation indicator for information retrieval experiments. National Institute of Informatics Tokyo, Japan</institution>
+          ,
+          <addr-line>2005</addr-line>
+        </aff>
+      </contrib-group>
+      <pub-date>
+        <year>2019</year>
+      </pub-date>
+      <volume>9</volume>
+      <issue>1</issue>
+      <abstract>
+        <p>-While deep learning technologies for computer vision have developed rapidly since 2012, modeling of remote sensing systems has remained focused around human vision. In particular, remote sensing systems are usually constructed to optimize sensing cost-quality trade-offs with respect to human image 9 interpretability. While some recent studies have explored remote 1 sensing system design as a function of simple computer vision 0 algorithm performance, there has been little work relating this 2 design to the state-of-the-art in computer vision: deep learning with convolutional neural networks. We develop experimental n systems to conduct this analysis, showing results with modern u deep learning algorithms and recent overhead image data. Our J results are compared to standard image quality measurements 4 based on human visual perception, and we conclude not only 2 that machine and human interpretability differ significantly, but that computer vision performance is largely self-consistent across ] a range of disparate conditions. This research is presented as a Vcornerstone for a new generation of sensor design systems which I focus on computer algorithm performance instead of human . s visual perception. s e Index Terms-Remote sensing, convolutional neural network e (CNN), deep learning, transfer learning, satellite imagery, image [ system design. 1</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>
+        6 Surveillance, and Reconnaissance (ISR) [
+        <xref ref-type="bibr" rid="ref6">6</xref>
+        ]. Given the scale
+0 of this data and the need for fast processing, human analysis
+9 alone is no longer a tractable solution to these problems.
+1
+:
+      </p>
+      <p>
+        Correspondingly, algorithmic processing for this imagery
+iv has improved rapidly, with a recent emphasis on the use
+of convolutional neural networks (CNNs). CNNs, originally
+X
+r proved significant by Yann LeCun in the late 1990’s for
+solva ing simple image recognition problems [
+        <xref ref-type="bibr" rid="ref7">7</xref>
+        ], rose to prominence
+in 2012 after a breakthrough many-layer (deep) architecture
+was introduced by Alex Krizhevsky [
+        <xref ref-type="bibr" rid="ref8">8</xref>
+        ]. The use of learned
+feature representations from CNNs quickly replaced a host of
+hand-crafted image features, including Histogram of Oriented
+Gradients (HOG) [
+        <xref ref-type="bibr" rid="ref9">9</xref>
+        ], Local Binary Patterns (LBP) [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ], and
+Haar-like features [
+        <xref ref-type="bibr" rid="ref11">11</xref>
+        ].
+      </p>
+      <p>
+        In nearly every major visual recognition contest since 2012,
+all top solutions have used CNNs [
+        <xref ref-type="bibr" rid="ref12">12</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref14">14</xref>
+        ]. Likewise, the top
+performing solutions on nearly all major visual recognition
+datasets employ CNNs1 [
+        <xref ref-type="bibr" rid="ref15">15</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref19">19</xref>
+        ]. A variety of robust neural
+network software frameworks have been developed in recent
+years to capitalize on the need for high-level network
+architecture design and deployment capability. These frameworks,
+including TensorFlow, Caffe, and PyTorch have enabled a large
+and active community working towards the development of
+neural networks for visual recognition.
+      </p>
+      <p>Given the importance of visual recognition in overhead
+imagery, the criticality of using machines for this task, and
+the dominance of CNNs as a vehicle for doing so, it follows
+that we want to acquire imagery which is well-suited to visual
+recognition with CNNs. Consequently, the sensing systems
+which acquire this imagery must be designed to gather imagery
+optimal for visual recognition with CNNs.</p>
+      <p>Broadly, we pose the following problem: given a dataset of
+images D collected from a sensor with parameters P , find the
+set of values for p 2 P which optimize the performance of
+some image recognition model m 2 M on dataset D according
+to an objective function L of desired metrics. Note that this L
+would include the monetary cost of the sensor in a real-world
+setting. The problem to be solved e.g., classification, detection,
+or retrieval, is treated as a part of the model.</p>
+      <p>arg min L(P ; m; D)
+p2P
+(1)</p>
+      <p>This work describes how this optimization problem can be
+constructed using recent image data and state-of-the-art visual
+recognition methods, and we present results for several
+configurations of the problem. Importantly, the models m 2 M that
+we choose are CNN variants and image quality algorithms, but
+we emphasize that the method is general and can be applied
+. c 2019 IEEE. Personal use of this material is permitted. Permission from
+IEEE must be obtained for all other uses, in any current or future media,
+including reprinting/republishing this material for advertising or promotional
+purposes, creating new collective works, for resale or redistribution to servers
+or lists, or reuse of any copyrighted component of this work in other works.</p>
+      <p>. L. Jaffe, M. Zelinski, and W. Sakla are research scientists at Lawrence
+Livermore National Laboratory, Livermore, CA 94550 USA.</p>
+      <p>. This work was performed under the auspices of the U.S. Department
+of Energy by Lawrence Livermore National Laboratory under Contract
+DEAC52-07NA27344.</p>
+      <p>. This document was prepared as an account of work sponsored by an
+agency of the United States government. Neither the United States government
+nor Lawrence Livermore National Security, LLC, nor any of their employees
+makes any warranty, expressed or implied, or assumes any legal liability or
+responsibility for the accuracy, completeness, or usefulness of any information,
+apparatus, product, or process disclosed, or represents that its use would not
+infringe privately owned rights. Reference herein to any specific commercial
+product, process, or service by trade name, trademark, manufacturer, or
+otherwise does not necessarily constitute or imply its endorsement,
+recommendation, or favoring by the United States government or Lawrence Livermore
+National Security, LLC. The views and opinions of authors expressed herein
+do not necessarily state or reflect those of the United States government
+or Lawrence Livermore National Security, LLC, and shall not be used for
+advertising or product endorsement purposes.</p>
+      <p>1. Best results on standard datasets:
+http://rodrigob.github.io/are we there yet/build/</p>
+      <p>
+        The problem of image quality assessment (IQA) is often
+divided into two categories: full-reference IQA, in which an
+original, undistorted image is available to compare against the
+target image, and no-reference IQA, in which no such original
+image is available for comparison [
+        <xref ref-type="bibr" rid="ref20">20</xref>
+        ]. Many algorithms have
+been developed in each category, which produce a single scalar
+“score” value as output.
+      </p>
+      <p>
+        Metrics including Mean-Squared Error (MSE) and Peak
+Signal-to-Noise Ratio (PSNR) are often used for full-reference
+IQA, commonly to evaluate the effect of a compression
+algorithm such as JPEG. In [
+        <xref ref-type="bibr" rid="ref20">20</xref>
+        ], Wang et al. argue that these
+basic metrics do not account for structural similarity perceived
+by the Human Visual System (HVS). They propose an index
+for structural similarity, SSIM, which computes a summary of
+window comparisons between two images, using means and
+standard deviations of pixels in the windows.
+      </p>
+      <p>
+        Metrics developed for no-reference IQA include the
+Blind/Referenceless Image Spatial Quality Evaluator
+(BRISQUE) [
+        <xref ref-type="bibr" rid="ref21">21</xref>
+        ] and the Natural Image Quality Evaluator
+(NIQE) [
+        <xref ref-type="bibr" rid="ref22">22</xref>
+        ]. The BRISQUE algorithm is considered
+opinionaware, because it is trained on human-annotated image quality
+evaluations. BRISQUE produces a measure of quality based
+on “locally normalized luminance coefficients”, which the
+authors claim is sufficient to quantify both image naturalness
+and image distortion. The luminance features are used to train
+a SVM regressor which produces the final quality score. In
+contrast, the NIQE algorithm is trained on a corpus of natural
+images which are not annotated for quality or distortion.
+NIQE computes natural scene statistic (NSS) features on
+this corpus, which are similar to the BRISQUE luminance
+features. The final NIQE score is computed by comparing a
+multivariate Gaussian (MVG) fit of the corpus features to the
+MVG fit of the target image features.
+      </p>
+      <p>By comparing these IQA metrics with human recognition
+and CNN recognition, we can assess whether they are similar
+to either of the two, and if they could be used to model CNN
+performance for different sensor systems.</p>
+    </sec>
+    <sec id="sec-2">
+      <title>B. Image Utility</title>
+      <p>We contrast the concept of image quality with image
+utility, which explicitly concerns determining the value of an
+NIIRS = A0 + A1 log10 GSD + A2 1
+exp</p>
+      <p>log10 RER
+A3
+SNR
++ A4 log10 (RER)4 +</p>
+      <p>A5</p>
+      <p>SNR</p>
+      <p>
+        The GIQE5 assumes an analyst will apply their own image
+enhancements, known as the softcopy scenario, and that no
+generic enhancements are applied prior to viewing [
+        <xref ref-type="bibr" rid="ref24">24</xref>
+        ]. We
+consider the experiments in this work to be analagous to
+the assumptions of the GIQE5, because no enhancements are
+applied to the imagery, and the model learns to apply whatever
+corrections are beneficial to recognition in the imagery.
+      </p>
+      <p>
+        The GIQE5 has three variables, here explained: Ground
+Sample Distance (GSD) is the width of a pixel projected from
+image space onto the ground, given in units of distance per
+pixel. Signal-to-Noise Ratio (SNR) is the ratio of true signal to
+noise, mainly consisting of photon noise, dark noise, and read
+noise. Relative Edge Response (RER) measures sharpness of
+edges in the imagery [
+        <xref ref-type="bibr" rid="ref23">23</xref>
+        ].
+      </p>
+      <p>Of importance to this work are the concepts of f-number
+(FN) and optical Q, defined as:</p>
+      <p>FN =
+f
+D
+and</p>
+      <p>Q =</p>
+      <p>
+        FN
+p
+where f is the focal length of the optic, D is the diameter of
+the optic aperture, p is the pixel pitch of the detector array, and
+is the shortest wavelength of light measured. In [
+        <xref ref-type="bibr" rid="ref25">25</xref>
+        ], Fiete
+shows that optical Q is directly related to image properties
+associated with quality. For instance, reducing Q increases
+the SNR and improves image sharpness, but can also lead
+to aliasing below a certain level.
+      </p>
+      <p>
+        An important critique of our comparison to GIQE5 is that
+the equation assumes Q is between 1.0 and 2.0, whereas we
+mainly study the regime of Q &lt; 1.0. Fiete notes that reducing
+Q, “much below 1.0 can cause objectionable aliasing artifacts”
+[
+        <xref ref-type="bibr" rid="ref25">25</xref>
+        ]. We leave a study of the Q regime between 1.0 and 2.0
+to future work.
+      </p>
+      <p>
+        NIIRS and the GIQE are useful for tasking of existing
+imaging systems [
+        <xref ref-type="bibr" rid="ref26">26</xref>
+        ], analyzing capabilities of existing
+imaging systems [
+        <xref ref-type="bibr" rid="ref27">27</xref>
+        ], or for the design of new imaging systems
+(2)
+(3)
+original imagery
+simulated
+imager
+simulated imagery
+      </p>
+      <p>training images
+testing images
+relationship
+parameter
+performance
+metrics
+pre-trained
+neural
+network
+fine-tuned
+neural
+network
+physical
+imager</p>
+      <p>
+        imager
+parameters
+[
+        <xref ref-type="bibr" rid="ref28">28</xref>
+        ]. Consider an image system design scenario: a remote
+sensing system engineer might select an aperture diameter
+for the system lens by examining its impact on GSD, SNR,
+the subsequent NIIRS value, and corresponding tradeoffs with
+system cost. While increasing optic aperture diameter can give
+lower GSD and higher SNR, and therefore higher NIIRS, the
+cost to build and launch the resulting system could create an
+upper bound for aperture diameter. If we relate this example
+to Equation 1, it can be formulated as:
+      </p>
+      <p>
+        Other approaches have alternatively framed the image
+interpretability problem in terms of target acquisition performance.
+In [
+        <xref ref-type="bibr" rid="ref29">29</xref>
+        ], Vollmerhausen and Jacobs give a detailed history
+of target acquisition performance, and introduce the Target
+Task Performance (TTP) metric. This metric, in addition to its
+predecessor, the Johnson criteria [
+        <xref ref-type="bibr" rid="ref30">30</xref>
+        ], are Modulation Transfer
+Function (MTF)-based metrics [
+        <xref ref-type="bibr" rid="ref31">31</xref>
+        ]. Since NIIRS and the
+GIQE have been more widely-adopted in practice, we focus
+our comparison against them.
+arg min L(D; P; D)
+      </p>
+      <p>D
+with</p>
+      <p>L =</p>
+      <p>NIIRS(D; P; D) +
+cost(D; P )
+where D is the aperture diameter of the system, cost is the
+monetary cost of the system, NIIRS corresponds to predicted
+NIIRS for the system, and D more abstractly corresponds to
+imagery used to produce a model for NIIRS (possibly the
+GIQE). The objective function we optimize, L, could be a
+weighted combination of NIIRS and cost, weighted by some
+parameters and respectively. All sensing system
+parameters except D comprise P . The objective is parametrized by
+P and D. Note that in this case, we are optimizing for the
+HVS by optimizing NIIRS.</p>
+      <p>While NIIRS and the GIQE have been thoroughly studied,
+there has been no published evidence to date that they are
+useful for describing image interpretability for modern computer
+vision algorithms. More generally, we do not know if human
+and computer recognition of imagery are similar at all. The
+experiments detailed in Section IV aim to explore this question
+by comparing machine learning metrics with the GIQE for the
+same system configuration.
+(4)
+(5)</p>
+    </sec>
+    <sec id="sec-3">
+      <title>C. CNNs for Overhead Imagery</title>
+      <p>
+        CNNs have rapidly risen to the forefront of algorithms for
+visual recognition in overhead imagery [
+        <xref ref-type="bibr" rid="ref32">32</xref>
+        ]. Most commonly,
+CNNs have been used to tackle the classification, retrieval,
+detection, and segmentation problems. In [
+        <xref ref-type="bibr" rid="ref33">33</xref>
+        ], [
+        <xref ref-type="bibr" rid="ref34">34</xref>
+        ], different
+deep CNN architectures are used for image classification
+in overhead imagery. In [
+        <xref ref-type="bibr" rid="ref3">3</xref>
+        ], a systematic investigation of
+image retrieval with deep learning is conducted for remote
+sensing imagery. In [
+        <xref ref-type="bibr" rid="ref35">35</xref>
+        ], a CNN-based model is used for
+object localization (detection) in overhead imagery. In [
+        <xref ref-type="bibr" rid="ref36">36</xref>
+        ],
+a fully convolutional architecture is developed for pixelwise
+classification (semantic segmentation) of satellite imagery.
+      </p>
+      <p>
+        In addition, large public datasets of overhead imagery are
+being curated and released at an increasing rate. The SpaceNet
+dataset, originally released in 2016, comprises hundreds of
+thousands of polygon labelings for buildings in DigitalGlobe
+satellite imagery, suited to the segmentation problem [
+        <xref ref-type="bibr" rid="ref37">37</xref>
+        ]. In
+the xView dataset, one-million objects across 60 classes are
+annotated with bounding boxes for the detection problem [
+        <xref ref-type="bibr" rid="ref38">38</xref>
+        ].
+In the Functional Map of the World (fMoW) dataset,
+onemillion DigitalGlobe images across 63 classes are annotated
+with rectangular bounding boxes for the classification problem
+[
+        <xref ref-type="bibr" rid="ref39">39</xref>
+        ].
+      </p>
+      <p>This increase in public data volume, combined with
+innovations in GPU hardware and CNN architectures, have led to
+a boom in the use of CNNs for overhead imagery.</p>
+    </sec>
+    <sec id="sec-4">
+      <title>D. Sensor Modeling</title>
+      <p>
+        A number of tools have been developed for remote
+sensor modeling, including for image transformation and GIQE
+computation. LeMaster et al. [
+        <xref ref-type="bibr" rid="ref40">40</xref>
+        ] have developed the “Python
+Based Sensor Model” (pyBSM), which implements the “ERIM
+Image Based Sensor Model” (IBSM) [
+        <xref ref-type="bibr" rid="ref41">41</xref>
+        ]. All GIQE values
+presented in Section IV were computed with pyBSM.
+      </p>
+      <p>Similarly, the Night Vision Integrated Performance Model
+(NV-IPM) is a software package developed by CERDEC’s
+Night Vision and Electronic Sensors Directorate for modeling
+image system design2.</p>
+      <p>A description of our remote sensor modeling approach is
+presented in Section III.</p>
+    </sec>
+    <sec id="sec-5">
+      <title>E. CV-Based Modeling</title>
+      <p>While remote sensor system design is often based on human
+interpretability through NIIRS or the TTP, there are studies
+which have measured performance using IQA algorithms, or
+simple visual recognition algorithms.</p>
+      <p>
+        In [
+        <xref ref-type="bibr" rid="ref42">42</xref>
+        ], Fanning develops a custom MTF-based image
+generation tool, and uses it to conduct a comparitive study
+based on the SSIM metric.
+      </p>
+      <p>
+        In [
+        <xref ref-type="bibr" rid="ref40">40</xref>
+        ], LeMaster et al. demonstrate how the face detection
+problem could be used to impact sensor design by
+transforming imagery with pyBSM and evaluating performance of a
+Haar feature-based cascade classifier. Similarly, Howell et al.
+use the NV-IPM image generation tool for designing a camera
+to optimize for face recognition with the PITT-PATT algorithm
+[
+        <xref ref-type="bibr" rid="ref43">43</xref>
+        ].
+      </p>
+      <p>
+        In [
+        <xref ref-type="bibr" rid="ref44">44</xref>
+        ], a motion detection algorithm is used to evaluate
+image utility. In [45], Zelinski notes the inability of the GIQE
+to accurately predict NIIRS for sparse aperture systems. He
+cites this as a reason to instead consider image utility through
+performance of motion detection and spatial target detection
+algorithms.
+      </p>
+      <p>
+        Like in [
+        <xref ref-type="bibr" rid="ref40">40</xref>
+        ], [46] uses a Haar feature-based model for
+comparing image quality from different sensor designs, but
+Yuan et al. observe overhead imagery instead of faces. The
+methods used in that work to simulate imagery from different
+sensors are less robust than pyBSM, NV-IPM, or our method,
+involving simple addition of noise, blurring, and image
+contrast reduction.
+      </p>
+      <p>We build upon these works by using a large, well-curated
+overhead image dataset transformed with our own sensor
+model, and state-of-the-art CNNs instead of traditional
+handcrafted feature-based models.</p>
+      <sec id="sec-5-1">
+        <title>III. METHODS</title>
+        <p>Our approach to modeling algorithm performance with
+respect to changing image system parameters is straightforward.
+First, we develop a code which simulates imagery collected by
+different overhead image systems. The input to this simulator
+is existing high quality DigitalGlobe imagery. Then, we vary
+a parameter of this system, such as the optic focal length, and
+regenerate the entire target dataset with the simulator. Finally,
+we train and validate an image recognition model on partitions
+of this dataset, and measure how validation performance
+changes as a function of the altered system parameter. This
+section will clarify details about the components of Figure 1.</p>
+        <p>A software framework was created to control parameter
+management, data processing, machine learning, and result
+logging. This framework was written in Python3, using
+PyTorch for training and evaluation of CNNs. The framework
+has the capability to support parameter variation of the image
+simulation and learning processes. The process of conducting
+an experimental trial using the framework is explained in
+Algorithm 1. We describe the components of this framework
+in the following subsections.</p>
+        <p>We provide the full code for our image simulator and
+experimental framework in3.</p>
+        <p>Algorithm 1: TRIAL conducts experimental trial
+Input: A set of folds F = ff1; f2; :::; fkg, which evenly
+partition the data. A set of parameters P which
+contains all static simulator parameters for the
+trial. A set of parameter values
+V = fv1; v2; :::; vng, which correspond to the
+independent variable simulator parameter. The
+number of epochs to train for, E
+Output: A set of metric value results R, corresponding
+to trials conducted for all f 2 F ; v 2 V
+for fi in F do</p>
+        <p>Dtrain f 2 F ; f 6= fi
+Dtest fi
+for vj in V do
+m0 Model()
+s Simulator(P; vj )
+D^train transform(s; Dtrain)
+D^test transform(s; Dtest)
+for e 0 to E do
+me+1
+Rije
+train(me; D^train)
+test(me+1; D^test)
+return R</p>
+      </sec>
+    </sec>
+    <sec id="sec-6">
+      <title>A. Dataset</title>
+      <p>As discussed, the fMoW dataset consists of over one-million
+images, each of which corresponds to a target from one of
+62 classes, or an additional false detection class. Images from
+the dataset were captured in over 200 countries by one of four
+possible DigitaGlobe sensor platforms: GeoEye1, QuickBird2,
+WorldView2, or WorldView3. The breakdown of how many
+2. NV-IPM Web Page:
+https://www.cerdec.army.mil/inside cerdec/nvesd/integrated performance
+model/
+3. Code repository for this paper: https://github.com/LLNL/sepsense
+images were captured from each platform by class is shown
+in Figure 4.</p>
+      <p>A unique feature of this dataset is that the target bounding
+boxes vary widely in area, from 10 pixels at a minimum, to
+700k pixels at a maximum. This presents a unique challenge
+when considering how to pre-process the data such that a
+fixedinput model can accept it. We consider two simple approaches
+to this pre-processing, treated as an experimental variable.
+Statistics for the dataset are shown in Figures 2 and 3. Other
+challenges present in the dataset include artifacts, occlusions,
+and labeling ambiguities.</p>
+      <p>The creators of fMoW have provided critical metadata
+from the original DigitalGlobe imagery, including the absolute
+calibration factor, which is required for converting the data
+from digital numbers to units of radiance. We use a subset of
+the total data, comprising 1,000 images from each of 35 of the
+62+1 classes. This subset was selected to include only classes
+with at least 1,000 images which could be transformed for
+the desired sensor parameter ranges. We use the multispectral
+(MS) imagery, and not the pan-sharpened RGB imagery, as
+only the MS imagery can be transformed with our system.
+Specifically, we use the red, green, and blue MS bands, as this
+data is most appropriate for standard pre-trained models. In
+addition, the dataset contains multiple images for each instance
+of an object, but we use only the first such image for our
+experiments. We refer to the portion of fMoW used for our
+study as the fMoW subset in the remainder of the text.</p>
+    </sec>
+    <sec id="sec-7">
+      <title>B. Data Processing and Calibration</title>
+      <p>The DigitalGlobe satellites undergo an initial calibration
+to correct for geometric non-uniformity, detector response,
+lens falloff, and particulate contamination on the focal plane.
+This relative radiometric correction process removes artifacts
+that produce streaks or banding in the imagery. This is the
+level of processing at which fMoW data is provided [units
+of digital numbers]. It should be noted that focal planes
+aboard DigitalGlobe satellites have adjustable gain and offsets
+(exposure) settings to accommodate viewing under different
+illumination and scene reflectance conditions. What this means
+for users who hope to leverage the radiometric properties of
+the dataset is that the data must be further calibrated into units
+of radiance or reflectance.</p>
+      <p>The 2nd release of the fMoW dataset included spectral band
+absolute calibration factor values, which when combined with
+the other static calibration values, produce an accurate
+calibration to at-aperture radiance [W m 1m 2sr 1] as well as
+topof-atmosphere (TOA) reflectance [unitless]. The calibration
+process and static fine-tuning calibration values for WV-III
+data can be found in4. For the WV-II, Quickbird-II, and Ikonos
+satellites, these values can be found in5,6, and7.</p>
+      <p>From units of radiance, the data can be further processed
+to TOA reflectance, which will compensate for the time of
+year dependent Earth-Sun distance and solar zenith angle.
+This conversion is described in4. Additional processing which
+compensates for the atmosphere and surface topology could
+be beneficial, but it is outside the scope of this effort.</p>
+    </sec>
+    <sec id="sec-8">
+      <title>C. Sensor Modeling</title>
+      <p>
+        Once fMoW data is converted to TOA (or at-aperture)
+radiance, it is possible to use this data to simulate image
+collection from different remote sensing systems. This section
+will discuss the approach used here. A more in-depth treatment
+of the content discussed here is found in [
+        <xref ref-type="bibr" rid="ref25">25</xref>
+        ], [47]–[49].
+      </p>
+      <p>We begin by noting that one is limited by the capabilities
+of the image system used to collect the initial dataset. We
+can only produce imagery of lower quality (lower resolution,
+higher noise). To summarize this process, the original images
+undergo a blurring function by applying the optical Modular
+Transfer Function (MTF). The data is resampled in Fourier
+space with aliasing artifacts included. The resulting Fourier
+image is inverse transformed back to image space. A scalar
+value is then determined that converts the at-aperture radiance
+images into units of electrons at the detector. The resulting
+electron image then has photon noise and read noise added.</p>
+      <p>Finally, a sensor gain is applied and the image is quantized
+to the model’s bit resolution. The image can then be
+converted from digital numbers back to TOA radiance or TOA
+reflectance from this point. We ignore additional noise sources
+for simplicity.</p>
+      <p>1) Image Blurring: We first define the optical cut-off
+frequency for a diffraction limited incoherent imaging system as:
+optcut =
+1
+FN
+=</p>
+      <p>D
+f
+where is the wavelength of light, D is the aperture diameter,
+f is focal length, and FN or ’f-number’ is Df . This is the
+highest frequency sinusoid an optical system can produce on
+the image plane. This value should be compared directly with
+the Nyquist sampling limit of the detector. If the frequency is
+higher than that of the Nyquist sampling limit, it is possible to
+incur aliasing artifacts, and if it is lower, then the image system
+will oversample, creating more data than needed and likely at
+higher noise levels. It should be noted that the lambda value
+used for these calculations is the shortest wavelength used,
+which in our work is the center of blue channel.</p>
+      <p>The optical Ground Sample Size (GSSoptics) used here
+follows the Fiete definition of:</p>
+      <p>GSSoptics =</p>
+      <p>H</p>
+      <p>D
+where H is the altitude of the remote sensing system. The
+optical cut-off frequency on the ground is defined as:</p>
+      <p>1
+optcut gnd = 2 GSS
+=
+2</p>
+      <p>D</p>
+      <p>H
+(6)
+(7)
+(8)
+5000
+4000
+Timestamp Histogram
+for fMoW Subset
+Fig. 4: Images from fMoW are collected from four different DigitalGlobe sensor platforms. The proportion of images captured from each
+platform is relatively even among the 35 classes.</p>
+      <p>The Nyquist sampling limit of our modeled detector is defined
+as:
+their corresponding low frequency counterparts. The resulting
+array is then inverse-transformed back to the spatial domain,
+I(x; y).</p>
+      <p>2) Radiometry: I(x; y) is in units of at-aperture radiance
+at this point in our treatment. This section will discuss how
+to take the spatially-degraded image and degrade it further by
+shot noise and read noise.</p>
+      <p>Before the shot noise can be determined the image must be
+converted to units of electrons on the sensor. This is done by
+first calculating the spectral flux entering each pixel. A flux
+scalar is given by:
+(9)
+(11)
+(12)
+where p is the width between adjacent pixel centers on the
+sensor (pixel pitch). And the Nyquist frequency projected to
+the ground is defined as:</p>
+      <p>1
+nyquist gnd = 2 GSD (10)
+The maximum recorded frequency cutoff will depend on
+whether the system over or under samples the image plane. So:
+if optcut &gt; nyquist, then cutoff gnd = optcut gnd, and cutoff =
+optcut, else cutoff gnd = nyquist gnd and cutoff = nyquist.</p>
+      <p>To connect the optical and sampling parameters of the
+modeled telescope with the DigitalGlobe image, we first define
+the DigitalGlobe imagery nyquist sampling limit on the ground
+as:</p>
+      <p>DG nyquist gnd = 2 GSDDG</p>
+      <p>1
+The DigitalGlobe frequency array is therefore defined as:</p>
+      <p>DG =
+;
++ 2</p>
+      <p>N ; : : : ; 0; : : : ;
+where is DG nyquist gnd and N is the number of pixels in the
+original image.</p>
+      <p>Finding the indices of the closest value to cutoff gnd in j DGj
+will allow us to resample the imagery in Fourier space to the
+dimensions of the image plane defined in units relative to the
+cutoff. This is done by cropping the image in Fourier space
+at these indices, thus discarding spatial frequency data above
+j cutoff gndj. A full description of the cropping, padding, and
+frequency wrapping that is necessary to accurately model the
+range of artifacts caused by over and under sampling is beyond
+the scope of this document. This was carried out and tested
+in this work.</p>
+      <p>Blurring the imagery is done by applying the system MTF.</p>
+      <p>The system MTF is defined as the normalized autocorrelation
+of the scaled pupil function. Here we define the pupil function
+p(x; y) as a complex-valued circle function with 1 in the
+realpart and 0 in the imaginary part. And P h xf ; yf i is the Fourier
+Transform of the pupil function. The optical transfer function
+(OTF) [47] is defined as:</p>
+      <p>OT F [ ; ] = F
+(</p>
+      <p>P
+x
+f
+;
+y
+f</p>
+      <p>2)
+where F denotes the Fourier transform. The MTF is the OTF
+normalized by its central ordinate:</p>
+      <p>MT F [ ; ]</p>
+      <p>OT F [ ; ]</p>
+      <p>OT F [ ; ] =0; =0
+Using the Fourier Filter Theorem the MTF can be used to
+degrade the image in Fourier space via a simple multiplication:</p>
+      <p>I[ ; ] = MT F [ ; ]I0[ ; ]
+where I[ ; ] is the spatially degraded image and I0[ ; ] is
+the original image, both of which are in Fourier space. The
+resulting image is then resampled by cropping in Fourier space
+and then (if needed) summing aliased high frequencies onto
+=</p>
+      <sec id="sec-8-1">
+        <title>Apixel</title>
+        <p>1 + 4 FN2
+where is the spectral band width, is the optical
+transmission fraction, and Apixel is the area of the pixel. An electron
+scalar, denoted by , can be calculated by using the detectors
+quantum efficiency, integration time, and energy per photon.
+This number can then be converted to electrons by dividing
+by the amount of energy contained within a photon:
+= QE Tint
+hc
+1
+where h is Plancks constant (h = 6:6260 10 34[J=s]) and
+c is the speed of light (c = 2:9979 108[m=s]). The image
+expressed in units of electrons is:
+(13)
+(14)
+(15)
+(16)
+(17)
+(18)
+(19)</p>
+        <p>Ie(x; y) = I(x; y)</p>
+        <p>Shot noise values can be created for each xy-pixel by
+sampling from a Poisson distribution with a lambda value
+of pIe(x; y). Because lambda is generally relatively large,
+a Gaussian function can be used for the random distribution.
+Photon noise can be computed as:</p>
+        <p>Nphoton = N ( = 0; 2 = 1)pIe(x; y)</p>
+        <p>The read noise is defined by the focal plane array
+manufacturer in units of electrons. It is Gaussian in nature. The total
+noise per pixel is the summation of these values:
+N (x; y) = N ( = 0; 2 = 1)pIe(x; y) + N ( = 0; 2 = 1) read
+(20)</p>
+        <p>The output image from the model is therefore expressed in
+volts as:</p>
+        <p>1
+Ivolts(x; y) = (Ie(x; y) + N (x; y)) (21)</p>
+        <p>G
+where the gain, G, is defined as 2n , is the electron well
+depth, and n is the bit depth. The resulting image can then be
+quantized.</p>
+        <p>These simulated images can be converted back to radiance
+by multiplying by G . TOA reflectance can be calculated from
+this point.</p>
+        <p>3) Example Images: The effects of this transformation
+process are exhibited for images from the fMoW subset
+in Figures 5 and 6. All transformations were done using
+parameter combinations from the experiments described in
+Section IV.</p>
+        <p>In Figure 5, three example images are transformed with
+varying focal length. Since the simulator is only capable of
+producing images with less information (i.e. blurring, noise)
+than the originals, all transformed images should appear
+degraded with respect to their original counterparts. For instance,
+notice that fine-grain details, such as striations between cells
+in the solar farm, or small roads in the race track, are lost in
+all transformed images. On the other hand, notice how little
+interpretability of certain classes may be affected, such as the
+crop field in the third row. With respect to changing focal
+length, notice that the GSD decreases while noise artifacts
+increase.</p>
+        <p>In Figure 6, a single example image is transformed with
+varying focal length and varying aperture diameter. Notice
+that the image transformed with f = 1:0m; D = 0:75m
+has significantly less noise than the image transformed with
+f = 1:0m; D = 0:50m. This is because more light is admitted
+to the system with larger aperture diameter, meaning the light
+hitting a given CCD cell is less likely to fall below the read
+noise floor. In contrast, there is little difference between the
+two images with f = 0:2m.</p>
+        <p>Note that all example images have been resampled to a
+fixed size using nearest-neighbors interpolation. While the
+images would appear more natural if resampled with a bilinear
+or bicubic filter, the nearest-neighbors visualization gives a
+nice representation of how the number of “pixels on target”
+varies with focal length. For the actual experiments, bilinear
+interpolation was used.</p>
+      </sec>
+    </sec>
+    <sec id="sec-9">
+      <title>D. CNN Architectures</title>
+      <p>We performed experiments with four CNN architectures:
+SqueezeNet [50], VGG [51], ResNet [52], and DenseNet [53].
+These architectures were selected to exhibit the
+state-of-theart in CNNs for visual recognition, while capturing significant
+variation in design and parameter count. All models used
+are implemented in the PyTorch torchvision library8, and are
+trained using either cross-entropy loss or triplet margin loss.
+Minor modifications were made to the original torchvision
+models to correspond to the different performance metrics and
+learning objectives, described in Section III-G.</p>
+      <p>The VGG model was one of the first successful CNN
+architectures, and is known for its simple structure and high
+parameter count. The strategy of VGG is to use many repeated
+3x3 convolutional layers, with 2x2 max pooling layers to
+reduce the spatial dimension between blocks. While it has
+been outclassed in performance by ResNet, DenseNet, and
+other architectures, it remains useful as a reliable baseline.
+We use the popular 16-layer variant of this model (VGG16).</p>
+      <p>A key issue with VGG is that the vanishing gradient
+problem manifests as more layers are added. The ResNet
+architecture addresses this problem by introducing the skip
+connection structure: a basic block which has its input added to
+its output. This allows for successful optimization with a much
+deeper network. We experiment with the 152-layer version of
+the ResNet architecture (ResNet152).</p>
+      <p>
+        The DenseNet architecture takes the skip connection
+concept of ResNet further by concatenating layer inputs to layer
+outputs, instead of adding them. This model encourages
+feature reuse by directly connecting all layers of the network in
+this fashion. We utilize a 161-layer DenseNet (DensetNet161)
+*Parameter counts were gathered directly from the actual torchvision models
+used. Model statistics shown are ImageNet 1-crop error rates (224x224). Stats
+from https://pytorch.org/docs/stable/torchvision/models.html.
+architecture, which has performed well on ImageNet and on
+the fMoW dataset. The creators of fMoW use DenseNet161
+as their baseline architecture [
+        <xref ref-type="bibr" rid="ref39">39</xref>
+        ], and all of the top
+placing solutions in the fMoW challenge utilized some variant
+of DenseNet in their models9. The architecture is
+memoryintensive, but trains in very few epochs in practice.
+      </p>
+      <p>In contrast to the other models, the SqueezeNet
+architecture is designed to have few parameters and small size.
+We use an optimized variant of this architecture, dubbed
+SqueezeNet1.110. SqueezeNet achieves reasonable
+performance on ImageNet with more than 20x fewer parameters than
+DenseNet161, shown in Table I. Architectures with small size
+like SqueezeNet may be particularly interesting for remote
+sensing scenarios, in which a model could be deployed
+onboard a sensing platform. In this case, small memory footprint
+and low power consumption constraints are critical.</p>
+      <p>1) Transfer Learning: In the context of training CNN
+models for visual recognition, transfer learning usually refers
+to the process of training a model on a large standard image
+dataset, then fine-tuning the model on the image data of
+interest, possibly from a different domain. In practice, transfer
+learning is always used for solving natural imagery visual
+recognition problems. In particular, the ImageNet dataset is
+often used to pre-train the target model. For our experiments,
+all CNN models were pre-trained on ImageNet unless
+otherwise specified. These pre-trained weights were downloaded
+through the torchvision library.</p>
+    </sec>
+    <sec id="sec-10">
+      <title>E. Performance Evaluation</title>
+      <p>We consider two image recognition tasks to evaluate
+machine image interpretability as a function of varying sensor
+parameters. The first of these tasks is the classification problem,
+which requires selecting the correct class from a known set of
+classes for a given instance. The second of these tasks is the
+retrieval problem, which requires selecting instances matching
+a probe class from a set of instances comprising a gallery.</p>
+      <p>We use classification and retrieval specifically for three
+reasons. First, they are commonly used to solve real-world
+problems. Hence, results from these experiments can be directly
+used to assess real recognition software in use on overhead
+imagery. Second, these problems are relatively simple, unlike
+8. PyTorch torchvision documentation:
+https://pytorch.org/docs/stable/torchvision/models.html
+9. fMoW GitHub repository: https://github.com/fMoW
+10. Official SqueezeNet repository:
+https://github.com/DeepScale/SqueezeNet/tree/master/SqueezeNet v1.1
+the detection and segmentation problems, which involve more
+moving parts. We want to identify a simple relationship, which
+can then be used as a building block to understand more
+complex recognition problems. Finally, the retrieval problem
+in particular allows us to develop a generalizable method,
+which can be applied to unseen classes. In short, a salient
+feature extractor can be trained on a known dataset of images,
+and later tested on new data with unknown classes, without
+retraining.</p>
+      <p>1) Classification: We evaluate four metrics for the
+classification problem: top-1 accuracy, top-3 accuracy, Area Under
+the (ROC) Curve (AUC), and Average Precision (AP).</p>
+      <p>Top-1 and top-k accuracy are the most basic metrics
+available for evaluating classification, but are also easily
+interpretable. For this reason, they may be of interest for the
+sensor design process. We chose top-3 accuracy by analyzing
+the datset, and determining that certain groups of up to
+three objects were easily confused or arbitrarily labeled. The
+implication is that we are still interested in a model which can
+predict three candidate classes, one of which will be correct
+for the input image.</p>
+      <p>Use of Average Precision (AP) is common for machine
+learning applications, because it supplies a principled summary
+metric of precision at all levels of recall:</p>
+    </sec>
+    <sec id="sec-11">
+      <title>F. Learning Objective</title>
+      <p>Z 1</p>
+      <p>0
+AP =
+p(r)dr
+(22)
+where r is recall, and p(r) is precision at the given recall
+value. In practice, a given application may attach more or less
+importance to precision or recall, but AP gives a nice summary
+in the case where no prior has yet been determined.</p>
+      <p>Alternatively, the Area Under the (Receiver Operator
+Characteristic) Curve (AUC) may be beneficial, if the application
+benefits from a summary of True Positive Rate (TPR) a.k.a.
+recall vs. False Positive Rate (FPR). The Precision-Recall
+curve and AP are commonly used when the target dataset has
+a class imbalance, whereas the ROC curve and AUC are more
+appropriate when each class has a similar number of samples.
+This is because the ROC curve may inflate the results in the
+case of class imbalance [54].</p>
+      <p>2) Retrieval: We also utilize the AP metric to quantify
+retrieval performance, because it can be evaluated using any
+arbitrary feature space, so long as some distance metric can
+be measured between elements in the space. For the retrieval
+problem, we consider a different interpretation of AP [55] than
+the one introduced in Equation 22. To measure the AP of a
+retrieval query, we first measure distances between the probe
+image and all gallery images. Then, the gallery elements are
+ranked from least to greatest distance from the probe. A gallery
+image matches a probe image if they share the same object
+category or class. To measure the precision for the top-ranked
+m images, we take:
+pm =
+1 Xm xk
+m
+k=1
+where
+xk =
+0</p>
+      <p>otherwise
+(1 if kth gallery image matches probe
+If R represents the total number of gallery images, then:
+n n i
+AP = 1 X xipi = 1 X xi X xk</p>
+      <p>R i=1 R i=1 i k=1
+Note that we use 2-norm distance in a CNN feature space to
+measure distance between images.</p>
+      <p>AP allows us to measure the utility of pre-trained model
+features, and the utility of fine-tuned features. Using the
+retrieval problem in particular, we can evaluate the zero-shot
+scenario, in which no samples of the target classes have been
+seen during training. In Figure 7, the retrieval problem is
+visualized for an experiment conducted on the fMoW subset.
+Notice that top-ranked gallery samples share common features
+with the probe, even when their labels do not match.</p>
+      <p>In the remaining text, AP will be denoted as cAP when
+referring specifically to the classification problem, and rAP
+when referring to the retrieval problem. In addition, note that
+our AP values are computed as an average across all possible
+probe-gallery combinations, with all 35 classes, unless
+otherwise indicated. This is typically denoted as mAP, but we will
+not use this notation.
+(23)
+(24)
+(25)</p>
+      <p>We consider two different learning objectives to train the
+CNN models: cross-entropy loss and triplet margin loss.</p>
+      <p>1) Cross-Entropy Loss: Cross-entropy loss is considered
+the standard objective function for training a neural network to
+solve the classification problem. This problem and objective
+are typically effective when there is a known set of classes
+with many samples, and all future test samples belong to one
+of these known classes.</p>
+      <p>2) Triplet Margin Loss: In contrast, triplet margin loss is
+a more popular objective for the retrieval problem. Triplet
+margin loss is an example of a metric learning objective. In
+metric learning, the goal is to find a semantically-meaningful
+feature space based on some target distance metric. Elements
+projected into the feature space by some function, in this
+case a CNN model, may be called features or embeddings.
+Image embeddings from the same class should be closer
+together in the learned feature space, whereas embeddings
+from different classes should be further apart. The triplet
+margin loss operates on sets of three embeddings: an anchor
+and positive embedding from the same class, and a negative
+embedding from a different class. The loss function is defined
+as follows, with a, p, and n corresponding to the anchor,
+positive, and negative embeddings respectively:</p>
+      <p>L(a; p; n) = maxfd(ai; pi)
+d(ai; ni) + margin; 0g
+where
+d(xi; yi) = kxi
+yikp
+We follow the triplet learning method described by Schroff
+et al. in [56]. In this paper, 2-norm distance is used for the
+distance metric, and each embedding is (2-norm) normalized
+to magnitude 1 prior to computation of the obective. A value
+of 0.2 is used for the margin, which we have also found is a
+reliable default.</p>
+      <p>Triplets are sampled such that 20 images from each of 4
+classes are seen during each batch. When each image has
+been sampled in a triplet exactly once, one epoch has been
+completed. We note that training is not as stable using this
+objective, and typically requires more epochs to optimize than
+cross-entropy loss.
+(26)
+(27)</p>
+    </sec>
+    <sec id="sec-12">
+      <title>G. Model Modifications</title>
+      <p>To train with cross-entropy loss, the original fully-connected
+classification layer in each CNN model was replaced by a
+randomly-initialized fully-connected layer with outputs
+corresponding to the number of classes used (35 for most
+experiments).</p>
+      <p>To compute rAP or train with triplet margin loss, image
+embeddings must be extracted from the target CNN models
+prior to the classification layer. In our models, this was
+done either by extracting the embeddings directly from the
+second to last layer, or by adding an additional 128-output
+fully-connected layer prior to the last layer, and extracting
+from that. The DenseNet161 and ResNet152 models were left
+unchanged for cross-entropy loss training, while VGG16 and
+SqueezeNet1.1 added the additional 128-output layer. This is
+because the features at the end of the original VGG16 and
+SqueezeNet1.1 models are too high-dimensional and therefore
+less effective for the retrieval problem.</p>
+      <p>For triplet-margin loss training, we also added the additional
+128-output layer to the end of the DenseNet161 model. It
+is import to use a lower-dimensional space for the learned
+embedding space to avoid the curse of dimensionality [57].</p>
+    </sec>
+    <sec id="sec-13">
+      <title>H. Pre-Processing</title>
+      <p>A significant set of operations was applied to the image data
+both before and after the simulation code was applied.</p>
+      <p>1) Before Simulation: First, the R, G, and B bands were
+extracted from the DigitalGlobe 16-bit MS images comprising
+the fMoW subset. Then, the images were either cropped
+or resized to 224 224 pixels, such that the centroid of
+the annotated object in the image was at the center of the
+processed output image. Note that no resizing was applied
+in the case of the cropping operation, meaning that objects
+larger than 224 224 pixels would lose any of those additional
+pixels. Further, objects smaller than 224 224 pixels would
+also contain whatever additional pixels were outside the object
+bounding box and still within the 224 224 box. In the case
+where one or both dimensions of the full image was smaller
+than 224 224 pixels, the remaining space was zero-padded. In
+the case of the resize operation, the object bounding box would
+be resized to 224 224 pixels without preserving aspect ratio,
+using bilinear interpolation. Note that the cropping operation
+could benefit smaller objects, since additional context would
+be included, while the resizing operation could benefit larger
+objects, since the entire spatial extent would be within the
+final image (despite many original pixels being lost). Both
+operations are flawed for many of the images/objects, but we
+will show that the cropping operation is better on average.</p>
+      <p>An additional pre-processing step was required for the
+resizing operation, involving padding the edges with “reflected”
+values. This was done to avoid boundary artifacts which
+occurred after converting to and from the frequency domain
+with DFT.</p>
+      <p>After the images were cropped or resized, they were
+translated into units of at-aperture radiance and put into the sensor
+simulation code. The output imagery produced was in units of
+TOA reflectance.</p>
+      <p>
+        2) After Simulation: The imagery in units of TOA
+reflectance could be of different dimension than the input
+224 224 pixels, so resampling to 224 224 pixels was
+necessary, for which bilinear interpolation was again used. In
+the case of resized images, the additional padding previously
+mentioned was clipped off after this interpolation. Since the
+domain of TOA reflectance is close to [
+        <xref ref-type="bibr" rid="ref1">0, 1</xref>
+        ], additional
+normalization of the domain is not necessary. Initial experiments
+were conducted with standard scores (mean subtraction and
+standard deviation division), but this was found to be beneficial
+only for the scenario in which a pre-trained model was not
+fine-tuned. All experiments with fine-tuning on the fMoW
+subset have no additional data normalization.
+      </p>
+    </sec>
+    <sec id="sec-14">
+      <title>I. Hardware and OS</title>
+      <p>All experiments were conducted on machines with NVIDIA
+GPUs, either Quadro M6000, Pascal Titan X, or Tesla K80.
+The experiments were conducted inside Docker containers
+based on Ubuntu 18.04 and CUDA 10.0. Most experiments
+took around 48 hours to complete with the use of 2 GPUs,
+and a mini-batch size of 88.</p>
+    </sec>
+    <sec id="sec-15">
+      <title>J. Parameters</title>
+      <p>All experiments were conducted with a set of parameters
+which remain constant, as certain other parameters were
+varied. The set of parameters corresponding to the sensor
+simulator are found in Table II, and the set of parameters
+corresponding to all other aspects of the experimental design
+are found in Table III.</p>
+    </sec>
+    <sec id="sec-16">
+      <title>K. CNN Experiments</title>
+      <p>Three main types of CNN experiments were conducted
+using the described methods. All experiments were conducted
+using 10-fold cross-validation with 35 classes, training with
+900 images from each class, and validating with 100 images
+from each class. Within each class, the images were assigned
+to each fold randomly.</p>
+      <p>1) Basic Training and Evaluation: The three CNN models
+were trained and validated on the original dataset, establishing
+an upper bound on performance.</p>
+      <p>2) Degraded Training and Evaluation: For each value of
+some sensor parameter, the entire dataset was transformed, and
+the CNN models were trained and validated on the transformed
+dataset.</p>
+    </sec>
+    <sec id="sec-17">
+      <title>3) Degraded Training with Zero-Shot Evaluation: The class</title>
+      <p>space was first divided into two groups of 20 and 15 mutually
+exclusive classes. Then, the degraded training and evaluation
+experiment was conducted, training on the group of 20, and
+validating on the group of 15. For this experiment, only
+the retrieval problem could be used for evaluation, since the
+Constant Parameters
+Parameter
+Image Size
+Optimizer
+Learning Rate
+Cross Validation
+Batch Size*
+Num GPUs*
+Variable Parameters
+Parameter
+Pretrained
+CNN Architecture
+Learning Objective
+Num Classes
+Num Epochs
+Pre-Processing Method</p>
+      <p>Value
+network would be unable to perform classification with the
+unknown classes.</p>
+    </sec>
+    <sec id="sec-18">
+      <title>L. IQA Experiments</title>
+      <p>Both full-reference and no-reference IQA metrics were
+measured for comparison against CNN performance and GIQE5
+NIIRS. Each metric was computed for all 1,000 transformed
+images across each of 35 classes, for each simulator parameter
+configuration. Images were pre-processed using the previously
+described “cropping” method, and normalized to the range
+[0; 1].</p>
+      <p>1) Full-Reference: The PSNR and SSIM metrics were
+measured comparitively using a given image Before Simulation and
+After Simulation as described in the Pre-Processing section.
+For SSIM, the score was computed separately for each channel
+and averaged to produce the final result. The scikit-image11
+implementation of these metrics was used for the experiments.</p>
+      <p>2) No-Reference: The BRISQUE and NIQE metrics were
+measured using only the After Simulation images. For both
+metrics, the score was computed separately for each channel
+and averaged to produce the final result, like for SSIM. The
+scikit-video12 implementation of NIQE was used, while the
+BRISQUE implementation is from13. The performance of
+these algorithms would likely be improved by retraining their
+respective models with in-domain data, but this is left to future
+work.</p>
+      <sec id="sec-18-1">
+        <title>IV. RESULTS AND ANALYSIS</title>
+      </sec>
+    </sec>
+    <sec id="sec-19">
+      <title>A. Calibration</title>
+      <p>We begin by training the four target CNN architectures
+on the original fMoW subset, in order to establish an upper
+11. scikit-image: https://scikit-image.org/
+12. scikit-video: http://www.scikit-video.org/stable/
+13. BRISQUE Implementation:
+https://github.com/spmallick/learnopencv/tree/master/ImageMetrics
+Normalized rAP vs. Focal Length
+0.8
+bound for performance. We know this will constitute an upper
+bound, because the transformations applied to the data are a
+strict degradation involving downsampling and adding noise.
+We show results on the validation set in Table IV. The peak
+values for five metrics are listed, in addition to the training
+epoch at which they were achieved. All four models were
+pre-trained on ImageNet and were fine-tuned for five epochs.
+Interestingly, the DenseNet161 architecture performs better
+than ResNet152, despite ResNet152 performing marginally
+better on the original ImageNet dataset. This showcases again
+how different architectures may perform better on different
+datasets. Therefore, it is important to understand the
+performance relationship here studied for multiple state-of-the-art
+architectures, as any could be optimal for a given dataset.</p>
+    </sec>
+    <sec id="sec-20">
+      <title>B. Baseline</title>
+      <p>For our baseline experiment, we consider the relationship
+between rAP of DenseNet161 and optic focal length. Images
+were pre-processed using the crop method, and the model was
+trained for five epochs. This result is compared with NIIRS as
+computed with the GIQE5. The result is shown in Figure 8. We
+choose to compare rAP in most experiments, because it can be
+generalized to unknown classes, as shown in Section IV-I. We
+refer to the baseline experiment in the following experiment
+subsections, in most cases with just one parameter altered from
+Table III.</p>
+      <p>If we return to the original formulation from Equation 1,
+we can consider the baseline problem as:
+arg max rAP(f ; P; m; D)
+f
+(28)
+where m is DenseNet161, D is the fMoW subset, and P
+corresponds to all image system parameters except for f , the
+focal length.</p>
+      <p>We must take care to discern the performance metrics
+exhibited here from NIIRS. While these experiments measure
+how well a classifier performs at recognizing specific objects,
+NIIRS measures how well all objects can be interpreted at each
+tier of its scale. For this reason, we focus on comparing optima
+between the two, instead of attempting to relate absolute
+performance. In this case, we compare:
+arg max rAP vs. arg max NIIRS
+f f
+(29)</p>
+      <p>We show the performance relationship for the baseline
+experiment for all considered problems and metrics in Figure
+9. Notice that the two accuracy metrics peak at f = 0:4, the
+two AP metrics peak at f = 0:5, and the AUC metric peaks
+at f = 0:6. Since all five metrics are near their peak from
+f 2 [0:4; 0:6], focal length may be selected based on another
+consideration within this range, such as cost.</p>
+      <p>
+        We give a breakdown of rAP performance for ten individual
+classes in Figure 10. While the relationship between focal
+length and rAP for each class is similar, there is significant
+variation in the focal length value at which rAP is greatest,
+e.g., 0.3 for swimming pool vs. 0.8 for solar farm. This could
+be explained by reliance on spectral vs. spatial features. At
+lower focal length values, spectral features are better preserved
+Fig. 8: This plot visualizes the baseline experiment of this work,
+in which rAP is averaged across validation partitions of the fMoW
+subset, for a range of sensor system focal length values (D=0.05m).
+An example image of a race track is shown for different focal
+length values to demonstrate the visual changes which result from
+the transformation. A clear peak is present for rAP, at which point
+the optimal tradeoff between resolution and noise for the CNN has
+been reached. The GIQE5 NIIRS curve for these focal length values
+has a different shape, peaking at a larger focal length value. This
+shows that CNN performance and human interpretability may not
+have the same relationship with sensor system parameters. Note that
+rAP has been normalized to [
+        <xref ref-type="bibr" rid="ref1">0, 1</xref>
+        ], while GIQE5 NIIRS is unaltered,
+to better compare the peaks between the two curves.
+      </p>
+      <p>Metric Values vs.</p>
+      <p>Focal Length</p>
+      <p>Normalized Metric Values vs.</p>
+      <p>Focal Length
+lse1.00
+u
+a
+icV0.75
+tr
+e
+dM0.50
+e
+z
+ilam0.25
+r
+o
+N0.00</p>
+      <p>Metric Name
+Top-1 Accuracy
+Top-3 Accuracy
+rAP
+AUC
+cAP
+0.2
+Fig. 9: Multiple metrics are shown for validation set performance
+of the baseline model as a function of varied focal length. Notice
+that the normalized curves are nearly identical, but peak at different
+focal length values. The importance of this variation will depend on
+precision and cost requirements for a given application.
+than spatial features, explaining why the bright blue of the
+swimming pool would be more easily recognized. At higher
+focal length values, as less light enters the system and more
+noise is introduced, spatial features have greater weight than
+spectral features, explaining why the gridded pattern of the
+solar farm would be more easily recognized. In addition, some
+classes have a greater range in rAP with respect to focal
+length, e.g., 0.4 for road bridge vs. 0.2 for crop field. These
+observations indicate that the spectral and spatial features
+of the imagery in these classes, independent of the overall
+quality of the imagery, have a variable response with respect
+to changes in resolution and noise.</p>
+    </sec>
+    <sec id="sec-21">
+      <title>C. Varying Aperture Diameter</title>
+      <p>We here explore variation of optic aperture diameter, in
+addition to focal length. First, we consider how a model
+pretrained on ImageNet, but without fine-tuning on the fMoW
+subset, will perform as aperture diameter changes. The results
+of this experiment are shown in Figure 11. As mentioned in
+Section III-H2, this was the only scenario in which standard
+score normalization (ImageNet mean, standard deviation) was
+used.</p>
+      <p>Then, we consider how the pre-trained model will perform
+once it has been fine-tuned for five epochs, just as in the
+baseline. The results of this experiment are shown in Figure
+12. First, notice that the relationship between the systems with
+different aperture diameter is similar for low focal length, but
+diverges as focal length increases. This can be understood
+through Figure 6, in which the quantity of noise present in the
+low-aperture diameter system becomes significantly greater as
+focal length increases.</p>
+      <p>Next, notice that the pre-trained model without fine-tuning
+better corresponds to GIQE5 NIIRS than the fine-tuned model.
+While the axes have been adjusted to better compare against
+NIIRS, notice that the rAP values on the left y-axis of Figure
+12 are much greater than in Figure 11. Therefore, while
+the alignment between NIIRS and rAP in 11 may appear
+significant, a designer would more likely want to optimize
+for the relationship exhibited in 12, in which the model
+performance is greater.</p>
+      <p>Still, this result raises an interesting question: could it be the
+case that the CNN pre-trained on ImageNet has performance
+more similar to the GIQE because it more closely models
+human recognition? In this case, improved performance when
+fine-tuned on the satellite imagery could suggest that when
+the network “specialized” towards a specific domain, it not
+only gained improved performance over a generic recognizer,
+but attained an altered capability with respect to tolerance of
+artifacts. From an evolutionary perspective, it is unreasonable
+to assume that the human visual system is perfectly attuned to
+this domain of imagery, and to optimally extract patterns when
+some combination of noise and blurring are present. Further,
+a computational solution may not be not phased by artifacts
+such as aliasing, which look displeasing to humans, but do not
+significantly alter the semantic information present.</p>
+    </sec>
+    <sec id="sec-22">
+      <title>D. Varying Architectures</title>
+      <p>As observed in comparing Tables I and IV, different
+architectures may be optimal for different datasets and problems.
+Therefore, we consider it important to compare varying
+architectures, to test if the same parameter-performance relationship
+manifests.</p>
+      <p>In Figure 13, the three architectures described in Section
+III-D are compared for the baseline experiment. All three
+models attained peak performance at the same focal length value,
+suggesting that the models reacted similarly to variation in
+resolution and noise, even while they achieved different levels of
+absolute performance. This result indicates a consistency with
+respect to visual recognition with CNNs. This consistency,
+combined with the difference between CNN performance and
+GIQE5 NIIRS shown in Figure 12, could suggest that CNNs
+in general are differently affected by resolution and noise than
+the HVS.</p>
+    </sec>
+    <sec id="sec-23">
+      <title>E. Varying Learning Objective</title>
+      <p>In this experiment, we compare the performance of the
+baseline scenario with cross-entropy loss training vs. triplet
+margin loss training. The goal is to test whether the same
+focal length-rAP relationship manifests when optimizing for
+two significantly different objectives. As described in Section
+III-G, the two variations of DenseNet161 used differ in the
+last two layers. The results shown in Figure 14 indicate that
+the focal length-rAP relationship is consistent between the two
+objectives.</p>
+    </sec>
+    <sec id="sec-24">
+      <title>F. Varying Classes</title>
+      <p>While experimentation on additional overhead image
+datasets such as SpaceNet and xView would be ideal, fMoW
+contains such a breadth of imagery that it serves as a
+strong proxy for any recent multispectral overhead imagery.
+To account for bias in observing all classes of the dataset
+simultaneously, we have designed an experiment in which only
+disjoint subsets of the class space are evaluated.</p>
+      <p>The results of this experiment are shown in Figure 15. As
+anticipated from Figure 10, partitions of the fMoW subset
+containing few classes have a more erratic relationship. This
+result reinforces the point that the classes observed are
+important to the sensor design problem. We recommend that several
+different classes are observed in order to make robust sensor
+design decisions. Figure 15 indicates that the focal length-rAP
+relationship becomes stable once around 15 classes are used,
+for this experiment.</p>
+    </sec>
+    <sec id="sec-25">
+      <title>G. Varying Epochs Trained</title>
+      <p>Here, we consider how many epochs a model must be
+trained for in order to converge on a stable focal
+lengthrAP relationship. We consider both training from scratch
+rAP vs. Focal Length for 10 Classes
+Wind Farm</p>
+      <p>Toll Booth</p>
+      <p>Tunnel Openi...</p>
+      <p>Road Bridge</p>
+      <p>Solar Farm
+0.1
+0.4
+0.7
+1.0
+0.1
+0.4
+0.7
+1.0
+0.1
+0.4
+0.7
+1.0
+Dam</p>
+      <p>Lighthouse</p>
+      <p>Surface Mine
+0.1
+0.4
+0.7</p>
+      <p>1.0</p>
+      <p>Swimming Poo...
+1.0
+0.4 0.6
+Focal Length (m)
+Fig. 13: SqueezeNet1.1, VGG16, ResNet152, and DenseNet161
+are compared for the baseline experiment. Notice that while
+SqueezeNet1.1 has a different optimal focal length of 0.6m vs. 0.5m
+for the other architectures, the normalized curves are very similar.
+0.4 0.6
+Focal Length (m)
+Fig. 14: Cross-entropy loss training and triplet margin loss training
+are compared for the baseline experiment with DenseNet161. While
+triplet training does not perform as well as cross-entropy training after
+five epochs, triplet training likely requires more epochs to finish its
+optimization. Still, we note that the normalized performance curves
+are nearly identical.
+0.4 0.6
+Focal Length (m)
+Fig. 15: The fMoW subset is partitioned into 5 sets disjoint by class,
+containing 2, 3, 5, 10, and 15 of the total classes respectively. The
+baseline experiment is conducted on each of these subsets and results
+are compared against the baseline with all 35 classes.
+and fine-tuning of a pre-trained model in Figures 16 and
+17 respectively. In the from-scratch scenario, we note not
+only that many more epochs are required to reach a stable
+relationship, but also that absolute performance is considerably
+reduced. In the fine-tuning scenario, one training epoch alone
+may be sufficient to exhibit a stable relationship.</p>
+    </sec>
+    <sec id="sec-26">
+      <title>H. Varying Pre-Processing</title>
+      <p>As discussed in Section III-H, we considered two different
+methods of pre-processing the image data, in order to fit it
+into the fixed-size format required for the CNN models. We
+note that most top competitors in the fMoW challenge used a
+method similar to resizing, but with additional “context” pixels
+0.1
+0.2
+Fig. 16: The baseline system is trained from scratch, showing
+changing rAP as a function of focal length for each training epoch.
+The peak rAP across focal length values for a given epoch is denoted
+with a triangle. Notice that the peak value shifts towards a smaller
+focal length as the model is trained for more epochs.</p>
+      <p>rAP vs. Focal Length
+for 5 Epochs (pretrained)
+Fig. 17: The baseline system is trained from pre-trained weights,
+showing changing rAP as a function of focal length for each training
+epoch. The peak rAP across focal length values for a given epoch is
+denoted with a triangle. Notice that the peak value remains consistent
+as the network is trained.
+around the target bounding box from the original image. While
+this greatly improves performance for small targets, we wanted
+to avoid adding additional heuristics to the data preparation
+process.</p>
+      <p>A comparison of performance for the cropping and resizing
+methods is shown in Figure 18. While there is a significant gap
+in absolute performance, as shown in the plot on the left, the
+normalized curves on the right are quite similar. This further
+fortifies our conclusion that there is a self-consistency to visual
+recognition with CNNs.</p>
+    </sec>
+    <sec id="sec-27">
+      <title>I. Zero-Shot Experiment</title>
+      <p>As explained in Section III-K, in this experiment, the fMoW
+subset is partitioned into two sets disjoint by class, with
+the training set containing 20 classes, and the validation set
+containing 15 classes. The model trained on the training set
+0.4 0.6
+Focal Length (m)
+0.4 0.6
+Focal Length (m)
+0.4 0.6
+Focal Length (m)
+Fig. 18: The baseline system is trained with images cropped vs.
+images resized. Since the images have such a large variation in size,
+as shown in Figure 3, the pre-processing method used for input into
+the fixed-size network is critical.
+Fig. 19: This plot demonstrates the zero-shot experiment for the
+baseline case. Four different relationships are shown in this plot:
+First, the 20-class and 15-class partitions are considered separately.
+Each was trained and validated on without observing the other. Then,
+the trained models from the 20-class partition were used to evaluate
+the 15-class partition- this is the zero-shot case. Notice that these
+three relationships are very similar and have the same peak for the
+normalized rAP shown on the right. In addition, performance of the
+pre-trained ImageNet features on the 15-class set is demonstrated.
+The result is a relationship clearly unlike the others, indicating that
+these features may not be salient for this problem.
+never sees any examples from classes in the validation set.
+The results are shown in Figures 19 and 20 for classifier and
+triplet training respectively.</p>
+      <p>This is perhaps the most important experiment conducted
+in this work, as it shows that the model trained on 20 fMoW
+classes generalizes to the remaining 15. This suggests that the
+model could apply to data annotated from any DigitalGlobe
+sensor, and perhaps from other remote sensors as well. We
+posit that this fine-tuned model can be used to conduct the
+sensor parameter space analysis for a wide variety of useful
+scenarios.</p>
+      <p>J. IQA</p>
+      <p>Finally, we compare the performance of the various IQA
+algorithms for the baseline parameter configuration. The results
+of this experiment are shown in Figure 21. While both PSNR
+and BRISQUE have monotonic relationships with respect to
+increasing focal length, SSIM and NIQE have clear optima in
+the tested range. Further, the SSIM plot exhibits an optimal Q
+value, similar to the relationship we saw for CNN performance
+and NIIRS.</p>
+      <p>In Table V, the results from four experimental trials, that
+varied both focal length and aperture diameter, are summarized
+0.4 0.6
+Focal Length (m)
+Fig. 20: This plot mirrors Figure 19 for triplet training instead of
+classifier training. The normalized relationship is nearly identical,
+but the zero-shot rAP performance (20 Class Train/15 Class Val) is
+improved over the classifier case. This is logical, because the features
+learned with the triplet margin objective are more likely to apply to
+unseen classes, since the objective doesn’t encode for any specific
+class.</p>
+      <p>SSIM vs. Optical Q</p>
+      <p>PSNR vs. Optical Q
+0.25 0.50 0.75 1.00 1.25 1.50</p>
+      <p>Optical Q
+BRISQUE vs. Optical Q
+0.25 0.50 0.75 1.00 1.25 1.50</p>
+      <p>Optical Q
+NIQE vs. Optical Q
+0.25 0.50 0.75 1.00 1.25 1.50</p>
+      <p>Optical Q
+0.25 0.50 0.75 1.00 1.25 1.50</p>
+      <p>Optical Q
+Fig. 21: In this plot, we repeat the experiment from Section IV-C with
+four different IQA metrics. Six different aperture diameter values
+are tested, in addition to the varying focal length, and the results
+are plotted against optical Q. For the full-reference metrics, PSNR
+increased monotonically, while SSIM has a clear optimal aperture
+diameter at around Q=0.5. For the no-reference metrics, BRISQUE
+decreases montonically, while NIQE has an optimal point for each
+trial, but those optima do not correspond to any specific Q value.
+to show the Q value for which each metric was optimal. The
+mean and standard deviation of this Q value are shown, in
+addition the the minimum and maximum values of the metric
+measured at this Q value. This result shows that the optimal
+Q for pre-trained CNN performance is closer to SSIM than
+to the other metrics. This indicates that out of the four IQA
+metrics tested, only SSIM may be useful for understanding
+sensor system performance.</p>
+      <sec id="sec-27-1">
+        <title>V. CONCLUSION</title>
+        <p>In this work, we develop a methodology for optimizing
+remote sensing image system parameters with respect to
+performance of deep learning models on real overhead image
+This table shows that certain metrics exhibit an optimal value for optical Q
+when both focal length and aperture diameter were varied.
+*Scratch rAP and Pre-Trained rAP refer to the values from Figures 11 and
+12 respectively.
+data. We demonstrate a tool which implements this
+methodology, and conduct a variety of experiments using different
+sensor and learning parameters.</p>
+        <p>Through these experiments, we demonstrate that visual
+recognition performance for CNNs is self-consistent under
+a variety of conditions. We also show that human and
+machine visual recognition performance may differ significantly.
+Specifically, we show that the most recent version of the GIQE
+does not correspond to CNN performance, within the observed
+parameter space. It is still possible that CNN performance is
+closer to true NIIRS than observed, in the event that the GIQE
+does not accurately compute NIIRS in this parameter space.</p>
+        <p>We show that the SSIM full-reference IQA algorithm
+produces similar results to CNN performance. If SSIM could be
+modified to match CNN performance (across a more expansive
+sensor parameter space), this would circumvent the need to
+conduct costly CNN experiments for sensor system
+optimization. Further, this is a step in the direction of modifying the
+GIQE itself to reflect this relationship, circumventing the need
+for a data-based optimization altogether. Still, these surrogate
+approaches can only reveal relative optima for sensor
+parameters. In order to understand absolute model performance for
+some data, applying our method with the target model and
+data will produce the most reliable result.</p>
+        <p>An implication of this work is that all overhead systems
+which have been designed to optimize for NIIRS using the
+GIQE, and which produce imagery which is analyzed with
+CNNs, have been designed non-optimally. Designing systems
+based on the methods described in this paper could yield
+more optimal systems for CNN processing. Further, these
+methods can be applied to any visual recognition model, as
+shown through the generalization posed by Equation 1. When
+a visual recognition model superior to CNNs is introduced,
+the same study can be conducted and compared against the
+results presented here.</p>
+        <p>This concept can be extended to other domains, including
+sensing for autonomous cars and machine vision in an
+industrial setting. We posit that optimizing sensors for visual
+recognition problems will become an important part of designing
+automated sensing systems.</p>
+        <p>In the future, this work will be expanded to study different
+datasets, apply more complex CNN models, and develop IQA
+and GIQE models which match the observed CNN
+parameterperformance relationship.</p>
+      </sec>
+      <sec id="sec-27-2">
+        <title>ACKNOWLEDGMENTS The authors would like to thank Daniel LeMaster from AFRL for providing access to his pyBSM code and helpfully answering our questions.</title>
+        <p>[48] J. R. Schott, Remote sensing: the image chain approach.</p>
+        <p>University Press on Demand, 2007.</p>
+        <p>Oxford
+[50] F. N. Iandola, S. Han, M. W. Moskewicz, K. Ashraf, W. J. Dally,
+and K. Keutzer, “Squeezenet: Alexnet-level accuracy with 50x fewer
+parameters and¡ 0.5 mb model size,” arXiv preprint arXiv:1602.07360,
+2016.
+[52] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image
+recognition,” in Proceedings of the IEEE conference on computer vision
+and pattern recognition, pp. 770–778, 2016.
+[54] J. Davis and M. Goadrich, “The relationship between precision-recall
+and roc curves,” in Proceedings of the 23rd International Conference
+on Machine Learning, ICML ’06, (New York, NY, USA), pp. 233–240,
+ACM, 2006.
+[56] F. Schroff, D. Kalenichenko, and J. Philbin, “Facenet: A unified
+embedding for face recognition and clustering,” in Proceedings of the IEEE
+conference on computer vision and pattern recognition, pp. 815–823,
+2015.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>M. S.</given-names>
+            <surname>Warren</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. P.</given-names>
+            <surname>Brumby</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. W.</given-names>
+            <surname>Skillman</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Kelton</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Wohlberg</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Mathis</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Chartrand</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Keisler</surname>
+          </string-name>
+          , and M. Johnson, “
+          <article-title>Seeing the earth in the cloud: Processing one petabyte of satellite imagery in one day</article-title>
+          ,
+          <source>” in Applied Imagery Pattern Recognition Workshop (AIPR)</source>
+          ,
+          <year>2015</year>
+          IEEE, pp.
+          <fpage>1</fpage>
+          -
+          <lpage>12</lpage>
+          , IEEE,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <surname>D. I. Moody</surname>
+          </string-name>
+          , M. S. Warren,
+          <string-name>
+            <given-names>S. W.</given-names>
+            <surname>Skillman</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Chartrand</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. P.</given-names>
+            <surname>Brumby</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Keisler</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Kelton</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Mathis</surname>
+          </string-name>
+          , “
+          <article-title>Building a living atlas of the earth in the cloud,” in Signals, Systems</article-title>
+          and Computers,
+          <year>2016</year>
+          50th Asilomar Conference on, pp.
+          <fpage>1273</fpage>
+          -
+          <lpage>1277</lpage>
+          , IEEE,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.-Y.</given-names>
+            <surname>Tong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Datcu</surname>
+          </string-name>
+          , and L. Zhang, “
+          <article-title>Exploiting deep features for remote sensing image retrieval: A systematic investigation</article-title>
+          ,
+          <source>” arXiv preprint arXiv:1707.07321</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Voigt</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Kemper</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Riedlinger</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Kiefl</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Scholte</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Mehl</surname>
+          </string-name>
+          , “
+          <article-title>Satellite image analysis for disaster and crisis-management support,” IEEE transactions on geoscience and remote sensing</article-title>
+          , vol.
+          <volume>45</volume>
+          , no.
+          <issue>6</issue>
+          , pp.
+          <fpage>1520</fpage>
+          -
+          <lpage>1528</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>M. A.</given-names>
+            <surname>Wulder</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>N. C.</given-names>
+            <surname>Coops</surname>
+          </string-name>
+          , “
+          <article-title>Make earth observations open access: freely available satellite imagery will improve science and environmental-monitoring products</article-title>
+          ,
+          <source>” Nature</source>
+          , vol.
+          <volume>513</volume>
+          , no.
+          <issue>7516</issue>
+          , pp.
+          <fpage>30</fpage>
+          -
+          <lpage>32</lpage>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Heinze</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Esswein</surname>
+          </string-name>
+          , W. Kru¨ger, and G. Saur, “
+          <article-title>Automatic image exploitation system for small uavs,” in Airborne Intelligence, Surveillance, Reconnaissance (ISR) Systems</article-title>
+          and Applications V, vol.
+          <volume>6946</volume>
+          , p.
+          <fpage>69460G</fpage>
+          ,
+          <source>International Society for Optics and Photonics</source>
+          ,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>LeCun</surname>
+          </string-name>
+          , P. Haffner,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Bottou</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          , “
+          <article-title>Object recognition with gradient-based learning,” in Shape, contour and grouping in computer vision</article-title>
+          , pp.
+          <fpage>319</fpage>
+          -
+          <lpage>345</lpage>
+          , Springer,
+          <year>1999</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Krizhevsky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>I. Sutskever</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>G. E.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          , “
+          <article-title>Imagenet classification with deep convolutional neural networks</article-title>
+          ,
+          <source>” in Advances in neural information processing systems</source>
+          , pp.
+          <fpage>1097</fpage>
+          -
+          <lpage>1105</lpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Dalal</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Triggs</surname>
+          </string-name>
+          , “
+          <article-title>Histograms of oriented gradients for human detection,” in Computer Vision</article-title>
+          and Pattern Recognition,
+          <year>2005</year>
+          .
+          <article-title>CVPR 2005</article-title>
+          . IEEE Computer Society Conference on, vol.
+          <volume>1</volume>
+          , pp.
+          <fpage>886</fpage>
+          -
+          <lpage>893</lpage>
+          , IEEE,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Ojala</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Pietikainen</surname>
+          </string-name>
+          , and T. Maenpaa, “
+          <article-title>Multiresolution gray-scale and rotation invariant texture classification with local binary patterns</article-title>
+          ,
+          <source>” IEEE Transactions on pattern analysis and machine intelligence</source>
+          , vol.
+          <volume>24</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>971</fpage>
+          -
+          <lpage>987</lpage>
+          ,
+          <year>2002</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Viola</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Jones</surname>
+          </string-name>
+          , “
+          <article-title>Rapid object detection using a boosted cascade of simple features,” in Computer Vision</article-title>
+          and Pattern Recognition,
+          <year>2001</year>
+          .
+          <article-title>CVPR 2001</article-title>
+          .
+          <source>Proceedings of the 2001 IEEE Computer Society Conference on, vol. 1</source>
+          ,
+          <string-name>
+            <surname>pp. I-I</surname>
+          </string-name>
+          , IEEE,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>O.</given-names>
+            <surname>Russakovsky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Deng</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Su</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Krause</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Satheesh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Ma</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Huang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Karpathy</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Khosla</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Bernstein</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Berg</surname>
+          </string-name>
+          , and L.
+          <string-name>
+            <surname>Fei-Fei</surname>
+          </string-name>
+          ,
+          <article-title>“ImageNet Large Scale Visual Recognition Challenge</article-title>
+          ,”
+          <source>International Journal of Computer Vision (IJCV)</source>
+          , vol.
+          <volume>115</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>211</fpage>
+          -
+          <lpage>252</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Minetto</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. P.</given-names>
+            <surname>Segundo</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Sarkar</surname>
+          </string-name>
+          , “
+          <article-title>Hydra: an ensemble of convolutional neural networks for geospatial land classification</article-title>
+          ,” arXiv preprint arXiv:
+          <year>1802</year>
+          .03518,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <surname>M. D. Zeiler</surname>
+            and
+            <given-names>R.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Fergus</surname>
+          </string-name>
+          , “
+          <article-title>Visualizing and understanding convolutional networks</article-title>
+          ,
+          <source>” in European conference on computer vision</source>
+          , pp.
+          <fpage>818</fpage>
+          -
+          <lpage>833</lpage>
+          , Springer,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Wan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Zeiler</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Le Cun</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Fergus</surname>
+          </string-name>
+          , “
+          <article-title>Regularization of neural networks using dropconnect,”</article-title>
+          <source>in International Conference on Machine Learning</source>
+          , pp.
+          <fpage>1058</fpage>
+          -
+          <lpage>1066</lpage>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [16]
+          <string-name>
+            <given-names>J. T.</given-names>
+            <surname>Springenberg</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Dosovitskiy</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Brox</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Riedmiller</surname>
+          </string-name>
+          , “
+          <article-title>Striving for simplicity: The all convolutional net</article-title>
+          ,
+          <source>” arXiv preprint arXiv:1412.6806</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Snoek</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O.</given-names>
+            <surname>Rippel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Swersky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Kiros</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Satish</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Sundaram</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Patwary</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Prabhat</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Adams</surname>
+          </string-name>
+          , “
+          <article-title>Scalable bayesian optimization using deep neural networks</article-title>
+          ,
+          <source>” in International conference on machine learning</source>
+          , pp.
+          <fpage>2171</fpage>
+          -
+          <lpage>2180</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [18]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Luo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C. C.</given-names>
+            <surname>Loy</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K. W.</given-names>
+            <surname>Shum</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Tang</surname>
+          </string-name>
+          , et al., “
+          <article-title>Deep representation learning with target coding</article-title>
+          .,” in AAAI, pp.
+          <fpage>3848</fpage>
+          -
+          <lpage>3854</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [19]
+          <string-name>
+            <surname>C.-Y. Lee</surname>
+            ,
+            <given-names>P. W.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Gallagher</surname>
+            , and
+            <given-names>Z.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Tu</surname>
+          </string-name>
+          , “
+          <article-title>Generalizing pooling functions in convolutional neural networks: Mixed, gated</article-title>
+          , and tree,
+          <source>” in Artificial Intelligence and Statistics</source>
+          , pp.
+          <fpage>464</fpage>
+          -
+          <lpage>472</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [20]
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Bovik</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H. R.</given-names>
+            <surname>Sheikh</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>E. P.</given-names>
+            <surname>Simoncelli</surname>
+          </string-name>
+          , “
+          <article-title>Image quality assessment: from error visibility to structural similarity,” IEEE transactions on image processing</article-title>
+          , vol.
+          <volume>13</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>600</fpage>
+          -
+          <lpage>612</lpage>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [21]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Mittal</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. K.</given-names>
+            <surname>Moorthy</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Bovik</surname>
+          </string-name>
+          , “
+          <article-title>No-reference image quality assessment in the spatial domain</article-title>
+          ,
+          <source>” IEEE Transactions on Image Processing</source>
+          , vol.
+          <volume>21</volume>
+          , no.
+          <issue>12</issue>
+          , pp.
+          <fpage>4695</fpage>
+          -
+          <lpage>4708</lpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [22]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Mittal</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Soundararajan</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Bovik</surname>
+          </string-name>
+          , “
+          <article-title>Making a completely blind image quality analyzer</article-title>
+          ,
+          <source>” IEEE Signal Processing Letters</source>
+          , vol.
+          <volume>20</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>209</fpage>
+          -
+          <lpage>212</lpage>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [23]
+          <string-name>
+            <given-names>J. C.</given-names>
+            <surname>Leachtenauer</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Malila</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Irvine</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Colburn</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Salvaggio</surname>
+          </string-name>
+          , “
+          <article-title>General image-quality equation: Giqe,” Applied optics</article-title>
+          , vol.
+          <volume>36</volume>
+          , no.
+          <issue>32</issue>
+          , pp.
+          <fpage>8322</fpage>
+          -
+          <lpage>8328</lpage>
+          ,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [24]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Harrington</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Blanchard</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Salacain</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Smith</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>and P.</given-names>
+            <surname>Amanik</surname>
+          </string-name>
+          , “
+          <article-title>General image quality equation; giqe version 5</article-title>
+          ,”
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [25]
+          <string-name>
+            <given-names>R. D.</given-names>
+            <surname>Fiete</surname>
+          </string-name>
+          , “
+          <article-title>Image quality and [lambda] fn/p for remote sensing systems</article-title>
+          ,” Optical Engineering, vol.
+          <volume>38</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>1229</fpage>
+          -
+          <lpage>1241</lpage>
+          ,
+          <year>1999</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [26]
+          <string-name>
+            <surname>J. M. Irvine</surname>
+          </string-name>
+          , “
+          <article-title>National imagery interpretability rating scales (niirs): overview and methodology,” in Airborne Reconnaissance XXI</article-title>
+          , vol.
+          <volume>3128</volume>
+          , pp.
+          <fpage>93</fpage>
+          -
+          <lpage>104</lpage>
+          , International Society for Optics and Photonics,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Wong</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Jassemi-Zargani</surname>
+          </string-name>
+          ,
+          <article-title>Predicting image quality of surveillance sensors</article-title>
+          .
+          <source>Defence Research and Development Canada</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <given-names>S. A.</given-names>
+            <surname>Cota</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C. J.</given-names>
+            <surname>Florio</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D. J.</given-names>
+            <surname>Duvall</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M. A.</given-names>
+            <surname>Leon</surname>
+          </string-name>
+          , “
+          <article-title>The use of the general image quality equation in the design and evaluation of imaging systems,” in Remote Sensing System Engineering II</article-title>
+          , vol.
+          <volume>7458</volume>
+          , p.
+          <fpage>74580H</fpage>
+          ,
+          <source>International Society for Optics and Photonics</source>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <given-names>R. H.</given-names>
+            <surname>Vollmerhausen</surname>
+          </string-name>
+          and E. Jacobs, “
+          <article-title>The targeting task performance (ttp) metric a new model for predicting target acquisition performance,” tech. rep., Center for Night Vision</article-title>
+          and
+          <string-name>
+            <surname>Electro-Optics Fort Belvoir</surname>
+            <given-names>VA</given-names>
+          </string-name>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Johnson</surname>
+          </string-name>
+          , “
+          <article-title>Analysis of image forming systems,” in Selected papers on infrared design. Part I and II</article-title>
+          , vol.
+          <volume>513</volume>
+          , p.
+          <fpage>761</fpage>
+          ,
+          <year>1985</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <given-names>J. J.</given-names>
+            <surname>Gallimore</surname>
+          </string-name>
+          , “
+          <article-title>Review of psychophysically-based image quality metrics,” tech</article-title>
+          . rep.,
+          <source>LOGICON TECHNICAL SERVICES INC DAYTON OH</source>
+          ,
+          <year>1991</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          [32]
+          <string-name>
+            <given-names>X. X.</given-names>
+            <surname>Zhu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Tuia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Mou</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Xu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Fraundorfer</surname>
+          </string-name>
+          , “
+          <article-title>Deep learning in remote sensing: a comprehensive review and list of resources,” IEEE Geoscience and Remote Sensing Magazine</article-title>
+          , vol.
+          <volume>5</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>8</fpage>
+          -
+          <lpage>36</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          [33]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Jiang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Ghamisi</surname>
+          </string-name>
+          , “
+          <article-title>Deep feature extraction and classification of hyperspectral images based on convolutional neural networks</article-title>
+          ,
+          <source>” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>54</volume>
+          , no.
+          <issue>10</issue>
+          , pp.
+          <fpage>6232</fpage>
+          -
+          <lpage>6251</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          [34]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Mou</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Ghamisi</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>X. X.</given-names>
+            <surname>Zhu</surname>
+          </string-name>
+          , “
+          <article-title>Deep recurrent neural networks for hyperspectral image classification,”</article-title>
+          <source>IEEE Trans. Geosci. Remote Sens</source>
+          , vol.
+          <volume>55</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>3639</fpage>
+          -
+          <lpage>3655</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          [35]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Long</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Xiao</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Liu</surname>
+          </string-name>
+          , “
+          <article-title>Accurate object localization in remote sensing images based on convolutional neural networks</article-title>
+          ,
+          <source>” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>55</volume>
+          , no.
+          <issue>5</issue>
+          , pp.
+          <fpage>2486</fpage>
+          -
+          <lpage>2498</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          [36]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Maggiori</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Tarabalka</surname>
+          </string-name>
+          , G. Charpiat, and
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Alliez</surname>
+          </string-name>
+          , “
+          <article-title>Convolutional neural networks for large-scale remote-sensing image classification</article-title>
+          ,
+          <source>” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>55</volume>
+          , no.
+          <issue>2</issue>
+          , pp.
+          <fpage>645</fpage>
+          -
+          <lpage>657</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          [37]
+          <string-name>
+            <surname>A. Van Etten</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Lindenbaum</surname>
+            , and
+            <given-names>T. M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Bacastow</surname>
+          </string-name>
+          , “
+          <article-title>Spacenet: A remote sensing dataset</article-title>
+          and challenge series,” arXiv preprint arXiv:
+          <year>1807</year>
+          .01232,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref38">
+        <mixed-citation>
+          [38]
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Lam</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Kuzma</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>McGee</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Dooley</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Laielli</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Klaric</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bulatov</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>McCord</surname>
+          </string-name>
+          , “
+          <article-title>xview: Objects in context in overhead imagery</article-title>
+          ,” arXiv preprint arXiv:
+          <year>1802</year>
+          .07856,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref39">
+        <mixed-citation>
+          [39]
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Christie</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Fendley</surname>
+          </string-name>
+          , J. Wilson, and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Mukherjee</surname>
+          </string-name>
+          , “
+          <article-title>Functional map of the world,”</article-title>
+          <source>in Proc. IEEE Conference on Computer Vision</source>
+          and Pattern Recognition, Salt Lake City, Utah,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref40">
+        <mixed-citation>
+          [40]
+          <string-name>
+            <given-names>D. A.</given-names>
+            <surname>LeMaster and M. T. Eismann</surname>
+          </string-name>
+          , “
+          <article-title>pybsm: A python package for modeling imaging systems,” in Long-Range Imaging II</article-title>
+          , vol.
+          <volume>10204</volume>
+          , p.
+          <fpage>1020405</fpage>
+          ,
+          <string-name>
+            <surname>International</surname>
+            <given-names>Society</given-names>
+          </string-name>
+          <source>for Optics and Photonics</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref41">
+        <mixed-citation>
+          [41]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Eismann</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Ingle</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Slyz</surname>
+          </string-name>
+          , “
+          <article-title>Utility analysis of high-resolution multispectral imagery</article-title>
+          . volume
+          <volume>4</volume>
+          .
+          <article-title>image based sensor model (ibsm) version 2.0 technical description</article-title>
+          .,
+          <source>” tech. rep., ENVIRONMENTAL RESEARCH INST OF MICHIGAN ANN ARBOR</source>
+          ,
+          <year>1996</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref42">
+        <mixed-citation>
+          [42]
+          <string-name>
+            <given-names>J. D.</given-names>
+            <surname>Fanning</surname>
+          </string-name>
+          , “
+          <article-title>Metrics for image-based modeling of target acquisition,” in Infrared Imaging Systems: Design, Analysis</article-title>
+          , Modeling, and
+          <string-name>
+            <surname>Testing</surname>
+            <given-names>XXIII</given-names>
+          </string-name>
+          , vol.
+          <volume>8355</volume>
+          , p.
+          <fpage>835514</fpage>
+          ,
+          <string-name>
+            <surname>International</surname>
+            <given-names>Society</given-names>
+          </string-name>
+          <source>for Optics and Photonics</source>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref43">
+        <mixed-citation>
+          [43]
+          <string-name>
+            <given-names>C. L.</given-names>
+            <surname>Howell</surname>
+          </string-name>
+          , H.-S. Choi, and
+          <string-name>
+            <given-names>J. P.</given-names>
+            <surname>Reynolds</surname>
+          </string-name>
+          , “
+          <article-title>Face acquisition camera design using the nv-ipm image generation tool,” in Infrared Imaging Systems: Design, Analysis</article-title>
+          , Modeling, and
+          <string-name>
+            <surname>Testing</surname>
+            <given-names>XXVI</given-names>
+          </string-name>
+          , vol.
+          <volume>9452</volume>
+          , p.
+          <fpage>94520T</fpage>
+          ,
+          <source>International Society for Optics and Photonics</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref44">
+        <mixed-citation>
+          [44]
+          <string-name>
+            <given-names>M. E.</given-names>
+            <surname>Zelinski</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J. R.</given-names>
+            <surname>Schott</surname>
+          </string-name>
+          , “
+          <article-title>Segmented aperture space telescope modeling used for remote sensing and image utility analysis,” in Sensors and Systems for Space Applications III</article-title>
+          , vol.
+          <volume>7330</volume>
+          , p.
+          <fpage>733009</fpage>
+          ,
+          <string-name>
+            <surname>International</surname>
+            <given-names>Society</given-names>
+          </string-name>
+          <source>for Optics and Photonics</source>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

@@ -1,0 +1,16 @@
+PBBFMM3D: a Parallel Black-Box Fast Multipole Method for Non-oscillatory
+  Kernels
+  This paper presents PBBFMM3D: a parallel black-box fast multipole method that
+accelerates kernel matrix-vector multiplications where the kernel is a
+non-oscillatory function in three dimensions. Such problems arise from a wide
+range of fields, \emph{e.g.,} computational mechanics, geosciences and machine
+learning. While a naive direct evaluation has an $O(N^2)$ complexity in time
+and storage, which is prohibitive for large-scale applications, PBBFMM3D
+reduces the costs to $O(N)$. In contrast to other fast methods that require the
+knowledge of the explicit kernel formula, PBBFMM3D requires only the ability to
+evaluate the kernel. To further accelerate the computation on shared-memory
+machines, the parallelism in PBBFMM3D was analyzed and implemented using
+OpenMP. We show numerical experiments on the accuracy and the parallel
+scalability of PBBFMM3D, as well as its applications to covariance matrix
+computations that are heavily used in parameter estimation techniques, such as
+kriging and Kalman filtering.

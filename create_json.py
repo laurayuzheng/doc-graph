@@ -3,6 +3,7 @@ import glob
 import json
 
 directory = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
+THRESHOLD = 0.2
 
 def get_similarities(text_files):
     ''' Description:
@@ -43,7 +44,7 @@ def create_json(m, text_files):
         nodes.append({'id':i, 'label':title})
 
         for j in range(0,i):    # only need until i, since it is triangular
-            if m[i][j] >= 0.2:
+            if m[i][j] >= THRESHOLD:
                 edges.append({'from':i, 'to':j})          #, 'weight':m[i][j]})
 
     data = {'nodes':nodes, 'edges':edges}

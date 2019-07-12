@@ -1,0 +1,17 @@
+Topological descriptors of spatial coherence in a convective boundary
+  layer
+  The interaction between a turbulent convective boundary layer (CBL) and the
+underlying land surface is an important research problem in the geosciences. In
+order to model this interaction adequately, it is necessary to develop tools
+which can describe it quantitatively. Commonly employed methods, such as bulk
+flow statistics, are known to be insufficient for this task, especially when
+land surfaces with equal aggregate statistics but different spatial patterns
+are involved. While geometrical properties of the surface forcing have a strong
+influence on flow structure, it is precisely those properties that get
+neglected when computing bulk statistics. Here, we present a set of descriptors
+based on low-level topological information (i.\,e. connectivity), and show how
+these can be used both in the structural analysis of the CBL and in modeling
+its response to differences in surface forcing. The topological property of
+connectivity is not only easier to compute than its higher-dimensional
+homological counterparts, but also has a natural relation to the physical
+concept of a coherent structure.

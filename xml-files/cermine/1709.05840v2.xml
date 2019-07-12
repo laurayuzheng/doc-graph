@@ -1,0 +1,2071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Autoencoder-Driven Weather Clustering for Source Estimation during Nuclear EventsI</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Iraklis A. Klampanos</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Athanasios Davvetas</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Spyros Andronopoulos</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Charalambos Pappas</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Andreas Ikonomopoulos</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Vangelis Karkaletsis</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Institute of Informatics &amp; Telecommunications, National Centre for Scientific Research “Demokritos”</institution>
+          ,
+          <country country="GR">Greece</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Institute of Nuclear &amp; Radiological Sciences and Technology, Energy &amp; Safety, National Centre for Scientific Research “Demokritos”</institution>
+          ,
+          <country country="GR">Greece</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>Emergency response applications for nuclear or radiological events can be significantly improved via deep feature learning due its ability to capture the inherent complexity of the data involved. In this paper we present a novel methodology for rapid source estimation during radiological releases based on deep feature extraction and weather clustering. Atmospheric dispersions are then calculated based on identified predominant weather patterns and are matched against simulated incidents indicated by radiation readings on the ground. We evaluate the accuracy of our methods over multiple years of weather reanalysis data in the European region. We juxtapose these results with deep classification convolution networks and discuss advantages and disadvantages. We find that deep autoencoder configurations can lead to accurate-enough origin estimation to complement existing systems, while allowing for rapid initial response.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>deep learning</kwd>
+        <kwd>autoencoders</kwd>
+        <kwd>clustering</kwd>
+        <kwd>weather patterns</kwd>
+        <kwd>source inversion</kwd>
+        <kwd>nuclear events</kwd>
+        <kwd>atmospheric dispersion</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>X
+r
+a</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1. Introduction</title>
+      <p>In the field of atmospheric dispersion modelling and its applications for
+supporting decision making during events of atmospheric releases of hazardous
+substances (e.g. radioactive material), inverse source-term estimation and source
+inversion refer to computational methods aiming at estimating the location
+and/or the emitted quantities of the hazardous material using both
+observations (readings on the ground) and results of dispersion models. Such methods
+are typically used when the presence of a hazardous substance above the
+background levels in the air is detected by an existing monitoring network, while its
+origin is unknown.</p>
+      <p>
+        The most characteristic example of a real case involving radioactive elements
+that have been detected before the release was officially announced is the
+Chernobyl Nuclear Power Plant accident1. The Acerinox (or Algeciras) incident is
+another example of an unknown radioactive release that was traced back after
+radioactivity levels higher than the background had been observed at very long
+distances from the release location [
+        <xref ref-type="bibr" rid="ref1">1</xref>
+        ].
+      </p>
+      <p>
+        Depending on various factors, such as the spatial resolution desired,
+traditional inverse modelling can be computationally expensive, and therefore
+timeconsuming, rendering its application problematic when timing is critical. In
+addition, atmospheric dispersion models (e.g. HYSPLIT [
+        <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+        ]) are complex
+pieces of software that require expert training and case-by-case application. In
+this paper we present a novel, complementary approach based on data analytics
+and deep learning. Our goals are to effectively transfer the computational bulk
+before the time of such an event taking place, create reusable data by-products
+of value and complement existing emergency response methodologies. While
+the computational bulk, involving the training of deep feature learning models,
+is inherently time-consuming, it leads to rapid (in the order of a few seconds)
+initial estimates during events through the reusability of the data and models
+generated.
+      </p>
+      <p>Focusing on the European region, we cluster re-analysis weather data in
+order to derive weather circulation patterns, which affect plume dispersion. We
+then calculate plume dispersions for a number of European nuclear power plant
+facilities of interest, based on representative cluster descriptors. Last, we match
+previously unseen weather to the weather patterns we have learned and rank
+the nuclear facilities according to how well their plume dispersion for the closest
+weather patterns match current hypothetical radiation measurements.</p>
+      <p>This work combines data analytical and machine learning methods and large
+weather and atmospheric dispersion datasets and models in a single framework
+for rapid source estimation.</p>
+      <p>We make the following contributions:
+1. we propose and evaluate a novel data-driven methodology for release origin
+estimation;
+2. we evaluate a series of autoencoder configurations, followed by k-means
+clustering applied on weather re-analysis data;
+3. we juxtapose our method with deep convolution networks for classification,
+discussing their respective advantages and disadvantages; and
+4. we present an application prototype for the rapid estimation of release
+origin and its implementation.</p>
+      <p>In the following section we provide a succinct discussion of related
+approaches, technologies and methods. In Section 3 we present the proposed
+methodology and rationale, while in Section 4 we provide a discussion of our
+evaluation methodology and discuss results and findings. In Section 5 we present
+1http://www.irsn.fr/EN/publications/thematic-safety/chernobyl/
+a pilot application showcasing the proposed approach. In Section 6 we conclude
+the paper and discuss directions for future work, while in Section 7 we point to
+software resources to encourage cross-examination and replication.</p>
+    </sec>
+    <sec id="sec-3">
+      <title>2. Related Work</title>
+      <p>This study combines algorithms and methods borrowed from a number of
+disciplines, such as machine learning, weather circulation clustering, atmospheric
+dispersion and weather modelling. An overview of relevant work is provided
+below.</p>
+      <sec id="sec-3-1">
+        <title>2.1. Discovering Weather Patterns</title>
+        <p>
+          Over the last decades there have been several studies attempting to
+automatically discover weather patterns via unsupervised hierarchical and iterative
+clustering [
+          <xref ref-type="bibr" rid="ref4">4</xref>
+          ], as part of synoptic climatology [
+          <xref ref-type="bibr" rid="ref5">5</xref>
+          ]. Many of these studies have
+attempted to establish statistically robust representations based on the
+calculation of principal components in, what this body of literature refers to as, S- and
+T-modes. S-mode refers to the typical application of principal component
+analysis (PCA) per weather sample used for feature reduction, while T-mode refers
+to the application of PCA per grid point or feature. (In our evaluation, in
+Section 4, we refer to the T-mode also as PCAT , to indicate cases where PCA has
+been applied on the “transposed” form of the data samples.) Indicatively, Huth
+[
+          <xref ref-type="bibr" rid="ref6">6</xref>
+          ] summarises and compares correlation, sums-of-squares, agglomerative
+hierarchical, PCA, k-means and hierarchical agglomerative clustering algorithms.
+These algorithms were executed on geopotential height (GHT) at a pressure
+level of 700hP a and were evaluated using internal metrics, such as consistency
+and robustness. According to Huth, there is no clear winner for clustering
+weather patterns, however T-mode PCA appears to produce clusters that
+resemble manually identified weather patterns more accurately. Methods based
+on more recent advances in neural networks, employing self-organising maps,
+have also been reported [
+          <xref ref-type="bibr" rid="ref7 ref8">7, 8</xref>
+          ].
+        </p>
+        <p>
+          Other classification and clustering approaches tailored to specific
+applications or geographical regions have been published. Teixeira de Lima and Stephany
+[
+          <xref ref-type="bibr" rid="ref9">9</xref>
+          ] evaluate a multitude of weather variables for extreme weather classification.
+Straus et.al. [
+          <xref ref-type="bibr" rid="ref10">10</xref>
+          ] use a modified version of k-means clustering for the
+pressure level of 200hP a and zonal winds to discover and analyse winter circulation
+regimes over the Pacific-North American region. Hsu and Cheng [
+          <xref ref-type="bibr" rid="ref11">11</xref>
+          ] evaluate
+daily average surface wind measurements to discover weather patterns affecting
+air pollution in western Taiwan. Focusing on the urban heat island, the
+phenomenon in which an urban area is significantly warmer than its surrounding
+rural areas due to human activity, Hoffmann and Schlünzen [
+          <xref ref-type="bibr" rid="ref12">12</xref>
+          ] study k-means
+on a number of variables such as GHT, relative humidity, vorticity, and
+others. Bannayan et.al. use temperature, precipitation and solar radiation in a
+k-nearest neighbour approach for real-time prediction of daily weather data
+[
+          <xref ref-type="bibr" rid="ref13">13</xref>
+          ]. Extracting information out of weather patterns has also been reported in
+cases of fire spread modelling by Duane et.al. [
+          <xref ref-type="bibr" rid="ref14">14</xref>
+          ]. Al-Alawi et.al employ PCA
+for feature reduction, as part of a combination of principal component
+regression and feed-forward neural networks, for the prediction of ozone concentration
+[
+          <xref ref-type="bibr" rid="ref15">15</xref>
+          ].
+        </p>
+        <p>Far from being exhaustive, the above studies are indicative of the multitude
+of applications, clustering and classification approaches reported in the wider
+area of environmental modelling. While part of our study involves discovering
+useful weather patterns, our application of these clusters is specific to capturing
+the conditions leading to similar plume dispersions. Our experiments, reported
+in Section 4, focus on GHT as a feature predictive of circulation patterns and
+consequently, plume dispersion.</p>
+      </sec>
+      <sec id="sec-3-2">
+        <title>2.2. Autoencoders for Feature Reduction</title>
+        <p>
+          An autoencoder [
+          <xref ref-type="bibr" rid="ref16 ref17 ref18">16, 17, 18</xref>
+          ] is an unsupervised feed-forward neural network
+designed to approximate the identity function, i.e. one that attempts to learn
+a function h(x) = xˆ ≈ x, where x and xˆ denote the input and output vectors
+respectively. Post-training, applications typically disregard the output of
+autoencoders, instead making use of the activation values of the hidden layers.
+These constitute latent representations of the input. The activations of
+simple, single-layer auto-encoders have been shown to be equivalent to principal
+components [
+          <xref ref-type="bibr" rid="ref19">19</xref>
+          ].
+        </p>
+        <p>
+          In its simplest form, when there is a single hidden layer and the number
+of hidden units equals the number of inputs, the auto-encoder is too
+successful in replicating the input, leading to overfitting. Various methods have been
+suggested to avoid overfitting, e.g. having fewer hidden than input units,
+enforcing activation sparsity or introducing noise which the auto-encoder learns
+to compensate for [
+          <xref ref-type="bibr" rid="ref20 ref21">20, 21</xref>
+          ]. An alternative approach is to use deeper
+configurations of stacked autoencoders, where inner layers encode and decode previously
+encoded vectors. Encodings generated by stacked autoencoders can capture
+deeper statistical representations of the input data.
+        </p>
+        <p>
+          Autoencoders have been augmented by different types of deep neural
+networks, such as convolutional networks, or convnets. Convnets [
+          <xref ref-type="bibr" rid="ref18 ref22">22, 18</xref>
+          ] are
+designed to discover multi-dimensional patterns of varying sizes and have been
+used, stand-alone or as part of more complex configurations, primarily in
+classificationbased image recognition. Convolutional autoencoders are formed by stacking
+convolutional layers, fully connected layers and de-convolutional layers in a
+single configuration in order to capture feature hierarchies in the input space [
+          <xref ref-type="bibr" rid="ref23">23</xref>
+          ].
+        </p>
+        <p>
+          In this study we evaluate simple, stacked and convolutional denoising
+autoencoders [
+          <xref ref-type="bibr" rid="ref23">23</xref>
+          ] to reach smaller and statistically robust representations of weather
+variables. We then use latent representations to discover weather patterns in
+Europe using the k-means algorithm.
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>3. Methodology and Rationale</title>
+      <p>Our methodology comprises two main steps: (1) the derivation of weather
+patterns to be used for driving reference plume dispersion patterns, and (2) the</p>
+      <p>Raw
+n weather
+itro data
+a
+a
+p
+e
+r
+P</p>
+      <p>Weather
+itcno (dlaasyts3)
+a
+tr
+e
+In Rreaaddiaintigosn</p>
+      <p>Preprocessing:</p>
+      <p>WPS</p>
+      <p>Preprocessing:</p>
+      <p>WPS
+Gaussian
+smoothing</p>
+      <p>Yes
+Autoencoders,</p>
+      <p>PCA, etc.</p>
+      <p>Clustering</p>
+      <p>Weather
+patterns</p>
+      <p>Derivation
+of cluster
+descriptors</p>
+      <p>Temporal
+scaling:
+WRF</p>
+      <p>Fwd
+dispersions:
+HYSPLIT</p>
+      <p>Synthetic
+dispersions
+Comparison
+with weather
+patterns</p>
+      <p>Closest
+weather
+patterns</p>
+      <p>Acquisition of corr.
+dispersions-origins
+Comparison</p>
+      <p>Candidate
+origins
+subsequent estimation of the release origin. An overview of our methodology is
+shown in Fig. 1.</p>
+      <sec id="sec-4-1">
+        <title>3.1. Weather Re-analysis Data and Features</title>
+        <p>
+          To discover weather patterns we use weather re-analysis data. This is
+gridded data that originates from optimal combinations of Numerical Weather
+Prediction (NWP) data and observations, therefore representing the best available
+description of past atmospheric conditions. Weather re-analysis data cover a
+sufficiently large period (40 years) and are of fine enough spatial (less than
+1◦) and temporal (up to 6hr) resolution over the region of interest, i.e. the
+European continent. This dataset is freely available online as part of the
+ERAInterim project [
+          <xref ref-type="bibr" rid="ref24">24</xref>
+          ] and is provided by the European Centre for Medium range
+Weather Forecast (ECMWF)2.
+        </p>
+        <p>
+          For this study we used global ERA-Interim data covering 11 years
+(19861993 and 1996-1998) with a 6hr temporal resolution provisioned by NCAR in
+the GRIB format3. The resolution of the original data is ≈ 0.7◦ × 0.7◦. These
+data contain several atmospheric variables expressed across 37 vertical pressure
+levels ranging from 1hP a to 1000hP a – pressure levels can be seen as a more
+robust altitude representation. In this study we focus on the geopotential height
+(GHT) variable, a “gravity-adjusted” height, and more specifically to either
+GHT700hP a or a combination of GHT@500, 700 and 900hP a. GHT has been
+shown to be predictive of weather circulation patterns [
+          <xref ref-type="bibr" rid="ref4 ref6">6, 4</xref>
+          ]. Raw weather
+reanalysis data is pre-processed via the Weather Research and Forecasting (WRF)
+[
+          <xref ref-type="bibr" rid="ref25">25</xref>
+          ] preprocessor WPS to define meteorological data on a cartesian domain that
+covers Europe, with a spatial resolution of 64 × 64 cells of 75km × 75km in the
+west-east and south-north directions. In the vertical direction, we retained the
+original pressure levels.
+        </p>
+        <p>2http://www.ecmwf.int/en/research/climate-reanalysis/era-interim
+3http://rda.ucar.edu/datasets/ds627.0/</p>
+        <p>The resulting data used to derive weather patterns are either 2D grids of
+64×64 cells, or 3D grids of 64×64×3 cells, i.e. for the three atmospheric
+pressure levels of interest mentioned above. An example of GHT at the 700hP A
+pressure level is shown in Fig. 2. The weather patterns discovered as a result
+of feature extraction and analysis are “downscaled” temporally using WRF,
+resulting to hourly data of the same spatial dimensionality as before. These data
+are then used for the calculation of forward dispersions. The resulting
+atmospheric dispersion grid has a size of 500×500 cells, corresponding to approx.
+10km×10km, and a temporal resolution of 1hr.</p>
+      </sec>
+      <sec id="sec-4-2">
+        <title>3.2. Dispersion and Inverse Models</title>
+        <p>Atmospheric dispersion models are computational codes that simulate the
+processes of transport and diffusion of air pollutants, as well as other physical
+processes that occur during dispersion, such as deposition on the ground and
+transformations (chemical reactions, radioactive decay, etc.). Dispersion model
+calculations are based on meteorological data, such as these processed by WRF,
+described above.</p>
+        <p>Dispersion models can operate in “forward” in time (prognostic) mode when
+the pollutant emission locations and the related emitted quantities (as functions
+of time) are known. They can also be used in “inverse” computations, where
+in combination with available measured pollutant concentrations, can estimate
+unknown pollutant emission locations and emission rates. There are several
+types of atmospheric dispersion models. In this work, which involves
+dispersions in long spatial ranges over complex topography and high meteorological
+variability, we use the so-called “Lagrangian” models. These models simulate
+the emission of pollutants by a series of virtual “puffs” or particles that are
+transported by the wind field and diffused by the atmospheric turbulence. Air
+concentration of pollutants and deposition on the ground are computed on a
+grid defined independently of the meteorological data grid.</p>
+        <p>
+          In our experiments we make use of the widely used NOAA HYSPLIT
+atmospheric dispersion model [
+          <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+          ], which works well with data produced by WRF.
+Other dispersion models, such as the DIPCOT model [
+          <xref ref-type="bibr" rid="ref26 ref27">26, 27</xref>
+          ], can also be used.
+A visual of a 2D dispersion as displayed by our application is shown in Fig. 7.
+3.3. Weather Patterns and Cluster Descriptors for Plume Dispersion
+k-means clustering: Data clustering [
+          <xref ref-type="bibr" rid="ref28 ref29">28, 29</xref>
+          ] represents a broad field dealing
+with the unsupervised discovery of groupings in multidimensional data based
+on their statistical similarity. A multitude of clustering algorithms has been
+proposed in the literature, many of which being used in operational settings. In
+this work we derive weather patterns via k-means clustering. The calculation
+of these patterns and their associated atmospheric dispersions for a number of
+nuclear facilities of interest are used for subsequent origin estimation.
+        </p>
+        <p>k-means, essentially an expectation-maximization (E-M) type of algorithm,
+is one of the most widely-used algorithms for data clustering. The algorithm is
+initialised by k typically random cluster centroids {μi} and its goal is to assign
+data points to a set of k corresponding sets C = {ci} so as to optimise an
+objective function; During the expectation step each data point is assigned to
+the closest cluster based on its distance from the clusters’ centroids. During the
+maximization step the centroids {μi} get updated to reflect the new assignments.
+The algorithm stops when either there are no changes in the cluster assignments,
+or when a predefined threshold on the acceptable number of iterations has been
+reached. k-means is guaranteed to eventually converge, however not necessarily
+towards the global minimum.</p>
+        <p>Autoencoders for dimensionality reduction: Working with long sequences of
+dense high-dimensional vectors can be impractical. More importantly, weather
+exhibits spatiotemporal patterns which may not be immediately exploitable by
+dealing with the raw data. We perform dimensionality reduction on the raw
+weather data using autoencoders in order to obtain reduced, statistically robust
+summaries. We then derive weather patterns by feeding the encoded versions
+of weather snapshots to k-means.</p>
+        <p>Several dimensionality reduction techniques can be applied on weather data,
+such as PCA. We base our choice to use autoencoders on two premises (1) a
+shallow, linear activation auto-encoder is equivalent to PCA therefore covering
+our evaluation requirements and (2) given enough training, stacked
+autoencoders may lead to more robust representations spanning multiple variables and
+therefore lead to better quality clustering. In Section 4 we evaluate different
+configurations of autoencoders and discuss their effectiveness further.</p>
+        <p>Cluster descriptors: The clusters derived are hypothesised to consist of
+weather snapshots representative of specific weather patterns observed in
+Europe and are described by cluster descriptors or summaries. A clustering
+outcome C is a set of clusters {ci ∈ C|ci = [wt ∈ Rxyzm]}, where wt is a value at
+time t. Variables x, y and z indicate the geographical location and geopotential
+height respectively, and m denotes the physical variable, e.g. the
+geopotential, wind velocity, etc. By default k-means uses centroids as descriptors. Even
+though this is sensible for fitting additional weather snapshots to the model,
+it is not useful for producing synthetic atmospheric dispersions as it does not
+contain any temporal information. Taking into account errors introduced by
+unsupervised clustering as well as the dispersion models requiring time
+information, cluster descriptors should achieve two goals: they should reflect
+dominant weather conditions within the clusters and lend themselves to temporal
+and physical interpretation.</p>
+        <p>In this work we derive cluster descriptors, which are used by dispersion
+models as sequences of representative weather snapshots, following two approaches
+(also outlined in Algorithm 1):
+Algorithm 1 Pseudocode for the km2 and dense cluster descriptors
+clusters form the original cluster’s descriptor. This approach should be
+able to capture all weather trends within each cluster effectively, however
+it does not retail meaningful temporal information. We refer to this cluster
+descriptor approach as km2: the k-means of the k-means result.
+2. A second approach is based on temporal densities within each cluster.
+After collapsing the weather snapshots of each cluster from multiple years
+into a single-year period, we calculate its temporal density. (The
+collapsing into a single-year period is to enforce time continuity and therefore
+improve the subsequent calculation of the dispersion pattern.) We then
+choose the weather snapshot corresponding to the time maximising
+density and select a temporally continuous period around it for as many items
+as we require the descriptor to have. If the cluster has more than one
+snapshots at this offset from the beginning of the year (originally coming from
+multiple years) the mean weather is taken into account. If the cluster
+lacks continuous snapshots we use copies of neighbouring ones. Whereas
+cluster descriptors created by this approach have a more sound
+temporal and physical interpretation, they fail to adequately represent poorly
+formed clusters. We refer to these descriptors as density-based or dense.</p>
+        <p>
+          After weather snapshots have been clustered and weather patterns have
+emerged, we simulate hypothetical releases from 20 European nuclear facilities.
+Using the HYSPLIT atmospheric dispersion model [
+          <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+          ] we calculate
+hypothetical dispersions of radioactive material into the atmosphere for each of these
+locations. For the purposes of this application we assume that the emitted
+particles have a fixed atomic weight. These atmospheric dispersions have a finer
+geospatial resolution and form the basis for origin estimation.
+        </p>
+      </sec>
+      <sec id="sec-4-3">
+        <title>3.4. Source Estimation</title>
+        <p>To estimate the release origin we follow a two-step matching procedure.
+After an event has taken place we first identify the weather pattern that best
+represents the current weather. For this calculation several similarity (or
+distance) metrics can be used. Treating this matching as an additional k-means
+assignment step, we choose the cluster which minimises the Euclidean distance
+between the observed weather vector w and the centroid of the cluster in
+question.</p>
+        <p>Based on our choice of a representative weather pattern we then consider
+the dispersions previously calculated for our set of fixed candidate release
+origins. The likelihood of a location being the release origin can be calculated
+by comparing the release distributions of the cluster-based dispersions against
+hypothetical detection readings.</p>
+        <p>A hypothetical event is detected by a sequence of readings at certain
+locations. We model these point readings as a discrete probability distribution
+across the geographical area of study r(x, y) : R (after dividing each reading by
+their total sum). This evaluates to a reading at all locations where radiation
+has been detected and to 0 at all other locations. The readings distribution is
+4096 2600 2600 10000 30 10000 2600 2600 4096</p>
+        <p>M D
+/ /
+4096 30x31x31 30x28x28 P4x4 O</p>
+        <p>OUT
+30x7x7 20%1470 1029 3675 30 3675 1029 1029 1470
+compared against a number of dispersion distributions given a weather pattern
+and a point of origin.</p>
+        <p>Since r(x, y) is typically sparse we pass it through an isotropic 2D
+Gaussian smoothing filter obtaining R = rg(x, y). Based on the assumption that
+cells neighbouring readings are likely to also be contaminated, albeit with a
+decreasing probability, applying such a filter increases the number of cells with
+non-zero radiation values and therefore the likelihood to obtain meaningful
+positive matches between readings and dispersions.</p>
+        <p>Finally, we take the inverse order of the dispersions corresponding to the
+weather pattern in question D according to their distance from the detection
+distribution R. Due to their sparsity, we compare the readings and dispersion
+vectors using the cosine distance metric.</p>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>4. Evaluation and Discussion</title>
+      <p>The autoencoders that drive weather clustering were trained using 11 years
+of 6-hourly weather snapshots (1986-1993 and 1996-19984). Weather data used
+for training and evaluation were represented by a 64×64 grid. In order to obtain
+4This split in time is a result of incrementally upscaling our experiment with additional
+years. The dimensionality reduction algorithms evaluated do not take temporal continuity
+into account as they operate on discrete weather snapshots.
+more samples to train with we introduced ±10% element-wise random noise to
+the weather data and increased the number of samples five-fold. This resulted
+in a total of 96,432 training samples.</p>
+      <p>Our cluster-based system was evaluated using 3-day dispersions spanning
+2 years of European weather (1994-1995), for a choice of 20 nuclear facilities,
+resulting in 4,480 samples. We increased the evaluation sample size five-fold by
+introducing the same type of element-wise random noise as with the weather
+samples.</p>
+      <p>For creating training and evaluation datasets we approximated radiation
+readings by randomly choosing 10 and 30 geographical points – identifiable
+by (latitude, longitude) pairs – from each sample’s dispersion pattern. This
+simulates receiving readings from arbitrary sensors on the ground and assesses
+how the overall accuracy changes with the amount of available information. In
+real situations readings are not expected to be randomly scattered across the
+area under a plume’s path of travel. This choice for training and evaluation was
+deliberate as it makes no assumptions regarding the actual locations of radiation
+detectors5, while it is more readily generalisable to different use-cases, such as
+chemical and other releases from unknown potential origins.</p>
+      <p>
+        The quality of the clustering is crucial to the performance of this
+application as a whole, which in turn depends on the quality of the latent features
+exposed by the autoencoder. In this paper we study denoising autoencoders of
+5European countries are equipped with stationary networks of radiation detectors.
+different depths and complexities, shown in Fig. 3 – the shallow autoencoder
+approximates PCA [
+        <xref ref-type="bibr" rid="ref19">19</xref>
+        ], while deeper configurations are expected to lead to
+more performant clustering solutions. Further fine-tuning the networks in order
+to improve the clustering outcome, e.g. by using the DEC algorithm [
+        <xref ref-type="bibr" rid="ref30">30</xref>
+        ], could
+further increase performance and it is left as future work.
+      </p>
+      <p>Cluster analysis on both raw and encoded weather data was inconclusive
+regarding the optimal number of clusters to be used, k. Based on cluster
+consistency scores and subjective expert opinions regarding observed weather patterns
+in Europe we set k=15.</p>
+      <p>With the clustering algorithm and the choice of atmospheric variables
+remaining constant, the accuracy of our system depends on the following
+parameters: (1) the dimensionality reduction approach applied – in this case on the
+configuration of the autoencoder; (2) the choice of the distance (or similarity)
+metric between synthetic dispersions and radiation readings; (3) the choice of
+cluster descriptors for deriving synthetic dispersions; and (4) the number of
+available readings.</p>
+      <p>Tables 1 and 2 summarise results obtained for different choices of
+dimensionality reduction algorithms and cluster descriptors for 10 and 30 readings
+respectively. We have experimented both with the cosine and the correlation
+distances between vectors of readings and synthetic dispersions, with the former
+being consistently better. Euclidean-based distances are not performant due to
+the sparsity of the vectors involved. Here, we report results obtained via the
+cosine distance metric.</p>
+      <p>In Tables 1 and 2 we observe that the km2 descriptor performs best with
+the shallow autoencoder (Shallow A/E ). This can be attributed to the fact that
+the km2 descriptor effectively counters cluster inconsistencies averaging over
+often meaningful sub-clusters. However, the sequence in which the averages
+are produced is indeterminable, yet time is meaningful to the dispersion model.
+For the multi-channel convolutional autoencoder density-based descriptors work
+best. Because Deep MC Conv A/E leads to better clustering outcomes,
+tempo2)
+-km 4
+e
+s
+n
+(ed 2
+e
+c
+n
+ree 0
+iff
+D
+cy 2
+a
+r
+u
+c
+cA 4
+%
+6
+0
+1
+2 3 4
+Configuration Index (Idx)
+5
+6
+ral density better represents weather clusters.</p>
+      <p>This observation is also supported by the difference in accuracy between
+the two choices of cluster descriptors, shown in Fig. 4. Here, for the most
+performant configuration (4, Deep MC Conv A/E ) we observe a significant
+and intuitive ranking in accuracy difference, with the difference increasing with
+the accuracy threshold (1 to 3) and the number of readings (10 to 30). This
+suggests that the use of multiple geopotential heights leads to more robust data
+representations favouring the density-based descriptor.</p>
+      <p>
+        Fig. 5 shows the input that maximises each convolution filter trained on the
+Deep MC Conv A/E network [
+        <xref ref-type="bibr" rid="ref31">31</xref>
+        ]. Consistent with the literature, second-level
+filters appear to expose higher-level, more complex features of the input, which
+lead to increased clustering performance. The output of the first- and
+second(a) First layer
+(b) Second layer
+level convolution filters for a GHT sample are provided in Fig. 6 highlighting
+the patterns discovered by each filter.
+      </p>
+      <p>Summarising, although dimensionality reduction appears to benefit the
+application, and with the exception of Deep MC Conv A/E, the depth and type
+of the autoencoder does not appear to be making any predictable difference on
+the final accuracy scores. This can be attributed to clustering errors propagated
+through the workflow to the final accuracy scores caused by the inherent
+difficulty to cluster weather, the choice of physical variables and their relationship
+to the dispersion as well as to the low resolution of the original data.</p>
+      <p>Having considered the above, in this application domain the timeliness of
+results is paramount. This, combined with visual aids (maps and dispersion
+patterns), user expertise in atmospheric physics and a top-3 accuracy of
+approximately 75% with increasing trends with the number of readings, constitutes an
+arguably useful system.</p>
+      <sec id="sec-5-1">
+        <title>4.1. Origin Estimation as a Classification Task</title>
+        <p>
+          As a supplement to this study, we experimented with deep convolutional
+networks [
+          <xref ref-type="bibr" rid="ref16">16</xref>
+          ] treating the estimation of release origin as a classification problem.
+In this preliminary study we made use of the data produced as an evaluation
+dataset for the cluster-based approach, covering the years 1994 and 1995. For
+these two years we had previously calculated dispersions for 20 nuclear facilities
+in Europe and for 3-day periods. This resulted in 4480 samples which include
+weather and their corresponding dispersion patterns. We increased our weather
+and dispersion samples ten-fold. The weather dataset was increased by
+introducing random noise of ±10% on GHT values, while its dispersion counterpart
+was increased by randomly sampling 30 points from each dispersion pattern
+and applying a Gaussian filter, similarly to the evaluation dataset used in the
+cluster-based evaluation. This resulted in a total of 49,280 samples. For
+evaluation, we used a separate set of 22,400 samples created from the same time
+period applying the same procedure.
+        </p>
+        <p>
+          We trained our networks to classify weather and reading patterns into one of
+the 20 nuclear facilities. All networks exhibit two consecutive convolution layers
+per input type (weather and readings/dispersion pattern) followed by maxpool
+layers. They are then reshaped and concatenated before they are jointly fed
+into a series of four fully connected layers with the last one being a softmax.
+The simplest network uses a single size of filters (4×4 for the 64×64 weather
+data, and 10×10 for the 167×167 dispersion data – dispersion data are resized
+to reduce the network’s memory footprint). The other two networks use two
+parallel convolutional threads for each input type, each with different filter sizes
+(1×1 – 4×4 in parallel to 1×1 – 6×6 for weather data and 1×1 – 10×10 in
+parallel to 1×1 – 16×16 for readings/dispersion data). The purpose of this
+choice was to capture spatial features at different scales. The inclusion of 1×1
+convolutions before larger ones was inspired by the Inception configuration [
+          <xref ref-type="bibr" rid="ref32">32</xref>
+          ].
+The most complex network uses as input three channels of GHT at 500, 700
+and 900hP a.
+        </p>
+        <p>Table 3 shows that all three classification networks outperformed the
+clusterbased approach significantly. Even though the evaluation task was arguably
+easier than the cluster-based one – the time period was smaller and both training
+and evaluation sets came from the same original dataset – the difference in
+performance is large enough that it warrants further investigation. A notable
+downside to treating this problem as a classification task is that it does not yield
+useful and reusable data by-products, such as weather patterns and synthetic
+dispersions.</p>
+      </sec>
+    </sec>
+    <sec id="sec-6">
+      <title>5. Application Prototype</title>
+      <p>Enabling decision-making in the context of high-impact events, apart from
+the effectiveness of the designed algorithms, depends on the visualization
+functionality offered, the comprehensibility of data and results and often the
+application responsiveness. We address the requirements of decision makers by
+implementing an efficient and user-friendly tool that offers visualization of the
+available information combining clustering by-products and dispersions. The
+application prototype exploits technology integrated by the Big Data Europe
+integrator platform (BDI)6. The user interface makes use of the Sextant
+platform for visualising and exploring linked geospatial data7.</p>
+      <p>The application prototype aids decision-making by simulating hypothetical
+scenarios while, if integrated with a service providing the current weather, it
+can also be used during real events. An event is initiated by the presence of
+radioactivity at certain geographical locations. By entering the marking mode,
+users can mark the locations of such readings. The marking mode allows the
+user to freely place the detection reading by hand (longitude and latitude of the
+mouse pointer is always shown to the user). This mode offers the ability to mimic
+the location of detection stations as well as the location of portable radiation
+detection devices. To estimate the origin’s location the application needs to
+know, apart from the detection readings, the state of the current weather. The
+current weather is visualised as arrows by combining the west-east and
+northsouth wind magnitudes. Currently, wind direction at three pressure levels can
+be displayed (500, 700 and 900hP a).</p>
+      <p>6https://www.big-data-europe.eu/platform/
+7http://sextant.di.uoa.gr</p>
+      <p>Various Sextant
+configuration
+options
+Choice of weather
+conditions. This simulates
+current weather and is
+typically not seen before
+by the clustering and
+autoencoder networks
+Choice of pollutant
+and clustering
+methods
+List of potential
+origins
+Enable marking mode Currently chosen source</p>
+      <p>Locations of readings</p>
+      <p>The concentration of radioactivity based on the clustering descriptors has
+been precomputed for two radionuclides typically emitted during nuclear
+accidents: Caesium-137 (Cs-137) and Iodine-131 (I-131). Pollutants to be simulated
+as well as the source estimation method (various clustering methods) are part
+of the prototype’s configuration parameters and can be selected via the control
+panel.</p>
+      <p>The prototype offers fast response times due to the methodology adopted
+and its implementation using performant big data technologies. Efficient and
+reliable access to neural network models and weather data as well as caching
+for visualisation are accommodated by the BDI platform.</p>
+    </sec>
+    <sec id="sec-7">
+      <title>6. Conclusions and Future Work</title>
+      <p>In this work we presented a novel machine-learning-driven, cluster-based
+approach for rapid origin estimation during nuclear incidents. Our approach is
+inspired by image processing, deep learning and data mining, extending useful
+techniques to weather and atmospheric dispersion data. Incentivised by the
+need to create ML-ready reusable data products to enable the creation of
+sophisticated applications, we discussed the derivation of usable weather patterns
+via clustering. We employed deep autoencoders to derive robust latent features
+on which to apply clustering. Our evaluation shows that deep feature extraction
+followed by weather clustering can improve response efficiency during nuclear
+emergencies considerably, complementing existing operational systems.</p>
+      <p>Directions for future research and development may include the following:
+(1) evaluation of alternative classification approaches that learn origins, similar
+to the ones presented here, but also dispersion patterns (2) the formulation of
+novel clustering algorithms that take into account features such as periodicity
+and temporal density for cluster formation; (3) the inclusion of additional
+atmospheric dispersion models and learning model ensembles; (4) evaluation of
+alternative learning algorithms, such as recurrent neural networks (RNNs), to
+explicitly account for the temporal component of such analyses; (5) extension
+of the application to include all nuclear facilities in Europe and further to
+consider all possible source locations (i.e. all grid cells as potential sources), to
+be applicable in all radiological incidents. This would enable the identification
+of arbitrary sources and would be applicable to scenarios similar to the recent
+discovery of Ru-106 in Europe; and (6) the evolution of the application to an
+operational system that learns continuously with new meteorological data.</p>
+    </sec>
+    <sec id="sec-8">
+      <title>7. Software Availability and Acknowledgements</title>
+      <p>The source code for the experiments and evaluation described in Section 4 are
+available at https://github.com/davidath/ncsr-atmo-learn. The source
+code and installation instructions for the prototype described in Section 5 can be
+found at https://github.com/iaklampanos/bde-pilot-2. A video
+demonstration of the prototype, also including extensions, such as the drawing and
+selection of known fixed radioactivity detectors and the depiction of inhabited
+locations below the estimated plume, can be found at https://vimeo.com/
+227245883.</p>
+      <p>This work has received funding from the European Union’s Horizon 2020
+research and innovation programme under grant agreement No 644564. For
+more details please visit https://www.big-data-europe.eu.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Noureddine</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Hammadi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Boudjenoun</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Menacer</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Allalou</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Benkrid</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Maache</surname>
+          </string-name>
+          ,
+          <article-title>Evaluation of the radiological situation in algeria after the algeciras incident</article-title>
+          ,
+          <source>Mediterranean Marine Science</source>
+          <volume>4</volume>
+          (
+          <issue>2</issue>
+          ) (
+          <year>2003</year>
+          )
+          <fpage>59</fpage>
+          -
+          <lpage>63</lpage>
+          . doi:
+          <volume>10</volume>
+          .12681/mms.229.
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Draxler</surname>
+          </string-name>
+          ,
+          <article-title>HYSPLIT4 user's guide</article-title>
+          ,
+          <source>NOAA Tech. Memo. ERL ARL230</source>
+          (June) (
+          <year>1999</year>
+          )
+          <article-title>NOAA Air Resources Laboratory</article-title>
+          , Silver Spring, MD.
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>A. F.</given-names>
+            <surname>Stein</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R. R.</given-names>
+            <surname>Draxler</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G. D.</given-names>
+            <surname>Rolph</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B. J. B.</given-names>
+            <surname>Stunder</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. D.</given-names>
+            <surname>Cohen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Ngan</surname>
+          </string-name>
+          ,
+          <article-title>Noaa's hysplit atmospheric transport and dispersion modeling system (</article-title>
+          <year>2015</year>
+          ). doi:
+          <volume>10</volume>
+          .1175/
+          <string-name>
+            <surname>BAMS-D-</surname>
+          </string-name>
+          14-
+          <issue>00110</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Huth</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Beck</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Philipp</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Demuzere</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Ustrnul</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Cahynová</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Kyselý</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O. E.</given-names>
+            <surname>Tveito</surname>
+          </string-name>
+          , Classifications of Atmospheric Circulation Patterns,
+          <source>Annals of the New York Academy of Sciences</source>
+          <volume>1146</volume>
+          (
+          <issue>1</issue>
+          ) (
+          <year>2008</year>
+          )
+          <fpage>105</fpage>
+          -
+          <lpage>152</lpage>
+          . doi:
+          <volume>10</volume>
+          .1196/annals.1446.019.
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Yarnal</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Comrie</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Frakes</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D. P.</given-names>
+            <surname>Brown</surname>
+          </string-name>
+          , Developments and prospects in synoptic climatology,
+          <source>International Journal of Climatology</source>
+          <volume>21</volume>
+          (
+          <issue>15</issue>
+          ) (
+          <year>2001</year>
+          )
+          <fpage>1923</fpage>
+          -
+          <lpage>1950</lpage>
+          . doi:
+          <volume>10</volume>
+          .1002/joc.675.
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Huth</surname>
+          </string-name>
+          ,
+          <article-title>An Intercomparison of Computer-assisted Circulation Classification Methods</article-title>
+          ,
+          <source>International Journal of Climatology</source>
+          <volume>16</volume>
+          (
+          <issue>8</issue>
+          ) (
+          <year>1996</year>
+          )
+          <fpage>893</fpage>
+          -
+          <lpage>922</lpage>
+          . doi:
+          <volume>10</volume>
+          .1002/(SICI)
+          <fpage>1097</fpage>
+          -
+          <lpage>0088</lpage>
+          (
+          <issue>199608</issue>
+          )16:
+          <fpage>8</fpage>
+          &lt;
+          <fpage>893</fpage>
+          :
+          <article-title>:AID-JOC51&gt;3. 0</article-title>
+          .CO;
+          <fpage>2</fpage>
+          -
+          <lpage>Q</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Cavazos</surname>
+          </string-name>
+          ,
+          <article-title>Using self-organizing maps to investigate extreme climate events: An application to wintertime precipitation in the Balkans</article-title>
+          ,
+          <source>Journal of Climate</source>
+          <volume>13</volume>
+          (
+          <issue>10</issue>
+          ) (
+          <year>2000</year>
+          )
+          <fpage>1718</fpage>
+          -
+          <lpage>1732</lpage>
+          . doi:
+          <volume>10</volume>
+          .1175/
+          <fpage>1520</fpage>
+          -
+          <lpage>0442</lpage>
+          (
+          <year>2000</year>
+          )
+          <volume>013</volume>
+          &lt;
+          <fpage>1718</fpage>
+          :
+          <article-title>USOMTI&gt;2.0</article-title>
+          .CO;
+          <volume>2</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>B. C.</given-names>
+            <surname>Hewitson</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R. G.</given-names>
+            <surname>Crane</surname>
+          </string-name>
+          ,
+          <article-title>Self-organizing maps: Applications to synoptic climatology</article-title>
+          ,
+          <source>Climate Research</source>
+          <volume>22</volume>
+          (
+          <issue>1</issue>
+          ) (
+          <year>2002</year>
+          )
+          <fpage>13</fpage>
+          -
+          <lpage>26</lpage>
+          . doi:
+          <volume>10</volume>
+          .3354/ cr022013.
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <given-names>G. R.</given-names>
+            <surname>Teixeira de Lima</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Stephany</surname>
+          </string-name>
+          ,
+          <article-title>A new classification approach for detecting severe weather patterns</article-title>
+          ,
+          <source>Computers &amp; Geosciences</source>
+          <volume>57</volume>
+          (
+          <year>2013</year>
+          )
+          <fpage>158</fpage>
+          -
+          <lpage>165</lpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.cageo.
+          <year>2013</year>
+          .
+          <volume>04</volume>
+          .016.
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <surname>D. M. Straus</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Corti</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Molteni</surname>
+          </string-name>
+          ,
+          <article-title>Circulation regimes: Chaotic variability versus SST-forced predictability</article-title>
+          ,
+          <source>Journal of Climate</source>
+          <volume>20</volume>
+          (
+          <issue>10</issue>
+          ) (
+          <year>2007</year>
+          )
+          <fpage>2251</fpage>
+          -
+          <lpage>2272</lpage>
+          . doi:
+          <volume>10</volume>
+          .1175/JCLI4070.1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <surname>C.-H. Hsu</surname>
+          </string-name>
+          , F.-Y. Cheng,
+          <article-title>Classification of weather patterns to study the influence of meteorological characteristics on PM2.5 concentrations in Yunlin County</article-title>
+          , Taiwan,
+          <source>Atmospheric Environment</source>
+          <volume>144</volume>
+          (
+          <year>2016</year>
+          )
+          <fpage>397</fpage>
+          -
+          <lpage>408</lpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.atmosenv.
+          <year>2016</year>
+          .
+          <volume>09</volume>
+          .001.
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Hoffmann</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Heinke Schlünzen</surname>
+          </string-name>
+          ,
+          <article-title>Weather pattern classification to represent the urban heat island in present and future climate</article-title>
+          ,
+          <source>Journal of Applied Meteorology and Climatology</source>
+          <volume>52</volume>
+          (
+          <issue>12</issue>
+          ) (
+          <year>2013</year>
+          )
+          <fpage>2699</fpage>
+          -
+          <lpage>2714</lpage>
+          . doi:
+          <volume>10</volume>
+          .1175/
+          <string-name>
+            <surname>JAMC-D-</surname>
+          </string-name>
+          12-
+          <issue>065</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Bannayan</surname>
+          </string-name>
+          , G. Hoogenboom,
+          <article-title>Weather analogue: A tool for real-time prediction of daily weather data realizations based on a modified k-nearest neighbor approach</article-title>
+          ,
+          <source>Environmental Modelling and Software</source>
+          <volume>23</volume>
+          (
+          <issue>6</issue>
+          ) (
+          <year>2008</year>
+          )
+          <fpage>703</fpage>
+          -
+          <lpage>713</lpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.envsoft.
+          <year>2007</year>
+          .
+          <volume>09</volume>
+          .011.
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Duane</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Aquilué</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Gil-Tena</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Brotons</surname>
+          </string-name>
+          ,
+          <article-title>Integrating fire spread patterns in fire modelling at landscape scale</article-title>
+          ,
+          <source>Environmental Modelling and Software</source>
+          <volume>86</volume>
+          (
+          <year>2016</year>
+          )
+          <fpage>219</fpage>
+          -
+          <lpage>231</lpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.envsoft.
+          <year>2016</year>
+          .
+          <volume>10</volume>
+          .001.
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>S. M.</given-names>
+            <surname>Al-Alawi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. A.</given-names>
+            <surname>Abdul-Wahab</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C. S.</given-names>
+            <surname>Bakheit</surname>
+          </string-name>
+          ,
+          <article-title>Combining principal component regression and artificial neural networks for more accurate predictions of ground-level ozone</article-title>
+          ,
+          <source>Environmental Modelling and Software</source>
+          <volume>23</volume>
+          (
+          <issue>4</issue>
+          ) (
+          <year>2008</year>
+          )
+          <fpage>396</fpage>
+          -
+          <lpage>403</lpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.envsoft.
+          <year>2006</year>
+          .
+          <volume>08</volume>
+          .007.
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [16]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>LeCun</surname>
+          </string-name>
+          , L. Bottou,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Haffner</surname>
+          </string-name>
+          ,
+          <article-title>Gradient-based learning applied to document recognition</article-title>
+          ,
+          <source>Proceedings of the IEEE</source>
+          <volume>86</volume>
+          (
+          <issue>11</issue>
+          ) (
+          <year>1998</year>
+          )
+          <fpage>2278</fpage>
+          -
+          <lpage>2323</lpage>
+          . arXiv:
+          <volume>1102</volume>
+          .0183, doi:10.1109/5.726791.
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          ,
+          <source>Learning Deep Architectures for AI</source>
+          , Vol.
+          <volume>2</volume>
+          ,
+          <year>2009</year>
+          . arXiv:
+          <volume>0500581</volume>
+          , doi:10.1561/2200000006.
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [18]
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Goodfellow</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Courville</surname>
+          </string-name>
+          , Deep Learning, MIT Press,
+          <year>2016</year>
+          , http://www.deeplearningbook.org.
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [19]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Bourlard</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Kamp</surname>
+          </string-name>
+          ,
+          <article-title>Auto-association by multilayer perceptrons and singular value decomposition</article-title>
+          ,
+          <source>Biological Cybernetics</source>
+          <volume>59</volume>
+          (
+          <issue>4-5</issue>
+          ) (
+          <year>1988</year>
+          )
+          <fpage>291</fpage>
+          -
+          <lpage>294</lpage>
+          . doi:
+          <volume>10</volume>
+          .1007/BF00332918.
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [20]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Vincent</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Larochelle</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          , P.
+          <article-title>-A. Manzagol, Extracting and composing robust features with denoising autoencoders</article-title>
+          ,
+          <source>in: Proceedings of the 25th international conference on Machine learning - ICML '08</source>
+          ,
+          <year>2008</year>
+          , pp.
+          <fpage>1096</fpage>
+          -
+          <lpage>1103</lpage>
+          . arXiv:arXiv:
+          <fpage>1412</fpage>
+          .6550v4, doi:10.1145/1390156.1390294.
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [21]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Vincent</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Larochelle</surname>
+          </string-name>
+          , Stacked Denoising Autoencoders:
+          <article-title>Learning Useful Representations in a Deep Network with a Local Denoising Criterion Pierre-Antoine Manzagol</article-title>
+          ,
+          <source>Journal of Machine Learning Research</source>
+          <volume>11</volume>
+          (
+          <year>2010</year>
+          )
+          <fpage>3371</fpage>
+          -
+          <lpage>3408</lpage>
+          . arXiv:
+          <fpage>0</fpage>
+          -
+          <lpage>387</lpage>
+          -31073-8, doi:10.1111/
+          <fpage>1467</fpage>
+          -
+          <lpage>8535</lpage>
+          .
+          <fpage>00290</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [22]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>LeCun</surname>
+          </string-name>
+          , L. Bottou,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Haffner</surname>
+          </string-name>
+          ,
+          <article-title>Gradient-based learning applied to document recognition</article-title>
+          ,
+          <source>Proceedings of the IEEE</source>
+          <volume>86</volume>
+          (
+          <issue>11</issue>
+          ) (
+          <year>1998</year>
+          )
+          <fpage>2278</fpage>
+          -
+          <lpage>2324</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [23]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Masci</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>U.</given-names>
+            <surname>Meier</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Cireşan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Schmidhuber</surname>
+          </string-name>
+          ,
+          <article-title>Stacked convolutional auto-encoders for hierarchical feature extraction</article-title>
+          ,
+          <source>in: Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)</source>
+          ,
+          <year>2011</year>
+          . arXiv:
+          <volume>1102</volume>
+          .0183, doi:10.1007/978-3-
+          <fpage>642</fpage>
+          -21735-
+          <issue>7</issue>
+          _
+          <fpage>7</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [24]
+          <string-name>
+            <given-names>D. P.</given-names>
+            <surname>Dee</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. M.</given-names>
+            <surname>Uppala</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. J.</given-names>
+            <surname>Simmons</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Berrisford</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Poli</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Kobayashi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>U.</given-names>
+            <surname>Andrae</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. A.</given-names>
+            <surname>Balmaseda</surname>
+          </string-name>
+          , G. Balsamo,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Bauer</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Bechtold</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>A. C. M. Beljaars</surname>
+            , L. van de Berg,
+            <given-names>J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Bidlot</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Bormann</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Delsol</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Dragani</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Fuentes</surname>
+            ,
+            <given-names>A. J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Geer</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Haimberger</surname>
+            ,
+            <given-names>S. B.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Healy</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Hersbach</surname>
+            ,
+            <given-names>E. V.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Hólm</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Isaksen</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Kållberg</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Köhler</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Matricardi</surname>
+            ,
+            <given-names>A. P.</given-names>
+          </string-name>
+          <string-name>
+            <surname>McNally</surname>
+            ,
+            <given-names>B. M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Monge-Sanz</surname>
+            ,
+            <given-names>J.-J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Morcrette</surname>
+            ,
+            <given-names>B.-K.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Park</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Peubey</surname>
+            , P. de Rosnay,
+            <given-names>C.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Tavolato</surname>
+            ,
+            <given-names>J.-N.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Thépaut</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Vitart</surname>
+          </string-name>
+          ,
+          <article-title>The ERA-Interim reanalysis: configuration and performance of the data assimilation system</article-title>
+          ,
+          <source>Quarterly Journal of the Royal Meteorological Society</source>
+          <volume>137</volume>
+          (
+          <issue>656</issue>
+          ) (
+          <year>2011</year>
+          )
+          <fpage>553</fpage>
+          -
+          <lpage>597</lpage>
+          . doi:
+          <volume>10</volume>
+          .1002/qj.828.
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [25]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Michalakes</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Dudhia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Gill</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Henderson</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Klemp</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Skamarock</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          ,
+          <article-title>The weather research and forecast model: Software architecture and performance</article-title>
+          ,
+          <source>in: Proceedings of the 11th ECMWF Workshop on the Use of High Performance Computing In Meteorology</source>
+          , Vol.
+          <volume>25</volume>
+          ,
+          <year>2004</year>
+          , pp.
+          <fpage>156</fpage>
+          -
+          <lpage>168</lpage>
+          . doi:
+          <volume>10</volume>
+          .1142/9789812701831_
+          <fpage>0012</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [26]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Andronopoulos</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Davakis</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Bartzis</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>I. Kovalets</surname>
+          </string-name>
+          ,
+          <article-title>RODOS meteorological pre-processor and atmospheric dispersion model DIPCOT: A model suite for radionuclides dispersion in complex terrain</article-title>
+          ,
+          <source>Radioprotection</source>
+          <volume>45</volume>
+          (
+          <issue>5</issue>
+          ) (
+          <year>2010</year>
+          )
+          <fpage>S77</fpage>
+          -
+          <lpage>S84</lpage>
+          . doi:
+          <volume>10</volume>
+          .1051/radiopro/2010017.
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Tsiouri</surname>
+          </string-name>
+          , I. Kovalets,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Andronopoulos</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Bartzis</surname>
+          </string-name>
+          ,
+          <article-title>Assimilation of gamma dose rate and concentration measurements in Lagrangian model DIPCOT</article-title>
+          ,
+          <source>in: HARMO 2010 - Proceedings of the 13th International Conference on Harmonisation within Atmospheric Dispersion Modelling for Regulatory Purposes</source>
+          ,
+          <year>2010</year>
+          , pp.
+          <fpage>896</fpage>
+          -
+          <lpage>899</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <surname>A. K. Jain</surname>
+            ,
+            <given-names>M. N.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Murty</surname>
+            ,
+            <given-names>P. J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Flynn</surname>
+          </string-name>
+          ,
+          <article-title>Data clustering: a review</article-title>
+          ,
+          <source>ACM Computing Surveys</source>
+          <volume>31</volume>
+          (
+          <issue>3</issue>
+          ) (
+          <year>1999</year>
+          )
+          <fpage>264</fpage>
+          -
+          <lpage>323</lpage>
+          . arXiv:arXiv:
+          <fpage>1101</fpage>
+          .1881v2, doi:10.1145/331499.331504.
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <surname>C. M. Bishop</surname>
+          </string-name>
+          ,
+          <source>Pattern Recognition and Machine Learning</source>
+          , Vol.
+          <volume>4</volume>
+          ,
+          <year>2006</year>
+          . arXiv:
+          <fpage>0</fpage>
+          -
+          <lpage>387</lpage>
+          -31073-8, doi:10.1117/1.2819119.
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Xie</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Girshick</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Farhadi</surname>
+          </string-name>
+          ,
+          <article-title>Unsupervised deep embedding for clustering analysis (</article-title>
+          <year>2016</year>
+          ).
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Erhan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Courville</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Vincent</surname>
+          </string-name>
+          ,
+          <article-title>Visualizing higher-layer features of a deep network</article-title>
+          ,
+          <source>Bernoulli (1341)</source>
+          (
+          <year>2009</year>
+          )
+          <fpage>1</fpage>
+          -
+          <lpage>13</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          [32]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Szegedy</surname>
+          </string-name>
+          , W. Liu,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Sermanet</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Reed</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Anguelov</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Erhan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Vanhoucke</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Rabinovich</surname>
+          </string-name>
+          ,
+          <article-title>Going deeper with convolutions</article-title>
+          ,
+          <source>in: Computer Vision and Pattern Recognition (CVPR)</source>
+          ,
+          <year>2015</year>
+          . URL http://arxiv.org/abs/1409.4842
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

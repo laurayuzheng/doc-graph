@@ -1,0 +1,17 @@
+Three dimensional Deep Learning approach for remote sensing image
+  classification
+  Recently, a variety of approaches has been enriching the field of Remote
+Sensing (RS) image processing and analysis. Unfortunately, existing methods
+remain limited faced to the rich spatio-spectral content of today's large
+datasets. It would seem intriguing to resort to Deep Learning (DL) based
+approaches at this stage with regards to their ability to offer accurate
+semantic interpretation of the data. However, the specificity introduced by the
+coexistence of spectral and spatial content in the RS datasets widens the scope
+of the challenges presented to adapt DL methods to these contexts. Therefore,
+the aim of this paper is firstly to explore the performance of DL architectures
+for the RS hyperspectral dataset classification and secondly to introduce a new
+three-dimensional DL approach that enables a joint spectral and spatial
+information process. A set of three-dimensional schemes is proposed and
+evaluated. Experimental results based on well knownhyperspectral datasets
+demonstrate that the proposed method is able to achieve a better classification
+rate than state of the art methods with lower computational costs.

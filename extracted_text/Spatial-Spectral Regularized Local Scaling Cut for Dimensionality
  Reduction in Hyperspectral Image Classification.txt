@@ -1,0 +1,18 @@
+Optimal Clustering Framework for Hyperspectral Band Selection
+  Band selection, by choosing a set of representative bands in hyperspectral
+image (HSI), is an effective method to reduce the redundant information without
+compromising the original contents. Recently, various unsupervised band
+selection methods have been proposed, but most of them are based on
+approximation algorithms which can only obtain suboptimal solutions toward a
+specific objective function. This paper focuses on clustering-based band
+selection, and proposes a new framework to solve the above dilemma, claiming
+the following contributions: 1) An optimal clustering framework (OCF), which
+can obtain the optimal clustering result for a particular form of objective
+function under a reasonable constraint. 2) A rank on clusters strategy (RCS),
+which provides an effective criterion to select bands on existing clustering
+structure. 3) An automatic method to determine the number of the required
+bands, which can better evaluate the distinctive information produced by
+certain number of bands. In experiments, the proposed algorithm is compared to
+some state-of-the-art competitors. According to the experimental results, the
+proposed algorithm is robust and significantly outperform the other methods on
+various data sets.

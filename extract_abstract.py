@@ -6,6 +6,36 @@ from pathlib import Path
     Extracts the title and the abstract from the XML file.
 '''
 
+def extract_arXiv(filename, write_path):
+    ''' Description:
+        - extracts the abstract based on arXiv XML format.
+
+        Parameters:
+        - filename --> (string) path of a single file
+
+        Returns:
+        - nothing, method writes to .txt files
+    '''
+    file = open(filename, 'r')
+    contents = file.read()
+    soup = BeautifulSoup(contents,'xml')
+
+    # extracts title
+    titles = soup.find_all('title')
+
+    # extracts abstract
+    abstracts = soup.find_all('summary')
+
+    for i in range(0,len(abstracts)):
+        file_no_extension = os.path.basename(filename) # base name, no path
+        file_no_extension = os.path.splitext(file_no_extension)[0] # no ext.
+        file = open(write_path + titles[i].get_text() + '.txt','w')
+
+        file.write(titles[i+1].get_text())
+        file.write('\n')
+        file.write(abstracts[i].get_text())
+
+
 def extract(filename, write_path):
     ''' Description:
         - extracts the abstract based on the <abstract> or <p> tags.

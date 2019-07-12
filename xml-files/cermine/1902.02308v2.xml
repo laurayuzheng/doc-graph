@@ -1,0 +1,1486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Decentralized Flood Forecasting Using Deep Neural Networks</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>1st Muhammed Ali Sit</string-name>
+          <email>muhammedali-sit@uiowa.edu</email>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>2nd Ibrahim Demir</string-name>
+          <email>ibrahim-demir@uiowa.edu</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Department of Civil and Environmental Engineering, University of Iowa</institution>
+          ,
+          <addr-line>Iowa City</addr-line>
+          ,
+          <country country="US">United States</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Department of Computer Science, University of Iowa</institution>
+          ,
+          <addr-line>Iowa City</addr-line>
+          ,
+          <country country="US">United States</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>This article is a pre-print submitted to ArXiv. 9 1 0 Abstract-Predicting flood for any location at times of extreme 2 storms is a longstanding problem that has utmost importance n in emergency management. Conventional methods that aim to u predict water levels in streams use advanced hydrological models J still lack of giving accurate forecasts everywhere. This study aims to explore artificial deep neural networks' performance 1 on flood prediction. While providing models that can be used 2 in forecasting stream stage, this paper presents a dataset that ] focuses on the connectivity of data points on river networks. It also shows that neural networks can be very helpful in time-series Gforecasting as in flood events, and support improving existing .sLmoIdnedlesxthTreorumgsh-dnaetuaraals,sinmetilwaotirokns., flood, forecasting c [</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>
+        Neural networks were widely used in the past for
+hydrological modeling purposes. [
+        <xref ref-type="bibr" rid="ref3">3</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref7">7</xref>
+        ] Most of the studies extend the
+feed-forward networks and propose a neural network model
+that does not involve a high number of dataset entries because
+of the technical limitations. Also, these studies involve mostly
+fuzzy logic instead of artificial intelligence focused aspects of
+deep neural networks. There are studies that utilizes artificial
+neural networks for flood forecasting purposes as well [
+        <xref ref-type="bibr" rid="ref8">8</xref>
+        ]–
+[
+        <xref ref-type="bibr" rid="ref11">11</xref>
+        ]. These studies present backpropagation networks centric
+approaches in flood forecasting. Also, in [
+        <xref ref-type="bibr" rid="ref12">12</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref14">14</xref>
+        ], radial basis
+function neural networks were employed in streamflow
+prediction. Machine learning algorithms other than neural networks
+are widely explored in the literature. [
+        <xref ref-type="bibr" rid="ref15">15</xref>
+        ], [
+        <xref ref-type="bibr" rid="ref16">16</xref>
+        ] explore Support
+Vector Machines in flood forecasting. Besides limited studies
+in flood forecasting and gage height prediction, deep neural
+networks are utilized with latest algorithmic advances for
+similar tasks in hydrology such as reservoir inflow forecasting
+[
+        <xref ref-type="bibr" rid="ref17">17</xref>
+        ], precipitation estimation [
+        <xref ref-type="bibr" rid="ref18">18</xref>
+        ], runoff analysis [
+        <xref ref-type="bibr" rid="ref19">19</xref>
+        ]. Even
+though forecasting is mostly time depended, forecasting tasks
+mentioned here vastly comprises network architectures that
+do not take advantage of sequential nature of time series
+data. Flood forecasting also involves time-series data and
+overcoming this task should be done by creating the dataset
+centered upon its time-depended features.
+      </p>
+      <p>
+        Studies that use deep neural networks for time-series data
+show great results and provides an extensive vision in
+increasing the usage of neural networks architectures in
+timeseries data. Researchers show that neural networks can be used
+for traffic speed prediction [
+        <xref ref-type="bibr" rid="ref20">20</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref22">22</xref>
+        ], taxi demand prediction
+[
+        <xref ref-type="bibr" rid="ref23">23</xref>
+        ], financial time-series prediction [
+        <xref ref-type="bibr" rid="ref24">24</xref>
+        ], [
+        <xref ref-type="bibr" rid="ref25">25</xref>
+        ]. Traffic speed
+prediction is a very similar task with flood prediction since
+both of them relies on changes in connected points in the
+network.
+      </p>
+      <p>
+        In this paper, we propose a flood prediction benchmark
+dataset for future applications in machine learning as well as
+a scalable approach to forecasting river stage for individual
+survey points on rivers. The approach takes into account the
+historical stage data of survey points on selected upstream
+locations, as well as precipitation data. This approach is
+both decentralized and doesn’t need any historical data from
+unrelated survey points and can be used in real-time. Recurrent
+Neural Networks (RNNs), in particular, Gated recurrent unit
+(GRU) Networks are utilized throughout this study. We also
+show that this approach presents satisfiable results when it’s
+applied for the state of Iowa as a proof of concept. The data
+are gathered from the Iowa Flood Center (IFC) and United
+States Geological Survey (USGS) sensors on the rivers within
+the state of Iowa. Findings of this project and the deep neural
+network model will benefit operational cyber platforms [
+        <xref ref-type="bibr" rid="ref26">26</xref>
+        ],
+intelligent knowledge systems [
+        <xref ref-type="bibr" rid="ref27">27</xref>
+        ], and watershed information
+and visualization tools [
+        <xref ref-type="bibr" rid="ref28">28</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref30">30</xref>
+        ] with enhanced river stage
+forecasting.
+      </p>
+      <p>II. METHODOLOGY</p>
+      <p>In this section methods that this study relies on are
+explained. Preliminary information regarding the problem
+definition and details about the case study dataset is detailed below.
+After the dataset information, deep neural network models is
+presented.</p>
+    </sec>
+    <sec id="sec-2">
+      <title>A. Preliminary Work</title>
+      <p>Flood forecasting or prediction of river stage for a particular
+point on the river network depends on the neighboring streams.
+The problem of flood forecasting should be solved by
+anticipating the height of the water on streams. This problem and
+potential physical approaches expect a deep understanding of
+the hydrology and domain.</p>
+      <p>Since the aim of this study is to predict the water level
+for selected points on rivers, river network structure and
+connectivity should be understood by the framework. If the
+intersection points on river network are considered as nodes and
+rivers are considered as edges, river networks make directed
+acyclic graphs (DAGs). Water only flows from upstream to
+downstream and it never makes circular moves. In this study,
+instead of using intersections, gage height sensors are used
+as nodes. United States Geological Survey (USGS), has gage
+height sensors all around the US. Sensors provide gage height
+measurements with a temporal resolution of 15 minutes. By
+using these sensors, a sensor network can be formed. The river
+network is a DAG, the existence of more than one sensor on a
+river is possible, and some nodes can have only one child node.
+Each sensor has upstream sensors and downstream sensors.
+Among two connected sensors, or nodes, A and B, if the water
+in their watershed reaches the sensor A before it reaches to
+the sensor B, then its clear that A is on Bs upstream and
+B is on As downstream. The water level of a sensor vastly
+relies on the water level of its upstream sensors. Therefore,
+its important to incorporate upstream water level information
+into the forecasting effort.</p>
+      <p>As a data-driven approach to testing the capabilities of
+deep learning for mapping rainfall and runoff, this study
+doesn’t involve other mechanisms and processes that affect
+gage heights and floods.</p>
+    </sec>
+    <sec id="sec-3">
+      <title>B. Dataset</title>
+      <p>Data used in this study comprises 3 different sets. The first
+dataset consists of gage height from USGS and UFC sensors.
+The second dataset is the NOAAs Stage IV radar rainfall
+product and the last dataset is the metadata and sensor
+information from IFC. USGS has 201 gage height sensors within the
+state of Iowa, each providing gage height measurements with
+15 minutes temporal resolution. Data obtained from USGS
+data sources for these sensors contain the sensor id, date and
+time of the measurement with timezone, and the measurement
+value. We needed to preprocess these data in order to form a
+data structure for our models. The preprocessed dataset was
+created as a hash table that has sensor ids as keys and has the
+value of another hashtable of datetime, measurement dates.
+The internal hashtables that have datetime as their keys were
+converted to datetimes in UTC which was previously CST or
+CDT depending on measurements the time of the year to avoid
+any timezone related problems.</p>
+      <p>Another preprocessing step was done to extract usable
+sensors. The IFC data regarding sensors contains network
+information for the sensors. We extracted the upstream sensor
+list for each USGS sensor. The list for each sensor was sorted
+by their proximity to the intended sensor. The number of
+upstream sensors that will take place on the input data was
+selected to be 4 and when the sensors that have a number
+of upstream sensors lower than that value was discarded. The
+final usable USGS sensor list contained 45 sensors. Values
+other than 4 was tested but no significant improvement was
+observed.</p>
+      <p>For a dataset entry with a sensor S and time t, the input part
+of the dataset vastly comprises gage height data from upstream
+sensors of the sensor S for measurements before time t, as
+well as the previous measurements from the sensor S itself.
+Also, rainfall that falls within the watershed of sensor S takes
+place in the input part of the data. Output part of the data
+is future measurements of sensor S after the time t. In this
+study, the approach is designed to predict 24 hours of future
+measurements thus the output consists of 24 values, in which,
+one value represents each forecasted hour.</p>
+      <p>We formed two similar datasets using the preprocessed data.
+They differ in size for the historical information they have
+regarding sensors and precipitation. The smaller dataset only
+has 4 hours of stage measurements for each upstream sensor
+and 3 hours of information for the intended sensor as well
+as precipitation data array with the length of 20. The larger
+dataset has 24 hours of data for each upstream sensor, and 24
+hours of data for the intended sensor and precipitation data
+array with the length of 40. The output parts for both datasets
+were same.</p>
+      <p>The datasets were formed by creating a dataset entry vector
+for each 15 minutes datetime instance between January 2009
+and June 2018. While each vector for smaller dataset
+comprised total of 39 input values and 24 output values, vectors of
+the larger dataset had a total of 160 input values and 24 output
+values. Since each input has two parts (height and precipitation
+data), we formed them separately and then concatenated them
+together. For clarification purposes, we will explain the dataset
+using the same approach.</p>
+      <p>H = [HtU1t;dS 3; HtU1t;dS 2; HtU1t;dS 1; HtU1t;dS ;</p>
+      <p>HU2;S</p>
+      <p>t td 3; HtU2t;dS 2; HtU2t;dS 1; HtU2t;dS ;
+HU3;S</p>
+      <p>t td 3; HtU3t;dS 2; HtU3t;dS 1; HtU3t;dS ;
+HU4;S
+t td 3; HtU4t;dS 2; HtU4t;dS 1; HtU4t;dS ;</p>
+      <p>HtS 3; HtS 2; HtS 1]
+(1)</p>
+      <p>Height vector, H (Equation 1, for smaller dataset in which
+HU2;S</p>
+      <p>t td 2 represents height data for second sensor in upstream
+of Sensor S at time t-td-2.) part of any dataset entry was
+created using USGS data. When gathering data for an output
+of 24 hours starting at time t, for each upstream sensor, data
+were taken for t td in which td refers the travel time distance
+of water between the upstream sensor and the sensor that
+is intended to anticipate stage height change. Time distance
+information was extracted from the sensor data by IFC. Each
+sensor point has time distance to the outlet point in the
+corresponding watershed. By taking the time distance difference
+between an upstream sensor and the intended sensor, the time
+distance between these two sensors can be calculated. Using
+this information, incorporated upstream data included the data
+for the measure water level that most likely will affect the
+intended sensor’s water level.</p>
+      <p>The second vector that comprises a dataset entry is
+precipitation vector. Rainfall data from Stage IV product (Fig.
+2.) provided in rasters. The data in raster files contains
+precipitation values for the entire US divided into parcels.
+After converting raster files into easily accessible arrays, the
+next step is to determine the approach that will be used when
+acquiring the data from the rasters for each sensor and datetime
+pairs. The first approach was to use precipitation data only for
+parcels that include exact locations of upstream sensors and the
+intended sensors without considering their watersheds but this
+approach doesn’t take the rainfall that falls to the area between
+sensors into account. Another approach was to use data for
+the entire watershed of the intended sensor. Even though this
+approach has the potential to represent the domain better, since
+all of the precipitation in upstream sensor watersheds drains
+and are represented in the gage measurements, this approach
+brings unnecessary data amplitude.</p>
+      <p>In order to both keep important information in the dataset
+and skip the already obtained information, we used an
+approach in which the sections of the watershed area is
+elimi</p>
+      <p>Fig. 3: Watershed of a sensor with parcels colored depending
+on their time distance to the intended sensor (green is closer)
+nated based on upstream sensors. Watershed area that will be
+used to gather precipitation data representing rainfall domain
+that will eventually reach intended sensor is calculated, and
+the watershed area of upstream sensors was excluded from
+the watershed of the intended sensor. Remaining parcels were
+divided into sections depending on the parcels’ water time
+distance to the actual sensor (Fig. 3.).</p>
+      <p>After gathering the watershed information that will be used
+to acquire rainfall data, the rasters were read and depending on
+the time distance, precipitation measurements were obtained.
+For instance if the output vector contains measurements for the
+sensor S at time t, the precipitation data would be obtained for
+t td for each parcel. Then, the average of the measurements
+that parcels have was taken for each time distance value.
+Eventually, all of the precipitation vectors were formed but
+they almost always had a different length. To provide the
+same length vectors, the precipitation vectors were padded
+into vectors with a length of 20 or 40 depending on the
+aforementioned dataset sizes. If the vector is larger than
+the size predetermined vector size, the remaining part was
+cropped out and if the vector was smaller than the size,
+empty places were filled with zeros. Equation 2 demonstrates
+final precipitation vector P for smaller dataset in which P S
+t 8
+represents mean of precipitation data for parcels that are 8
+hours away from the sensor S.</p>
+      <p>P = [ PtS 1; PtS 2; PtS 3; PtS 4; PtS 5;</p>
+      <p>The last step was to form output vector. Output vector for
+a dataset entry of a sensor S that will contain data for time
+t will have height measurements from t to t+23. Equation 3
+shows the form of output vector O while HtS+17 represents
+height measured on Sensor S at time t+17 in feet.</p>
+      <p>O = [HtS ;</p>
+      <p>HtS+1; HtS+2; HtS+3;
+HtS+4; HtS+5; HtS+6; HtS+7;
+HtS+8; HtS+9; HtS+10; HtS+11;
+HtS+12; HtS+13; HtS+14; HtS+15;
+HtS+16; HtS+17; HtS+18; HtS+19;</p>
+      <p>HtS+20; HtS+21; HtS+22; HtS+23 ]</p>
+      <p>After both precipitation and height vectors were formed,
+the input vector was created by concatenating them. Both
+smaller and larger datasets were formed by this pipeline only
+differing in the sizes when applicable. After running through
+this process for each sensor and datetime instance within the
+mentioned date range, 298,496 dataset entries were formed for
+the larger dataset and 354,816 dataset entries were formed for
+the smaller dataset. Recall that smaller and larger names are
+used depending on the size of the individual input vectors, not
+the actual dataset size.</p>
+    </sec>
+    <sec id="sec-4">
+      <title>C. Utilizing Neural Networks</title>
+      <p>Predicting stream heights vastly depends on previous states
+of streams and this makes the flood forecasting problem more
+of a time-series forecasting task. Considering this nature of
+the problem, using more sequentially capable network
+architectures like RNNs make good implementation choices. Due
+to vanilla RNN networks’ vanishing gradient problem, Long
+short-term memory (LSTM) networks and GRU networks are
+major two network architecture options in the literature for
+such cases. Since GRU networks have less computationally
+costly operations than LSTM networks, in other words,
+because of GRU has fewer gate computations but still matches
+the LSTM’s performance, we chose to implement a GRU
+based network.
+(2)
+(3)
+f (x) = max(x; 0)
+(4)</p>
+      <p>This study proposes two networks for comparison purposes,
+the first one is fully-connected network and the second one is
+the GRU based neural network. The fully-connected network
+structure can be found in (Table I). All layer outputs are
+activated with Rectified Linear Unit (ReLU) (4) function.</p>
+      <p>GRU based network consists of five GRU subnetworks (II),
+one for each upstream and one for previous measurements of
+the intended sensor, and a fully-connected subnetwork (Table
+III) for the precipitation data. Outputs of all these subnetworks
+are then fed into a fully-connected output network with ReLU
+activations until the output (Figure 4) is computed.</p>
+      <p>
+        Cho et al. [
+        <xref ref-type="bibr" rid="ref31">31</xref>
+        ] in 2014 proposed GRU networks. GRU
+cells are similar to LSTM cells in terms of utilization and
+their capabilities in handling vanishing gradient problem. GRU
+comprises concepts that are easier to implement while
+providing very similar performance with the LSTM. A GRU cell has
+two gates, a reset gate in which previously learned features
+and new inputs are combined, and the update gate which
+determines how much of the memory will be remembered.
+A GRU cell’s formulation can be expressed as,
+rt = (U rXt + W rst 1 + br)
+zt = (U zXt + W zst 1 + bz)
+h = g(U hXt + rt (W hst 1) + bh)
+st = zt st 1 + (1
+zt) h
+(5)
+(6)
+(7)
+(8)
+where rt, zt, h and st represent reset gate, update gate,
+hidden state candidate and hidden state respectively. Also is
+sigmoid function and g is tanh function. In GRU cells, while
+reset gate affects the hidden state by taking place in hidden
+state candidate’s formula, update gate significantly changes
+hidden state.
+      </p>
+      <p>Proposed neural network architectures are implemented
+using PyTorch [32] numeric computing library (v0.40) and
+master version of experiment time (0.5.0a0+290d20b) on
+Python programming language (v3.6). The source code was
+written to train networks using the Adam Optimizer [33] as
+the optimization method and mean squared error (MSE) as the
+loss function. Proposed datasets were split into training and
+testing sets with an approximate rate of 80%. Implemented
+networks were trained on training sets using NVIDIA Tesla
+K80 GPUs.</p>
+      <p>It should be noted that while the larger dataset was run with
+both GRU-based architecture and fully-connected architecture,
+the smaller dataset was only run with fully-connected
+architecture to understand the effect of using less time-dependent
+data in such learning task.</p>
+      <p>Score table that shows MSE on testing datasets for proposed
+models which are trained on training datasets can be found in
+Table IV. Scores clearly show that providing more data did
+not significantly improve the accuracy of the fully-connected
+model. However, it can be seen that model choice has
+important effects on the model’s overall testing performance. We can
+easily say that RNN based models make better architecture
+choices for prediction tasks such as flood forecasting.
+Fig. 5: Gage height measurement values and predictions that
+GRU based model generated for 4 sensors</p>
+      <p>Actual measurements and values that GRU based network
+predicted for 4 USGS sensors are given in Figure 5. Shared
+results suggest that when stage height does not show
+dramatic changes, the model is successful to anticipate next
+measurements but when there are apparent fluctuations, the
+model is not able to perform as successful, but still it reports
+somewhat similar predictions. It should be noted that even
+though the forecasts seem to not frequently show an exact
+match with actual measurements, they do not possess huge
+numeric differences.</p>
+      <p>Considering the reported MSE and the similarity between
+measurements and forecasts that GRU based model made, it
+can be said that the overall performance of the neural networks
+with the proposed decentralized approach is acceptable.</p>
+      <p>IV. CONCLUSION</p>
+      <p>While this paper demonstrates a benchmark dataset and
+methodology for flood forecasting that employs deep neural
+networks, it also presents promising results using a data-driven
+approach. The approach in this study could be improved in the
+future by incorporating other datasets such as soil moisture
+data from point source measurements and satellite data such
+as Soil Moisture Active Passive (SMAP) as well as evaporation
+measurements which can help in demonstrating the water
+budged better.</p>
+      <p>Models proposed in this study can be used to present
+more enhanced forecasting results on operational information
+systems along with forecasts of advanced hydrological models.
+Presented results show that artificial neural networks based
+decentralized flood forecasting approach for the state of Iowa
+anticipates the stage height very close to the actual height
+measurements.</p>
+      <p>ACKNOWLEDGMENT</p>
+      <p>The work reported here has been possible with the support
+and work of many members of the Iowa Flood Center at the
+IIHR Hydroscience and Engineering, University of Iowa.
+rnn encoder-decoder for statistical machine translation,” arXiv preprint
+arXiv:1406.1078, 2014.
+[32] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin,
+A. Desmaison, L. Antiga, and A. Lerer, “Automatic differentiation in
+pytorch,” in NIPS-W, 2017.
+[33] D. P. Kingma and J. Ba, “Adam: A method for stochastic optimization,”
+arXiv preprint arXiv:1412.6980, 2014.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>G. J. van Oldenborgh</given-names>
+            ,
+            <surname>K. van der Wiel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Sebastian</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Singh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Arrighi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Otto</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Haustein</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Vecchi</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Cullen</surname>
+          </string-name>
+          , “
+          <article-title>Attribution of extreme rainfall from hurricane harvey</article-title>
+          ,
+          <year>august 2017</year>
+          ,” Environmental Research Letters, vol.
+          <volume>12</volume>
+          , no.
+          <issue>12</issue>
+          , p.
+          <fpage>124009</fpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>M. A.</given-names>
+            <surname>Sit</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Koylu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>and I. Demir</surname>
+          </string-name>
+          , “
+          <article-title>Identifying disaster-related tweets and their semantic, spatial and temporal context using deep learning, natural language processing and spatial analysis: a case study of hurricane irma</article-title>
+          ,”
+          <source>International Journal of Digital Earth</source>
+          , pp.
+          <fpage>1</fpage>
+          -
+          <lpage>25</lpage>
+          ,
+          <year>2019</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>C. W.</given-names>
+            <surname>Dawson</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Wilby</surname>
+          </string-name>
+          , “
+          <article-title>An artificial neural network approach to rainfall-runoff modelling,”</article-title>
+          <source>Hydrological Sciences Journal</source>
+          , vol.
+          <volume>43</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>47</fpage>
+          -
+          <lpage>66</lpage>
+          ,
+          <year>1998</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Thirumalaiah and M. C. Deo</surname>
+          </string-name>
+          , “
+          <article-title>Hydrological forecasting using neural networks</article-title>
+          ,
+          <source>” Journal of Hydrologic Engineering</source>
+          , vol.
+          <volume>5</volume>
+          , no.
+          <issue>2</issue>
+          , pp.
+          <fpage>180</fpage>
+          -
+          <lpage>189</lpage>
+          ,
+          <year>2000</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Dawson</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Wilby</surname>
+          </string-name>
+          , “
+          <article-title>Hydrological modelling using artificial neural networks,” Progress in physical Geography</article-title>
+          , vol.
+          <volume>25</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>80</fpage>
+          -
+          <lpage>108</lpage>
+          ,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Nayak</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Sudheer</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Rangan</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Ramasastri</surname>
+          </string-name>
+          , “
+          <article-title>Short-term flood forecasting with a neurofuzzy model</article-title>
+          ,
+          <source>” Water Resources Research</source>
+          , vol.
+          <volume>41</volume>
+          , no.
+          <issue>4</issue>
+          ,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>F.-J.</given-names>
+            <surname>Chang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.-M.</given-names>
+            <surname>Chiang</surname>
+          </string-name>
+          , and L.
+          <string-name>
+            <surname>-C. Chang</surname>
+          </string-name>
+          ,
+          <article-title>“Multi-step-ahead neural networks for flood forecasting,” Hydrological sciences journal</article-title>
+          , vol.
+          <volume>52</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>114</fpage>
+          -
+          <lpage>130</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Campolo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Andreussi</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Soldati</surname>
+          </string-name>
+          , “
+          <article-title>River flood forecasting with a neural network model,” Water resources research</article-title>
+          , vol.
+          <volume>35</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>1191</fpage>
+          -
+          <lpage>1197</lpage>
+          ,
+          <year>1999</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Huang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Xu</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Chan-Hilton</surname>
+          </string-name>
+          , “
+          <article-title>Forecasting flows in apalachicola river using neural networks,” Hydrological processes</article-title>
+          , vol.
+          <volume>18</volume>
+          , no.
+          <issue>13</issue>
+          , pp.
+          <fpage>2545</fpage>
+          -
+          <lpage>2564</lpage>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <given-names>G.-F.</given-names>
+            <surname>Lin</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>G.-R.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          , “
+          <article-title>A systematic approach to the input determination for neural network rainfall-runoff models,” Hydrological Processes: An International Journal</article-title>
+          , vol.
+          <volume>22</volume>
+          , no.
+          <issue>14</issue>
+          , pp.
+          <fpage>2524</fpage>
+          -
+          <lpage>2530</lpage>
+          ,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Liu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Xu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          , “
+          <article-title>A flood forecasting model based on deep learning algorithm via integrating stacked autoencoders with bp neural network,” in Multimedia Big Data (BigMM</article-title>
+          ),
+          <source>2017 IEEE Third International Conference on</source>
+          , pp.
+          <fpage>58</fpage>
+          -
+          <lpage>61</lpage>
+          , IEEE,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>G.-F.</given-names>
+            <surname>Lin</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>L.-H.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          , “
+          <article-title>A non-linear rainfall-runoff model using radial basis function network</article-title>
+          ,
+          <source>” Journal of Hydrology</source>
+          , vol.
+          <volume>289</volume>
+          , no.
+          <issue>1-4</issue>
+          , pp.
+          <fpage>1</fpage>
+          -
+          <lpage>8</lpage>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>G.-F.</given-names>
+            <surname>Lin and M.-C. Wu</surname>
+          </string-name>
+          , “
+          <article-title>An rbf network with a two-step learning algorithm for developing a reservoir inflow forecasting model</article-title>
+          ,
+          <source>” Journal of hydrology</source>
+          , vol.
+          <volume>405</volume>
+          , no.
+          <issue>3-4</issue>
+          , pp.
+          <fpage>439</fpage>
+          -
+          <lpage>450</lpage>
+          ,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Chaowanawatee</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Heednacram</surname>
+          </string-name>
+          , “
+          <article-title>Implementation of cuckoo search in rbf neural network for flood forecasting</article-title>
+          ,” in Computational Intelligence,
+          <source>Communication Systems and Networks (CICSyN)</source>
+          , 2012 Fourth International Conference on, pp.
+          <fpage>22</fpage>
+          -
+          <lpage>26</lpage>
+          , IEEE,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Han</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>L</surname>
+          </string-name>
+          . Chan, and
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Zhu</surname>
+          </string-name>
+          , “
+          <article-title>Flood forecasting using support vector machines</article-title>
+          ,
+          <source>” Journal of hydroinformatics</source>
+          , vol.
+          <volume>9</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>267</fpage>
+          -
+          <lpage>276</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [16]
+          <string-name>
+            <surname>P.-S. Yu</surname>
+            , S.-T. Chen,
+            <given-names>and I.-F.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Chang</surname>
+          </string-name>
+          , “
+          <article-title>Support vector regression for realtime flood stage forecasting</article-title>
+          ,
+          <source>” Journal of Hydrology</source>
+          , vol.
+          <volume>328</volume>
+          , no.
+          <issue>3-4</issue>
+          , pp.
+          <fpage>704</fpage>
+          -
+          <lpage>716</lpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bai</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Xie</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          , “
+          <article-title>Daily reservoir inflow forecasting using multiscale deep feature learning with hybrid models</article-title>
+          ,
+          <source>” Journal of hydrology</source>
+          , vol.
+          <volume>532</volume>
+          , pp.
+          <fpage>193</fpage>
+          -
+          <lpage>206</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [18]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Tao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Gao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Ihler</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Hsu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Sorooshian</surname>
+          </string-name>
+          , “
+          <article-title>Deep neural networks for precipitation estimation from remotely sensed information,” in Evolutionary Computation (CEC), 2016 IEEE Congress on</article-title>
+          , pp.
+          <fpage>1349</fpage>
+          -
+          <lpage>1355</lpage>
+          , IEEE,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [19]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Izumi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Miyoshi</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Kobayashi</surname>
+          </string-name>
+          , “
+          <article-title>Runoff analysis using a deep neural network,”</article-title>
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [20]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Gu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Wu</surname>
+          </string-name>
+          , G. Liu, and
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Xiong</surname>
+          </string-name>
+          , “
+          <article-title>Traffic speed prediction and congestion source exploration: A deep learning method,” in Data Mining (ICDM</article-title>
+          ),
+          <year>2016</year>
+          IEEE 16th International Conference on, pp.
+          <fpage>499</fpage>
+          -
+          <lpage>508</lpage>
+          , IEEE,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [21]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zheng</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Qi</surname>
+          </string-name>
+          , “
+          <article-title>Deep spatio-temporal residual networks for citywide crowd flows prediction</article-title>
+          .,” in AAAI, pp.
+          <fpage>1655</fpage>
+          -
+          <lpage>1661</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [22]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Wu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Du</surname>
+          </string-name>
+          , “
+          <article-title>Traffic speed prediction using deep learning method</article-title>
+          ,
+          <source>” in Intelligent Transportation Systems (ITSC)</source>
+          ,
+          <year>2016</year>
+          IEEE 19th International Conference on, pp.
+          <fpage>1217</fpage>
+          -
+          <lpage>1222</lpage>
+          , IEEE,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [23]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Yao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Wu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Ke</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Tang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Lu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Gong</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Ye</surname>
+          </string-name>
+          , “
+          <article-title>Deep multi-view spatial-temporal network for taxi demand prediction</article-title>
+          ,” arXiv preprint arXiv:
+          <year>1802</year>
+          .08714,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [24]
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Ding</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , T. Liu, and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Duan</surname>
+          </string-name>
+          , “
+          <article-title>Deep learning for event-driven stock prediction</article-title>
+          .,” in Ijcai, pp.
+          <fpage>2327</fpage>
+          -
+          <lpage>2333</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [25]
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Bao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Yue</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Rao</surname>
+          </string-name>
+          , “
+          <article-title>A deep learning framework for financial time series using stacked autoencoders and long-short term memory,” PloS one</article-title>
+          , vol.
+          <volume>12</volume>
+          , no.
+          <issue>7</issue>
+          , p.
+          <fpage>e0180944</fpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [26]
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Demir</surname>
+          </string-name>
+          , E. Yildirim,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Sermet</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M. A.</given-names>
+            <surname>Sit</surname>
+          </string-name>
+          , “Floodss:
+          <article-title>Iowa flood information system as a generalized flood cyberinfrastructure</article-title>
+          ,”
+          <source>International Journal of River Basin Management</source>
+          , pp.
+          <fpage>1</fpage>
+          -
+          <lpage>8</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Sermet</surname>
+          </string-name>
+          and
+          <string-name>
+            <surname>I. Demir</surname>
+          </string-name>
+          , “
+          <article-title>An intelligent system on knowledge generation and communication about flooding,” Environmental modelling &amp; software</article-title>
+          , vol.
+          <volume>108</volume>
+          , pp.
+          <fpage>51</fpage>
+          -
+          <lpage>60</lpage>
+          ,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Demir</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Conover</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W. F.</given-names>
+            <surname>Krajewski</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.-C.</given-names>
+            <surname>Seo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Goska</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>He</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>M. F. McEniry</surname>
+            ,
+            <given-names>S. J.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Graves</surname>
+          </string-name>
+          , and W. Petersen, “
+          <article-title>Data-enabled field experiment planning, management</article-title>
+          , and research using cyberinfrastructure,
+          <source>” Journal of Hydrometeorology</source>
+          , vol.
+          <volume>16</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>1155</fpage>
+          -
+          <lpage>1170</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Demir</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Jiang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R. V.</given-names>
+            <surname>Walker</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. K.</given-names>
+            <surname>Parker</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>M. B. Beck</surname>
+          </string-name>
+          , “
+          <article-title>Information systems and social legitimacy scientific visualization of water quality</article-title>
+          ,” in
+          <source>2009 IEEE International Conference on Systems, Man and Cybernetics</source>
+          , pp.
+          <fpage>1067</fpage>
+          -
+          <lpage>1072</lpage>
+          ,
+          <year>Oct 2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Demir and M. B. Beck</surname>
+          </string-name>
+          , “
+          <article-title>Gwis: A prototype information system for georgia watersheds</article-title>
+          ,” in Georgia Water Resources Conference: Regional Water Management Opportunities, p.
+          <fpage>6</fpage>
+          .
+          <issue>6</issue>
+          .4,
+          <string-name>
+            <surname>April</surname>
+          </string-name>
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Cho</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>B. Van Merrie</surname>
+          </string-name>
+          ¨nboer,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Gulcehre</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Bahdanau</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Bougares</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Schwenk</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          , “
+          <article-title>Learning phrase representations using</article-title>
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

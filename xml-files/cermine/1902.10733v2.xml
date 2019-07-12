@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-title-group>
+        <journal-title>Bathymetry determination from high resolution satellite
+imagery using ensemble learning algorithms in Shallow
+Lakes: case study El-Burullus Lake. International Journal of
+Environmental Science and Development</journal-title>
+      </journal-title-group>
+    </journal-meta>
+    <article-meta>
+      <title-group>
+        <article-title>WATER BATHYMETRY MAPPING FROM UAV IMAGERY BASED ON MACHINE LEARNING</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>P. Agrafiotis</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>D. Skarlatos</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>A. Georgopoulos</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>K. Karantzalos</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Commission II</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>WG II/</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Cyprus University of Technology, Civil Engineering and Geomatics Dept., Lab of Photogrammetric Vision</institution>
+          ,
+          <addr-line>2-8 Saripolou str., 3036, Limassol, Cyprus (panagiotis.agrafioti</addr-line>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Heroon Polytechniou str.</institution>
+          ,
+          <addr-line>15780, Athens, Greece (pagraf, drag</addr-line>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>National Technical University of Athens, School of Rural and Surveying Engineering, Department of Topography</institution>
+          ,
+          <addr-line>Zografou Campus</addr-line>
+        </aff>
+      </contrib-group>
+      <pub-date>
+        <year>2010</year>
+      </pub-date>
+      <volume>7</volume>
+      <issue>295</issue>
+      <fpage>1199</fpage>
+      <lpage>1210</lpage>
+      <abstract>
+        <p>The determination of accurate bathymetric information is a key element for near offshore activities, hydrological studies such as coastal engineering applications, sedimentary processes, hydrographic surveying as well as archaeological mapping and biological research. UAV imagery processed with Structure from Motion (SfM) and Multi View Stereo (MVS) techniques can provide a low-cost alternative to established shallow seabed mapping techniques offering as well the important visual information. Nevertheless, water refraction poses significant challenges on depth determination. Till now, this problem has been addressed through customized image-based refraction correction algorithms or by modifying the collinearity equation. In this paper, in order to overcome the water refraction errors, we employ machine learning tools that are able to learn the systematic underestimation of the estimated depths. In the proposed approach, based on known depth observations from bathymetric LiDAR surveys, an SVR model was developed able to estimate more accurately the real depths of point clouds derived from SfM-MVS procedures. Experimental results over two test sites along with the performed quantitative validation indicated the high potential of the developed approach.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>Point Cloud</kwd>
+        <kwd>Bathymetry</kwd>
+        <kwd>SVM</kwd>
+        <kwd>Machine Learning</kwd>
+        <kwd>UAV</kwd>
+        <kwd>Seabed Mapping</kwd>
+        <kwd>Refraction effect</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>X
+r
+a</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1. INTRODUCTION 1.1</title>
+    </sec>
+    <sec id="sec-3">
+      <title>Description of the problem</title>
+      <p>Although through-water depth determination from aerial
+imagery is a much more time consuming and costly process,
+it is still a more efficient operation than ship-borne sounding
+methods and underwater photogrammetric methods (Agrafiotis
+et al., 2018) in the shallower (less than 10 m depth) clear
+water areas. Additionally, a permanent record is obtained of
+other features in the coastal region such as tidal levels, coastal
+dunes, rock platforms, beach erosion, and vegetation. This is
+true, even though many alternatives for bathymetry (Menna
+et al., 2018) have arose since. This is especially the case
+for the coastal zone of up to 10m depth, which concentrates
+most of the financial activities, is prone to accretion or erosion,
+and is ground for development, where there is no affordable
+and universal solution for seamless underwater and overwater
+mapping. Image-based techniques fail due to wave breaking
+effects and water refraction, and echo sounding fails due to
+short distances.</p>
+      <p>
+        At the same time bathymetric LiDAR with simultaneous image
+acquisition is a valid, albeit expensive alternative, especially
+for small scale surveys. In addition, despite the fact that the
+image acquisition for orthophotomosaic generation in land is a
+solid solution, the same cannot be said for the shallow water
+seabed. Despite the accurate and precise depth map provided
+by LiDAR, the sea bed orthoimage generation is prohibited due
+to the refraction effect, leading to another missed opportunity
+to benefit from a unified seamless mapping process.
+Even though UAVs are well established in monitoring and 3D
+recording of dry landscapes and urban areas, when it comes
+to bathymetric applications, errors are introduced due to the
+water refraction. Unlike in-water photogrammetric procedures
+where, according to the literature (Lavest et al., 2000), thorough
+calibration is sufficient to correct the effects of refraction, in
+through-water (two-media) cases, the sea surface undulations
+due to waves (Fryer and Kniest, 1985, Okamoto, 1982) and
+the magnitude of refraction that differ at each point of every
+image, lead to unstable solutions
+        <xref ref-type="bibr" rid="ref1">(Agrafiotis and Georgopoulos,
+2015, Georgopoulos and Agrafiotis, 2012)</xref>
+        . More specifically,
+according to Snells law, the effect of refraction of a light beam
+to water depth is affected by water depth and angle of incidence
+of the beam in the air/water interface. The problem becomes
+even more complex when multi view geometry is applied.
+In Figure 1 the multiple view geometry which applies to the
+UAV imagery is demonstrated: there, the apparent depth C
+is calculated by the collinearity equation. Starting from the
+apparent (erroneous) depth of a point A, its image-coordinates
+a1, a2, a3, an, can be backtracked in images O1, O2 , O3, ,
+On using the standard collinearity equation. If a point has been
+matched successfully in the photos O1, O2 , O3, , On, then
+the standard collinearity intersection would have returned the
+point C, which is the apparent and shallower position of point
+A and in the multiple view case is the adjusted position of all
+the possible red dots in Figure 1, which are the intersections
+for each stereopair. Thus, without some form of correction,
+refraction produce an image and consequently a point cloud
+of the submerged surface which appears to lie at a shallower
+depth than the real surface. In literature, two main approaches
+to correct refraction in through-water photogrammetry can be
+found; analytical or image based.
+      </p>
+      <p>In this work, a new approach to address the systematic
+refraction errors of point clouds derived from SfM-MVS
+procedures is introduced. The developed technique is based
+on machine learning tools which are able to accurately recover
+shallow bathymetric information from UAV-based imaging
+datasets, leveraging several coastal engineering applications.
+In particular, the goal was to deliver image-based point
+clouds with accurate depth information by learning to estimate
+the correct depth from the systematic differences between
+image-based products and (the current gold-standard for
+shallow waters) LiDAR point clouds. To this end, a Linear
+Support Vector Regression model was employed and trained
+to predict the actual depth Z from the apparent depth of a
+point, Zo from the image-based point cloud. The rest of the
+paper is organized as follows: Subsection 1.2 presents the
+related work regarding refraction correction and the use of
+SVMs in bathymetry determination. In Section 2, datasets used
+are described while in Section 3 the proposed methodology is
+described and justified. In Section 4 the tests performed and the
+evaluations carried out are described. Section 5 concludes the
+paper.
+1.2</p>
+    </sec>
+    <sec id="sec-4">
+      <title>Related work</title>
+      <p>
+        Refraction effect has driven scholars to suggest several models
+for two-media photogrammetry, most of which are dedicated
+to specific applications. Two-media photogrammetry is
+divided into through-water and in-water photogrammetry. The
+through-water term is used when the camera is above the water
+surface and the object is underwater, hence part of the ray
+is traveling through air and part of it through water. It is
+most commonly used in aerial photogrammetry (Skarlatos and
+Agrafiotis, 2018, Dietrich, 2017) or in close range applications
+        <xref ref-type="bibr" rid="ref1">(Georgopoulos and Agrafiotis, 2012, Butler et al., 2002)</xref>
+        .
+It is argued that if the water depth to flight height ratio
+is considerably low, then water refraction is unnecessary.
+However, as shown in the literature (Skarlatos and Agrafiotis,
+2018), the water depth to flying height ratio is irrelevant, in
+cases ranging from drone and unmanned aerial vehicle (UAV)
+mapping to full-scale manned aerial mapping. In these cases
+water refraction correction is necessary.
+1.3
+      </p>
+    </sec>
+    <sec id="sec-5">
+      <title>Bathymetry Determination using Machine Learning</title>
+      <p>Even though the presented approach here is the only one
+dealing with UAV imagery and dense point clouds resulting
+from the SfM-MVS processing, there is a small number of
+single image approaches for bathymetry retrieval using satellite
+imagery. Most of these methods are based on the relation
+between the reflectance and the depth. These approaches
+exploit a support vector machine (SVM) system to predict
+the correct depth (Wang et al., 2018, Misra et al., 2018).
+Experiments there showed that the localized model reduced the
+bathymetry estimation error by 60% from an RMSE of 1.23m to
+0.48m. In (Mohamed et al., 2016) a methodology is introduced
+using an Ensemble Learning (EL) fitting algorithm of Least
+Squares Boosting (LSB) for bathymetric maps calculation in
+shallow lakes from high resolution satellite images and water
+depth measurement samples using Echo-sounder. The retrieved
+bathymetric information from the three methods was evaluated
+using Echo Sounder data. The LSB fitting ensemble resulted
+in an RMSE of 0.15m where the PCA and GLM yielded
+RMSEs of 0.19m and 0.18m respectively over shallow water
+depths less than 2m. Except from the primary data used, the
+main difference between the work presented here and the work
+presented in these articles, is that they test and evaluate their
+proposed algorithms on percentages of the same test site and at
+very shallow depths while here two different test sites are used.</p>
+    </sec>
+    <sec id="sec-6">
+      <title>2. DATASETS</title>
+      <p>The proposed methodology has been applied in real-world
+applications in two different test sites for verification and
+comparison against bathymetric LiDAR data. In the following
+paragraphs, the results of the proposed methodology are
+investigated and evaluated. The initial point cloud used here can
+be created by any commercial photogrammetric software (such
+as Agisofts Photoscan, used in this study) following standard
+process, without water refraction compensation. However,
+wind affects the sea surface with wrinkles and waves. Taking
+this into account, the water surface needs to be as flat as
+possible, so that to have best sea bottom visibility and follow the
+assumption of flat-water surface. In case of a wavy sea surface,
+errors would be introduced (Okamoto, 1982, Agrafiotis and
+Georgopoulos, 2015) without any form of correction (Chirayath
+and Earle, 2016) applied and the relation of the real and the
+apparent depths will be more scattered, affecting to some extent
+the training and the fitting of the model. Furthermore, water
+should not be turbid enough to have a clear bottom view.
+Obviously, water turbidity and water visibility are additional
+restraining factors. Just like in any photogrammetric project,
+sea bottom must present pattern, meaning that photogrammetric
+bathymetry might fail in sandy or seagrass sea bed. However,
+since normally, a sandy bottom does not present any abrupt
+height differences and detailed forms, and provided measures to
+eliminate the noise of the point cloud in these areas are taken,
+results would be acceptable, even in a less dense point cloud,
+due to matching difficulties.
+2.1</p>
+    </sec>
+    <sec id="sec-7">
+      <title>Test sites and available data</title>
+      <p>In order to facilitate the training and the testing of the proposed
+approach, ground truth data of the seabed depth were required,
+together with the image-based point clouds. To facilitate this,
+ground control points (GCPs) were measured in land and used
+to georeference the photogrammetric data with the LiDAR data.
+The common system used is the Cyprus Geodetic Reference
+System (CGRS) 1993, to which the LiDAR data were already
+georeferenced.</p>
+    </sec>
+    <sec id="sec-8">
+      <title>2.1.1 Amathouda Test Site The first site used is</title>
+      <p>Amathouda (Figure 2 upper image), where the seabed
+reaches a maximum depth of 5.57 m. The flight was executed
+with a Swinglet CAM fixed-wing UAV with an Canon IXUS
+220HS camera having 4.3mm focal length, 1.55 m pixel size
+and 4000 3000 pixels format. A total of 182 photos were
+acquired, from an average flight height of 103 m, resulting in
+3.3 cm average GSD.
+2.1.2 Agia Napa Test Site The second test site is in Agia
+Napa (Figure 2 lower image), where the seabed reaches the
+depth of 14.8m. The flight here executed with the same UAV.
+In total 383 images were acquired, from an average flight
+height of 209m, resulting in 6.3cm average ground pixel size.
+Table 1(presents the flight and image-based processing details
+of the two different test sites. There, it can be noticed that the
+two sites have a different average flight height, indicating that
+the suggested solution is not limited to specific flight heights.
+That means that a trained model on an area may be applied
+on another area, having the flight and image-based processing
+characteristics of the datasets used.
+2.1.3 Data pre-processing To facilitate the training of
+the proposed bathymetry correction model, data were
+pre-processed. Since the image-based point cloud was denser,
+than the LiDAR point cloud, it was decided to reduce the
+number of the points of the first one. To that direction the
+number of the image-based point clouds were reduced to the
+number of the LiDAR point clouds, for the two test sites.
+This way, for each position X, Y of the seabed two depths are
+corresponding: the apparent depth Zo and the LiDAR depth
+Z. Consequently, outlier data were removed from the dataset.
+At this stage of the pre-processing, outliers were considered
+points having Zo Z since this is not valid when the refraction
+phenomenon is present. Moreover, points having Zo 0m
+were also removed since they might cause errors in the training
+process. After being pre-processed, the datasets were used as
+follows: due to availability of a lot of reference data in Agia
+Napa test site, the site was split in two parts having different
+characteristics: Part I having 627.522 points (Figure 3(left)
+in the red rectangle on the left, Figure 5(top left)) and Part
+II having 661.208 points (Figure 3(left) in the red rectangle
+on the right, Figure 5(top right)). Amathouda dataset (Figure
+3(middle) and Figure 5(bottom left)) was not split since the
+available points were much less and quite scattered (Figure
+3(right)). The distribution of the Z and Zo of the points is
+presented in Figure 3(right) the Agia Napa dataset is presented
+with blue colour, while the Amathouda dataset is presented with
+orange colour.</p>
+    </sec>
+    <sec id="sec-9">
+      <title>2.1.4 LiDAR Reference data LiDAR point clouds of the</title>
+      <p>submerged areas were used as reference data for training
+and evaluation of the developed methodology. These point
+clouds were generated with the RIEGL LMS Q680i (RIEGL
+Laser Measurement Systems GmbH, 3580 Horn, Austria), an
+airborne LiDAR system. This instrument uses the time-of-flight
+distance measurement principle of infrared nanosecond pulses
+for topographic applications and of green (532nm) nanosecond
+pulses for bathymetric applications. Table 3 presents the
+details of the LiDAR data used. Even though the specific
+LiDAR system can offer point clouds with accuracy of 20mm
+in topographic applications according to the manufacturers,
+when it comes to bathymetric applications the systems range
+error range is in the order of +/-50-100mm for depths up to
+4m, similar to other conventional topographic airborne scanners
+(Steinbacher et al., 2012). According to the literature LiDAR
+bathymetry data can be affected by significant systematic errors
+that lead to much greater errors. In (Skinner, 2011) the average
+error in elevations for the wetted river channel surface area
+was -0.5% and ranged from -12% to 13%. In (Bailly et
+al., 2010) authors detected a random error of 0.19m-0.32m
+for the riverbed elevation from the Hawkeye II sensor. In
+(Fernandez-Diaz et al., 2014) the standard deviation of the
+bathymetry elevation differences calculated reaches 0.79m,
+with 50% of the differences falling between 0.33m to 0.56m.
+However, according to the authors it appears that most of these
+differences are due to sediment transport between observation
+epochs. In (Westfeld et al., 2017) authors report that the RMSE
+of the lateral coordinate displacement is 2.5% of the water
+depth for the smooth, rippled sea swell. Assuming a mean
+water depth of 5m leads to a RMSE of 12cm. If a light sea
+state with small wavelets assumed, results with an RMSE of
+3.8% which corresponds to 19cm in 5m water are expected.
+It becomes obvious that wave patterns can cause significant
+systematic effects in bottom coordinate locations. Even for very
+calm sea states, the lateral displacement can be up to 30cm at
+5m water depth (Westfeld et al., 2017).</p>
+      <p>Considering the above, authors would like to highlight here that
+in the proposed approach, LiDAR point clouds are used for
+training the suggested model, since this is the State-of-the-Art
+method used for shallow water bathymetry of large areas
+(Menna et al., 2018), even though in some cases the absolute
+accuracy of the resulting point clouds is deteriorated. These
+issues do not affect the principle of the main goal of the
+presented approach which is to systematically solve the depth
+underestimation problem, by predicting the correct depth, as
+proved in the next sections.</p>
+    </sec>
+    <sec id="sec-10">
+      <title>3. PROPOSED METHODOLOGY</title>
+      <p>A Support Vector Regression (SVR) method is adopted in
+order to address the described problem. To that direction, data
+available from two different test sites, characterized by different
+type of seabed and depths are used to train, validate and test
+the proposed approach. The Linear SVR model was selected
+after studying the relation of the real (Z) and the apparent
+(Zo) depths of the available points (Figure 3(right)). Based on
+the above, the SVR model fits according to the given training
+data: the LiDAR (Z) and the apparent depths (Zo) of many
+3D points. After fitting, the real depth can be predicted in
+the cases where only the apparent depth is available. In the
+performed study the relationship of the LiDAR (Z) and the
+apparent depths (Zo) of the available points rather follows a
+linear model and as such, a deeper learning architecture was not
+considered necessary. The use of a simple Linear Regression
+model was also examined, fitting tests were performed in the
+two test sites and predicted values were compared to the LiDAR
+data. However, this approach was rejected since the predicted
+models were producing larger errors than the ones produced by
+the SVM Linear Regression and they were highly dependent on
+the training dataset and its density, being very sensitive to the
+noise of the point cloud. This is explained by the fact that the
+two regression methods differ only in the loss function where
+SVM minimizes hinge loss while logistic regression minimizes
+logistic loss and logistic loss diverges faster than hinge loss
+being more sensitive to outliers. This is apparent also in Figure
+4, where the predicted models using a simple Linear Regression
+and an SVM Linear Regression trained on Amathouda and
+Agia Napa [I] datasets are plotted. In the case of training on
+the Amathouda dataset, it is obvious that the two predicted
+models (lines in red and cyan colour) differ considerably as
+the depth increases, leading to different depth predictions.
+However, in the case of the models trained in Agia Napa [I]
+dataset, the two predicted models (lines in magenta and yellow
+colour) are overlapping, also with the predicted model of the
+SVM Linear Regression, trained on Amathouda. These results
+suggest that the SVM Linear Regression is less dependent
+on the density and the noise of the data and ultimately the
+more robust method, predicting systematically reliable models,
+outperforming simple Linear Regression.
+3.1</p>
+    </sec>
+    <sec id="sec-11">
+      <title>Linear SVR</title>
+      <p>SVMs can also be applied to regression problems by the
+introduction of an alternative loss function (Smola et al., 1996).
+The loss function must be modified to include a distance
+measure. In this paper, a Linear Support Vector Regression
+model is used exploiting the implementation of (Pedregosa et
+al., 2011). The problem is formulated as follows: consider the
+problem of approximating the set of depths:</p>
+      <p>D = f(Z01; Z1); :::; (Z0l ; Zl)g;
+Z0 2 Rn;</p>
+      <p>Z 2 R (1)
+with a linear function</p>
+      <p>f (Z0) = hw; Z0i + b
+The optimal regression function is given by the minimum of the
+functional,
+(w; Z0) =
+Where c is a pre-specified positive numeric value that controls
+the penalty imposed on observations that lie outside the epsilon
+margin (") and helps to prevent overfitting (regularization).
+This value determines the trade-off between the flatness of
+f (Zo) and the amount up to which deviations larger than " are
+(2)
+(3)
+tolerated, and i , i+ are slack variables representing upper
+and lower constraints of the outputs of the system, Z is the
+real depth of a point X, Y and Zo is the apparent depth of the
+same point X, Y. Based on the above, the proposed framework
+is trained using the real (Z) and the apparent (Zo) depths of a
+number of points in order to predict the real depth in the cases
+where only the apparent depth is available.</p>
+    </sec>
+    <sec id="sec-12">
+      <title>4. TESTS AND EVALUATION 4.1</title>
+    </sec>
+    <sec id="sec-13">
+      <title>Training, Validation and Testing</title>
+      <p>In order to evaluate the performance of the developed model
+in terms of robustness and effectiveness, six different training
+sets were formed from two test sites of different seabed
+characteristics and then validated against 13 different testing
+sets.</p>
+    </sec>
+    <sec id="sec-14">
+      <title>4.1.1 Agia Napa and Amathouda datasets The first and</title>
+      <p>the second training approaches are using 5% and 30% of the
+Agia Napa Part II dataset respectively in order to fit the Linear
+SVR model and predict the correct depth over the Agia Napa
+Part I and Amathouda test sites. The third and the fourth
+training approaches are using 5% and 30% of the Agia Napa
+Part I dataset respectively in order to fit the Linear SVR model
+and predict the correct depth over the Agia Napa Part II and
+Amathouda test sites. The fifth training approach is using 100%
+of the Amathouda dataset in order to fit the Linear SVR model
+and predict the correct depth over the Agia Napa Part I, the Agia
+Napa Part II and their combination. The Z-Zo distribution of
+the points used for this training can be seen in Figure 5(bottom
+left). It is important to notice here that the maximum depth of
+the training dataset is 5.57m while the maximum depth of the
+testing datasets is 14.8m and 14.7m respectively.
+4.1.2 Merged dataset Finally, a sixth training approach is
+performed by creating a virtual dataset containing almost the
+same number of points from each of these two datasets. The
+Z-Zo distribution of this merged dataset is presented in Figure
+5(bottom right). In the same figure the Z-Zo distribution of
+the Agia Napa dataset and Amathouda dataset are presented in
+blue and yellow colour respectively. This dataset was generated
+using the total of the Amathouda dataset points and 1% of the
+Agia Napa Part II dataset.
+4.2</p>
+    </sec>
+    <sec id="sec-15">
+      <title>Evaluation of the results</title>
+      <p>lie away from these lines, the models achieve to follow the
+Z-Zo distribution of most of the points. It is important to
+highlight here that the differences between the predicted model
+trained on the Amathouda dataset (cyan line) and the predicted
+models trained on Agia Napa datasets are not remarkable, even
+though the maximum depth of Amathouda dataset is 5.57m
+and the maximum depth of Agia Napa datasets is 14.8m and
+14.7m respectively. The biggest difference observed between
+the predicted models is between the predicted model trained
+on Agia Napa [II] dataset (green line) and the predicted model
+trained on the Merge dataset (black line): 0.45m at 16.8m
+depth, or a 2.7% of the real depth. In the next paragraphs the
+results of the proposed method are evaluated in terms of cloud
+to cloud distances. Additionally, cross sections of the seabed
+are presented to highlight the high performance of the proposed
+methodology and the issues and differences observed between
+the tested and ground truth point clouds.</p>
+    </sec>
+    <sec id="sec-16">
+      <title>4.2.1 Multiscale Model to Model Cloud Comparison To</title>
+      <p>evaluate the results of the proposed methodology, the initial
+point clouds of the SfM-MVS procedure and the point clouds
+resulted from the proposed methodology were compared with
+the LiDAR point cloud using the Multiscale Model to Model
+Cloud Comparison (M3C2) (Lague et al., 2013) in Cloud
+Compare freeware (Cloud Compare, 2019) to demonstrate the
+changes and the differences that are applied by the presented
+depth correction approach. The M3C2 algorithm offers
+accurate surface change measurement that is independent of
+point density (Lague et al., 2013). In Figure 7(top) and
+Figure 7(bottom), the distances between the reference data
+and the original image-based point clouds are increasing as
+the depth increases. These comparisons make clear that the
+refraction effect cannot be ignored in such applications. In
+both cases demonstrated in Figure 7(top) and Figure 7(bottom),
+the Gaussian mean of the differences is significant reaching
+0.44 m (RMSE 0.51m) in the Amathouda test site and 2.23m
+(RMSE 2.64m) in the Agia Napa test site. Since these values
+might be considered negligible in some applications, it is
+important to stress that in the Amathouda test site more than
+30% of the compared image-based points present a difference
+of 0.60-1.00m from the LiDAR points, while in Agia Napa,
+the same percentage presents differences of 3.00-6.07m, i.e.
+20% - 41.1% percent of the real depth. Figure 8 presents the
+cloud to cloud distances (M3C2) between the LiDAR point
+cloud and the point clouds resulted from the predicted model
+trained on each dataset. Table 3 presents the results of each
+one of the 13 tests performed with every detail. There, a
+great improvement is observed. More specifically, in Agia
+Napa [I] test site, the initial 2.23m mean distance is reduced
+to -0.10m while in Amathouda, the initial mean distance of
+0.44m is reduced to -0.03m, including outlier points such as
+seagrass that are not captured in the LiDAR point clouds for
+both cases or are caused due to point cloud noise again in
+areas with seagrass or poor texture. It is important also to
+note that the large distances between the clouds observed in
+Figure 7 disappear. This improvement is observed in every
+test performed proving that the proposed methodology based
+on Machine Learning achieves great reduction of the errors
+caused by the refraction in the seabed point clouds. In Figure
+8, it is obvious that the larger differences between the predicted
+and the LiDAR depths are observed in some specific areas, or
+areas with same characteristics. In more detail, the lower-left
+area of Agia Napa Part I test site and the lower-right area of
+Agia Napa Part II test site, have constantly larger error than
+other areas of the same depth. This can be explained by their
+position in the photogrammetric block, since these are areas
+far for from the control points, situated in the shore and they
+are in the outer area of the block. However, it is noticeable
+that these two areas, present smaller deviation from the LiDAR
+point cloud, when the model is trained in Amathouda test site,
+a totally different and shallower test site. Additionally, areas
+with small rock formations are also presenting large differences.
+This is attributed to the different level of detail in these areas
+between the LiDAR point cloud and the image-based one, since
+LiDAR average point spacing is about 1.1m. These small rock
+formations in many cases lead M3C2 to detect larger distances
+in these parts of the site and are responsible for the increased
+Standard Deviation of the M3C2 distances (Table 3).
+4.2.2 Seabed cross sections Several differences observed
+between the image-based point clouds and the LiDAR data that
+are not due to the proposed depth correction approach. Cross
+sections of the seabed were generated with main aim to prove
+the performance of the proposed method, excluding differences
+between the compared point clouds. In Figure 9 the footprint
+of a representative cross section is demonstrated together with
+three parts of the section. These parts highlight the high
+performance of the algorithm and the differences between the
+point clouds, reported above. In more detail, in the first and the
+second part of the section presented, it can be noticed that even
+if the corrected image-based point cloud is almost matching
+the LiDAR one on the left and the right side of the sections,
+in the middle parts, errors are introduced. These are mainly
+caused by coarse errors which though are not related to the
+depth correction approach. However, in the third part of the
+section, it is obvious that even when the depth reaches 14m,
+the corrected image-based point cloud matches the LiDAR one,
+indicating a very high performance of the proposed approach.
+Excluding these differences, the corrected image-based point
+cloud presents deviations of less than 0.05m (0.36% remaining
+error at 14m depth) from the LiDAR point cloud.
+4.2.3 Fitting Score Another measure to evaluate the
+predicted model in cases where a percentage of the dataset has
+been used for training and the rest percentage has been used for
+testing is by computing the coefficient R2 which is the fitting
+score and is defined as</p>
+      <p>R2 = 1</p>
+      <sec id="sec-16-1">
+        <title>P(Ztrue</title>
+      </sec>
+      <sec id="sec-16-2">
+        <title>P(Ztrue</title>
+      </sec>
+      <sec id="sec-16-3">
+        <title>Zpredicted)2</title>
+        <p>Ztrue:mean)2
+(4)
+The best possible score is 1.0 and it can also be negative
+(Pedregosa et al., 2011). Ztrue is the real value of the depth
+of the points not used for training while the Zpredicted is the
+predicted depth for these points, using the model trained on
+the rest of the points. The fitting score is calculated only in
+cases where a percentage of the dataset is used for training.
+Results in Table 3 highlight the robustness of the proposed
+depth correction framework.</p>
+      </sec>
+    </sec>
+    <sec id="sec-17">
+      <title>5. CONCLUSIONS</title>
+      <p>In the proposed approach, based on known depth observations
+from bathymetric LiDAR surveys, an SVR model was
+developed able to estimate with high accuracy the real depths of
+point clouds derived from conventional SfM-MVS procedures.
+Experimental results over two test sites along with the
+performed quantitative validation indicated the high potential
+of the developed approach and the wide field for machine and
+deep learning architectures in bathymetric applications. It is
+proved that the model can be trained on one area and used
+on another one, or indeed on many other, having different
+characteristics and achieving results of very high accuracy. The
+proposed approach can be used also in areas were LiDAR data
+of low density are available, in order to create a denser seabed
+representation. The methodology is independent from the UAV
+system used, also the camera and the flight height and there
+is no need for additional data i.e. camera orientations, camera
+intrinsic etc. for predicting the correct depth of a point cloud.
+This is a very important asset of the proposed method in relation
+to the other state of the art methods used for overcoming
+refraction errors in seabed mapping. The limitations of this
+method are mainly imposed by the SfM-MVS errors in areas
+having texture of low quality (e.g. sand and seagrass areas).
+Limitations are also imposed due to incompatibilities between
+the LiDAR point cloud and the image-based one. Among
+ohers, the different level of detail imposed additional errors
+in the point cloud comparison and compromise the absolute
+accuracy of the method. However, twelve out of thirteen
+different tests (Table 3) proved that the proposed method
+meets and exceeds the accuracy standards generally accepted
+for hydrography established by the International Hydrographic
+Organization (IHO), where in its simplest form, the vertical
+accuracy requirement for shallow water hydrography can be set
+as a total of 25cm (one sigma) from all sources, including
+tides (Guenther et al., 2000).</p>
+    </sec>
+    <sec id="sec-18">
+      <title>ACKNOWLEDGEMENTS</title>
+      <p>Authors would like to acknowledge the Dep. of Land and
+Surveys of Cyprus for providing the LiDAR reference data, and
+the Cyprus Dep. of Antiquities for permitting the flight over the
+Amathouda site and commissioning the flight over Ag. Napa.
+Also, authors would like to thank Dr. Ioannis Papadakis for the
+discussions on the physics of the refraction effect.
+Agrafiotis, P., Georgopoulos, A., 2015. CAMERA
+CONSTANT IN THE CASE OF TWO MEDIA
+PHOTOGRAMMETRY. ISPRS - International Archives of
+the Photogrammetry, Remote Sensing and Spatial Information
+Sciences, XL-5/W5, 1–6.</p>
+      <p>Agrafiotis, P., Skarlatos, D., Forbes, T., Poullis, C.,
+Skamantzari, M., Georgopoulos, A., 2018. UNDERWATER
+PHOTOGRAMMETRY IN VERY SHALLOW WATERS:
+MAIN CHALLENGES AND CAUSTICS EFFECT
+REMOVAL. ISPRS - International Archives of the
+Photogrammetry, Remote Sensing and Spatial Information
+Sciences, XLII-2, 15–22.</p>
+      <p>Chirayath, V., Earle, S.A., 2016. Drones that see through
+waves–preliminary results from airborne fluid lensing for
+centimetre-scale aquatic conservation. Aquatic Conservation:
+Marine and Freshwater Ecosystems, 26, 237–250.</p>
+      <p>Dietrich, J.T., 2017. Bathymetric structure-from-motion:
+extracting shallow stream bathymetry from multi-view stereo
+photogrammetry. Earth Surface Processes and Landforms, 42,
+355–364.
+Fryer, J.G., Kniest, H.T., 1985. Errors in depth determination
+caused by waves in through-water photogrammetry. The
+Photogrammetric Record, 11, 745–753.</p>
+      <p>Guenther, G.C., Cunningham, A.G., LaRocque, P.E., Reid,
+D.J., 2000. Meeting the accuracy challenge in airborne
+bathymetry. Technical report, NATIONAL OCEANIC
+ATMOSPHERIC ADMINISTRATION/NESDIS SILVER
+SPRING MD.</p>
+      <p>Lague, D., Brodu, N., Leroux, J., 2013. Accurate 3D
+comparison of complex topography with terrestrial laser
+scanner: Application to the Rangitikei canyon (NZ). ISPRS
+journal of photogrammetry and remote sensing, 82, 10–26.</p>
+      <p>Menna, F., Agrafiotis, P., Georgopoulos, A., 2018. State of the
+art and applications in archaeological underwater 3D recording
+and mapping. Journal of Cultural Heritage, 33, 231 - 248.
+Misra, A., Vojinovic, Z., Ramakrishnan, B., Luijendijk,
+A., Ranasinghe, R., 2018. Shallow water bathymetry
+mapping using Support Vector Machine (SVM) technique and
+multispectral imagery. International journal of remote sensing,
+39, 4431–4450.</p>
+      <p>Okamoto, A., 1982. Wave influences in two-media
+photogrammetry. Photogrammetric Engineering and Remote
+Sensing, 48, 1487–1499.
+Skarlatos, D., Agrafiotis, P., 2018. A Novel Iterative Water
+Refraction Correction Algorithm for Use in Structure from
+Motion Photogrammetric Pipeline. Journal of Marine Science
+and Engineering, 6, 77.</p>
+      <p>Skinner, K.D., 2011. Evaluation of lidar-acquired bathymetric
+and topographic data accuracy in various hydrogeomorphic
+settings in the deadwood and south fork boise rivers,
+west-central idaho, 2007. Technical report.</p>
+      <p>Smola, A.J. et al., 1996. Regression estimation with
+support vector learning machines. PhD thesis, Masters thesis,
+Technische Universita¨t Mu¨ nchen.</p>
+      <p>Steinbacher, F., Pfennigbauer, M., Aufleger, M., Ullrich,
+A., 2012. High resolution airborne shallow water mapping.
+International Archives of the Photogrammetry, Remote Sensing
+and Spatial Information Sciences, Proceedings of the XXII
+ISPRS Congress, 39, B1.</p>
+      <p>Wang, L., Liu, H., Su, H., Wang, J., 2018. Bathymetry retrieval
+from optical images with spatially distributed support vector
+machines. GIScience &amp; Remote Sensing, 1–15.</p>
+      <p>Westfeld, P., Maas, H.G., Richter, K., Weiß, R., 2017.
+Analysis and correction of ocean wave pattern induced
+systematic coordinate errors in airborne LiDAR bathymetry.
+ISPRS Journal of Photogrammetry and Remote Sensing, 128,
+314–325.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <string-name>
+            <surname>Georgopoulos</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Agrafiotis</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          ,
+          <year>2012</year>
+          .
+          <article-title>Documentation of a submerged monument using improved two media techniques</article-title>
+          .
+          <source>2012 18th International Conference on Virtual Systems and Multimedia</source>
+          ,
+          <volume>173</volume>
+          -
+          <fpage>180</fpage>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

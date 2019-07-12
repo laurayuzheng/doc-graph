@@ -1,0 +1,16 @@
+SVM-Based Sea-Surface Small Target Detection: A
+  False-Alarm-Rate-Controllable Approach
+  In this letter, we consider the varying detection environments to address the
+problem of detecting small targets within sea clutter. We first extract three
+simple yet practically discriminative features from the returned signals in the
+time and frequency domains and then fuse them into a 3-D feature space. Based
+on the constructed space, we then adopt and elegantly modify the support vector
+machine (SVM) to design a learning-based detector that enfolds the false alarm
+rate (FAR). Most importantly, our proposed detector can flexibly control the
+FAR by simply adjusting two introduced parameters, which facilitates to
+regulate detector's sensitivity to the outliers incurred by the sea spikes and
+to fairly evaluate the performance of different detection algorithms.
+Experimental results demonstrate that our proposed detector significantly
+improves the detection probability over several existing classical detectors in
+both low signal to clutter ratio (SCR) (up to 58%) and low FAR (up to 40%)
+cases.

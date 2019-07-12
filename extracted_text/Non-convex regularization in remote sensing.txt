@@ -1,0 +1,15 @@
+A Supervised Geometry-Aware Mapping Approach for Classification of
+  Hyperspectral Images
+  The lack of proper class discrimination among the Hyperspectral (HS) data
+points poses a potential challenge in HS classification. To address this issue,
+this paper proposes an optimal geometry-aware transformation for enhancing the
+classification accuracy. The underlying idea of this method is to obtain a
+linear projection matrix by solving a nonlinear objective function based on the
+intrinsic geometrical structure of the data. The objective function is
+constructed to quantify the discrimination between the points from dissimilar
+classes on the projected data space. Then the obtained projection matrix is
+used to linearly map the data to more discriminative space. The effectiveness
+of the proposed transformation is illustrated with three benchmark real-world
+HS data sets. The experiments reveal that the classification and dimensionality
+reduction methods on the projected discriminative space outperform their
+counterpart in the original space.

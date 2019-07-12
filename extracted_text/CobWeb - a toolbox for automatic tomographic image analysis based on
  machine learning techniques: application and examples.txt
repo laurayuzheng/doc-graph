@@ -1,0 +1,8 @@
+A Data-driven Approach to Detecting Precipitation from Meteorological
+  Sensor Data
+  Precipitation is dependent on a myriad of atmospheric conditions. In this
+paper, we study how certain atmospheric parameters impact the occurrence of
+rainfall. We propose a data-driven, machine-learning based methodology to
+detect precipitation using various meteorological sensor data. Our approach
+achieves a true detection rate of 87.4% and a moderately low false alarm rate
+of 32.2%.

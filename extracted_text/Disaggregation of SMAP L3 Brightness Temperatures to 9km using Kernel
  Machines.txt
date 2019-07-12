@@ -1,0 +1,19 @@
+AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene
+  Classification
+  Aerial scene classification, which aims to automatically label an aerial
+image with a specific semantic category, is a fundamental problem for
+understanding high-resolution remote sensing imagery. In recent years, it has
+become an active task in remote sensing area and numerous algorithms have been
+proposed for this task, including many machine learning and data-driven
+approaches. However, the existing datasets for aerial scene classification like
+UC-Merced dataset and WHU-RS19 are with relatively small sizes, and the results
+on them are already saturated. This largely limits the development of scene
+classification algorithms. This paper describes the Aerial Image Dataset (AID):
+a large-scale dataset for aerial scene classification. The goal of AID is to
+advance the state-of-the-arts in scene classification of remote sensing images.
+For creating AID, we collect and annotate more than ten thousands aerial scene
+images. In addition, a comprehensive review of the existing aerial scene
+classification techniques as well as recent widely-used deep learning methods
+is given. Finally, we provide a performance analysis of typical aerial scene
+classification and deep learning approaches on AID, which can be served as the
+baseline results on this benchmark.

@@ -1,0 +1,9 @@
+Nonlinear unmixing of hyperspectral images: models and algorithms
+  When considering the problem of unmixing hyperspectral images, most of the
+literature in the geoscience and image processing areas relies on the widely
+used linear mixing model (LMM). However, the LMM may be not valid and other
+nonlinear models need to be considered, for instance, when there are
+multi-scattering effects or intimate interactions. Consequently, over the last
+few years, several significant contributions have been proposed to overcome the
+limitations inherent in the LMM. In this paper, we present an overview of
+recent advances in nonlinear unmixing modeling.

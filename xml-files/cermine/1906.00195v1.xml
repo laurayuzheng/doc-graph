@@ -1,0 +1,2427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>A N D S E QU EN C E- TO - S EQU EN C E N ET WO R KS</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Mohammad Pirhooshyaran</string-name>
+          <email>mop216@lehigh.edu</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Lawrence V. Snyder</string-name>
+          <email>lvs2@lehigh.edu</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Industrial &amp; Systems Engineering, Lehigh University</institution>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>This article explores the concepts of ocean wave multivariate multistep forecasting, reconstruction and feature selection. We introduce recurrent neural network frameworks, integrated with Bayesian hyperparameter optimization and Elastic Net methods. We consider both short- and long-term forecasts and reconstruction, for significant wave height and output power of the ocean waves. Sequenceto-sequence neural networks are being developed for the first time to reconstruct the missing characteristics of ocean waves based on information from nearby wave sensors. Our results indicate that the Adam and AMSGrad optimization algorithms are the most robust ones to optimize the sequence-tosequence network. For the case of significant wave height reconstruction, we compare the proposed methods with alternatives on a well-studied dataset. We show the superiority of the proposed methods considering several error metrics. We design a new case study based on measurement stations along the east coast of the United States and investigate the feature selection concept. Comparisons substantiate the benefit of utilizing Elastic Net. Moreover, case study results indicate that when the number of features is considerable, having deeper structures improves the performance.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>Sequence-to-Sequence Deep Networks</kwd>
+        <kwd>Multivariate Multistep Forecasting</kwd>
+        <kwd>Feature Selection</kwd>
+        <kwd>Elastic Net</kwd>
+        <kwd>Spearmint Bayesian optimization</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>M U LTI VA R I AT E, M U LTI S TE P F O RE C AS TI N G , R EC O N ST RU C TI O N
+A ND F EATU R E S E LEC T I ON OF O C EA N</p>
+      <p>WAV ES V I A R EC U R RE N T</p>
+    </sec>
+    <sec id="sec-2">
+      <title>Introduction</title>
+      <p>
+        We propose a model that uses neural networks (NN) to forecast wave characteristics. Most studies that have used NNs
+to forecast or reconstruct wave characteristics use fully connected networks receiving inputs such as significant wave
+height (Hs) and/or average wave period (A) and outputs such as power (P) and/or Hs. Recurrent Neural Networks
+(RNN), which contain natural temporal properties, have been considered in a few cases as well. The majority of these
+cases solely focus on predicting Hs. To the best of our knowledge, no studies have used sequence-to-sequence NNs
+to predict energy flux or reconstruct features. In this paper, we investigate the concept of multi-step-ahead univariate
+(Hs) and multivariate (P) forecasting and feature reconstruction. Our contributions are as follows:
+We introduce two main networks. The first one is a simple combination of Long Short-Term Memory plus
+Fully Connected Layers at the end (LSTM+FCL). The LSTM part can be single- or multi-layered structures.
+The second network is a sequence-to-sequence (seqtoseq) [
+        <xref ref-type="bibr" rid="ref1">1</xref>
+        ] method containing two LSTMs as its encoder
+and decoder.
+      </p>
+      <p>
+        We expand the framework to tackle the problem of reconstructing missing ocean wave data and feature
+selection based on information from their nearby buoys. We perform a detailed comparison between our
+models and the state-of-the-art papers on wave feature reconstruction [
+        <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+        ] and demonstrate that our approach
+outperforms those in the literature in terms of capturing missing Hs information.
+      </p>
+      <p>We modify an epoch-scheduled training scheme that is suitable for time series analysis in general as well as
+an elastic net concept, and we train the models based on these proposed schemes. A comparison between
+single- and multi-layered RNN, LSTM, and seqtoseq methods is conducted.</p>
+      <p>We conduct Spearmint Bayesian optimization (GP-EI) to hypertune the models’ parameters. Throughout the
+paper, we indicate the ith parameters that must be tuned as (*i*).</p>
+      <p>We integrate elastic net concept into the model for the purpose of feature selection.</p>
+      <p>We investigate the performance of four different optimization algorithms—SGD, RMSProp, Adam, and
+AMSGrad—for the seqtoseq network based on years of ocean wave data.</p>
+      <p>We design a new dataset and a case study. The dataset is general and can be used for any feature selection
+and/or multivariate regression purposes. (Datasets are at the repository: NOAA-Refined-Stations)
+The remainder of this paper is structured as follows: In Section 2, we discuss the necessary background on ocean
+waves, and we provide a concise literature review. Then, we introduce the LSTM+FCL and seqtoseq models and
+epoch-schedule training in section 3. Section 4 is dedicated to several comparisons, including long-term forecasts.
+The reconstruction framework is addressed in section 5. In section 6 we discuss about the feature selection with
+Elastic Net technique. The paper concludes in section 7.
+2</p>
+    </sec>
+    <sec id="sec-3">
+      <title>Background and Literature Review</title>
+      <p>
+        Statistical properties of the ocean surface suggest that for a given time and location, ocean waves may be viewed as
+the summation of a considerable amount of independent regular waves caused by wind sources or wave interactions
+[
+        <xref ref-type="bibr" rid="ref4">4</xref>
+        ]. Therefore, the ocean surface can be modeled as a zero-mean Gaussian stochastic process, considering all these
+waves [
+        <xref ref-type="bibr" rid="ref4 ref5">4, 5</xref>
+        ]. Buoys that contain wave-measurement sensors take a large number of samples from this process over
+time, and then, one may recover the spectral wave density S(w), which is the fast Fourier transform of the covariance
+matrix of the sea surface elevation [
+        <xref ref-type="bibr" rid="ref6 ref7 ref8">6–8</xref>
+        ].
+      </p>
+      <p>Once S(w) of a surface wave has been estimated from the measurements collected, the Spectral Density Momentum
+(SDM) of order r is calculated as:</p>
+      <p>SDM(r) =</p>
+      <p>Z 1
+0</p>
+      <p>wrS(w)dw:
+P = 64
+g2 Z 1 S(w)
+0
+w
+dw =</p>
+      <p>g2
+64
+(Hs)2A;
+P is then calculated as follows:
+By definition, we have Hs = 4 R01 S(w)dw = 4SDM(0) 12 and Average wave period A = SSDDMM((01)) . The energy flux
+(1)
+(2)
+where is the ocean density, and g is the gravity constant.</p>
+      <p>The rest of this section contains three subsections. First, we provide a concise review of the literature about forecasting
+ocean wave characteristics. Second, we explore the novel work on oceanic wave feature reconstruction. Third, we
+discuss seqtoseq models from a machine learning point of view.
+2.1</p>
+      <sec id="sec-3-1">
+        <title>Ocean Characteristic Forecasting</title>
+        <p>
+          Wave forecasting models can be categorized into model-based and model-free frameworks. Model-based approaches
+aim to use physical concepts such as climatic pressure, frictional dissipation and environmental interactions to find
+precise equations mimicking the behavior of wind waves. These methods are further classified based on their efforts
+to explicitly parameterize ocean wave interactions [
+          <xref ref-type="bibr" rid="ref9">9</xref>
+          ] into first, second and third generations. First-generation models
+try to construct the spectral wave structure solely based on the linear wave interactions. These models overestimate
+the power generated by water because of linear simplification and instead ignore any nonlinear transfer [
+          <xref ref-type="bibr" rid="ref10">10</xref>
+          ].
+Secondgeneration models such as JONSWAP [
+          <xref ref-type="bibr" rid="ref11">11</xref>
+          ] examine coupled discrete spectral structures in such a way that the wave
+nonlinearities can be parameterized [
+          <xref ref-type="bibr" rid="ref12">12</xref>
+          ]. The most mature models are third-generation wave models such as WAM
+and simulating waves nearshore (SWAN) [
+          <xref ref-type="bibr" rid="ref13">13</xref>
+          ], which consider all possible generation, dissipation and nonlinear
+wavewave interactions [
+          <xref ref-type="bibr" rid="ref10">10</xref>
+          ] along with current–wave interactions [
+          <xref ref-type="bibr" rid="ref9">9</xref>
+          ].
+        </p>
+        <p>
+          In contrast, data-driven, model-free approaches have become more popular recently with the advent of ML techniques.
+Fuzzy Systems (FS) [
+          <xref ref-type="bibr" rid="ref14 ref15 ref16">14–16</xref>
+          ], Evolutionary Algorithms (EA) [
+          <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+          ], Support Vector Machines (SVM) [
+          <xref ref-type="bibr" rid="ref17">17</xref>
+          ], and Deep
+Neural Networks [
+          <xref ref-type="bibr" rid="ref18 ref19 ref20">18–20</xref>
+          ] are so-called “soft computing techniques,” which focus on the data structure in order to
+investigate possible relations and dependencies to forecast uncertain future events. Neural Networks are among the
+most powerful tools to approximate almost any nonlinear and complex functional relation. Recurrent Neural Networks
+(RNNs), a subclass of Neural Networks, exploit their internal memories to express temporal dynamic behavior, which
+makes them a suitable framework for forecasting complex systems. [
+          <xref ref-type="bibr" rid="ref21">21</xref>
+          ] explore the efficacy of several ML methods
+in terms of their accuracy in forecasting the significant wave height.
+        </p>
+        <p>
+          The general goal of any forecasting method is to find an accurate short- or long-term forecast of the variable under
+study. (See [
+          <xref ref-type="bibr" rid="ref22 ref23">22, 23</xref>
+          ] for new forecasting studies.) However, there exist ML approaches particularly designed for
+forecasting of wave characteristics. For more thorough discussion of the literature on ocean power and significant
+wave height forecasting one may refer to past reviews [
+          <xref ref-type="bibr" rid="ref24 ref25 ref26 ref27 ref28 ref29">24–30</xref>
+          ]. [
+          <xref ref-type="bibr" rid="ref30">31</xref>
+          ] implements a Nonlinear Autoregressive (NAR)
+neural network to forecast exponentially smoothed ocean wave power using Irish Marine Institute data. A Minimal
+Resource Allocation Network (MRAN) and a Growing and Pruning Radial Basis Function (GAP-RBF) network are
+implemented and tested on three geographical locations by [
+          <xref ref-type="bibr" rid="ref20">20</xref>
+          ]. The significance of a node in the GAP-RBF network
+is measured as its contribution to the network output, and the node is added or pruned accordingly. Cascade-forward
+and feed-forward neural networks are implemented in [
+          <xref ref-type="bibr" rid="ref31">32</xref>
+          ] to predict the wave power itself in the absence of spectral
+wave data. An ensemble of Extreme Learning Machines (ELM) is presented in [
+          <xref ref-type="bibr" rid="ref32">33</xref>
+          ] to predict the daily wave height.
+The authors use the previous hours’ of wave heights along with features such as air to sea temperature difference,
+atmospheric pressure, wind speed to predict the next 6-hour wave height. Two computationally efficient supervised
+ML approaches are introduced by [
+          <xref ref-type="bibr" rid="ref33">34</xref>
+          ] and compared with the SWAN model [
+          <xref ref-type="bibr" rid="ref34">35</xref>
+          ]. An integrated numerical and ANN
+approach is introduced by [
+          <xref ref-type="bibr" rid="ref35">36</xref>
+          ] to predict waves 24 hours in advance at different buoys along the Indian Coastline.
+Nonlinear and non-stationary Hss are studied in [
+          <xref ref-type="bibr" rid="ref36">37</xref>
+          ] based on integrated Empirical Model Decomposition Support
+Vector Regression (EMD-SVR). Forecasting of extreme events such as hurricanes is examined by Dixit et al. [
+          <xref ref-type="bibr" rid="ref37">38</xref>
+          ]
+via a Neuro Wavelet Technique (NWT). A recent work [
+          <xref ref-type="bibr" rid="ref38">39</xref>
+          ] aims at predicting Hs 48 hours into the future utilizing
+a hybrid model combining neural network with wavelets (WLNN). As mentioned before non of these work take into
+consideration sequence-to-sequence networks to investigate its short to long term forecasting performance yet alone
+its combination with Spearmint Bayesian optimization and elastic net technique.
+2.2
+        </p>
+      </sec>
+      <sec id="sec-3-2">
+        <title>Reconstruction of Ocean Characteristics</title>
+        <p>In contrast to forecasting frameworks, in which the goal is typically to estimate wave features such as Hs and P in
+the future based on historical data, reconstruction models aim to use available information about wave features to
+reconstruct Hs, P, or other (usually missing) features. Here, the assumption is that the model has access to up-to-date
+measurements of the wave features, except for the one(s) they want to reconstruct. This is commonly due to missing
+measurement data. Therefore, the prediction continues one step ahead (or a few steps ahead) into the future. Hence,
+the aim is to tackle the problem of extracting the ocean wave information of a location purely based on other available
+features. The framework is useful for estimating the missing data of a station using the knowledge obtained from its
+neighbors but any available information of the same station can be utilized as well.</p>
+        <p>
+          The paper [
+          <xref ref-type="bibr" rid="ref2">2</xref>
+          ] and its subsequent improvement [
+          <xref ref-type="bibr" rid="ref3">3</xref>
+          ] are dedicated to reconstructing ocean waves based on Evolutionary
+Algorithms (EA). The authors address the problem primarily via a Grouping Genetic Algorithm (GGA) and Bayesian
+optimization Grouping Genetic Algorithm (BO-GGA). They utilize GGA and/or BO-GGA to select the wave features
+of nearby stations suitable to predict the desired wave feature of the location with missing data, and then obtain their
+predictions via simple ELM or SVM. The paper reconstructs the significant wave height of the NOAA buoy 46069 for
+the year 2010 solely based upon the information provided from two adjacent buoys.
+2.3
+        </p>
+      </sec>
+      <sec id="sec-3-3">
+        <title>Sequence-to-Sequence Neural Networks</title>
+        <p>
+          Deep Neural Networks (DNN) are among the most successful tools for classification and regression. DNNs achieve
+state-of-the-art performance in many applications. Although a simple feed-forward DNN can be applied in many
+systems, they require the system to have fixed input and output size. Recurrent Neural Networks such as
+Long-ShortTerm Memory (LSTM) networks tackle this limitation in the sense that they do not need a fixed input size [
+          <xref ref-type="bibr" rid="ref39">40</xref>
+          ].
+LSTMs can observe an input sequence of arbitrary size sequentially (one time step at a time) to provide the rest of
+the network with a large, fixed-sized vector representing the input [
+          <xref ref-type="bibr" rid="ref40 ref41">41, 42</xref>
+          ]. Furthermore, LSTMs remember
+longrange feature propagation based on a sigmoid layer called “forget gate.” Seqtoseq models use two separate recurrent
+structures. They vary from basic recurrent networks in the sense that the network fully reads the input sequences
+before it generates any outputs. The first network is usually an LSTM which reads (encodes) the input of any size
+and maps them to a fixed-sized output. The second structure generally receives the fixed-sized output vector of the
+first LSTM and maps (decodes) them to a desirable output space [
+          <xref ref-type="bibr" rid="ref1">1</xref>
+          ]. Having encoding and decoding as separate steps
+gives the model flexibility and stability when handling complex sequence structures [
+          <xref ref-type="bibr" rid="ref42">43</xref>
+          ].
+        </p>
+        <p>
+          An important technique for training recurrent networks is Teacher Forcing (TF), which forces the network to observe
+the previous ground truth output instead of the one it already predicted. In other words, TF, keeping the network
+complex structure, converts any long-term prediction structures to one-step-ahead forecasts. This can greatly increase
+the network’s ability to learn, thereby reducing its learning time [
+          <xref ref-type="bibr" rid="ref43 ref44">44, 45</xref>
+          ]. On the other hand, one can argue that the
+new model is not solving the same problem anymore. Therefore, there often exists a large gap between the testing
+error and training error for the models trained by TF; that is, the model encounters a major overfitting problem. Hence,
+[
+          <xref ref-type="bibr" rid="ref45">46</xref>
+          ] introduces a modification of scheduled training that captures the benefit TF while avoiding overfitting. Scheduled
+training is a soft technique. That is, it starts with a TF scheme and, after the model passes the warm-up stage and the
+network’s weights have gone in the correct update direction, it alters the original network with a specified scheme.
+Therefore, the model enjoys stability and the probability of overfitting decreases. In our work, we revisit scheduled
+training and introduce epoch-scheduled training for forecasting.
+3
+3.1
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>The Models</title>
+      <sec id="sec-4-1">
+        <title>Overview</title>
+        <p>
+          In this section, we discuss the proposed models. We denote an input sequence to the model as (x1; ; xT ) and its
+output sequence as (y1; ; yT 0 ), where T and T 0 need not be equal. In the case of predicting P, we have xt = [Hst ; At]
+and yt0 = [Pt0 ]. The purpose of the models is to calculate the conditional distribution p(y1; ; yT 0 jx1; ; xT ).
+T 0 indicates how far into the future the forecast should go. For example, for hourly-resolution data, if the model is a
+day-ahead energy flux forecast, then T 0 = 24. T , on the other hand, is a model parameter and must to be tuned (*1*).1
+T can be interpreted as the number of recurrent loops in the structure. Seqtoseq structures contain two independent
+recurrent networks: encoder and decoder. We use the LSTM network as an encoder, consisting of input i, cell state s,
+output o and forget f gates (nodes) [
+          <xref ref-type="bibr" rid="ref46">47</xref>
+          ]. The standard LSTM equations [
+          <xref ref-type="bibr" rid="ref39 ref40">40, 41</xref>
+          ] for time-step t are as follows :
+ft = sigm (Wfxxt + Wfhht 1)
+it = sigm (Wixxt + Wihht 1)
+ot = sigm (Woxxt + Wohht 1)
+s~t = tanh (Ws~xxt + Ws~hht 1)
+st = ft
+ht = ot
+st 1 + it
+tanh(st);
+s~t
+(3)
+(4)
+(5)
+(6)
+(7)
+(8)
+where xt 2 Rd, ht 2 Rh, ft 2 Rh, it 2 Rh, ot 2 Rh, st 2 Rh and s~t 2 Rh for all t = 1; ::; T are the input, hidden
+state, forget activation, input activation, output activation, cell state and auxiliary cell state vectors, respectively, for the
+LSTM network. Wij is the weight matrices corresponding to the dimensions of the gate vectors i and j. The sigmoid
+1
+function is given by sigm(x) = 1+e( x) ; 8x 2 R; its return value is monotonically increasing in the open interval
+(0; 1). The notation indicates element-wise (Hadamard) matrix product, which exists only if the matrix dimensions
+are the same.
+        </p>
+        <p>The weight matrices can be initialized randomly with Gaussian distribution. Further, h0 and s0 are initialized by zero
+vectors. In energy flux forecasting, d = 2, and h refers to the hidden vector size, which needs to be tuned (*2*). The
+biases are omitted in the formulas because one may incorporate them easily through the weight matrices by adding
+one extra element to each vector mentioned.</p>
+        <p>1Recall that we use *i* to denote the ith tunable parameter.
+A forget gate responds to the question, “which data should the model keep from the previous cell state vector?” In
+(3), the sigmoid function outputs a number between 0 and 1, which indicates the importance of the previous plus
+current inputs. This value is directly multiplied with the cell state vector of the previous cell state in the first term of
+(6). The input gate (4) decides which new information should be collected. The second term of (6) updates this new
+information. The updated cell state vector is ready to go through the next part of the network. Furthermore, the hidden
+state is merged into the cell state through (8).</p>
+        <p>The purpose of the encoder is to find a representation of the (x1; ; xT ) sequence as a fixed-sized vector v. For the
+”LSTM+FCL” network, we create a single fully connected layer that receives a fixed-sized vector v as its input and
+outputs yt0 = [Pt0 ].</p>
+        <p>For the seqtoseq network, we have another recurrent network as the decoder. The decoder considers vector v as its
+input and the last encoder hidden state (hT ) as its initial hidden state ht0=0 and runs a similar recurrent construction
+to decode the output sequence. We omit the equations, as they are similar to those above. Furthermore, we let the
+decoder update its weight parameters independently. In other words, the encoder and decoder do not share parameters.
+This doubles the number of parameters to be tuned and multiplies the training time by a constant, but we allow this in
+the hope of achieving better performance. The decoder operates a static recurrent structure rather than a dynamic one.
+That is, the decoder creates an unrolled computational graph of fixed length due to the fixed-sized input vector v. In
+addition, both encoder and decoder can be deep structures. That is, the number of stacked LSTM layers (*3*) for each
+of them can vary.</p>
+        <p>The seqtoseq model attempts to find the output sequence distribution as follows:
+p(y1;
+; yT0 jx1;
+; xT ; W ) = p(y1;
+; yT0 jv; W )</p>
+        <p>
+          T 0
+t0=1
+= p(y1jv; W ) Y p(yt0+1jv; L (y1;
+; yt0 ) ; W );
+(9)
+(10)
+where W represents all the model weights to be tuned and L is a binary indicator representing whether the model
+sees the actual previous measurements or their predictions. The first equality (9) relies on the encoder and emphasizes
+once again that the model encodes the whole input (x1; ; xT ) into the vector v before starting to decode and drops
+the input thereafter. The concept of multiplying conditional probabilities in the second equality (10) comes from
+the recurrent structure of the decoder. In other words, based on the trained weights and the vector v, the model
+tries to forecast the first token (element) of the output sequence. In general, at time step t0 + 1, the model has
+access to L (y1; ; yt0 ) of the output sequence. In the TF strategy [
+          <xref ref-type="bibr" rid="ref43 ref44">44, 45</xref>
+          ], the model has access to the actual true
+outputs at training time (i.e., L (y1; ; yt0 ) = (y1; ; yt0 )) and then to the predicted ones (i.e. L (y1; ; yt0 ) =
+(y^1; ; y^t0 )) at testing time. In the scheduled strategy, however, one may flip a coin [
+          <xref ref-type="bibr" rid="ref45">46</xref>
+          ] with probability 0t for all
+t0 = 1; ; T 0 1 to decide whether to use the actual output (with probability 0t) or its prediction by the model
+itself (with probability 1 0t). For instance, the probability of having all true outputs (y1; ; yt0 ) during training
+is 1 2 T 0 . This scheme has been introduced for Machine Translation (MT) tasks, where the number of possible
+output tokens is as large as the dictionary size. Furthermore, in the MT framework the model faces embedded input
+and sequence. In contrast, in a forecasting framework, each output token belongs to R. Therefore, using t0 for each
+token t0 may result in a combination of true outputs along with predicted ones, which is not particularly useful. Instead,
+we flip a coin at the beginning of each epoch and stick to the plan for the entire epoch. So, from now on we denote the
+sequence as f epg, where ep is the training epoch number. Intuitively, the sequence f epg should be decreasing, which
+encourages the model to use the predicted output towards the end of the training. [
+          <xref ref-type="bibr" rid="ref45">46</xref>
+          ] introduces Linear, Exponential
+and Inverse Sigmoid Decay sequences. We modify the Inverse Sigmoid Decay to use for epoch-scheduled training as
+follows:
+k
+ep = k + e(ep=k)
+;
+where k is a parameter to tune (*4*). Increasing k increase the probability of receiving true values. For example, for a
+training scheme of size 20 epochs, k = 20 means that we receive the true outputs with at least 0.86 probability. Hence,
+in the tuning process, we compare the magnitude of k with the number of epochs.2 Figure 1 illustrates a schematic
+of the epoch-scheduled training sequence to sequence network. An expanded view of a single LSTM cell structure is
+presented in Figure 2, with details and equations (3)-(8) marked in the figure. Hidden and state cells propagate through
+the encoder and decoder networks. In Figure 1, ep expresses the probability that a given decoder cell sees the actual
+outputs, where ep index iterates over all epochs.
+        </p>
+        <p>
+          2However, we manually force the model to use the predicted values for the last two epochs.
+We use Mean Squared Error (MSE) plus a 2-norm regularizer as the loss function for the whole network:
+n
+MSE = 1 X yi y^i 2 ;
+n
+(11)
+where n is the size of the measurements and y^i is a vector of size T 0 representing the model’s prediction of yi, which
+is the actual power outputs. The data, however, is chopped up and fed via mini batches, the size of which is tunable
+(*5*) as a power of 2, which is a common practice in optimization algorithms. Regardless of the algorithm used, MSE
+is clearly convex with respect to y^i. But we do not have direct control over y^i. Instead, y^i = N (xi; W ) where N is
+the seqtoseq network structure and xi is the i-th network input. The loss function is generally non-convex with respect
+to W , which justifies our use of a 2-norm regularizer [
+          <xref ref-type="bibr" rid="ref47 ref48">48, 49</xref>
+          ]. Hence, a term kwk22 is added to the loss function,
+where w is a vector that stacks all the trainable parameters within the weight matrices and (*6*) is a regularization
+parameter to be tuned. Therefore, the loss function equals
+        </p>
+        <p>n
+fw(x) = 1 X yi N (xi; w) 2 + kwk22:
+n</p>
+        <p>
+          i=1
+Through backpropagation, we calculate the gradient of the loss function and update the weights via a first-order
+optimization algorithm. Stochastic Gradient Descent (SGD) directly updates w in the direction of the negative of the
+mini-batches’ gradient in an iterative manner. That is, if bi is the ith mini-batch, then we have
+wi+1 := wi
+1 X yi
+jbij bi
+irwfw(x);
+N (xi; w) 2
++
+kwk22
+where
+and i is the learning rate (*7*) at step i, which needs to be tuned. There exist several modifications of SGD, such
+as RMSProp. Adaptive moment estimation (Adam) [
+          <xref ref-type="bibr" rid="ref49">50</xref>
+          ] has been successfully implemented as another first-order
+method. In Adam, the model’s weight is updated as follows:
+        </p>
+        <p>
+          1 and 2 are momentum-like parameters, and serves to reduce numerical issues. Adam aims to update each element
+of w with respect to its size (adaptively); it stores only an exponentially decaying average of past squared gradients.
+The authors of [
+          <xref ref-type="bibr" rid="ref49">50</xref>
+          ] propose 1 = 0:9, 2 = 0:99, and = 1e 8 to be efficient. In some cases, such as machine
+translation, in which we are dealing with RNN structures, similar to our forecasting context, Adam suffers from using
+exponential averaging over the past squared gradients [
+          <xref ref-type="bibr" rid="ref50">51</xref>
+          ]. AMSGrad has been proposed to tackle this issue by simply
+using the maximum of the past squared gradients. In other words, we update v^i = maxfv^i 1; vig. Below, we first
+compare the efficiency of the SGD, RMSProp, Adam, and AMSGrad algorithms, and then optimize the energy flux
+forecasting model mostly with Adam and AMSGrad.
+Satellite altimeters and buoy measurements are the two most common sources of data for wave feature forecasting
+[
+          <xref ref-type="bibr" rid="ref51">52</xref>
+          ]. In this study, we primarily use buoy measurements from the National Oceanic and Atmospheric Administration
+(NOAA). Each buoy provides measurements of significant wave height, wind speed, wind direction, average wave
+period (A), sea level pressure, gust speed, air temperature, and sea surface temperature, at resolutions of 10 minutes to
+1 hour.
+        </p>
+        <p>The National Data Buoy Center (NDBC) maintains three major data sets, consisting of moored buoys, drifting buoys,
+and Coastal-Marine Automated Network (C-MAN) stations, which are located alongside U.S. coastal structures.
+Along with other air and water features, they monitor wave energy spectra, from which Hs and A can be obtained via
+equation (1). Each site has an identifier (ID). IDs are in the form of five digits, except for C-MAN stations, which
+have alphanumeric IDs. The first two digits are assigned to a continental region, and the last three indicate a
+specific location. For instance 41001, 41002 and 41004 are Atlantic Ocean sites near the southeastern U.S. The sites
+typically have hourly resolution, which produces 8760 Hs and A data points per year. The data sets use 99.00 to
+indicate missing measurements. Some sites, however, aimed to report 10-minute-resolution data in 2017. For instance,
+among the above-mentioned stations, 41002 continues to provide hourly data, while 41001 and 41004 try to provide
+10-minute-resolution data, but for the most part, their data is still hourly, with the non-hourly values filled by 99.00.
+Quite a few refined stations have been collected for this study. We consider a buoy to be a “refined station” when it is
+active and has a year with at least 1000 meaningful data points (approximately 11.4%). We calculate energy flux P
+via equation (2) for the datasets that remain after this process. Table 1 displays the buoys investigated in this research,
+along with some information about them. The locations are chosen from nearshore South Pacific Ocean, the Gulf of
+Mexico, and the North Atlantic Ocean, where the water depths range from approximately 100 m to 5 km. We divided
+the data into 3 parts: 60% for training, 20% for hyperparameter tuning and 20% for testing unless we are comparing
+with alternative approaches and they used another division. The model has no access to the testing data in any manner.
+Table 1 indicates the training and testing data sizes as well. The validation (tuning) is similar to testing hence we did
+not show that.</p>
+        <p>
+          We argue that some of the studies in the literature are insufficient from a data point of view in two broad senses.
+First, for papers that use real buoy measurements, there is usually extensive data manipulation and preprocessing.
+Sometimes the proposed models see only subsamples of measurements in order to produce smaller forecasting metric
+errors. For example, [
+          <xref ref-type="bibr" rid="ref52 ref53">53, 54</xref>
+          ] choose subsample of 50 daily points out of 8 months of data (Jan 1–Aug 30, 2015) and
+report Root Mean Squared Error (RMSE) as an error measurement metric. Not only is this metric scale-dependent and
+can be changed by shrinking the data size, but this selection of points can break the temporal notion of the data as well.
+Therefore it has a direct effect on the nonlinear functional relation that we aim to predict. Moreover, [
+          <xref ref-type="bibr" rid="ref30">31</xref>
+          ] produce the
+data using the power matrix method. Hence, the accuracy of the method heavily depends on the accuracy of the
+dataproducing procedure. In our study, after selecting a buoy, we do not conduct any data manipulation or preprocessing,
+other than cleaning not-a-number (NaN) values from the NOAA data. Otherwise, the input to the model is the raw data
+collected from NOAA. (See https://www.ndbc.noaa.gov/wave.shtml to see how spectral wave data are derived
+from buoy motion measurements.)
+Root Mean Square Error (RMSE) is one of the most commonly used regression error metrics. It equals the
+square root of the MSE, given in (11), and it provides an useful measure of forecasting quality. The closer
+the RMSE gets to 0, the better the fit the prediction gives. In general, it is difficult to choose an appropriate
+threshold such that the prediction is deemed “accurate” if the RMSE is less than that threshold, because
+because the RMSE is scale dependent and not robust to outliers.
+        </p>
+        <p>HUBER loss, given two sets of points y and y^, is defined as</p>
+        <p>n
+1 X
+H = n L</p>
+        <p>yi; y^i ;
+i=1
+where</p>
+        <p>L yi; y^i = 12j(yyii y^y^iij)2 12 2 foothrejyrwiisey^.ij (18)
+Generally, = 1 is an acceptable threshold. HUBER loss is scale dependent but is less sensitive to outliers
+than RMSE is.</p>
+        <p>Pearson Correlation Coefficient (CC) is defined as:
+y;y^ =
+cov(y; y^)
+y y^</p>
+        <p>;
+i=1
+where cov( ) is covariance. We have 1 CC 1. Although CC captures linear similarities of its inputs
+very well, several characteristics of nonlinear relations are ignored.</p>
+        <p>
+          Mean Arctangent Absolute Percentage Error (MAAPE), given two sets of points y and y^, is defined as:
+n1 Xn arct j yi yi y^i j :
+MAAPE is scale-independent and, unlike MAPE, overcomes problematic cases as yi goes to zero for all
+i = 1; ; n.
+(17)
+(19)
+(20)
+In previous sections we identified tunable parameters ( i ), i = 1; 2; :::; 7. Here, we use Spearmint Bayesian
+optimization [
+          <xref ref-type="bibr" rid="ref54">55</xref>
+          ] as a tuning tool. The algorithm is capable of handling integer parameters, as in our case [
+          <xref ref-type="bibr" rid="ref55">56</xref>
+          ]. The algorithm
+treats the seqtoseq forecasting model as a random black box function and places a Gaussian Process (GP) prior over
+it. After collecting function evaluations, it extracts posterior information based on the Expected Improvement (EI)
+observed. Hence, GP-EI-OptChooser with Monte Carlo approximation is selected, which tells Spearmint which of the
+candidates to execute next. The values of each parameter that we consider are listed in Table 3.5.
+Spearmint only has access to the validation dataset and the model that has already been trained on the training dataset.
+Any hyperparameter tuning algorithm such as Spearmint can have its own objective function. That is, Spearmint’s
+objective function during validation can be separate from the seqtoseq model’s during training (which, recall, is MSE
+plus a 2-norm regularizer). That is, the model enjoys (MSE plus 2-norm regularization) convergence properties in
+training while enjoys using MAAPE scale independency and upper bound ( =2) during the tuning process. Figure 3
+illustrates the process of using Spearmint for hyperparameter tuning. We call the number of function evaluations as
+the “algorithm budget.”
+4
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>Experimental Results</title>
+      <p>In this section, we first report on the model’s performance utilizing several optimization algorithms and compare them
+to those of standard Neural Networks on buoy measurements. Next, we demonstrate the performance of our model for
+long-term forecasting (48 steps ahead) of Hs. Finally, we tackle the problem of constructing wave characteristics such
+as Hs for unknown locations based on information from known locations. We wrote the code for our method and its
+alternatives in Python 3.6 using the TensorFlow package (running on a GeForce 1050 GTX GPU), except the code for
+hyperparameter tuning via Spearmint, whose most stable version for our framework is written in Python 2.7.
+4.1</p>
+      <sec id="sec-5-1">
+        <title>Comparison of Optimization Algorithms</title>
+        <p>
+          In this section, we aim to compare the effectiveness of the SGD, RMSProp, Adam, and AMSGrad optimization
+schemes based on test error for four of the refined buoys. Figure 4 displays the algorithm test errors versus the number
+of training epochs, considering all five error metrics introduced earlier. For the cases of RMSE and HUBER losses, the
+values on the y-axis do not carry a clear meaning. In other words, we only hope to reach the smallest possible values
+for these two loss functions, but the actual values do not tell us much. One can observe that, even at the end of the
+training epochs, RMSE and HUBER losses are not negligible. Note that the error we experience during the calculation
+of P is of the third power of the error we encounter forecasting Hs. A similar difference has been pointed out by [
+          <xref ref-type="bibr" rid="ref3">3</xref>
+          ].
+Moreover, RMSE and HUBER are both scale-dependent, and the test sets include years of data, which may result in
+errors piling up over time. In contrast, MAPE and MAAPE are scale independent, and therefore their values have more
+intuitive meaning. In addition, their behavior is similar to each other, considering that MAAPE values are consistently
+lower than those of MAPE. Therefore, we mainly focus on MAPE and MAAPE for subsequent experiments. SGD
+and, in a few cases, AMSGrad require more epochs to reach their best test accuracy, while Adam usually reaches its
+peak faster. RMSProp and Adam perform similarly, with Adam experiencing a marginal lead. AMSGrad and Adam
+exhibit excellent performance in terms of RMSE error. We used a learning rate of = 0:001 with a decay of 0:9 for
+all the algorithms. This is to make the algorithms more stable; otherwise, having a fixed learning rate would cause
+most algorithms, especially SGD, to encounter drastic changes towards the end of the optimization process. HUBER
+losses are the most challenging loss functions to deal with. One can see sizable fluctuations, even near the end of the
+training, for stations 41049 and 32012. SGD shows inferiority in terms of test error; however, based on its simple
+update, it enjoys the best results in terms of time needed for training the algorithms. SGD is especially sensitive with
+respect to its parameters. Adam, however, expresses stability and is among the first algorithms to converge to its best
+result (usually within its first 10 training epochs). Although RMSProp performs particularly well for station 42056,
+Data
+        </p>
+        <p>Train</p>
+        <sec id="sec-5-1-1">
+          <title>Validation</title>
+        </sec>
+        <sec id="sec-5-1-2">
+          <title>Test</title>
+        </sec>
+        <sec id="sec-5-1-3">
+          <title>Define the black-box function f(x)</title>
+          <p>Define input parameters and their feasible intervals
+Define number of function evaluations (budget)</p>
+          <p>Gaussian Process (GP):
+For (x; y) observation, assume y N (f(x); ) where is the noise variance</p>
+        </sec>
+        <sec id="sec-5-1-4">
+          <title>Initialize input parameters</title>
+        </sec>
+        <sec id="sec-5-1-5">
+          <title>Train the network</title>
+          <p>(loss: MSE+L2)
+Yes</p>
+        </sec>
+        <sec id="sec-5-1-6">
+          <title>Budget Left?</title>
+          <p>No</p>
+        </sec>
+        <sec id="sec-5-1-7">
+          <title>Store the best parameters</title>
+        </sec>
+        <sec id="sec-5-1-8">
+          <title>Find the prediction</title>
+        </sec>
+        <sec id="sec-5-1-9">
+          <title>Find the black-box</title>
+          <p>function output
+(loss: MAAPE)
+Expected Improvement (EI):
+Find the next best feasible point</p>
+        </sec>
+        <sec id="sec-5-1-10">
+          <title>Find the best prediction</title>
+        </sec>
+        <sec id="sec-5-1-11">
+          <title>Report the error metrics</title>
+          <p>there are cases where the algorithm cannot reach the desired test error. Based on these results, from now on we use
+either Adam or AMSGrad as the optimizer.
+4.2</p>
+        </sec>
+      </sec>
+      <sec id="sec-5-2">
+        <title>Networks Comparison</title>
+        <p>In this section, we conduct an experiment to evaluate the performance of different neural network structures on the
+performance of the algorithm. We compare Single (Multi) layered RNN, Single (Multi) layered LSTM and
+epochscheduled seqtoseq model with Adam and AMSGrad optimization algorithms. RNN and LSTM networks contain a
+fully connected last layer. We consider seqtoseq model with both Adam and AMSGrad optimization algorithms.</p>
+        <p>To evaluate the networks fairly, during hyperparameter tuning we used the same budget in Spearmint for each network.
+We set this budget equal to 100 function evaluations. One may argue that this experimental design might favor the
+alternate networks. Because they have many fewer hyperparameters to tune but for seqtoseq framework Spearmint
+deals with a more complex function to extract information from, having the same number of function evaluations.
+0
+1
+0
+3
+0
+3
+0
+2
+0
+1
+0
+3
+0
+1
+0
+3
+0
+2
+0
+1
+0
+2
+0
+1
+0
+3
+0
+2
+0
+1
+0
+3
+0
+2
+0
+2
+C
+C
+R
+E
+B
+A
+M
+E
+P
+A</p>
+        <p>0 0 0
+.5 .4 .3 .2 .5 .4 .3 .5 .4 .3 .2 .4 .3 .2
+0 0 0 0 0 0 0 0 0 0 0 0 0 0</p>
+        <p>0 0 0
+.5 .4 .3 .2 .8 .6 .4 .6 .5 .4 .3 .2 .4 .3 .2
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+E
+P
+A
+M
+R
+E
+S
+0
+2
+0
+2
+0
+3
+0
+1
+0
+3
+9
+:
+0
+=
+1
+:
+d
+a
+r
+Multi-layered networks consist of four layers. The first three layers are recurrent of structure [time steps, time steps,
+hidden size] with REctified Linear Unit (RELU) activation functions and the last layer is a fully connected one
+attaching the previous output to a layer of the last node. Training process has done with the budget of at most 15 epochs.
+In other words, if a structure reaches its best performance anywhere before 15th epoch, that would be collected. The
+best parameters for epoch-scheduled seqtoseq are [64; 10; 16; 0:001; 1; 0:001; 0:4 epochs] in same order as shown in
+table 3.5.</p>
+        <p>From Table 3, one can see that seqtoseq networks result in smaller MAPE and MAAPE values, but single-layered
+LSTM plus a fully connected last layer also performs very well. We believe a fully connected last layer assists LSTM
+and simple RNN networks in capturing all learned features and translating them into superior forecasting. In addition,
+Multi layered structures are not superior to single layered ones. This happens in the Spearmint tuning process as well.
+Spearmint mostly prefers single or double layer structures for energy flux forecasting of any structures. Hence, when
+we force the stacked layers to be four, we can see a tiny reduction in the performance of the models. Moreover, Adam
+and AMSGrad perform closely to each other, and one cannot claim the superiority of any.
+In Table 4, we can observe that when we move from 5- to 10-step-ahead forecasting, epoch-scheduled seqtoseq fits
+the actual outputs even more accurately. For instance, at station 41048, seqtoseq provides a (0:308 0:217)=0:217 =
+41:9% improvement over the best alternative method in terms of MAPE for 5-step-ahead forecasting, whereas for
+10-step-ahead the improvement is (0:459 0:299)=0:299 = 53:5%. Similarly, for MAAPE, the 5- and 10-step
+improvements are (0:259 0:205)=0:205) = 26:3% and (0:333 0:278)=0:278 = 33:2%, respectively. These extra
+improvements may be a direct result of scheduled training managing deeper forecasting horizons.</p>
+      </sec>
+      <sec id="sec-5-3">
+        <title>Long-Term Forecasting</title>
+        <p>
+          Next, we investigate 2-day-ahead forecasting of Hs. As noted by [
+          <xref ref-type="bibr" rid="ref37">38</xref>
+          ], 2 days can be considered an acceptable range
+for long-term forecasting of Hs. Table 5 presents 48-step-ahead test error comparison over 5 refined buoys for Hs
+forecasting using the seqtoseq model.
+        </p>
+        <p>Note the large gap between RMSE and HUBER losses that the model experiences when it predicts energy flux
+compared to significant wave height. The reason is the difference in the value range of output power and significant wave
+height. P is on the order of 10 kW/m, while Hs is usually on the order of 1 m. Hence, we focus on MAAPE. The
+results indicate that the model is robust for long-term prediction. The values presented in Table 5 are comparable to
+those for 5- and 10-step-ahead predictions for P in Section 4.2. Further, by definition, the HUBER metric should
+behave robustly with regard to outliers. The results support this fact and the model enjoys minimal HUBER loss
+values.</p>
+        <p>
+          From the table, it is clear that Adam and AMSGrad produce very similar errors. Therefore, we conclude that one will
+not miss useful details by considering only the Adam optimization algorithm. Hence, in the last section, we optimize
+the models using Adam.
+Our framework, on its surface, is not designed to reconstruct missing measurements of a station based on information
+from other stations; rather, it uses historical data at the same station. Therefore, to address this goal, we modify the
+input of the neural networks in such a way that the models will no longer require historical data. Figure 5 illustrates
+three buoys—46069, 46025 and 46042—that are close to one another. For more details on buoys you can see the Table
+1. Similar to existing methods [
+          <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+          ], we aim to reconstruct the significant wave height of buoy 46069 at different time
+steps, treating them as missing data. Networks have access to all information from the two adjacent buoys, 46025 and
+46042, as their input, as well as buoy 46069’s SWH as their labels in the training process, which consists of data from
+the entire year 2009. Then, the networks predict the entire 2010 year SWH of buoy 46069, based on the inputs from
+the adjacent buoys. In other words, at time step t, each model is allowed to see the first t measurements of Hs at the
+two nearby buoys.
+        </p>
+        <p>
+          Note that [
+          <xref ref-type="bibr" rid="ref2 ref3">2, 3</xref>
+          ] uses buoys 46025, 46042, and 46069, and claims that the NOAA dataset has no missing measurements
+for these buoys in the years 2009–10. However, we found this to be untrue. First, there are significant gaps in the
+46069 station data, which result in fewer than 5000 data points instead of the 8760 hourly points that should be present
+in a given year. Second, like the other refined stations, roughly 1–2% of the Hs values contain 99.00, which indicates
+missing data. Therefore, we carefully cleaned the missing data points from all three stations in such a way as to
+preserve the position of each time step. That is, if only there is a missing point in a station measurement, we exclude
+that time step from all stations. The resulting data set has 9263 data points for each buoy, where 4687 points are for
+training (2009) and 4576 are for testing (2010).
+        </p>
+        <p>
+          From the table, it is clear that the performance of the seqtoseq network is very promising, as it obtains the best r2
+values among the methods. Moreover, LSTM+FCL significantly outperforms all the alternatives and even the seqtoseq
+network in terms of RMSE and MAE simultaneously. It is worth mentioning that both of our methods have access
+only to Hs of the stations, while the benchmark methods use more measurements. For example, the GAA methods
+obtain their best performance using wind speed, significant wave height, average wave period, air temperature and the
+atmospheric pressure at buoy 46025 and the significant wave height and average wave period of buoy 46042 [
+          <xref ref-type="bibr" rid="ref2">2</xref>
+          ]. This
+Methods
+All features-ELM
+All features-SVR
+GGA-ELM-ELM
+GGA-ELM-SVR
+BO-GGA-ELM-ELM
+BO-GGA-ELM-SVR
+Seqtoseq (Adam)
+LSTM+FCL (Adam)
+makes the superiority of our methods even clearer, but brings about another question, as well, namely: Would using
+proper feature selection improve the performance of deep networks even further? We conducted some preliminary
+experiments to answer this question, considering combinations of the features that the GAA approaches use, and
+found an inferior accuracy compared to solely using Hs. In Section 6, we discuss a more efficient approach for feature
+selection.
+        </p>
+        <p>0
+1000
+2000</p>
+        <p>Data
+3000
+4000</p>
+        <p>Seqtoseq
+Actual
+LSTM
+t
+h
+i4
+g
+e
+h
+e
+v
+a
+w
+tn2
+a
+c
+fi
+i
+n
+g
+i
+S
+0
+3600
+3800
+4000
+4200
+Figure 6 illustrates the performance of both the LSTM and seqtoseq networks in reconstructing the significant wave
+height for buoy 46069. Note that the models never “saw” the solid green line, which is the year 2010 data (i.e., the test
+data).</p>
+        <p>We also illustrate the RMSE behavior of LSTM+FCL and seqtoseq. Figure 7 displays the RMSE test errors based on
+the number of training epochs up to 50. Both networks reach their best performance around tenth epoch with
+sequenceto-sequence reaching slightly faster. This happens even though there are more weights in the sequence-to-sequence
+model. We argue that epoch-scheduling training may be responsible for this quicker training performance, because
+by definition it allows the network to see ground truth outputs to update the parameters better while simultaneously
+avoiding excessive overfittings.</p>
+        <p>Seqtoseq Network</p>
+        <p>
+          LSTM+FCL Network
+In this section, we modify the proposed framework to investigate feature selection via elastic net [
+          <xref ref-type="bibr" rid="ref56">57</xref>
+          ] methodology.
+We alter the loss function to include two separate regularizers, “`1 norm” and “`2 norm”, as follows:
+where kwk1 = PW wi and W is the set of all the network weights. The “`1 norm” inherits a naturally sparse
+collection of variables. kwk1 has its minimum when all the weights are zero (uncollected) so every single nonzero
+weight should improve the first term of the objective function. Hence, the model chooses only those weights for which
+the decrease in the first term outweighs the increase in the last term. Using only the “`1 norm” regularizer would result
+in instability among the multiple solutions because a tiny change in the parameters may change some weights from
+zero to nonzero values or vice versa [
+          <xref ref-type="bibr" rid="ref57">58</xref>
+          ]. Therefore, the “`2 norm” is used in the objective.
+        </p>
+        <p>
+          One important difference between our feature selection method and those used in the wave energy literature (e.g., [
+          <xref ref-type="bibr" rid="ref3">3</xref>
+          ])
+is that the models in the literature either use all of the data related to a specific feature, like Hs, from a nearby buoy,
+or decide to ignore that feature entirely; however, our model allows us to partially utilize any of the features based on
+nonzero weights resulting in the optimal solution.
+Methods
+SL-LSTM+FCL
+ML-LSTM+FCL
+Seqtoseq
+SL-LSTM+FCL +EN
+ML-LSTM+FCL +EN
+Seqtoseq + EN
+Random Forrest
+To investigate the performance of our proposed framework for feature collection, we design a new experiment. Figure
+8 illustrates six stations—44007, 44008, 44009, 44013, 44014 and 44017—from the east coast of the United States.
+To see their exact locations and water depths, you can refer to Table 1. We reconstruct the significant wave height and
+power output of buoy 44008 based on available features of the other nearby buoys. We chose these buoys for two main
+reasons. First, on average they are rich in features with usable data. Second, the resolution and the data-collection times
+for these stations are the same up to 1-minute accuracy. This is crucial when we want to reconstruct a feature of a buoy
+based on others. We consider wind direction (WDIR), wind speed (WSPD), gust speed (GST), significant wave height
+(WVHT), dominant wave period (DPD), average wave period (APD), direction of dominant period waves (MWD), sea
+level pressure (PRES), air temperature (ATMP), sea surface temperature (WTMP) and dewpoint temperature (DEWP).
+The datasets are for the year 2018. We include all the features for all the buoys, except DEWP for buoys 44009 and
+44013 because those data are unusable. We exclude a measurement for all the stations only if a feature is missing
+in at least one of them. In the end, the dataset consists of 3422 measurements of 53 features. We divide the dataset
+into train (60%), validation (20%) and test (20%). We do not change the real measurements in any way. In addition,
+the methods never “see” the test set during training and validation. In this experiment, for both the LSTM+FCL and
+seqtoseq networks we have one more parameter to tune, namely, the coefficient of L1-norm) during the validation.
+Table 7 compares the performance of all of the methods, along with an alternative method, Random Forest, for
+reconstructing both Hs and P wave features. There is a column dedicated to the percentage of non-zero trainable variables.
+We consider a single weight or bias variable to be non-zero if its absolute value exceeds the threshold of 0:0001, and
+we report the result as the percentage of non-zero variables among all trainable variables. When we use the elastic
+net concept for selecting weights and biases, we observe a significant drop in the non-zero values. This means exactly
+what we discussed at the beginning of this section. The models invest only in those variables which are beneficial to
+the objective value. Here, we report the best results found for each measurement error RMSE, HUBER and MAAPE
+independently. In other words, the reported values of RMSE, HUBER or MAAPE are not necessarily gathered from
+a single experiment, but instead they are the best ones for the training epochs less than or equal to 50. As seen in
+Table 7, EN generally improves the performance of each method. For instance, EN aids single-layered LSTM+FCL
+significantly for reconstructing Hs and reduces RMSE and HUBER losses by 29% and 54%, respectively. Similarly,
+it helps the seqtoseq network slightly and reduces the measurement errors by around 5%.
+        </p>
+        <p>Another interesting finding is the comparison between multi-layered LSTM+FCL and single-layered ones. Unlike
+in the prediction section 4.2, here the performance of multi-layered LSTM+FCL is satisfactory, and even superior in
+many cases. Therefore, we argue that for feature selection, when the number of features is considerable compared to
+forecasting, having deeper structures improves the performance.</p>
+        <p>In addition, we observe that networks with more variables, such as multi-layered LSTM+FCL or seqtoseq, retain more
+non-zeros. In particular, in the process of tuning, they choose the L1-norm coefficient to be smaller. Hence, the effect
+of the L1-norm is lessened. This may be due to the fact that the more advanced structures can find hidden relations
+among features and set their corresponding weights to non-zero values, whereas single-layered models are unable to
+discover some hidden relations, so they set the weights equal to zero.</p>
+        <p>
+          The Random Forest algorithm [
+          <xref ref-type="bibr" rid="ref58">59</xref>
+          ] is known to be very efficient and accurate in ranking the importance of variables. To
+have a fair comparison, we hypertune its major parameters such as maximum depth. For Hs reconstruction, it finds the
+best RMSE and HUBER losses, but for P reconstruction, it fails to provide similar performance. The seqtoseq+EN
+framework is the most robust and promising one. It attains the best performance for half the measurements and is
+generally among the top methods for the rest. We observe that i 2 [0:001; 0:01]; i = 1; 2 results in the leading
+performance for the seqtoseq network.
+7
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-6">
+      <title>Conclusion</title>
+      <p>This article focuses on the reconstruction, feature selection and multivariate, multistep forecasting of ocean wave
+characteristics based on real data obtained from NOAA buoy measurements around the globe. This paper is among
+the first to propose the use of sequence-to-sequence and other novel recurrent networks for these objectives. Moreover,
+the epoch-scheduled training concept has been introduced as a soft technique so that the model enjoys the consistency
+of teacher forcing methods while avoiding overfitting. We tested various optimization algorithms on the networks that
+we introduced. AMSGrad and Adam present robust and promising performance comparing with SGD and RMSProp.
+We compared several recurrent networks. All of the parameters are tuned with Spearmint Bayesian optimization under
+the same budget. One observes that Spearmint favors single-layered networks as opposed to multi-layered networks
+for multivariate forecasting. This can be observed in our numerical studies as well. The SL-LSTM+FCL and seqtoseq
+models demonstrate superior performance compared to the other networks.</p>
+      <p>Furthermore, we explore the problem of reconstructing wave features, which has been well studied in the literature.
+The results suggest the superiority of our proposed networks compared to existing techniques. Our findings emphasize
+the fact that using only significant wave heights of adjacent buoys is sufficient to construct Hs of a nearby station.
+Proper feature selection, however, necessitates more analysis. We design a new experiment using NOAA data from
+the east coast of the United States. The dataset can be used for any feature selection and multivariate regression
+research. We incorporated the elastic net concept into our proposed neural networks to handle 53 features of the
+dataset. We evaluate the performance with and without the EN and with the random forest algorithm. The results
+indicate that the seqtoseq network has a consistent and reliable performance. In addition, for feature selection, deeper
+recurrent structures are more promising compared to single-layered ones.</p>
+      <p>We suggest the use of different parameter tuning algorithms such as derivative-free optimization instead of Spearmint
+as one promising future direction. Moreover, utilizing other neural network techniques—such as attention mechanism,
+in particular—for wave feature selection and reconstruction can be another area for future study.
+[25] Chong Wei Zheng, Chong Yin Li, Jing Pan, Ming Yang Liu, and Lin Lin Xia. An overview of global ocean wind
+energy resource evaluations. Renewable and Sustainable Energy Reviews, 53:1240–1251, 2016.</p>
+      <p>arXiv preprint</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>Ilya</given-names>
+            <surname>Sutskever</surname>
+          </string-name>
+          , Oriol Vinyals, and Quoc V Le.
+          <article-title>Sequence to sequence learning with neural networks</article-title>
+          .
+          <source>In Advances in neural information processing systems</source>
+          , pages
+          <fpage>3104</fpage>
+          -
+          <lpage>3112</lpage>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>L</given-names>
+            <surname>Cornejo-Bueno</surname>
+          </string-name>
+          ,
+          <article-title>JC Nieto-Borge, P Garc´ıa-D´ıaz</article-title>
+          , G Rodr´
+          <article-title>ıguez, and S Salcedo-Sanz. Significant wave height and energy flux prediction for marine energy applications: A grouping genetic algorithm-extreme learning machine approach</article-title>
+          .
+          <source>Renewable Energy</source>
+          ,
+          <volume>97</volume>
+          :
+          <fpage>380</fpage>
+          -
+          <lpage>389</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>Laura</given-names>
+            <surname>Cornejo-Bueno</surname>
+          </string-name>
+          ,
+          <article-title>Eduardo C Garrido-Mercha´n, Daniel Herna´ndez-</article-title>
+          <string-name>
+            <surname>Lobato</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Sancho</surname>
+          </string-name>
+          Salcedo-Sanz.
+          <article-title>Bayesian optimization of a hybrid system for robust ocean wave features prediction</article-title>
+          .
+          <source>Neurocomputing</source>
+          ,
+          <volume>275</volume>
+          :
+          <fpage>818</fpage>
+          -
+          <lpage>828</lpage>
+          ,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>A</given-names>
+            <surname>Hadjihosseini</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J</given-names>
+            <surname>Peinke</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>NP</given-names>
+            <surname>Hoffmann</surname>
+          </string-name>
+          .
+          <article-title>Stochastic analysis of ocean wave states with and without rogue waves</article-title>
+          .
+          <source>New Journal of Physics</source>
+          ,
+          <volume>16</volume>
+          (
+          <issue>5</issue>
+          ):
+          <fpage>053037</fpage>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>Igor</given-names>
+            <surname>Rychlik</surname>
+          </string-name>
+          , Pa¨r Johannesson, and
+          <string-name>
+            <surname>Malcolm R Leadbetter.</surname>
+          </string-name>
+          <article-title>Modelling and statistical analysis of ocean-wave data using transformed gaussian processes</article-title>
+          .
+          <source>Marine Structures</source>
+          ,
+          <volume>10</volume>
+          (
+          <issue>1</issue>
+          ):
+          <fpage>13</fpage>
+          -
+          <lpage>47</lpage>
+          ,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>Malcolm</given-names>
+            <surname>John Tucker</surname>
+          </string-name>
+          and Edward G Pitt.
+          <article-title>Waves in ocean engineering</article-title>
+          .
+          <source>Number</source>
+          Volume
+          <volume>5</volume>
+          .
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>Johannes</given-names>
+            <surname>Falnes</surname>
+          </string-name>
+          .
+          <article-title>A review of wave-energy extraction</article-title>
+          .
+          <source>Marine structures</source>
+          ,
+          <volume>20</volume>
+          (
+          <issue>4</issue>
+          ):
+          <fpage>185</fpage>
+          -
+          <lpage>201</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>Kenneth</given-names>
+            <surname>Edward</surname>
+          </string-name>
+          Steele and
+          <string-name>
+            <given-names>Theodore</given-names>
+            <surname>Mettlach</surname>
+          </string-name>
+          .
+          <article-title>Ndbc wave data-current and planned</article-title>
+          .
+          <source>In Ocean Wave Measurement and Analysis</source>
+          , pages
+          <fpage>198</fpage>
+          -
+          <lpage>207</lpage>
+          . ASCE,
+          <year>1993</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <surname>Hendrik</surname>
+            <given-names>L</given-names>
+          </string-name>
+          <string-name>
+            <surname>Tolman</surname>
+          </string-name>
+          .
+          <article-title>A third-generation model for wind waves on slowly varying, unsteady, and inhomogeneous depths and currents</article-title>
+          .
+          <source>Journal of Physical Oceanography</source>
+          ,
+          <volume>21</volume>
+          (
+          <issue>6</issue>
+          ):
+          <fpage>782</fpage>
+          -
+          <lpage>797</lpage>
+          ,
+          <year>1991</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10] The Wamdi Group.
+          <article-title>The wam model-a third generation ocean wave prediction model</article-title>
+          .
+          <source>Journal of Physical Oceanography</source>
+          ,
+          <volume>18</volume>
+          (
+          <issue>12</issue>
+          ):
+          <fpage>1775</fpage>
+          -
+          <lpage>1810</lpage>
+          ,
+          <year>1988</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <surname>Klaus</surname>
+            <given-names>Hasselmann</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>TP</given-names>
+            <surname>Barnett</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E</given-names>
+            <surname>Bouws</surname>
+          </string-name>
+          , H Carlson, DE Cartwright,
+          <string-name>
+            <surname>K Enke</surname>
+          </string-name>
+          , JA Ewing, H Gienapp, DE Hasselmann,
+          <string-name>
+            <given-names>P</given-names>
+            <surname>Kruseman</surname>
+          </string-name>
+          , et al.
+          <article-title>Measurements of wind-wave growth and swell decay during the joint north sea wave project (jonswap)</article-title>
+          .
+          <source>Erga¨nzungsheft 8-12</source>
+          ,
+          <year>1973</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>W</given-names>
+            <surname>Perrie</surname>
+          </string-name>
+          , H Gu¨nther, W Rosenthal, and
+          <string-name>
+            <given-names>B</given-names>
+            <surname>Toulany</surname>
+          </string-name>
+          .
+          <article-title>Modelling wind-generated surface gravity waves using similarity in a coupled discrete wave model</article-title>
+          .
+          <source>Quarterly Journal of the Royal Meteorological Society</source>
+          ,
+          <volume>115</volume>
+          (
+          <issue>490</issue>
+          ):
+          <fpage>1373</fpage>
+          -
+          <lpage>1396</lpage>
+          ,
+          <year>1989</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>NRRC</given-names>
+            <surname>Booij</surname>
+          </string-name>
+          , RC Ris, and
+          <string-name>
+            <surname>Leo H Holthuijsen</surname>
+          </string-name>
+          .
+          <article-title>A third-generation wave model for coastal regions: 1. model description and validation</article-title>
+          .
+          <source>Journal of geophysical research: Oceans</source>
+          ,
+          <volume>104</volume>
+          (
+          <issue>C4</issue>
+          ):
+          <fpage>7649</fpage>
+          -
+          <lpage>7666</lpage>
+          ,
+          <year>1999</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <surname>Mehmet</surname>
+            <given-names>O¨</given-names>
+          </string-name>
+          <article-title>zger and Zekai S¸ en. Prediction of wave parameters by using fuzzy logic approach</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>34</volume>
+          (
+          <issue>3-4</issue>
+          ):
+          <fpage>460</fpage>
+          -
+          <lpage>469</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>MH</given-names>
+            <surname>Kazeminezhad</surname>
+          </string-name>
+          ,
+          <article-title>A Etemad-Shahidi, and SJ Mousavi</article-title>
+          .
+          <article-title>Application of fuzzy inference system in the prediction of wave parameters</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>32</volume>
+          (
+          <fpage>14</fpage>
+          -15):
+          <fpage>1709</fpage>
+          -
+          <lpage>1725</lpage>
+          ,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [16]
+          <string-name>
+            <surname>Roslan</surname>
+            <given-names>Hashim</given-names>
+          </string-name>
+          , Chandrabhushan Roy, Shervin Motamedi, Shahaboddin Shamshirband, and Dalibor Petkovic´.
+          <article-title>Selection of climatic parameters affecting wave height prediction using an enhanced takagi-sugeno-based fuzzy methodology</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <volume>60</volume>
+          :
+          <fpage>246</fpage>
+          -
+          <lpage>257</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <given-names>J</given-names>
+            <surname>Mahjoobi and Ehsan Adeli Mosabbeb</surname>
+          </string-name>
+          .
+          <article-title>Prediction of significant wave height using regressive support vector machines</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>36</volume>
+          (
+          <issue>5</issue>
+          ):
+          <fpage>339</fpage>
+          -
+          <lpage>347</lpage>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [18]
+          <string-name>
+            <surname>Mc</surname>
+            <given-names>C Deo</given-names>
+          </string-name>
+          ,
+          <article-title>A Jha, AS Chaphekar, and</article-title>
+          K Ravikant.
+          <article-title>Neural networks for wave forecasting</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>28</volume>
+          (
+          <issue>7</issue>
+          ):
+          <fpage>889</fpage>
+          -
+          <lpage>898</lpage>
+          ,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [19]
+          <string-name>
+            <given-names>P</given-names>
+            <surname>Abhigna</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>S Jerritta</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R</given-names>
+            <surname>Srinivasan</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>V</given-names>
+            <surname>Rajendran</surname>
+          </string-name>
+          .
+          <article-title>Analysis of feed forward and recurrent neural networks in predicting the significant wave height at the moored buoys in bay of bengal</article-title>
+          .
+          <source>In Communication and Signal Processing (ICCSP)</source>
+          , 2017 International Conference on, pages
+          <fpage>1856</fpage>
+          -
+          <lpage>1860</lpage>
+          . IEEE,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [20]
+          <string-name>
+            <given-names>R</given-names>
+            <surname>Savitha</surname>
+          </string-name>
+          , Abdullah Al Mamun, et al.
+          <article-title>Regional ocean wave height prediction using sequential learning neural networks</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>129</volume>
+          :
+          <fpage>605</fpage>
+          -
+          <lpage>612</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [21]
+          <string-name>
+            <surname>Iman</surname>
+            <given-names>Malekmohamadi</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mohammad Reza</surname>
+          </string-name>
+          Bazargan-Lari,
+          <article-title>Reza Kerachian, Mohammad Reza Nikoo, and Mahsa Fallahnia. Evaluating the efficacy of svms, bns, anns and anfis in wave height prediction</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>38</volume>
+          (
+          <issue>2-3</issue>
+          ):
+          <fpage>487</fpage>
+          -
+          <lpage>497</lpage>
+          ,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [22]
+          <string-name>
+            <surname>Robert</surname>
+            <given-names>Azencott</given-names>
+          </string-name>
+          , Viktoria Muravina, Rasoul Hekmati, Wei Zhang, and
+          <string-name>
+            <given-names>Michael</given-names>
+            <surname>Paldino</surname>
+          </string-name>
+          .
+          <article-title>Automatic clustering in large sets of time series</article-title>
+          . In Contributions to Partial
+          <source>Differential Equations and Applications</source>
+          , pages
+          <fpage>65</fpage>
+          -
+          <lpage>75</lpage>
+          . Springer,
+          <year>2019</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [23]
+          <string-name>
+            <surname>Hossein</surname>
+            <given-names>Kamalzadeh</given-names>
+          </string-name>
+          , Abbas Ahmadi, and
+          <string-name>
+            <given-names>Saeid</given-names>
+            <surname>Mansour</surname>
+          </string-name>
+          .
+          <article-title>A shape-based adaptive segmentation of time-series using particle swarm optimization</article-title>
+          .
+          <source>Information Systems</source>
+          ,
+          <volume>67</volume>
+          :
+          <fpage>1</fpage>
+          -
+          <lpage>18</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [24]
+          <string-name>
+            <given-names>Andreas</given-names>
+            <surname>Uihlein</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Davide</given-names>
+            <surname>Magagna</surname>
+          </string-name>
+          .
+          <article-title>Wave and tidal current energy-a review of the current state of research beyond technology</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <volume>58</volume>
+          :
+          <fpage>1070</fpage>
+          -
+          <lpage>1081</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [26]
+          <string-name>
+            <given-names>Chong</given-names>
+            <surname>Wei</surname>
+          </string-name>
+          <string-name>
+            <surname>Zheng</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Qing</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Chong Yin</given-names>
+            <surname>Li</surname>
+          </string-name>
+          .
+          <article-title>An overview of medium-to long-term predictions of global wave energy resources</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <volume>79</volume>
+          :
+          <fpage>1492</fpage>
+          -
+          <lpage>1502</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>Sunil</given-names>
+            <surname>Kr</surname>
+          </string-name>
+          <string-name>
+            <surname>Jha</surname>
+          </string-name>
+          , Jasmin Bilalovic, Anju Jha,
+          <string-name>
+            <given-names>Nilesh</given-names>
+            <surname>Patel</surname>
+          </string-name>
+          , and Han Zhang.
+          <article-title>Renewable energy: Present research and future scope of artificial intelligence</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <volume>77</volume>
+          :
+          <fpage>297</fpage>
+          -
+          <lpage>317</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <given-names>Pooja</given-names>
+            <surname>Jain</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>MC</given-names>
+            <surname>Deo</surname>
+          </string-name>
+          .
+          <article-title>Neural networks in ocean engineering</article-title>
+          .
+          <source>Ships and offshore structures</source>
+          ,
+          <volume>1</volume>
+          (
+          <issue>1</issue>
+          ):
+          <fpage>25</fpage>
+          -
+          <lpage>35</lpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <surname>Markel</surname>
+            <given-names>Penalba</given-names>
+          </string-name>
+          , Giussepe Giorgi, and John V Ringwood.
+          <article-title>Mathematical modelling of wave energy converters: a review of nonlinear approaches</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <volume>78</volume>
+          :
+          <fpage>1188</fpage>
+          -
+          <lpage>1207</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <surname>Marcus</surname>
+            <given-names>Lehmann</given-names>
+          </string-name>
+          , Farid Karimpour, Clifford A Goudey, Paul T Jacobson, and
+          <string-name>
+            <surname>Mohammad-Reza Alam</surname>
+          </string-name>
+          .
+          <article-title>Ocean wave energy in the united states: Current status and future perspectives</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <surname>Kostas</surname>
+            <given-names>Hatalis</given-names>
+          </string-name>
+          , Parth Pradhan, Shalinee Kishore, Rick S Blum, and
+          <article-title>Alberto J Lamadrid. Multi-step forecasting of wave power using a nonlinear recurrent neural network</article-title>
+          .
+          <source>In PES General Meeting- Conference &amp; Exposition</source>
+          , 2014 IEEE, pages
+          <fpage>1</fpage>
+          -
+          <lpage>5</lpage>
+          . IEEE,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [32]
+          <string-name>
+            <surname>Kumars</surname>
+            <given-names>Mahmoodi</given-names>
+          </string-name>
+          , Hassan Ghassemi, and
+          <string-name>
+            <given-names>Hashem</given-names>
+            <surname>Nowruzi</surname>
+          </string-name>
+          .
+          <article-title>Data mining models to predict ocean wave energy flux in the absence of wave records</article-title>
+          . 49 Scientific Journals of the Maritime University of Szczecin, (
+          <volume>49</volume>
+          ):
+          <fpage>119</fpage>
+          -
+          <lpage>129</lpage>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          [33]
+          <string-name>
+            <given-names>N</given-names>
+            <surname>Krishna Kumar</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R</given-names>
+            <surname>Savitha</surname>
+          </string-name>
+          , and Abdullah Al Mamun.
+          <article-title>Ocean wave height prediction using ensemble of extreme learning machine</article-title>
+          .
+          <source>Neurocomputing</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          [34]
+          <string-name>
+            <surname>Scott</surname>
+            <given-names>C James</given-names>
+          </string-name>
+          , Yushan Zhang, and
+          <string-name>
+            <surname>Fearghal O'Donncha.</surname>
+          </string-name>
+          <article-title>A machine learning framework to forecast wave conditions</article-title>
+          .
+          <source>arXiv preprint arXiv:1709.08725</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          [35]
+          <string-name>
+            <given-names>SWAN</given-names>
+            <surname>Team</surname>
+          </string-name>
+          .
+          <article-title>Swan user manual</article-title>
+          .
+          <source>swan cycle iii version 40</source>
+          .91. Delft University of Technology Technical documentation, page
+          <volume>123</volume>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          [36]
+          <string-name>
+            <given-names>SN</given-names>
+            <surname>Londhe</surname>
+          </string-name>
+          , Shalaka Shah, PR Dixit, TM Balakrishnan Nair,
+          <string-name>
+            <given-names>P</given-names>
+            <surname>Sirisha</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Rohit</given-names>
+            <surname>Jain</surname>
+          </string-name>
+          .
+          <article-title>A coupled numerical and artificial neural network model for improving location specific wave forecast</article-title>
+          .
+          <source>Applied Ocean Research</source>
+          ,
+          <volume>59</volume>
+          :
+          <fpage>483</fpage>
+          -
+          <lpage>491</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          [37]
+          <string-name>
+            <given-names>WY</given-names>
+            <surname>Duan</surname>
+          </string-name>
+          , Y Han,
+          <article-title>LM Huang, BB Zhao,</article-title>
+          and
+          <string-name>
+            <given-names>MH</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          .
+          <article-title>A hybrid emd-svr model for the short-term prediction of significant wave height</article-title>
+          .
+          <source>Ocean Engineering</source>
+          ,
+          <volume>124</volume>
+          :
+          <fpage>54</fpage>
+          -
+          <lpage>73</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          [38]
+          <string-name>
+            <given-names>Pradnya</given-names>
+            <surname>Dixit</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Shreenivas</given-names>
+            <surname>Londhe</surname>
+          </string-name>
+          .
+          <article-title>Prediction of extreme wave heights using neuro wavelet technique</article-title>
+          .
+          <source>Applied Ocean Research</source>
+          ,
+          <volume>58</volume>
+          :
+          <fpage>241</fpage>
+          -
+          <lpage>252</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref38">
+        <mixed-citation>
+          [39]
+          <string-name>
+            <given-names>R</given-names>
+            <surname>Prahlada</surname>
+          </string-name>
+          and
+          <article-title>Paresh Chandra Deka. Forecasting of time series significant wave height using wavelet decomposed neural network</article-title>
+          .
+          <source>Aquatic Procedia</source>
+          ,
+          <volume>4</volume>
+          :
+          <fpage>540</fpage>
+          -
+          <lpage>547</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref39">
+        <mixed-citation>
+          [40]
+          <string-name>
+            <given-names>Sepp</given-names>
+            <surname>Hochreiter</surname>
+          </string-name>
+          and
+          <article-title>Ju¨rgen Schmidhuber. Long short-term memory</article-title>
+          .
+          <source>Neural computation</source>
+          ,
+          <volume>9</volume>
+          (
+          <issue>8</issue>
+          ):
+          <fpage>1735</fpage>
+          -
+          <lpage>1780</lpage>
+          ,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref40">
+        <mixed-citation>
+          [41]
+          <string-name>
+            <surname>Zachary</surname>
+            <given-names>C Lipton</given-names>
+          </string-name>
+          , John Berkowitz, and
+          <string-name>
+            <given-names>Charles</given-names>
+            <surname>Elkan</surname>
+          </string-name>
+          .
+          <article-title>A critical review of recurrent neural networks for sequence learning</article-title>
+          .
+          <source>arXiv preprint arXiv:1506.00019</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref41">
+        <mixed-citation>
+          [42]
+          <string-name>
+            <given-names>Aryan</given-names>
+            <surname>Mobiny</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Mohammad</given-names>
+            <surname>Najarian</surname>
+          </string-name>
+          .
+          <article-title>Text-independent speaker verification using long short-term memory networks</article-title>
+          .
+          <source>arXiv preprint arXiv:1805.00604</source>
+          ,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref42">
+        <mixed-citation>
+          [43]
+          <string-name>
+            <surname>Chung-Cheng</surname>
+            <given-names>Chiu</given-names>
+          </string-name>
+          , Tara N Sainath,
+          <string-name>
+            <surname>Yonghui Wu</surname>
+            , Rohit Prabhavalkar, Patrick Nguyen, Zhifeng Chen, Anjuli Kannan, Ron J Weiss, Kanishka Rao,
+            <given-names>Katya</given-names>
+          </string-name>
+          <string-name>
+            <surname>Gonina</surname>
+          </string-name>
+          , et al.
+          <article-title>State-of-the-art speech recognition with sequence-tosequence models</article-title>
+          .
+          <source>arXiv preprint arXiv:1712.01769</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref43">
+        <mixed-citation>
+          [44]
+          <string-name>
+            <surname>Ronald J Williams</surname>
+            and
+            <given-names>David</given-names>
+          </string-name>
+          <string-name>
+            <surname>Zipser</surname>
+          </string-name>
+          .
+          <article-title>A learning algorithm for continually running fully recurrent neural networks</article-title>
+          .
+          <source>Neural computation</source>
+          ,
+          <volume>1</volume>
+          (
+          <issue>2</issue>
+          ):
+          <fpage>270</fpage>
+          -
+          <lpage>280</lpage>
+          ,
+          <year>1989</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref44">
+        <mixed-citation>
+          [45]
+          <string-name>
+            <surname>Alex</surname>
+            <given-names>M Lamb</given-names>
+          </string-name>
+          ,
+          <article-title>Anirudh Goyal ALIAS PARTH GOYAL</article-title>
+          ,
+          <string-name>
+            <surname>Ying</surname>
+            <given-names>Zhang</given-names>
+          </string-name>
+          , Saizheng Zhang, Aaron C Courville, and
+          <string-name>
+            <given-names>Yoshua</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          .
+          <article-title>Professor forcing: A new algorithm for training recurrent networks</article-title>
+          .
+          <source>In Advances In Neural Information Processing Systems</source>
+          , pages
+          <fpage>4601</fpage>
+          -
+          <lpage>4609</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref45">
+        <mixed-citation>
+          [46]
+          <string-name>
+            <surname>Samy</surname>
+            <given-names>Bengio</given-names>
+          </string-name>
+          , Oriol Vinyals, Navdeep Jaitly, and
+          <string-name>
+            <given-names>Noam</given-names>
+            <surname>Shazeer</surname>
+          </string-name>
+          .
+          <article-title>Scheduled sampling for sequence prediction with recurrent neural networks</article-title>
+          .
+          <source>In Advances in Neural Information Processing Systems</source>
+          , pages
+          <fpage>1171</fpage>
+          -
+          <lpage>1179</lpage>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref46">
+        <mixed-citation>
+          [47]
+          <string-name>
+            <surname>Felix</surname>
+            <given-names>A Gers</given-names>
+          </string-name>
+          ,
+          <article-title>Ju¨rgen Schmidhuber, and</article-title>
+          <string-name>
+            <given-names>Fred</given-names>
+            <surname>Cummins</surname>
+          </string-name>
+          .
+          <article-title>Learning to forget: Continual prediction with lstm</article-title>
+          .
+          <year>1999</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref47">
+        <mixed-citation>
+          [48]
+          <string-name>
+            <surname>Feiping</surname>
+            <given-names>Nie</given-names>
+          </string-name>
+          , Heng Huang,
+          <string-name>
+            <given-names>Xiao</given-names>
+            <surname>Cai</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Chris H Ding</surname>
+          </string-name>
+          .
+          <article-title>Efficient and robust feature selection via joint l2, 1-norms minimization</article-title>
+          .
+          <source>In Advances in neural information processing systems</source>
+          , pages
+          <fpage>1813</fpage>
+          -
+          <lpage>1821</lpage>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref48">
+        <mixed-citation>
+          [49]
+          <string-name>
+            <surname>Jun</surname>
+            <given-names>Liu</given-names>
+          </string-name>
+          , Shuiwang Ji, and
+          <article-title>Jieping Ye. Multi-task feature learning via efficient l 2, 1-norm minimization</article-title>
+          .
+          <source>In Proceedings of the twenty-fifth conference on uncertainty in artificial intelligence</source>
+          , pages
+          <fpage>339</fpage>
+          -
+          <lpage>348</lpage>
+          . AUAI Press,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref49">
+        <mixed-citation>
+          [50]
+          <string-name>
+            <surname>Diederik</surname>
+            <given-names>P</given-names>
+          </string-name>
+          <string-name>
+            <surname>Kingma and Jimmy Ba</surname>
+          </string-name>
+          .
+          <source>arXiv:1412.6980</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref50">
+        <mixed-citation>
+          [51]
+          <string-name>
+            <surname>Sashank J Reddi</surname>
+            , Satyen Kale, and
+            <given-names>Sanjiv</given-names>
+          </string-name>
+          <string-name>
+            <surname>Kumar</surname>
+          </string-name>
+          .
+          <article-title>On the convergence of adam and beyond</article-title>
+          .
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref51">
+        <mixed-citation>
+          [52]
+          <string-name>
+            <given-names>L</given-names>
+            <surname>Cuadra</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S</given-names>
+            <surname>Salcedo-Sanz</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>JC</given-names>
+            <surname>Nieto-Borge</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E</given-names>
+            <surname>Alexandre</surname>
+          </string-name>
+          , and G Rodr´
+          <article-title>ıguez. Computational intelligence in wave energy: Comprehensive review and case study</article-title>
+          .
+          <source>Renewable and Sustainable Energy Reviews</source>
+          ,
+          <volume>58</volume>
+          :
+          <fpage>1223</fpage>
+          -
+          <lpage>1246</lpage>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref52">
+        <mixed-citation>
+          [53]
+          <string-name>
+            <given-names>N</given-names>
+            <surname>Krishna Kumar</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R</given-names>
+            <surname>Savitha</surname>
+          </string-name>
+          , and Abdullah Al Mamun.
+          <article-title>Ocean wave height prediction using ensemble of extreme learning machine</article-title>
+          .
+          <source>Neurocomputing</source>
+          ,
+          <volume>277</volume>
+          :
+          <fpage>12</fpage>
+          -
+          <lpage>20</lpage>
+          ,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref53">
+        <mixed-citation>
+          [54]
+          <string-name>
+            <given-names>N</given-names>
+            <surname>Krishna Kumar</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R</given-names>
+            <surname>Savitha</surname>
+          </string-name>
+          , and Abdullah Al Mamun.
+          <article-title>Ocean wave characteristics prediction and its load estimation on marine structures: A transfer learning approach</article-title>
+          .
+          <source>Marine Structures</source>
+          ,
+          <volume>61</volume>
+          :
+          <fpage>202</fpage>
+          -
+          <lpage>219</lpage>
+          ,
+          <year>2018</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref54">
+        <mixed-citation>
+          [55]
+          <string-name>
+            <surname>Jasper</surname>
+            <given-names>Snoek</given-names>
+          </string-name>
+          , Hugo Larochelle, and Ryan P Adams.
+          <article-title>Practical bayesian optimization of machine learning algorithms</article-title>
+          .
+          <source>In Advances in neural information processing systems</source>
+          , pages
+          <fpage>2951</fpage>
+          -
+          <lpage>2959</lpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref55">
+        <mixed-citation>
+          [56]
+          <string-name>
+            <surname>Kevin</surname>
+            <given-names>Swersky</given-names>
+          </string-name>
+          , Jasper Snoek, and
+          <article-title>Ryan P Adams. Multi-task bayesian optimization</article-title>
+          .
+          <source>In Advances in neural information processing systems</source>
+          , pages
+          <fpage>2004</fpage>
+          -
+          <lpage>2012</lpage>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref56">
+        <mixed-citation>
+          [57]
+          <string-name>
+            <given-names>Hui</given-names>
+            <surname>Zou</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Trevor</given-names>
+            <surname>Hastie</surname>
+          </string-name>
+          .
+          <article-title>Regularization and variable selection via the elastic net</article-title>
+          .
+          <source>Journal of the royal statistical society: series B (statistical methodology)</source>
+          ,
+          <volume>67</volume>
+          (
+          <issue>2</issue>
+          ):
+          <fpage>301</fpage>
+          -
+          <lpage>320</lpage>
+          ,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref57">
+        <mixed-citation>
+          [58]
+          <string-name>
+            <surname>Andrew</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          <string-name>
+            <surname>Ng</surname>
+          </string-name>
+          .
+          <article-title>Feature selection, l 1 vs. l 2 regularization, and rotational invariance</article-title>
+          .
+          <source>In Proceedings of the twenty-first international conference on Machine learning, page 78. ACM</source>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref58">
+        <mixed-citation>
+          [59]
+          <string-name>
+            <given-names>Leo</given-names>
+            <surname>Breiman</surname>
+          </string-name>
+          .
+          <article-title>Random forests</article-title>
+          .
+          <source>Machine learning</source>
+          ,
+          <volume>45</volume>
+          (
+          <issue>1</issue>
+          ):
+          <fpage>5</fpage>
+          -
+          <lpage>32</lpage>
+          ,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

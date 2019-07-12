@@ -1,0 +1,13 @@
+Deep learning in remote sensing: a review
+  Standing at the paradigm shift towards data-intensive science, machine
+learning techniques are becoming increasingly important. In particular, as a
+major breakthrough in the field, deep learning has proven as an extremely
+powerful tool in many fields. Shall we embrace deep learning as the key to all?
+Or, should we resist a 'black-box' solution? There are controversial opinions
+in the remote sensing community. In this article, we analyze the challenges of
+using deep learning for remote sensing data analysis, review the recent
+advances, and provide resources to make deep learning in remote sensing
+ridiculously simple to start with. More importantly, we advocate remote sensing
+scientists to bring their expertise into deep learning, and use it as an
+implicit general model to tackle unprecedented large-scale influential
+challenges, such as climate change and urbanization.

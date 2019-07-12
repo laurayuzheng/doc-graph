@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>A machine learning approach for underwater gas leakage detection</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Paulo Hubert</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Linilson R. Padovese</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Department of Mechanical Engineering, Escola Politecnica - University of Sa~o Paulo</institution>
+          ,
+          <addr-line>Sa~o Paulo, SP -</addr-line>
+          <country country="BR">Brazil</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>From the past recent years, CO2 capture and storage Underwater gas reservoirs are used in many situa- (CCS) technology has been considered to be a gametions. In particular, Carbon Capture and Storage changing technology to avoid human-induced global (CCS) facilities that are currently being developed warming and the resulting climatic change[6]. intend to store greenhouse gases inside geological for- There are many challenges that must be met in mations in the deep sea. In these formations, how- order to guarantee the safety of the geologic reservoirs ever, the gas might percolate, leaking back to the used to store greenhouse gases. One of them is to water and eventually to the atmosphere. The early avoid and monitor leakages from the reservoir. detection of such leaks is therefore tantamount to any International literature describes plenty of moniunderwater CCS project. In this work, we propose to toring tools that have been tested and have been used use Passive Acoustic Monitoring (PAM) and a ma- in the last years for marine CO2 storage monitoring chine learning approach to design e cient detectors programs [12, 7]. Some of them are used for rapid that can signal the presence of a leakage. We use and focused spatial monitoring; others are intended data obtained from simulation experiments o the for long time and large area coverage. Brazilian shore, and show that the detection based on Regarding passive acoustic monitoring, when these classi cation algorithms achieve good performance. leakages arise in the form of bubbles a characWe also propose a smoothing strategy based on Hid- teristic acoustic signal is produced, as shown by den Markov Models in order to incorporate previous [15, 18, 1, 14]. This signal can be used for detectknowledge about the probabilities of leakage occur- ing and locating gaseous leaks. rences. This work proposes the development of a Passive</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>X
+r
+a</p>
+      <p>
+        Introduction
+cusses the use of classi cation algorithms for signal the authors [
+        <xref ref-type="bibr" rid="ref11">11</xref>
+        ], where a Bayesian testing procedure
+detection; section 3 describes the pilot experiment is applied to boat detection on underwater acoustic
+conducted to obtain data from simulated leakages. data.
+      </p>
+      <p>
+        Section 4 describes the training of the classi ers, and The use of classi cation algorithms overcomes this
+section 5 proposes a smoothing procedure using Hid- drawback, in exchange of demanding previously
+anden Markov Models that uses the classi er predici- notated samples. When using this approach, the
+tons to obtain a detection system. Section 6 con- physical model can be ignored; furthermore, even if
+cludes the paper. the training step of the algorithm is computationally
+intensive, the actual application of the detection
+algorithm is fast, usually depending only on a forward
+2 Classi cation algorithms for pass of a xed length sample signal through the
+pretrained algorithm.
+signal detection There is however a critical question in the use
+of classi cation algorithms for signal detection: the
+Traditional signal detection procedures are based on availability of negative examples, which include
+sama thorough analysis of the phenomenon of interest, ples of background noise only but also (ideally)
+samand the signal it induces on the sensor. In the case of ples from di erent events that might confound the
+leakage detection and PAM, this means analysing the detector. It is in principle possible that the
+algoacoustic emission model of gas bubbles in water [
+        <xref ref-type="bibr" rid="ref2">2</xref>
+        ]. rithm will learn to distinguish the noise from the
+sigAfter analyzing the signal, the detector works usu- nal by acquiring a precise representation of the noise,
+ally by imposing some statistical model on the back- instead of representing the signal. In other words,
+ground noise eld, and then designing an e cient es- a classi cation algorithm might learn features of the
+timator or statistical hypothesis testing procedure to noise and use them to correctly classify the signal,
+obtain, given a sample from the sensor, the probabil- leading to detectors with very high accuracy on the
+ity that the signal of interest is actually present in training set, but with little generalization power,
+esthe data. pecially if the noise samples are not representative
+This approach has the advantages of working from enough of the full range of operational conditions of
+rst principles (i.e., from a physical model describ- the sensor.
+ing the phenomenon), and also of having (in prin- The best way to avoid this problem is to spend
+ciple) no need of experimental data, particularly of time and e ort in building a large and rich set of
+background noise examples. If an accurate physical samples from di erent conditions and with the
+presmodel is available, and if the probabilistic model for ence of many di erent events. In some situations,
+the background noise is general enough, it is possible where the operational conditions of the detector are
+to design good detectors using this approach [
+        <xref ref-type="bibr" rid="ref5">5</xref>
+        ]. well-known and reasonably well-behaved, it might be
+      </p>
+      <p>
+        There are some drawbacks, however, in the classi- practical to build such a set of training examples.
+cal detection approach. First, there is the complexity This is the case, for instance, in the problem of
+leakof the physical model, which in many cases can be age detection in deep ocean waters, where not many
+very challenging to solve, or even unsolvable. Also, confounding events are expected and where the
+backwhen deployed in real operational conditions, these ground noise eld conditions are reasonably stable.
+detectors su er from a large computational burden: When this database of negative examples is not
+availsince the actual instant of the beginning of the sig- able, the tuning of the algorithm, and the actual use
+nal is unknown (i.e., the signal's phase is unknown), of the algorithm's prediction in the detector's design
+the detector must be applied to the entire sensor must be made with extreme care.
+data, usually using sliding windows or some simi- In this work, we train our classi cation-detector
+lar method. This can make the detection procedure algorithm on samples of background noise and
+backvery cumbersome; see for instance a past work from ground noise plus leakage only. To avoid tting the
+detector to a speci c background noise eld, we will trained on a random subset of the available features.
+separate our noise samples in training and test sets Later, Breiman [
+        <xref ref-type="bibr" rid="ref4">4</xref>
+        ] extended Ho's method by also
+inbased on the time of the day when the recordings cluding a bootstrap aggregation step, where
+individwere taken, in order to guarantee that the algorithm ual samples from the training set are also randomly
+is tested against di erent background conditions. We selected to be used in each model. The resulting
+alacknowledge, however, that our data is not repre- gorithm was called Random Forests by Breiman.
+sentative of the full variability of acoustical events There are now many available implementations of
+in subaquatic environments; we intend to investigate the Random Forests algorithm. In this work, we
+this question in more depth after further experiments use the python implementation from the scikit-learn
+are conducted. toolset available in https://scikit-learn.org.
+      </p>
+      <p>
+        The algorithms that will be used to build the
+classi er-detector are the Random Forests algorithm 2.2 Gradient Boosted Trees
+and the Gradient Boosting Trees algorithm.
+Random Forests have been previously applied to
+acoustic events detection [16], speci cally in the context of
+speech recognition. Gradient Boosted Tress have also
+been applied to acoustic signal analysis [
+        <xref ref-type="bibr" rid="ref7">8</xref>
+        ], but to the
+best of our knowledge not to the design of detectors
+for speci c events.
+      </p>
+    </sec>
+    <sec id="sec-2">
+      <title>The ideia of boosting a learning algorithm developed</title>
+      <p>
+        from the investigation of the possibility of
+combining weak learning algorithms to form a strong learner
+[
+        <xref ref-type="bibr" rid="ref8">17</xref>
+        ]. The rst boosting algorithm, AdaBoost, was
+developed in 1997 by Freund and Schapire [
+        <xref ref-type="bibr" rid="ref9">9</xref>
+        ].
+      </p>
+      <p>Gradient Boosted Machines were later developed
+by Jerome Freidman, among others, who noticed that
+2.1 The Random Forests algorithm boosting can be seen as a gradient descent procedure
+for classi cation in a functional space [13].</p>
+      <p>
+        The main di erence between Random Forests and
+The CART (Classi cation and Regression Trees) al- Gradient Boosted Trees is that in Random Forests
+gorithm was rst proposed by Breiman et al [
+        <xref ref-type="bibr" rid="ref3">3</xref>
+        ]. It several weaker models are trained in parallel (i.e.,
+is based on the simple idea of recursively partition- each model is trained without regard for the results
+ing the feature space in a set of rectangular regions, of every other model), whilst in Gradient Boosting
+where each new partition is based on the value of a the models are trained in a sequential manner, each
+single variable. The classi cation is done by applying model feeding on the last one's results.
+a majority vote rule to each region obtained after the We adopt the XGBoost implementation of
+Grapartition is nished. dient Boosted Trees (http://https://github.com/
+      </p>
+      <p>Even though the CART algorithm was e cient in dmlc/xgboost), which is available for many
+computsolving many classi cation tasks, the tting (or train- ing platforms, including python and R.
+ing) algorithm was sensible to small changes in the
+dataset (what in the machine learning and statistics
+community is called high variance of the classi er's 3 Experimental setup
+predictions).</p>
+      <p>To control the variance of the algorithm, ensem- An experimental sea campaign was planned and
+carble methods have been proposed. Ensemble methods ried out in order to obtain a set of experimental data
+try to improve the performance of a given class of to validate the leak detection algorithms. The
+leakalgorithms by training multiple instances of the al- age was simulated through the use of compressed
+gorithm on subsets of the data, and then combining air (from scuba dive cylinders), with ow, pressure
+the resulting predictions of each weaker model. and exit diameter ori ce controlled. These
+con</p>
+      <p>
+        Tin Kam Ho [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ] rst proposed an ensemble trolled leaks were performed at predetermined
+dismethod based on classi cation trees; he uses a ran- tances from underwater acoustics monitoring
+equipdom subspace approach, where di erent trees are ment
+      </p>
+      <p>In this rst experimental campaign, the di erence of a precise representation of the noise samples.
+in pressure between the cylinder and tube outlet was In our dataset there are a few recordings taken at
+kept constant at 9 bar. The ow rates used were di erent times of the day. We admit that, during
+three: 2, 5 and 10 l / min. The distances between a given continuous recording, the background noise
+the leakage nozzle and hydrophones was 3 m. characteristics will be more homogeneous than
+be</p>
+      <p>The underwater acoustic monitoring system con- tween di erent recordings taken at di erent times.
+sists of one hydrophone developed by the laboratory, Therefore we adopt the following strategy: to train
+with a at frequency between 5 Hz and 50 kHz, and the classi er, we use a set of negative examples taken
+sensitivity of 154 dB rel 1 P a. The digitization of from the same continuous recordings, and to test it
+the acoustic signals was carried out by a TASCAM- we use a di erent set, recorded later on the same day.
+800 audio interface connected to a notebook, using Doing this we guarantee that our sets of negative
+exa sampling rate of 48 kHz. Both the leakage outlet amples are maximally di erent in the training and
+and hydrophones were positioned at 8 m depth. testing samples.</p>
+      <p>In this pilot experiment, the acquired data has After this separation, our full training dataset
+cona total duration of approximately 30 min, obtained tains 742 s of signal, where 476 s contain the signal
+through a period of roughly 3 hours in the sea. and 266 s are noise-only examples.</p>
+      <p>The training signal is further divided into smaller
+sections that will be used as the actual sample units
+4 Training and testing the clas- in the classi er design. We test windows with di
+erent sizes and with di erent overlap values.
+si cation algorithms</p>
+      <p>For each window size, we train the classi er
+using as features a) the signal's periodogram, and b)
+the power spectral density (PSD) smoothed estimate
+using Welch's method with Hann windows. We lter
+both the periodogram and PSD to the band 150 500
+Hz, which is the band where the leakage acoustic
+emission is expected to be found.</p>
+      <p>Our experimental data contains examples of the
+simulated leakage with three di erent gas ux intensities
+(2, 5 and 10 l=min). The dataset contains a total
+amount of 1; 900 seconds of recordings, where 1; 555
+seconds were taken with the bubble generator turned
+on, and the remaining 345 seconds were taken with
+the bubble generator turned o .</p>
+      <p>To evaluate the performance of the classi cation 4.1 Selection of the classi cation
+algoalgorithms, we chose to train them using only the rithm
+samples where the bubble ow was the largest. The
+rationale behind this choice is that this experimen- To train the Random Forests (RF) and Gradient
+tal condition is the best for training a detector, since Boosted Trees (GBT) we start by running grid
+these are the strongest signals in our dataset. Adi- searches to obtain best values for the
+hyperparamtionally, we are interested in analyzing the perfor- eters of each algorithm. The grid search is based on
+mance of the algorithm trained on high signal-to- a 5-fold cross-validation on the training set. The
+renoise ratio (SNR) data, when applied to detection sults are shown in table 1.
+of leakages with smaller SNR, i.e., with a lower ow The best cross-validation performance was shown
+of gas. This reduces the total signal length (for train- by the Gradient Boosted Trees algorithm, working
+ing) to 476 seconds. with Welch estimates of the PSD on 4 seconds
+win</p>
+      <p>After separating the signal's examples to train the dows with 3 seconds overlap. The Random Forests
+algorithm, we must also choose a set of negative ex- algorithm working on 4 seconds windows with 2
+secamples, i.e., examples of background noise. This is a onds overlap had practically equivalent results.
+critical choice, as discussed above; we would like to be As a general rule, algorithms trained on longer
+winable to verify if the classi er is not taking advantage dows show better accuracy, and the Random Forests
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+2
+5
+2
+5
+2
+5
+2
+5
+algorithm performs better in 6 out of the 10
+investigated scenarios. Also, the use of Welch estimates of
+the PSD provides better results than using the
+periodogram in all cases.</p>
+      <p>To further analyze the performance of the tested al- 5 Detector design: classi
+cagorithms, we apply them to the classi cation of sam- tion and HMM smoothing
+ples from di erent ows (2 and 5 l/minute). The
+results are shown in table 2. The classi cation algorithm applied to a new signal</p>
+      <p>As expected, the precision was always higher on the produces a prediction score in [0; 1], where higher
+samples with greater ows (5 l/min). But in both values can be interpreted as higher evidence for the
+cases of di erent ows, the best algorithm was the presence of a leakage in the given signal. Usually, a
+Random Forests, using the periodogram estimator of threshold is applied: when the score is higher than a
+the PSD. given constant (often 0:5), the signal is classi ed as</p>
+      <p>These results indicate that the Random Forests leakage; otherwise, it is classi ed as noise only.
+classi er generalises better than the GBT for di er- Choosing a higher threshold to classify a given
+winent ows. This fact deserver a deeper analysis, which dow as a leakage has the immediate e ect of
+decreasxgb</p>
+      <p>rf
+xgb
+rf
+rf
+rf
+rf
+xgb</p>
+      <p>rf
+xgb
+welch
+welch
+welch
+welch
+welch
+welch
+welch
+welch
+welch
+welch
+we intend to present in a future work where we will
+investigate the use of machine learning algorithms to
+quantify (not only detect) the leakages.</p>
+      <p>As for the detection performance, both classi
+cation algorithms show promising results, achieving a
+good precision in cross-validation and also when
+applied to di erent ow rates.</p>
+      <p>For the remainder of the paper we pick the GBT
+algorithm using Welch as the classi er of choice;
+considering the present goal (detection), we consider the
+cross-validation results as more important than the
+test using di erent ow rates.</p>
+      <p>The next step after selecting the best algorithm for
+the classi cation of individual signal windows is to
+actually use its predictions to build a detector. This
+will be discussed in the next section.
+ing the false alarm ratio, but at the expense of also
+decreasing the true positive ratio. On the other hand,
+choosing a low threshold has the opposite e ect. The
+choice of threshold, then, must consider the balance
+between the two goals: minimize false alarms while
+also maximizing detection probability.</p>
+      <p>By applying the threshold to the training data, it is
+possible to estimate (via confusion matrix) the
+accuracy measures of the resulting classi er. In the next
+section, we propose to use these estimates in a Hidden
+Markov model to smooth the algorithms predictions
+while at the same time incorporating domain-based
+knowledge about the occurrence of leakages.
+5.1</p>
+      <p>Hidden Markov model for the
+occurrence of leakages
+results from the classi ers, we can estimate the
+corresponding emission probabilities P (Yt = 1jXt = 1)
+as the positive recall, and P (Yt = 0jXt = 0) as the
+negative recall of the classi cation algorithm. These
+probabilities depend upon the threshold used to
+generate class predictions.</p>
+      <p>After fully de ning the HMM, it is possible to
+calculate the probability that a leakage is actually
+occurring, given a sequence of predictions from the
+classi er, that is, P (Xt = 1jY1; Y2; :::; Yt). De ning</p>
+      <p>t(x) = P (Xt = xjY1; Y2; :::; Yt), this can be
+accomplished by the usual forward recursion formula:
+t(Xt) = P (YtjXt) X P (XtjXt 1) t 1(Xt 1) (1)</p>
+      <p>Xt 1</p>
+    </sec>
+    <sec id="sec-3">
+      <title>Consider that the presence or absence of a leakage is</title>
+      <p>a hidden binary variable which we want to infer. Call To test the full detection strategy, we take the
+folthis variable Xt, where Xt = 1 if there is a leakage lowing steps:
+at time t, and Xt = 0 otherwise.</p>
+      <p>Suppose that X0 = 0. Then, at any instant, a 1. Using a training-test sample split, select the best
+leakage can start; in this case, the stochastic process classi cation algorithm by cross-validation;
+Xt su ers a transition from state 0 to state 1. If there
+is no leakage starting between t and t + 1, the process 2. The best classi cation algorithm is trained on
+stays in the same state (i.e., there is a transition from a subset of the dataset, excluding a continuous
+Xt = 0 to Xt+1 = 0). section of our signal to be used in the detector</p>
+      <p>Likewise, whenever a leakage is occurring (Xt = 1), test;
+there is the possibility that it spontaneously stops
+(Xt+1 = 0); if it doesn't, the leakage continues (i.e., 3. The classi er is applied to the test sample and
+Xt+1 = 1). predicted probability values are obtained;</p>
+      <p>We propose to model this process as a (hidden) 4. A threshold value is chosen to turn the
+probabilMarkov chain, with transition probabilities given by ity predictions into class predictions. The same
+P (Xt+1 = 1jXt = 0) = and P (Xt+1 = 0jXt = 1) = threshold is used to estimate the positive and
+. In this model, represents the probability of a negative recall of the algorithm using the
+trainleakage starting at a given time t, and represents the ing set;
+probability that a leakage is spontaneously repaired.</p>
+      <p>This possibility is rather unlikely, and this can be 5. The class prediction values are smoothed by the
+induced in the model by adopting a small value for forward recursion algorithm, yielding the
+detec. tor values.</p>
+    </sec>
+    <sec id="sec-4">
+      <title>The hidden Markov model (HMM) can be com</title>
+      <p>pleted in the following way: at any given time t, the
+classi cation is applied to the signal, yielding a
+prediction Yt. Yt can be either 1 (leakage detected) or
+0 (no detection). By observing the cross validation</p>
+    </sec>
+    <sec id="sec-5">
+      <title>Item b of gure 1 shows the spectrogram of the test signal selected to test the classi cation-detection approach. The simulated leakage starts at 48 seconds.</title>
+      <p>The rst step (algorithm selection) has been done if a leakage is happening, the classi er would have
+and the results reported on section 4.1. For the sec- detected it. Thus, if it sees a 0 prediction by the
+ond step, we train the selected algorithm using all classi er following a 1, it admits that the 0 might be
+available data except the section of the signal to be a false negative (which is more likely, now that the
+used as test data. Applying the trained model to the probability of detection has dropped).
+test signal yields the predicted probabilities shown in Finally, when the threshold is the highest (0:75),
+gure 1, item a. the e ect of negative predictions from the classi er
+Next, to obtain the emission probabilities for the ends up being completely smoothed out after a few
+HMM, we rst choose a threshold for the predicted positive predictions. The detector probability will
+probability and then apply a 10-fold cross validation only drop if many negative predictions appear
+seof our selected model on the training set. With the quentially. This can be seen at the nal end of the
+cross validation results we are able to estimate both signal.
+the positive recall (probability of detection) and neg- The choice of the nal threshold to be implemented
+ative recall (the reciprocal of the probability of false in the detector system must take into account the
+alarm). Figure 2 shows the class predictions (ob- relative costs of issuing a false alarm, and letting a
+tained by the application of the threshold over the leakage remain undetected. Given the fact that a true
+predicted probabilities) for the test signal and the leakage is a long duration acoustic event (which is
+resulting HMM probabilities of leakage, for 3 values re ected on the small probability of a 1 0 transition
+of the threshold. For the transition probabilities, we in the hidden Markov chain), it might be advisable to
+adopt = 0:00001 and = 0:1. The value of is cho- pick high values for the threshold. This will decrease
+sen to re ect the fact that it is highly unlikely that a the false alarm ratio, and, if the classi er is e cient,
+true leakage will stop spontaneously. will still correctly capture true leakages, because in</p>
+      <p>The e ect of applying the HMM over the class this case the positive predictions will accumulate over
+predictions depends on the estimates of the posi- time and the HMM will also accumulate the evidence,
+tive and negative recall (and thus depends on the yielding a consistently high probability.
+choice of threshold). With the lowest threshold of
+0:25, the HMM smoothing causes the detector to
+delay response to a positive identi cation from the 6 Conclusion
+classi er: the HMM smoothed values reach 0:7 rst,
+and only after two consecutive positive identi ca- Our main goal in this paper was to investigate the
+tions the probability of a leakage reaches 1:0. On viability of applying machine learning algorithms to
+the other hand, a single negative result from the the task of underwater gas leakage detection. We
+anclassi er causes the detection probability to imme- alyzed the performance of two algorithms, Random
+diately drop to 0. The main cause for this behav- Forests and Gradient Boosted Trees, using data from
+ior is the high value of the probability of detection: a pilot study with simulated leakages. We have also
+since P (Yt = 1jXt = 1) is very high, the recipro- proposed to use a hidden Markov model to
+incorpocal P (Yt = 0jXt = 1) is close to 0; so when con- rate knowledge about the duration of actual leakages,
+fronted with a 0 prediction from the classi er, the in particular the fact that once a leakage takes place,
+HMM admits that it must be a true negative and there is a very small probability that it will
+spontadrops P (Xt = 1jY ) accordingly. neously stop.</p>
+      <p>When the threshold is raised to 0:5, the e ect of The results show that this strategy is promising.
+a negative prediction from the classi er is also de- The nal classi er algorithm showed good
+perforlayed: it does not lead immediately to a 0 probability mance, even though it was trained in a relatively
+value in the detector. This is mainly due to the de- small sample. Also, the use of the hidden Markov
+crease in the value of the positive recall (probability model allows the detector to incorporate knowledge
+of detection): the HMM is now less con dent that, about the occurrence and duration of leakages, and
+also incorporates knowledge about the classi er's
+performance (the positive and negative feedback rates).</p>
+      <p>For future works we intend to investigate other
+classi cation strategies. Other lines of work involves
+the study of more precise methods to estimate the
+PSD of a given signal, and the analysis of complete
+probabilistic models that combine the classi er and
+HMM smoother in a single model.</p>
+      <p>We are also conducting new experiments to enrich
+our data set. The new data will support both the
+training of more powerful classi ers and the
+investigation of yet another methods for leakage detection and
+quanti cation using machine learning algorithms.
+[7] S. Fasham, G. Brown, and R. Crook. Using [16] H. Phan, M. Maa , R. Mazur, and A. Mertins.
+acoustics for the monitoring, measurement, and Random regression forests for acoustic event
+deveri cation (mmv) of o shore carbon capture tection and classi cation. IEEE/ACM
+Transacand storage (ccs) sites. In IEEE/OES Acoustics tions on Audio, Speech and Language
+Processin Underwater Geosciences Symposium (RIO ing, 23(1):20{31, 2015.</p>
+      <p>Acoustics), 2015.
+[12] IEAGHG. Review of o shore monitoring for ccs</p>
+      <p>project, 2015.
+[13] Llew Mason, Jonathan Baxter, Peter Bartlett,
+and Marcus Frean. Boosting algorithms as
+gradient descent in function space, 1999.
+[14] Tiancheng Miao, Jingting Liu, Shijie Qin, Ning</p>
+      <p>Chu, Dazhuan Wu, and Leqin Wang. The ow
+and acoustic characteristics of underwater gas
+jets from large vertical exhaust nozzles. Journal
+of Low Frequency Noise, Vibration and Active</p>
+      <p>Control, 37(1):74{89, 2018.
+[15] M. Minnaert. Xvi. on musical air-bubbles and
+the sounds of running water. The London,
+Edinburgh, and Dublin Philosophical Magazine and
+Journal of Science, 16(104):235{248, 1933.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Berges</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T. G.</given-names>
+            <surname>Leighton</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>P. R.</given-names>
+            <surname>White</surname>
+          </string-name>
+          .
+          <article-title>Passive acoustic quanti cation of gas uxes during controlled gas release experiments</article-title>
+          .
+          <source>International Journal of Greenhouse Gas Control</source>
+          ,
+          <volume>38</volume>
+          :
+          <fpage>64</fpage>
+          {
+          <fpage>79</fpage>
+          ,
+          <year>2015</year>
+          .
+          <article-title>CCS and the Marine Environment</article-title>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>B. J. P.</given-names>
+            <surname>Berges</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T. G.</given-names>
+            <surname>Leighton</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P. R.</given-names>
+            <surname>White</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Tomczykb</surname>
+          </string-name>
+          .
+          <article-title>Passive acoustic quanti cation of gas releases</article-title>
+          .
+          <source>In 2nd International Conference and Exhibition on Underwater Acoustics</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Breiman</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Friedman</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C. J.</given-names>
+            <surname>Stone</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R. A.</given-names>
+            <surname>Olshen</surname>
+          </string-name>
+          .
+          <article-title>Classi cation and Regression Trees</article-title>
+          .
+          <article-title>The Wadsworth and Brooks-Cole statisticsprobability series</article-title>
+          . Taylor &amp; Francis,
+          <year>1984</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>Leo</given-names>
+            <surname>Breiman</surname>
+          </string-name>
+          .
+          <article-title>Random forests</article-title>
+          . Mach. Learn.,
+          <volume>45</volume>
+          (
+          <issue>1</issue>
+          ):5{
+          <fpage>32</fpage>
+          ,
+          <year>October 2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>M. H. A.</given-names>
+            <surname>Davis</surname>
+          </string-name>
+          .
+          <article-title>A Review of the Statistical Theory of Signal Detection</article-title>
+          . Springer,
+          <year>1989</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>European</given-names>
+            <surname>Parliament</surname>
+          </string-name>
+          and
+          <article-title>the Council of the European Union</article-title>
+          .
+          <article-title>On the geological storage of carbon dioxide and amending council directive 85/337/eec, european parliament</article-title>
+          and
+          <source>council directives</source>
+          <year>2000</year>
+          /60/ec,
+          <year>2001</year>
+          /80/ec,
+          <year>2004</year>
+          /35/ec,
+          <year>2006</year>
+          /12/ec,
+          <year>2008</year>
+          /1/ec and regulation (ec) no 1013/
+          <year>2006</year>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Fonseca</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Gong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Bogdanov</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O.</given-names>
+            <surname>Slizovskaia</surname>
+          </string-name>
+          , E. Gomez, and
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Serra</surname>
+          </string-name>
+          .
+          <article-title>Acoustic scene classi cation by ensembling gradient</article-title>
+          [18]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Strasberg</surname>
+          </string-name>
+          .
+          <article-title>Gas bubbles as sources of sound boosting machine and convolutional neural net- in liquids</article-title>
+          .
+          <source>The Journal of the Acoustical Society works. In Workshop on Detection and Classi - of America</source>
+          ,
+          <volume>28</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>20</volume>
+          {
+          <fpage>26</fpage>
+          ,
+          <year>1956</year>
+          . cation of Acoustic Scenes and Events, Munich, Germany,
+          <volume>16</volume>
+          /11/
+          <year>2017</year>
+          2017.
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <surname>R. E. Schapire.</surname>
+          </string-name>
+          <article-title>The strength of weak learnability</article-title>
+          .
+          <source>Machine Learning</source>
+          ,
+          <volume>5</volume>
+          (
+          <issue>2</issue>
+          ):
+          <volume>197</volume>
+          {
+          <fpage>227</fpage>
+          ,
+          <year>1990</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Freund</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R. E.</given-names>
+            <surname>Schapire</surname>
+          </string-name>
+          .
+          <article-title>A decisiontheoretic generalization of on-line learning and an application to boosting</article-title>
+          .
+          <source>Journal of Computer and System Sciences</source>
+          ,
+          <volume>55</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>119</volume>
+          {
+          <fpage>139</fpage>
+          ,
+          <year>1997</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <surname>Tin</surname>
+            <given-names>Kam</given-names>
+          </string-name>
+          <string-name>
+            <surname>Ho</surname>
+          </string-name>
+          .
+          <article-title>Random decision forests</article-title>
+          .
+          <source>In Proceedings of the Third International Conference on Document Analysis and Recognition (Volume</source>
+          <volume>1</volume>
+          ) - Volume 1, ICDAR '
+          <volume>95</volume>
+          , pages
+          <fpage>278</fpage>
+          {, Washington, DC, USA,
+          <year>1995</year>
+          . IEEE Computer Society.
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Hubert</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Padovese</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>J. M.</given-names>
+            <surname>Stern</surname>
+          </string-name>
+          .
+          <article-title>Full bayesian approach for signal detection with an application to boat detection on underwater soundscape data</article-title>
+          .
+          <source>37th Maximum Entropy Methods in Science and Engineering</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

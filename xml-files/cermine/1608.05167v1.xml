@@ -1,0 +1,3529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene Classi cation</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Gui-Song Xia</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Jingwen Hu</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Fan Hu</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Baoguang Shi</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Xiang Bai</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Yanfei Zhong</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Liangpei Zhang</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Electronic Information School, Huazhong University of Science and Technology</institution>
+          ,
+          <country country="CN">China</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>School of Electronic Information, Wuhan University</institution>
+          ,
+          <addr-line>Wuhan</addr-line>
+          ,
+          <country country="CN">China</country>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>State Key Lab. LIESMARS, Wuhan University</institution>
+          ,
+          <addr-line>Wuhan</addr-line>
+          ,
+          <country country="CN">China</country>
+        </aff>
+      </contrib-group>
+      <pub-date>
+        <year>2007</year>
+      </pub-date>
+      <abstract>
+        <p>Aerial scene classi cation, which aims to automatically label an aerial image with a speci c semantic category, is a fundamental problem for understanding high-resolution remote sensing imagery. In recent years, it has become an active task in remote sensing area and numerous algorithms have been proposed for this task, including many machine learning and data-driven approaches. However, the existing datasets for aerial scene classi cation like UC-Merced dataset and WHU-RS19 are with relatively small sizes, and the results on them are already saturated. This largely limits the development of scene classi cation algorithms. This paper describes the Aerial Image Dataset (AID): a large-scale dataset for aerial scene classi cation. The goal of AID is to advance the state-of-the-arts in scene classi cation of remote sensing images. For creating AID, we collect and annotate more than ten thousands aerial scene images. In addition, a comprehensive review of the existing aerial scene classi cation techniques as well as recent widely-used deep learning methods is given. Finally, we provide a performance analysis of typical aerial scene classi cation and deep learning approaches on AID, which can be served as the baseline results on this benchmark.</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>X
+r
+a</p>
+    </sec>
+    <sec id="sec-2">
+      <title>Introduction</title>
+      <p>Nowadays, aerial images enable us to measure the earth surface with detail structures and are a kind of
+data source of great signi cance for earth observation [1{4]. Due to the drastically increasing number of
+aerial images and the highly complex geometrical structures and spatial patterns, to e ectively understand
+the semantic content of them is particularly important, driven by many real-world applications in remote
+sensing community. In this paper, we focus on aerial scene classi cation, a key problem in aerial image
+understanding, which aims to automatically assign a semantic label to each aerial image in order to know
+which category it belongs to.</p>
+      <p>
+        The problem of aerial scene classi cation has received growing attention in recent years [2{41]. In the
+literature, primary studies have devoted to classifying aerial images at pixel level, by assigning each pixel in
+an aerial image with a thematic class [
+        <xref ref-type="bibr" rid="ref26 ref27">42, 43</xref>
+        ]. However, with the increasement of the spatial resolutions, it
+turns to be infeasible to interpret aerial images at pixel level [
+        <xref ref-type="bibr" rid="ref26 ref27">42, 43</xref>
+        ], mainly due to the fact that single pixels
+quickly lose their thematic meanings and discriminative e ciency to separate di erent type of land covers.
+Speci cally, in 2001, Blaschke and Strobl [
+        <xref ref-type="bibr" rid="ref28">44</xref>
+        ] have raised the question \What's wrong with pixels?" and argued
+that it is more e cient to analyze aerial images at object-level, where the \objects" refer to local regions of
+pixels sharing spectral or texture homogeneities, e.g. superpixels [
+        <xref ref-type="bibr" rid="ref29">45</xref>
+        ]. This kind of approaches then have
+dominated the analysis of high-resolution remote sensing images for decades [46{52]. It is worth noticing that
+both pixel- and object-level classi cation methods attempt to model an aerial scene in a bottom-up manner
+by aggregating extracted spectral, texture and geometrical features for training a strong classi er.
+      </p>
+      <p>However, due to the growing of image spatial resolutions, aerial scenes may often consist of di erent and
+distinct thematic classes [19] and it is of great interest to reveal the context of these thematic classes, i.e.
+semantic information, of aerial scenes. Aerial scene classi cation aims to classify an aerial image into di erent
+semantic categories by directly modeling the scenes by exploiting the variations in the spatial arrangements
+and structural patterns. In contrast with pixel-/object-oriented classi cation, scene classi cation provide a
+relatively high-level interpretation of aerial images. More precisely, the item \scene" hereby usually refers to
+a local area in large-scale aerial images that contain clear semantic information on the surface [2{41, 53{60].</p>
+      <p>Though many exciting progresses on aerial scene classi cation have been extensivly reported in recent
+years, e.g. [2{4, 18{41], there are two major issues that seriously limit the development of aerial scene
+classi cation.</p>
+      <p>
+        - Lacking a comprehensive review of existing methods. Although many methods have been presented to
+advance the aerial scene classi cation, most of them were evaluated on di erent datasets under di erent
+experimental settings. This somewhat makes the progress confused and may misleads the development
+of the problem. Moreover, the codes of these algorithms have not been released, which brings di culties
+to reproduce the works for fair comparisons. Therefore, the state-of-the-art of aerial scene classi cation
+is not absolutely clear.
+- Lacking proper benchmark datasets for performance evaluation. In order to develop robust methods
+for aerial scene classi cation, it is highly expected that the datasets for evaluation demonstrate all the
+challenging aspects of the problem. For instance, the high diversities in the geometrical and spatial
+patterns of aerial scenes. Currently, the evaluations of aerial scene classi cation algorithms are typically
+done on datasets containing up to two-thousands images at best, e.g. the UC-Merced dataset [
+        <xref ref-type="bibr" rid="ref41">57</xref>
+        ] and
+the WHU-RS19 dataset [
+        <xref ref-type="bibr" rid="ref40">56</xref>
+        ]. Such limited number of images are critically insu cient to approximate
+the real applications, where the images are with high intra-class diversity and low inter-class variation.
+Recently, the saturated results on these datasets demonstrated that the more challenging datasets are
+badly required.
+      </p>
+      <p>Due to the above issues, in this paper, we present a comprehensive review to up-to-date algorithms as
+well as a new large-scale benchmark dataset of aerial images (named as AID), in order to fully advance
+the task of aerial scene classi cation. AID provides the research community a benchmark resource for the
+development of the state-of-the-art algorithms in aerial scene classi cation or other related tasks such as
+aerial image search, aerial image annotation, aerial image segmentation, etc. In addition, our experiments
+on AID demonstrate that it is quite helpful to re ect the shortcomings of existing methods. In summary, the
+major contributions of this paper are as follows:
+- We provide a comprehensive review on aerial scene classi cation, by giving a clear summary of the
+development of scene classi cation approaches.
+- We construct a new large-scale dataset, i.e. AID, for aerial scene classi cation. The dataset is, to
+our knowledge, of the largest size and the images are with high intra-class diversity and low inter-class
+dissimilarity, which can provide the research community a better data resource to evaluate and advance
+the state-of-the-art algorithms in aerial image analysis.
+- We evaluate a set of representative aerial scene classi cation approaches with various experimental
+protocols on the new dataset. These can serve as baseline results for future works.
+- The source codes of our implementation for all the baseline algorithms are released, will be general
+tools for other researchers.</p>
+      <p>The rest of the paper is organized as follows. We rst provide a comprehensive review of related methods
+in Section 2. The details of AID dataset are described in Section 3. Then, we provide the description of
+baseline algorithms for benchmark evaluation in Section 4. In Section 5, the evaluation and comparison of
+baseline algorithms on AID under di erent experimental settings are given. Finally, some conclusion remarks
+are drawn in Section 6.</p>
+      <p>The AID and the codes for reproducing all the results in this paper are downloadable at the project
+webpage www.lmars.whu.edu.cn/xia/AID-project.html.
+2</p>
+    </sec>
+    <sec id="sec-3">
+      <title>A review on aerial scene classi cation</title>
+      <p>
+        This section reviews comprehensively the existing scene classi cation methods for aerial images. Distinguished
+from pixel-/object-level image classi cations which interpret aerial images with a bottom-up manner, scene
+classi cation is apt to directly model an aerial scene by developing a holistic representation of the aerial
+image [2{41, 53{60]. One should observe that, actually, the underlying assumption of scene classi cation is
+that the same type of scene should share certain statistically holistic visual characteristics. This point has
+been veri ed on natural scenes [
+        <xref ref-type="bibr" rid="ref44">61</xref>
+        ] and demonstrates its e ciency on classifying aerial scenes. Thus, most of
+the works on aerial scene classi cation focus on computing such holistic and statistical visual attributes for
+classi cation features. In this sense, scene classi cation methods can be divided into three main categories:
+methods using low-level visual features, methods relying on mid-level visual representations and the methods
+based on high-level vision information. In what follows, we review each category of the methods in details.
+2.1
+      </p>
+      <sec id="sec-3-1">
+        <title>Methods using low-level visual features</title>
+        <p>
+          With this kind of methods, it is supposed that aerial scenes can be distinguished by low-level visual features,
+e.g. spectral, texture and structure, etc. Consequently, an aerial scene image is usually described by a
+feature vector extracted from such low-level visual attributes, either locally [
+          <xref ref-type="bibr" rid="ref37">53</xref>
+          ] or globally [
+          <xref ref-type="bibr" rid="ref38">54</xref>
+          ]. On one
+hand, in order to describe the complex structures, local structure descriptors, e.g. the Scale Invariant Feature
+Transform (SIFT) [
+          <xref ref-type="bibr" rid="ref45">62</xref>
+          ], have been widely used for modeling the local variations of structures in aerial images.
+The classi cation feature vector is usually formed by concatenating or pooling the local descriptors of the
+subregions of an image. On the other hand, for depicting the spatial arrangements of aerial scenes, statistical
+and global distributions of certain spatial cues such as color [
+          <xref ref-type="bibr" rid="ref46">63</xref>
+          ] and texture information [
+          <xref ref-type="bibr" rid="ref47">5, 64</xref>
+          ] have also
+been well investigated. For instance, Yang and Newsam [
+          <xref ref-type="bibr" rid="ref37">53</xref>
+          ] compared SIFT and Gabor texture features for
+classifying IKONOS satellite images by using Maximum A Posteriori (MAP) classi er and found that SIFT
+performs better. Santos et. al [
+          <xref ref-type="bibr" rid="ref38">54</xref>
+          ] evaluated various global color descriptors and texture descriptors, e.g.
+color histogram [
+          <xref ref-type="bibr" rid="ref46">63</xref>
+          ], local binary pattern (LBP) [
+          <xref ref-type="bibr" rid="ref48">65</xref>
+          ], for scene classi cation.
+        </p>
+        <p>
+          Although single type of features work well for aerial image classi cation [
+          <xref ref-type="bibr" rid="ref37 ref38 ref43">53, 54, 60</xref>
+          ], the combinations
+of complementary features can often improve the results, see e.g. [
+          <xref ref-type="bibr" rid="ref5">10, 18, 26</xref>
+          ]. In particular, Luo et. al [
+          <xref ref-type="bibr" rid="ref5">10</xref>
+          ]
+extracted 6 di erent kinds of feature descriptors, i.e. simple radiometric features, Gaussian wavelet
+features [
+          <xref ref-type="bibr" rid="ref49">66</xref>
+          ], Gray Level Co-Occurrence Matrix (GLCM), Gabor lters, shape features [
+          <xref ref-type="bibr" rid="ref50">67</xref>
+          ] and SIFT, and
+combined them to form a multiple-feature representation for indexing remote sensing images with di erent
+spatial resolutions, which reported that multiple features can describe aerial scenes better. Avramovic and
+Risojevic integrated Gist [
+          <xref ref-type="bibr" rid="ref44">61</xref>
+          ] and SIFT descriptors for aerial scene classi cation. Some class-speci c feature
+selection methods were also developed to select a good subset of low-level visual features for aerial image
+classi cation [26].
+        </p>
+        <p>
+          In order to encode the global spatial arrangements and the geometrical diversities of aerial scenes, Xia
+et. al [
+          <xref ref-type="bibr" rid="ref40">56</xref>
+          ] proposed an invariant and robust shape-based scene descriptor to describe the structure
+distributions of aerial images. While Vladimir et. al focused on the texture information of scenes and they
+successively proposed a local structural texture descriptor [5], an orientation di erence descriptor [8], and
+an Enhanced Gabor Texture Descriptor (EGTD) [
+          <xref ref-type="bibr" rid="ref8">13</xref>
+          ] based on the Gabor lters [
+          <xref ref-type="bibr" rid="ref47">64</xref>
+          ] to further improve the
+performance. In [
+          <xref ref-type="bibr" rid="ref23">39</xref>
+          ], a multi-scale completed local binary patterns (MS-CLBP) was proposed for land-use
+scene classi cation and achieved the state-of-the-art performance among low-level methods.
+        </p>
+        <p>
+          It is worth noticing that scene classi cation methods with low-level visual features perform well on some
+aerial scenes with uniform structures and spatial arrangements, but it is di cult for them to depict the
+high-diversity and the non-homogeneous spatial distributions in aerial scenes [
+          <xref ref-type="bibr" rid="ref9">14</xref>
+          ].
+2.2
+        </p>
+      </sec>
+      <sec id="sec-3-2">
+        <title>Methods relying on mid-level visual representations</title>
+        <p>In contrast with methods relying on low-level visual attributes, mid-level aerial scene analysis approaches
+attempt to develop a holistic scene representation through representing the high-order statistical patterns
+formed by the extracted local visual attributes. A general pipeline is to rst extract local image attributes,
+e.g. SIFT, LBP and color histograms of local image patches, and then encode these local cues for building a
+holistic mid-level representation for aerial scenes.</p>
+        <p>
+          One of the most popular mid-level approaches is the bag-of-visual-words (BoVW) model [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ]. More
+precisely, this method [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ] rst described local image patches by SIFT [
+          <xref ref-type="bibr" rid="ref45">62</xref>
+          ] descriptors, then learned a vocabulary
+of visual words (also known as dictionary or codebook) for instance by k-means clustering. Subsequently,
+the local descriptors were encoded against the vocabulary by hard assignment, i.e., vector quantization, and
+a global feature vector of the image could be obtained by the histogram of visual words, which is actually
+counting the occurrence frequencies of each visual words in the image. Thanks to its simplicity and e ciency,
+BoVW model and its variants have been widely adopted for computing mid-level representation for aerial
+scenes, see e.g. [6, 11, 12, 21{23, 25, 28, 30, 57, 58].
+        </p>
+        <p>
+          In order to improve the discriminative power of BoVW model, multiple complemented low-level visual
+features were combined under the framework. For instance, in [
+          <xref ref-type="bibr" rid="ref42">58</xref>
+          ] various local descriptors, including SIFT,
+GIST, color histogram and LBP, etc., were evaluated with the standard BoVW model for aerial scene
+classi cation. The experiments of the concatenation of BoVW representations from di erent local descriptors
+proved that combining complemented features can signi cantly improve the classi cation accuracy. Similarly,
+in [
+          <xref ref-type="bibr" rid="ref7">12</xref>
+          ], a highly discriminative texture descriptor, i.e. combined scattering feature [
+          <xref ref-type="bibr" rid="ref51">68</xref>
+          ], was incorporated
+with SIFT and color histogram to extract structure and spectral information under a multi-feature extraction
+scheme. Unlike the simple concatenation in [
+          <xref ref-type="bibr" rid="ref42">58</xref>
+          ], in this work, a hierarchical classi cation method
+incorporating Extreme Value Theory (EVT)-based normalization [
+          <xref ref-type="bibr" rid="ref52">69</xref>
+          ] was used to calibrate multiple features. In [7],
+multiple features like structure features, spectral features and texture features were extracted and encoded
+in a sparse coding scheme [
+          <xref ref-type="bibr" rid="ref53">70</xref>
+          ] besides BoVW. The sparse coding scheme was developed based on BoVW
+but adding a sparsity constraint to the feature distributions to reduce the complexity of Support Vector
+Machine (SVM) meanwhile maintain good performance. In [21], various feature coding methods developed from
+BoVW model were evaluated for scene classi cation using multi-features. By applying PCA for dimension
+reduction before concatenating multi-features, the Improved Fisher Vector (IFK) [
+          <xref ref-type="bibr" rid="ref54">71</xref>
+          ] and Vectors of Locally
+Aggregated Tensors (VLAT) [21] methods reported to achieve the state-of-the-art performances.
+        </p>
+        <p>
+          Note that in BoVW models, they count the frequencies of the visual words in an image, with regardless
+of the spatial distribution of the visual words. However, the spatial arrangements of visual words, e.g.
+co-occurrence, convey important information of aerial scenes. Therefore, some methods were proposed to
+incorporate the spatial distribution of visual words beyond the BoVW models. For instance, Yang et al [6]
+developed the spatial pyramid co-occurrence kernel (SPCK) to integrate the absolute and relative spatial
+information ignored in the standard BoVW model setting, by relying on the idea of spatial pyramid match
+kernel (SPM) [
+          <xref ref-type="bibr" rid="ref55">72</xref>
+          ] and spatial co-occurrence kernel (SCK) [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ]. Later, Zhao et. al [22] proposed another
+way to incorporate the spatial information, where wavelet decomposition was utilized in the BoVW model
+to combine not only the spatial information but also the texture information. Moreover, in [23], the authors
+proposed a concentric circle-based spatial-rotation-invariant representation to encode the spatial information.
+In [25], a pyramid-of-spatial-relatons (PSR) model was developed to capture both absolute and relative
+spatial relationships of local low-level features. Unlike the conventional co-occurrence approaches [6, 23] that
+describe pairwise spatial relationships between local features, the PSR model employed a novel concept of
+spatial relation to describe relative spatial relationship between a group of local features and reported better
+performance.
+        </p>
+        <p>
+          In addition, to encode higher-order spatial information between low-level local visual words for scene
+modeling, topic models along with the BoVW scheme are developed to take into account the semantic
+relationship among the visual words [
+          <xref ref-type="bibr" rid="ref11 ref22 ref39">9,16,20,27,38,55</xref>
+          ]. Among them, Latent Dirichlet Allocation (LDA) [
+          <xref ref-type="bibr" rid="ref56">73</xref>
+          ]
+model de nes an intermediate variable named \topic", which serves as a connection between the visual words
+and the image. The probability distribution of the topics are estimated by Dirichlet distribution and were used
+to describe an image instead of the marginal distribution of visual words with much lower dimensional features.
+To combine di erent features, Kusumaningrum et. al [20] used CIELab color moments [
+          <xref ref-type="bibr" rid="ref57">74</xref>
+          ], GLCM [
+          <xref ref-type="bibr" rid="ref58">75</xref>
+          ] and
+edge orientation histogram (EOH) [20] to extract spectral, texture and structure information respectively
+in the LDA model. In [
+          <xref ref-type="bibr" rid="ref11">27</xref>
+          ], the probabilistic Latent Semantic Analysis (pLSA) model [
+          <xref ref-type="bibr" rid="ref59">76</xref>
+          ] was adopted for
+scene classi cation in a multi-feature fusion manner and achieved better result than single feature. In [
+          <xref ref-type="bibr" rid="ref22">38</xref>
+          ],
+pLSA [
+          <xref ref-type="bibr" rid="ref59">76</xref>
+          ] and LDA [
+          <xref ref-type="bibr" rid="ref56">73</xref>
+          ] were compared using a multi-feature fusion strategy to combine three complementary
+features in a semantic allocation level, and LDA demonstrated slightly better performances.
+        </p>
+        <p>
+          Observe that, in all the aforementioned methods, various hand-craft local image descriptors are used
+to represent aerial scenes. One main di culty of such methods lies in the fact that they may lack the
+exibility and adaptivity to di erent scenes. In this sense, unsupervised feature learning approaches have
+been developed to automatically learn adaptive feature representations from images, see e.g. [
+          <xref ref-type="bibr" rid="ref15 ref20">19, 31, 36</xref>
+          ].
+In [19], a sparse coding based method was proposed to learn a holistic scene representation from raw pixel
+values and other low-level features for aerial images. In [
+          <xref ref-type="bibr" rid="ref15">31</xref>
+          ], Hu et. al discovered the intrinsic space of
+local image patches by applying di erent manifold learning techniques and made the dictionary learning
+and feature encoding more e ective. Also with the unsupervised feature learning scheme, Zhang et. al [
+          <xref ref-type="bibr" rid="ref20">36</xref>
+          ]
+extracted the features of image patches by the sparse Auto-Encoder (SAE) [
+          <xref ref-type="bibr" rid="ref60">77</xref>
+          ] and exploited the local spatial
+and structural information of complex aerial scenes.
+2.3
+        </p>
+      </sec>
+      <sec id="sec-3-3">
+        <title>Methods based on high-level vision information</title>
+        <p>Currently, deep learning methods achieve impressive results on many computer vision tasks such as image
+classi cation, object and scene recognition, image retrieval, etc. This type of methods also achieve
+stateof-the-art performance on aerial scene classi cation, see e.g. [4, 32{34, 37, 40, 41]. In general, deep learning
+methods use a multi-stage global feature learning architecture to adaptively learn image features and often
+cast the aerial scene classi cation as an end-to-end problem. Compared with low-level and mid-level methods,
+deep learning methods can learn more abstract and discriminative semantic features and achieve far better
+classi cation performance [4, 32{34, 37, 41].</p>
+        <p>
+          It has been reported that by directly using the pre-trained deep neural network architectures on the natural
+images [
+          <xref ref-type="bibr" rid="ref61">78</xref>
+          ], the extracted global features showed impressive performance on aerial scene classi cation [
+          <xref ref-type="bibr" rid="ref17">33</xref>
+          ].
+The two freely available pre-trained deep Convolution Neural Network (CNN) architectures are OverFeat [
+          <xref ref-type="bibr" rid="ref62">79</xref>
+          ]
+and Ca eNet [
+          <xref ref-type="bibr" rid="ref63">80</xref>
+          ]. In [
+          <xref ref-type="bibr" rid="ref16">32</xref>
+          ], another promising architecture, i.e. GoogLeNet [
+          <xref ref-type="bibr" rid="ref64">81</xref>
+          ], was considered and evaluated.
+This architecture also showed astounding performance for aerial images. In [
+          <xref ref-type="bibr" rid="ref18">34</xref>
+          ], it demonstrated that a
+multiscale input strategy for multi-view deep learning can improve the performance of aerial scene classi cation.
+        </p>
+        <p>
+          In contrast with directly using the features from the fully-connected layer of the pre-trained CNN
+architectures as the nal representation [32{34], others use the deep-CNN as local feature extractor and combine
+it with feature coding techniques. For instance, Hu et. al [
+          <xref ref-type="bibr" rid="ref4">4</xref>
+          ] extracted multi-scale dense CNN activations
+from the last convolutional layer as local features descriptors and further coded them using feature encoding
+methods like BoVW [
+          <xref ref-type="bibr" rid="ref65">82</xref>
+          ], Vector of Locally Aggregated Descriptors (VLAD) [
+          <xref ref-type="bibr" rid="ref66">83</xref>
+          ] and Improved Fisher Kernel
+(IFK) [
+          <xref ref-type="bibr" rid="ref54">71</xref>
+          ] to generate the nal image representation. For all the deep-CNN architectures used above, either
+the global or local features were obtained from the networks pre-trained on natural image datasets and were
+directly used for classi cation aerial images.
+        </p>
+        <p>
+          In addition to the above two ways using deep-learning methods, another choice is to train a new deep
+network. However, as reported in [
+          <xref ref-type="bibr" rid="ref25">41</xref>
+          ], using the existing aerial scene datasets (e.g. UC-Merced dataset [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ]
+and the WHU-RS19 dataset [
+          <xref ref-type="bibr" rid="ref40">56</xref>
+          ]) to fully train the networks such as Ca eNet [
+          <xref ref-type="bibr" rid="ref63">80</xref>
+          ] or GoogLeNet [
+          <xref ref-type="bibr" rid="ref64">81</xref>
+          ] showed
+a drop in accuracies compared with using the networks as global feature extractors. This can be explained by
+the fact that the large scale networks usually contain millions of parameters to be trained, therefore, to train
+them using the aerial datasets with only a few hundreds or thousands images will easily stick in over tting and
+local minimum. Thus, to better t the dataset, smaller networks for classi cation were trained [
+          <xref ref-type="bibr" rid="ref21 ref24">37,40</xref>
+          ]. In [
+          <xref ref-type="bibr" rid="ref21">37</xref>
+          ],
+a Gradient Boosting Random Convolutional Network (GBRCN) was proposed for classifying aerial images
+with only two convolutional layers. In [
+          <xref ref-type="bibr" rid="ref24">40</xref>
+          ], a deep belief network (DBN) [
+          <xref ref-type="bibr" rid="ref67">84</xref>
+          ] was trained on aerial images,
+and the feature selection problem was formulated as a feature reconstruction problem in the DBN scheme.
+By minimizing the reconstruction error over the whole feature set, the features with smaller reconstruction
+errors can hold more feature intrinsics for image representation. However, the generalization ability of a
+small network is often lower than that of large scale networks. It is highly demanded to train a large-scale
+network with large number of annotated aerial images.
+3
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>Aerial Image Datasets (AID) for aerial scene classi cation</title>
+      <p>This section rst reviews several datasets commonly used for aerial scene classi cation and then described
+the proposed Aerial Image Dataset (AID)1.
+3.1
+3.1.1</p>
+      <sec id="sec-4-1">
+        <title>Existing datasets for aerial scene classi cation</title>
+        <sec id="sec-4-1-1">
+          <title>UC-Merced dataset [57]</title>
+          <p>It consists of 21 classes of land-use images selected from aerial ortho-imagery with the pixel resolution of
+one foot. The original images were downloaded from the United States Geological Survey (USGS) National
+Map of the following US regions: Birmingham, Boston, Bu alo, Columbus, Dallas, Harrisburg, Houston,
+Jacksonville, Las Vegas, Los Angeles, Miami, Napa, New York, Reno, San Diego, Santa Barbara, Seattle,
+Tampa, Tucson, and Ventura. They are then cropped into small regions of 256 256 pixels. There are
+totally 2100 images manually selected and uniformly labeled into 21 classes: agricultural, airplane, baseball
+diamond, beach, buildings, chaparral, dense residential, forest, freeway, golf course, harbor, intersection,
+medium density residential, mobile home park, overpass, parking lot, river, runway, sparse residential, storage
+tanks, and tennis courts.</p>
+          <p>It is worth noticing that UCM dataset contains a variety of spatial land-use patterns which make the
+dataset more challenging. Moreover, some highly overlapped classes, e.g. dense residential, medium
+residential and sparse residential that mainly di er in the density of structures, make the dataset di cult for
+classi cation. This dataset is widely used for the task of aerial image classi cation [2{6, 8, 11, 13, 14, 17{19,
+21{26, 29, 31{38, 57].
+3.1.2</p>
+        </sec>
+        <sec id="sec-4-1-2">
+          <title>WHU-RS dataset</title>
+          <p>
+            This dataset is collected from Google Earth imagery3. The images are with xed size of 600 600 pixels
+with various pixel resolutions up to half a meter. This dataset has been updated to the third versions until
+now. In its original version [
+            <xref ref-type="bibr" rid="ref40">56</xref>
+            ], there are 12 classes of aerial scenes including airport, bridge, river, forest,
+meadow, pond, parking, port, viaduct, residential area, industrial area, and commercial area. For each class,
+there were 50 samples. Later, Sheng et.al [7] expanded the dataset to 19 classes with 7 new ones, i.e. beach,
+desert, farmland, football eld, mountain, park and railway station. Thus, the dataset is composed of a total
+number of 950 aerial images, which is widely used as the WHU-RS19 dataset [4, 7, 11, 29{31, 35, 58]. However,
+1The AID is downloadable at www.lmars.whu.edu.cn/xia/AID-project.html.
+3https://www.google.com/earth/
+the size of this dataset is relatively small compared with UC-Merced dataset [
+            <xref ref-type="bibr" rid="ref41">57</xref>
+            ]. Thus, we reorganized
+and expanded WHU-RS19 to form its third version [
+            <xref ref-type="bibr" rid="ref14">30</xref>
+            ], by adding a new aerial scene type \bare land" and
+increasing the number of samples in each class. In the newest version of the WHU-RS dataset, it thus has
+5000 aerial images with each class containing more than 200 sample images. It is worth noticing that the
+sample images of the same class in WHU-RS dataset are collected from di erent regions all around the world
+and the aerial scenes might appear at di erent scales, orientations and with di erent lighting conditions.
+3.1.3
+          </p>
+        </sec>
+        <sec id="sec-4-1-3">
+          <title>RSSCN7 dataset [40]</title>
+          <p>This dataset is also collected from Google Earth3, which contains 2800 aerial scene images labeled into 7
+typical scene categories, i.e., the grassland, forest, farmland, parking lot, residential region, industrial region,
+river and lake. There are 400 images in each scene type, and each image has a size of 400 400 pixels. It
+is worth noticing that the sample images in each class are sampled on 4 di erent scales with 100 images per
+scale with di erent imaging angles, which is the main challenge of the dataset.
+3.1.4</p>
+        </sec>
+        <sec id="sec-4-1-4">
+          <title>Other small datasets</title>
+          <p>
+            Besides the three public datasets mentioned before, there are also several non-public datasets, e.g., the
+IKONOS Satellite Image dataset [
+            <xref ref-type="bibr" rid="ref37">53</xref>
+            ], the In-House dataset [
+            <xref ref-type="bibr" rid="ref43">5, 18, 60</xref>
+            ], the SPOT Image dataset [
+            <xref ref-type="bibr" rid="ref5">10</xref>
+            ], the
+ORNL dataset [19], etc. Note that the numbers of scene types in all these datasets are less than 10, which
+thus results in small intra-class diversity. Moreover, common used mid-level scene classi cation methods get
+saturated and have reported overall accuracies nearly 100% on these dataset. Therefore, these less challenging
+datasets will severely restrict the development of aerial scene classi cation algorithms.
+3.2
+          </p>
+        </sec>
+      </sec>
+      <sec id="sec-4-2">
+        <title>AID: a new dataset for aerial scene classi cation</title>
+        <p>
+          To advance the state-of-the-arts in scene classi cation of remote sensing images, we construct AID, a new
+large-scale aerial image dataset, by collecting sample images from Google Earth imagery. Note that although
+the Google Earth images are post-processed using RGB renderings from the original optical aerial images,
+Hu et al. [
+          <xref ref-type="bibr" rid="ref1">1</xref>
+          ] have proven that there is no signi cant di erence between the Google Earth images with the
+real optical aerial images even in the pixel-level land use/cover mapping. Thus, the Google Earth images can
+also be used as aerial images for evaluating scene classi cation algorithms.
+        </p>
+        <p>The new dataset is made up of the following 30 aerial scene types: airport, bare land, baseball eld, beach,
+bridge, center, church, commercial, dense residential, desert, farmland, forest, industrial, meadow, medium
+residential, mountain, park, parking, playground, pond, port, railway station, resort, river, school, sparse
+residential, square, stadium, storage tanks and viaduct. All the images are labelled by the specialists in the
+eld of remote sensing image interpretation, and some samples of each class are shown in Fig. 1. The numbers
+of sample images varies a lot with di erent aerial scene types, see Table. 1, from 220 up to 420. In all, the
+AID dataset has a number of 10000 images within 30 classes.</p>
+        <p>
+          The images in AID are actually multi-source, as Google Earth images are from di erent remote imaging
+sensors. This brings more challenges for scene classi cation than the single source images like UC-Merced
+dataset [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ]. Moreover, all the sample images per each class in AID are carefully chosen from di erent
+countries and regions around the world, mainly in China, the United States, England, France, Italy, Japan,
+Germany, etc., and they are extracted at di erent time and seasons under di erent imaging conditions, which
+increases the intra-class diversities of the data.
+        </p>
+        <p>Note that another main di erence between AID and UC-Merced dataset is that AID has multi-resolutions:
+the pixel-resolution changes from about 8 meters to about half a meter, and thus the size of each aerial image
+is xed to be 600 600 pixels to cover a scene with various resolutions.
+airport bare land baseball field
+beach bridge center
+church commercial dense residential
+desert farmland forest
+industrial meadow medium residential
+mountain park parking
+playground pond port
+railway station resort river
+school sparse residential square
+stadium storage tanks viaduct
+Figure 1: Samples of AID: three examples of each semantic scene class are shown. There are 10000 images
+within 30 classes.</p>
+        <p>8</p>
+      </sec>
+      <sec id="sec-4-3">
+        <title>Why AID is proper for aerial image classi cation?</title>
+        <p>In contrast with existing remote sensing image datasets, e.g. UC-Merced dataset and WHU-RS19 dataset,
+AID has following properties:
+- Higher intra-class variations: In aerial images, due to the high spatial resolutions, the geometrical
+structures of scenes become more clear and bring more challenges to image classi cation. First, thanks
+to the high complexity of the earth surface, objects in the same type of scene may appear at di erent
+sizes and orientations. Second, the di erent imaging conditions, e.g. the ying altitude and direction
+and the solar elevation angles, may also vary a lot the appearance of the scene. Thus, in order to
+develop robust aerial image classi cation algorithms with stronger generalized capability, it is accepted
+that the dataset contains high intra-class diversity. The increasing numbers of sample images per each
+class in AID allow us to collect images from di erent regions all over the world accompanied with
+di erent scales, orientations and imaging conditions, which can increase the intra-class diversities of
+the dataset, see e.g. Fig. 2. In Fig. 2.(a), we illustrate two examples of the same scene with di erent
+scale. In Fig. 2.(b), we display examples of the same type of scene with di erent building styles, as the
+sample images are collected in di erent regions and countries and the appearances of the same scene
+varies a lot due to the cultural di erences. In Fig. 2.(c), the shadow direction of the buildings vary
+from west to north at di erent imaging time; and a mountain varies from green to white along with
+the seasonal variation.
+- Smaller inter-class dissimilarity: In real cases of aerial image classi cation, the dissimilarities
+between di erent scene classes are often small. The construction of AID well considered this point,
+by adding more scene categories. As displayed in Fig. 3, AID contains scenes sharing similar objects.
+e.g., both stadium and playground may contain sports eld (see Fig. 3.(a)), but the main di erence
+lies in whether there are stands around. Both bare land and desert are ne-grained textures and share
+similar colors (see Fig. 3.(b)), but bare land usually has more arti cial traces. Some scene classes have
+similar structural distributions, like resort and park (see Fig. 3.(c)), which may contain a lake and some
+buildings, etc., however, a park is generally equipped with amusement and leisure facilities while a
+resort is usually composed of villas for vacations. The AID has taken into account many these kinds of
+scene classes with small inter-class dissimilarity and makes it closer to real aerial image classi cation
+tasks.
+- Relative large-scale dataset: For validating the classi cation algorithm, large-scale labeled data are
+often expected. However, the mannual annotation of aerial images requires expertise and is extremely
+time-consuming. AID has a total number of 10000 images which is, to our knowledge, the largest
+annotated aerial image datasets. It can cover a much wider range of aerial images and better aproximate
+airport
+farmland
+(a)
+church</p>
+        <p>commercial
+railway station
+(b)
+mountain
+(c)</p>
+        <p>
+          the real aerial image classi cation problem than existing dataset. In contrast with our AID, both the
+UC-Merced dataset [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ] and WHU-RS19 dataset [7] contain 100 images per class and only 20 images
+in each class were usually used for testing the algorithms [4, 6, 19, 23{25, 29, 31{33, 35{38, 57]. In such
+case, the classi cation accuracy will be seriously a ected by even one image is predicted correctly or
+not and result in big standard deviation, especially when analyzing the classi cation results on each
+class. Therefore, our AID with relatively large-scale data can provide a better benchmark to evaluate
+image classi cation methods.
+4
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>Baseline methods</title>
+      <p>In this section, we evaluate di erent aerial scene classi cation methods with low-, mid- and high-level scene
+descriptions reviewed previously2. The general classi cation pipeline is demonstrated in Fig. 4.
+4.1</p>
+      <sec id="sec-5-1">
+        <title>Methods with low-level scene features</title>
+        <p>Aerial image classi cation methods using low-level scene features often rst partition an aerial image into
+small patches, then use low-level visual features, e.g. spectral information, texture information or structure
+2The codes of the baseline methods are downloadable at www.lmars.whu.edu.cn/xia/AID-project.html.
+Low-level methods</p>
+        <p>Mid-level methods</p>
+        <p>High-level methods
+dataset
+image
+(patches)
+feature
+descriptors
+pooling
+classifier</p>
+        <p>Scene Classification
+dataset
+image
+patches
+feature
+descriptors
+coding
+pooling
+classifier
+dictionary
+dataset
+conv1</p>
+        <p>
+          …
+conv5
+fc6
+fc7
+classifier
+information etc., to characterize patches and nally output the distribution of the patch features as the scene
+descriptor. In our tests, we choose four commonly used low-level methods in the experiment, i.e. SIFT [
+          <xref ref-type="bibr" rid="ref45">62</xref>
+          ],
+LBP [
+          <xref ref-type="bibr" rid="ref48">65</xref>
+          ], Color Histogram (CH) [
+          <xref ref-type="bibr" rid="ref46">63</xref>
+          ] and GIST [
+          <xref ref-type="bibr" rid="ref44">61</xref>
+          ].
+        </p>
+        <p>
+          - SIFT [
+          <xref ref-type="bibr" rid="ref45">62</xref>
+          ]: It describes a patch by the histograms of gradients computed over a 4 4 spatial grid. The
+gradients are then quantized into eight bins so the nal feature vector has a dimension of 128 (4 4 8).
+- LBP [
+          <xref ref-type="bibr" rid="ref48">65</xref>
+          ]: Some works adopt LBP to extract texture information from aerial images, see [
+          <xref ref-type="bibr" rid="ref38 ref42">54, 58</xref>
+          ]. For a
+patch, it rst compares the pixel to its 8 neighbors: when the neighbor's value is less than the center
+pixel's, output \1", otherwise, output \0". This gives an 8-bit decimal number to describe the center
+pixel. The LBP descriptor is obtained by computing the histogram of the decimal numbers over the
+patch and results in a feature vector with 256 dimensions.
+- Color histogram [
+          <xref ref-type="bibr" rid="ref46">63</xref>
+          ]: Color histograms (CH) are used for extracting the spectral information of aerial
+scenes [
+          <xref ref-type="bibr" rid="ref38 ref42 ref9">14, 54, 58</xref>
+          ]. In our experiments, color histogram descriptors are computed separately in three
+channels of the RGB color space. Each channel is quantized into 32 bins to form a total histogram
+feature length of 96 by simply concatenation of the three channels.
+- GIST [
+          <xref ref-type="bibr" rid="ref44">61</xref>
+          ]: Unlike aforementioned descriptors that focus on local information, GIST represents the
+dominant spatial structure of a scene by a set of perceptual dimensions (naturalness, openness, roughness,
+expansion, ruggedness) based on the spatial envelope model [
+          <xref ref-type="bibr" rid="ref44">61</xref>
+          ] and thus widely used for describing
+scenes [
+          <xref ref-type="bibr" rid="ref43">60</xref>
+          ]. This descriptor is implemented by convolving the gray image with multi-scale (with the
+number of S) and multi-direction (with the number of D) Gabor lters on a 4 4 spatial grid. By
+concatenating the mean vector of each grid, we get the GIST descriptor of an image with 16 S D
+dimensions.
+4.2
+        </p>
+      </sec>
+      <sec id="sec-5-2">
+        <title>Methods with mid-level scene features</title>
+        <p>
+          In contrast with low-level methods, mid-level aerial scene classi cation methods often build a scene
+representation by coding low-level local feature descriptors. In this paper, we evaluated 21 commonly used mid-level
+features obtained by combining 3 local feature descriptors (i.e., SIFT [
+          <xref ref-type="bibr" rid="ref45">62</xref>
+          ], LBP [
+          <xref ref-type="bibr" rid="ref48">65</xref>
+          ]and CH [
+          <xref ref-type="bibr" rid="ref46">63</xref>
+          ]) with 7
+mid-level feature coding approaches.
+        </p>
+        <p>
+          - Bag of Visual Words (BoVW) [
+          <xref ref-type="bibr" rid="ref65">82</xref>
+          ] model an image by leaving out the spatial information and
+representing it with the frequencies of local visual words [
+          <xref ref-type="bibr" rid="ref41">57</xref>
+          ]. BoVW model and its variants are widely used
+in scene classi cation [11, 12, 22, 23, 25, 28{30, 58]. The visual words are often produced by clustering
+local image descriptors to form a dictionary (with a given size K), e.g. using k-means algorithm.
+- Spatial Pyramid Matching (SPM) [
+          <xref ref-type="bibr" rid="ref55">72</xref>
+          ] uses a sequence of increasingly coarser grids to build a spatial
+pyramid (with L levels) coding of local image descriptors. By concatenating the weighted local image
+features in each subregion at di erent scales, one can get a (4L 1) K dimension global feature vector
+3
+which is much longer than BoVW with the same size of dictionary (K).
+- Locality-constrained Linear Coding (LLC) [
+          <xref ref-type="bibr" rid="ref68">85</xref>
+          ] is an e ective coding scheme adapted from sparse coding
+methods [7, 17, 59]. It utilizes the locality constraints to code each local descriptor into its
+localcoordinate system by modifying the sparsity constraints [
+          <xref ref-type="bibr" rid="ref53 ref69">70, 86</xref>
+          ]. The nal feature can be generated by
+max pooling of the projected coordinates with the same size of dictionary.
+- Probabilistic Latent Semantic Analysis (pLSA) [
+          <xref ref-type="bibr" rid="ref59">76</xref>
+          ] is a way to improve the BoVW model by topic
+models. A latent variable called topic is introduced and de ned as the conditional probability distribution
+of visual words in the dictionary. It can serve as a connection between the visual words and images.
+By describing an image with the distribution of topics (the number of topics is set to be T ), one can
+solve the in uence of synonym and polysemy meanwhile reduce the feature dimension to be T .
+- Latent Dirichlet allocation (LDA) [
+          <xref ref-type="bibr" rid="ref56">73</xref>
+          ] is a generative topic model evolved from pLSA with the main
+di erence that it adds a Dirichlet prior to describe the latent variable topic instead of the xed Gaussian
+distribution, and is also widely used for scene classi cation [
+          <xref ref-type="bibr" rid="ref11 ref22">16, 20, 27, 38</xref>
+          ]. As a result, it can handel
+the problem of over tting and also increase the robustness. The dimension of nal feature vector is the
+same with the number of topics T .
+- Improved Fisher kernel (IFK) [
+          <xref ref-type="bibr" rid="ref54">71</xref>
+          ] uses Gaussian Mixture Model (GMM) to encode local image
+features [87] and achieves good performance in scene classi cation [
+          <xref ref-type="bibr" rid="ref13 ref14">21, 29, 30</xref>
+          ]. In essence, the feature of an
+image got by Fisher vector encoding method is a gradient vector of the log-likelihood. By computing
+and concatenating the partial derivatives of the mean and variance of the Gaussian functions, the nal
+feature vector is obtained with the dimension of 2 K F (where F indicates the dimension of the
+local feature descriptors and K denotes the size of the dictionary).
+- Vector of Locally Aggregated Descriptors (VLAD) [
+          <xref ref-type="bibr" rid="ref66">83</xref>
+          ] can be seen as a simpli cation of the IFK
+method which aggregates descriptors based on a locality criterion in feature space [21]. It uses the
+non-probabilistic k-means clustering to generate the dictionary by taking the place of GMM model
+in IFK. When coding each local patch descriptor to its nearest neighbor in the dictionary, the di
+erences between them in each dimension are accumulated and resulting in an image feature vector with
+dimension of K F .
+4.3
+        </p>
+      </sec>
+      <sec id="sec-5-3">
+        <title>Methods with high-level scene features</title>
+        <p>In recent years, learned high-level deep features have been reported to achieve impressive results on aerial
+image classi cation [4,32{34,37,40,41]. In this work, we also compare 3 representative high-level deep-learned
+scene classi cation methods in our benchmark.</p>
+        <p>
+          - Ca eNet: Ca e (Convolutional Architecture for Fast Feature Embedding) [
+          <xref ref-type="bibr" rid="ref63">80</xref>
+          ] is one of the most
+commonly used open-source frameworks for deep learning (deep convolutional neural networks in
+particular). The reference model - Ca eNet, which is almost a replication of ALexNet [88] that is proposed
+for the ILSVRC 2012 competition [
+          <xref ref-type="bibr" rid="ref61">78</xref>
+          ]. The main di erences are: (1) there is no data argumentation
+during training; (2) the order of normalization and pooling are switched. Therefore, it has quite similar
+performances to the AlexNet, see [
+          <xref ref-type="bibr" rid="ref25 ref4">4, 41</xref>
+          ]. For this reason, we only test Ca eNet in our experiment.
+The architecture of Ca eNet comprises 5 convolutional layers, each followed by a pooling layer, and 3
+fully connected layers at the end. In our work, we directly use the pre-trained model obtained using
+the ILSVRC 2012 dataset [
+          <xref ref-type="bibr" rid="ref61">78</xref>
+          ], and extract the activations from the rst fully-connected layer, which
+results in a vector of 4096 dimensions for an image.
+- VGG-VD-16: To investigate the e ect of the convolutional network depth on its accuracy in the
+largescale image recognition setting, [89] gives a thorough evaluation of networks by increasing depth using
+an architecture with very small (3 3) convolution lters, which shows a signi cant improvement on
+the accuracies, and can be generalised well to a wide range of tasks and datasets. In our work, we use
+one of its best-performing models, named VGG-VD-16, because of its simpler architecture and slightly
+better results. It is composed of 13 convolutional layers and followed by 3 fully connected layers, thus
+results in 16 layers. Similarly, we extract the activations from the rst fully connected layer as the
+feature vectors of the images.
+- GoogLeNet: This model [
+          <xref ref-type="bibr" rid="ref64">81</xref>
+          ] won the ILSVRC-2014 competition [
+          <xref ref-type="bibr" rid="ref61">78</xref>
+          ]. Its main novelty lies in the
+design of the "Inception modules", which is based on the idea of "network in network" [
+          <xref ref-type="bibr" rid="ref70">90</xref>
+          ]. By using
+the Inception modules, GoogLeNet has two main advantages: (1) the utilization of lters of di erent
+sizes at the same layer can maintain multi-scale spatial information; (2) the reduction of the number
+of parameters of the network makes it less prone to over tting and allows it to be deeper and wider.
+Speci cally, GoogLeNet is a 22-layer architecture with more than 50 convolutional layers distributed
+inside the inception modules. Di erent from the above CNN models, GoogLeNet has only one fully
+connected layer at last, therefore, we extract the features of the fully connected layer for testing.
+5
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-6">
+      <title>Experimental studies</title>
+      <p>
+        We evaluate all the three kinds of scene classi cation methods mentioned before: methods with low-level,
+mid-level and high-level scene features. For each type, we choose some representative ones as baseline for
+evaluation: SIFT [
+        <xref ref-type="bibr" rid="ref45">62</xref>
+        ], LBP [
+        <xref ref-type="bibr" rid="ref48">65</xref>
+        ] [
+        <xref ref-type="bibr" rid="ref48">65</xref>
+        ], Color Histogram (CH) [
+        <xref ref-type="bibr" rid="ref46">63</xref>
+        ] and GIST [
+        <xref ref-type="bibr" rid="ref44">61</xref>
+        ] for low-level methods, BoVW [
+        <xref ref-type="bibr" rid="ref65">82</xref>
+        ],
+Spatial Pyramid Matching (SPM) [
+        <xref ref-type="bibr" rid="ref55">72</xref>
+        ], Locality-constrained Linear Coding (LLC) [
+        <xref ref-type="bibr" rid="ref68">85</xref>
+        ], Probabilistic Latent
+Semantic Analysis (pLSA) [
+        <xref ref-type="bibr" rid="ref59">76</xref>
+        ], Latent Dirichlet allocation (LDA) [
+        <xref ref-type="bibr" rid="ref56">73</xref>
+        ], Improved Fisher kernel (IFK) [
+        <xref ref-type="bibr" rid="ref54">71</xref>
+        ]
+and Vector of Locally Aggregated Descriptors (VLAD) [
+        <xref ref-type="bibr" rid="ref66">83</xref>
+        ] combined with three local feature descriptors
+(i.e., SIFT [
+        <xref ref-type="bibr" rid="ref45">62</xref>
+        ], LBP [
+        <xref ref-type="bibr" rid="ref48">65</xref>
+        ], CH [
+        <xref ref-type="bibr" rid="ref46">63</xref>
+        ]) for mid-level methods, and three representative high-level deep-learning
+methods (i.e., Ca eNet [
+        <xref ref-type="bibr" rid="ref63">80</xref>
+        ], VGG-VD-16 [89] and GoogLeNet [
+        <xref ref-type="bibr" rid="ref64">81</xref>
+        ]) are adopted.
+5.1
+      </p>
+      <sec id="sec-6-1">
+        <title>Parameter Settings</title>
+        <p>
+          In our experiment, we rstly test four kinds of low-level methods for classi cation: SIFT, LBP, CH and Gist.
+For the local patch descriptor SIFT, we use a xed size grid (16 16 pixels) with the spacing step to be 8
+pixels to extract all the descriptors in the gray image plain and adopt the average pooling method for each
+dimension of the descriptor so as to get the nal image feature with 128 dimensions (8 orientations with 4 4
+subregions). As for the remaining three descriptors, we use them as global descriptors that can extract the
+feature vectors on the whole image very e ciently. For LBP, we use the common used 8 neighbors to get
+the binary values and convert the 8-bit binary values into a decimal value for each pixel in the gray image.
+By computing the frequencies of the 256 patterns, we get the low-level LBP features of an image. For CH,
+we directly use the RGB color space and quantize each channel into 32 bins. Thus, the feature of an image
+is obtained by concatenation of the statistical histograms in each channel and result in 96 dimensions. For
+Gist descriptor, we set the same parameters as in its original work [
+          <xref ref-type="bibr" rid="ref44">61</xref>
+          ]: the number of scales is set to be 4,
+the orientations are quantized into 8 bins and a 4 4 spatial grid is utilized for pooling, thus, it results in
+512 dimensions (4 8 4 4).
+        </p>
+        <p>
+          For mid-level methods, we test afore-mentioned seven di erent feature coding methods: BoVW, SPM,
+LLC, pLSA, LDA, IFK and VLAD. Three local patch descriptors - SIFT, LBP and CH have been utilized for
+extracting the local structure, texture and spectral features respectively. In the patch sampling procedure,
+we use the grid sampling as our previous work [
+          <xref ref-type="bibr" rid="ref13">29</xref>
+          ] has proven that grid sampling has better performance for
+scene classi cation of remote sensing imagery. Therefore, we set the patch size to be 16 16 pixels and the
+grid spacing to be 8 pixels for all the local descriptors to balance the speed/accuracy trade-o . By combining
+the three local feature descriptors and seven global feature coding methods, we can get 21 di erent mid-level
+features in all. As for the size of the dictionary, we set it from 16 to 8192 for the 7 coding methods when
+using SIFT as local feature descriptors, and select the optimal one when using LBP and CH for describing
+local patches. For some special parameters de ned in each coding methods, we empirically set the spatial
+pyramid level to be 2 in SPM, and both the numbers of topics in pLSA and LDA are set to be a half of the
+dictionary size.
+        </p>
+        <p>
+          For high-level methods, we just use the CNN models pre-trained on the ILSVRC 2012 dataset [
+          <xref ref-type="bibr" rid="ref61">78</xref>
+          ] and
+extract the features from the rst fully connected layer in each CNN model as the global features. Ca eNet
+and VDD-VD-16 result in a vector of 4096 dimensions while GoogLeNet a 1024-dimensional feature vector
+owing to the fact that GoogLeNet has only one fully connected layer, and all the features are L2 normalized
+for better performance.
+        </p>
+        <p>
+          After getting the global features using various methods, we use the liblinear [
+          <xref ref-type="bibr" rid="ref71">91</xref>
+          ] for supervised classi
+cation because it can quickly train a linear classi er on large scale datasets. More speci cally, we spilt the
+images in the dataset into training set and testing set. The features of the training set are used to
+training a linear classi cation model by liblinear, and the features of the testing set are used for estimating the
+performance of the trained model.
+5.2
+        </p>
+      </sec>
+      <sec id="sec-6-2">
+        <title>Evaluation protocols</title>
+        <p>To compare the classi cation quantitatively, we compute the common used measures: overall accuracy (OA)
+and Confusion matrix. OA is de ned as the number of correctly predicted images divided by the total
+number of predicted images. It is a direct measure to reveal the classi cation performance on the whole
+dataset. Confusion matrix is a speci c table layout that allows direct visualization of the performance on
+each class. Each column of the matrix represents the instances in a predicted class, and each row represents
+the instances in an actual class, thus, each item xij in the matrix computes the proportion of images that
+predicted to be the i-th type meanwhile trully belong to the j-th type.</p>
+        <p>To compute OA, we adopt two di erent settings for each tested dataset in the supervised classi cation
+process. For the RSSCN7 dadaset and our AID dataset, we x the ratio of the number of training set to
+be 20% and 50% respectively and the left for testing, while for UC-Merced dataset, the ratios are set to be
+50% and 80% respectively. For the WHU-RS19 dataset, the ratios are xed at 40% and 60% respectively. To
+compute the overall accuracy, we randomly split the datasets into training sets and testing sets for evaluation,
+and repeat it ten times to reduce the in uence of the randomness and obtain reliable results. The OA is
+computed for each run, and the nal result is reported as the mean and standard deviation of OA from the
+individual run.</p>
+        <p>To compute the confusion matrix, we x the training set by choosing the same images for fair comparison
+on each datasets and x the ratio of the number of training set of the UC-Merced dataset, the WHU-RS19
+dataset,the RSSCN7 dadaset and our AID dataset to be 50%, 40%, 20% and 20% respectively.
+5.3</p>
+      </sec>
+      <sec id="sec-6-3">
+        <title>Experimental results</title>
+        <p>In this section, we evaluate di erent methods on the common used UC-Merced dataset, WHU-RS19 dataset,
+RSSCN7 dataset as well as our AID dataset, and give the corresponding results and analysis, which are
+divided into four phases: results of low-level methods, results of mid-level methods, results of high-level
+methods and confusion matrix.
+5.3.1</p>
+        <sec id="sec-6-3-1">
+          <title>Results with low-level methods</title>
+          <p>Table. 2 illustrates the means and standard variances of OA using the four kinds of low-level methods
+(e.g. SIFT, LBP, CH, GIST) with randomly choosing the xed percent of images to construct the training
+set by repeating 10 times on the UC-Merced dataset, the WHU-RS19 dataset, the RSSCN7 dataset and our
+AID dataset. Although di erent features give di erent performance on di erent datasets, we can observe the
+consistent phenomenon on all datasets that SIFT descriptor performs far less than others with about 20%
+lower OA than the highest ones, which indicates that SIFT descriptor is not suitable to be as low-level feature
+for directly classi cation. For the other three low-level features, GIST performs the best on the UC-Merced
+dataset, and CH gives the best performances on both WHU-RS19 dataset and our AID dataset, while LBP
+and CH give comparable results on the RSSCN7 dataset. The di erent performances can be explained by the
+characteristics of the datasets, for example, both the UC-Merced dataset and our AID dataset contain various
+arti cial scene types, which are mainly made up of various buildings, therefore, GIST, which can extract the
+dominant spatial structure of a scene, performs well on these datasets. For the RSSCN7 datasets, which
+contains much natural scene types, thus, the texture feature descriptor LBP works the best. In addition, CH
+gives the most robust performances on all the datasets, because most scene types are color consistent, e.g.,
+grass ia mostly green and desert is dark yellow.
+5.3.2</p>
+        </sec>
+        <sec id="sec-6-3-2">
+          <title>Results with mid-level methods</title>
+          <p>For the seven kinds of feature coding methods, the size of the dictionary has a great in uence on the
+classi cation results, therefore, we need to rstly nd the optimal dictionary size for each coding method. To
+do so, we x the local patch descriptor using SIFT, and gradually double increase the dictionary size from 16
+to 8192 for each coding methods on the three datasets. The corresponding OA is shown in Fig. 5. For BoVW,
+the larger the dictionary, the better the performance. However, the performance increases quite slowly when
+the dictionary size becomes larger. Therefore, we x the dictionary size of BoVW to be 4096 in the following
+experiment. For IFK and VLAD, the dictionary size has quite little in uence on the performance for all
+the datasets. But the larger dictionary will result in much higher dimensional features and thus more
+timeconsuming for training classi cation model, therefore, the corresponding dictionary sizes are xed at 32 and
+64 respectively. For LDA, pLSA and SPM, there is a drop when the size of the dictionary achieves to some
+degree. Thus, we choose 1024, 1024 and 128 to be the corresponding dictionary sizes which are suitable for
+all the datasets. For LLC, the performance is increasing all the way with the size of the dictionary, therefore,
+we x it at 8192 in the following experiment. Note that the parameters we choose are not always the optimal
+ones, which is to make a trade-o between accuracy and speed.</p>
+          <p>After nding the proper dictionary size for each coding method, we set the corresponding values for other
+local patch descriptors and evaluate the 21 kinds of mid-level features obtained by combining seven kinds
+of global feature coding methods (e.g., BoVW, SPM, LLC, pLSA, LDA, IFK, VLAD) with three kinds of
+local feature descriptors (e.g., SIFT, LBP, CH). Table. 3 shows the means and standard variances of OA
+on each dataset. Surprisingly, when comparing the results using di erent local feature descriptors, SIFT
+70
+y
+rca60
+ccu
+A
+lra50
+ve
+O
+n
+ea40
+M
+30
+20
+90
+80
+70
+yca
+r
+ccu60
+aA
+lr
+e
+vO50
+n
+a
+e
+M40
+30
+2016
+bow
+ifk
+lda
+l c
+plsa
+spm
+vlad
+32
+bow
+ifk
+lda
+l c
+plsa
+spm
+vlad
+32
+1016
+80
+70
+y
+rca60
+ccu
+A
+lra50
+ve
+O
+n
+ea40
+M
+30
+20
+90
+80
+70
+y
+rca60
+ccu
+A
+lra50
+ve
+O
+n
+ea40
+M
+30
+20
+1016
+bow
+ifk
+lda
+l c
+plsa
+spm
+vlad
+32
+bow
+ifk
+lda
+l c
+plsa
+spm
+vlad
+32
+(a) UC-Merced</p>
+          <p>Our
+(b) WHU-RS19</p>
+          <p>Our
+64
+128
+256 512 1024 2048 4096 8192
+Dictionary Size
+64
+128
+256 512 1024 2048 4096 8192</p>
+          <p>Dictionary Size
+(c) RSSCN7
+(d) AID
+can give consistent the best performances, while CH performs the worst, while in the low-level features,
+SIFT is the worst among the low-level methods and CH is the most robust. This indicates that SIFT is
+more suitable to be encoded in the mid-level methods to generate more robust feature representation. By
+comparing the results using di erent global feature coding methods, BoVW and IFK account for the highest
+two OA in general, pLSA, LLC and VLAD are in the middle, while the left two methods have relatively
+worse performances. When comparing all the 21 mid-level methods, the features obtained by IFK with SIFT
+descriptor perform the best on all the datasets, which bene ts from the combination of the great robustness
+and invariance of SIFT when describing local patches and the generative and discriminative nature of IFK.
+5.3.3</p>
+        </sec>
+        <sec id="sec-6-3-3">
+          <title>Results with high-level methods</title>
+          <p>Table. 4 illustrates the means and standard variances of OA using the high-level methods (i.e., the features
+extracted from the rst fully connected layer using the pre-trained CNN models) on the four datasets. From
+the classi cation results, we can see that Ca eNet and VGG-VD-16 give similar performances on all the
+datasets, while GoogLeNet performs slightly worse. Note that Ca eNet has only 8 layers that is much
+shallower than the VGG-VD-16 and GoogLeNet which has 16 and 22 layers respectively. Super cially, this
+phenomenon may result in the conclusion that shallower network works better, which is inconsistent with
+image classi cation of natural images. However, note the fact that the networks are all trained by the natural
+images, we just use them as feature extractors in our experiment. Therefore, the deeper the network, the
+more likely the learned features oriented to the natural image processing task, which may result in worse
+performance for classifying aerial scenes.</p>
+          <p>
+            Compared with the above low-level and mid-level methods, high-level methods show far better
+performance on both datasets, which indicates that the high-level methods have the ability to learn highly
+discriminative features. Moreover, note that all the networks we use are pre-trained models on the ILSVRC 2012
+dataset [
+            <xref ref-type="bibr" rid="ref61">78</xref>
+            ], i.e., all the parameters are trained by the natural images, which shows its great generalization
+ability compared with other methods.
+          </p>
+          <p>In addition, in all the above methods, the standard deviations of OA on our new dataset are much lower
+than the others, which is mainly caused by the number of testing samples. There are only dozens of images per
+class for testing of the UC-Merced dataset and WHU-RS19 dataset, thus, OA will have a greater variation
+range if the numbers of right predictions in each run are inconsistent with only a few numbers. But the
+number of testing images in our new dataset is more than 10 times larger than the above two, thus, it will
+result in much smaller standard variances, which can help to evaluate the performances more precisely.
+5.3.4</p>
+        </sec>
+        <sec id="sec-6-3-4">
+          <title>Confusion matrix</title>
+          <p>Besides giving the OA of various methods, we also compute the corresponding confusion matrix. For each
+dataset, we choose to show the best results of the low-level, mid-level and high-level methods for each dataset.
+Fig. 6 shows the confusion matrix using low-level (GIST), mid-level IFK (SIFT) and high-level (VGG-VD-16)
+on the UC-Merced dataset, and Fig. 7 gives the results on WHU-RS19 dataset, and Fig. 8 gives the results
+on RSSCN7 dataset, and Fig. 9 is our AID dataset.</p>
+          <p>From the confusion matrix on the UC-Merced dataset (Fig. 6), we can see that there are only 2 classes
+and thus severely limit the progress of aerial scene classi cation. In order to solve the problem, we construct
+a new large-scale dataset, i.e. AID, which is the largest and most challenging one for the scene classi cation
+of aerial images. The purpose of the dataset is to provide the research community with a benchmark resource
+to advance the state-of-the-art algorithms in aerial scene analysis. In addition, we have evaluated a set of
+representative aerial scene classi cation approaches with various experimental protocols on the new dataset.
+These can serve as baseline results for future works. Moreover, both the dataset and the codes are public
+online for freely downloading to promote the development of aerial scene classi cation.</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-7">
+      <title>Acknowledgment</title>
+      <p>The authors would like to thank all the researchers who kindly sharing the codes used in our studies and
+all the volunteers who help us constructing the dataset. This research is supported by the National Natural
+Science Foundation of China under the contracts No.91338113 and No.41501462.
+[5] V. Risojevic and Z. Babic, \Aerial image classi cation using structural texture similarity," in IEEE
+International Symposium on Signal Processing and Information Technology (ISSPIT). IEEE, 2011, pp.
+190{195.
+[6] Y. Yang and S. Newsam, \Spatial pyramid co-occurrence for image classi cation," in IEEE International</p>
+      <p>Conference on Computer Vision (ICCV). IEEE, 2011, pp. 1465{1472.
+[7] G. Sheng, W. Yang, T. Xu, and H. Sun, \High-resolution satellite scene classi cation using a sparse
+coding based multiple feature combination," International journal of remote sensing, vol. 33, no. 8, pp.
+2395{2412, 2012.
+[8] V. Risojevic and Z. Babic, \Orientation di erence descriptor for aerial image classi cation," in
+International Conference on Systems, Signals and Image Processing (IWSSIP). IEEE, 2012, pp. 150{153.
+[9] F. Hu, W. Yang, J. Chen, and H. Sun, \Tile-level annotation of satellite images using multi-level
+maxmargin discriminative random eld," Remote Sensing, vol. 5, no. 5, pp. 2275{2291, 2013.
+[16] ||, \Hybrid generative/discriminative scene classi cation strategy based on latent dirichlet allocation
+for high spatial resolution remote sensing imagery," in IEEE International Geoscience and Remote
+Sensing Symposium (IGARSS). IEEE, 2013, pp. 196{199.
+[17] X. Zheng, X. Sun, K. Fu, and H. Wang, \Automatic annotation of satellite images via multifeature joint
+sparse coding with spatial relation constraint," IEEE Geoscience and Remote Sensing Letters, vol. 10,
+no. 4, pp. 652{656, 2013.
+[18] A. Avramovic and V. Risojevic, \Block-based semantic classi cation of high-resolution multispectral
+aerial images," Signal, Image and Video Processing, pp. 1{10, 2014.
+[19] A. M. Cheriyadat, \Unsupervised feature learning for aerial scene classi cation," IEEE Transactions on</p>
+      <p>Geoscience and Remote Sensing, vol. 52, no. 1, pp. 439{451, 2014.
+[20] R. Kusumaningrum, H. Wei, R. Manurung, and A. Murni, \Integrated visual vocabulary in latent
+dirichlet allocation{based scene classi cation for ikonos image," Journal of Applied Remote Sensing,
+vol. 8, no. 1, pp. 083 690{083 690, 2014.
+[21] R. Negrel, D. Picard, and P.-H. Gosselin, \Evaluation of second-order visual features for land-use
+classi cation," in International Workshop on Content-Based Multimedia Indexing (CBMI). IEEE, 2014,
+pp. 1{5.
+[22] L. Zhao, P. Tang, and L. Huo, \A 2-d wavelet decomposition-based bag-of-visual-words model for
+landuse scene classi cation," International Journal of Remote Sensing, vol. 35, no. 6, pp. 2296{2310, 2014.
+[23] L.-J. Zhao, P. Tang, and L.-Z. Huo, \Land-use scene classi cation using a concentric circle-structured
+multiscale bag-of-visual-words model," IEEE Journal of Selected Topics in Applied Earth Observations
+and Remote Sensing, vol. 7, no. 12, pp. 4620{4631, 2014.
+[24] Q. Zhu, Y. Zhong, and L. Zhang, \Multi-feature probability topic scene classi er for high spatial
+resolution remote sensing imagery," in IEEE International Geoscience and Remote Sensing Symposium
+(IGARSS). IEEE, 2014, pp. 2854{2857.
+[25] S. Chen and Y. Tian, \Pyramid of spatial relatons for scene-level land use classi cation," IEEE
+Transactions on Geoscience and Remote Sensing, vol. 53, no. 4, pp. 1947{1957, 2015.
+[26] X. Chen, T. Fang, H. Huo, and D. Li, \Measuring the e ectiveness of various features for thematic
+information extraction from very high resolution remote sensing imagery," IEEE Transactions on Geoscience
+and Remote Sensing, vol. 53, no. 9, pp. 4837{4851, 2015.
+[59] D. Dai and W. Yang, \Satellite image classi cation via two-layer sparse coding with biased image
+representation," IEEE Geoscience and Remote Sensing Letters, vol. 8, no. 1, pp. 173{176, 2011.
+[89] K. Simonyan and A. Zisserman, \Very deep convolutional networks for large-scale image recognition,"</p>
+      <p>CoRR, vol. abs/1409.1556, 2014.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          , W. Wu,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>and Q.</given-names>
+            <surname>Song</surname>
+          </string-name>
+          , \
+          <article-title>Exploring the use of google earth imagery and object-based methods in land use/cover mapping,"</article-title>
+          <source>Remote Sensing</source>
+          , vol.
+          <volume>5</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <volume>6026</volume>
+          {
+          <issue>6042</issue>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2] G. Cheng, J. Han,
+          <string-name>
+            <given-names>L</given-names>
+            .
+            <surname>Guo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Liu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Bu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Ren</surname>
+          </string-name>
+          , \
+          <article-title>E ective and e cient midlevel visual elementsoriented land-use classi cation using vhr remote sensing images,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>53</volume>
+          , no.
+          <issue>8</issue>
+          , pp.
+          <volume>4238</volume>
+          {
+          <issue>4249</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3] G. Cheng, J. Han,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Zhou</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Guo</surname>
+          </string-name>
+          ,
+          <article-title>\Multi-class geospatial object detection and geographic image classi cation based on collection of part detectors,"</article-title>
+          <source>ISPRS Journal of Photogrammetry and Remote Sensing</source>
+          , vol.
+          <volume>98</volume>
+          , pp.
+          <volume>119</volume>
+          {
+          <issue>132</issue>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , \
+          <article-title>Transferring deep convolutional neural networks for the scene classi cation of high-resolution remote sensing imagery,"</article-title>
+          <source>Remote Sensing</source>
+          , vol.
+          <volume>7</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <fpage>14</fpage>
+          <lpage>680</lpage>
+          {
+          <issue>14</issue>
+          707,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Luo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Jiang</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>Indexing of remote sensing images with di erent resolutions by multiple features,"</article-title>
+          <source>IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing</source>
+          , vol.
+          <volume>6</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <year>1899</year>
+          {
+          <year>1912</year>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Shao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          , and G. Liu, \
+          <article-title>A hierarchical scheme of multiple feature fusion for highresolution satellite scene categorization,"</article-title>
+          <source>in Computer Vision Systems</source>
+          . Springer,
+          <year>2013</year>
+          , pp.
+          <volume>324</volume>
+          {
+          <fpage>333</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Shao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          , and G.-S. Xia, \
+          <article-title>Extreme value theory-based calibration for the fusion of multiple features in high-resolution satellite scene classi cation,"</article-title>
+          <source>International Journal of Remote Sensing</source>
+          , vol.
+          <volume>34</volume>
+          , no.
+          <issue>23</issue>
+          , pp.
+          <volume>8588</volume>
+          {
+          <issue>8602</issue>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Risojevic</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Babic</surname>
+          </string-name>
+          , \
+          <article-title>Fusion of global and local descriptors for remote sensing image classi cation,"</article-title>
+          <source>IEEE Geoscience and Remote Sensing Letters</source>
+          , vol.
+          <volume>10</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <volume>836</volume>
+          {
+          <issue>840</issue>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Newsam</surname>
+          </string-name>
+          , \
+          <article-title>Geographic image retrieval using local invariant features,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>51</volume>
+          , no.
+          <issue>2</issue>
+          , pp.
+          <volume>818</volume>
+          {
+          <issue>832</issue>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Zhao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhong</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>Scene classi cation via latent dirichlet allocation using a hybrid generative/discriminative strategy for high spatial resolution remote sensing imagery,"</article-title>
+          <source>Remote Sensing Letters</source>
+          , vol.
+          <volume>4</volume>
+          , no.
+          <issue>12</issue>
+          , pp.
+          <volume>1204</volume>
+          {
+          <issue>1213</issue>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Cui</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Zhu</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>Scene classi cation based on multifeature probabilistic latent semantic analysis for high spatial resolution remote sensing images,"</article-title>
+          <source>Journal of Applied Remote Sensing</source>
+          , vol.
+          <volume>9</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>095</fpage>
+          <lpage>064</lpage>
+          {
+          <issue>095</issue>
+          064,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Sridharan</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Cheriyadat</surname>
+          </string-name>
+          , \
+          <article-title>Bag of lines (bol) for improved aerial scene representation,"</article-title>
+          <source>IEEE Geoscience and Remote Sensing Letters</source>
+          , vol.
+          <volume>12</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <volume>676</volume>
+          {
+          <issue>680</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , \
+          <article-title>A comparative study of sampling analysis in the scene classication of optical high-spatial resolution remote sensing imagery,"</article-title>
+          <source>Remote Sensing</source>
+          , vol.
+          <volume>7</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <fpage>14</fpage>
+          <lpage>988</lpage>
+          {
+          <issue>15</issue>
+          013,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Jiang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Tong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>A benchmark for scene classi cation of high spatial resolution remote sensing imagery," in IEEE International Geoscience and Remote Sensing Symposium (IGARSS)</article-title>
+          . IEEE,
+          <year>2015</year>
+          , pp.
+          <volume>5003</volume>
+          {
+          <fpage>5006</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Hu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Huang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Sun</surname>
+          </string-name>
+          , \
+          <article-title>Unsupervised feature learning via spectral clustering of multidimensional patches for remotely sensed scene classi cation,"</article-title>
+          <source>IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing</source>
+          , vol.
+          <volume>8</volume>
+          , no.
+          <issue>5</issue>
+          , pp.
+          <year>2015</year>
+          {
+          <year>2030</year>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [32]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Castelluccio</surname>
+          </string-name>
+          , G. Poggi,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Sansone</surname>
+          </string-name>
+          , and L. Verdoliva, \
+          <article-title>Land use classi cation in remote sensing images by convolutional neural networks,"</article-title>
+          <source>arXiv preprint arXiv:1508.00092</source>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [33]
+          <string-name>
+            <given-names>O. A. B.</given-names>
+            <surname>Penatti</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Nogueira</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>J. A.</surname>
+          </string-name>
+          dos Santos, \
+          <article-title>Do deep features generalize from everyday objects to remote sensing and aerial scenes domains?"</article-title>
+          <source>in Proc. IEEE Conference on Computer Vision and Pattern Recognition</source>
+          ,
+          <year>June 2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [34]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Luus</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Salmon</surname>
+          </string-name>
+          , F. van den Bergh, and
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Maharaj</surname>
+          </string-name>
+          , \
+          <article-title>Multiview deep learning for land-use classi - cation,"</article-title>
+          <source>IEEE Geoscience and Remote Sensing Letters</source>
+          , vol.
+          <volume>12</volume>
+          , no.
+          <issue>12</issue>
+          , pp.
+          <volume>2448</volume>
+          {
+          <issue>2452</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [35]
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Yin</surname>
+          </string-name>
+          , and G.-S. Xia, \
+          <article-title>Learning high-level features for satellite image classi cation with limited labeled samples,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>53</volume>
+          , no.
+          <issue>8</issue>
+          , pp.
+          <volume>4472</volume>
+          {
+          <issue>4482</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [36]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Du</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>Saliency-guided unsupervised feature learning for scene classi cation,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>53</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <volume>2175</volume>
+          {
+          <issue>2184</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [37] ||, \
+          <article-title>Scene classi cation via a gradient boosting random convolutional network framework,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol. PP, no.
+          <issue>99</issue>
+          , pp.
+          <volume>1</volume>
+          {
+          <issue>10</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [38]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Zhu</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>Scene classi cation based on the multifeature fusion probabilistic topic model for high spatial resolution remote sensing imagery,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>53</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <volume>6207</volume>
+          {
+          <issue>6222</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [39]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Su</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          , \
+          <article-title>Land-use scene classi cation using multi-scale completed local binary patterns,"</article-title>
+          <source>Signal, Image and Video Processing</source>
+          , pp.
+          <volume>1</volume>
+          {
+          <issue>8</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [40]
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Zou</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Ni</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          , \
+          <article-title>Deep learning based feature selection for remote sensing scene classi cation," Geoscience and Remote Sensing Letters</article-title>
+          , IEEE, vol.
+          <volume>12</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <volume>2321</volume>
+          {
+          <issue>2325</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [41]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Nogueira</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O. A.</given-names>
+            <surname>Penatti</surname>
+          </string-name>
+          , and J. A. d. Santos, \
+          <article-title>Towards better exploiting convolutional neural networks for remote sensing scene classi cation,"</article-title>
+          <source>arXiv preprint arXiv:1602.01517</source>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [42]
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Tuia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Ratle</surname>
+          </string-name>
+          , F. Paci ci,
+          <string-name>
+            <given-names>M. F.</given-names>
+            <surname>Kanevski</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>W. J.</given-names>
+            <surname>Emery</surname>
+          </string-name>
+          , \
+          <article-title>Active learning methods for remote sensing image classi cation,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>47</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <volume>2218</volume>
+          {
+          <issue>2232</issue>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [43]
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Tuia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Volpi</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Copa</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Kanevski</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Mun</surname>
+          </string-name>
+          <article-title>~oz-Mar , \A survey of active learning algorithms for supervised remote sensing image classi cation,"</article-title>
+          <source>IEEE Journal of Selected Topics in Signal Processing</source>
+          , vol.
+          <volume>5</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <volume>606</volume>
+          {
+          <issue>617</issue>
+          ,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [44]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Blaschke</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Strobl</surname>
+          </string-name>
+          , \
+          <article-title>Whats wrong with pixels? some recent developments interfacing remote sensing and gis,"</article-title>
+          <source>GeoBIT/GIS</source>
+          , vol.
+          <volume>6</volume>
+          , no.
+          <issue>01</issue>
+          , pp.
+          <volume>12</volume>
+          {
+          <issue>17</issue>
+          ,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [45]
+          <string-name>
+            <given-names>N. B.</given-names>
+            <surname>Kotliar</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J. A.</given-names>
+            <surname>Wiens</surname>
+          </string-name>
+          , \
+          <article-title>Multiple scales of patchiness and patch structure: a hierarchical framework for the study of heterogeneity,"</article-title>
+          <source>Oikos</source>
+          , pp.
+          <volume>253</volume>
+          {
+          <issue>260</issue>
+          ,
+          <year>1990</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [46]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Blaschke</surname>
+          </string-name>
+          , \
+          <article-title>Object-based contextual image classi cation built on image segmentation,"</article-title>
+          <source>in IEEE Workshop on Advances in Techniques for Analysis of Remotely Sensed Data. IEEE</source>
+          ,
+          <year>2003</year>
+          , pp.
+          <volume>113</volume>
+          {
+          <fpage>119</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [47]
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Yan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.-F.</given-names>
+            <surname>Mas</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Maathuis</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Xiangmin</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>P. Van Dijk</surname>
+          </string-name>
+          , \
+          <article-title>Comparison of pixel-based and objectoriented image classi cation approachesa case study in a coal re area, wuda, inner mongolia, china,"</article-title>
+          <source>International Journal of Remote Sensing</source>
+          , vol.
+          <volume>27</volume>
+          , no.
+          <issue>18</issue>
+          , pp.
+          <volume>4039</volume>
+          {
+          <issue>4055</issue>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          [48]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Blaschke</surname>
+          </string-name>
+          , \
+          <article-title>Object based image analysis for remote sensing," ISPRS journal of photogrammetry and remote sensing</article-title>
+          , vol.
+          <volume>65</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <volume>2</volume>
+          {
+          <issue>16</issue>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          [49]
+          <string-name>
+            <given-names>S. W.</given-names>
+            <surname>Myint</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Gober</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Brazel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Grossman-Clarke</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Weng</surname>
+          </string-name>
+          , \
+          <article-title>Per-pixel vs. object-based classi cation of urban land cover extraction using high spatial resolution imagery," Remote sensing of environment</article-title>
+          , vol.
+          <volume>115</volume>
+          , no.
+          <issue>5</issue>
+          , pp.
+          <volume>1145</volume>
+          {
+          <issue>1161</issue>
+          ,
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          [50]
+          <string-name>
+            <given-names>D. C.</given-names>
+            <surname>Duro</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. E.</given-names>
+            <surname>Franklin</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M. G.</given-names>
+            <surname>Dube</surname>
+          </string-name>
+          , \
+          <article-title>A comparison of pixel-based and object-based image analysis with selected machine learning algorithms for the classi cation of agricultural landscapes using spot-5 hrg imagery,"</article-title>
+          <source>Remote Sensing of Environment</source>
+          , vol.
+          <volume>118</volume>
+          , pp.
+          <volume>259</volume>
+          {
+          <issue>272</issue>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          [51]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Zhao</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , \
+          <article-title>A hybrid object-oriented conditional random eld classi cation framework for high spatial resolution remote sensing imagery,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>52</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <volume>7023</volume>
+          {
+          <issue>7037</issue>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          [52]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Zhao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Zhong</surname>
+          </string-name>
+          , and L. Zhang, \
+          <article-title>Detail-preserving smoothing classi er based on conditional random elds for high spatial resolution remote sensing imagery,"</article-title>
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>53</volume>
+          , no.
+          <issue>5</issue>
+          , pp.
+          <volume>2440</volume>
+          {
+          <issue>2452</issue>
+          ,
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          [53]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Newsam</surname>
+          </string-name>
+          , \
+          <article-title>Comparing sift descriptors and gabor texture features for classi cation of remote sensed imagery,"</article-title>
+          <source>in IEEE International Conference on Image Processing. IEEE</source>
+          ,
+          <year>2008</year>
+          , pp.
+          <year>1852</year>
+          {
+          <year>1855</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref38">
+        <mixed-citation>
+          [54]
+          <string-name>
+            <given-names>J. A.</given-names>
+            dos
+            <surname>Santos</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O. A. B.</given-names>
+            <surname>Penatti</surname>
+          </string-name>
+          , and R. da Silva Torres, \
+          <article-title>Evaluating the potential of texture and color descriptors for remote sensing image retrieval and classi cation." in VISAPP (2</article-title>
+          ),
+          <year>2010</year>
+          , pp.
+          <volume>203</volume>
+          {
+          <fpage>208</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref39">
+        <mixed-citation>
+          [55]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Lienou</surname>
+          </string-name>
+          , H. Ma^tre, and M. Datcu, \
+          <article-title>Semantic annotation of satellite images using latent dirichlet allocation,"</article-title>
+          <source>IEEE Geoscience and Remote Sensing Letters</source>
+          , vol.
+          <volume>7</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <volume>28</volume>
+          {
+          <issue>32</issue>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref40">
+        <mixed-citation>
+          [56]
+          <string-name>
+            <given-names>G.-S.</given-names>
+            <surname>Xia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Delon</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gousseau</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Sun</surname>
+          </string-name>
+          , and H. Ma^tre, \
+          <article-title>Structural high-resolution satellite image indexing," in ISPRS TC VII Symposium-</article-title>
+          100
+          <string-name>
+            <surname>Years</surname>
+            <given-names>ISPRS</given-names>
+          </string-name>
+          , vol.
+          <volume>38</volume>
+          ,
+          <year>2010</year>
+          , pp.
+          <volume>298</volume>
+          {
+          <fpage>303</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref41">
+        <mixed-citation>
+          [57]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Newsam</surname>
+          </string-name>
+          , \
+          <article-title>Bag-of-visual-words and spatial extensions for land-use classi cation,"</article-title>
+          <source>in Proceedings of the 18th SIGSPATIAL International Conference on Advances in Geographic Information Systems. ACM</source>
+          ,
+          <year>2010</year>
+          , pp.
+          <volume>270</volume>
+          {
+          <fpage>279</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref42">
+        <mixed-citation>
+          [58]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>W.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Xu</surname>
+          </string-name>
+          , and T. Xu, \
+          <article-title>Evaluation of local features for scene classi cation using vhr satellite images," in Joint Urban Remote Sensing Event (JURSE)</article-title>
+          . IEEE,
+          <year>2011</year>
+          , pp.
+          <volume>385</volume>
+          {
+          <fpage>388</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref43">
+        <mixed-citation>
+          [60]
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Risojevic</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Momic</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Babic</surname>
+          </string-name>
+          , \
+          <article-title>Gabor descriptors for aerial image classi cation," in Adaptive and Natural Computing Algorithms</article-title>
+          . Springer,
+          <year>2011</year>
+          , pp.
+          <volume>51</volume>
+          {
+          <fpage>60</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref44">
+        <mixed-citation>
+          [61]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Oliva</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Torralba</surname>
+          </string-name>
+          , \
+          <article-title>Modeling the shape of the scene: A holistic representation of the spatial envelope,"</article-title>
+          <source>International Journal of Computer Vision</source>
+          , vol.
+          <volume>42</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <volume>145</volume>
+          {
+          <issue>175</issue>
+          ,
+          <year>2001</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref45">
+        <mixed-citation>
+          [62]
+          <string-name>
+            <given-names>D. G.</given-names>
+            <surname>Lowe</surname>
+          </string-name>
+          , \
+          <article-title>Distinctive image features from scale-invariant keypoints,"</article-title>
+          <source>International Journal of Computer Vision</source>
+          , vol.
+          <volume>60</volume>
+          , no.
+          <issue>2</issue>
+          , pp.
+          <volume>91</volume>
+          {
+          <issue>110</issue>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref46">
+        <mixed-citation>
+          [63]
+          <string-name>
+            <given-names>M. J.</given-names>
+            <surname>Swain</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>D. H.</given-names>
+            <surname>Ballard</surname>
+          </string-name>
+          , \
+          <article-title>Color indexing,"</article-title>
+          <source>International journal of computer vision</source>
+          , vol.
+          <volume>7</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <volume>11</volume>
+          {
+          <issue>32</issue>
+          ,
+          <year>1991</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref47">
+        <mixed-citation>
+          [64]
+          <string-name>
+            <given-names>B. S.</given-names>
+            <surname>Manjunath</surname>
+          </string-name>
+          and W.-Y. Ma, \
+          <article-title>Texture features for browsing and retrieval of image data,"</article-title>
+          <source>IEEE Transactions on Pattern Analysis and Machine Intelligence</source>
+          , vol.
+          <volume>18</volume>
+          , no.
+          <issue>8</issue>
+          , pp.
+          <volume>837</volume>
+          {
+          <issue>842</issue>
+          ,
+          <year>1996</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref48">
+        <mixed-citation>
+          [65]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Ojala</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>M.</surname>
+          </string-name>
+          <article-title>Pietikainen, and</article-title>
+          <string-name>
+            <surname>T.</surname>
+          </string-name>
+          <article-title>Maenpaa, \Multiresolution gray-scale and rotation invariant texture classi cation with local binary patterns,"</article-title>
+          <source>IEEE Transactions on Pattern Analysis and Machine Intelligence</source>
+          , vol.
+          <volume>24</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <volume>971</volume>
+          {
+          <issue>987</issue>
+          ,
+          <year>2002</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref49">
+        <mixed-citation>
+          [66]
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Luo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.-F.</given-names>
+            <surname>Aujol</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gousseau</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Ladjal</surname>
+          </string-name>
+          , \
+          <article-title>Indexing of satellite images with di erent resolutions by wavelet features,"</article-title>
+          <source>IEEE Transactions on Image Processing</source>
+          , vol.
+          <volume>17</volume>
+          , no.
+          <issue>8</issue>
+          , pp.
+          <volume>1465</volume>
+          {
+          <issue>1472</issue>
+          ,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref50">
+        <mixed-citation>
+          [67]
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Luo</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.-F.</given-names>
+            <surname>Aujol</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gousseau</surname>
+          </string-name>
+          , \
+          <article-title>Local scale measure from the topographic map and application to remote sensing images," Multiscale modeling &amp; simulation</article-title>
+          , vol.
+          <volume>8</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <volume>1</volume>
+          {
+          <issue>29</issue>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref51">
+        <mixed-citation>
+          [68]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Mallat</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Sifre</surname>
+          </string-name>
+          , \
+          <article-title>Combined scattering for rotation invariant texture analysis," submitted to</article-title>
+          <string-name>
+            <surname>ESANN</surname>
+          </string-name>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref52">
+        <mixed-citation>
+          [69]
+          <string-name>
+            <given-names>W. J.</given-names>
+            <surname>Scheirer</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Kumar</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P. N.</given-names>
+            <surname>Belhumeur</surname>
+          </string-name>
+          , and T. E. Boult,
+          <article-title>\Multi-attribute spaces: Calibration for attribute fusion and similarity search,"</article-title>
+          <source>in IEEE Conference on Computer Vision and Pattern Recognition. IEEE</source>
+          ,
+          <year>2012</year>
+          , pp.
+          <volume>2933</volume>
+          {
+          <fpage>2940</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref53">
+        <mixed-citation>
+          [70]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gong</surname>
+          </string-name>
+          , and T. Huang, \
+          <article-title>Linear spatial pyramid matching using sparse coding for image classi cation,"</article-title>
+          <source>in Proc. IEEE Conference on Computer Vision and Pattern Recognition</source>
+          ,
+          <year>2009</year>
+          , pp.
+          <volume>1794</volume>
+          {
+          <year>1801</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref54">
+        <mixed-citation>
+          [71]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Perronnin</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Sanchez</surname>
+          </string-name>
+          , and T. Mensink, \
+          <article-title>Improving the sher kernel for large-scale image classi cation,"</article-title>
+          <source>in Proc. European Conference on Computer Vision</source>
+          ,
+          <year>2010</year>
+          , pp.
+          <volume>143</volume>
+          {
+          <fpage>156</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref55">
+        <mixed-citation>
+          [72]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Lazebnik</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Schmid</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Ponce</surname>
+          </string-name>
+          , \
+          <article-title>Beyond bags of features: Spatial pyramid matching for recognizing natural scene categories,"</article-title>
+          <source>in Proc. IEEE Conference on Computer Vision and Pattern Recognition</source>
+          , vol.
+          <volume>2</volume>
+          ,
+          <issue>2006</issue>
+          , pp.
+          <volume>2169</volume>
+          {
+          <fpage>2178</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref56">
+        <mixed-citation>
+          [73]
+          <string-name>
+            <surname>D. M. Blei</surname>
+            ,
+            <given-names>A. Y.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Ng</surname>
+            , and
+            <given-names>M. I. Jordan</given-names>
+          </string-name>
+          , \
+          <article-title>Latent dirichlet allocation,"</article-title>
+          <source>the Journal of Machine Learning research</source>
+          , vol.
+          <volume>3</volume>
+          , pp.
+          <volume>993</volume>
+          {
+          <issue>1022</issue>
+          ,
+          <year>2003</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref57">
+        <mixed-citation>
+          [74]
+          <string-name>
+            <given-names>M. A.</given-names>
+            <surname>Stricker</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Orengo</surname>
+          </string-name>
+          , \
+          <article-title>Similarity of color images,"</article-title>
+          <source>in IS&amp;T/SPIE's Symposium on Electronic Imaging: Science &amp; Technology. International Society for Optics and Photonics</source>
+          ,
+          <year>1995</year>
+          , pp.
+          <volume>381</volume>
+          {
+          <fpage>392</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref58">
+        <mixed-citation>
+          [75]
+          <string-name>
+            <surname>R. M. Haralick</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Shanmugam</surname>
+            ,
+            <given-names>and I. H.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Dinstein</surname>
+          </string-name>
+          , \
+          <article-title>Textural features for image classi cation,"</article-title>
+          <source>IEEE Transactions on Systems, Man and Cybernetics</source>
+          , no.
+          <issue>6</issue>
+          , pp.
+          <volume>610</volume>
+          {
+          <issue>621</issue>
+          ,
+          <year>1973</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref59">
+        <mixed-citation>
+          [76]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Bosch</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Zisserman</surname>
+          </string-name>
+          , and
+          <string-name>
+            <surname>X.</surname>
+          </string-name>
+          <article-title>Mun~oz, \Scene classi cation via plsa,"</article-title>
+          <source>in Proc. European Conference on Computer Vision</source>
+          ,
+          <year>2006</year>
+          , pp.
+          <volume>517</volume>
+          {
+          <fpage>530</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref60">
+        <mixed-citation>
+          [77]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Vincent</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Larochelle</surname>
+          </string-name>
+          , I. Lajoie,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Bengio</surname>
+          </string-name>
+          , and P.-A. Manzagol, \
+          <article-title>Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion,"</article-title>
+          <source>The Journal of Machine Learning Research</source>
+          , vol.
+          <volume>11</volume>
+          , pp.
+          <volume>3371</volume>
+          {
+          <issue>3408</issue>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref61">
+        <mixed-citation>
+          [78]
+          <string-name>
+            <given-names>O.</given-names>
+            <surname>Russakovsky</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Deng</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Su</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Krause</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Satheesh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Ma</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Huang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Karpathy</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Khosla</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Bernstein</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Berg</surname>
+          </string-name>
+          , and L.
+          <string-name>
+            <surname>Fei-Fei</surname>
+          </string-name>
+          ,
+          <article-title>\ImageNet Large Scale Visual Recognition Challenge,"</article-title>
+          <source>International Journal of Computer Vision</source>
+          , pp.
+          <volume>1</volume>
+          {
+          <issue>42</issue>
+          ,
+          <string-name>
+            <surname>April</surname>
+          </string-name>
+          <year>2015</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref62">
+        <mixed-citation>
+          [79]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Sermanet</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Eigen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Mathieu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Fergus</surname>
+          </string-name>
+          , and Y. LeCun, \
+          <article-title>Overfeat: Integrated recognition, localization and detection using convolutional networks,"</article-title>
+          <source>arXiv preprint arXiv:1312.6229</source>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref63">
+        <mixed-citation>
+          [80]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Shelhamer</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Donahue</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Karayev</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Long</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Girshick</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Guadarrama</surname>
+          </string-name>
+          , and T. Darrell, \Ca e:
+          <article-title>Convolutional architecture for fast feature embedding,"</article-title>
+          <source>in Proceedings of the ACM International Conference on Multimedia. ACM</source>
+          ,
+          <year>2014</year>
+          , pp.
+          <volume>675</volume>
+          {
+          <fpage>678</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref64">
+        <mixed-citation>
+          [81]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Szegedy</surname>
+          </string-name>
+          , W. Liu,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Jia</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Sermanet</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Reed</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Anguelov</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Erhan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>V.</given-names>
+            <surname>Vanhoucke</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Rabinovich</surname>
+          </string-name>
+          , \
+          <article-title>Going deeper with convolutions,"</article-title>
+          <source>arXiv preprint arXiv:1409.4842</source>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref65">
+        <mixed-citation>
+          [82]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Sivic</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Zisserman</surname>
+          </string-name>
+          , \
+          <article-title>Video google: A text retrieval approach to object matching in videos,"</article-title>
+          <source>in Proc. IEEE International Conference on Computer Vision</source>
+          ,
+          <year>2003</year>
+          , pp.
+          <volume>1470</volume>
+          {
+          <fpage>1477</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref66">
+        <mixed-citation>
+          [83]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Jegou</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Perronnin</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Douze</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Sanchez</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Perez</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Schmid</surname>
+          </string-name>
+          , \
+          <article-title>Aggregating local image descriptors into compact codes,"</article-title>
+          <source>IEEE Transactions on Pattern Analysis and Machine Intelligence</source>
+          , vol.
+          <volume>34</volume>
+          , no.
+          <issue>9</issue>
+          , pp.
+          <volume>1704</volume>
+          {
+          <issue>1716</issue>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref67">
+        <mixed-citation>
+          [84]
+          <string-name>
+            <given-names>G. E.</given-names>
+            <surname>Hinton</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Osindero</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y. W.</given-names>
+            <surname>Teh</surname>
+          </string-name>
+          , \
+          <article-title>A fast learning algorithm for deep belief nets</article-title>
+          .
+          <source>" Neural Computation</source>
+          , vol.
+          <volume>18</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <volume>1527</volume>
+          {
+          <issue>54</issue>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref68">
+        <mixed-citation>
+          [85]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Lv</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Huang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gong</surname>
+          </string-name>
+          , \
+          <article-title>Locality-constrained linear coding for image classi cation,"</article-title>
+          <source>in Proc. IEEE Conference on Computer Vision and Pattern Recognition. IEEE</source>
+          ,
+          <year>2010</year>
+          , pp.
+          <volume>3360</volume>
+          {
+          <fpage>3367</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref69">
+        <mixed-citation>
+          [86]
+          <string-name>
+            <given-names>K.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gong</surname>
+          </string-name>
+          , \
+          <article-title>Nonlinear learning using local coordinate coding,"</article-title>
+          <source>in Advances in Neural Information Processing Systems</source>
+          ,
+          <year>2009</year>
+          , pp.
+          <volume>2223</volume>
+          {
+          <fpage>2231</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref70">
+        <mixed-citation>
+          [90]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Min</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Qiang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Yan</surname>
+          </string-name>
+          , \
+          <article-title>Network in network," CoRR, vol</article-title>
+          .
+          <source>abs/1312.4400</source>
+          ,
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref71">
+        <mixed-citation>
+          [91]
+          <string-name>
+            <given-names>R. E.</given-names>
+            <surname>Fan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K. W.</given-names>
+            <surname>Chang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>C. J.</given-names>
+            <surname>Hsieh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>X. R.</given-names>
+            <surname>Wang</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>C. J.</given-names>
+            <surname>Lin</surname>
+          </string-name>
+          , \
+          <string-name>
+            <surname>Liblinear</surname>
+          </string-name>
+          :
+          <article-title>A library for large linear classi cation,"</article-title>
+          <source>Journal of Machine Learning Research</source>
+          , vol.
+          <volume>9</volume>
+          , no.
+          <issue>12</issue>
+          , pp.
+          <year>1871</year>
+          {
+          <year>1874</year>
+          ,
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

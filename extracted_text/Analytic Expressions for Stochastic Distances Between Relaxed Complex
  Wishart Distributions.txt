@@ -1,0 +1,11 @@
+A New Algorithm of Speckle Filtering using Stochastic Distances
+  This paper presents a new approach for filter design based on stochastic
+distances and tests between distributions. A window is defined around each
+pixel, overlapping samples are compared and only those which pass a
+goodness-of-fit test are used to compute the filtered value. The technique is
+applied to intensity SAR data with homogeneous regions using the Gamma model.
+The proposal is compared with the Lee's filter using a protocol based on Monte
+Carlo. Among the criteria used to quantify the quality of filters, we employ
+the equivalent number of looks, line and edge preservation. Moreover, we also
+assessed the filters by the Universal Image Quality Index and the Pearson's
+correlation on edges regions.

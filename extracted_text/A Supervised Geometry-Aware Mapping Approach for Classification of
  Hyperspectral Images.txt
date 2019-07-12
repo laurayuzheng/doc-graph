@@ -1,0 +1,14 @@
+Semantic Segmentation for Urban Planning Maps based on U-Net
+  The automatic digitizing of paper maps is a significant and challenging task
+for both academia and industry. As an important procedure of map digitizing,
+the semantic segmentation section mainly relies on manual visual interpretation
+with low efficiency. In this study, we select urban planning maps as a
+representative sample and investigate the feasibility of utilizing U-shape
+fully convolutional based architecture to perform end-to-end map semantic
+segmentation. The experimental results obtained from the test area in Shibuya
+district, Tokyo, demonstrate that our proposed method could achieve a very high
+Jaccard similarity coefficient of 93.63% and an overall accuracy of 99.36%. For
+implementation on GPGPU and cuDNN, the required processing time for the whole
+Shibuya district can be less than three minutes. The results indicate the
+proposed method can serve as a viable tool for urban planning map semantic
+segmentation task with high accuracy and efficiency.

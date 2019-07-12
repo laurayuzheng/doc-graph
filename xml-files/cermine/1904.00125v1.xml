@@ -1,0 +1,3936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Identifying Solar Flare Precursors Using Time Series of SDO/HMI Images and SHARP Parameters</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Yang Chen</string-name>
+          <email>ychenang@umich.edu</email>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Ward B. Manchester</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Alfred O. Hero</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Gabor Toth</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Benoit DuFumier</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Tian Zhou</string-name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Xiantong Wang</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Haonan Zhu</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Zeyu Sun</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Tamas I. Gombosi</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Key Points:</string-name>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Department of Climate and Space Sciences and Engineering, University of Michigan</institution>
+          ,
+          <addr-line>Ann Arbor</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Department of Electrical Engineering &amp; Computer Science, University of Michigan</institution>
+          ,
+          <addr-line>Ann Arbor</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>Department of Statistics, University of Michigan</institution>
+          ,
+          <addr-line>Ann Arbor</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>We adopt deep learning algorithms that take time series of active regions as input, instead of using only stationary features at xed time points, to perform solar are classi cations (strong ares versus weak ares). Two sets of models are trained: classi cation of are versus non- are events, and classi cation of strong are events from weak are events. Our results represent a signi cant improvement over previous work on similar tasks. We use machine learning algorithms to extract features directly from magnetogram images. The extracted features can be used for prediction and classi cation purposes and have been shown to perform almost as well as when we use standard active region parameters that are calculated based on experts' knowledge about the physics behind solar are events, given by SHARP parameters. We build a thorough and exible data pre-processing pipeline to clean and prepare data (from GOES, SDO/JSOC) for the machine learning tasks. We demonstrate the e ectiveness of the proposed algorithms in identifying precursors for strong solar are events using out-of-sample prediction tasks: four representative active regions (tracked for more than 100 hours, with at least one strong are event) are chosen and tested to predict strong are events on tted classication models which are trained with other active regions. Our results show that we can construct precursors of solar are events e ciently using time series of SHARP parameters. This shows promising directions towards accurate online solar are predictions, which we will address in followup work. Furthermore, the physical meaning and interpretations of the modeling results are partially covered in this paper, more thorough investigations will follow.</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>X
+r
+a</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1 Introduction</title>
+      <p>
+        Space weather involves the dynamical processes of the Sun-Earth system that may
+a ect human life and technology. The most destructive forms of space weather,
+ranging from electric power disruptions to radiation hazards for astronauts, are due to
+major solar eruptions: fast coronal mass ejections (CMEs) and eruptive X-class ares.1 These
+destructive events originate with magnetic elds emerging from the solar interior,
+forming the active regions (ARs) from where ares and/or CMEs originate
+        <xref ref-type="bibr" rid="ref8">(cf. Cheung &amp; Isobe,
+2014)</xref>
+        .
+      </p>
+      <p>
+        Predictions of large space weather events is very important for our technological
+society. Extreme space storms { those that could signi cantly degrade critical
+infrastructure { could disable large portions of the electrical power grid, resulting in cascading
+failures that would a ect key services such as water supply, health care, and transportation.
+The threat-assessment report by the Lloyds insurance company
+        <xref ref-type="bibr" rid="ref43">(Maynard, Smith, &amp;
+Gonzales, 2013)</xref>
+        concludes that extreme events could cause $2.6 trillion in damage with a
+recovery time of months. An earlier report by the National Research Council
+        <xref ref-type="bibr" rid="ref2">(Baker et
+al., 2009)</xref>
+        arrived at similar conclusions.
+      </p>
+      <p>
+        Observations have established that solar eruptions are all associated with highly
+non-potential magnetic eld that stores the necessary free energy to power eruptions.
+However, the physics of solar eruptions is so complex that physics-based prediction of
+solar storms remains an elusive goal. State-of-the-art physics-based
+magnetohydrodynamic (MHD) space weather models start with a solar eruption and solve the bulk
+transport of mass, momentum and energy from the Sun to Earth (or beyond)
+        <xref ref-type="bibr" rid="ref27 ref47 ref54 ref58 ref59 ref60 ref61">(cf. Groth, De
+Zeeuw, Gombosi, &amp; Powell, 2000; Odstrcil, Riley, &amp; Zhao, 2004; Sokolov et al., 2013; Toth
+et al., 2005, 2012; van der Holst et al., 2010, 2014)</xref>
+        , while other models address the
+magnetospheric response to these solar wind transients
+        <xref ref-type="bibr" rid="ref10 ref10 ref41 ref41 ref50 ref51 ref57">(cf. De Zeeuw et al., 2004; Lyon,
+Fedder, &amp; Mobarry, 2004; Ridley, De Zeeuw, Gombosi, &amp; Powell, 2001; Ridley, Deng, &amp; Toth,
+2006; To oletto, Sazykin, Spiro, Wolf, &amp; Lyon, 2004)</xref>
+        .
+      </p>
+      <p>
+        The most energetic ares come from the intense kilogauss elds of Active Regions
+(ARs), where free energy is stored with eld-aligned electric currents. Magnetic energy
+1 Solar are intensities cover a wide range and are classi ed in terms of peak emission in the 0:1 0:8
+nm spectral band (soft x-rays) of the X-ray Sensor (XRS) instrument on-board NOAA/Geostationary
+Operational Environmental Satellites (GOES) 14 and 15. There are ve X-ray ux levels: A level ( 10 8
+W/m2), B level ( 10 7 W/m2), C ares ( 10 6 W/m2), M ares ( 10 5 W/m2), and X ares
+( 10 4 W/m2).
+release occurs across an enormous range of scales from the most energetic ares (1032 33
+erg) associated with high-speed Corona Mass Ejections (CMEs) down to ever-present
+nano- ares possibly heating the quiet corona (1022 24 erg). According to the
+        <xref ref-type="bibr" rid="ref46">NOAA Space
+Weather Scales (2018</xref>
+        ), in a solar cycle of 11 years, there were &gt; 2000 M ares, while
+there were less than 180 X ares. Therefore, the occurrence frequency of solar are events,
+especially very large ones, are not high.
+      </p>
+      <p>
+        Fast and accurate predictions of the time and intensity of a solar are event
+multiple hours/days ahead is a very important but extremely challenging task given the
+complexity of the physical processes that drive the events and the sparsity of extreme events.
+What exacerbates the situation for data-driven methods is the computational cost
+required to process the high-resolution and high cadence observations over an extended
+period of time. In the last few years, predictions of space weather events using data-driven
+approaches are getting more attention. Among various types of space weather
+phenomena, solar ares are one of the most important type of events that needs to be predicted
+reliably. For a comprehensive review of solar are predictions associated with large space
+weather events, see
+        <xref ref-type="bibr" rid="ref37">Leka and Barnes (2018)</xref>
+        and
+        <xref ref-type="bibr" rid="ref7">Camporeale (2019)</xref>
+        .
+      </p>
+      <p>In this paper, we a successful machine learning algorithm, using the Solar
+Dynamics Observatory (SDO)/Helioseismic and Magnetic Imager (HMI) and GOES data from
+05/01/2010 to 06/20/2018, towards solar are (predictive) classi cations.</p>
+    </sec>
+    <sec id="sec-3">
+      <title>2 State-of-the-Art of Flare Prediction with Machine Learning</title>
+      <p>NOAA's Space Weather Prediction Center (SWPC) currently forecasts the
+probability of C, M, and X-class ares and relates it to the probability of R1-R2, and R3 or
+greater radiation storms as part of their 3-day forecast and forecast discussion products.
+According to the metric they adopted, the skill score, the predictions are far from
+being accurate.</p>
+      <p>
+        Machine learning algorithms were applied to solar eruptions only some two decades
+after they were used to investigate terrestrial impacts of solar storms.
+        <xref ref-type="bibr" rid="ref1">Ahmed et al. (e.g.
+2013</xref>
+        );
+        <xref ref-type="bibr" rid="ref32">Huang et al. (e.g. 2018</xref>
+        );
+        <xref ref-type="bibr" rid="ref55">Song et al. (e.g. 2008</xref>
+        );
+        <xref ref-type="bibr" rid="ref63">Yu, Huang, Wang, and Cui (e.g.
+2009</xref>
+        );
+        <xref ref-type="bibr" rid="ref64">Yuan, Shih, Jing, and Wang (e.g. 2010</xref>
+        ) forecasted solar ares by using a machine
+learning algorithms and parameters calculated from maps of line-of-sight component of
+the photospheric magnetic eld observed by the Michelson Doppler Imager (MDI)
+instrument aboard the SOHO spacecraft. However, these studies were limited by the fact
+that the line-of-sight magnetic eld component provides only partial information about
+the structure of solar active regions. Barnes, Leka, Schumer, and Della-Rose (2007) was
+the rst to use vector magnetograms to investigate solar are forecasting using a
+statistical classi er, which outperforms the NOAA's SWPC prediction results. For a
+comprehensive review, see
+        <xref ref-type="bibr" rid="ref37">Leka and Barnes (2018)</xref>
+        and
+        <xref ref-type="bibr" rid="ref7">Camporeale (2019)</xref>
+        .
+      </p>
+      <p>
+        <xref ref-type="bibr" rid="ref5">Bobra and Couvidat (2015)</xref>
+        were the rst to forecast solar ares using machine
+learning algorithms and parameters calculated from maps of the vector magnetic eld (called
+Space-weather HMI Active Region Patches, or SHARPs
+        <xref ref-type="bibr" rid="ref6">(Bobra et al., 2014)</xref>
+        ). They
+obtained skill scores that outperformed those of the NOAA Space Weather Prediction
+Center (SWPC)
+        <xref ref-type="bibr" rid="ref9">(Crown, 2012)</xref>
+        . The FLARECAST framework (http://flarecast.eu/),
+was developed by a European consortium and it gives an infrastructure for solar are
+predictions
+        <xref ref-type="bibr" rid="ref18">(Florios et al., 2018)</xref>
+        . Nishizuka, Sugiura, Kubo, Den, and Ishii (2018)
+developed a solar are prediction model using a deep neural network (DNN). Besides,
+HadaMuranushi et al. (2016) attempts the real time automated forecast of solar ares with
+deep learning approaches.
+      </p>
+      <p>
+        Observations of solar ares show dynamic behavior in the coronal magnetic eld,
+particularly in the transition region
+        <xref ref-type="bibr" rid="ref4">(Benz, 2016)</xref>
+        . Many studies show a statistical
+correlation between are production and features in multiple wavelengths of solar image data.
+As such, a more complete approach is needed to build a predictive model that uses
+multiple wavelengths of image data.
+        <xref ref-type="bibr" rid="ref45">Nishizuka et al. (2017)</xref>
+        were the rst to use machine
+learning algorithms to predict solar ares by not only parameterizing maps of the
+photospheric magnetic eld but also using maps of the chromosphere. Finally, Jonas,
+Bobra, Shankar, Hoeksema, and Recht (2018) were the rst to predict solar ares by
+using a machine learning algorithm along with maps of the photosphere, chromosphere,
+transition region, and corona. The model developed by
+        <xref ref-type="bibr" rid="ref34">Jonas et al. (2018)</xref>
+        performs
+competitively with, but does not outperform, the
+        <xref ref-type="bibr" rid="ref5">Bobra and Couvidat (2015)</xref>
+        and the
+        <xref ref-type="bibr" rid="ref45">Nishizuka
+et al. (2017)</xref>
+        models.
+      </p>
+      <p>
+        It should be noted that in all previous work, static features are used for predictions
+whereas in this paper, we use time series for predictions. This incurs di erences in data
+preparation for machine learning tasks, as we will describe in details in Sections 3.2 and 3.3.
+Therefore, our results are not directly comparable with those in literature. However, in
+comparison with
+        <xref ref-type="bibr" rid="ref5">Bobra and Couvidat (2015)</xref>
+        , we prepare the data in exactly the same
+way as they do in the paper, and give a fair comparison of the prediction performance.
+3
+      </p>
+    </sec>
+    <sec id="sec-4">
+      <title>Methodology</title>
+      <p>
+        We use the GOES data
+        <xref ref-type="bibr" rid="ref20">(Garcia, 1994)</xref>
+        to identify aring events and then match
+active regions in the SDO/HMI vector magnetic eld data. A detailed description of the
+data pre-processing pipeline is given in Section 3.1. We also discuss the data
+preparation for machine learning algorithms, i.e. various training/testing sample splitting we
+consider in this paper, de ning positive and negative classes for machine learning
+algorithms, and metrics for evaluating di erent machine learning algorithms in Sections 3.2,
+3.3, and 3.4 respectively. We describe the details of the machine learning algorithms that
+we adopt in Section 3.5. Here we give a brief review of the machine learning tasks and
+the highlights of our methodology. Readers could choose to read this brief introduction
+and skip the details in Section 3.5 without essential loss of the big picture.
+      </p>
+      <p>Classi cation is used for predicting discrete responses such as no are (\quiet time"
+of an active region), any are (A/B/C/M/X class), weak are (A/B class) or strong are
+(M/X class). The number of are events in the GOES data set that we process is the
+following, X are: 50, M are: 710, C are: 6839, B are: 4409, A are: 4; and the
+number of ARs is 1100 in total. Among the ARs, the minimum number of are events is 1
+per active region and the maximum number of are events is 141 per active region (given
+by AR 12297); 208 of the 1100 ARs has a strong are (M/X class) associated. Several
+examples of the most frequent aring active regions include AR 12297 (141 events), AR
+12403 (130 events), AR 11476 (113 events), AR 12192 (112 events), and AR 11515(106
+events). Several examples of the ARs with strong are events are AR 12192 (6 events)
+AR 11748 (4 events), AR 12673 (4 events), AR 12890 (3 events) and AR 12087 (3 events).</p>
+      <p>
+        First, we train a Long Short Term Memory (LSTM) model
+        <xref ref-type="bibr" rid="ref22 ref29">(Gers, Schmidhuber,
+&amp; Cummins, 1999; Hochreiter &amp; Schmidhuber, 1997)</xref>
+        to classify solar are events, are
+(A/B/C/M/X class) versus non- are, strong are (M/X class) versus weak are (A/B
+class) using SHARP parameters 2 several hours/days prior to the peak time of the event.
+The LSTM model predicts binary outcomes using trained non-linear transformations of
+input parameters and is shown to work very well for accurate classi cations for time-series
+data
+        <xref ref-type="bibr" rid="ref24">(Goodfellow, Bengio, &amp; Courville, 2016)</xref>
+        , including natural language text
+compression and speech recognition
+        <xref ref-type="bibr" rid="ref25 ref26">(Graves et al., 2009; Graves, Mohamed, &amp; Hinton, 2013)</xref>
+        .
+      </p>
+      <p>2 These parameters maybe thought of as handcrafted features in machine learning in that they are
+selected based on human physical understanding of quantities related to are production such as magnetic
+ux and electric currents.
+Second, we perform the binary classi cation of strong/weak ares replacing the SHARP
+parameters with machine-learned features. This includes three steps:
+1. we derive features from images using the autoencoder, a deep learning technique
+that derives essential features to reconstruct images;
+2. we apply the marginal screening technique to remove redundant features for
+solar are classi cation, which turns out to help avoiding over- tting e ectively; and
+3. we train the LSTM model using the remaining features for classi cations.</p>
+      <p>On the machine learning part, what distinguishes our approaches from earlier ones
+in literature are summarized as the following.</p>
+      <p>
+        1. We perform feature extraction directly from HMI images using the deep learning
+algorithm autoencoder, as opposed to calculating various physical quantities from
+the observed active region magnetic eld.
+2. We perform prediction-oriented feature selection based on marginal screening, which
+e ectively avoids over- tting with large number of features extracted.
+3. In our classi cation model, we adopt the LSTM, which is also used in
+        <xref ref-type="bibr" rid="ref28">Hada-Muranushi
+et al. (2016)</xref>
+        , that inputs time series data. This takes into account the time
+evolution information instead of stationary features widely used in the literature for
+solar are classi cations as describe in Section 2.
+4. We compare the performance of the classi cation models using machine extracted
+features with those trained using SHARP parameters, which shows that
+potentially we could derive new features with machine-learning algorithms yet to be
+captured by well-known physical quantities (SHARP parameters).
+5. We demonstrate the e ectiveness and great potential of the proposed methods for
+early identi cation of precursors for strong are by studying out-of-sample
+prediction performances of trained models on four representative active regions.
+      </p>
+    </sec>
+    <sec id="sec-5">
+      <title>3.1 Data Pre-processing Pipeline</title>
+      <p>
+        The GOES data set
+        <xref ref-type="bibr" rid="ref20">(Garcia, 1994)</xref>
+        contains 12; 012 records of solar ares from
+201005-01 to 2018-06-20: the class of the are and the start, end, and peak time of each event.
+The SHARP (Space-weather HMI Active Region Patch) magnetogram data contain the
+3 magnetic eld components, which captures with high-resolution the time-evolving
+magnetic eld structure in each active region
+        <xref ref-type="bibr" rid="ref30 ref6">(Bobra et al., 2014; Hoeksema et al., 2014)</xref>
+        . The
+active regions are identi ed by the NOAA number.
+      </p>
+      <p>
+        Given the data sets described, we built a data preparation pipeline for the solar
+are classi cation task. This pipeline enables us to locate active regions with solar are
+events at any speci ed level as recorded in the GOES data set, and download SDO/HMI
+SHARP data les including magnetic images and AR parameters for any speci ed
+number of hours prior to a solar are event. Moreover, an event is not considered if
+a. the centroid of the AR is outside 70 deg E/W from the central meridian (in
+order to avoid projection e ect observed in
+        <xref ref-type="bibr" rid="ref5">Bobra and Couvidat (2015)</xref>
+        ) and
+b. another are within the class considered occurred within 48h in the same
+active region (e.g. in the data preparation for strong/weak are classi cation, we
+only consider ares of M/X and B class).
+      </p>
+      <p>The precaution (b) prevents from overlapping between several consecutive ares
+(possibly of di erent intensities) from the same region. This pipeline gave us 760 M/X class
+are events and 1210 A/B class are events, with magnetic images and SHARP
+parameters 24=48=72 hours prior to each event peak time at a 1 hour cadence.</p>
+      <p>The whole data downloading process proceeds in four steps described as follows.
+1. Set a time range, download the whole solar X-ray are records. In this step, we
+do not consider the overlapping issue of are events. The queried items are: class
+and strength, NOAA active region number, event date, and start/peak/end times.
+2. For each record in the GOES data set, we rst get the peak time as the end time
+of the query of the HMI/SDO data set. We decide the start time of the query based
+on how many frames we need and use the 1 hour cadence from the start time to
+the end time of the query. Then we send the query to the JSOC.
+3. We use the NOAA AR number in the GOES data set to identify the desired one
+from multiple ARs on the sun. We select the queried keys with 3 criteria: (1) the
+NOAA number is same as that in the GOES record; (2) the location of the AR
+is 68 deg from the central meridian; (3) the time is before the peak time.
+Therefore, we obtain all the keys of the frames we want.
+4. Download the data based on the selected keys.</p>
+    </sec>
+    <sec id="sec-6">
+      <title>Parameter</title>
+      <p>TOTUSJH:
+TOTUSJZ:
+SAVNCPP:
+USFLUX:
+ABSNJZH:
+TOTPOT:
+SIZE ACR:</p>
+      <sec id="sec-6-1">
+        <title>NACR:</title>
+        <p>MEANPOT:
+SIZE:
+MEANJZH:
+SHRGT45:
+MEANSHR:
+MEANJZD:
+MEANALP:
+MEANGBT:
+MEANGAM:
+MEANGBZ:
+MEANGBH:</p>
+      </sec>
+    </sec>
+    <sec id="sec-7">
+      <title>Description</title>
+      <p>total unsigned current helicity
+total unsigned vertical current
+Sum of the modulus of the net current per polarity
+total unsigned ux
+Absolute value of the net current helicity
+Proxy for total photospheric magnetic free energy density
+De-projected area of active pixels (Bz magnitude larger than
+noise threshold) on image in micro-hemisphere (de ned as
+one millionth of half the surface of the Sun)
+The number of strong LoS magnetic- eld pixels in the patch
+Proxy for mean photospheric excess magnetic energy density
+Projected area of the image in micro-hemispheres
+Current helicity (Bz contribution)
+Fraction of area with shear &gt; 45
+Mean shear angle
+Vertical current density
+Characteristic twist parameter,
+Horizontal gradient of total eld
+Mean angle of eld from radial
+Horizontal gradient of vertical eld</p>
+      <p>Horizontal gradient of horizontal eld</p>
+      <p>
+        The SHARP parameters are calculated to speci cally capture the structure and
+complexity of the magnetic eld. As discussed in
+        <xref ref-type="bibr" rid="ref38">Leka and Barnes (2003)</xref>
+        and
+        <xref ref-type="bibr" rid="ref6">Bobra et
+al. (2014)</xref>
+        , the parameters are designed to assess the aring potential of ARs and are thus
+strongly representative of the total free energy of the magnetic eld. The free energy,
+in turn, is related to the the electric currents owing through the photosphere into the
+corona, which are in turn proportional to the curl of the eld (r B) (current-free
+regions have zero free energy). The free energy is thus related to spatial gradients in the
+photospheric magnetic eld, which allows for calculation of whole-active-region magnetic
+quantities that can be e ectively used as predictors of active region ares and CMEs
+        <xref ref-type="bibr" rid="ref11 ref12 ref13 ref14 ref38 ref5 ref52">(cf.
+Bobra &amp; Couvidat, 2015; Falconer, 2001; Falconer, Moore, &amp; Gary, 2002, 2003, 2006;
+Leka &amp; Barnes, 2003; Schrijver, 2007)</xref>
+        .
+      </p>
+      <p>
+        The SHARP parameters that we use are described in
+        <xref ref-type="bibr" rid="ref6">Bobra et al. (2014)</xref>
+        , and we
+list their names and brief de ntions in Table 1. We also use NPIX, the number of
+pixels in a SHARP image, as a parameter.
+      </p>
+      <p>
+        The current helicity density is de ned as R J B, and the shear angle is the
+average di erence between the observed eld and the potential eld. Vertical (Z direction)
+is in the radial direction, and is de ned for a force-free eld where J = B. These
+parameters are comparable to those used in previous studies of predicting CMEs and
+For example,
+        <xref ref-type="bibr" rid="ref11">Falconer (2001)</xref>
+        found CMEs correlated with the length of the strong- eld
+strong-shear main polarity inversion line and the global net current, and
+        <xref ref-type="bibr" rid="ref52">Schrijver (2007)</xref>
+        found ares correlated to the total ux in proximity to the polarity inversion line.
+        <xref ref-type="bibr" rid="ref13">Falconer et al. (2003)</xref>
+        found that strong-gradient polarity inversion lines observed in
+lineof-sight (LOS) magnetograms are a suitable proxy for photospheric electrical currents
+and thus a useful predictor of CMEs. The point of question from a physical perspective
+is how do these currents form and intensify to cause ares and CMEs.
+ares.
+      </p>
+      <p>
+        We recognize that these SHARP parameters are correlated with each other, in fact,
+some are highly correlated (even repetitive). Fig. 1 gives the sample correlations of these
+features from all events and from strong are events only. In a PCA (principal
+component analysis,
+        <xref ref-type="bibr" rid="ref48">Pearson (1901)</xref>
+        ) study, we nd that 7 principal components (linear
+combinations of these features) explain more than 95% of the variability of the 20 features.
+Therefore, we do obtain an e cient dimension reduction via the PCA study: using these
+7 principal component is good enough for the subsequent machine learning task as
+opposed to the original 20 features. We have compared the performance of the machine
+learning tasks using all original 20 features as opposed to using these 7 principal components
+in Sections 4.2 and 4.3. Note that this is important to recognize because highly
+correlated (or redundant) features might cause various problems in machine learning algorithm
+such as non-identi ability and over tting, both of which are results of the machine
+being \confused" about two almost identical variables, especially when evaluating which
+one is more important (a notion called variable importance in the machine learning
+literature, which we will talk about in Section 4.2). Furthermore, when evaluating which
+feature (SHARP parameter) is more important as opposed to others in predicting strong
+are events, we need to take the correlations among the features into account, instead
+of blindly interpreting the numbers from a machine learning output.
+      </p>
+      <p>The data pre-processing pipeline described above gives us the list of are events
+(of B/C/M/X classes), together with the features (SHARP parameters) and the videos
+(time series of the magnetic images). Now we describe how we feed these values into
+machine learning algorithms and what the performance metrics are based on.
+3.2</p>
+    </sec>
+    <sec id="sec-8">
+      <title>Details on Data Preparation: Training/Testing Splitting</title>
+      <p>The events that we consider in this paper are from years 2010 to 2018. Table 2 lists
+the number of strong ares (M/X class) and the number of weak ares (B class)
+corresponding to each year. In total, in the Strong/Weak are classi cation model, we
+consider 589 strong ares and 856 weak ares.</p>
+      <p>In order to properly calibrate the performance of the machine learning algorithms,
+we need to split the samples ( are events) into a training set and a testing set. The
+training data is used to train the machine learning models; and the testing data, which does
+not overlap with the training data, serves the purpose of calibrating the out-of-sample
+performance of the machine learning algorithms. We consistently take the ratio of
+training and testing samples to be 2 : 1 for all models presented through out the paper.</p>
+      <p>Our default choice is the Random-Splitting scheme, which randomly selects are
+events in the training and testing data. We run the random splitting 20 times for each
+model to guarantee the robustness and consistency of the results. This scheme is not
+taking into account which active region a are event is from, nor the year in which a are
+event happened. Therefore, we also explore and test out other possible training/testing
+splitting methods: split-by-year and split-by-active-region. The results with all the
+alternative training/testing splitting methods, which we summarize in Appendix B, turn
+out to be very similar as the results based on random splitting we present in Sections 4.2
+for strong/weak are classi cation and 4.3 for case studies.</p>
+      <sec id="sec-8-1">
+        <title>Year</title>
+        <p>Strong Flares (?)
+Weak Flares (?)</p>
+        <p>Strong Flares
+Weak Flares</p>
+        <p>C Flares
+Total (B/C/M/X)
+2010
+7
+94
+9
+147
+89
+245
+2011
+84
+119
+115
+176
+993
+1284
+2012
+94
+120
+131
+167
+1051
+1349
+2013
+78
+125
+109
+170
+1182
+1461
+2014
+164
+38
+210
+82
+1617
+1909
+2015
+115
+102
+130
+131
+263
+524
+2016
+8
+160
+15
+194
+0
+209
+2017
+39
+82
+41
+103
+0
+144</p>
+        <p>We test out three di erent sample splitting strategies based on Split-by-Year. (1)
+We randomly select several years' samples as test set with the guarantee that the test
+samples are over 60% of all the samples. (2) We only consider years 2010, 2011 and 2013,
+which are on the \climbing phase" of the solar cycle. (3) We only consider years 2012,
+2014-2018 since they are on the \declining phase" of the solar cycle. In corresponding
+case studies (for four chosen active regions), in the model training, we take out all data
+related to the four sample active regions we wish to test on. Table 2 give the number
+of ares available for our study for each year in the range 2010 to 2018. See Fig. 2 for
+the solar cycle sunspot number progression regarding the \climbing/declining phase".</p>
+        <p>We test out several di erent con gurations based on Split-by-Active-Region.
+Prior to the splitting of test and training, we conduct a normalization step, which is
+designed to examine whether the model training is dominated by any particularly
+activearing active region. This is done by randomly selecting a limited number (we call \cap")
+of ares from each active region. The cap is set to be 2,3,4,5,10,15, and in nity (when
+we consider all ares). Table 3 gives the total number of active regions that have 1; 2; 3; 4; 5,
+or &gt; 5 strong or weak are events that we consider. The number of active regions with
+a large number of are events is not many, thus the suspect of one active region ares
+dominating the inference is not likely. Nevertheless, we test out with di erent \cap"
+numbers to rule out that possibility. We randomly select 67% of the active regions (635 in
+total) as the \training active regions" and the remaining 33% of the active regions as the
+\testing active regions". All observations for a chosen active region (with a maximum
+number of are events bounded by the cap) is put either in the training or testing set,
+based on whether the active region is a \training active region" or a \testing active
+region". For the corresponding case studies of four chosen active regions, we take all data
+from the four active regions out of the training and testing data set and use the most
+restrictive cap ( 2 ares per active region), see Appendix B for detailed results.</p>
+        <p>Furthermore, we normalize the data by subtracting the mean and dividing by the
+standard deviation, which is the most commonly adopted normalization method in
+practice, before training the machine learning algorithms. We apply the same normalization
+to the testing data. Since the inputs of our machine learning algorithms are time series
+of SHARP parameters, we perform a global normalization of the whole time series of each
+feature: so as not to lose information in the normalization step.</p>
+      </sec>
+      <sec id="sec-8-2">
+        <title>Number of M/X Flares Number of ARs Number of B Flares Number of ARs</title>
+        <p>1
+60
+1
+321
+2
+31
+2
+148
+3
+13
+3
+51
+4
+10
+4
+19
+5
+7
+5
+2</p>
+        <p>In a binary classi cation task, such as strong/weak are classi cation, to give
+sensible results, we need to prepare the data by de ning the positive class (e.g. strong ares
+of M/X class) and negative class (e.g. weak ares of B class) properly to train and test
+the machine learning algorithm. Di erent preparations of positive and negative class could
+lead to di erent results (in terms of the metrics de ned in Section 3.4) thus it is
+important to describe clearly what is done in this step. This is also the crucial step that makes
+di erent machine learning results non-comparable: if two researchers choose disparate
+positive/negative class preparations, the corresponding results cannot be compared fairly.
+To allow comparison with earlier work, we need to repeat exactly the same data
+preparation procedure as done in corresponding papers, see Section 4.2.</p>
+        <p>In our strong/weak are classi cation models, we feed time series of features, for
+both the positive class (strong ares of M/X class) and negative class (weak ares of B
+class), into the machine learning algorithms. Therefore, it is important that the time
+series do not overlap signi cantly: otherwise, the features from the overlapping time points
+appear both in the positive and negative class, making it harder for the machine to
+differentiate. Besides the time series problem we just described, the prediction time
+matters, too. For example, when we train a model to predict 72 hours ahead of a M/X are,
+if a B are happens within this 72 hour window, then the precursors that the machine
+could possibly nd are predictive for both the M/X ares and B ares. Therefore, in our
+preparation of the positive and negative classes for the machine learning algorithms, we
+need to take all of these situations into account.</p>
+        <p>Intuitively, the longer the time series we use and/or the longer the prediction time,
+the more stringent the condition is for selecting the positive and negative classes becomes.
+However, we observe that due to the data pre-processing step we describe in Section 3.1,
+there is no such 24-hour window in which there is at least a B and an M/X are, but
+there exists 30 such 96-hour windows where a B and an M/X coexist. This is not a big
+fraction as compared to the whole data set that we consider. Thus in our sensitivity
+analysis (by training and testing with variants of positive/negative class determination
+criteria), the results appear to be quite robust. We will elaborate this again for strong/weak
+are classi cations and case studies. To make the results transparent and reproducible,
+we list the numbers of are events of each class we use for training and testing the
+machine learning algorithms in Section 4 when we present our results.</p>
+      </sec>
+    </sec>
+    <sec id="sec-9">
+      <title>3.4 Evaluation Metrics for Classi cation Algorithms</title>
+      <p>Note that solar are events, especially the intense ones, are relatively \rare", i.e.
+the \positive class" (a solar are event) is much smaller than the \negative class" (no
+solar are event). Therefore, we need evaluation metrics to quantify how well our
+models t both the \positive class" and the \negative class". In this section, we list the
+evaluation metrics we use in Section 4 for assessing performances of the binary classi ers we
+train. We show multiple metrics in presenting our results in Section 4 and demonstrate
+that our results are not sensitive to which metric we adopt.</p>
+      <p>Let TP; FP; TN; FN denote the number of true positives, false positives, true
+negatives, and false negatives, respectively. Note that a true positive is an outcome where
+the classi er correctly predicts the positive event and a true negative is an outcome where
+the classi er correctly predicts the negative event. Similarly, a false positive is an
+outcome where the classi er incorrectly predicts the positive event and a false negative is
+an outcome where the classi er incorrectly predicts the negative event. Therefore, P =
+FN+TP is the number of positive events and N = FP+TN is the number of negative
+events. Then we can de ne the Precision and Recall as</p>
+      <p>Precision =</p>
+      <p>TP
+TP + FP
+;</p>
+      <p>Recall =</p>
+      <p>TP
+TP + FN
+:</p>
+      <p>
+        We use the following four metrics to evaluate our binary classi ers: the F1 score,
+which is the harmonic mean of Precision and Recall, with the best value at 1 and worst
+at 0; the true skill statistic (TSS), and the Heidke skill scores (HSS1 and HSS2).3 The
+higher the metrics (i.e. closer to 1), the better the classi er. See
+        <xref ref-type="bibr" rid="ref18">Florios et al. (2018)</xref>
+        for
+detailed descriptions for these skill scores.
+      </p>
+      <p>F1 = 2</p>
+      <sec id="sec-9-1">
+        <title>Precision Recall Precision + Recall ; TSS =</title>
+        <p>TP
+TP + FN</p>
+        <p>FP
+FP + TN
+;
+HSS1 =</p>
+        <p>TP + TN</p>
+        <p>P</p>
+        <p>N
+;</p>
+        <p>HSS2 =</p>
+        <p>P
+2</p>
+        <p>[(TP TN) (FN FP)]
+(FN + TN) + (TP + FP)</p>
+        <p>N
+:
+(1)
+(2)
+(3)</p>
+        <p>
+          Visually, we use the ROC (receiver operating characteristic) curves and the AUC
+(area under the ROC curves) values to examine the performances of the binary
+classications presented in this paper,
+          <xref ref-type="bibr" rid="ref17">(see Fawcett, 2006, for an introduction to ROC
+analysis)</xref>
+          . An ROC curve plots the true positive rate (TP/P) against the false positive rate
+(FP/N) at di erent thresholds and thus show the performance of the classi er. The AUC
+values are between 0 and 1. The larger the AUC, the better the classi er.
+        </p>
+        <p>In the binary classi cation models, the raw output is a prediction score that takes
+values between 0 and 1. This value represents the probability of the correct answer
+being positive (e.g. a strong are in the strong/weak are classi cation). We choose a
+default threshold, 0.5, for determining the predicted outcome. For example, we assign a
+predicted strong are if the prediction score is above 0.5 and a predicted weak are if
+the prediction score is below 0.5, in the strong/weak are classi cation model. Note that
+the \prediction" here carries a di erent meaning than what is typically conceived in the
+space physics community. In machine learning models, we use \prediction" in a very
+general sense to denote \any tted outcome from a machine learning algorithm".
+3.5</p>
+      </sec>
+    </sec>
+    <sec id="sec-10">
+      <title>Machine Learning and Statistical Algorithms</title>
+      <p>We give a brief introduction to the deep learning algorithms that we use to
+perform automatic feature extraction from HMI images (autoencoder for image
+reconstruction, marginal screening for feature selection) and solar are classi cations for time
+series observations (long short term memory networks).</p>
+      <p>
+        Long Short Term Memory (LSTM) networks have been an e ective solution to a
+wide range of \sequence prediction problems" such as image captioning, language
+translation, and handwriting recognition
+        <xref ref-type="bibr" rid="ref25 ref26 ref62">(Graves et al., 2009, 2013; Wu et al., 2016)</xref>
+        . The LSTM
+network is a special kind of Recurrent Neural Networks (RNN) and it was rst introduced
+3 We note that in the space weather community HSS2 is referred to as the Heidke skill score
+        <xref ref-type="bibr" rid="ref49">(cf.
+Pulkkinen et al., 2013)</xref>
+        .
+y8 2im`b6
+!
+`S2/B+iQM
+aGhJk
+aGhJR
+HaB/M; BhK2 rqBM/Q
+Ç
+1JL:"&gt;1JLCw&gt;al6Gs-
+1JL:1JLCw.PhlaC&gt;1JLSPh-
+PhS
+      </p>
+      <p>PhlaCw- 1JLGS
+a"LCw&gt;- oaL*S
+1JL:"h1JLa&gt;_· · · GahJk
+· · · GahJR</p>
+      <p>
+        Ç
+le (some are listed in the box at the bottom). These features can be replaced by other features,
+e.g. machined-learned features, see Section 4.2.
+by
+        <xref ref-type="bibr" rid="ref29">Hochreiter and Schmidhuber (1997)</xref>
+        and improved in
+        <xref ref-type="bibr" rid="ref22">Gers et al. (1999)</xref>
+        . It has
+internal contextual state cells that serve as memory cells, enabling information to
+ow from
+one step to the next. Thus LSTM is capable of handling both short and long term
+dependencies. The LSTM network learns when to remember and when to forget through
+their forget gate weights. Consequently, the time dependency, whether short or long-term,
+is also learned through the training of the algorithm. We refer the reader to
+        <xref ref-type="bibr" rid="ref40">Lipton, Berkowitz,
+and Elkan (2015</xref>
+        ) for a critical review on RNN for sequential learning. Fig. 3 shows a
+owchart of LSTM for classi cations with SHARP parameters. The
+gure will be
+further explained in Section 4.1 and 4.2 when we describe our classi cation models.
+      </p>
+      <p>
+        The autoencoder
+        <xref ref-type="bibr" rid="ref36 ref39">(Kingma &amp; WR elling, 2013; Liou, Cheng, Liou, &amp; Liou, 2014)</xref>
+        neural network is an unsupervised learning algorithm that applies back propagation to learn
+structures of the input data such that the input and output are almost identical. The
+autoencoder network consists of the encoder, which transforms the input to \code", i.e.
+features, and the decoder, which transforms the \code" to the output
+        <xref ref-type="bibr" rid="ref24">(Goodfellow et al.,
+2016, Chapter 14)</xref>
+        . The autoencoder is applied in our context to derive a relatively
+lowdimensional (vector) representation of the magnetogram
+eld images by using the
+encoded images. Fig. 4 illustrates the structure of the adopted autoencoder, which will be
+further explained in Section 4.2 for strong/weak are classi cations.
+      </p>
+      <p>Recall that our nal objective is not magnetogram
+eld image reconstruction,
+instead, we are interested in classi cation: classifying large solar
+are events versus weak/none
+solar</p>
+      <p>
+        are events using features extracted from images. Therefore, we perform marginal
+screening to get rid of redundant features, which incurs over- tting (i.e. worse
+performance), for the classi cation purpose
+        <xref ref-type="bibr" rid="ref15 ref16 ref56 ref65">(see Fan &amp; Lv, 2008; Fan, Samworth, &amp; Wu, 2009;
+Tibshirani, Hastie, Narasimhan, &amp; Chu, 2003; Zhao, Xu, &amp; Wang, 2017, for similar ideas
+applied to other models including regression models)</xref>
+        . This method is typically used for
+genetic studies where thousands of genes (features) are considered for the outcome of a
+disease/no-disease outcome whereas only a few genes are relevant for predicting the
+disease status, see e.g. the example in
+        <xref ref-type="bibr" rid="ref31">Hong, Wang, and He (2016</xref>
+        ). The marginal
+screening procedure goes as follows: we take one feature at a time and perform a two-sample
+aGhJk
+aGhJR
+t-test for testing the signi cance of the feature with respect to the binary outcome (e.g.
+strong versus weak are); if the test turns out to be signi cant, we keep the feature;
+otherwise, the feature is deleted. We choose the signi cance value (p-value threshold) based
+on cross-validation of the classi cation results in the training data.
+      </p>
+    </sec>
+    <sec id="sec-11">
+      <title>4 Results</title>
+      <p>
+        We give results of the solar are classi cations in this section. Section 4.1 gives the
+results for the binary classi cation of \solar are events" against \no solar are events."
+We present the classi cation of strong and weak ares in Section 4.2. We rst use the
+SHARP parameters and then use features learned directly from HMI magnetogram
+images using the autoencoder. In comparison with results in the literature
+        <xref ref-type="bibr" rid="ref5">(Bobra &amp;
+Couvidat, 2015)</xref>
+        , we include a strong are versus no are prediction model in Section 4.1.
+      </p>
+    </sec>
+    <sec id="sec-12">
+      <title>4.1 Flare/Non-Flare Classi cation</title>
+      <p>We train an LSTM model for classifying ares of any intensity (positive class) against
+non- ares (negative class), using 20 SHARP parameters in the HMI/SDO header le (listed
+in Section 3.1) at T = 1=3=6=12=24=48 hours preceding a solar are event, at 1 hour
+cadence. The positive class consists of any solar are (A/B/C/M/X) from the 239
+active regions. The members of the negative class are randomly selected to make sure that
+no are event happens within 48 hours. After this selection, we consider around 100
+active regions with around 200 are events and non- ares. See Table 4 for number of ares,
+non- ares, and active regions for each forecasting window (number of hours ahead).</p>
+      <sec id="sec-12-1">
+        <title>Forecasting Window</title>
+        <p>Number of Flares</p>
+        <p>Number of Non-Flares
+Number of Active Regions
+72h
+176
+176
+81
+48h
+206
+206
+91
+24h
+244
+244
+112
+12h
+250
+250
+117
+6h
+253
+253
+119
+3h
+259
+259
+122
+1h
+259
+259
+122</p>
+        <p>Table 5 gives the results for classifying \solar are event (A/B/C/M/X class)" against
+\no solar are event" T = 1=3=6=12=24=48 hours prior to the start time of a solar are
+event. We train a two layer stacked LSTM model with 50% dropout. We use the
+cross</p>
+      </sec>
+      <sec id="sec-12-2">
+        <title>Metric</title>
+      </sec>
+      <sec id="sec-12-3">
+        <title>Precision Recall</title>
+        <p>F1 Score</p>
+        <p>HSS1
+HSS2
+TSS
+entropy loss function and the Adam's optimizer. See Table 5 for detailed classi cation
+results with 24/12/6/3/1-hour predictions and the left panel in Fig. 5 for
+corresponding ROC curves with AUC. See Section 3.5 and 3.4 for descriptions of the LSTM model
+and explanations of the ROC curves.</p>
+        <p>As we can see from Table 5, the classi cation result is good but far from perfect.
+One of the reasons is that it is hard to di erentiate weak ares (e.g. A/B ares) from
+quiet times. We train another model that predicts strong ares (M/X class) from quiet
+times. The positive class are sampled from exactly 72/48/24/12/6/3/1 hours before the
+rst strong are event, and the negative class are sampled randomly from the time
+period of 48 hours prior to the rst are event. Table 6 gives the detailed results, which
+is much better than those in Table 5, which makes intuitive sense because it is much
+easier to tell strong ares from quiet times rather than weak ares from quiet times.</p>
+      </sec>
+      <sec id="sec-12-4">
+        <title>Metric</title>
+      </sec>
+      <sec id="sec-12-5">
+        <title>Precision Recall</title>
+        <p>F1 Score</p>
+        <p>HSS1
+HSS2
+TSS</p>
+        <p>
+          As we can see in Fig. 5, the closer to the event time, the better the prediction.
+Moreover, the event is much more predictive within 12 hours before the event. The rapid rise
+in predictive performance suggests that within a period of 12 24 hours, there is an
+observational signature indicating that a physical threshold has been passed at which point
+the are becomes inevitable. This result is consistent with observations showing M and
+X ares are certain to occur within 24 hours for active regions that have attained 1021
+Mx of unsigned ux within 15 Mm of a strong polarity inversion line
+          <xref ref-type="bibr" rid="ref52">(Schrijver, 2007)</xref>
+          .
+This further suggests that physical processes lead to a catastrophic loss of equilibrium
+following a buildup of energy as has been suggested for a number of CME models
+          <xref ref-type="bibr" rid="ref19 ref42">(cf.
+Forbes &amp; Isenberg, 1991; Manchester, 2003)</xref>
+          . For periods longer than 24 hours, from the
+available observations, it may be physically impossible to make are predictions with high
+accuracy.
+        </p>
+        <p>
+          Furthermore, we train an LSTM model to predict, 24 hours ahead of time, whether
+an M/X are occurs as opposed to no are, just to compare with those in
+          <xref ref-type="bibr" rid="ref5">Bobra and
+Couvidat (2015)</xref>
+          . The data are processed similarly as in
+          <xref ref-type="bibr" rid="ref5">Bobra and Couvidat (2015)</xref>
+          .
+        </p>
+        <p>All data are sampled from the 208 active regions that produced M/X solar are
+events. The positive class is sampled exactly 24 hours prior to the start time of the peak
+event, and the negative class is sampled randomly from the period that no are event
+would happen in the next 48/24/12/6/3/1 hours. We use a two layer stacked LSTM
+architecture with 50 cells in both layers. We choose a 50% drop out rate in both layers to
+prevent the over- tting problem. The rst LSTM layer provides a sequence output rather
+than a single output to feed into the second LSTM layer. A dense layer is added at the
+end with the sigmoid activation function that could generate a continuous value between
+0 and 1 representing solar are event probability. We utilize the binary cross-entropy as
+the loss function and the Adam's optimization algorithm.</p>
+        <p>Table 7 gives the detailed results. As we can see from Table 7, the farther away from
+the peak event the negative class is selected, the better predictions we can get: the
+farther away from the peak event, the \quieter" the region is in the negative class, thus the
+discrepancy between positive and negative events is larger. The key di erence between
+the results in Table 7 and Table 6 is how the negative class is determined/sampled, though
+both of them are aimed at predicting strong ares from non- ares. The sample
+selection mechanism behind Table 6 shall give worse predictions but is less restrictive for the
+negative class as compared to the sample selection mechanism behind Table 7.</p>
+      </sec>
+      <sec id="sec-12-6">
+        <title>Metric</title>
+      </sec>
+      <sec id="sec-12-7">
+        <title>Precision Recall</title>
+        <p>F1 Score
+HSS1
+HSS2
+TSS</p>
+      </sec>
+    </sec>
+    <sec id="sec-13">
+      <title>4.2 Strong/Weak Flare Classi cation</title>
+      <p>The Flare/Non-Flare model trained in Section 4.1 predicts whether a are is
+happening or not. Next, we train a model that classi es whether it is a strong are (M/X
+class) or a weak are (B class), given that a are is happening. Note that we exclude
+the C ares here due to the fact that C ares could be arbitrarily close to strong B ares
+or weak M ares, making the classes highly indistinguishable. We rst show the results
+of classifying M/X ares versus B ares using the SHARP parameters from the HMI/SDO
+header le, and then the results using features obtained via the autoencoder followed by
+feature selection, see Section 3.5 for detailed descriptions of the algorithms.</p>
+      <p>As mentioned in Section 3, there are multiple are events per active region and the
+are events sometimes can be close to each other in time. To make sure that the ares
+are not overlapping in the training data, so that we are not using the same data point
+twice, we need to further prepare the data for training and testing. Finally, we use around
+400-600 strong ares and around 500-800 weak ares coming from around 500-600
+active regions for the strong/weak are classi cation model. See Table 8 for the detailed
+numbers of are events and active regions corresponding to di erent number of hours
+before the rst strong are and the number of hours of data used to train the model.</p>
+      <p>Hours Before an Event
+Hours of Data for Training</p>
+      <p>Num. Strong Flares
+Num. Weak Flares
+Num. Active Regions</p>
+      <p>Hours Before an Event
+Hours of Data for Training</p>
+      <p>Num. Strong Flares
+Num. Weak Flares
+Num. Active Regions</p>
+      <p>Table 9 gives the strong and weak (M/X versus B class) are classi cation results
+with 20 SHARP parameters from the HMI/SDO header le described in Section 3.1. We
+use 12 hours of data t hours before an event, at a 1 hour cadence, to classify the are
+events; t = 72; 48; 24; 12; 6; 1 hours, corresponding to the last six columns in the table.</p>
+      <p>Fig. 6 compares the F1 score and other metrics for strong/weak are classi cation.
+Overall, the prediction accuracy is lower when predicting longer time ahead of an event.
+How many hours of data is used does not a ect the classi cation performance much for
+1/6/12/24 hours prediction since the time point is already close to the event and thus
+is informative enough for classi cation of an event; whereas for 48/72 hours prediction,
+longer forecasting windows improve the accuracy of predictions: the data are not close
+to the are event any more, thus more data contain more information. This is also
+exempli ed in the ROC curves and AUC (area under the ROC curve) values given in the
+left panel of Fig. 7, in which one hour's data is used for 48/24/12/6/1 hours' predictions.
+The AUC values of 48-hour prediction is much smaller than 24 hours' predictions, both
+of which are much smaller than 12/6/1 hours' predictions, where the latter three are not
+signi cantly di erent from each other.</p>
+      <p>Fig. 7: ROC curve of LSTM model using 20 SHARP parameters (left panel) and
+machinelearned features using autoencoder (right panel) for strong/weak are event classi cation
+(48/24/12/6/1 hours prior to event labeled with di erent colors and line types) with period 1
+hour (i.e. data from one time point is used).</p>
+      <p>
+        Next we examine how these 20 SHARP parameters contribute to the prediction model.
+This is related to the notion of variable importance, which is a widely adopted measure
+that represents the statistical signi cance of each feature in a model
+        <xref ref-type="bibr" rid="ref21 ref23">(Garson, 1991; Goh,
+1995)</xref>
+        . Recall from Section 3.1 that the SHARP parameters are not independent features:
+USFLUX, TOTUSJZ, TOTUSJH, TOTPOT are highly correlated (with correlations
+ranging from 0.87 to 0.99); MEANPOT, SHRGT45, MEANSHR, MEANGAM are highly
+correlated (with correlations ranging from 0.8 to 0.99); SAVNCPP and ABSNJZH are highly
+correlated (with correlation 0.95); MEANALP and MEANJZH are highly correlated (with
+correlation 0.96); MEANGBZ and MEANGBT are highly correlated (with correlation
+0.99). For these highly correlated features, as long as one of them is picked up as
+\important", all of the highly correlated ones are almost equally \important".
+      </p>
+      <p>Note that in the situation with highly correlated features, variable importance could
+become highly unstable. We take the backward elimination method as an example. In
+backward elimination, we begin with all the features and delete one feature at each step,
+till all features are eliminated. Which feature is being deleted at each step can be
+determined by an exhaustive search of which one, among the remaining ones, upon removal,
+incurs the largest performance drop. However, when features are highly correlated, the
+resulting selected \important" features are not stable: for two highly correlated features,
+one of them might be identi ed as \important" and the other identi ed as
+\unimportant" by the backward elimination method.</p>
+      <p>Considering the situation described above, we address the feature importance
+problem as follows, which is both robust (statistically and computationally) and informative.
+We divide the 20 features into four groups, where features within each group are highly
+correlated with each other. Group 1 contains TOTUSJH, TOTUSJZ, TOTPOT and
+USFLUX, group 2 contains SAVNCPP and ABSNJZH, group 3 contains NACR, SIZE ACR,
+NPIX and SIZE, and group 4 contains the remaining features. The four groups are
+determined based on diagonal blocks in the correlation table, see Fig. 1. We explain our
+methodology via a concrete example, strong/weak are classi cation using 24 hours' data
+(time series of SHARP parameters) for 6-hour predictions, as illustrated in Fig. 8. We
+begin with the LSTM with all of the features, which gives a baseline testing accuracy,
+93.72%, as shown by the gray horizontal line in Fig. 8. We train the LSTM model with
+only one group of features at a time and report the corresponding accuracy for the four
+groups, which are 86.50%, 82.07%, 80.79% and 75.99% respectively; see the red, green,
+blue and yellow blocks in Fig. 8. Finally, we train the LSTM model with each feature
+alone, and report the corresponding testing accuracy, see the individual bars
+corresponding to each feature in Fig. 8 and their error bars given by the black vertical bars, obtained
+through training the model with each feature 20 times with di erent random seeds.
+0.95</p>
+      <p>MEANPOMTEANJZSHHRGT4M5EANSHMREANALMPEANJZMDEANGBMTEANGAMMEANGBMZEANGBH</p>
+      <p>We can see from Fig. 8 that TOTUSJH (total unsigned current helicity, which
+indicates that the energy buildup due to the twist and shear of the magnetic eld provides
+the energy erupted by the ares) and SAVNCPP (sum of the modulus of the net
+current per polarity) are important features for constructing precursors for strong solar are
+events. Of course, the features that are highly correlated with these two features can be
+considered as \almost equally important". This result is consistent with alternative
+methods that we tried on variable importance quanti cation, including the backward
+elimination and simple hypothesis testing methods. We do not detail these alternative
+procedures since they give the same results as the one described above.</p>
+      <p>As we mentioned before, instead of using the SHARP parameters, we want to try
+using the features extracted by a machine learning algorithm from the raw magnetic eld
+images directly. Potentially this could give essential intuitions and directions towards
+building new important features for solar are predictions that is currently unknown to
+solar physicists.</p>
+      <p>
+        We perform feature extraction via the autoencoder, as described in Section 3.5. This
+is inspired by the VGG-16 architectures
+        <xref ref-type="bibr" rid="ref53">(Simonyan &amp; Zisserman, 2014)</xref>
+        with a total of
+20 layers (10 layers for encoder and 10 layers for decoder). The building blocks are:
+1. a convolution layer (kernel size 3 3, with same padding), the resulting output
+is of the same dimension with user speci ed number of channels,
+2. a max pooling layer (pooling size 2 2 with stride 2 2, and same padding), the
+resulting output is of half the dimension with the same number of channels, and
+3. an unpooling layer (resizing image through bilinear interpolation) the resulting
+output is of user speci ed dimension with the same number of channels.
+      </p>
+      <p>The nal pooling layer of the encoder resizes the encoded image linearly to a constant
+size 8 16 512. Consequently, 65; 536 features are extracted from the input image,
+regardless of the input dimension of the image. This creates the same number of features
+for input images of any size, which makes subsequent machine learning algorithms much
+easier to implement. See Fig. 4 in Section 3.5 for the structure of the autoencoder.</p>
+      <p>
+        Each input image is normalized before any encoding with the default Tensor ow
+image normalization, which e ectively converts the data to mean 0 and standard
+deviation 1. Batch normalization
+        <xref ref-type="bibr" rid="ref33">(Io e &amp; Szegedy, 2015)</xref>
+        is applied for all the weights
+involved in convolution operations. For the activation function, we use the standard ReLu
+non-linearility after each convolutional layer except for the nal output layer. We add
+an additional L2 regularization for all the convolution operations with tensor ow built
+in tuning for the hyperperameter . The initialization of weights are given by Gaussian
+random variables with mean 0 and standard deviation 10 3. Note that this is the most
+sensitive part of the algorithm that requires tuning.
+      </p>
+      <p>
+        We adopt the Stochastic Gradient Descent (SGD) algorithm, the Adam's Optimizer
+        <xref ref-type="bibr" rid="ref35">(Kingma &amp; Ba, 2014)</xref>
+        , with default coe cients, 1 = 0:9; 2 = 0:999; = 10 8. 1 is
+the exponential decay rate for rst moment estimate, 2 is the exponential decay rate
+for the second moment estimate, is a parameter for numerical stability. For the
+learning rate we initialized it to 0:01, and decay it exponentially (by the scale of half) every
+40 epoch. The loss function is given by Pixel by Pixel square di erence across all
+channels: Pi;j;k(xi(jk) x^i(jk))2, where xi(jk) is the pixel value of k'th channel at pixel index i; j,
+and x^ij is the reconstructed image. Fig. 9 demonstrates the reconstructed images against
+the observed images of the three components of the magnetic eld from HMI/SDO data,
+using two randomly chosen active regions.
+      </p>
+      <p>As described in Section 3.5, we need to perform feature selection prior to tting
+the LSTM prediction model. The feature selection is based on marginally performing
+two-sample t-tests, and the thresholding p-value is a tuning parameter that we need to
+decide. Table 10 and Fig. 10 show the classi cation results using features selected from
+the autoencoder, with various thresholding p-values. We can see that the performance
+improves signi cantly with the feature selection as opposed to using all of the features
+from the autoencoder (last column in Table 10). Furthermore, the marginal screening
+technique reduceds the number of features from 65,536 to 5,835 (more than 10 folds) with
+much higher performance metrics when we take the p-value threshold to be 10 3, as given
+in the eighth column (highlighted in bold) in Table 10. We note that the features extracted
+by the autoencoder cannot be easily identi ed as parts of the image as the relationship
+is non-linear.</p>
+      <p>Now we brie y explain why the performance for binary classi cation is improved
+after using the marginal screening method (based on p-values) to select a smaller
+number of features from all the 65,536 features given by the autoencoder. The p-values here
+are serving the purpose of \identifying the useful features for strong/weak are
+classication" from the feature pool extracted from the autoencoder, which is actually
+constructing features to reconstruct the image. A signi cant p-value (the signi cance level
+is a tuning parameter) manifests the \usefulness" of the corresponding feature. In
+statistics, many redundant useless features could result in poor classi cation/prediction
+results, especially in the case that we are faced with: the number of features is much larger
+than the number of events (M/X or B ares) that we consider (see Section 3.5 for
+references). Therefore, this feature selection technique that we are using conveys two
+messages: rst, we do not need so many features to achieve good performance; second,
+removing useless features actually improves the performance. This is a promising message
+for the potentially machine-derived physically meaningful features (not black-box ultra
+high dimensional quantities) that is unknown to solar physicists yet.</p>
+      <p>The right panel in Fig. 7 shows the ROC curve of strong/weak are classi cations
+using features derived from the autoencoder with feature selection p-value threshold set
+at 10 3. Di erent line types/colors correspond to 12/6/3/1 hours of prediction. Note
+that we only train the autoencoder with forecasting window of 12 hours (data from 12</p>
+      <sec id="sec-13-1">
+        <title>Metric</title>
+        <p># Features
+Precision</p>
+        <p>Recall
+F1 Score</p>
+        <p>HSS1
+HSS2
+TSS
+hours prior to an event with cadence 1 hour is used to train the autoencoder), thus we
+cannot make predictions longer than 12 hours. But the model can be readily adapted
+to any desired number of hours of forecasting window.</p>
+      </sec>
+    </sec>
+    <sec id="sec-14">
+      <title>4.3 Case Study on Flare Classi cation</title>
+      <p>In this Section, we demonstrate several promising results towards the detection of
+precursors that lead to strong are events. Note that the models that we present in this
+paper are not for operational are forecasting but that we are nding precursors that
+appear early (around 24 hours ahead, as we will show below with case studies) that lead
+to strong are events. These ndings serve as a promise towards accurate are
+predictions, which we will address in our followup work.</p>
+      <p>We randomly choose4 a few active regions (with NOAA AR numbers 11158, 11165,
+11532, 11513) to show our Strong/Weak are LSTM model (Section 4.2) prediction scores
+with respect to the time ranging from very beginning until the nal peak (strong, M/X
+class) are events, see Fig. 11. These prediction scores, though obtained from a strong/weak
+are classi cation model (instead of an operational are prediction model), already show
+an increasing pattern as we approach around 20 hours prior to the nal peak event.</p>
+      <p>Here is more details on the model training and calculations of the prediction scores.
+For the strong/weak are model, both the strong and weak ares are sampled 1 hour prior
+to the are event at a 1 hour cadence. This gives 721 strong ares and 721 weak ares
+for training the LSTM model. After training the LSTM models for strong/weak are
+classi cations, we save the weight parameters and use them to predict scores (between [0; 1])
+representing the probability that there will be a (strong) are event happening at each
+future time point by feeding the current data features into the model. These \weight
+parameters" actually refer to the trained non-linear transformations of the SHARP features
+in the LSTM model. In essence, we save our trained model and use it as a black box for
+calculating the prediction scores for the four active regions.
+Fig. 11: Case studies on active regions (ARs 11165, 11158, 11532 and 11513) 100 hours prior to
+the peak event. Strong/Weak are classi cation LSTM model is used to predict the probability
+(prediction score) of a peak event happening at a speci c time (blue curve) with observed C and
+M are events with green and red colors respectively. The prediction scores go higher when we
+get closer to the peak event and the sharp transition of the prediction score happens around a
+day ahead of the rst M are.</p>
+      <p>We compare the sequence of prediction scores with the time of observed are events
+for each active region from the GOES data set to check the validity of the predictions,
+i.e. whether the prediction scores increase prior to any (strong) event. Fig. 11 shows the
+machine learning results for four randomly selected active regions, with NOAA AR
+numbers 11165, 11158, 11532 and 11513. These four active regions were excluded from the
+training of the prediction model. We note that for this study, we only applied our
+machine learned prediction score determination algorithm to the time series of features from
+these four active regions. It should also be noted that due to the rotation of the sun, an
+active region cannot be seen for more than approximately 350 hours at a time. The 100
+consecutive SDO/HMI features with a cadence of 1 hour cover a very signi cant
+fraction of this active region visibility.</p>
+      <p>4 In our data extraction pipeline, we do not fetch data from the period when strong and weak are
+events heavily overlap (we do not consider this scenario yet in the current LSTM model). Thus the
+number of available active regions with long time range data before the peak event is not many.</p>
+      <p>Furthermore, Fig. 12 shows box plots of the prediction scores 1/3/6/12/24 hours
+prior to a \quiet time"5 ( rst ve columns) and \active time", (strong are event, last
+ve columns) for the four active regions in the entire time range: year 2010 to year 2018.</p>
+      <p>prediction score prior to 1,3,6,12,24h: quiet time vs active time
+1.0
+Fig. 12: Boxplots of the prediction scores for the case studies done for the four active regions
+over the entire observed time range. The X-axis label stands for q (quiet time, rst ve columns)
+or a (active time, last ve columns) with [1,3,6,12,24] hours' predictions. The Y-axis label is the
+corresponding prediction score.</p>
+      <p>Our preliminary results indicate that with the time dependent learning process, the
+machine learning algorithm identi ed a prediction score that has a huge gradient
+approximately 20-24 hours before a large (M/X class) are. At this point, we cannot translate
+this result to physical understanding of the are initiation mechanism. This work will
+be the subject of a subsequent publication. The importance of the result is that we seem
+to have proven the existence of some physical parameter combination that is capable of
+predicting strong ares by a signi cant time in advance.</p>
+    </sec>
+    <sec id="sec-15">
+      <title>5 Conclusions and Future Work</title>
+      <p>In this paper, we present several machine learning algorithms towards accurate
+identi cations of precursors of solar are events. Our results show great promise in
+detecting e cient precursors for strong ares with machine learning algorithms applied to SDO/HMI
+images and SHARP parameters. This work serves as our rst attempt towards accurate
+predictions of the strong solar are events.</p>
+      <p>We rst build a exible pre-processing pipeline to prepare data from multiple sources
+(GOES, HMI/SDO) for subsequent machine learning algorithms. Then we train deep
+learning models (LSTM) to perform two prediction tasks: are/no- are and strong/weak
+are classi cation. We use SHARP parameters primarily for the two classi cation
+models. Beyond using derived quantities, we apply the autoencoder to extract features
+directly from images of all components of the magnetic eld. Feature selection is performed
+to get rid of redundant noisy features that may harm subsequent classi cations. It turns
+out that the machine-derived features can predict/classify almost as well as the SHARP
+parameters. Our ongoing and future work include (a) combining features from the
+Atmospheric Imaging Assembly (AIA) data to the current feature set, (b) connecting
+machinelearned features to derived quanti es (such as the SHARP parameters) to facilitate
+scienti c discoveries of new physically meaningful features, and (c) training physically based
+5 We de ne a certain time as \quiet time" if there is no strong are before or after 24 hours.
+machine learning models for accurate estimation of are event time and are event
+intensity. The last one will potentially lead to operational are casting.</p>
+      <p>Compared with previous results, our methodology and results presented in this
+paper stand out in several aspects.</p>
+      <p>First, we train models with 1/3/6/12/24/48/72-hour prediction window of are events,
+instead of a single xed prediction window of 24 hours. We discover the interesting and
+physically meaningful phenomenon of the \phase transition" of around 24 hour
+predictions: for shorter prediction windows, the performance of predictions does not vary too
+much and for longer prediction windows, the performance (or capability) of predictions
+drop quite noticeably. This corresponds to the underlying physics: the energy build-up
+takes around 12 to 24 hours for a solar are event, which we discuss in details in
+Section 4.1 (where the references are given). Further investigations are to be followed on
+studying the cause and e ect of this \phase transition phenomenon", both from a physics
+perspective and a machine learning perspective.</p>
+      <p>Second, we train multiple models performing a sequence of prediction tasks ( rst
+are prediction, strong/weak are classi cation), and nally combining them to obtain
+highly promising results. This does not appear before in the literature as far as the
+authors are aware of. The decomposition of the challenging task of solar are prediction
+into several smaller/easier tasks enable us to assess the possibility and limitations of
+using HMI data for precise prediction solar are events. This serves as a great rst step
+towards using more advanced machine learning and statistical analysis techniques to
+nally enable e cient and accurate real time solar are forecasting.</p>
+      <p>
+        Third, the modeling techniques that we use di ers from other work in the
+literature and gives better prediction results in terms of HSS and TSS scores, metrics that are
+commonly adopted in the eld. The LSTM model that we use for predicting outcome
+of a time series observation not only takes care of the \stationary features" (which are
+the features adopted in other work in the literature such as predictions using the SVM,
+random forest, penalized regression), but also takes care of the time revolution of
+features/images. More noticeably, we use the autoencoders to automatically extract
+features from images, instead of using derived physics quantities from the images, which
+represents an incomplete understanding of the solar are events. As a fair comparison
+with the state-of-art in the literature, we process the data the same as in
+        <xref ref-type="bibr" rid="ref5">Bobra and
+Couvidat (2015)</xref>
+        and train our LSTM model. We obtain an HSS score of 0.8 and TSS score
+of 0.8 for the 24 hour prediction window. The precision of the prediction is as high as
+0.9. All these numbers are higher than in
+        <xref ref-type="bibr" rid="ref5">Bobra and Couvidat (2015)</xref>
+        .
+      </p>
+      <p>In our handful of case studies, the strong are (M/X class) prediction scores showed
+a sharp increase at least 20h 25h before the rst large are. This implies that there
+is a still unexplored (probably nonlinear) combination of the SHARP parameters that
+exhibits a runaway e ect about a day before large solar ares. In the future we intend
+to further explore this exciting result from both the machine learning and physics
+perspective. It is our hope that eventually this discovery might lead to more than one hour
+forecast time for are prediction.</p>
+    </sec>
+    <sec id="sec-16">
+      <title>Acknowledgments</title>
+      <p>We thank Enrico Landi, Justin Kasper, Tuija Pulkkinen, Igor Sokolov and Bart van der
+Holst of the Department of Climate and Space Sciences and Engineering for helpful
+discussions. We also acknowledge the help of Monica Bobra (Stanford) and KD Leka (NWRA).
+We also acknowledge the e orts of several UM master students recently involved in the
+project: Hu Sun, Zhenbang Jiao, Chung Hoon Hung, Boyang Zhang, and Bruce Park.
+This work was supported by NASA grant 80NSSC19K0373, NSF grant AGS-1322543 and
+by the Michigan Institute for Data Science (MIDAS) at the University of Michigan. All
+data used in this study are available in the SHARP data set.</p>
+    </sec>
+    <sec id="sec-17">
+      <title>Appendix A</title>
+    </sec>
+    <sec id="sec-18">
+      <title>Tables of Confusion Matrices</title>
+      <p>We give confusion matrices, i.e. list the numbers of TP (true positives), FN (false
+negatives), TN (true negatives) and FP (false positives), for the classi cation results in
+Sections 4.1 and 4.2. We run the machine learning algorithms 20 times with di erent seed
+thus the mean, minimum and maximum values are given in Table 11, 12, and 13. This
+show the robustness and replicability of our results.
+Forecasting Period
+48 hr
+24 hr
+12 hr
+6 hr
+3 hr
+1 hr
+72 hr
+48 hr
+24 hr
+12 hr
+6 hr
+3 hr
+1 hr</p>
+      <p>TP
+87.4 [80,101]
+106.3 [90,118]
+128.5 [116,144]
+145.9 [133,161]
+153.4 [131,169]
+161.4 [144,176]</p>
+      <sec id="sec-18-1">
+        <title>Contingency Table (mean [min, max])</title>
+        <p>FN TN
+27.2 [17,38] 115.8 [99,123]
+39.5 [27,56] 166.8 [155,191]
+39.2 [27,57] 221.6 [206,240]
+34.1 [25,43] 234.2 [216,250]
+29.3 [22,45] 244.1 [229,264]
+27.3 [17,40] 247.8 [230,265]
+1.00
+0.75
+e
+ro0.50
+c
+s
+0.25
+Fig. 13: Performance scores from split-by-active-regions (with no cap on the number of events
+per active region), as described in Appendix 3.2, are displayed in the same way as in Fig. 6 in
+Appendix 4.2 in the main text.</p>
+        <p>Performance score with 1/6/12/24/48/72 Hours Prediction(Max Obs: 2/AR)
+Prediction Period = 1 hours Prediction Period = 6 hours Prediction Period = 12 hours</p>
+      </sec>
+    </sec>
+    <sec id="sec-19">
+      <title>Appendix B</title>
+    </sec>
+    <sec id="sec-20">
+      <title>Additional Results</title>
+      <p>In this Section, we give results of strong/weak are predictions and case studies
+based on alternative sample-splitting methods described in Appendix 3.2:
+split-by-activeregion (including correcting for over-representation of certain highly aring active regions)
+and split-by-year (that considers solar active phase and decaying phase).</p>
+      <p>Performance score with 1/6/12/24/48/72 Hours Prediction(Split by AR)
+Prediction Period = 1 hours Prediction Period = 6 hours Prediction Period = 12 hours
+6
+12</p>
+      <p>Prediction Period = 72 hours
+0.00 1
+6</p>
+      <p>12 24 1 6 12 24 1 6 12
+Length of Time Interval Prior to Event for Prediction (hours)
+24
+Fig. 14: Performance scores from split-by-active-regions (with cap = 2, i.e. the number of events
+per active region is less than or equal to 2), as described in Appendix 3.2, are displayed in the
+same way as in Fig. 6 in Appendix 4.2 in the main text.</p>
+      <p>The positive and negative classes are not balanced for the training and testing data
+when we put caps on the number of are events per active region. We give the
+proportion of the positive class in the training and testing data for all values of caps that we
+try in Table 14.</p>
+      <p>Precision
+Recall
+F1
+HSS1
+HSS2
+TSS
+Precision
+Recall
+F1
+HSS1
+HSS2
+TSS
+Performance score with 1/6/12/24/48/72 Hours Prediction
+Prediction Period = 1 hours</p>
+      <p>Prediction Period = 6 hours</p>
+      <p>Prediction Period = 12 hours
+0
+10
+20
+0
+10
+20
+0
+10
+20
+6 12 24 1 6 12 24 1 6 12
+Length of Time Interval Prior to Event for Prediction (hours)
+24
+Fig. 15: Performance scores from split-by-year (climbing phase), as described in Appendix 3.2,
+are displayed in the same way as in Fig. 6 in Appendix 4.2 in the main text.</p>
+      <p>Performance score with 1/6/12/24/48/72 Hours Prediction
+Prediction Period = 1 hours</p>
+      <p>Prediction Period = 6 hours</p>
+      <p>Prediction Period = 12 hours
+0.75
+e
+ro0.50
+c
+s
+0.25
+0.75
+e
+ro0.50
+c
+s
+0.25
+6 12 24 1 6 12 24 1 6 12
+Length of Time Interval Prior to Event for Prediction (hours)
+24
+Fig. 16: Performance scores from split-by-year (declining phase), as described in Appendix 3.2,
+are displayed in the same way as in Fig. 6 in Appendix 4.2 in the main text.
+Cap</p>
+      <sec id="sec-20-1">
+        <title>Training (Mean Std.)</title>
+      </sec>
+      <sec id="sec-20-2">
+        <title>Testing (Mean Std. ) 2 3</title>
+        <p>4
+5
+10
+15
+1</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <string-name>
+            <surname>Ahmed</surname>
+            ,
+            <given-names>O. W.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Qahwaji</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Colak</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Higgins</surname>
+            ,
+            <given-names>P. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gallagher</surname>
+            ,
+            <given-names>P. T.</given-names>
+          </string-name>
+          , &amp; Bloom eld,
+          <string-name>
+            <surname>D. S.</surname>
+          </string-name>
+          (
+          <year>2013</year>
+          ).
+          <article-title>Solar are prediction using advanced feature extraction, machine learning, and feature selection</article-title>
+          .
+          <source>Solar Phys.</source>
+          ,
+          <volume>283</volume>
+          , 157{
+          <fpage>175</fpage>
+          . doi:
+          <volume>10</volume>
+          .1007/s11207-011-9896-1
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          <string-name>
+            <surname>Baker</surname>
+            ,
+            <given-names>D. N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Balstad</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bodeau</surname>
+            ,
+            <given-names>J. M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Cameron</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fennell</surname>
+            ,
+            <given-names>J. F.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fisher</surname>
+            ,
+            <given-names>G. M.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Strachan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jr.</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          (
+          <year>2009</year>
+          ).
+          <article-title>Severe space weather events{understanding societal and economic impacts workshop report</article-title>
+          . Washington, D.C.: National Academies Press.
+          <source>doi: 10.17226/12643</source>
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          <string-name>
+            <surname>Barnes</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Leka</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Schumer</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Della-Rose</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          (
+          <year>2007</year>
+          ).
+          <article-title>Probabilistic forecasting of solar ares from vector magnetogram data</article-title>
+          .
+          <source>Space Weather</source>
+          ,
+          <volume>5</volume>
+          (
+          <issue>9</issue>
+          ).
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          <string-name>
+            <surname>Benz</surname>
+            ,
+            <given-names>A. O.</given-names>
+          </string-name>
+          (
+          <year>2016</year>
+          , dec).
+          <source>Flare observations. Living Rev. Sol. Phys.</source>
+          ,
+          <volume>14</volume>
+          (
+          <issue>1</issue>
+          ), 2. doi:
+          <volume>10</volume>
+          .1007/s41116-016-0004-3
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          <string-name>
+            <surname>Bobra</surname>
+            ,
+            <given-names>M. G.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Couvidat</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          (
+          <year>2015</year>
+          ).
+          <article-title>Solar are prediction using SDO/HMI vector magnetic eld data with a machine-learning algorithm</article-title>
+          .
+          <source>The Astrophysical Journal</source>
+          ,
+          <volume>798</volume>
+          (
+          <issue>2</issue>
+          ),
+          <fpage>135</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          <string-name>
+            <surname>Bobra</surname>
+            ,
+            <given-names>M. G.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sun</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hoeksema</surname>
+            ,
+            <given-names>J. T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Turmon</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Liu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hayashi</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Leka</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>K. D.</surname>
+          </string-name>
+          (
+          <year>2014</year>
+          , Sep 01).
+          <article-title>The helioseismic and magnetic imager (HMI) vector magnetic eld pipeline: SHARPs { space-weather HMI active region patches</article-title>
+          .
+          <source>Solar Physics</source>
+          ,
+          <volume>289</volume>
+          (
+          <issue>9</issue>
+          ),
+          <volume>3549</volume>
+          {
+          <fpage>3578</fpage>
+          . doi:
+          <volume>10</volume>
+          .1007/s11207-014-0529-3
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          <string-name>
+            <surname>Camporeale</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          (
+          <year>2019</year>
+          ).
+          <article-title>The challenge of machine learning in space weather nowcasting and forecasting</article-title>
+          .
+          <source>Space Weather</source>
+          ,
+          <volume>17</volume>
+          , in press. doi: xxx
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          <string-name>
+            <surname>Cheung</surname>
+            ,
+            <given-names>M. C. M.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Isobe</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          (
+          <year>2014</year>
+          ,
+          <article-title>July)</article-title>
+          .
+          <source>Flux emergence (theory)</source>
+          .
+          <source>Living Reviews in Solar Physics</source>
+          ,
+          <volume>11</volume>
+          , 3{
+          <fpage>128</fpage>
+          . doi:
+          <volume>10</volume>
+          .12942/lrsp-2014-3
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          <string-name>
+            <surname>Crown</surname>
+            ,
+            <given-names>M. D.</given-names>
+          </string-name>
+          (
+          <year>2012</year>
+          , jun).
+          <article-title>Validation of the NOAA space weather prediction center's solar are forecasting look-up table and forecaster-issued probabilities</article-title>
+          .
+          <source>Space Weather</source>
+          ,
+          <volume>10</volume>
+          (
+          <issue>6</issue>
+          ), S06006. doi:
+          <volume>10</volume>
+          .1029/2011SW000760
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          <string-name>
+            <surname>De Zeeuw</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sazykin</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wolf</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ridley</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Toth</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>2004</year>
+          ).
+          <article-title>Coupling of a global MHD code and an inner magnetosphere model: Initial results</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>109</volume>
+          (
+          <issue>A12</issue>
+          ),
+          <volume>219</volume>
+          . doi:
+          <volume>10</volume>
+          .1029/2003JA010366
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          <string-name>
+            <surname>Falconer</surname>
+            ,
+            <given-names>D. A.</given-names>
+          </string-name>
+          (
+          <year>2001</year>
+          , November).
+          <article-title>A prospective method for predicting coronal mass ejections from vector magnetograms</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>106</volume>
+          ,
+          <fpage>25185</fpage>
+          -
+          <lpage>25190</lpage>
+          . doi:
+          <volume>10</volume>
+          .1029/2000JA004005
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          <string-name>
+            <surname>Falconer</surname>
+            ,
+            <given-names>D. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moore</surname>
+            ,
+            <given-names>R. L.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Gary</surname>
+            ,
+            <given-names>G. A.</given-names>
+          </string-name>
+          (
+          <year>2002</year>
+          , April).
+          <article-title>Correlation of the Coronal Mass Ejection Productivity of Solar Active Regions with Measures of Their Global Nonpotentiality from Vector Magnetograms: Baseline Results</article-title>
+          . Astrophys. J.,
+          <volume>569</volume>
+          ,
+          <fpage>1016</fpage>
+          -
+          <lpage>1025</lpage>
+          . doi:
+          <volume>10</volume>
+          .1086/339161
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          <string-name>
+            <surname>Falconer</surname>
+            ,
+            <given-names>D. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moore</surname>
+            ,
+            <given-names>R. L.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Gary</surname>
+            ,
+            <given-names>G. A.</given-names>
+          </string-name>
+          (
+          <year>2003</year>
+          ,
+          <article-title>October). A measure from line-of-sight magnetograms for prediction of coronal mass ejections</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>108</volume>
+          , 1380. doi:
+          <volume>10</volume>
+          .1029/2003JA010030
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          <string-name>
+            <surname>Falconer</surname>
+            ,
+            <given-names>D. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moore</surname>
+            ,
+            <given-names>R. L.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Gary</surname>
+            ,
+            <given-names>G. A.</given-names>
+          </string-name>
+          (
+          <year>2006</year>
+          , June).
+          <article-title>Magnetic Causes of Solar Coronal Mass Ejections: Dominance of the Free Magnetic Energy over the Magnetic Twist Alone</article-title>
+          . Astrophys. J.,
+          <volume>644</volume>
+          ,
+          <fpage>1258</fpage>
+          -
+          <lpage>1272</lpage>
+          . doi:
+          <volume>10</volume>
+          .1086/503699
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          <string-name>
+            <surname>Fan</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Lv</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          (
+          <year>2008</year>
+          ).
+          <article-title>Sure independence screening for ultrahigh dimensional feature space</article-title>
+          .
+          <source>J. Royal Statistical Society: Series B (Statistical Methodology)</source>
+          ,
+          <volume>70</volume>
+          (
+          <issue>5</issue>
+          ),
+          <volume>849</volume>
+          {
+          <fpage>911</fpage>
+          . doi:
+          <volume>10</volume>
+          .1111/j.1467-
+          <fpage>9868</fpage>
+          .
+          <year>2008</year>
+          .
+          <volume>00674</volume>
+          .x
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          <string-name>
+            <surname>Fan</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Samworth</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Wu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          (
+          <year>2009</year>
+          ).
+          <article-title>Ultrahigh dimensional feature selection: beyond the linear model</article-title>
+          .
+          <source>Journal of machine learning research</source>
+          ,
+          <volume>10</volume>
+          (Sep),
+          <year>2013</year>
+          {
+          <year>2038</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          <string-name>
+            <surname>Fawcett</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          (
+          <year>2006</year>
+          ).
+          <article-title>An introduction to roc analysis</article-title>
+          .
+          <source>Pattern recognition letters</source>
+          ,
+          <volume>27</volume>
+          (
+          <issue>8</issue>
+          ),
+          <volume>861</volume>
+          {
+          <fpage>874</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          <string-name>
+            <surname>Florios</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kontogiannis</surname>
+            ,
+            <given-names>I.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Park</surname>
+          </string-name>
+          , S.-H.,
+          <string-name>
+            <surname>Guerra</surname>
+            ,
+            <given-names>J. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Benvenuto</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bloom eld</surname>
+            ,
+            <given-names>D. S.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Georgoulis</surname>
+            ,
+            <given-names>M. K.</given-names>
+          </string-name>
+          (
+          <year>2018</year>
+          ).
+          <article-title>Forecasting solar ares using magnetogram-based predictors and machine learning</article-title>
+          .
+          <source>Solar Physics</source>
+          ,
+          <volume>293</volume>
+          (
+          <issue>2</issue>
+          ), 28. doi: doi:10.1007/s11207-018-1250-4
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          <string-name>
+            <surname>Forbes</surname>
+            ,
+            <given-names>T. G.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Isenberg</surname>
+            ,
+            <given-names>P. A.</given-names>
+          </string-name>
+          (
+          <year>1991</year>
+          ).
+          <article-title>A catastrophe mechanism for coronal mass ejection</article-title>
+          . Astrophys. J.,
+          <volume>373</volume>
+          , 294{
+          <fpage>307</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          <string-name>
+            <surname>Garcia</surname>
+            ,
+            <given-names>H. A.</given-names>
+          </string-name>
+          (
+          <year>1994</year>
+          ,
+          <article-title>October)</article-title>
+          .
+          <article-title>Temperature and emission measure from GOES soft X-ray measurements</article-title>
+          .
+          <source>Solar Physics</source>
+          ,
+          <volume>154</volume>
+          ,
+          <fpage>275</fpage>
+          -
+          <lpage>308</lpage>
+          . doi:
+          <volume>10</volume>
+          .1007/BF00681100
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          <string-name>
+            <surname>Garson</surname>
+            ,
+            <given-names>G. D.</given-names>
+          </string-name>
+          (
+          <year>1991</year>
+          ).
+          <article-title>Interpreting neural-network connection weights</article-title>
+          .
+          <source>AI expert</source>
+          ,
+          <volume>6</volume>
+          (
+          <issue>4</issue>
+          ),
+          <volume>46</volume>
+          {
+          <fpage>51</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          <string-name>
+            <surname>Gers</surname>
+            ,
+            <given-names>F. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Schmidhuber</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Cummins</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          (
+          <year>1999</year>
+          , oct).
+          <article-title>Learning to forget: Continual prediction with LSTM</article-title>
+          .
+          <source>Neural Computation</source>
+          ,
+          <volume>12</volume>
+          (
+          <issue>10</issue>
+          ),
+          <fpage>2451</fpage>
+          -
+          <lpage>2471</lpage>
+          . doi:
+          <volume>10</volume>
+          .1162/089976600300015015
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          <string-name>
+            <surname>Goh</surname>
+            ,
+            <given-names>A. T.</given-names>
+          </string-name>
+          (
+          <year>1995</year>
+          ).
+          <article-title>Back-propagation neural networks for modeling complex systems</article-title>
+          .
+          <source>Arti cial Intelligence in Engineering</source>
+          ,
+          <volume>9</volume>
+          (
+          <issue>3</issue>
+          ),
+          <volume>143</volume>
+          {
+          <fpage>151</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          <string-name>
+            <surname>Goodfellow</surname>
+            ,
+            <given-names>I.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bengio</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Courville</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          (
+          <year>2016</year>
+          ).
+          <article-title>Deep learning</article-title>
+          . MIT Press. (http://www.deeplearningbook.org)
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          <string-name>
+            <surname>Graves</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Liwicki</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fernandez</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bertolami</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bunke</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Schmidhuber</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          (
+          <year>2009</year>
+          ).
+          <article-title>A novel connectionist system for unconstrained handwriting recognition</article-title>
+          .
+          <source>IEEE transactions on pattern analysis and machine intelligence</source>
+          ,
+          <volume>31</volume>
+          (
+          <issue>5</issue>
+          ),
+          <volume>855</volume>
+          {
+          <fpage>868</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          <string-name>
+            <surname>Graves</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mohamed</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Hinton</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>2013</year>
+          ).
+          <article-title>Speech recognition with deep recurrent neural networks</article-title>
+          .
+          <source>In Acoustics, speech and signal processing (icassp)</source>
+          ,
+          <year>2013</year>
+          ieee international conference on (pp.
+          <volume>6645</volume>
+          {
+          <fpage>6649</fpage>
+          ).
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          <string-name>
+            <surname>Groth</surname>
+            ,
+            <given-names>C. P. T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>De Zeeuw</surname>
+            ,
+            <given-names>D. L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Powell</surname>
+            ,
+            <given-names>K. G.</given-names>
+          </string-name>
+          (
+          <year>2000</year>
+          , November).
+          <article-title>Global 3D MHD simulation of a space weather event: CME formation, interplanetary propagation, and interaction with the magnetosphere</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>105</volume>
+          (
+          <issue>A11</issue>
+          ),
+          <volume>25</volume>
+          ,053 {
+          <fpage>25</fpage>
+          ,078. doi:
+          <volume>10</volume>
+          .1029/2000ja900093
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          <string-name>
+            <surname>Hada-Muranushi</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Muranushi</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Asai</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Okanohara</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Raymond</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Watanabe</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Shibata</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          (
+          <year>2016</year>
+          ).
+          <article-title>A deep-learning approach for operation of an automated realtime are forecast</article-title>
+          .
+          <source>arXiv preprint arXiv:1606</source>
+          .
+          <fpage>01587</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          <string-name>
+            <surname>Hochreiter</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Schmidhuber</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          (
+          <year>1997</year>
+          ).
+          <article-title>Long short-term memory</article-title>
+          .
+          <source>Neural computation</source>
+          ,
+          <volume>9</volume>
+          (
+          <issue>8</issue>
+          ),
+          <volume>1735</volume>
+          {
+          <fpage>1780</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          <string-name>
+            <surname>Hoeksema</surname>
+            ,
+            <given-names>J. T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Liu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hayashi</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sun</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Schou</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Couvidat</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Turmon</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          (
+          <year>2014</year>
+          , Sep 01).
+          <article-title>The helioseismic and magnetic imager (HMI) vector magnetic eld pipeline: Overview and performance</article-title>
+          .
+          <source>Solar Physics</source>
+          ,
+          <volume>289</volume>
+          (
+          <issue>9</issue>
+          ),
+          <volume>3483</volume>
+          {
+          <fpage>3530</fpage>
+          . doi:
+          <volume>10</volume>
+          .1007/s11207-014-0516-8
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          <string-name>
+            <surname>Hong</surname>
+            ,
+            <given-names>H. G.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>He</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          (
+          <year>2016</year>
+          ).
+          <article-title>A data-driven approach to conditional screening of high-dimensional variables</article-title>
+          .
+          <source>Stat</source>
+          ,
+          <volume>5</volume>
+          (
+          <issue>1</issue>
+          ),
+          <volume>200</volume>
+          {
+          <fpage>212</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          <string-name>
+            <surname>Huang</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Xu</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Liu</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Li</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Dai</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          (
+          <year>2018</year>
+          , mar).
+          <article-title>Deep learning based solar are forecasting model. i. results for line-of-sight magnetograms</article-title>
+          . Astrophys. J.,
+          <volume>856</volume>
+          (
+          <issue>1</issue>
+          ), 7. doi:
+          <volume>10</volume>
+          .3847/
+          <fpage>1538</fpage>
+          -4357/aaae00
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          Io e,
+          <string-name>
+            <given-names>S.</given-names>
+            , &amp;
+            <surname>Szegedy</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>C.</surname>
+          </string-name>
+          (
+          <year>2015</year>
+          ).
+          <article-title>Batch normalization: Accelerating deep network training by reducing internal covariate shift</article-title>
+          .
+          <source>arXiv preprint arXiv:1502</source>
+          .
+          <fpage>03167</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          <string-name>
+            <surname>Jonas</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bobra</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shankar</surname>
+            ,
+            <given-names>V.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hoeksema</surname>
+            ,
+            <given-names>J. T.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Recht</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          (
+          <year>2018</year>
+          , feb).
+          <article-title>Flare prediction using photospheric and coronal image data</article-title>
+          .
+          <source>Sol. Phys.</source>
+          ,
+          <volume>293</volume>
+          (
+          <issue>3</issue>
+          ).
+          <source>doi: 10.1007/s11207-018-1258-9</source>
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          <string-name>
+            <surname>Kingma</surname>
+            ,
+            <given-names>D. P.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Ba</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          (
+          <year>2014</year>
+          ).
+          <article-title>Adam: A method for stochastic optimization</article-title>
+          .
+          <source>arXiv preprint arXiv:1412</source>
+          .
+          <fpage>6980</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          <string-name>
+            <surname>Kingma</surname>
+            ,
+            <given-names>D. P.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Welling</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          (
+          <year>2013</year>
+          ).
+          <article-title>Auto-encoding variational Bayes</article-title>
+          .
+          <source>arXiv preprint arXiv:1312</source>
+          .
+          <fpage>6114</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          <string-name>
+            <surname>Leka</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Barnes</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>2018</year>
+          ).
+          <article-title>Solar are forecasting: Present methods and challenges</article-title>
+          . In N. Buzulukova (Ed.), Extreme events in geospace (pp.
+          <volume>65</volume>
+          {
+          <fpage>98</fpage>
+          ).
+          <source>Elsevier. doi: 10.1016/B978-0-12-812700-1</source>
+          .
+          <fpage>00003</fpage>
+          -
+          <lpage>0</lpage>
+        </mixed-citation>
+      </ref>
+      <ref id="ref38">
+        <mixed-citation>
+          <string-name>
+            <surname>Leka</surname>
+            ,
+            <given-names>K. D.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Barnes</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>2003</year>
+          ,
+          <article-title>October)</article-title>
+          .
+          <article-title>Photospheric Magnetic Field Properties of Flaring versus Flare-quiet Active Regions</article-title>
+          . II.
+          <article-title>Discriminant Analysis</article-title>
+          . Astrophys. J.,
+          <volume>595</volume>
+          ,
+          <fpage>1296</fpage>
+          -
+          <lpage>1306</lpage>
+          . doi:
+          <volume>10</volume>
+          .1086/377512
+        </mixed-citation>
+      </ref>
+      <ref id="ref39">
+        <mixed-citation>
+          <string-name>
+            <surname>Liou</surname>
+          </string-name>
+          , C.-Y., Cheng, W.-C.,
+          <string-name>
+            <surname>Liou</surname>
+            ,
+            <given-names>J.-W.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Liou</surname>
+            ,
+            <given-names>D.-R.</given-names>
+          </string-name>
+          (
+          <year>2014</year>
+          ).
+          <article-title>Autoencoder for words</article-title>
+          .
+          <source>Neurocomputing</source>
+          ,
+          <volume>139</volume>
+          , 84{
+          <fpage>96</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref40">
+        <mixed-citation>
+          <string-name>
+            <surname>Lipton</surname>
+            ,
+            <given-names>Z. C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Berkowitz</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Elkan</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          (
+          <year>2015</year>
+          ).
+          <article-title>A critical review of recurrent neural networks for sequence learning</article-title>
+          .
+          <source>arXiv preprint arXiv:1506</source>
+          .
+          <fpage>00019</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref41">
+        <mixed-citation>
+          <string-name>
+            <surname>Lyon</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fedder</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Mobarry</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          (
+          <year>2004</year>
+          ).
+          <article-title>The Lyon-Fedder-Mobarry (LFM) global MHD magnetospheric simulation code</article-title>
+          .
+          <source>J. Atmos. Sol-Terr. Phys.</source>
+          ,
+          <volume>66</volume>
+          ,
+          <fpage>1333</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref42">
+        <mixed-citation>
+          <string-name>
+            <surname>Manchester</surname>
+            ,
+            <given-names>W. B.</given-names>
+          </string-name>
+          (
+          <year>2003</year>
+          ).
+          <article-title>Buoyant disruption of magnetic arcades with self-induced shearing</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>108</volume>
+          , 1162. doi:
+          <volume>10</volume>
+          .1029/2002JA009252
+        </mixed-citation>
+      </ref>
+      <ref id="ref43">
+        <mixed-citation>
+          <string-name>
+            <surname>Maynard</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Smith</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Gonzales</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          (
+          <year>2013</year>
+          , May).
+          <article-title>Solar storm risk to the North American electric grid, (resreport). Lloyd's Insurance Company</article-title>
+          . Retrieved from https://www.lloyds.com/news-and
+          <article-title>-insight/risk-insight/library/ natural-environment/solar-storm</article-title>
+        </mixed-citation>
+      </ref>
+      <ref id="ref44">
+        <mixed-citation>
+          <string-name>
+            <surname>Nishizuka</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sugiura</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kubo</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Den</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Ishii</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          (
+          <year>2018</year>
+          ).
+          <article-title>Deep are net (defn) model for solar are prediction</article-title>
+          .
+          <source>The Astrophysical Journal</source>
+          ,
+          <volume>858</volume>
+          (
+          <issue>2</issue>
+          ),
+          <fpage>113</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref45">
+        <mixed-citation>
+          <string-name>
+            <surname>Nishizuka</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sugiura</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kubo</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Den</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Watari</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Ishii</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          (
+          <year>2017</year>
+          , jan).
+          <article-title>Solar are prediction model with three machine-learning algorithms using ultraviolet brightening and vector magnetograms</article-title>
+          . Astrophys. J.,
+          <volume>835</volume>
+          (
+          <issue>2</issue>
+          ), 156. doi:
+          <volume>10</volume>
+          .3847/
+          <fpage>1538</fpage>
+          -4357/835/2/156
+        </mixed-citation>
+      </ref>
+      <ref id="ref46">
+        <mixed-citation>
+          <string-name>
+            <surname>NOAA Space Weather</surname>
+            <given-names>Scales.</given-names>
+          </string-name>
+          (
+          <year>2018</year>
+          ). https://www.swpc.noaa.gov/noaa-scales-explanation.
+          <source>(Accessed: 2019-12-5)</source>
+        </mixed-citation>
+      </ref>
+      <ref id="ref47">
+        <mixed-citation>
+          <string-name>
+            <surname>Odstrcil</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Riley</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Zhao</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          (
+          <year>2004</year>
+          ).
+          <article-title>Numerical simulation of the 12 May 1997 interplanetary CME event</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>109</volume>
+          ,
+          <fpage>A02116</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref48">
+        <mixed-citation>
+          <string-name>
+            <surname>Pearson</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          (
+          <year>1901</year>
+          ).
+          <article-title>Liii. on lines and planes of closest t to systems of points in space</article-title>
+          .
+          <source>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</source>
+          ,
+          <volume>2</volume>
+          (
+          <issue>11</issue>
+          ),
+          <volume>559</volume>
+          {
+          <fpage>572</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref49">
+        <mixed-citation>
+          <string-name>
+            <surname>Pulkkinen</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          , Rastatter, L.,
+          <string-name>
+            <surname>Kuznetsova</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Singer</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Balch</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Weimer</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Weigel</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          (
+          <year>2013</year>
+          ).
+          <article-title>Community-wide validation of geospace model ground magnetic eld perturbation predictions to support model transition to operations</article-title>
+          .
+          <source>Space Weather</source>
+          ,
+          <volume>11</volume>
+          (
+          <issue>6</issue>
+          ),
+          <fpage>369</fpage>
+          -
+          <lpage>385</lpage>
+          . doi:
+          <volume>10</volume>
+          .1002/swe.20056
+        </mixed-citation>
+      </ref>
+      <ref id="ref50">
+        <mixed-citation>
+          <string-name>
+            <surname>Ridley</surname>
+            ,
+            <given-names>A. J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>De Zeeuw</surname>
+            ,
+            <given-names>D. L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Powell</surname>
+            ,
+            <given-names>K. G.</given-names>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <article-title>Using steady-state MHD results to predict the global state of the magnetosphere-ionosphere system</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>106</volume>
+          ,
+          <issue>30</issue>
+          ,067{
+          <fpage>30</fpage>
+          ,
+          <fpage>076</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref51">
+        <mixed-citation>
+          <string-name>
+            <surname>Ridley</surname>
+            ,
+            <given-names>A. J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Deng</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Toth</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>2006</year>
+          , May).
+          <article-title>The global ionosphere thermosphere model</article-title>
+          .
+          <source>Journal of Atmospheric and Solar-Terrestrial Physics</source>
+          ,
+          <volume>68</volume>
+          ,
+          <fpage>839</fpage>
+          -
+          <lpage>864</lpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.jastp.
+          <year>2006</year>
+          .
+          <volume>01</volume>
+          .008
+        </mixed-citation>
+      </ref>
+      <ref id="ref52">
+        <mixed-citation>
+          <string-name>
+            <surname>Schrijver</surname>
+            ,
+            <given-names>C. J.</given-names>
+          </string-name>
+          (
+          <year>2007</year>
+          ,
+          <article-title>February). A Characteristic Magnetic Field Pattern Associated with All Major Solar Flares and Its Use in Flare Forecasting</article-title>
+          . Astrophys. J. Let.,
+          <volume>655</volume>
+          ,
+          <fpage>L117</fpage>
+          -
+          <lpage>L120</lpage>
+          . doi:
+          <volume>10</volume>
+          .1086/511857
+        </mixed-citation>
+      </ref>
+      <ref id="ref53">
+        <mixed-citation>
+          <string-name>
+            <surname>Simonyan</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Zisserman</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          (
+          <year>2014</year>
+          ).
+          <article-title>Very deep convolutional networks for large-scale image recognition</article-title>
+          .
+          <source>arXiv preprint arXiv:1409</source>
+          .
+          <fpage>1556</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref54">
+        <mixed-citation>
+          <string-name>
+            <surname>Sokolov</surname>
+            ,
+            <given-names>I. V</given-names>
+          </string-name>
+          .,
+          <string-name>
+            <surname>van der Holst</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Oran</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Downs</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Roussev</surname>
+            ,
+            <given-names>I. I.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jin</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          (
+          <year>2013</year>
+          ).
+          <article-title>Magnetohydrodynamic waves and coronal heating: Unifying empirical and MHD turbulence models</article-title>
+          .
+          <source>Astrophys. J.</source>
+          ,
+          <volume>764</volume>
+          , 23. doi:
+          <volume>10</volume>
+          .1088/
+          <fpage>0004</fpage>
+          -637X/764/1/23
+        </mixed-citation>
+      </ref>
+      <ref id="ref55">
+        <mixed-citation>
+          <string-name>
+            <surname>Song</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tan</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jing</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Yurchyshyn</surname>
+            ,
+            <given-names>V.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Abramenko</surname>
+            ,
+            <given-names>V.</given-names>
+          </string-name>
+          (
+          <year>2008</year>
+          , nov).
+          <article-title>Statistical assessment of photospheric magnetic features in imminent solar are predictions</article-title>
+          .
+          <source>Sol. Phys.</source>
+          ,
+          <volume>254</volume>
+          (
+          <issue>1</issue>
+          ),
+          <volume>101</volume>
+          {
+          <fpage>125</fpage>
+          . doi:
+          <volume>10</volume>
+          .1007/s11207-008-9288-3
+        </mixed-citation>
+      </ref>
+      <ref id="ref56">
+        <mixed-citation>
+          <string-name>
+            <surname>Tibshirani</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hastie</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Narasimhan</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Chu</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          (
+          <year>2003</year>
+          ).
+          <article-title>Class prediction by nearest shrunken centroids, with applications to DNA microarrays</article-title>
+          .
+          <source>Statistical Science</source>
+          ,
+          <volume>104</volume>
+          {
+          <fpage>117</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref57">
+        <mixed-citation>
+          <string-name>
+            <surname>To oletto</surname>
+          </string-name>
+          , F.,
+          <string-name>
+            <surname>Sazykin</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Spiro</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wolf</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Lyon</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          (
+          <year>2004</year>
+          ).
+          <article-title>RCM meets LFM: initial results of one-way coupling</article-title>
+          .
+          <source>J. Atmos. Sol-Terr. Phys.</source>
+          ,
+          <volume>66</volume>
+          ,
+          <fpage>1361</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref58">
+        <mixed-citation>
+          <string-name>
+            <surname>Toth</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sokolov</surname>
+            ,
+            <given-names>I. V.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chesney</surname>
+            ,
+            <given-names>D. R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Clauer</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          R., de Zeeuw,
+          <string-name>
+            <given-names>D. L.</given-names>
+            , . . .
+            <surname>Kota</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J.</surname>
+          </string-name>
+          (
+          <year>2005</year>
+          , December).
+          <article-title>Space weather modeling framework: A new tool for the space science community</article-title>
+          .
+          <source>J. Geophys. Res.</source>
+          ,
+          <volume>110</volume>
+          (
+          <issue>A12</issue>
+          ),
+          <volume>12</volume>
+          ,
+          <fpage>226</fpage>
+          -
+          <lpage>12</lpage>
+          ,237. doi:
+          <volume>10</volume>
+          .1029/2005JA011126
+        </mixed-citation>
+      </ref>
+      <ref id="ref59">
+        <mixed-citation>
+          <string-name>
+            <surname>Toth</surname>
+            , G., van der Holst,
+            <given-names>B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sokolov</surname>
+            ,
+            <given-names>I. V.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>De Zeeuw</surname>
+            ,
+            <given-names>D. L.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fang</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>Opher</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          (
+          <year>2012</year>
+          ).
+          <article-title>Adaptive numerical algorithms in space weather modeling</article-title>
+          .
+          <source>J. Comput. Phys.</source>
+          ,
+          <volume>231</volume>
+          (
+          <issue>3</issue>
+          ),
+          <volume>870</volume>
+          {
+          <fpage>903</fpage>
+          . doi:
+          <volume>10</volume>
+          .1016/j.jcp.
+          <year>2011</year>
+          .
+          <volume>02</volume>
+          .006
+        </mixed-citation>
+      </ref>
+      <ref id="ref60">
+        <mixed-citation>
+          <string-name>
+            <surname>van der Holst</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Manchester</surname>
+            ,
+            <given-names>W. B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Frazin</surname>
+            ,
+            <given-names>R. A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Vasquez</surname>
+            ,
+            <given-names>A. M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Toth</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          (
+          <year>2010</year>
+          , DEC).
+          <article-title>A data-driven, two-temperature solar wind model with Alfven waves</article-title>
+          . Astrophys. J.,
+          <volume>725</volume>
+          (
+          <issue>1</issue>
+          ),
+          <volume>1373</volume>
+          {
+          <fpage>1383</fpage>
+          . doi:
+          <volume>10</volume>
+          .1088/
+          <fpage>0004</fpage>
+          -637X/725/1/1373
+        </mixed-citation>
+      </ref>
+      <ref id="ref61">
+        <mixed-citation>
+          <string-name>
+            <surname>van der Holst</surname>
+            ,
+            <given-names>B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sokolov</surname>
+            ,
+            <given-names>I. V.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Meng</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jin</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Manchester</surname>
+            ,
+            <given-names>W. B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Toth</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Gombosi</surname>
+            ,
+            <given-names>T. I.</given-names>
+          </string-name>
+          (
+          <year>2014</year>
+          ).
+          <article-title>Alfven wave solar model (AWSoM): Coronal heating</article-title>
+          . Astrophys. J.,
+          <volume>782</volume>
+          , 81. doi:
+          <volume>10</volume>
+          .1088/
+          <fpage>0004</fpage>
+          -637X/782/2/81
+        </mixed-citation>
+      </ref>
+      <ref id="ref62">
+        <mixed-citation>
+          <string-name>
+            <surname>Wu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Schuster</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chen</surname>
+            ,
+            <given-names>Z.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Le</surname>
+            ,
+            <given-names>Q. V.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Norouzi</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Macherey</surname>
+            ,
+            <given-names>W.</given-names>
+          </string-name>
+          , . . .
+          <string-name>
+            <surname>others</surname>
+          </string-name>
+          (
+          <year>2016</year>
+          ).
+          <article-title>Google's neural machine translation system: Bridging the gap between human and machine translation</article-title>
+          .
+          <source>arXiv preprint arXiv:1609</source>
+          .
+          <fpage>08144</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref63">
+        <mixed-citation>
+          <string-name>
+            <surname>Yu</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Huang</surname>
+            ,
+            <given-names>X.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Cui</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          (
+          <year>2009</year>
+          , feb).
+          <article-title>Short-term solar are prediction using a sequential supervised learning method</article-title>
+          .
+          <source>Sol. Phys.</source>
+          ,
+          <volume>255</volume>
+          (
+          <issue>1</issue>
+          ),
+          <volume>91</volume>
+          {
+          <fpage>105</fpage>
+          . doi:
+          <volume>10</volume>
+          .1007/s11207-009-9318-9
+        </mixed-citation>
+      </ref>
+      <ref id="ref64">
+        <mixed-citation>
+          <string-name>
+            <surname>Yuan</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shih</surname>
+            ,
+            <given-names>F. Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jing</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>H.-M.</given-names>
+          </string-name>
+          (
+          <year>2010</year>
+          , jul).
+          <article-title>Automated are forecasting using a statistical learning technique</article-title>
+          .
+          <source>Res. Astron. Astrophys.</source>
+          ,
+          <volume>10</volume>
+          (
+          <issue>8</issue>
+          ),
+          <volume>785</volume>
+          {
+          <fpage>796</fpage>
+          . doi:
+          <volume>10</volume>
+          .1088/
+          <fpage>1674</fpage>
+          -4527/10/8/008
+        </mixed-citation>
+      </ref>
+      <ref id="ref65">
+        <mixed-citation>
+          <string-name>
+            <surname>Zhao</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Xu</surname>
+            ,
+            <given-names>Q.</given-names>
+          </string-name>
+          , &amp;
+          <string-name>
+            <surname>Wang</surname>
+            ,
+            <given-names>H.</given-names>
+          </string-name>
+          (
+          <year>2017</year>
+          ).
+          <article-title>Marginal screening for partial least squares regression</article-title>
+          .
+          <source>IEEE Access</source>
+          ,
+          <volume>5</volume>
+          , 14047{
+          <fpage>14055</fpage>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

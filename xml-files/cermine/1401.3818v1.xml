@@ -1,0 +1,1329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Structured Priors for Sparse-Representation-Based Hyperspectral Image Classification</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Xiaoxia Sun</string-name>
+          <email>xsun9@jhu.edu</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Qing Qu</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Nasser M. Nasrabadi</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Fellow</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Trac D. Tran</string-name>
+          <email>trac@jhu.edu</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Senior Member</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>X.Sun, Q. Qu and T. D. Tran are with the Department of Electrical and Computer Engineering, The Johns Hopkins University</institution>
+          ,
+          <addr-line>Baltimore, MD 21218 been partially supported by NSF under Grants CCF-1117545, ARO under Grants 60219-MA</addr-line>
+          ,
+          <institution>and ONR under grant N000141210765. N. M. Nasrabadi is with U.S. Army Research Laboratory</institution>
+          ,
+          <addr-line>Adelphi, MD 20783</addr-line>
+          <country country="US">USA</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>-Pixel-wise classification, where each pixel is assigned to a predefined class, is one of the most important procedures in hyperspectral image (HSI) analysis. By representing a test pixel as 4 a linear combination of a small subset of labeled pixels, a sparse 1 representation classifier (SRC) gives rather plausible results 0 compared with that of traditional classifiers such as the support 2 vector machine (SVM). Recently, by incorporating additional n structured sparsity priors, the second generation SRCs have a appeared in the literature and are reported to further improve J the performance of HSI. These priors are based on exploiting 61 itnhheersepnattiasltrduecptuernedeonfcitehse bdeticwteioennartyh,e onreibgohtbho.riInng tphiixselps,aptehre,</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>we review and compare several structured priors for
+sparse] representation-based HSI classification. We also propose a new
+structured prior called the low rank group prior, which can be
+Vconsidered as a modification of the low rank prior. Furthermore,
+.Cwe will investigate how different structured priors improve the
+s result for the HSI classification.
+c
+[</p>
+      <p>
+        Index Terms—hyperspectral image, sparse representation,
+structured priors, classification
+1
+8v I. INTRODUCTION
+1 NE of the most important procedures in HSI is image
+8 O classification, where the pixels are labeled to one of the
+.3 classes based on their spectral characteristics. Due to the
+nu1 merous demands in mineralogy, agriculture and surveillance,
+0 the HSI classification task is developing very rapidly and a
+14 large number of techniques have been proposed to tackle this
+: problem [
+        <xref ref-type="bibr" rid="ref1">1</xref>
+        ]. Comparing with previous approaches, SVM is
+iv found highly effective on both computational efficiency and
+Xclassification results. A wide variety of SVM’s modifications
+r have been proposed to improve its performance. Some of them
+a incorporate the contextual information in the classifiers [
+        <xref ref-type="bibr" rid="ref2">2</xref>
+        ],
+[
+        <xref ref-type="bibr" rid="ref3">3</xref>
+        ]. Others design sparse SVM in order to pursue a sparse
+decision rule by using ℓ1-norm as the regularizer [
+        <xref ref-type="bibr" rid="ref4">4</xref>
+        ].
+      </p>
+      <p>
+        Recently, SRC has been proposed to solve many computer
+vision tasks [
+        <xref ref-type="bibr" rid="ref5">5</xref>
+        ], [
+        <xref ref-type="bibr" rid="ref6">6</xref>
+        ], where the use of sparsity as a prior often
+leads to state-of-the-art performance. SRC has also been
+applied to HSI classification [
+        <xref ref-type="bibr" rid="ref7">7</xref>
+        ], relying on the observation that
+hyperspectral pixels belonging to the same class approximately
+lie in the same low-dimensional subspace. In order to alleviate
+the problem introduced by the lack of sufficient training data,
+Haq et al. [
+        <xref ref-type="bibr" rid="ref8">8</xref>
+        ] proposed the homotopy-based SRC. Another
+way to solve the problem of insufficient training data is to
+employ the contextual information of neighboring pixels in
+the classifier, such as spectral-spatial constraint classification
+[
+        <xref ref-type="bibr" rid="ref9">9</xref>
+        ].
+      </p>
+      <p>In SRC, a test sample y ∈ RP , where P is the number of
+spectral bands, can be written as a sparse linear combination
+of all the training pixels (atoms in a dictionary) as</p>
+      <p>1
+xˆ = min
+x 2
+ky − Axk22 + λkxk1,
+(1)
+N
+where x ∈ RN , kxk1 = P |xi| is ℓ1-norm. A =
+i=1
+[a1, a2, · · · , aN ] is a structured dictionary formed from
+concatenation of several class-wise sub-dictionaries, {ai}i=1,...,N
+are the columns of A and N is the total number of training
+samples from all the K classes, and λ is a scalar regularization
+parameter.</p>
+      <p>The class label for the test pixel y is determined by the
+minimum residual between y and its approximation from each
+class-wise sub-dictionary:
+class(y) = arg min ky − Aδg (x)k22,
+g
+(2)
+where g ⊂ {1, 2, · · · , K } is the group or class index, and
+δg(x) is the indicator operation zeroing out all elements of x
+that do not belong to the class g.</p>
+      <p>
+        In the case of HSI, SRC always suffers from the
+nonuniqueness or instability of the sparse coefficients due to the
+high mutual coherency of the dictionary [
+        <xref ref-type="bibr" rid="ref10">10</xref>
+        ]. Fortunately,
+a better reconstructed signal and a more robust
+representation can be obtained by either exploring the dependencies
+of neighboring pixels or exploiting the inherent dictionary
+structure. Recently, structured priors have been incorporated
+into HSI classification [
+        <xref ref-type="bibr" rid="ref7">7</xref>
+        ], which can be sorted into three
+categories. (a) Priors that only exploit the correlations and
+dependencies among the neighboring spectral pixels or their
+sparse coefficient vectors, which includes joint sparsity [
+        <xref ref-type="bibr" rid="ref12">12</xref>
+        ],
+graph regularized Lasso (referred as the Laplacian regularized
+Lasso) [
+        <xref ref-type="bibr" rid="ref13">13</xref>
+        ] and the low-rank Lasso [
+        <xref ref-type="bibr" rid="ref14">14</xref>
+        ]. (b) Priors that only
+exploit the inherent structure of the dictionary, such as group
+Lasso [
+        <xref ref-type="bibr" rid="ref15">15</xref>
+        ]. (c) Priors that enforce structural information on
+both sparse coefficients and dictionary, such as
+collaborative group Lasso [
+        <xref ref-type="bibr" rid="ref16">16</xref>
+        ] and collaborative hierarchical Lasso
+(CHiLasso) [
+        <xref ref-type="bibr" rid="ref17">17</xref>
+        ]. Besides SRC, structured sparsity prior can
+also be incorporated into other classifiers such as the logistic
+regression classifiers [
+        <xref ref-type="bibr" rid="ref18">18</xref>
+        ].
+      </p>
+      <p>The main contributions of this paper are (a) to assess the
+SRC performance using various structured sparsity priors for
+HSI classification, and (b) to propose a conceptually similar
+prior to CHiLasso, which is called the low-rank group prior.
+This prior is based on the assumption that pure or mixed
+pixels from the same classes are highly correlated and can
+be represented by a combination of sparse low-rank groups
+(classes). The proposed prior takes advantage of both the
+group sparsity prior, which enforces sparsity across the groups,
+and the low rank prior, which encourages sparsity within the
+groups, by only using one regularizer.</p>
+      <p>In the following sections, we investigate the roles of
+different structured priors imposed on the SRC optimization
+algorithm. Starting with the classical sparsity ℓ1-norm prior,
+we then introduce several different priors with experimental
+results. The structured priors discussed are joint sparsity,
+Laplacian sparsity, group sparsity, sparse group sparsity,
+lowrank and low-rank group prior.</p>
+      <p>II. HSI CLASSIFICATION VIA DIFFERENT STRUCTURED</p>
+      <p>SPARSE PRIORS</p>
+    </sec>
+    <sec id="sec-2">
+      <title>A. Joint Sparsity Prior</title>
+      <p>
+        In HSI, pixels within a small neighborhood usually consist
+of similar materials. Thus, their spectral characteristics are
+highly correlated. The spatial correlation between neighboring
+pixels can be indirectly incorporated through a joint sparsity
+model (JSM) [
+        <xref ref-type="bibr" rid="ref11">11</xref>
+        ] by assuming that the underlying sparse
+vectors associated with these pixels share a common sparsity
+support. Consider pixels in a small neighborhood of T pixels.
+Let Y ∈ RP ×T represent a matrix whose columns correspond
+to pixels in a spatial neighborhood in a hyperspectral image.
+Columns of Y = [y1, y2, · · · , yT ] can be represented as a
+linear combination of dictionary atoms Y = AX, where
+X = [x1, x2, · · · , xT ] ∈ RN ×T represents a sparse matrix.
+In JSM, the sparse vectors of T neighboring pixels, which are
+represented by the T columns of X, share the same support.
+Therefore, X is a sparse matrix with only few nonzero rows.
+The row-sparse matrix X can be recovered by solving the
+following Lasso problem
+      </p>
+      <p>1
+mXin 2 kY − AXk2F + λkXk1,2,
+where kXk1,2 =</p>
+      <p>N
+P kxik2 is an ℓ1,2-norm and xi represents
+i=1
+the ith row of X.</p>
+      <p>The label for the center pixel yc is then determined by the
+minimum total residual error
+class(yc) = arg min kY − Aδg (X)k2F ,
+g
+(4)
+where δg (X) is the indicator operation zeroing out all the
+elements of X that do not belong to the class g.</p>
+    </sec>
+    <sec id="sec-3">
+      <title>B. Laplacian Sparsity Prior</title>
+      <p>
+        In sparse representation, due to the high coherency of the
+dictionary atoms, the recovered sparse coefficient vectors for
+multiple neighboring pixels could be partially different even
+when the neighboring pixels are highly correlated, and this
+may led to misclassification. As mentioned in the previous
+section, joint sparsity is able to solve such a problem by enforcing
+multiple pixels to select exactly the same atoms. However, in
+many cases, when the neighboring pixels fall on the boundary
+between several homogeneous regions, the neighboring pixels
+will belong to several distinct classes (groups) and should
+use different sets of sub-dictionary atoms. Laplacian sparsity
+enhances the differences between sparse coefficient vectors of
+the neighboring pixels that belong to different clusters. We
+introduce the weighting matrix W, where wij characterizes
+the similarity between a pair of pixels yi and yj within
+a neighborhood. Optimization with an additional Laplacian
+sparsity prior can be expressed as
+mXin 12 kY − AXk2F + λ1kXk1 + λ2 Xi,j wij kxi − xj k22,
+(5)
+where λ1 and λ2 are the regularization parameters. The matrix
+W is used to characterize the similarity among neighboring
+pixels in the spectra space. Similar pixels will possess larger
+weights, and therefore, enforcing the differences between the
+corresponding sparse coefficient vectors to become smaller,
+and similarly allowing the difference between sparse
+coefficient vectors of dissimilar pixels to become larger.
+Therefore, the Laplacian sparsity prior is more flexible than the
+joint sparsity prior in that it does not always force all the
+neighboring pixels to have the same common support. In this
+paper, the weighting matrix is computed using the sparse
+subspace clustering method in [
+        <xref ref-type="bibr" rid="ref19">19</xref>
+        ]. Note that this grouping
+constraint is enforced on the testing pixels instead of the
+dictionary atoms, which is different from group sparsity.
+Let L = I − D−1/2WD−1/2 be the normalized symmetric
+Laplacian matrix [
+        <xref ref-type="bibr" rid="ref19">19</xref>
+        ], where D is the degree matrix computed
+from W. We can rewrite the equation (5) as
+      </p>
+      <p>
+        1
+mXin 2 kY − AXk2F + λ1kXk1 + λ2tr(XLXT ).
+(6)
+The above equation can be solved by a modified feature-sign
+search algorithm [
+        <xref ref-type="bibr" rid="ref13">13</xref>
+        ].
+      </p>
+      <p>
+        The SRC dictionary has an inherent group-structured
+property since it is composed of several class sub-dictionaries, i.e.,
+the atoms belonging to the same class are grouped together to
+form a sub-dictionary. In sparse representation, we classify
+pixels by measuring how well the pixels are represented
+by each sub-dictionary. Therefore, it would be reasonable
+to enforce the pixels to be represented by groups of atoms
+instead of individual ones. This could be accomplished by
+encouraging coefficients of only certain groups to be active and
+the remaining groups inactive. Group Lasso [
+        <xref ref-type="bibr" rid="ref15">15</xref>
+        ], for example,
+uses a sparsity prior that sums up the Euclidean norm of
+every group coefficients. It will dominate the classification
+performance especially when the input pixels are inherently
+mixed pixels. Group Lasso optimization can be represented as
+1
+mxin 2 ky − Axk22 + λ gX∈G
+wg kxgk2,
+(7)
+where g ⊂ {G1, G2, · · · , GK }, P kxgk2 represents the
+g∈G
+group sparse prior defined in terms of K groups, wg is the
+(3)
+      </p>
+    </sec>
+    <sec id="sec-4">
+      <title>C. Group Sparsity Prior</title>
+      <p>weight and is usually set to the square root of the cardinality
+of the corresponding group to compensate for the different
+group sizes. Here, xg refers to the coefficients of each group.
+The above group sparsity can be easily extended to the case
+of multiple neighboring pixels by extending problem (7) to
+collaborative group Lasso, which is formulated as
+1
+mXin 2 kY − AXk2F + λ gX∈G
+wg kXg k2,
+(8)
+where P kXgk2 represents a collaborative group Lasso
+regug∈G
+larizer defined in terms of group and Xg refers to each of the
+group coefficient matrix. When the group size is reduced to
+one, the group Lasso degenerates into a joint sparsity Lasso.</p>
+    </sec>
+    <sec id="sec-5">
+      <title>D. Sparse Group Sparsity Prior</title>
+      <p>In the formulations (7) and (8), the coefficients within each
+group are not sparse, and all the atoms in the selected groups
+could be active. If the sub-dictionary is overcomplete, then it
+is necessary to enforce sparsity within each group. To achieve
+sparsity within the groups, an ℓ1-norm regularizer can be
+added to the group Lasso (7), which can be written as
+1
+mxin 2 ky − Axk22 + λ1 gX∈G
+wg kxgk2 + λ2kxk1.</p>
+      <p>(9)</p>
+      <p>Similarly, Eq. (9) can be easily extended to the multiple
+feature case, which can be written as</p>
+      <p>1
+min</p>
+      <p>X 2
+kY − AXk2F + λ1 X
+g∈G
+wg kXgk2 + λ2 X
+g∈G
+(10)</p>
+      <p>
+        Optimization problem (9) is referred in the literature as
+the sparse group Lasso and problem (10) as the collaborative
+hierarchical Lasso (CHiLasso) [
+        <xref ref-type="bibr" rid="ref17">17</xref>
+        ].
+      </p>
+    </sec>
+    <sec id="sec-6">
+      <title>E. Low Rank/Group Sparsity Prior</title>
+      <p>
+        Based on the fact that spectra of neighboring pixels are
+highly correlated, it is reasonable to enforce the low rank
+sparsity prior on their coefficient matrix. The low rank prior
+is more flexible when compared with the joint sparsity prior
+which strictly enforces the row sparsity. Therefore, when
+neighboring pixels are composed of small non-homogeneous
+regions, the low rank sparsity prior outperforms the joint
+sparsity prior. Low rank sparse recovery problem has been well
+studied in [
+        <xref ref-type="bibr" rid="ref14">14</xref>
+        ] and is stated as the following Lasso problem
+1
+mXin 2 kY − AXk2F + λkXk∗,
+(11)
+where kXk∗ is the nuclear norm [
+        <xref ref-type="bibr" rid="ref14">14</xref>
+        ].
+      </p>
+      <p>To incorporate the structure of the dictionary, we now
+extend the low rank prior to group low rank prior, where the
+regularizer is obtained by summing up the rank of every group
+coefficient matrix,
+mXin 12 kY − AXk2F + λ gX∈G
+wg kXgk∗.</p>
+      <p>(12)
+(a)
+wg kXg k1.</p>
+    </sec>
+    <sec id="sec-7">
+      <title>A. Datasets</title>
+      <p>The low rank group prior is able to obtain the within-group
+sparsity by minimizing the nuclear norm of each group.
+Furthermore, the summation of nuclear norms empowers the
+proposed prior to obtain a group sparsity pattern. Hence, the
+low rank group prior is able to achieve sparsity both within
+and across groups by using only one regularization term.</p>
+      <p>We evaluate various structured sparsity priors on two
+different hyperspectral images and one toy example. The first
+hyperspectral image to be assessed is the Indian Pine, acquired
+by Airborne Visible/Infrared Imaging Spectrometer (AVIRIS),
+which generates 220 bands, of which 20 noisy bands are
+removed before classification. The spatial dimension of this
+image is 145 × 145, which contains 16 ground-truth classes,
+as shown in Table I. We randomly choose 997 pixels (10.64%
+of all the labelled pixels) for constructing the dictionary and
+use the remaining pixels for testing. The second image is the
+University of Pavia, which is an urban image acquired by
+the Reflective Optics System Imaging Spectrometer (ROSIS),
+contains 610 × 340 pixels. It generates 115 spectral bands, of
+which 12 noisy bands are removed. There are nine
+groundtruth classes of interests. For this image, we choose 997
+pixels (2.32% of all the labelled pixels) for constructing the
+dictionary and the remaining pixels for testing, as shown in
+Table III. The toy example consists of two different classes
+(class 2 and 14 of the Indian Pine test set), and each class
+contains 30 pixels. The dictionary is the same as that for the
+Indian Pine. The toy example is used to evaluate the various
+sparsity patterns generated by the different structured priors.</p>
+    </sec>
+    <sec id="sec-8">
+      <title>B. Models and Methods</title>
+      <p>The tested structured sparse priors are: (i) joint sparsity (JS),
+(ii) Laplacian sparsity (LS), (iii) collaborative group sparsity
+(GS), (iv) sparse group sparsity (SGS), (v) low rank prior
+(LR) and (vi) low rank group prior (LRG), corresponding
+to Eqs. (7), (10), (12), (14), (16) and (17), respectively. For
+range from 10
+SRC, the parameters λ, λ1 and λ2 of different structured priors
+−3</p>
+      <p>to 0.1. Performance on the toy example
+will be visually examined by the difference between the
+desired sparsity regions and the recovered ones. For the two
+hyperspectral images, classification performance is evaluated
+by the overall accuracy (OA), average accuracy (AA), and
+the κ coefficient measure on the test set. For each structured
+prior, we present the result with the highest overall accuracy
+using cross validation. A linear SVM
+is implemented for
+comparison, whose parameters are set in the same fashion as
+In experiments, joint sparsity, group sparsity and low rank
+priors are solved by</p>
+      <sec id="sec-8-1">
+        <title>ADMM</title>
+        <p>
+          [
+          <xref ref-type="bibr" rid="ref20">20</xref>
+          ], while
+        </p>
+      </sec>
+      <sec id="sec-8-2">
+        <title>CHiLasso and</title>
+        <p>
+          Laplacian prior are solved by combining SpaRSA [
+          <xref ref-type="bibr" rid="ref21">21</xref>
+          ] and
+ADMM. In addition, in conformity with previous work [
+          <xref ref-type="bibr" rid="ref13">13</xref>
+          ],
+the Laplacian regularized Lasso is also solved by a modified
+feature sign search (FSS) method. In this paper, we try to
+present a fair comparison among all priors. According to the
+optimization technique, we sort the structured priors into two
+categories: (i) priors solved by ADMM and SpaRSA and (ii)
+priors solved by FSS-based method. The first row of Table II
+and Table IV show the methods used to implement the sparse
+recovery for each structured prior.
+        </p>
+        <p>JS
+1874</p>
+        <p>ADMM/SpaRSA
+LS GS SGS
+4015 2811 2649</p>
+        <p>ℓ1
+11628</p>
+      </sec>
+    </sec>
+    <sec id="sec-9">
+      <title>C. Results</title>
+      <p>Sparsity patterns of the toy example are shown in Fig. 1.
+The expected sparsity regions are shown in Fig. 1(a), where
+the y-axis labels the dictionary atom index and x-axis labels
+the test pixel index. The red and green regions correspond
+to the ideal locations of the active atoms for the class 2
+and 14, respectively. Nonzero coefficients that belong to other
+classes are shown in blue dots. The joint sparsity, Fig. 1 (c),
+shows clear row sparsity pattern, but many rows are mistakenly
+activated. As expected, active atoms in Fig. 1 (d), (e) and
+(g) demonstrate group sparsity patterns. Comparing the GS
+(d) and SGS (e), it is observed that most of the atoms are
+deactivated within groups using SGS. The low rank group prior
+(g) demonstrates a similar sparsity pattern as that of SGS. For
+the Laplacian sparsity (h), similarity of sparse coefficients that
+belong to the same classes is clearly visible.</p>
+      <p>Table II and Fig. 2 show the performance of SRCs with
+different priors on the Indian Pine image. A spatial window of
+9×9 (T = 81) is used since this image consists of mostly large
+homogeneous regions. Among SRCs with different priors, the
+worst result occurs when we use simple ℓ1-ADMM. Joint
+sparsity prior gives better result than the low rank prior. This
+is due to the large areas of homogeneous regions in this image,
+which favors the joint sparsity model. The highest OA is
+given by the Laplacian sparsity prior via FFS, such a high
+performance is partly contributed to the accurate sparse
+recovery of the feature sign search method. Both SGS and LRG
+outperform GS. We can see that among ADMM-based based
+methods, the low rank group prior yields the smoothest result.
+The computational time of various structured priors for Indian
+Pine image are shown in Table V. Among
+ADMM/SpaRSAbased methods, LRG, GS and SGS take roughly similar time
+(∼2500s) to process the image, while LR and JS require
+longer time (∼4000s). LS via FFS significantly impedes the
+computational efficiency.</p>
+      <p>Results for the University of Pavia image are shown in Table
+IV. The window size for this image is 5 × 5 (T = 25) since
+many narrow regions are present in this image. The group
+sparsity prior gives the highest OA among the priors optimized
+by ADMM. The low rank sparsity prior gives a much better
+result than joint sparsity since this image contains many small
+homogeneous regions. The Laplacian sparsity prior via FFS
+gives the highest OA performance. However, the difference
+between performance of various structured priors is quite
+small.</p>
+      <sec id="sec-9-1">
+        <title>IV. CONCLUSION</title>
+        <p>This paper reviews five different structured sparse priors
+and proposes a low rank group sparsity prior. Using these
+structured priors, classification results of SRCs on HSI are
+generally improved when compared with the classical ℓ1
+sparsity prior. The results have confirmed that the low rank prior
+is a more flexible constraint compared with the joint sparsity
+prior, while the latter works better on large homogeneous
+regions. Imposing the group structured prior on the dictionary
+always gives higher overall accuracy compared with the ℓ1
+prior. We have also observed that the performance is not only
+determined by the structured priors, but also depend on the
+corresponding optimization techniques.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Plaza</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Benediktsson</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Boardman</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Brazile</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Bruzzone</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Camps-Valls</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Chanussot</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Fauvel</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Gamba</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Gualtieri</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Marconcini</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Tiltoni</surname>
+          </string-name>
+          and G. Trianni, “
+          <article-title>Recent advances in techniques for hyperspectral image processing,” Remote Sens</article-title>
+          . Envir., vol.
+          <volume>113</volume>
+          , no.
+          <issue>s1</issue>
+          , pp.
+          <fpage>s110</fpage>
+          -
+          <lpage>s122</lpage>
+          ,
+          <year>Sept</year>
+          .
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Camps-Valls</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Gomez-Chova</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>J.</surname>
+          </string-name>
+          <article-title>Mun˜oz-Mar`ı, J. Vila-France´s and J</article-title>
+          .
+          <string-name>
+            <surname>Calpe-Maravilla</surname>
+          </string-name>
+          , “
+          <article-title>Composite kernels for hyperspectral image classification,” IEEE Geosci</article-title>
+          .
+          <article-title>Remote Sens</article-title>
+          .
+          <source>Lett.</source>
+          , vol.
+          <volume>3</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>93</fpage>
+          -
+          <lpage>97</lpage>
+          , Jan.
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Gmez-Chova</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Camps-Valls</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Muoz-Mar</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Calpe-Maravilla</surname>
+          </string-name>
+          , “
+          <article-title>Semi-supervised image classication with Laplacian support vector machines,” IEEE Geosci</article-title>
+          .
+          <article-title>Remote Sens</article-title>
+          .
+          <source>Lett.</source>
+          , vol.
+          <volume>5</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>336</fpage>
+          -
+          <lpage>340</lpage>
+          , Jul.
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Zhu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Rosset</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Hastie</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Tibshirani</surname>
+          </string-name>
+          , “
+          <article-title>1-norm support vector machines</article-title>
+          ,
+          <source>” NIPS</source>
+          , vol.
+          <volume>16</volume>
+          , pp.
+          <fpage>16</fpage>
+          -
+          <lpage>23</lpage>
+          , Dec.
+          <year>2003</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Wright</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Ganesh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Sastry</surname>
+          </string-name>
+          and Y. Ma, “
+          <article-title>Robust face recognition via sparse representation</article-title>
+          ,
+          <source>” IEEE Trans. Pattern Anal. Mach</source>
+          . Intell., vol.
+          <volume>31</volume>
+          , no.
+          <issue>2</issue>
+          , pp.
+          <fpage>210</fpage>
+          -
+          <lpage>227</lpage>
+          , Feb.
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Wright</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Mairal</surname>
+          </string-name>
+          , G. Sapiro,
+          <string-name>
+            <given-names>T.S.</given-names>
+            <surname>Huang</surname>
+          </string-name>
+          , S. Yan, “
+          <article-title>Sparse Representation for computer vision and pattern recognition,” Proceed</article-title>
+          . IEEE, vol.
+          <volume>98</volume>
+          , no.
+          <issue>6</issue>
+          , pp.
+          <fpage>1031</fpage>
+          -
+          <lpage>1044</lpage>
+          , Apr.
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Chen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Nasrabadi</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Tran</surname>
+          </string-name>
+          , “
+          <article-title>Hyperspectral image classification using dictionary-based sparse representation</article-title>
+          ,
+          <source>” IEEE Trans. Geosci</source>
+          . Remote Sens., vol.
+          <volume>49</volume>
+          , no.
+          <issue>6</issue>
+          , pp.
+          <fpage>2287</fpage>
+          -
+          <lpage>2302</lpage>
+          , Oct.
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [8]
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Haq</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Tao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Sun</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Yang</surname>
+          </string-name>
+          , “
+          <article-title>A fast and robust sparse approach for hyperspectral data classification using a few labeled samples</article-title>
+          ,
+          <source>” IEEE Trans. Geosci</source>
+          . Remote Sens., vol.
+          <volume>50</volume>
+          , no.
+          <issue>10</issue>
+          , pp.
+          <fpage>3973</fpage>
+          -
+          <lpage>3985</lpage>
+          ,
+          <year>June 2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [9]
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Ji</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Gao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Hong</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Q.</given-names>
+            <surname>Liu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Tao</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>X.</given-names>
+            <surname>Li</surname>
+          </string-name>
+          , “
+          <article-title>Spectral-spatial constraint hyperspectral image classification,”</article-title>
+          <source>IEEE Trans. Geosci</source>
+          . Remote Sens., vol. PP, no.
+          <issue>99</issue>
+          , pp.
+          <fpage>1</fpage>
+          -
+          <lpage>13</lpage>
+          ,
+          <year>June 2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [10]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Iordache</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Bioucas-Dias</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Plaza</surname>
+          </string-name>
+          , “
+          <article-title>Sparse unmixing of hyperspectral data,” IEEE Geosci</article-title>
+          . Remote Sens.,, vol.
+          <volume>49</volume>
+          , no.
+          <issue>6</issue>
+          , pp.
+          <fpage>2014</fpage>
+          -
+          <lpage>2039</lpage>
+          ,
+          <year>June 2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [11]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Tropp</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Gilbert</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Strauss</surname>
+          </string-name>
+          , “
+          <article-title>Algorithms for simultaneous sparse approximation</article-title>
+          .
+          <source>Part I: Greedy pursuit,” Signal Processing</source>
+          , vol.
+          <volume>54</volume>
+          , no.
+          <issue>12</issue>
+          , pp.
+          <fpage>4634</fpage>
+          -
+          <lpage>4643</lpage>
+          , Dec.
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [12]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Berg</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Friedlander</surname>
+          </string-name>
+          , “
+          <article-title>Joint-sparse recovery from multiple measurements,”</article-title>
+          <source>IEEE Trans. Information Theory.</source>
+          , vol.
+          <volume>56</volume>
+          , no.
+          <issue>5</issue>
+          , pp.
+          <fpage>2516</fpage>
+          -
+          <lpage>2527</lpage>
+          , Apr.
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [13]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Gao</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>I.</given-names>
+            <surname>Tsang</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Chia</surname>
+          </string-name>
+          , “
+          <article-title>Laplacian sparse coding, hypergraph Laplacian sparse coding, and applications</article-title>
+          ,”
+          <source>IEEE Trans. Pattern Anal. Mach</source>
+          . Intell., vol.
+          <volume>35</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>92</fpage>
+          -
+          <lpage>104</lpage>
+          , Jan.
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [14]
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Liu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Z.</given-names>
+            <surname>Lin</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Yan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Sun</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Yu</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Ma</surname>
+          </string-name>
+          , “
+          <article-title>Robust recovery of subspace structures by low-rank representation</article-title>
+          ,
+          <source>” IEEE Trans. Pattern Anal. Mach</source>
+          . Intell., vol.
+          <volume>35</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>171</fpage>
+          -
+          <lpage>184</lpage>
+          , Jan.
+          <year>2013</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [15]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Rakotomamonjy</surname>
+          </string-name>
+          , “
+          <article-title>Surveying and comparing simultaneous sparse approximation (or group-lasso) algorithms</article-title>
+          ,” Signal Processing, vol.
+          <volume>91</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>1505</fpage>
+          -
+          <lpage>1526</lpage>
+          ,
+          <year>July 2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [16]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Kim</surname>
+          </string-name>
+          and E. Xing, “
+          <article-title>Tree-guided group lasso for multi-task regression with structured sparsity,” ICML, vol</article-title>
+          .
+          <volume>6</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>1095</fpage>
+          -
+          <lpage>1117</lpage>
+          ,
+          <year>June 2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [17]
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Sprechmann</surname>
+          </string-name>
+          , I. Ramirez,
+          <string-name>
+            <given-names>G.</given-names>
+            <surname>Sapiro</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Eldar</surname>
+          </string-name>
+          , “
+          <article-title>C-HiLasso: a collaborative hierarchical sparse modeling framework</article-title>
+          ,
+          <source>” IEEE Trans. Signal Processing</source>
+          , vol.
+          <volume>59</volume>
+          , no.
+          <issue>9</issue>
+          , pp.
+          <fpage>4183</fpage>
+          -
+          <lpage>4198</lpage>
+          , Oct.
+          <year>2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [18]
+          <string-name>
+            <given-names>Y.</given-names>
+            <surname>Qian</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Ye</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Zhou</surname>
+          </string-name>
+          , “
+          <article-title>Hyperspectral image classification based on structured sparse logistic regression and three-dimensional wavelet texture features</article-title>
+          ,
+          <source>” IEEE Trans. Geosci</source>
+          . Remote Sens., vol.
+          <volume>51</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>2276</fpage>
+          -
+          <lpage>2291</lpage>
+          , Apr.
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [19]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Elhamifar</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Vidal</surname>
+          </string-name>
+          , “Sparse subspace clustering,
+          <source>” CVPR</source>
+          , pp.
+          <fpage>2790</fpage>
+          -
+          <lpage>2797</lpage>
+          ,
+          <year>June 2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [20]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Boyd</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>N.</given-names>
+            <surname>Parikh</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Chu</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>B.</given-names>
+            <surname>Peleato</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Eckstein</surname>
+          </string-name>
+          , “
+          <article-title>Distributed optimization and statistical learning via the alternating direction method of multipliers,” FTML</article-title>
+          ., vol.
+          <volume>3</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>1</fpage>
+          -
+          <lpage>122</lpage>
+          , Jan.
+          <year>2010</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [21]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Wright</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Nowak</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Figueiredo</surname>
+          </string-name>
+          , “
+          <article-title>Sparse reconstruction by separable approximation</article-title>
+          ,
+          <source>” IEEE Trans. Signal Processing</source>
+          , vol.
+          <volume>57</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>2479</fpage>
+          -
+          <lpage>2493</lpage>
+          ,
+          <year>July 2009</year>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

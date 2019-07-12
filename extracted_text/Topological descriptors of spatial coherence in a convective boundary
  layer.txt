@@ -1,0 +1,17 @@
+A Data-Driven Approach for Accurate Rainfall Prediction
+  In recent years, there has been growing interest in using Precipitable Water
+Vapor (PWV) derived from Global Positioning System (GPS) signal delays to
+predict rainfall. However, the occurrence of rainfall is dependent on a myriad
+of atmospheric parameters. This paper proposes a systematic approach to analyze
+various parameters that affect precipitation in the atmosphere. Different
+ground-based weather features like Temperature, Relative Humidity, Dew Point,
+Solar Radiation, PWV along with Seasonal and Diurnal variables are identified,
+and a detailed feature correlation study is presented. While all features play
+a significant role in rainfall classification, only a few of them, such as PWV,
+Solar Radiation, Seasonal and Diurnal features, stand out for rainfall
+prediction. Based on these findings, an optimum set of features are used in a
+data-driven machine learning algorithm for rainfall prediction. The
+experimental evaluation using a four-year (2012-2015) database shows a true
+detection rate of 80.4%, a false alarm rate of 20.3%, and an overall accuracy
+of 79.6%. Compared to the existing literature, our method significantly reduces
+the false alarm rates.

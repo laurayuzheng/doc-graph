@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Predicting Climate Variability over the Indian Region Using Data Mining Strategies</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>M. Naresh Kumar</string-name>
+          <email>nareshkumar_m@nrsc.gov.in</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Software and Database Systems Group, National Remote Sensing Center (ISRO)</institution>
+          ,
+          <addr-line>Hyderabad, Telangana, 500 037</addr-line>
+          ,
+          <country country="IN">India</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>In this paper an approach based on expectation maximization (EM) clustering to nd the climate regions and a support vector machine to build a predictive model for each of these regions is proposed. To minimize the biases in the estimations a ten cross fold validation is adopted both for obtaining clusters and building the predictive models. The EM clustering could identify all the zones as per the Koppen classi cation over Indian region. The proposed strategy when employed for predicting temperature has resulted in an RMSE of 1:19 in the Montane climate region and 0:89 in the Humid Sub Tropical region as compared to 2:9 and 0:95 respectively predicted using k-means and linear regression method.</p>
+      </abstract>
+      <kwd-group>
+        <kwd>support vector machine</kwd>
+        <kwd>expectation maximization</kwd>
+        <kwd>k-means</kwd>
+        <kwd>regression</kwd>
+        <kwd>climate regions</kwd>
+        <kwd>climate change</kwd>
+        <kwd>Koppen classi cation</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>]
+L</p>
+    </sec>
+    <sec id="sec-2">
+      <title>1. Introduction</title>
+      <p>Regionalization techniques are found to be e ective in improving the
+prediction accuracies of the climate models. Building regional models and
+predicting the climate variability require processing and extraction of
+information from large volumes of high dimensional data sets. Data mining methods
+such as k-means (KM) clustering and statistical methods such as linear
+regression (LR) are popular techniques commonly employed for grouping the
+data into regions of similar climate and build a model to predict the climate
+variables for subsequent years. The k-means method requires specifying
+initial k clusters centers which is generally not known a priori. Also, the
+procedure is sensitive to the selection of the initial cluster centers. Moreover, a
+linear regression model may not capture the non-linear relationships among
+the climate variables.</p>
+      <p>The EM nds clusters by nding a appropriate t for the given data set
+with a mixture of Gaussians. Each of the Gaussians is associated with a
+mean and a covariance matrix. The prior probability for each Gaussian is
+computed as a total fraction of points in the cluster de ned by that Gaussian.
+Based on the iterative approach in updating values for means and variances
+the optimal solution is reached.</p>
+      <p>In this paper an approach based on expectation maximization (EM)
+clustering to nd the climate regions and a support vector machine to build a
+predictive model for each of these regions is proposed. To minimize the biases
+in the estimations a ten cross fold validation is adopted both for obtaining
+clusters and building the predictive models.</p>
+      <p>The following are the main objectives of the present work
+1. Understand the process of climate change over Indian region through
+development of information extraction techniques that can e ectively
+predict the climate variability
+2. Develop a methodology for processing the long term gridded climate
+data and obtaining climate regions using expectation maximization
+clustering
+3. Prepare the maps of the climate regions identi ed by expectation
+maximization clustering and compare it with standard climate zones as per
+Kppen classi cation over Indian region
+4. Evolve a procedure to subset the long term climate dataset into regional
+data sets
+5. Develop methods to extract the train data set for building the support
+vector regression classi er based on the number of years to predict
+6. Obtain the validation data set for each of the grid locations and
+compute the root mean squared error.
+7. Compare the performance of the proposed methodology with k-means
+and linear regression procedure
+This paper is organized as follows. In Section 2 the proposed methodology
+of predicting climate variables is presented. The experiments and results are
+discussed in Section 3. Conclusions and discussion are deferred to Section 4.</p>
+    </sec>
+    <sec id="sec-3">
+      <title>2. Methodology</title>
+      <p>In the proposed methodology the climate dataset is rst regionalized by
+applying Expectation maximization clustering using the long term averages
+of the climate variables. Further, a predictive model is developed using
+support vector machine SVM regression kernel. A ten cross fold validation is
+employed to obtain a robutst estimates of the root mean square error (RMSE).
+The procedure employed in developing a predictive model is shown in
+Figure 1.</p>
+      <p>The algorithm 1 describes the steps implemented in the present paper for
+obtaining a model for predicting climate variables.</p>
+    </sec>
+    <sec id="sec-4">
+      <title>3. Experiments and Results</title>
+      <p>NCEP/NCAR reanalysis data for 65 years from 1948 to 2012 having
+the climate variables Atmospheric Pressure, Relative Humidity, Precipitable
+Water, Zonal Wind, Meridional Wind, Precipitation, Air Temperature is
+used in the analysis
+Algorithm 1 Procedure for Predicting Climate Variables
+Require: 1. Climate data set
+2. Clustering method
+3. Number of years to predict (p)
+4. Variable to be predicted
+Ensure: 1. Correlation coe cient
+2. Root mean squared error</p>
+      <p>Algorithm
+1. Extract long term mean of climate variables for each 2:5 x2:5 grid
+over Indian region
+2. Apply clustering method to obtain regions R1, R2,. . . , Rn
+3. Build the Model for the variable to be predicted
+(a) For each region in R1, R2,. . . , Rn
+i. obtain mean of the climate variables for all the grid points
+in the cluster for j-p years where j denotes total number of
+years and p denotes number of years for which prediction is
+required
+ii. build a support vector machine regression model using a ten
+cross fold validation procedure
+4. Test the model built in Step 3
+(a) For each cluster in R1, R2,. . . , Rn
+i. For each grid point in the cluster</p>
+      <p>A. apply the corresponding model to predict precipitation and
+temperature for years 1,. . . , p
+B. compute the RM SE using the predicted values and the
+actual values of the climate variables
+5. RETURN RM SE.
+6. END.
+Climate
+Variable
+Air Temperature
+Precipitable
+water
+Precipitation
+Relative
+Humidity
+Sea Level
+Pressure
+Zonal winds
+Meridional winds</p>
+      <p>The application of the EM clustering on the dataset has resulted in 7
+climate regions. As per Koppen Classi cation only there are six regions. The
+present algorithm 1 has brought out a new region consisting of Uttaranchal
+, Sikkim and Arunachal Pradesh out of the existing Montane climate region.
+This we attribute it to the climate change and further investigations are
+required to ascertain these ndings.</p>
+      <p>The cluster centroids for the seven regions are shown in Table 1. The
+air temperature in the montanenew regions is very high when compared to
+Montane region the reasons for under investigation.</p>
+      <p>The spatial extents of the climate regions obtained from proposed
+algorithm 1 is shown in Figure 2.
+Region
+Montanenew
+Semi Arid
+Tropical Wet and
+Dry
+Arid
+Montane
+Tropical Wet
+Humid Sub
+Tropical
+in Table 2.</p>
+      <p>The RMSE errors in predicting the temperature for the year 2012 is given</p>
+      <p>The spatial maps of the predicted temperature and the absolute error for
+the year 2012 over Indian region is shown in Figures 3,4.</p>
+      <p>The EM clustering could identify all the zones as per the Koppen
+classication over Indian region. The proposed strategy when employed for
+predicting temperature has resulted in an RMSE of 1:19 in the Montane climate
+region and 0:89 in the Humid Sub Tropical region as compared to 2:9 and
+0:95 respectively predicted using k-means and linear regression method.</p>
+    </sec>
+    <sec id="sec-5">
+      <title>4. Conclusions and Discussion</title>
+      <p>The expectation maximization clustering could identify the di erent
+climate zones as per the Koppen classi cation over Indian region. It is observed
+that the regions of Uttaranchal , Sikkim and Arunachal Pradesh have been
+identi ed as a separate group by EM di erent from the Montane climate
+zone as per Koppen classi cation. This needs further investigations and
+introspection.</p>
+      <p>EM clustering and SVM performed better than k-means and linear
+regressions only in Humid subtropical and Montane climate zones. It is observed
+the EM performance degrades as the dimensionality of the data set increases
+due to numerical precision problems.</p>
+      <p>The fast growing volume of climate datasets and its high-dimensionality
+requires development of novel methods for preprocessing and information
+extraction. The focus of our future work would be on the development of
+techniques for big data climate data analytics.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <surname>Chih-Chung</surname>
+            <given-names>Chang</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chih-Jen Lin</surname>
+          </string-name>
+          (
+          <year>2001</year>
+          ).
+          <article-title>LIBSVM - A Library for Support Vector Machines</article-title>
+          . URL http://www.csie.ntu.edu.tw/ cjlin/libsvm.
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>Shailesh</given-names>
+            <surname>Kumar Kharol</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. Naresh</given-names>
+            <surname>Kumar</surname>
+          </string-name>
+          , Anu Rani Sharma,Biswadip Gharai,
+          <string-name>
+            <given-names>K.V.S.</given-names>
+            <surname>Badarinath</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. Y.</given-names>
+            <surname>Aslam</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M. Sivaprasad</given-names>
+            <surname>Reddy. Aerosol Radiative Forcing Over Indian Region- A Study Using</surname>
+          </string-name>
+          <string-name>
+            <surname>CERES</surname>
+          </string-name>
+          ,
+          <article-title>MISR and MODIS Data</article-title>
+          .
+          <source>In: Proceedings of Aerosols &amp; Clouds : Climate Change Perspectives</source>
+          ,
+          <year>2010</year>
+          . Bose Institute: Darjeeling Campus
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Naresh Kumar</surname>
+          </string-name>
+          , Murthy,
+          <string-name>
+            <given-names>C. S.</given-names>
+            ,
+            <surname>Sesha</surname>
+          </string-name>
+          <string-name>
+            <surname>Sai</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>M. V. R.</surname>
+          </string-name>
+          and Roy,
+          <string-name>
+            <surname>P. S.</surname>
+          </string-name>
+          (
+          <year>2012</year>
+          ),
+          <article-title>Spatiotemporal analysis of meteorological drought variability in the Indian region using standardized precipitation index</article-title>
+          .
+          <source>Met. Apps</source>
+          vol.
+          <volume>19</volume>
+          , pp.
+          <fpage>256264</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>Mingzhong</given-names>
+            <surname>Xiao</surname>
+          </string-name>
+          ,Qiang Zhang,Vijay P. Singh,
+          <string-name>
+            <surname>Xiaohong Chen</surname>
+          </string-name>
+          (
+          <year>2013</year>
+          )
+          <article-title>Regionalization-based spatiotemporal variations of precipitation regimes across China</article-title>
+          ,
+          <source>Theoretical and Applied</source>
+          Climatology vol.
+          <volume>114</volume>
+          , no.
+          <issue>1-2</issue>
+          , pp
+          <fpage>203</fpage>
+          -
+          <lpage>212</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [5]
+          <string-name>
+            <surname>Srinivas</surname>
+            <given-names>V V</given-names>
+          </string-name>
+          ,
+          <article-title>Regionalization of precipitation in India A Review (</article-title>
+          <year>2013</year>
+          ),
+          <source>Journal of the Indian Institute of Science</source>
+          vol
+          <volume>93</volume>
+          , no 2.
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [6]
+          <string-name>
+            <given-names>Xianliang</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,Xiaodong
+          <string-name>
+            <surname>Yan</surname>
+          </string-name>
+          (
+          <year>2013</year>
+          )
+          <article-title>Temporal change of climate zones in China in the context of climate warming</article-title>
+          ,
+          <source>Theoretical and Applied Climatology</source>
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [7]
+          <string-name>
+            <given-names>Zhenxin</given-names>
+            <surname>Bao</surname>
+          </string-name>
+          , Jianyun Zhang, Jiufu Liu, Guobin Fu, Guoqing Wang, Ruimin He, Xiaolin Yan, Junliang Jin, Hongwei Liu (
+          <year>2012</year>
+          )
+          <article-title>Comparison of regionalization approaches based on regression and similarity for predictions in ungauged catchments under multiple hydro-climatic conditions</article-title>
+          ,
+          <source>Journal of Hydrology</source>
+          vol.
+          <volume>466467</volume>
+          , pp
+          <fpage>37</fpage>
+          -
+          <lpage>46</lpage>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

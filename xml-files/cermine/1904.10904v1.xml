@@ -1,0 +1,2992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Applying machine learning to improve simulations of a chaotic dynamical system using empirical error correction</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Peter A. G. Watson</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Atmospheric, Oceanic and Planetary Physics, University of Oxford</institution>
+          ,
+          <addr-line>Oxford</addr-line>
+          ,
+          <country country="UK">UK</country>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>Dynamical weather and climate prediction models underpin many studies of the Earth system and hold the promise of being able to make robust projections of future climate change based on physical laws. However, simulations from these models still show many di erences compared with observations. Machine learning has been applied to solve certain prediction problems with great success, and recently it's been proposed that this could replace the role of physically-derived dynamical weather and climate models to give better quality simulations. Here, instead, a framework using machine learning together with physically-derived models is tested, in which it is learnt how to correct the errors of the latter from timestep to timestep. This maintains the physical understanding built into the models, whilst allowing performance improvements, and also requires much simpler algorithms and less training data. This is tested in the context of simulating the chaotic Lorenz '96 system, and it is shown that the approach yields models that are stable and that give both improved skill in initialised predictions and better long-term climate statistics. Improvements in long-term statistics are smaller than for single time-step tendencies, however, indicating that it would be valuable to develop methods that target improvements on longer time scales. Future strategies for the development of this approach and possible applications to making progress on important scienti c problems are discussed. Numerical weather prediction and climate models attempt to predict and simulate components of the Earth system, including the atmosphere and perhaps also the oceans, land surface and biosphere. Whilst the fundamental physical equations governing the system are known, they cannot be solved accurately with available computational resources. Instead, approximations are made in the models' equations, and this gives rise to errors in their output. Methods to reduce these errors are highly valuable for giving better warning of major meteorological and climatic events. Recently, great advances in machine learning have taken place, for example in the domains of image recognition and game-playing [e.g. He et al., 2016; Silver et al., 2017]. The algorithms developed have been found to excel at certain problems that involve predicting an unknown value given values of predictor variables (for example, predicting what objects a photograph contains given its pixel values)|this is similar to the problem of predicting future behaviour of the Earth system given knowledge of its past and present state, and so there has been high interest in applying</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>X
+r
+a</p>
+    </sec>
+    <sec id="sec-2">
+      <title>Introduction</title>
+      <p>
+        machine learning to improve such predictions. This has included predicting future weather events
+directly from observations and post-processing dynamical models' output [e.g.
+        <xref ref-type="bibr" rid="ref26">Krasnopolsky and
+Lin, 2012</xref>
+        ;
+        <xref ref-type="bibr" rid="ref34">McGovern et al., 2017</xref>
+        ; Rasp and Lerch, 2018; Scher and Messori, 2018].
+      </p>
+      <p>Another emerging application is applying machine learning to improve components of the
+dynamical Earth system models themselves, particularly the parameterisations of unresolved
+smallscale processes such as radiative interactions and cloud processes. This could allow larger
+improvements in prediction skill than is achieved by post-processing models' output, by better representing
+the physical interactions between variables.</p>
+      <p>
+        Previous work has primarily used arti cial neural networks (ANNs), which are functions
+constructed from \neurons". Neurons are simply functions that linearly combine their inputs and then
+apply a given (generally non-linear) transformation to produce the output value. ANNs pass input
+data into neurons, whose output may then be used as inputs to more neurons, and so on until a
+nal output value (or vector of values) is produced. ANNs can relatively e ciently encode complex
+functional relationships. Indeed, an ANN with neurons arranged in layers, with the outputs of
+neurons in one layer being inputs to neurons in the next layer, can represent any real continuous
+function to an arbitrarily small level of accuracy, given a su cient number of neurons [
+        <xref ref-type="bibr" rid="ref12">Cybenko,
+1989</xref>
+        ].
+        <xref ref-type="bibr" rid="ref37">Nielsen [2015</xref>
+        ] and
+        <xref ref-type="bibr" rid="ref20">Goodfellow et al. [2016</xref>
+        ] provide general introductions to the theory and
+applications of ANNs.
+      </p>
+      <p>
+        One promising approach has been to use algorithms such as ANNs to reproduce the behaviour
+of atmospheric parameterisation schemes at a reduced computational cost. For example,
+Chevallier et al. [1998, 2000] found that ANNs could cheaply reproduce the behaviour of the radiative
+transfer scheme in the European Centre for Medium-Range Weather Forecasts model, although
+        <xref ref-type="bibr" rid="ref35">Morcrette et al. [2008</xref>
+        ] note that this approach did not work su ciently well after the model's
+vertical resolution was increased.
+        <xref ref-type="bibr" rid="ref27">Krasnopolsky et al. [2005</xref>
+        , 2010] also found that an ANN could
+be used to cheaply reproduce the output of the radiation scheme in the National Center for
+Atmospheric Research (NCAR) Community Atmosphere Model. More recent work has focussed on
+replacing atmospheric models' convection schemes with ANNs, in order not just to reduce the cost
+of presently used schemes but to allow more expensive, higher quality schemes to be used, such as
+superparameterisation [Gentine et al., 2018; Rasp et al., 2018] or emulations of convection-resolving
+models [Brenowitz and Bretherton, 2018]. O'Gorman and Dwyer [2018] also showed that a model's
+convection scheme could be replaced by a random forest algorithm, and the model could run stably
+and reasonably reproduce precipitation extremes.
+      </p>
+      <p>
+        Machine learning also holds promise of being able to reduce errors in dynamical models'
+predictions.
+        <xref ref-type="bibr" rid="ref47">Schneider et al. [2017</xref>
+        ] describe how better values of parameters of models could be learnt by
+algorithms being fed data from observations and high-resolution models. Dueben and Bauer [2018]
+examine whether ANNs could be trained to simulate atmospheric dynamics and provide
+prediction skill exceeding that of existing models, using a time-stepping scheme where ANNs predict the
+tendency of the system in a similar approach to that used in existing dynamical models, and they
+conclude that it is possible. However, their simulations became unstable after about two weeks.
+Additionally, Bolton and Zanna [2019] showed that a convolutional ANN could skilfully predict
+small-scale momentum forcing in a quasi-geostrophic ocean model given spatially smoothed output
+from a simulation, although this was not implemented into a freely-evolving model. Signi cant
+advances have also been made in learning symbolic equations and invariant quantities from data
+[
+        <xref ref-type="bibr" rid="ref46">Schmidt and Lipson, 2009</xref>
+        ;
+        <xref ref-type="bibr" rid="ref44">Rudy et al., 2017</xref>
+        ;
+        <xref ref-type="bibr" rid="ref55">Wu and Tegmark, 2018</xref>
+        ; Zhang and Lin, 2018], which
+could be applied in Earth system modelling [
+        <xref ref-type="bibr" rid="ref18">Gaitan et al., 2016</xref>
+        ].
+      </p>
+      <p>The above-mentioned property of ANNs that they can represent any continuous function means
+that, in principle, given su cient data of high enough quality to learn from and adequate
+computational resources for training, an ANN's representation of the equations of motion of the Earth system
+could reach the maximum skill possible for given inputs. So it seems that ANNs could potentially
+learn to reduce systematic model errors without the need for human ingenuity, greatly speeding up
+model development and helping us to address challenges like predicting extreme weather and the
+impacts of climate change.</p>
+      <p>
+        However, the use of ANNs as discussed in
+        <xref ref-type="bibr" rid="ref47">Schneider et al. [2017</xref>
+        ] and Dueben and Bauer [2018]
+has been presented as being in competition with improving the conventional physically-derived
+aspects of Earth system models.
+        <xref ref-type="bibr" rid="ref47">Schneider et al. [2017</xref>
+        ] argue that improving physically-derived
+parameterisation schemes is preferable to using ANNs because they will obey conservation laws and
+symmetries. Dueben and Bauer [2018] ask whether models based entirely on ANNs can compete
+with physically-derived models.
+      </p>
+      <p>
+        One purpose of the work presented here is to explore whether it is actually possible to use such
+algorithms to complement physically-derived model components, thereby preserving the bene ts of
+using the latter, such as having better physical interpretability of the model behaviour and better
+trust that the model will perform reasonably well in an unseen physical situation.
+        <xref ref-type="bibr" rid="ref25">Karpatne et al.
+[2017</xref>
+        a] and
+        <xref ref-type="bibr" rid="ref42">Reichstein et al. [2019</xref>
+        ] provide overviews of the ways in which statistical algorithms can
+be combined with physical modelling and the associated challenges. The speci c proposal tested
+here is to use algorithms to perform empirical error-correction in dynamical models. Rather than
+predict the whole tendency of a system, as in the models considered by Dueben and Bauer [2018],
+the algorithms would predict the di erence between the measured and the observed tendencies.
+Then the total tendency would be M(x) + (x), where x is the system state at, and potentially
+before, the start of the time step, M(x) is the tendency predicted by the physically-derived model
+and (x) is the correction output by the algorithm. If M(x) is close to the optimum tendency,
+(x) should be small, and so concerns about (x) not obeying conservation laws and symmetries
+are consequently less important than in the case where whole model components are replaced
+by algorithms (note, though, that it may also be possible to constrain (x) to obey these physical
+principles more strictly [e.g. Jia et al., 2018]). (x) should only have a large e ect on the simulations
+when the prediction by the physically-derived model is poor, in which case the value of improving
+the total simulated tendency is larger compared to concerns about whether physical principles are
+strictly abided by. The physically-derived model maintains a key role, and it is desirable to continue
+improving it to strengthen the link between the simulation results and our physical understanding.
+This study focuses on the use of ANNs as model error-correctors, but other algorithms could also
+be applied in a similar way.
+      </p>
+      <p>A further advantage of using algorithms to correct models' errors rather than replace
+physicallyderived models entirely is that it greatly simpli es the process of incorporating ANNs into dynamical
+models. Dueben and Bauer [2018] detail the numerous challenges in replacing physically-derived
+models with ANNs (or other algorithms), such as obtaining the required data for training a
+fullcomplexity model and learning to use algorithms with the required complexity. A lot of development
+e ort would be required before a model with better performance than current models would be
+produced. By contrast, development of error-correcting algorithms can start just by improving a
+small number of outputs as much as possible given a small number of inputs, which is achievable with
+a smaller research programme, and progress can build from there. A disadvantage of this approach
+is that the computational cost of the models cannot easily be reduced this way if the resolution
+and parameterisation schemes are kept the same|the focus is on improving the simulation quality.
+However, it may turn out to be more cost-e ective than using more expensive parameterisation
+schemes or increasing the model resolution, and it could reduce costs if it allows the same or
+greater skill to be obtained using cheaper physically-derived parameterisations. It would also be
+very informative about the problems that would need to be overcome to get dynamical models
+based entirely on algorithms like ANNs to perform well.</p>
+      <p>
+        An empirical error-correcting approach using an ANN was applied by
+        <xref ref-type="bibr" rid="ref16">Forssell and Lindskog
+[1997</xref>
+        ] to predict the water level in a tank. Previous environmental applications include the
+prediction of groundwater ow by
+        <xref ref-type="bibr" rid="ref57">Xu and Valocchi [2015</xref>
+        ] and the prediction of lake temperatures
+by
+        <xref ref-type="bibr" rid="ref25">Karpatne et al. [2017</xref>
+        b] and Jia et al. [2018]. These systems exhibit variability that is strongly
+in uenced by external drivers, whilst Earth's atmosphere and oceans have a large component of
+unforced variability due to chaotic dynamics. A demonstration that using an algorithm to correct
+model errors could improve short-range forecasts of simple chaotic systems was given by [
+        <xref ref-type="bibr" rid="ref39">Pathak
+et al., 2018</xref>
+        ], who used reservoir computing, but it is unclear if this would also produce stable
+simulations with improved long-term statistics.
+        <xref ref-type="bibr" rid="ref11">Cooper and Zanna [2015</xref>
+        ] applied this approach to
+improve a chaotic shallow water model, but did so using a linear system of equations, which seems
+unlikely to be able to represent errors in complex dynamical systems as well as a more exible
+algorithm such as an ANN in general|for example, atmospheric convection is a highly nonlinear
+process [
+        <xref ref-type="bibr" rid="ref3">Arakawa, 2004</xref>
+        ], and errors in its representation seem unlikely to be captured well by linear
+equations. Their work also focussed on improving long-term statistics of the simulation, and it is
+not clear whether there was a simultaneous improvement in short-range forecast skill that would
+indicate that the dynamics were being better represented.
+      </p>
+      <p>
+        It is a key problem in Earth system prediction to improve our models in such a way that
+they are stable and give both improved skill in initialised predictions and better long-term climate
+statistics. In the remainder of this paper, it is tested whether this can be achieved by using an
+error-correcting ANN to better simulate a chaotic system, namely the Lorenz '96 dynamical system
+[
+        <xref ref-type="bibr" rid="ref31">Lorenz, 1996</xref>
+        ]
+        <xref ref-type="bibr" rid="ref13 ref45 ref56 ref59">(sometimes also referred to as the Lorenz '95 system [e.g. by Dueben and Bauer,
+2018])</xref>
+        . This system, or variants of it, has been used in many previous studies to test concepts for
+how to improve dynamical Earth system models [e.g.
+        <xref ref-type="bibr" rid="ref54">Wilks, 2005</xref>
+        ;
+        <xref ref-type="bibr" rid="ref4">Arnold et al., 2013</xref>
+        ;
+        <xref ref-type="bibr" rid="ref47">Schneider
+et al., 2017</xref>
+        ; Dueben and Bauer, 2018]. The results are informative about the potential for machine
+learning approaches to improve skill at simulating dynamical systems such as the Earth's climate,
+albeit in a much simpler setting.
+2
+2.1
+      </p>
+    </sec>
+    <sec id="sec-3">
+      <title>Experiments with the Lorenz '96 system</title>
+      <sec id="sec-3-1">
+        <title>The Lorenz '96 equations and coarse-resolution models</title>
+        <p>
+          The Lorenz '96 dynamical equations describe the evolution of variables arranged in a ring, intended
+to be analogous to a latitude circle. The variables are divided into two types: slowly-varying Xk
+and quickly-varying Yj;k, de ned for k = 1; : : : ; K, and j = 0; : : : ; J + 2.
+          <xref ref-type="bibr" rid="ref31">Lorenz [1996</xref>
+          ] suggested
+that the Yj;k be considered analogous to a convective-scale quantity in the real atmosphere and Xk
+analogous to an environmental variable that favours convective activity. Here one of the systems
+used by
+          <xref ref-type="bibr" rid="ref4">Arnold et al. [2013</xref>
+          ] is simulated as the \Truth" system|there is no particular strong reason
+to choose this system over other variants, but its prior use in the parameterisation development
+work of
+          <xref ref-type="bibr" rid="ref4">Arnold et al. [2013</xref>
+          ] makes it seem like a good choice for exploring how the design of models
+can be further advanced. This has K = 8 and J = 32, in which:
+dXk =
+dt
+dYj;k =
+dt
+        </p>
+        <p>Xk 1(Xk 2</p>
+        <p>Xk+1)</p>
+        <p>Xk + F
+cbYj+1;k(Yj+2;k</p>
+        <p>Yj 1;k)
+cYj;k + (hc=b)Xk;</p>
+        <p>J
+(hc=b) X Yj;k;
+j=1
+(1)
+with cyclic boundary conditions Xk = Xk+K and Yj;k = Yj;k+K and parameter values h = 1,
+F = 20, b = 10 and c = 4. The Y variables are connected in a ring, such that Y0;k = YJ;k 1,
+YJ+1;k = Y1;k+1 and YJ+2;k = Y2;k+1, so there are J unique Yj;k variables associated with each Xk
+variable. The time units are arbitrary and denoted as model time units (MTUs). These equations
+were integrated in time with a time step of 0.001MTU using a fourth-order Runge-Kutta
+timestepping scheme.</p>
+        <p>A \training" simulation of this system of length 3000MTUs (not including 10MTUs discarded
+as `spin up' at the beginning) was produced to provide a sample of \true" statistics to use in
+constructing coarse-resolution models below. The simulation was then extended for 10MTUs so
+that memory of the training dataset was e ectively lost, and then a further 3000MTUs of data
+was generated to use as a validation dataset, which is used only to evaluate and not to develop the
+coarse-resolution models below. (Note that evaluation against a separate \test" dataset is not done
+because the aim is not to select a single best-performing ANN structure and estimate the model's
+true skill. This means that an ANN that is selected on the basis of having an especially good
+performance on the validation dataset would not be expected to perform as well relative to other
+ANNs on separate test data, since sampling variability would be expected to have contributed to
+its diagnosed skill in the validation data. It is shown below that performance improvements on the
+validation data are obtained for a wide range of ANN structures, and so the conclusion that ANNs
+can improve prediction skill for this system is robust to sampling variability.)
+2.1.1</p>
+        <sec id="sec-3-1-1">
+          <title>Coarse-resolution model</title>
+          <p>
+            Suppose that a much computationally cheaper model of equations 1 is desired for making short-term
+forecasts and simulating the long-run statistics of this system. Following
+            <xref ref-type="bibr" rid="ref54">Wilks [2005</xref>
+            ] and
+            <xref ref-type="bibr" rid="ref4">Arnold
+et al. [2013</xref>
+            ], inspection of equations 1 suggests that it may be reasonable to forego simulating
+the Y variables explicitly and parameterise their e ect on the X variables with a function U (X),
+analogous to how the e ect of unresolvable physical processes on resolved scales is parameterised
+in Earth system models. This yields the coarse-resolution system
+dXk =
+dt
+          </p>
+          <p>Xk 1(Xk 2</p>
+          <p>Xk+1)</p>
+          <p>Xk + F</p>
+          <p>U (Xk )
+(2)
+with Xk = Xk+K . The time step is also increased to 0.005MTU, so that the system has a coarsened
+time resolution as well, analogous to how Earth system models cannot resolve real Earth processes
+that happen on very fast time scales.</p>
+          <p>
+            The function U (Xk ) is derived using the same method as
+            <xref ref-type="bibr" rid="ref4">Arnold et al. [2013</xref>
+            ], using essentially
+a coarse-graining approach. It is de ned as a cubic function,
+          </p>
+          <p>U (X) =</p>
+          <p>
+            3
+X anXn;
+n=0
+and its parameters are chosen using tendencies of the X variables over intervals of length 0.005MTU,
+derived from the run of the truth system sampled every 0.005MTU. Its parameters were t to
+minimise the root mean square error of predictions of these tendencies made using equation 2,
+taking values a0 = 0:207, a1 = 0:577, a2 = 0:00553 and a3 = 0:000220. This is a statistical
+procedure, but note that here U (X) is not considered part of the machine learning algorithm used
+to correct the model errors. Following
+            <xref ref-type="bibr" rid="ref54">Wilks [2005</xref>
+            ] and
+            <xref ref-type="bibr" rid="ref4">Arnold et al. [2013</xref>
+            ], U (X) is thought of
+as being analogous to parameterisations of unresolved processes in an Earth system model|note
+that development of physically-derived Earth system model parameterisations can also involve
+tting parameters to data [e.g.
+            <xref ref-type="bibr" rid="ref23">Hourdin et al., 2016</xref>
+            ]. Including U (X) in equation 2 helps to test
+whether complex algorithms such as ANNs are able to give skill improvements after much of the
+possible progress has been made with physical reasoning and simpler statistical methods, using
+the deterministic model of
+            <xref ref-type="bibr" rid="ref4">Arnold et al. [2013</xref>
+            ] as a benchmark. It would also be possible to do a
+similar study with U (X) = 0, which would probably increase the potential improvement made by
+using error-correcting algorithms as they learnt to represent the improvements made by including
+U (X).
+          </p>
+          <p>Hereafter the model given by equation 2 is referred to as \No-ANN".
+2.1.2</p>
+        </sec>
+        <sec id="sec-3-1-2">
+          <title>Models with ANNs</title>
+          <p>
+            To produce coarse-resolution models with error-correcting ANNs, ANNs with a multilayer
+perceptron architecture [
+            <xref ref-type="bibr" rid="ref37">Nielsen, 2015</xref>
+            ;
+            <xref ref-type="bibr" rid="ref20">Goodfellow et al., 2016</xref>
+            ] were trained to predict the di erence
+between the true system tendency and that predicted by the coarse-resolution model for one X
+variable at a time:
+          </p>
+          <p>
+            k = ddXtk ddXtk :
+The inputs to the ANNs are X variables up to two points away from the location where the
+prediction is being made, so that ve X values in total are used as input. This is one more
+than used by the No-ANN model, and takes advantage of the ability of ANNs to use inputs that
+are di cult to know how to include by physical reasoning|this may be helpful in Earth system
+modelling to account for subgrid phenomena that propagate between grid boxes but are di cult
+to include in parameterisation schemes, such as horizontally-propagating gravity waves [
+            <xref ref-type="bibr" rid="ref1">Alexander
+et al., 2010</xref>
+            ]. Results for ANNs using the same inputs as the No-ANN model are discussed at the
+end of section 2.2 to quantify the impact made by using Xk+2 as an additional input|it does
+not qualitatively a ect the ndings. Not all of the X variables were used as input in order that
+the ANNs are only using information from nearby grid points. This is desirable in Earth system
+models so they can be run much more quickly in parallel computing environments [Dueben and
+Bauer, 2018]. Also, since on Earth phenomena at one location could not be meaningfully in uenced
+by phenomena on the other side of the world within one model time step, this structure constrains
+the ANNs to be more faithful to the true equations, so they are more likely to work well in novel
+situations. The results presented here are not expected to depend qualitatively on the number of
+X variables used, and they were found to not be sensitive to using X variables up to three points
+away instead.
+          </p>
+          <p>
+            The X variables are transformed by subtracting their mean and dividing by their standard
+deviation before being used as ANN inputs, since this tends to speed up training of ANNs [
+            <xref ref-type="bibr" rid="ref30">LeCun
+et al., 2012</xref>
+            ]. The values of the mean and standard deviation are derived during training and are
+not changed when the model is tested on the validation data.
+          </p>
+          <p>It is also interesting to compare using ANNs in this way against using ANNs that are trained to
+replace dynamical models or components of them, as done by Dueben and Bauer [2018]. Therefore
+multilayer perceptron ANNs were also trained to predict the full tendency of the Truth system
+dXk=dt, given the same inputs as the ANN error-correctors. Again, these predict the tendency
+for one X variable at a time. In an Earth system model, individual parameterisation schemes
+could also be replaced by ANNs. However, the Lorenz '96 system lacks the complexity to do an
+interesting experiment where something closely analogous to replacing a parameterisation scheme
+is carried out, given the simplicity of U (X).</p>
+          <p>ANNs with di erent arrangements of neurons were tested, with one or more hidden layers (the
+\depth") and with an equal number of neurons in each hidden layer (the \width"). As a shorthand
+notation, an ANN with depth D and width W will be referred to as \dDwW " (e.g. d2w32 refers
+to an ANN with depth 2 and width 32). The ANNs all use a linear output activation function
+and recti ed linear unit activation functions on the hidden layers, which were found to work more
+robustly than hyperbolic tangent functions for the case of training ANNs to predict the full system
+tendencies. For this case, the outputs of ANNs with hyperbolic tangent activation functions were
+found to be prone to saturating, so that the largest tendencies could not be simulated. This may
+have happened because the magnitude of the output is limited to be the sum of the magnitudes of
+the weights connecting the nal hidden layer to the output, which were not made large enough in
+training. This suggests that for predicting values that can take any size, using activation functions
+whose output values are not typically limited in magnitude is more likely to give good results.
+2.1.3</p>
+        </sec>
+        <sec id="sec-3-1-3">
+          <title>Training ANNs</title>
+          <p>Results are presented for models using ANNs trained on 1000MTUs of truth model data, using the
+tendency over every 0.005MTU interval, in order to test their potential skill when data availability
+is not a limitation. Using all 3000MTUs of the training data was not found to increase the skill of
+ANNs substantially when tested on a few chosen ANN structures. It is also shown in section 2.2.1
+that the performance of the ANNs is similar at predicting tendencies in the training and validation
+truth datasets, indicating that the ANNs are not substantially over tting the training data, so
+increasing the amount of training data would not be expected to improve the ANNs' performances
+much.</p>
+          <p>ANNs are trained to minimise the sum of the squared prediction error and an L2 regularisation
+term for the weights with coe cient 10 4. This was done using stochastic gradient descent with
+the Adam algorithm [Kingma and Ba, 2014]. Minibatches of size 200 sets of input and output
+were used together with a learning rate of 0.001. Training stopped when the squared prediction
+error failed to decrease by at least 10 4 twice consecutively after iterating over the whole training
+dataset.
+2.2</p>
+        </sec>
+      </sec>
+      <sec id="sec-3-2">
+        <title>Results</title>
+        <p>Diagnostics comparing simulations from the Truth, No-ANN model and models using ANNs are
+shown below. All results are very robust to sampling variability, as determined by checking that
+they are very similar when only half of the data is used, except for the di erence in the mean biases
+(section 2.2.2) for which the use of ANNs was not found to give a statistically signi cant di erence
+in most cases.
+2.2.1</p>
+        <sec id="sec-3-2-1">
+          <title>One-timestep tendency forecast errors</title>
+          <p>tendencies and their errors versus the true tendencies. The sets of tendencies shown are from the
+No-ANN model and two example coarse-resolution models with error-correcting ANNs (with d1w16
+and d2w32 structures, the latter performing particularly well at improving short-term forecast and
+climate skill scores [section 2.2.2]). 100,000 scatter points are shown for tendencies predicted in
+each of the training and validation datasets.</p>
+          <p>The models with error-correcting ANNs predict tendencies that are close to the true tendencies
+in both the training and validation datasets, including for extreme positive and negative tendencies.
+The predicted tendencies are generally closer to the true tendencies than those made by the No-ANN
+model throughout the whole range of true tendency values, including for extreme cases, although
+the No-ANN model also does not make any particularly large errors. This is evidence that the
+ANNs have learnt how to actually improve the representation of the dynamics, so that they can
+improve most predictions and not degrade predictions of extreme values in the validation dataset
+even when there are few examples of the latter in the training data. This is generally the case for
+all of the di erent ANN structures, even for the smallest ANN that was tested (d1w2; not shown).
+It is important to show that ANNs do not simply t the training data and perform poorly at
+extrapolating to make predictions for rare, extreme situations, since it is essential in Earth system
+modelling applications that models' performance does not severely degrade in these cases.
+2.2.2</p>
+        </sec>
+        <sec id="sec-3-2-2">
+          <title>Forecast and climate simulation skill</title>
+          <p>Metrics of forecast skill and the quality of the simulated climate of the X variables are shown in
+gure 4 for coarse-resolution models with error-correcting ANNs of di erent depths and widths,
+evaluated using the validation dataset only (this is the case for all model quality metrics shown
+from now on).</p>
+          <p>Forecast diagnostics were computed from 10-member ensembles of simulations initialised from
+each of 3000 states of the X-variables sampled from the Truth validation run, each separated by
+1MTU, giving e ectively-independent initial conditions. To form the initial conditions for each
+ensemble member for each Truth initial condition, random perturbations were sampled for each
+X variable independently (noting that correlations between X variables in the Truth system are
+small). Firstly, a sample ( ) was taken from a Gaussian distribution with a mean of zero and
+a standard deviation of 0.05. Then ten samples were taken from a Gaussian distribution with
+a mean and a standard deviation of 0.05 and added to the Truth state. This ensured that
+the population standard deviation of the initial conditions equalled the standard deviation of the
+di erences between their means and the Truth states, as would be expected if the perturbations
+came from a well-calibrated error distribution in the estimate of the initial state in a forecasting
+system.</p>
+          <p>The forecast anomaly correlation coe cient (ACC) and RMSE at lead time 1MTU are better
+than in the No-ANN model for all models with ANNs except those with width 2 and depth 2 or 3
+( gure 4, top; squares are shaded red where the metric is better than that for the No-ANN model).
+(Forecasts at a lead time of 1MTU are roughly analogous to a \medium-range" forecast of the
+Earth's atmosphere, given the autocorrelation time scale of the system). Therefore in most cases
+the improvement in representing the single timestep tendencies (section 2.2.1) has brought about
+an improvement of longer range forecast skill relative to the No-ANN model. The improvement
+seems to be quite modest, however, raising the ACC from about 0.46 to 0.49 and decreasing the
+RMSE from 5.89 to 5.73 at best. However, note that the ACC for the Truth model initialised with
+the same initial conditions perturbations is only 0.52 and its RMSE is 5.59. This is the maximum
+potential skill. Therefore the best improvements in the ACC and RMSE are slightly over 60%
+of the di erence between the maximum possible skill and that of the No-ANN model. For the
+median case, they are 49% and 48% of the di erence respectively. This suggests that in a case
+where forecast skill were much lower than the maximum possible skill than it is here, the absolute
+skill improvements gained by using ANNs could be much more substantial. (Indeed, ANNs that
+are trained to simulate the full tendency dXk=dt can have skill similar to the models with
+errorcorrecting ANNs tested here [not shown]. This suggests than ANNs could learn to correct the errors
+of a No-ANN model that were degraded to have a much lower skill level, so that the gap between
+the No-ANN model and the models with ANNs were much larger, though this is not tested here.)</p>
+          <p>The biases of the time-mean of the X variables diagnosed from 3000MTU climate runs are
+shown in the bottom-left panel of gure 4. The diagnosed biases are mostly similar to those of
+the No-ANN model, except those for the models with d1w2 and d2w2 ANNs, which have much
+larger biases. This is the one diagnostic for which sampling variability is substantial. The biases
+are not statistically signi cantly di erent from that of the No-ANN model at the 95% level, except
+in the cases of the models with d1w2 and d2w2 ANNs. Therefore it is di cult to be con dent
+about how many of the models with error-correcting ANNs have smaller mean biases without using
+much longer climate runs, but it seems clear that the changes in the bias are quite small overall.
+(The statistical signi cance was calculated according to a Monte Carlo permutation test [Efron
+and Tibshirani, 1994]. Each time series was divided into blocks of length 100MTU, which is much
+larger than the autocorrelation time scale of the data. For each model with an ANN, surrogate
+time series of length 3000MTU were created by selecting blocks randomly without replacement
+from the simulation by this model and the simulation by the No-ANN model. The probability
+of the absolute di erence between the means of two of these time series being smaller than that
+between the actual time series was calculated to quantify the statistical signi cance.)</p>
+          <p>In order to evaluate improvements in the shape as well as the mean of the simulated
+climatological distribution of X values, the two-sample Kolmogorov-Smirnov (KS) statistic was calculated
+between the simulated distribution and the distribution in the truth model validation run. This is
+simply the maximum di erence between the cumulative density functions of the two distributions
+as a function of X. The KS statistic is improved in all but the d2w2 case, by up to 15% ( gure 4,
+bottom right). Part of the reason that this happens even though the bias in the mean of the
+distribution is not always improved is that the variance of the X values is increased relative to that
+in the No-ANN model (not shown), bringing the X-distribution closer to that of the truth model
+by this measure, except in the d2w2 case.</p>
+          <p>Formal statistical signi cance tests were not carried out for diagnostics other than the mean
+bias because it seems very unlikely to get the result that models with all but the smallest ANNs
+seem to have improved diagnostics ( gure 4) if it were not the case that ANNs were truly producing
+improvements in most cases. Detailed consideration of the sampling uncertainty would be required
+to assess the relative skill for di erent ANN structures, but it is not the aim here to do this.</p>
+          <p>Altogether this indicates that the use of error-correcting ANNs in this system is able to robustly
+give improvements in forecast skill and the shape of the climate distribution relative to that of the
+No-ANN model. However, comparing gure 4 with gure 1 shows that improving the error of the
+predicted tendency does not guarantee that the quality of longer simulations will also improve. The
+improvements in the climate diagnostics are also smaller than might be anticipated, given the large
+reduction in the tendency errors that was shown in section 2.2.1.</p>
+          <p>Figure 5 shows the forecast ACC and RMSE as a function of lead time for the No-ANN model
+and the models with the d1w16 and d2w32 error-correcting ANNs, which are the same models
+that were used for gure 3. The forecast skill is very similar for the di erent models up to a
+lead time of about 0.75MTUs, after which the models with error-correcting ANNs begin to have
+higher skill than the No-ANN model. After a lead time of 1MTU, their skill is approximately
+half way between that of the No-ANN model and the Truth model using the same initial condition
+perturbations. The maximum skill di erences between the models with the error-correcting ANNs
+and the No-ANN model are about 0.04 in the ACC and 0.2 in the RMSE.</p>
+          <p>
+            To understand better how the improvements in climate statistics shown in gure 4 are manifested
+in the frequency distribution of the X variables, gure 6 shows their distribution in the Truth
+validation dataset, in the No-ANN model and in the previously discussed models with the
+errorcorrecting ANNs. The simulations produced by the latter have smaller frequencies near the centre
+of the distribution, so that the bias here is smaller, with the frequencies at moderate negative values
+between about 7:5 and 5 bene cially increased. All of the coarse-resolution models have too
+low frequencies of large positive and negative X-values, however. This may indicate that it is not
+possible to simulate the correct frequencies of these extremes without explicitly representing the Y
+variables, though it is also possible that it could be improved by applying better machine-learning
+approaches or including stochasticity in the coarse-resolution models [
+            <xref ref-type="bibr" rid="ref4">Arnold et al., 2013</xref>
+            ].
+          </p>
+          <p>On top of considering statistical summary measures of simulation skill, it is also important to
+verify that the temporal evolution of the system state is realistically simulated in the models with
+ANNs. Figure 7 shows a time series of the rst X variable of length 5MTUs at the start of the
+validation dataset ("Truth"; gure 7, top left), in the No-ANN model (top right) and in the models
+with the d1w16 and d2w32 error-correcting ANNs (bottom). All time series begin with the initial
+condition of the validation data at time zero, so that the models capture the features of the initial
+evolution up to about time 1MTU, and then the model simulations diverge, likely primarily due to
+chaotic variability. After this point, the coarse-resolution models produce variability that appears
+qualitatively similar to that in the Truth system.</p>
+          <p>To quantify the impact of using Xk+2 as an input to the ANNs, which is not used as an input to
+the No-ANN model, results for error-correcting ANNs using the same inputs as the No-ANN model
+were analysed. These were also found to robustly improve the metrics discussed above (again, with
+the exception of the mean climate bias). The improvements in short-range prediction errors relative
+to the No-ANN model were smaller than found above, by a median of 18% for one-timestep tendency
+errors across ANNs with the same structures as those considered above and by about 40% for the
+ACC and RMSE at a lead time of 1MTU. The improvements in the climate KS statistic tended to
+be slightly greater, however, by a median of 5%|this is perhaps because optimising short-range
+skill does not always optimise long-range skill. Overall, this illustrates that using inputs that are
+not presently incorporated in all Earth system model components could be a substantial source of
+skill added by machine learning algorithms (for example, data in horizontally-adjacent grid columns
+that is not typically used in subgrid parameterisation schemes).</p>
+        </sec>
+      </sec>
+    </sec>
+    <sec id="sec-4">
+      <title>Discussion</title>
+      <sec id="sec-4-1">
+        <title>Additional considerations for Earth system modelling</title>
+        <p>
+          The approach used here of training ANNs to reduce single-timestep tendency errors could not be
+applied exactly analogously to learn to better represent the dynamics of the Earth system because
+observations at a given location are typically spaced six hours or more apart, and
+state-of-theart dynamical Earth system models use time steps that are much shorter. Maintaining a short
+time step is desirable so that the model equations can better approximate the true equations,
+which are continuous in time. It may also be necessary to ensure numerical stability. Therefore
+an approach is required that could update the learning algorithm's parameters based on what
+would improve forecast skill over multiple time steps. Brenowitz and Bretherton [2018] achieve this
+when emulating convection-resolving simulations in a single column model by optimising a cost
+function that takes into account errors in a prediction over multiple time steps|this is in order
+to make their system stable, but it may also help to improve longer range prediction skill. In a
+free-running system, the impact of parameter perturbations on output from previous time steps
+would need to be taken into account, on top of their impact in the time step corresponding to
+the observation. The \backpropagation through time" algorithm [
+          <xref ref-type="bibr" rid="ref53">Werbos, 1990</xref>
+          ] that is used in
+recurrent ANNs [
+          <xref ref-type="bibr" rid="ref17">Funahashi and Nakamura, 1993</xref>
+          ] could be used. In a model with multiple grid
+points, if the Earth system learning algorithm is \local", then the e ect of varying the algorithm's
+parameters on predictions at nearby grid points probably needs to be taken into account as well as
+the e ect on the predictions through multiple time steps|the backpropagation needs to be done
+\backwards through time and sideways through space". This is because tendencies at a given
+grid point depend on the system state at nearby grid points, and so prediction errors at those
+points at earlier time steps need to be accounted for.
+          <xref ref-type="bibr" rid="ref13 ref6">(It seems desirable for the algorithm to
+take inputs only from local grid points in order to be easier to implement in parallel computing
+environments [Dueben and Bauer, 2018] and to respect symmetry of the physical equations with
+respect to spatial translation.)</xref>
+          For error-correcting algorithms, this approach requires the tangent
+linear approximation of the remainder of the model, which is related to the adjoint models that are
+often used in data assimilation [
+          <xref ref-type="bibr" rid="ref15">Errico, 1997</xref>
+          ], and have been developed for some models of Earth
+system components [e.g.
+          <xref ref-type="bibr" rid="ref24">Janiskova and Lopez, 2013</xref>
+          ;
+          <xref ref-type="bibr" rid="ref29">Lea et al., 2015</xref>
+          ].
+        </p>
+        <p>The data used for training algorithms also needs to be considered. Dueben and Bauer [2018]
+suggest using reanalysis data. Although reanalysis data is imperfect, it is likely to have smaller
+climate biases than existing dynamical models, enabling the algorithms to yield performance
+improvements. A possible next step would be to recalculate the reanalyis using the improved model,
+combining information from this model and observations to get a yet better estimate of climate
+statistics. This could then be used to train better algorithms, and so on, yielding further upward
+steps in performance, as well as an optimal estimate of past weather given our observations.</p>
+      </sec>
+      <sec id="sec-4-2">
+        <title>3.2 Application to problems beyond increasing prediction skill with a stationary climate</title>
+        <p>
+          Error-correcting algorithms in dynamical models may be useful for addressing problems besides
+improving simulation skill. For example, if they do a good job at correcting large model errors, then it
+may be possible to understand from them how model components like conventional
+parameterisation schemes can be improved, making use of advances in interpreting the workings of algorithms
+like ANNs [e.g.
+          <xref ref-type="bibr" rid="ref43">Ribeiro et al., 2016</xref>
+          ]. They could also help to constrain stochastic
+parameterisations [Palmer, 2001;
+          <xref ref-type="bibr" rid="ref52">Watson et al., 2015</xref>
+          ] by placing an upper bound on the size of the component
+of the tendencies that is not predictable given the variables on the coarse grid, an irreducible
+error for a given model resolution, which can be modelled stochastically. Generative-adversarial
+algorithms [
+          <xref ref-type="bibr" rid="ref21">Goodfellow et al., 2014</xref>
+          ] could also nd better ways to model the e ects of unresolved
+ow stochastically [Xie et al., 2018; Gagne II, DJ et al., \Machine Learning for Stochastic
+Parameterization: Generative Adversarial Networks in the Lorenz '96 Model", in preparation] .
+        </p>
+        <p>
+          The ability to vary the complexity of algorithms like ANNs in a systematic way to create a
+model ensemble also allows for testing of the seamless prediction paradigm|the idea that models
+that have better short-range prediction skill also have better long-range skill, which would mean
+that metrics of weather forecast skill would be informative about models' abilities to simulate the
+climate response to anthropogenic forcing [
+          <xref ref-type="bibr" rid="ref38">Palmer et al., 2008</xref>
+          ;
+          <xref ref-type="bibr" rid="ref33">Matsueda et al., 2016</xref>
+          ]. Alternative
+methods of creating an ensemble of models such as by perturbing model parameters may generally
+struggle to give any skill improvements, so it cannot be seen if climate simulation skill improves as
+short-range prediction skill gets better. In the Lorenz '96 system studied here, correlations between
+the single-tendency prediction error in the validation dataset ( gure 1, right) and the forecast and
+climate skill diagnostics shown in gure 4 have magnitudes between 0.63 and 0.70. Correlations
+between the forecast RMSE at lead time 1MTU ( gure 4, top right) and the climate mean and KS
+statistic ( gure 4, bottom panels) are 0.57 and 0.81 respectively. This quanti es the relationship
+between short-range and long-range skill in this system when using error-correcting ANNs,
+showing that improvements in predictions at shorter lead times do indeed tend to be associated with
+improvements in long-range predictions. However, as noted earlier, the correspondence is not
+perfect, and the improvements made to long-term climate diagnostics by using ANNs are considerably
+smaller than what might be expected given the improvements made to single-timestep tendency
+predictions. Therefore the seamless prediction paradigm does not apply fully. It would be very
+interesting to see how well it applies in Earth system models, given the correspondence that has been
+identi ed between biases in short-range forecasts and simulated cli
+          <xref ref-type="bibr" rid="ref32">mate [Ma et al., 2013</xref>
+          ;
+          <xref ref-type="bibr" rid="ref48">Sexton
+et al., 2019</xref>
+          ].
+        </p>
+        <p>
+          Another interesting question is whether using statistical learning algorithms within Earth system
+models could help to give more accurate simulations of the impacts of anthropogenic climate change.
+This is challenging because this requires making predictions about conditions that are dissimilar
+from those we have observed, so that a good representation of the underlying dynamics of the
+system is necessary. O'Gorman and Dwyer [2018] found that their emulation of a convection
+parameterisation could not reproduce the e ect of climate change well when it was trained only
+in a stationary \control" climate. However, statistical approaches such as optimal ngerprinting
+are well-established in work on detection and attribution of climate change and can be used to
+estimate the extent to which a given model is over- or under-estimating the response to a particular
+forcing [
+          <xref ref-type="bibr" rid="ref5">Bindo et al., 2013</xref>
+          ]. The climate change signal in individual weather events also appears
+clearer when dynamical variability is controlled for, which has been done previously using weather
+analogues [e.g.
+          <xref ref-type="bibr" rid="ref58">Yiou et al., 2007</xref>
+          ;
+          <xref ref-type="bibr" rid="ref8">Cattiaux et al., 2010</xref>
+          ]. This suggests that there is scope for learning
+the e ects of anthropogenic emissions more precisely within a model that can also accurately take
+into account all of the other in uences on individual weather events. Even if such a model would
+not be trusted for projecting the impacts of large climatic changes without people being able to
+understand the calculations behind its predictions, it may still be useful for problems such as
+the attribution of observed extreme weather events [
+          <xref ref-type="bibr" rid="ref2">Allen, 2003</xref>
+          ; National Academies of Sciences
+Engineering and Medicine, 2016], for which extrapolation beyond observed conditions is not so
+much of a concern.
+4
+        </p>
+      </sec>
+    </sec>
+    <sec id="sec-5">
+      <title>Conclusions</title>
+      <p>It has been shown that arti cial neural networks can learn to correct errors of a coarse-resolution
+model of a chaotic dynamical system (the Lorenz '96 system), resulting in stable simulations that
+have both improved skill in initialised forecasts and better long-term climate statistics.
+Improvements are found for a wide range of ANN structures, showing that they are quite robust.</p>
+      <p>The ANNs used here could reduce errors in single time step predictions by up to about 40%, and
+it seems that the errors could be reduced yet further if the ANNs were increased in size ( gure 1),
+though it is not the aim here to nd the best possible performance. Errors of predicted
+singletimestep tendencies become gradually smaller as the ANN complexity increases ( gure 1), and
+there does not appear to be a substantial problem due to the training getting stuck in poor local
+minima. The models with ANNs also give good predictions of extreme tendencies that were not
+seen in the model training stage ( gure 3).</p>
+      <p>
+        In initialised \medium-range" forecasts, the improvement in the absolute anomaly correlation
+coe cient and root mean squared error was only a few percent at lead times of 1MTU.
+However, this was 50% of the maximum possible improvement in the median case, determined by
+comparison with forecasts made by the Truth model with the same initial condition perturbations.
+The improvement of climate statistics was modest, with improvements up to 15% in the climate
+Kolmogorov-Smirnov statistic and no discernible improvement in the time-mean state. This may
+be because the model without an ANN was already actually quite skilful at predicting the Truth
+system's behaviour|for example, gure 3 shows that its predicted tendencies are always quite close
+to the true tendencies. For models of Earth's atmosphere, coarse-graining studies nd much worse
+agreement between tendencies predicted by models and estimated true tendencies [e.g.
+        <xref ref-type="bibr" rid="ref50">Shutts and
+Palmer, 2007</xref>
+        ;
+        <xref ref-type="bibr" rid="ref49">Shutts and Pallares, 2014</xref>
+        ], suggesting that there may be much more room for
+improvement using machine learning. However, as discussed in section 3.1, getting large bene ts in
+longer range skill may require training algorithms to target improvements on time scales longer
+than single time steps.
+      </p>
+      <p>
+        These results support the idea that ANNs (or other machine learning algorithms) could help
+to reduce errors in dynamical Earth system simulations by learning a better representation of the
+physical equations from observations or from more realistic models that are too expensive to use
+generally in weather and climate prediction [Dueben and Bauer, 2018]. However, it can be far easier
+to use ANNs to correct the output of an existing model than to train ANNs to simulate the entire
+system, because far smaller ANNs can be used and much less data is required for training the ANNs
+        <xref ref-type="bibr" rid="ref59 ref6">(it was also shown by Jia et al. [2018] that error-correcting ANNs require less data, in the context
+of simulating lake temperatures)</xref>
+        . Also, Earth system models typically relate dozens of inputs and
+outputs at every grid point, but an error-correcting system can produce performance improvements
+whilst only considering a subset of the models' inputs and outputs, meaning it is possible to begin
+demonstrating improvements without reproducing the complexity of the full model. This is valuable
+because the more complex the ANN that is required, the harder it is generally to nd a training
+method that produces good results. This method also utilises the physical understanding embedded
+in the existing parameterisation schemes, and the error-corrections should only become large in
+situations when the schemes do not perform well, reducing concerns about their reliability. This
+makes this approach more appropriate for use in a research program to investigate the potential
+for ANNs to reduce model errors and to begin producing operational improvements. The next step
+is to test whether the method works as well in models of components of the Earth system.
+      </p>
+      <p>
+        The main drawback of this approach compared to training an algorithm to simulate the full
+system is that the computational cost of the model cannot be reduced. Using algorithms like ANNs
+to learn to represent the full system's dynamics may therefore be the approach adopted in the long
+run, but developing systems to learn to correct model errors will give invaluable insights about
+how to achieve this in the medium term, and help to demonstrate whether attempting to learn a
+better representation of the full dynamics from observations or expensive models is likely to give
+a substantial improvement in forecast skill.
+        <xref ref-type="bibr" rid="ref13 ref13 ref19 ref19 ref28 ref40 ref41 ref41 ref7 ref9">(There is also nothing to preclude an error-correcting
+algorithm being used in conjunction with emulators of an existing model's parameterisation schemes
+or high-resolution simulations that do reduce the computational cost [e.g. Chevallier et al., 1998;
+Krasnopolsky et al., 2010; Brenowitz and Bretherton, 2018; Gentine et al., 2018; Rasp et al., 2018;
+O'Gorman and Dwyer, 2018].)</xref>
+        Models of the Lorenz '96 system using ANNs to predict the full
+tendency were found to achieve similar performance to the models with error-correcting ANNs, just
+requiring larger ANNs to do so (not shown). Therefore there is nothing in the results presented
+here to preclude using ANNs in place of physically-derived models eventually. The two methods
+can be used in a complementary way in a research programme.
+      </p>
+    </sec>
+    <sec id="sec-6">
+      <title>Acknowledgments</title>
+      <p>I thank Peter Dueben and members of Tim Palmer's research group, particularly Matthew Chantry
+and Jan Ackmann, for stimulating discussions about this work, and also Myles Allen, Tim Woollings
+and Tim Palmer for supervisory support. I also thank two anonymous reviewers for their
+constructive comments. I received funding from European Research Council grant 291406 and Natural
+Environment Research Council grant NE/P002099/1. No external data sources are required to reproduce
+the results presented in the manuscript. A Jupyter notebook for training and evaluating the models
+with ANNs can be found at https://github.com/PAGWatson/Lorenz96 and neural networks.
+Jia X, Willard J, Karpatne A, Read J, Zwart J, Steinbach M, Kumar V. 2018. Physics Guided RNNs
+for Modeling Dynamical Systems: A Case Study in Simulating Lake Temperature Pro les. ArXiv
+e-prints : 1810.13 075.
+Karpatne A, Watkins W, Read J, Kumar V. 2017b. Physics-guided Neural Networks (PGNN): An
+Application in Lake Temperature Modeling. ArXiv e-prints : 1710.11 431.
+Kingma DP, Ba J. 2014. Adam: A method for stochastic optimization. ArXiv e-prints : 1412.6980.
+O'Gorman PA, Dwyer JG. 2018. Using machine learning to parameterize moist convection:
+potential for modeling of climate, climate change and extreme events. ArXiv e-prints : 1806.11 037doi:
+10.1007/s10666-012-9340-4.</p>
+      <p>Palmer T. 2001. A nonlinear dynamical perspective on model error: A proposal for non-local
+stochastic-dynamic parametrization in weather and climate prediction models. Q. J. R. Meteorol.</p>
+      <p>Soc. 127: 279{304.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <string-name>
+            <surname>Alexander</surname>
+            <given-names>MJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Geller</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>McLandress</surname>
+            <given-names>C</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Polavarapu</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Preusse</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sassi</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sato</surname>
+            <given-names>K</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Eckermann</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ern</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hertzog</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kawatani</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Pulido</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shaw</surname>
+            <given-names>TA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sigmond</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Vincent</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Watanabe</surname>
+            <given-names>S.</given-names>
+          </string-name>
+          <year>2010</year>
+          .
+          <article-title>Recent developments in gravity-wave e ects in climate models and the global distribution of gravity-wave momentum ux from observations and</article-title>
+          <string-name>
+            <given-names>models. Q. J. R.</given-names>
+            <surname>Meteorol</surname>
+          </string-name>
+          . Soc.
+          <volume>136</volume>
+          (
+          <issue>650</issue>
+          ):
+          <volume>1103</volume>
+          {1124, doi:10.1002/qj.637.
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          <string-name>
+            <surname>Allen</surname>
+            <given-names>M.</given-names>
+          </string-name>
+          <year>2003</year>
+          .
+          <article-title>Liability for climate change</article-title>
+          .
+          <source>Nature</source>
+          <volume>421</volume>
+          :
+          <fpage>891</fpage>
+          {892, doi:10.1016/S0262-
+          <volume>4079</volume>
+          (
+          <issue>10</issue>
+          )
+          <fpage>62047</fpage>
+          -
+          <lpage>7</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          <string-name>
+            <surname>Arakawa A.</surname>
+          </string-name>
+          <year>2004</year>
+          .
+          <article-title>The cumulus parameterization problem: Past, present, and future</article-title>
+          .
+          <source>J. Clim</source>
+          .
+          <volume>17</volume>
+          :
+          <issue>2493</issue>
+          {
+          <fpage>2525</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          <string-name>
+            <surname>Arnold</surname>
+            <given-names>H</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moroz</surname>
+            <given-names>I</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Palmer</surname>
+            <given-names>T.</given-names>
+          </string-name>
+          <year>2013</year>
+          .
+          <article-title>Stochastic parametrizations and model uncertainty in the Lorenz '96 system</article-title>
+          .
+          <source>Phil. Trans. R. Soc. A 371</source>
+          , doi:10.1098/rsta.
+          <year>2011</year>
+          .
+          <volume>0479</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          <string-name>
+            <surname>Bindo</surname>
+            <given-names>NL</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Stott</surname>
+            <given-names>PA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>AchutaRao</surname>
+            <given-names>KM</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Allen</surname>
+            <given-names>MR</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gillett</surname>
+            <given-names>N</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gutzler</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hansingo</surname>
+            <given-names>K</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hegerl</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hu</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jain</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mokhov</surname>
+            <given-names>II</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Overland</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Perlwitz</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sebbari</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zhang</surname>
+            <given-names>X.</given-names>
+          </string-name>
+          <year>2013</year>
+          .
+          <article-title>Detection and Attribution of Climate Change: from Global to Regional</article-title>
+          .
+          <source>In: Clim. Chang</source>
+          .
+          <source>2013 Phys. Sci. Basis. Contrib. Work. Gr. I to Fifth Assess. Rep. Intergov. Panel Clim</source>
+          . Chang.,
+          <string-name>
+            <surname>Stocker</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Qin</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Plattner</surname>
+            <given-names>GK</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tignor</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Allen</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Boschung</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Nauels</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Xia</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bex</surname>
+            <given-names>V</given-names>
+          </string-name>
+          , Midgley P (eds),
+          <source>ch. 10</source>
+          , Cambridge University Press: Cambridge, United Kingdom and New York, NY, USA,
+          <source>ISBN ISBN 978-1-107-66182-0</source>
+          , pp.
+          <volume>867</volume>
+          {
+          <issue>952</issue>
+          , doi:10.1017/CBO9781107415324.028.
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          <string-name>
+            <surname>Bolton</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zanna</surname>
+            <given-names>L.</given-names>
+          </string-name>
+          <year>2019</year>
+          .
+          <article-title>Applications of Deep Learning to Ocean Data Inference</article-title>
+          and
+          <string-name>
+            <given-names>Subgrid</given-names>
+            <surname>Parameterization</surname>
+          </string-name>
+          .
+          <source>J. Adv. Model. Earth Syst</source>
+          .
+          <volume>11</volume>
+          (
+          <issue>1</issue>
+          ):
+          <volume>376</volume>
+          {399, doi:10.1029/2018MS001472.
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          <string-name>
+            <surname>Brenowitz</surname>
+            <given-names>ND</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bretherton</surname>
+            <given-names>CS</given-names>
+          </string-name>
+          .
+          <year>2018</year>
+          .
+          <source>Prognostic Validation of a Neural Network Uni ed Physics Parameterization. Geophys. Res. Lett</source>
+          .
+          <volume>45</volume>
+          (
+          <issue>12</issue>
+          ):
+          <volume>6289</volume>
+          {6298, doi:10.1029/2018GL078510.
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          <string-name>
+            <surname>Cattiaux</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Vautard</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Cassou</surname>
+            <given-names>C</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Yiou</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Masson-Delmotte</surname>
+            <given-names>V</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Codron</surname>
+            <given-names>F.</given-names>
+          </string-name>
+          <year>2010</year>
+          .
+          <article-title>Winter 2010 in Europe: A cold extreme in a warming climate</article-title>
+          .
+          <source>Geophys. Res. Lett</source>
+          .
+          <volume>37</volume>
+          (
+          <issue>20</issue>
+          ):
+          <fpage>L20</fpage>
+          704, doi: 10.1029/2010GL044613.
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          <string-name>
+            <surname>Chevallier</surname>
+            <given-names>C</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Cheruy</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Scott</surname>
+            <given-names>N</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chedin</surname>
+            <given-names>A.</given-names>
+          </string-name>
+          <year>1998</year>
+          .
+          <article-title>A Neural Network Approach for a Fast and Accurate Computation of a Longwave Radiative Budget</article-title>
+          .
+          <source>J. Appl. Meteorol</source>
+          .
+          <volume>37</volume>
+          :
+          <issue>1385</issue>
+          {1397, doi:10.1175/
+          <fpage>1520</fpage>
+          -
+          <lpage>0450</lpage>
+          (
+          <year>1998</year>
+          )037h1385:
+          <fpage>ANNAFAi2</fpage>
+          .0.co;
+          <volume>2</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          <string-name>
+            <surname>Chevallier</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Morcrette</surname>
+            <given-names>JJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Cheruy</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Scott NA</surname>
+          </string-name>
+          .
+          <year>2000</year>
+          .
+          <article-title>Use of a neural-network-based long-wave radiative-transfer scheme in the ECMWF atmospheric model</article-title>
+          .
+          <source>Q. J. R. Meteorol. Soc</source>
+          .
+          <volume>126</volume>
+          (
+          <issue>563</issue>
+          ):
+          <volume>761</volume>
+          {776, doi:10.1002/qj.49712656318.
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          <string-name>
+            <surname>Cooper</surname>
+            <given-names>FC</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zanna</surname>
+            <given-names>L.</given-names>
+          </string-name>
+          <year>2015</year>
+          .
+          <article-title>Optimisation of an idealised ocean model, stochastic parameterisation of sub-grid eddies</article-title>
+          .
+          <source>Ocean Model</source>
+          .
+          <volume>88</volume>
+          :
+          <issue>38</issue>
+          {53, doi:10.1016/j.ocemod.
+          <year>2014</year>
+          .
+          <volume>12</volume>
+          .014.
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          <string-name>
+            <surname>Cybenko G.</surname>
+          </string-name>
+          <year>1989</year>
+          .
+          <article-title>Approximation by superpositions of a sigmoidal function</article-title>
+          .
+          <source>Math. Control. Signals Syst</source>
+          .
+          <volume>2</volume>
+          (
+          <issue>4</issue>
+          ):
+          <volume>303</volume>
+          {314, doi:10.1007/BF02551274.
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          <string-name>
+            <surname>Dueben</surname>
+            <given-names>PD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bauer</surname>
+            <given-names>P.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Challenges and design choices for global weather and climate models based on machine learning</article-title>
+          .
+          <source>Geosci. Model Dev</source>
+          <volume>11</volume>
+          : 3999{4009, doi:10.5194/gmd-2018-148.
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          <string-name>
+            <surname>Efron</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tibshirani</surname>
+            <given-names>RJ</given-names>
+          </string-name>
+          .
+          <year>1994</year>
+          .
+          <article-title>An introduction to the bootstrap</article-title>
+          . CRC press: Boca Raton, FL.
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          <string-name>
+            <given-names>Errico</given-names>
+            <surname>RM</surname>
+          </string-name>
+          .
+          <year>1997</year>
+          .
+          <article-title>What Is an Adjoint Model? Bull</article-title>
+          .
+          <source>Am. Meteorol. Soc</source>
+          .
+          <volume>78</volume>
+          (
+          <issue>11</issue>
+          ):
+          <volume>2577</volume>
+          {2592, doi: 10.1175/
+          <fpage>1520</fpage>
+          -
+          <lpage>0477</lpage>
+          (
+          <year>1997</year>
+          )
+          <article-title>078h2577:WIAAMi2.0</article-title>
+          .CO;
+          <volume>2</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          <string-name>
+            <surname>Forssell</surname>
+            <given-names>U</given-names>
+          </string-name>
+          , Lindskog P.
+          <year>1997</year>
+          .
+          <article-title>Combining Semi-Physical and Neural Network Modeling: An Example ofIts Usefulness</article-title>
+          .
+          <source>IFAC Proc</source>
+          . Vol.
+          <volume>30</volume>
+          (
+          <issue>11</issue>
+          ):
+          <volume>767</volume>
+          {770, doi:10.1016/s1474-
+          <volume>6670</volume>
+          (
+          <issue>17</issue>
+          )
+          <fpage>42938</fpage>
+          -
+          <lpage>7</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          <string-name>
+            <given-names>Funahashi</given-names>
+            <surname>Ki</surname>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Nakamura</surname>
+            <given-names>Y.</given-names>
+          </string-name>
+          <year>1993</year>
+          .
+          <article-title>Approximation of dynamical systems by continuous time recurrent neural networks</article-title>
+          .
+          <source>Neural Networks</source>
+          <volume>6</volume>
+          (
+          <issue>6</issue>
+          ):
+          <volume>801</volume>
+          {806, doi:https://doi.org/10.1016/ S0893-
+          <volume>6080</volume>
+          (
+          <issue>05</issue>
+          )
+          <fpage>80125</fpage>
+          -
+          <lpage>X</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          <string-name>
+            <surname>Gaitan</surname>
+            <given-names>C</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Balaji</surname>
+            <given-names>V</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moore</surname>
+            <given-names>III B.</given-names>
+          </string-name>
+          <year>2016</year>
+          .
+          <article-title>Can we obtain viable alternatives to Manning's equation using genetic programming?</article-title>
+          <source>Artif. Intell. Res</source>
+          .
+          <volume>5</volume>
+          (
+          <issue>2</issue>
+          ), doi:10.5430/air.v5n2p92.
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          <string-name>
+            <surname>Gentine</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Pritchard</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Rasp</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Reinaudi</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Yacalis</surname>
+            <given-names>G.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <source>Could Machine Learning Break the Convection Parameterization Deadlock? Geophys. Res. Lett</source>
+          .
+          <volume>45</volume>
+          (
+          <issue>11</issue>
+          ):
+          <volume>5742</volume>
+          {5751, doi:10.1029/ 2018GL078202.
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          <string-name>
+            <surname>Goodfellow</surname>
+            <given-names>I</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bengio</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Courville</surname>
+            <given-names>A.</given-names>
+          </string-name>
+          <year>2016</year>
+          .
+          <article-title>Deep Learning</article-title>
+          . MIT Press: Cambridge, MA.
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          <string-name>
+            <surname>Goodfellow</surname>
+            <given-names>I</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Pouget-Abadie</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mirza</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Xu</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Warde-Farley</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ozair</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Courville</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bengio</surname>
+            <given-names>Y.</given-names>
+          </string-name>
+          <year>2014</year>
+          .
+          <article-title>Generative adversarial nets</article-title>
+          .
+          <source>In: Adv. Neural Inf. Process. Syst</source>
+          . pp.
+          <volume>2672</volume>
+          {
+          <fpage>2680</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          <string-name>
+            <surname>He</surname>
+            <given-names>K</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Zhang</surname>
+            <given-names>X</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ren</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sun</surname>
+            <given-names>J.</given-names>
+          </string-name>
+          <year>2016</year>
+          .
+          <article-title>Deep residual learning for image recognition</article-title>
+          .
+          <source>In: Proc. IEEE Conf. Comput. Vis. pattern Recognit</source>
+          . pp.
+          <volume>770</volume>
+          {
+          <fpage>778</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          <string-name>
+            <surname>Hourdin</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mauritsen</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gettelman</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Golaz</surname>
+            <given-names>JC</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Balaji</surname>
+            <given-names>V</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Duan</surname>
+            <given-names>Q</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Folini</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ji</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Klocke</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Qian</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Rauser</surname>
+            <given-names>F</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Rio</surname>
+            <given-names>C</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tomassini</surname>
+            <given-names>L</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Watanabe</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Williamson D</surname>
+          </string-name>
+          .
+          <year>2016</year>
+          .
+          <article-title>The art and science of climate model tuning</article-title>
+          .
+          <source>Bull. Am. Meteorol. Soc</source>
+          .
+          <volume>98</volume>
+          :
+          <issue>589</issue>
+          {602, doi:10.1175/
+          <string-name>
+            <surname>BAMS-D-</surname>
+          </string-name>
+          15-
+          <issue>00135</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          <string-name>
+            <surname>Janiskova</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lopez</surname>
+            <given-names>P.</given-names>
+          </string-name>
+          <year>2013</year>
+          .
+          <article-title>Linearized Physics for Data Assimilation at ECMWF</article-title>
+          .
+          <source>In: Data Assim. Atmos. Ocean. Hydrol. Appl.</source>
+          (Vol. II),
+          <string-name>
+            <surname>Park</surname>
+            <given-names>SK</given-names>
+          </string-name>
+          , Xu L (eds), Springer Berlin Heidelberg: Berlin, Heidelberg,
+          <source>ISBN 978-3-642-35088-7</source>
+          , pp.
+          <volume>251</volume>
+          {
+          <issue>286</issue>
+          , doi:10.1007/978-3-
+          <fpage>642</fpage>
+          -
+          <fpage>35088</fpage>
+          -7n 11.
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          <string-name>
+            <surname>Karpatne</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Atluri</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Faghmous</surname>
+            <given-names>JH</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Steinbach</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Banerjee</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ganguly</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shekhar</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Samatova</surname>
+            <given-names>N</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kumar</surname>
+            <given-names>V.</given-names>
+          </string-name>
+          <year>2017a</year>
+          .
+          <article-title>Theory-Guided Data Science: A New Paradigm for Scienti c Discovery from Data</article-title>
+          .
+          <source>IEEE Trans. Knowl. Data Eng</source>
+          .
+          <volume>29</volume>
+          (
+          <issue>10</issue>
+          ):
+          <volume>2318</volume>
+          {2331, doi:10.1109/tkde.
+          <year>2017</year>
+          .
+          <volume>2720168</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          <string-name>
+            <surname>Krasnopolsky</surname>
+            <given-names>V</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lin</surname>
+            <given-names>Y.</given-names>
+          </string-name>
+          <year>2012</year>
+          .
+          <article-title>A Neural Network Nonlinear Multimodel Ensemble to Improve Precipitation Forecasts over Continental US</article-title>
+          .
+          <source>Adv. Meteorol</source>
+          .
+          <year>2012</year>
+          :
+          <volume>649</volume>
+          450.
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          <string-name>
+            <surname>Krasnopolsky</surname>
+            <given-names>VM</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fox-Rabinovitz</surname>
+            <given-names>MS</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chalikov</surname>
+            <given-names>DV</given-names>
+          </string-name>
+          .
+          <year>2005</year>
+          .
+          <article-title>New Approach to Calculation of Atmospheric Model Physics: Accurate and Fast Neural Network Emulation of Longwave Radiation in a Climate Model</article-title>
+          .
+          <source>Mon. Weather Rev</source>
+          .
+          <volume>133</volume>
+          (
+          <issue>5</issue>
+          ):
+          <volume>1370</volume>
+          {1383, doi:10.1175/MWR2923.1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          <string-name>
+            <surname>Krasnopolsky</surname>
+            <given-names>VM</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fox-Rabinovitz</surname>
+            <given-names>MS</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hou</surname>
+            <given-names>YT</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lord</surname>
+            <given-names>SJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Belochitski</surname>
+            <given-names>AA</given-names>
+          </string-name>
+          .
+          <year>2010</year>
+          .
+          <article-title>Accurate and Fast Neural Network Emulations of Model Radiation for the NCEP Coupled Climate Forecast System: Climate Simulations and Seasonal Predictions</article-title>
+          .
+          <source>Mon. Weather Rev</source>
+          .
+          <volume>138</volume>
+          :
+          <year>1822</year>
+          {1842, doi:10.1175/2009MWR3149.1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          <string-name>
+            <surname>Lea</surname>
+            <given-names>DJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mirouze</surname>
+            <given-names>I</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Martin</surname>
+            <given-names>MJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>King</surname>
+            <given-names>RR</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hines</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Walters</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Thurlow</surname>
+            <given-names>M.</given-names>
+          </string-name>
+          <year>2015</year>
+          .
+          <article-title>Assessing a New Coupled Data Assimilation System Based on the Met O ce Coupled Atmosphere-Land-OceanSea Ice Model</article-title>
+          .
+          <source>Mon. Weather Rev</source>
+          .
+          <volume>143</volume>
+          (
+          <issue>11</issue>
+          ):
+          <volume>4678</volume>
+          {4694, doi:10.1175/
+          <string-name>
+            <surname>MWR-D-</surname>
+          </string-name>
+          15-
+          <issue>0174</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          <string-name>
+            <surname>LeCun</surname>
+            <given-names>YA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bottou</surname>
+            <given-names>L</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Orr</surname>
+            <given-names>GB</given-names>
+          </string-name>
+          ,
+          <source>Muller KR</source>
+          .
+          <year>2012</year>
+          .
+          <article-title>E cient BackProp</article-title>
+          .
+          <source>In: Neural Networks Tricks Trade. Lect. Notes Comput. Sci</source>
+          . vol
+          <volume>7700</volume>
+          ,
+          <string-name>
+            <surname>Montavon</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Orr</surname>
+            <given-names>GB</given-names>
+          </string-name>
+          , Muller KR (eds), Springer: Berlin, Heidelberg, 2nd edn,
+          <source>ISBN 978-3-642-35289-8</source>
+          , pp.
+          <volume>9</volume>
+          {
+          <issue>48</issue>
+          , doi:10.1007/978-3-
+          <fpage>642</fpage>
+          -
+          <fpage>35289</fpage>
+          -8n 3.
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          <string-name>
+            <surname>Lorenz E.</surname>
+          </string-name>
+          <year>1996</year>
+          .
+          <article-title>Predictability - a problem partly solved</article-title>
+          .
+          <source>In: Proc. Semin. Predict</source>
+          . Vol.
+          <volume>1</volume>
+          . ECMWF, Reading, UK, pp.
+          <volume>1</volume>
+          {
+          <fpage>18</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          <string-name>
+            <surname>Ma</surname>
+            <given-names>HY</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Xie</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Klein</surname>
+            <given-names>SA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Williams</surname>
+            <given-names>KD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Boyle</surname>
+            <given-names>JS</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bony</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Douville</surname>
+            <given-names>H</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fermepin</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Medeiros</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tyteca</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Watanabe</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Williamson D</surname>
+          </string-name>
+          .
+          <year>2013</year>
+          .
+          <article-title>On the Correspondence between Mean Forecast Errors and Climate Errors in CMIP5 Models</article-title>
+          . J. Clim.
+          <volume>27</volume>
+          (
+          <issue>4</issue>
+          ):
+          <volume>1781</volume>
+          {1798, doi:10.1175/
+          <string-name>
+            <surname>JCLI-D-</surname>
+          </string-name>
+          13-
+          <issue>00474</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          <string-name>
+            <surname>Matsueda</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Weisheimer</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Palmer</surname>
+            <given-names>TN</given-names>
+          </string-name>
+          .
+          <year>2016</year>
+          .
+          <article-title>Calibrating Climate Change Time-Slice Projections with Estimates of Seasonal Forecast Reliability</article-title>
+          .
+          <source>J. Clim</source>
+          .
+          <volume>29</volume>
+          (
+          <issue>10</issue>
+          ):
+          <volume>3831</volume>
+          {3840, doi: 10.1175/
+          <string-name>
+            <surname>JCLI-D-</surname>
+          </string-name>
+          15-
+          <issue>0087</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          <string-name>
+            <surname>McGovern</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Elmore</surname>
+            <given-names>KL</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gagne</surname>
+            <given-names>DJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Haupt</surname>
+            <given-names>SE</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Karstens</surname>
+            <given-names>CD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lagerquist</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Smith</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Williams</surname>
+            <given-names>JK</given-names>
+          </string-name>
+          .
+          <year>2017</year>
+          .
+          <article-title>Using Arti cial Intelligence to Improve Real-Time Decision-Making for High-Impact Weather</article-title>
+          .
+          <source>Bull. Am. Meteorol. Soc</source>
+          .
+          <volume>98</volume>
+          (
+          <issue>10</issue>
+          ):
+          <year>2073</year>
+          {2090, doi:10.1175/
+          <string-name>
+            <surname>BAMS-D-</surname>
+          </string-name>
+          16-
+          <issue>0123</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          <string-name>
+            <surname>Morcrette</surname>
+            <given-names>JJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Mozdzynski</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Leutbecher</surname>
+            <given-names>M.</given-names>
+          </string-name>
+          <year>2008</year>
+          .
+          <article-title>A Reduced Radiation Grid for the ECMWF Integrated Forecasting System</article-title>
+          .
+          <source>Mon. Weather Rev</source>
+          .
+          <volume>136</volume>
+          (
+          <issue>12</issue>
+          ):
+          <volume>4760</volume>
+          {4772, doi:10.1175/ 2008MWR2590.1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          <source>National Academies of Sciences Engineering and Medicine</source>
+          .
+          <year>2016</year>
+          .
+          <article-title>Attribution of Extreme Weather Events in the Context of Climate Change</article-title>
+          . The National Academies Press: Washington, DC,
+          <source>ISBN 978-0-309-38094-2</source>
+          , doi:10.17226/21852.
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          <string-name>
+            <given-names>Nielsen</given-names>
+            <surname>MA</surname>
+          </string-name>
+          .
+          <year>2015</year>
+          .
+          <article-title>Neural Networks and Deep Learning</article-title>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref38">
+        <mixed-citation>
+          <string-name>
+            <surname>Palmer</surname>
+            <given-names>TN</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Doblas-Reyes</surname>
+            <given-names>FJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Weisheimer</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Rodwell MJ</surname>
+          </string-name>
+          .
+          <year>2008</year>
+          .
+          <article-title>Toward seamless prediction: Calibration of climate change projections using seasonal forecasts</article-title>
+          .
+          <source>Bull. Am. Meteorol. Soc</source>
+          .
+          <volume>89</volume>
+          :
+          <issue>459</issue>
+          {470, doi:10.1175/BAMS-89-4-459.
+        </mixed-citation>
+      </ref>
+      <ref id="ref39">
+        <mixed-citation>
+          <string-name>
+            <surname>Pathak</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wikner</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Fussell</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chandra</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hunt</surname>
+            <given-names>BR</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Girvan</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ott</surname>
+            <given-names>E.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Hybrid forecasting of chaotic processes: Using machine learning in conjunction with a knowledge-based model</article-title>
+          .
+          <source>Chaos</source>
+          <volume>28</volume>
+          (
+          <issue>4</issue>
+          ),
+          <source>doi:10.1063/1</source>
+          .5028373.
+        </mixed-citation>
+      </ref>
+      <ref id="ref40">
+        <mixed-citation>
+          <string-name>
+            <surname>Rasp</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lerch</surname>
+            <given-names>S.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Neural networks for post-processing ensemble weather forecasts</article-title>
+          .
+          <source>ArXiv</source>
+          e-prints :
+          <year>1805</year>
+          .
+          <volume>09</volume>
+          091v1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref41">
+        <mixed-citation>
+          <string-name>
+            <surname>Rasp</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Pritchard</surname>
+            <given-names>MS</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Gentine</surname>
+            <given-names>P.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Deep learning to represent subgrid processes in climate models</article-title>
+          .
+          <source>Proc. Natl. Acad. Sci</source>
+          .
+          <volume>115</volume>
+          (
+          <issue>39</issue>
+          ):
+          <volume>9684</volume>
+          {9689, doi:10.1073/pnas.1810286115.
+        </mixed-citation>
+      </ref>
+      <ref id="ref42">
+        <mixed-citation>
+          <string-name>
+            <surname>Reichstein</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Camps-Valls</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Stevens</surname>
+            <given-names>B</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jung</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Denzler</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Carvalhais</surname>
+            <given-names>N</given-names>
+          </string-name>
+          ,
+          <year>Prabhat</year>
+          .
+          <year>2019</year>
+          .
+          <article-title>Deep learning and process understanding for data-driven Earth system science</article-title>
+          .
+          <source>Nature</source>
+          <volume>566</volume>
+          :
+          <fpage>195</fpage>
+          {204, doi:10.1038/s41586-019-0912-1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref43">
+        <mixed-citation>
+          <string-name>
+            <surname>Ribeiro</surname>
+            <given-names>MT</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Singh</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Guestrin</surname>
+            <given-names>C.</given-names>
+          </string-name>
+          <year>2016</year>
+          .
+          <article-title>Why should I trust you?: Explaining the predictions of any classi er</article-title>
+          .
+          <source>In: Proc. 22nd ACM SIGKDD Int. Conf. Knowl. Discov. data Min. ACM, ISBN 1450342329</source>
+          , pp.
+          <volume>1135</volume>
+          {
+          <fpage>1144</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref44">
+        <mixed-citation>
+          <string-name>
+            <surname>Rudy</surname>
+            <given-names>SH</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Brunton</surname>
+            <given-names>SL</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Proctor</surname>
+            <given-names>JL</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Kutz</surname>
+            <given-names>JN</given-names>
+          </string-name>
+          .
+          <year>2017</year>
+          .
+          <article-title>Data-driven discovery of partial di erential equations</article-title>
+          .
+          <source>Sci. Adv</source>
+          .
+          <volume>3</volume>
+          :
+          <issue>e1602</issue>
+          614, doi:10.1126/sciadv.1602614.
+        </mixed-citation>
+      </ref>
+      <ref id="ref45">
+        <mixed-citation>
+          <string-name>
+            <surname>Scher</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Messori</surname>
+            <given-names>G.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Predicting weather forecast uncertainty with machine learning</article-title>
+          .
+          <source>Q. J. R. Meteorol. Soc</source>
+          .
+          <volume>144</volume>
+          (
+          <issue>717</issue>
+          ):
+          <volume>2830</volume>
+          {2841, doi:10.1002/qj.3410.
+        </mixed-citation>
+      </ref>
+      <ref id="ref46">
+        <mixed-citation>
+          <string-name>
+            <surname>Schmidt</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lipson</surname>
+            <given-names>H.</given-names>
+          </string-name>
+          <year>2009</year>
+          .
+          <article-title>Distilling Free-Form Natural Laws from Experimental Data</article-title>
+          .
+          <source>Science</source>
+          <volume>324</volume>
+          (
+          <issue>5923</issue>
+          ):
+          <volume>81</volume>
+          {85, doi:10.1126/science.1165893.
+        </mixed-citation>
+      </ref>
+      <ref id="ref47">
+        <mixed-citation>
+          <string-name>
+            <surname>Schneider</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lan</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Stuart</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Teixeira</surname>
+            <given-names>J.</given-names>
+          </string-name>
+          <year>2017</year>
+          .
+          <article-title>Earth System Modeling 2.0: A Blueprint for Models That Learn From Observations and Targeted High-Resolution Simulations</article-title>
+          .
+          <source>Geophys. Res. Lett. doi:10</source>
+          .1002/2017GL076101.
+        </mixed-citation>
+      </ref>
+      <ref id="ref48">
+        <mixed-citation>
+          <string-name>
+            <surname>Sexton</surname>
+            <given-names>DMH</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Karmalkar</surname>
+            <given-names>AV</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Murphy</surname>
+            <given-names>JM</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Williams</surname>
+            <given-names>KD</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Boutle</surname>
+            <given-names>IA</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Morcrette</surname>
+            <given-names>CJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Stirling</surname>
+            <given-names>AJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Vosper</surname>
+            <given-names>SB</given-names>
+          </string-name>
+          .
+          <year>2019</year>
+          .
+          <article-title>Finding plausible and diverse variants of a climate model. Part 1: establishing the relationship between errors at weather and climate time scales</article-title>
+          .
+          <source>Clim. Dyn. doi:10.1007/ s00382-019-04625-3.</source>
+        </mixed-citation>
+      </ref>
+      <ref id="ref49">
+        <mixed-citation>
+          <string-name>
+            <surname>Shutts</surname>
+            <given-names>G</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Pallares</surname>
+            <given-names>AC</given-names>
+          </string-name>
+          .
+          <year>2014</year>
+          .
+          <article-title>Assessing parametrization uncertainty associated with horizontal resolution in numerical weather prediction models</article-title>
+          .
+          <source>Phil. Trans. R. Soc. A</source>
+          <volume>372</volume>
+          : 20130 284, doi: 10.1098/rsta.
+          <year>2013</year>
+          .
+          <volume>0284</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref50">
+        <mixed-citation>
+          <string-name>
+            <surname>Shutts</surname>
+            <given-names>GJ</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Palmer</surname>
+            <given-names>TN</given-names>
+          </string-name>
+          .
+          <year>2007</year>
+          .
+          <article-title>Convective forcing uctuations in a cloud-resolving model: Relevance to the stochastic parameterization problem</article-title>
+          .
+          <source>J. Clim</source>
+          .
+          <volume>20</volume>
+          :
+          <issue>187</issue>
+          {202, doi:10.1175/JCLI3954.1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref51">
+        <mixed-citation>
+          <string-name>
+            <surname>Silver</surname>
+            <given-names>D</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Schrittwieser</surname>
+            <given-names>J</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Simonyan</surname>
+            <given-names>K</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Antonoglou</surname>
+            <given-names>I</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Huang</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Guez</surname>
+            <given-names>A</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hubert</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Baker</surname>
+            <given-names>L</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lai</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Bolton</surname>
+            <given-names>A.</given-names>
+          </string-name>
+          <year>2017</year>
+          .
+          <article-title>Mastering the game of Go without human knowledge</article-title>
+          .
+          <source>Nature</source>
+          <volume>550</volume>
+          (
+          <issue>7676</issue>
+          ):
+          <fpage>354</fpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref52">
+        <mixed-citation>
+          <string-name>
+            <surname>Watson</surname>
+            <given-names>PAG</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Christensen</surname>
+            <given-names>HM</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Palmer</surname>
+            <given-names>TN</given-names>
+          </string-name>
+          .
+          <year>2015</year>
+          .
+          <article-title>Does the ECMWF IFS Convection Parameterization with Stochastic Physics Correctly Reproduce Relationships between Convection and the Large-Scale State? J. Atmos</article-title>
+          . Sci.
+          <volume>72</volume>
+          :
+          <issue>236</issue>
+          {242, doi:10.1175/
+          <string-name>
+            <surname>JAS-D-</surname>
+          </string-name>
+          14-
+          <issue>0252</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref53">
+        <mixed-citation>
+          <string-name>
+            <given-names>Werbos</given-names>
+            <surname>PJ</surname>
+          </string-name>
+          .
+          <year>1990</year>
+          .
+          <article-title>Backpropagation through time: what it does and how to do it</article-title>
+          .
+          <source>Proc. IEEE</source>
+          <volume>78</volume>
+          (
+          <issue>10</issue>
+          ):
+          <volume>1550</volume>
+          {1560, doi:10.1109/5.58337.
+        </mixed-citation>
+      </ref>
+      <ref id="ref54">
+        <mixed-citation>
+          <string-name>
+            <surname>Wilks</surname>
+            <given-names>DS</given-names>
+          </string-name>
+          .
+          <year>2005</year>
+          .
+          <article-title>E ects of stochastic parametrizations in the Lorenz '96</article-title>
+          <string-name>
+            <given-names>system. Q. J. R.</given-names>
+            <surname>Meteorol</surname>
+          </string-name>
+          . Soc.
+          <volume>131</volume>
+          (
+          <issue>606</issue>
+          ):
+          <volume>389</volume>
+          {407, doi:10.1256/qj.04.03.
+        </mixed-citation>
+      </ref>
+      <ref id="ref55">
+        <mixed-citation>
+          <string-name>
+            <surname>Wu</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tegmark</surname>
+            <given-names>M.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Toward an AI Physicist for Unsupervised Learning</article-title>
+          . ArXiv e-prints :
+          <year>1810</year>
+          .
+          <volume>10</volume>
+          525.
+        </mixed-citation>
+      </ref>
+      <ref id="ref56">
+        <mixed-citation>
+          <string-name>
+            <surname>Xie</surname>
+            <given-names>Y</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Franz</surname>
+            <given-names>E</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chu</surname>
+            <given-names>M</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Thuerey</surname>
+            <given-names>N.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</article-title>
+          .
+          <source>ACM Trans. Graph</source>
+          .
+          <volume>37</volume>
+          (
+          <issue>4</issue>
+          ), doi:10.1145/3197517.3201304.
+        </mixed-citation>
+      </ref>
+      <ref id="ref57">
+        <mixed-citation>
+          <string-name>
+            <surname>Xu</surname>
+            <given-names>T</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Valocchi</surname>
+            <given-names>AJ</given-names>
+          </string-name>
+          .
+          <year>2015</year>
+          .
+          <article-title>Data-driven methods to improve base ow prediction of a regional groundwater model</article-title>
+          .
+          <source>Comput. Geosci</source>
+          .
+          <volume>85</volume>
+          :
+          <issue>124</issue>
+          {136, doi:10.1016/j.cageo.
+          <year>2015</year>
+          .
+          <volume>05</volume>
+          .016.
+        </mixed-citation>
+      </ref>
+      <ref id="ref58">
+        <mixed-citation>
+          <string-name>
+            <surname>Yiou</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Vautard</surname>
+            <given-names>R</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Naveau</surname>
+            <given-names>P</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Cassou</surname>
+            <given-names>C.</given-names>
+          </string-name>
+          <year>2007</year>
+          .
+          <article-title>Inconsistency between atmospheric dynamics and temperatures during the exceptional 2006/2007 fall/winter and recent warming in Europe</article-title>
+          .
+          <source>Geophys. Res. Lett</source>
+          .
+          <volume>34</volume>
+          (
+          <issue>21</issue>
+          ):
+          <volume>1</volume>
+          {7, doi:10.1029/2007GL031981.
+        </mixed-citation>
+      </ref>
+      <ref id="ref59">
+        <mixed-citation>
+          <string-name>
+            <surname>Zhang</surname>
+            <given-names>S</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Lin</surname>
+            <given-names>G.</given-names>
+          </string-name>
+          <year>2018</year>
+          .
+          <article-title>Robust data-driven discovery of governing physical laws with error bars</article-title>
+          .
+          <source>Proc. R. Soc. A</source>
+          <volume>474</volume>
+          : 20180 305, doi:10.1098/rspa.
+          <year>2018</year>
+          .
+          <volume>0305</volume>
+          .
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

@@ -1,0 +1,1946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Analytic Expressions for Stochastic Distances Between Relaxed Complex Wishart Distributions</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Alejandro C. Frery</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Member</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Abraa˜o D. C. Nascimento</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Renato J. Cintra</string-name>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Senior Member</string-name>
+        </contrib>
+      </contrib-group>
+      <abstract>
+        <p>-The scaled complex Wishart distribution is a widely used model for multilook full polarimetric SAR data whose adequacy has been attested in the literature. 3 Classification, segmentation, and image analysis techniques 1 which depend on this model have been devised, and many 0 of them employ some type of dissimilarity measure. In this 2 paper we derive analytic expressions for four stochastic rp distances between relaxed scaled complex Wishart distributions in their most general form and in important Aparticular cases. Using these distances, inequalities are 9 obtained which lead to new ways of deriving the Bartlett 1 and revised Wishart distances. The expressiveness of the ] four analytic distances is assessed with respect to the Lvariation of parameters. Such distances are then used for deriving new tests statistics, which are proved to have .Masymptotic chi-square distribution. Adopting the test size t a as a comparison criterion, a sensitivity study is performed ts by means of Monte Carlo experiments suggesting that [ the Bhattacharyya statistic outperforms all the others. The power of the tests is also assessed. Applications to v1 actual data illustrate the discrimination and homogeneity 7 identification capabilities of these distances. 41 Index Terms-statistics, image analysis, information the5 ory, polarimetric radar, contrast measures. . 4</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>-</title>
+      <p>
+        presents a comprehensive analysis of complex Gaussian
+models, along with the connection between the class of
+complex covariance matrices and the Wishart
+distribution. Indeed, the complex scaled Wishart distribution is
+widely adopted as a statistical model for multilook full
+polarimetric data [
+        <xref ref-type="bibr" rid="ref2">2</xref>
+        ].
+      </p>
+      <p>PolSAR sensors record intensity and relative phase
+data which can be presented as complex scattering
+matrices. In principle, these matrices consist of four complex
+elements SHH; SHV; SVH; and SVV, where H and V refer
+to the horizontal and vertical wave polarization states,</p>
+      <p>Conradsen et al. [13] proposed a methodology based respectively. Under the conditions of the reciprocity
+theon the likelihood-ratio test for the discrimination of two orem [18], [19], we have that SHV = SVH. This scenario
+Wishart distributed targets, leading to a test statistic that is realistic when natural targets are considered [13].
+takes into account the complex covariance matrices of In general, we may consider systems with p
+polarizaPolSAR images. In a similar fashion, hypothesis tests tion elements, which constitute a complex random vector
+for monopolarized SAR data were proposed in [14]. denoted by:
+II. THE COMPLEX WISHART DISTRIBUTION
+(1)
+y = (S1 S2
+where the superscript ‘t’ indicates vector transposition.</p>
+      <p>In PolSAR image processing, y is often admitted to obey
+the multivariate complex circular Gaussian distribution
+with zero mean [12], whose probability density function
+is:</p>
+      <p>In this paper, we present analytic expressions for the
+Kullback-Leibler, Re´nyi (of order ), Bhattacharyya,
+and Hellinger distances between scaled complex Wishart
+distributions in their most general form and in important
+particular cases. Frery et al [15] obtained analytical
+expressions for these distances, as well as for the 2
+distance, and they show that the last one is numerically
+unstable. Therefore, in the present work tests based on
+the 2 distance were not considered.</p>
+      <p>fy(y; ) = p1j j exp y 1y ;
+where j j is the determinant of a matrix or the absolute</p>
+      <p>We also verify that those distances present scale in- value of a scalar, the superscript ‘ ’ denotes the complex
+variance with respect to their covariance matrices. Using conjugate transpose of a vector, is the covariance
+such distances, we derive inequalities which depend on matrix of y given by
+covariance matrices; two among them, obtained from
+Kullback-Leibler and Hellinger distances, provide
+alternBaatritvleettfo[r5m]sdifsotarndceersi,vriensgpethcetivreelvyi.sed Wishart [16] and . . .</p>
+      <p>Considering the hypothesis test methodology proposed
+by Salicru´ et al. [17], the derived distances are multiplied
+by a coefficient which involves the sizes of two samples
+of PolSAR images. The asymptotic and finite-sample
+behavior of the resulting quantities is studied.</p>
+      <p>
+        Besides advancing the comparison of samples by
+means of their covariance matrices, the proposed dis- and Ef g is the statistical expectation operator. Besides
+tances are a venue for contrasting images rendered by being Hermitian and positive definite, the covariance
+different numbers of looks. matrix contains all the necessary information to
+characterize the backscattered data under analysis [
+        <xref ref-type="bibr" rid="ref2">2</xref>
+        ].
+      </p>
+      <p>In order to enhance the signal-to-noise ratio, L
+independent and identically distributed (iid) samples are
+usually averaged in order to form the L-looks covariance
+matrix [20]:</p>
+      <p>In order to quantify the sensitivity of the distances,
+we perform Monte Carlo experiments in several possible
+scenarios. We illustrate the behavior of these distances
+and their associated hypothesis tests with actual data.</p>
+      <p>This paper unfolds as follows. Section II presents the
+scaled and the relaxed complex Wishart distributions
+and estimators for their parameters. Section III recalls
+the background of stochastic dissimilarities. Section IV
+presents the analytic expressions of distances between
+Wishart models, with a new way to derive the Bartlett
+and the revised Wishart distances. Section V illustrates
+the application of these distances in PolSAR image
+discrimination. Section VI concludes the paper.</p>
+      <p>L
+Z = 1 X yiyi ;</p>
+      <p>L</p>
+      <p>i=1
+where yi, i = 1; 2; : : : ; L, are realizations of (1). Under
+the aforementioned hypotheses, Z follows a scaled
+complex Wishart distribution. Having and L as parameters,
+such law is characterized by the following probability
+density function:
+fZ (Z; ; L) =</p>
+      <p>LpLjZjL p
+j jL p(L)
+exp</p>
+      <p>L tr</p>
+      <p>1Z ; (2)
+p(p 1)=2 Qip=01 (L
+where p(L) = i), L p, ( )
+is the gamma function, and tr( ) is the trace operator.</p>
+      <p>This situation is denoted Z W( ; L), and this
+distribution satisfies EfZg = , which is a Hermitian
+positive definite matrix [20]. In practice, L is treated as a
+parameter and must be estimated. In [21], Anfinsen et al.
+removed the restriction L p. The resulting distribution
+has the same form as in (2) and is termed the relaxed
+Wishart distribution denoted as WR( ; n). This model
+accepts variations of n along the image, and will be
+assumed henceforth.</p>
+      <p>Due to its optimal asymptotic properties, the
+maximum likelihood (ML) estimation is employed to estimate</p>
+      <p>
+        and n. Let fZ1; Z2; : : : ; ZN g be a random sample
+of size N obeying the WR( ; n) distribution. If (i) it is
+assumed that the parameter n is a known quantity and
+(ii) the profile likelihood of fZ is considered in terms of
+, we establish the following estimator for [
+        <xref ref-type="bibr" rid="ref5">22</xref>
+        ]:
+b =
+1 XN Zi:
+      </p>
+      <p>N i=1
+Deriving the profile likelihood from (2) with respect to
+n we obtain:
+Fig. 1. EMISAR image (HH channel) with selected regions from
+Foulum.
+where (0)( ) is the digamma function [23, p. 258]. Thus,
+the solution of above nonlinear equation provides the
+ML estimator for n. Several estimation methods for n
+are discussed in [20].</p>
+      <p>
+        Fig. 1 presents a polarimetric SAR image obtained density collapses to a gamma density as demonstrated
+by an EMISAR sensor over surroundings of Foulum, in [
+        <xref ref-type="bibr" rid="ref8">25</xref>
+        ]:
+Denmark. The informed (nominal) number of looks is 8. nnZ0n 1
+tAycpceosrodfincgrotpos:S(ki)riwveirnteetr aral.pe[2(4B]1,)t,h(eii)armeaixetuxrheiboiftswtihnrteeer fZi (Zi0; n= i2; n) = i2n i (n) exp nZi0= i2 ;
+rape and winter wheat (B2), and (iii) beets (B3). Table I for i 2 fHH,HV,VVg, where i2 is the (i; i)-th entry of
+presents the resulting ML parameter estimates, as well as , and Zi0 is the (i; i)-th entry of the random matrix Z.
+the sample sizes. The closest estimate of n to the nom- In order to assess the data fittings, Table II presents the
+inal number of looks occurs at the most homogeneous Akaike information criterion (AIC) values and the sum
+scenario, i.e., with beets. Notice that two out of three of squares due to error (SSE) between the histogram
+ML estimates of the number of looks are higher than fk of for ZHH, and the fitted densities fbZHH;D(Zk0) with
+the nominal number of looks. Similar overestimation D 2 fW; WRg:
+was also noticed by Anfinsen et al. [20], who explained
+tohnisopcheaennosmceennaornioass. Iann oeuffrecctasoef, twheinsteprecrualpaer raenflde,cttoiona SSE = # Xpixels (fbZHH;#D(pZixk0e)ls fk)2 ;
+lesser extent, beets, appear smoother to the sensor than k=1
+homogeneous targets. where # pixels denote the number of considered pixels.
+      </p>
+      <p>
+        Fig. 2 depicts the empirical densities of data samples This measure was used in [
+        <xref ref-type="bibr" rid="ref9">26</xref>
+        ]. In all cases, the WR
+disfrom the selected regions. Additionally, the associated tribution presented the best fit for both measures. Table II
+fitted marginal densities WR( b ; nb) and W( b ; 8) are also shows the Kolmogorov-Smirnov (KS) statistic and
+displayed for comparison. In this case, the scaled Wishart its p-value. It is consistent with the other results, i.e., the
+scaled Wishart distribution provides better descriptions
+of the data.
+      </p>
+      <p>The most accurate fit is in region B2. The equivalent
+number of looks in this region is slightly smaller than the
+nominal one, as expected. These samples will be used
+to validate our proposed methods in Section IV-D.</p>
+      <p>(a) B1</p>
+      <p>
+        (b) B2
+(c) B3
+where 1 and 2 are parameter vectors. The densities
+are assumed to share a common support A: the cone
+of Hermitian positive definite matrices [
+        <xref ref-type="bibr" rid="ref14">31</xref>
+        ]. The (h;
+)divergence between fX and fY is defined by
+      </p>
+      <p>Dh(X; Y ) = h</p>
+      <p>Z</p>
+      <p>A
+fX (Z; 1)
+fY (Z; 2)</p>
+      <p>
+        (4)
+where h : (0; 1) ! [0; 1) is a strictly increasing
+function with h(0) = 0, : (0; 1) ! [0; 1) is a convex
+function, and indeterminate forms are assigned the value
+zero (we assume the conventions (i) (0) = limx#0 f (x),
+(ii) 0 (0=0) 0, and, for a &gt; 0, (iii) 0 (a=0) =
+lim #0 (a= ) = a limx!1 (x)=x) [32, pp. 31]. In
+particular, Ali and Silvey [
+        <xref ref-type="bibr" rid="ref12">29</xref>
+        ] proposed a detailed
+discussion about the function . The differential element
+dZ is given by
+      </p>
+      <p>fY (Z; 2)dZ ;
+dZ = dZ11dZ22
+dZpp</p>
+      <p>d&lt;fZij gd=fZij g;
+p</p>
+      <p>Y
+i; j = 1
+| i{&lt;zj }
+where Zij is the (i; i)-th entry of matrix Z, and operators
+&lt;f g and =f g return real and imaginary parts of their
+arguments, respectively [12].</p>
+      <p>
+        Well-known divergences arise after adequate choices
+of h and . Among them, we examined the
+following: (i) Kullback-Leibler [
+        <xref ref-type="bibr" rid="ref16">33</xref>
+        ], (ii) Re´nyi, (iii)
+Bhattacharyya [
+        <xref ref-type="bibr" rid="ref17">34</xref>
+        ], and (iv) Hellinger [14]. As the
+triangular inequality is not necessarily satisfied, not every
+divergence measure is a metric [
+        <xref ref-type="bibr" rid="ref18">35</xref>
+        ]. Additionally, the
+symmetry property is not followed by some of these
+divergence measures. Nevertheless, such tools are
+mathematically appropriate for comparing the distribution of
+random variables [
+        <xref ref-type="bibr" rid="ref19">36</xref>
+        ]. The following expression has
+been suggested as a possible solution for this issue [
+        <xref ref-type="bibr" rid="ref16">33</xref>
+        ]:
+      </p>
+      <p>In the following we adhere to the convention that
+a “divergence” is any non-negative function between
+two probability measures which obeys the identity of
+definiteness property [27, ch. 11, p. 328]. If the function
+is also symmetric, it is called a “distance”. Finally, we Dh(X; Y ) + Dh(Y ; X)
+understand “metric” as a distance which also satisfies the dh(X; Y ) = 2 :
+triangular inequality [28, ch. 1 and 14].</p>
+      <p>
+        An image can be understood as a set of regions, Functions dh : A A ! R are distances over A
+in which the enclosed pixels are observations of ran- since, for all X; Y 2 A, the following properties hold:
+dom variables following a certain distribution. Therefore, 1) dh(X; Y ) 0 (Non-negativity).
+stochastic dissimilarity measures can be used as image
+processing tools, since they may be able to assess the dif- 2) dh(X; Y ) = dh(Y ; X) (Symmetry).
+ference between the distributions that describe different 3) dh(X; Y ) = 0 , X = Y (Definiteness).
+image areas [14]. Dissimilarity measures were submitted Table III shows the functions h and which lead to the
+to a systematic and comprehensive treatment in [
+        <xref ref-type="bibr" rid="ref12">29</xref>
+        ], distances considered in this work.
+[
+        <xref ref-type="bibr" rid="ref13">30</xref>
+        ] and, as a result, the class of (h; )-divergences was In the following we discuss integral expressions of
+proposed [17]. these (h; )-distances. For simplicity, we suppress the
+      </p>
+      <p>
+        Assume that X and Y are random matrices associated explicit dependence on Z and ( 1; 2), reminding that
+with densities fX (Z; 1) and fY (Z; 2), respectively, the integration is with respect to Z on A.
+Goudail et al. [
+        <xref ref-type="bibr" rid="ref23">40</xref>
+        ] showed that this distance is an
+efficient tool for contrast definition in algorithms for
+image processing.
+(iv) The Hellinger distance:
+(i) The Kullback-Leibler distance:
+      </p>
+      <p>1
+dKL(X; Y ) = [DKL(X; Y ) + DKL(Y ; X)]</p>
+      <p>2
+= 1 Z fX log fX + Z fY log fY</p>
+      <p>2 fY fX
+= 1 Z (fX fY ) log fX :</p>
+      <p>
+        2 fY
+The divergence DKL has a close relationship with
+the Neyman-Pearson lemma [
+        <xref ref-type="bibr" rid="ref20">37</xref>
+        ] and its
+symmetrization has been suggested as a correction form
+of the Akaike information criterion [
+        <xref ref-type="bibr" rid="ref16">33</xref>
+        ].
+(ii) The Re´nyi distance of order :
+      </p>
+      <p>1
+dfR(X; Y ) = [DR(X; Y ) + DR(Y ; X)]
+2</p>
+      <p>1
+log R fX fY</p>
+      <p>
+        Estimation methods based on the minimization of
+dH have been successfully employed in the context
+of stochastic differential equations [
+        <xref ref-type="bibr" rid="ref24">41</xref>
+        ]. This is the
+only bounded distance among the ones considered
+in this paper.
+      </p>
+      <p>
+        When considering the distance between particular
+cases of the same distribution, only parameters are
+relevant. In this case, the parameters 1 and 2 replace
+= + log R f X1 fY ; the random variables X and Y as arguments of the
+2( 1) discussed distances. This notation is in agreement with
+where 0 &lt; &lt; 1. The divergence DR has that of [17].
+been used for analysing geometric characteristics In the following, the hypothesis test based on
+stochaswith respect to probability laws [
+        <xref ref-type="bibr" rid="ref21">38</xref>
+        ]. By the Feje´r tic distances proposed by Salicru´ et al. [17] is
+introinequality [
+        <xref ref-type="bibr" rid="ref22">39</xref>
+        ], we have that duced. Let M -point vectors b1 = (b11; : : : ; b1M ) and
+dR(X; Y ) , 1 1 log R fX fY1 +2 R f X1 fY abn12d=anN(d2b2,12r;e:sb:p:ae;scebtd2iMveo)lnyb.ienUdthneedpeeMrnLdtehenesttirsmeagmautoplarlesristoyfofpcaosrinazdmeisteitoNenr1ss
+discussed in [17, p. 380] the following lemma holds:
+dH(X; Y ) = 1
+      </p>
+      <p>pfX fY :
+Z
+dfR(X; Y ):
+The distance dR proves to be more algebraically
+tractable than dfR for some manipulations with the
+complex Wishart density. Thus, we use the former
+in subsequent analyses.
+(iii) The Bhattacharyya distance:
+dB(X; Y ) =
+log</p>
+      <p>Z
+pfX fY :</p>
+      <p>N1 !
+Lemma 1: If N1+N2 N1;N2!1
+2, then</p>
+      <p>2 (0; 1) and 1 =
+Sh(b1; b2) =
+2N1N2 dh(b1; b2)</p>
+      <p>D !
+N1 + N2 h0(0) 00(1) N1;N2!1
+2M ;</p>
+      <p>(5)
+where “ !D” denotes convergence in distribution and 2</p>
+      <p>M
+represents the chi-square distribution with M degrees of
+freedom.</p>
+      <p>Based on Lemma 1, statistical hypothesis tests for the
+null hypothesis 1 = 2 can be derived in the form of
+the following proposition.</p>
+      <p>Proposition 1: Let N1 and N2 be large and
+Sh(b1; b2) = s, then the null hypothesis 1 = 2 can
+be rejected at level if Pr( 2M &gt; s) .</p>
+      <p>We denote the statistics based on the Kullback-Leibler,
+Re´nyi, Bhattacharya, and Hellinger distances as SKL, SR ,
+SB, and SH, respectively.</p>
+      <p>IV. ANALYTIC EXPRESSIONS, SENSITIVITY,
+INEQUALITIES, AND FINITE SAMPLE SIZE BEHAVIOR</p>
+      <p>In the following, analytic expressions for the
+stochastic distances dKL, dR, dB, and dH between two
+relaxed complex Wishart distributions are derived
+(Section IV-A). We examine the special cases in terms of
+the parameter values: (i) 1 6= 2 and n1 6= n2, which
+correspond to the most general case, (ii) same equivalent
+number of looks n1 = n2 = n and different covariance
+matrices 1 6= 2, and (iii) same covariance matrix</p>
+      <p>1 = 2 and different equivalent number of looks
+n1 6= n2. Case (ii) is likely to be the most frequently
+used in practice since it allows the comparison of two
+possibly different areas from the same image. Case (iii)
+allows the assessment of a change in distribution due
+only to multilook processing on the same area.</p>
+      <p>The sensitivity of the tests to variations of parameters
+is qualitatively assessed and discussed in Section IV-B.</p>
+      <p>
+        In Section IV-C we derive inequalities which 1 and
+2 must obey. These inequalities lead to the Bartlett and
+revised Wishart distances in a different and simple way
+when compared to a well-known method available in
+literature [
+        <xref ref-type="bibr" rid="ref25">42</xref>
+        ]. Distances are also shown to satisfy scale
+invariance with respect to .
+      </p>
+      <p>The performance of the tests for finite size samples is
+quantified by means of (i) Monte Carlo simulation and
+(ii) true data analysis in Section IV-D.</p>
+    </sec>
+    <sec id="sec-2">
+      <title>A. Analytic expressions</title>
+    </sec>
+    <sec id="sec-3">
+      <title>1) Kullback-Leibler distance:</title>
+      <p>Case (i):
+Details of this derivation are given in
+Appendix A.</p>
+      <p>
+        Case (ii):
+dKL( 1; 2) = n
+tr( 1 1 2 +
+2
+2
+This result was also derived by Lee and
+Bretschneider [
+        <xref ref-type="bibr" rid="ref26">43</xref>
+        ] and applied to real PolSAR
+data for assessing separability of target classes.
+Case (iii):
+      </p>
+    </sec>
+    <sec id="sec-4">
+      <title>2) Re´nyi distance of order 0 &lt; &lt; 1:</title>
+      <p>Case (i):
+dR( 1; 2) =
+1
+where
+dR( 1; 2) = 1log 2 + 1 1 log n</p>
+      <p>h j( 1 1 + (1
++h j(
+dB( 1; 2) =n log j 1j +2 log j 2j
+log</p>
+      <p>Now we examine the behavior of the statistics
+presented in Lemma 1 with respect to parameter variations,
+i.e., under the alternative hypotheses. These statistics
+are directly comparable since they all have the same
+asymptotic distribution; we used N1 = N2 = 100. Two
+simple alternative hypotheses are illustrated: changes in
+an entry in the diagonal of the covariance matrix, and
+changes in the number of looks.</p>
+      <p>Firstly, we assumed n = 8 looks, 1 =
+( (360932); 8) and 2 = ( (x); 8), where
+(10)
+Since the covariance matrix is Hermitian, only the
+upper triangle and the diagonal are displayed. The fixed
+covariance matrix (360932) was previously analyzed
+in [6] in PolSAR data of forested areas.</p>
+      <p>Fig. 3(a) shows the statistics for x 2 [160000; 560000].
+They present roughly the same behavior.</p>
+      <p>Secondly, we considered fixed covariance
+matrices with varying equivalent number of looks: 1 =
+( (360932); 8) and 2 = ( (360932); m), for 3 m
+13. Fig. 3(b) shows the statistics. It is noticeable that the
+test statistics are steeper to the left of the minimum.
+The number of looks, being a shape parameter, alters
+the distribution in a nonlinear fashion. Such change
+is perceived visually and by distance measures, and
+it is more intense for low values of the parameter.
+Case (i):</p>
+      <p>In other words, the difference between WR( ; n) and
+WR( ; kn), for any fixed k &gt; 1 and any , becomes
+smaller when n increases.
+(11)</p>
+      <p>2;
+(12)
+; (13)
+(14)
+(a) Varying
+where a is a positive real value and M 2 fKL; R; B; Hg.
+This fact stems directly from the mathematical definition
+of these distances.</p>
+      <p>
+        De Maio and Alfano [
+        <xref ref-type="bibr" rid="ref27">44</xref>
+        ] derived a new estimator
+for the covariance matrix under the complex Wishart
+model using inequalities relating the sought parameters.
+In the following we derive new inequalities for this
+model. Due to the major role of the covariance matrix
+in polarimetry [13], we limit our analysis to inequalities
+that depend on .
+      </p>
+      <p>Case (ii) described in previous subsections paved the
+way for the new inequalities. The following results stem
+from the nonnegativity of the four distances:
+respectively. Fixing = 1=2 in (12), we obtain (14)
+directly; taking the logarithm of both sides of (14)
+yields (13). This result is justified by the following two
+relations:
+1) dB( 1; 2) = d1R=2( 1; 2) and
+2) dH( 1; 2) = 1 exp 12 d1R=2( 1; 2) .</p>
+      <p>The revised Wishart [16] and Bartlett distances [5]
+can be obtained in a new and simple manner. Indeed,
+the revised Wishart distance (dRW) can be derived after
+simple manipulations of inequality (11), yielding:
+tr( 1 2 1 +
+2 1 1)
+dRW( 1;
+2) =
+2
+The Bartlett distance arises after taking the logarithm
+of both sides of inequality (14). Straightforward algebra
+leads to:
+ln j 1 + 2j2 2 p ln 2 0:</p>
+      <p>j 1jj 2j
+The leftmost term in the inequality above is referred to
+as the Bartlett distance [5], [16].
+p
+0:</p>
+    </sec>
+    <sec id="sec-5">
+      <title>D. Finite sample size behavior</title>
+      <p>We assessed the influence of estimation on the size of
+the new hypothesis tests using simulated data. To that
+end, the study was conducted considering the following
+simulation parameters: number of looks n = n1 = n2 2
+f4; 8; 16g and the forest covariance matrix shown in (10)
+with x = 360932. The sample sizes relate to square
+windows of size 7 7, 11 11, and 20 20 pixels, i.e.,
+N1; N2 2 f49; 121; 400g. Nominal significance levels
+2 f1%; 5%g were verified.</p>
+      <p>Let T be the number of Monte Carlo replicas and
+R the number of cases for which the null hypothesis
+is rejected at nominal level . The empirical test size
+is given by b1 = R=T . Following the methodology
+described in [14], we employed T = 5500 replicas.</p>
+      <p>Table IV presents the empirical test sizes at 1% and
+5% nominal levels, the execution time in milliseconds,
+the test statistic mean (S), and coefficient of variation
+(CV). All numerical calculations and the execution time
+quantification were performed, running on a PC with an
+Intel Core 2 Duo processor 2.10 GHz, 4 GB of RAM,
+Windows XP, and the R platform v. 2.8.1. For each case,
+the best obtained empirical sizes and distance means are
+in boldface. Results for N1 = 49; N2 = f121; 400g and
+N1 = 121; N2 = 400 are consistent with the ones shown,
+and are omitted for brevity.</p>
+      <p>We tested ten parameters: nine related to the
+covariance matrix of order p = 3, and the number of looks L,
+leading to test statistics which asymptotically follow 120
+distributions. Thus, the statistics expected value should
+converge in probability to 10, as a consequence of the
+weak law of large numbers. In Table IV, notice that S
+tends to 10 as the sample size increases. By fixing the
+sample size while varying the number of looks n, test
+sizes obey the inequalities SH SB SR SKL, as
+illustrated in Fig. 3. These inequalities suggest that, for
+this study, the statistics based on the Kullback-Leibler
+distance is the best discrimination measure.</p>
+      <p>Regarding execution times, the
+Kullback-Leiblerbased test presented the best performance, while the
+test based on the Hellinger distance showed the best
+empirical test size in 6 out of 18 cases.</p>
+      <p>The presented methodology for assessing test sizes
+was also applied to the three forest samples from the
+ESAR image shown in Fig. 1. Each sample was submitted
+to the following procedure [14]:
+(i) split the sample in disjoint blocks of size N1;
+(ii) for each block from (i), split the remaining sample
+in disjoint blocks of size N2;
+(iii) perform the hypothesis test as described in
+Proposition 1 for each pair of samples with sizes N1 and
+N2.</p>
+      <p>Table V presents the results, omitting some entries
+as in Table IV. All test sizes were smaller than the
+nominal level, i.e., the proposed tests do not reject the
+null hypothesis when similar samples are considered.</p>
+      <p>We also made the following study on the
+tests power: In each one of T Monte Carlo
+experiments, random matrices both of sizes
+N 2 f9; 16; 25; 36; 49; 64; 81; 100; 121; 144g were
+sampled from the WR( (360932); 4) and from the
+WR( (360932) (1 + 0:2); 4) distributions. The
+covariance matrix (x) is given in (10), and the
+experiment consists in contrasting samples from
+the relaxed Wishart distribution it indexes, and the
+law indexed by a version scaled by 1:2, arbitrarily
+chosen. Subsequently, it was verified whether these
+samples come from similar populations according to
+Proposition 1. Let R be the number of situations for
+which the null hypothesis is rejected at nominal level
+; the empirical test power is given by R=T . Fig. 4
+presents these estimates for the test power. Notice that
+the discrimination ability is about the same for all tests
+above N = 49.</p>
+      <p>In general terms, the proposed hypothesis tests
+presented good results regarding their power even for small
+samples: with samples of size 49, they are able to
+discriminate between covariance matrices which are only
+20% different in about 80% of the time. As the sample
+size increases, all the tests discriminate better and better.</p>
+      <p>This section presents two applications of the tests
+based on stochastic distances. Firstly, a discrimination
+analysis was performed in order to assess the influence of
+image texture on the tests. It is known that the complex
+Wishart distribution is more appropriated for describing
+homogeneous regions. However, other polarimetric
+distributions, potentially more apt to describing textured
+areas, yield intractable expressions which depend on
+special functions, such as the hypergeometric and
+modified Bessel functions. In order to quantify textures, we
+considered distances between relaxed scaled complex
+Wishart laws as proposed by Anfinsen et al. [21].
+Secondly, stochastic distances are embedded into the
+kmeans method in order to identify groups in PolSAR
+data. The performance of four distances was assessed by
+means of a synthetic image generated from the relaxed
+scaled complex Wishart distribution.</p>
+    </sec>
+    <sec id="sec-6">
+      <title>A. Discrimination analysis</title>
+      <p>
+        AIRSAR was an airborne mission with PolSAR
+capabilities, designed and built by the Jet Propulsion
+Laboratory, which operated at P-, L-, and C-bands [
+        <xref ref-type="bibr" rid="ref28">45</xref>
+        ]. Fig. 5
+shows a 550 645 pixels image (HH channel) of San
+Francisco recorded by this sensor, acquired with four
+nominal looks. Nine areas were chosen to represent three
+different degrees of roughness: homogeneous,
+heterogeneous, and extremely heterogeneous, labeled as Ai, Bi,
+and Ci, respectively, for i = 1; 2; 3;.
+the estimated number of looks decreases with the
+heterogeneity.
+      </p>
+      <p>TABLE VI
+ESTIMATED NUMBER OF LOOKS AND GENERALIZED VARIANCE</p>
+      <p>Subscript of regions
+Estimates Region
+i = 1
+i = 2</p>
+      <p>i = 3
+n
+b
+j b j
+# pixels</p>
+      <p>Ai
+Bi
+Ci</p>
+      <p>Stochastic distances were computed between pairs
+of these estimated distributions. Table VII shows the
+distances between regions of the same class. In all but
+one case, the values were found to be ordered as follows:
+dKL &gt; d0R.9 dB dH &gt; d0R.1. The only discrepancy
+occurs when comparing homogeneous regions A1 and
+A2, where the last inequality is not preserved.
+Fig. 5. AIRSAR HH data and samples</p>
+      <p>The parameters of the complex Wishart distribution
+Twaebrlee eVstIimparetesdentbsythmeaexsimtimumate dlikneulimhoboedr, ocff.loEokqs. a(3n)d. Regions dKL d0R:9 dB dH d0R:1
+determinants of the complex covariance matrices for AA11--AA32 179..3843 153..9113 12..4616 00..7963 01..6466
+each area, along with the number of observations. A2-A3 2.01 1.73 0.45 0.36 0.19</p>
+      <p>
+        Goodman [
+        <xref ref-type="bibr" rid="ref5">22</xref>
+        ] studied the distribution of the determi- B1-B2 1.83 1.58 0.41 0.34 0.18
+nant of the complex covariance matrix, which is clasi- B1-B3 1.11 0.97 0.26 0.23 0.11
+cally understood as a generalized variance. In PolSAR, B2-B3 0.26 0.23 0.06 0.06 0.03
+this quantity is related to the speckle variability, defined C1-C2 0.35 0.31 0.09 0.08 0.03
+as the effect of the speckle noise resulting from multipath C1-C3 0.21 0.18 0.05 0.05 0.02
+interference. Additionally, when there is variability due C2-C3 0.19 0.17 0.05 0.05 0.02
+to texture it is caused by the spatial variability of the
+reflectance, and it is understood as “heterogeneity” or Table VIII presents the distances between regions of
+“roughness”. This source of variability can be captured different roughness. Similarly to the univariate case [14],
+by, for instance, the roughness parameter of the polari- in these cases regions become more distinguishable. In
+metric G0 law [
+        <xref ref-type="bibr" rid="ref29">46</xref>
+        ], [
+        <xref ref-type="bibr" rid="ref30">47</xref>
+        ]. all cases, the distances satisfy
+      </p>
+      <p>We observed that the elements of the covariance matri- dM (bk; nb); (b`; nb) &lt; dM (bk; nb); (bm; nb) ;
+ces become larger along with the determinant when the
+heterogeneity increases. The most homogeneous region, if jjbkj jb`jj &lt; jjbkj jbmjj.</p>
+      <p>
+        A1, has the covariance matrix with smallest determinant. As expected, distances between samples of different
+Sample B1 has the largest determinant among heteroge- classes are much larger than those between samples with
+neous regions. This suggests that this last sample is the similar roughness.
+most heterogeneous, even with the presence of a double
+bounce [
+        <xref ref-type="bibr" rid="ref31">48</xref>
+        ] in sample B3. Urban areas (labeled C1, C2 B. Clustering with stochastic distances
+and C3 in Fig. 5), which are extremely heterogeneous A common characteristic of segmentation and
+classitargets, lead to the largest determinants. Additionally, fication algorithms is their sensitivity to the dissimilarity
+      </p>
+      <p>
+        TABLE VIII
+DISTANCES BETWEEN REGIONS OF DIFFERENT ROUGHNESS
+measure they employ [16], [
+        <xref ref-type="bibr" rid="ref32">49</xref>
+        ]. As already presented,
+stochastic distances present good discriminatory
+properties and, therefore, can be used for identifying clusters
+in PolSAR data. To that end, in the following we use the
+k-means method with these measures applied to, firstly,
+synthetic data, and, secondly, to a PolSAR image.
+      </p>
+      <p>Consider N observed covariance matrices Zi, 1
+i N , and assume that each observation belongs to a
+class H`, 1 ` k, with k known. Each class can be
+characterized by an unknown centroid C`, 1 ` k,
+and the task is assigning each observation to a single
+class. Algorithm 1 performs this task using stochastic
+distances as dissimilarity criteria.</p>
+      <p>Fig. 6(a) presents a simulated PolSAR image of
+75 80 pixels with ten regions generated from the scaled
+complex Wishart law and 12 looks. The regions have
+low, intermediate, and high brightness. The intermediate
+brightness region has covariance matrix given in (10),
+while the largest and smallest brightnesses regions are
+simulated from the following matrices, respectively:
+19171 3579i
+56707
+154638 + 191388i 3
+5798 + 16812i 5
+472251
+Algorithm 1 k-means using stochastic distances
+1: Choose a set of arbitrary initial k centroids C =</p>
+      <p>fC1; C2; : : : ; Ckg.
+2: For each i 2 f1; 2; : : : ; kg, set the cluster F i as a
+set of pixels which are closer to Ci than to Cj (for
+all i 6= j) according to the rule</p>
+      <p>F i = fZi : dM([Z; n]; [Ci; n])</p>
+      <p>dM([Z; n]; [Cj ; n])g;
+where dM is a stochastic distance.
+3: Reset Ci as the sample mean of the elements of</p>
+      <p>F i defined in the step 2, for i 2 f1; 2; : : : ; kg.
+4: Repeat steps 2 and 3 until C no longer changes. In
+other words, when the following measure assumes
+zero value:
+# pixels k
+X X
+for all n 1, where xj;v represents the jth element
+of the vector labels associated to elements of the
+vectorization from data matrix at vth iteration, xj;0
+is jth label of Initial solution, and IFi ( ) is the
+indicator function of set F i.
+and
+2 32556
+4
+These two matrices were observed in [6], in urban and
+pasture regions, respectively.</p>
+      <p>Fig. 6(b) shows the initial stage in the clustering
+process, which is quite far from the ideal solution.</p>
+      <p>Figs. 6(c) to 6(f) present the results of using the k-means
+algorithm based on stochastic distances. Notice that all
+the distances were able to identify clusters accurately
+with a few spurious spots.</p>
+      <p>We applied this methodology to a 182 210 pixels area
+from the San Francisco AIRSAR image (Fig. 7(a)). This
+area is composed of urban and forest regions. Fig. 7(b)
+shows the initial stage of the clustering analysis, which
+was randomly generated. Notice that d0:1 gathers more</p>
+      <p>R
+pixels of urban regions than the other distances. The
+Kullback-Leibler distance presented the worst
+performance in terms of the identification of pixels of urban
+scenarios. This may be due to the departure from the
+assumption that a region is Wishart distributed on such
+situations.
+(a) Synthetic image
+(b) Initial solution
+(a) AIRSAR image
+(b) Random initialization
+(c) dKL clusters
+(d) dB clusters
+(c) dKL clusters</p>
+      <p>(d) dB clusters
+(e) dH clusters</p>
+      <p>(f) d0R:1 clusters</p>
+      <p>Clustering a PolSAR image with k-means and stochastic
+(e) dH clusters</p>
+      <p>(f) d0R:1 clusters</p>
+      <p>Fig. 7.
+distances.
+test based on the dB has the smallest empirical test size
+in a variety of situations. This behavior was confirmed</p>
+      <p>VI. CONCLUSIONS with samples from a PolSAR sensor.</p>
+      <p>Analytic expressions of four contrast measures be- We presented numerical evidence that the statistics
+tween relaxed complex Wishart distribution were derived based on Hellinger distance overcome the other statistics.
+for the most general case (different number of looks and Our results confirm previous studies which pointed the
+different covariance matrices), along with the particular Bartlett distance (a particular case of the Hellinger
+cases of same number of looks and same covariance ma- distance for the same number of looks) as the best option
+trix. These measures are shown to be scale invariant, and on Wishart distributed data. Therefore, the Hellinger test
+they lead to test statistics with asymptotic 2 distribution statistics derived from the (h; ) class of divergences is a
+under the null hypothesis. Novel inequalities which relate reasonable statistical method for assessing if two samples
+covariance matrices and distances were derived, leading of polarimetric data come from the same distribution.
+to a new and simple derivation of the revised Wishart and It is noteworthy that the tests here considered tend
+Bartlett distances. These new expressions can be used in to reject more than their nominal levels when dealing
+a variety of applications as, for instance, segmentation, with small samples and small number of looks. Thus,
+and classification. a study of the influence of improved estimators (bias</p>
+      <p>Those stochastic distances were successfully used as reduction by numerical and analytical approaches, and
+dissimilarities in a k-means algorithm. Data from AIR- robust versions, for instance) for the parameters n and
+SAR sensors confirmed the expected behavior of all the on the performance of the proposed hypothesis tests
+distances: distances are smaller when applied to samples is a venue for new research.
+of similar roughness, and larger otherwise. Further research will consider models which include</p>
+      <p>
+        All the proposed statistics based on stochastic dis- heterogeneity [6], [
+        <xref ref-type="bibr" rid="ref29">46</xref>
+        ], [
+        <xref ref-type="bibr" rid="ref30">47</xref>
+        ], robust, improved and
+nontances presented good performance with finite size sam- parametric inference [
+        <xref ref-type="bibr" rid="ref33">50</xref>
+        ]–[
+        <xref ref-type="bibr" rid="ref36">53</xref>
+        ], and small samples
+isples. In particular, the results provided evidence that the sues [
+        <xref ref-type="bibr" rid="ref37">54</xref>
+        ].
+      </p>
+      <p>ACKNOWLEDGMENT</p>
+      <p>The authors are grateful to CNPq, Facepe, Fapeal, and
+Capes for their support.</p>
+      <p>APPENDIX A</p>
+      <p>FORM
+THE KULLBACK-LEIBLER DISTANCE IN GENERAL
+The Kullback-Leibler distance is given by
+p 1</p>
+      <p>X
+E(logjZ ij) = log j ij +</p>
+      <p>k=0
+= log j ij + p</p>
+      <p>(0)(ni
+p log ni;
+since
+Additionally,</p>
+      <p>E[tr(
+j 1Z i)] = E
+(0)(ni
+k)</p>
+      <p>p log ni
+p 1
+p + 1) + X
+k=1</p>
+      <p>k
+ni</p>
+      <p>k
+p p
+X X
+k=1 `=1</p>
+      <p>k`j zk`i
+(0)(x + 1) =
+(0)(x) + x</p>
+      <p>1, for any x real.</p>
+      <p>p p
+= X X k`j E(zk`i) = tr[</p>
+      <p>j 1 E(Z i)]
+=
+k=1 `=1
+tr(
+p,
+j
+1
+i), if i 6= j;</p>
+      <p>if i = j;
+where k`j and zk`i are the (k; `)-th entry of the matrices</p>
+      <p>j 1 and Z i, respectively. Hence, applying (16) and (17)
+into (15) yields (7).</p>
+      <p>Alejandro C. Frery (S’92–M’95) received
+the B.Sc. degree in Electronic and Electrical
+Engineering from the Universidad de
+Mendoza, Mendoza, Argentina. His M.Sc. degree
+was in Applied Mathematics (Statistics) from
+the Instituto de Matema´tica Pura e Aplicada
+(IMPA, Rio de Janeiro) and his Ph.D. degree
+was in Applied Computing from the Instituto</p>
+      <p>Nacional de Pesquisas Espaciais (INPE, Sa˜o
+Jose´ dos Campos, Brazil). He is currently with the Instituto de
+Computac¸ a˜o, Universidade Federal de Alagoas, Maceio´, Brazil. His
+research interests are statistical computing and stochastic modelling.</p>
+      <p>Abraa˜o D. C. Nascimento holds B.Sc. M.Sc.
+and D.Sc. degrees in Statistics from
+Universidade Federal de Pernambuco (UFPE), Brazil,
+in 2005, 2007, and 2012, respectively. In 2012,
+he joined the Department of Statistics at UFPE
+as Substitute Professor. His research interests
+are statistical information theory, inference on
+random matrices, and asymptotic theory.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          [1]
+          <string-name>
+            <given-names>J. S.</given-names>
+            <surname>Lee</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Pottier</surname>
+          </string-name>
+          , Polarimetric Radar Imaging: From Basics to Applications. Boca Raton, USA, CRC Press,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          [2]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Lo</surname>
+          </string-name>
+          <article-title>´ pez-Mart´ınez, X. Fa´bregas</article-title>
+          , and E. Pottier, “
+          <article-title>Multidimensional speckle noise model,”</article-title>
+          <source>EURASIP Journal on Applied Signal Processing</source>
+          , vol.
+          <year>2005</year>
+          , no.
+          <issue>20</issue>
+          , pp.
+          <fpage>3259</fpage>
+          -
+          <lpage>3271</lpage>
+          ,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          [3]
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Oliver</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Quegan</surname>
+          </string-name>
+          ,
+          <article-title>Understanding Synthetic Aperture Radar Images, ser. The SciTech radar and defense series</article-title>
+          .
+          <source>SciTech Publishing</source>
+          ,
+          <year>1998</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          [4]
+          <string-name>
+            <given-names>J. M.</given-names>
+            <surname>Beaulieu</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Touzi</surname>
+          </string-name>
+          , “
+          <article-title>Segmentation of textured polarimetric SAR scenes by likelihood approximation</article-title>
+          ,
+          <source>” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>42</volume>
+          , no.
+          <issue>10</issue>
+          , pp.
+          <fpage>2063</fpage>
+          -
+          <lpage>2072</lpage>
+          ,
+          <year>2004</year>
+          . the 4th International Workshop on Science and
+          <article-title>Applications of SAR Polarimetry and Polarimetric Interferometry (POLinSAR'2009), vol</article-title>
+          .
+          <source>ESA</source>
+          SP-
+          <volume>668</volume>
+          , no.
+          <issue>8</issue>
+          ,
+          <string-name>
+            <surname>Frascati</surname>
+          </string-name>
+          , Italy,
+          <fpage>26</fpage>
+          -
+          <lpage>30</lpage>
+          ,
+          <year>January 2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          [22]
+          <string-name>
+            <given-names>N. R.</given-names>
+            <surname>Goodman</surname>
+          </string-name>
+          , “
+          <article-title>The distribution of determinant of a complex Wishart distributed matrix,”</article-title>
+          <source>The Annals of Mathematical Statistics</source>
+          , vol.
+          <volume>34</volume>
+          , pp.
+          <fpage>178</fpage>
+          -
+          <lpage>180</lpage>
+          ,
+          <year>1963</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          [23]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Abramowitz</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>I. A.</given-names>
+            <surname>Stegun</surname>
+          </string-name>
+          , Handbook of Mathematical Functions With Formulas, Graphs, and Mathematical Tables, ser.
+          <source>Applied mathematics series. Dover Publications</source>
+          ,
+          <year>1965</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>
+          [24]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Skriver</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Dall</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>T. Le</given-names>
+            <surname>Toan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Quegan</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Ferro-Famil</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Pottier</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P.</given-names>
+            <surname>Lumsdon</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Moshammer</surname>
+          </string-name>
+          , “
+          <article-title>Agriculture classification using PolSAR data</article-title>
+          ,”
+          <source>in Proceedings of the 2nd International Workshop on Science and Applications of SAR Polarimetry and Polarimetric Interferometry (POLinSAR'2005)</source>
+          , vol.
+          <source>ESA SP-586</source>
+          , Frascati, Italy,
+          <fpage>17</fpage>
+          -
+          <lpage>21</lpage>
+          ,
+          <year>January 2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          [25]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Hagedorn</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P. J.</given-names>
+            <surname>Smith</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P. J.</given-names>
+            <surname>Bones</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>R. P.</given-names>
+            <surname>Millane</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>D.</given-names>
+            <surname>Pairman</surname>
+          </string-name>
+          , “
+          <article-title>A trivariate chi-squared distribution derived from the complex Wishart distribution</article-title>
+          ,
+          <source>” Journal of Multivariate Analysis</source>
+          , vol.
+          <volume>97</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>655</fpage>
+          -
+          <lpage>674</lpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          [26]
+          <string-name>
+            <given-names>Y. D.</given-names>
+            <surname>Zhang</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>L. N.</given-names>
+            <surname>Wu</surname>
+          </string-name>
+          , and G. Wei, “
+          <article-title>A new classifier for polarimetric SAR</article-title>
+          ,” Progress In Electromagnetics Research, vol.
+          <volume>94</volume>
+          , pp.
+          <fpage>83</fpage>
+          -
+          <lpage>104</lpage>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          [27]
+          <string-name>
+            <given-names>R. G.</given-names>
+            <surname>Bartle</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>D. R.</given-names>
+            <surname>Sherbert</surname>
+          </string-name>
+          ,
+          <article-title>Introduction to Real Analysis, ser. Matema´ticas (Limusa)</article-title>
+          . Wiley,
+          <year>1982</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          [28]
+          <string-name>
+            <surname>M. M. Deza</surname>
+            and
+            <given-names>E.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Deza</surname>
+          </string-name>
+          , Encyclopedia of Distances, 1st ed. Springer,
+          <year>August 2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          [29]
+          <string-name>
+            <given-names>S. M.</given-names>
+            <surname>Ali</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>S. D.</given-names>
+            <surname>Silvey</surname>
+          </string-name>
+          , “
+          <article-title>A general class of coefficients of divergence of one distribution from another</article-title>
+          ,
+          <source>” Journal of the Royal Statistical Society: Series B (Statistical Methodology)</source>
+          , vol.
+          <volume>26</volume>
+          , pp.
+          <fpage>131</fpage>
+          -
+          <lpage>142</lpage>
+          ,
+          <year>1996</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          [30]
+          <string-name>
+            <surname>I. Csisza</surname>
+          </string-name>
+          ´r, “
+          <article-title>Information type measures of difference of probability distributions and indirect observations,” Studia Scientiarum Mathematicarum Hungarica</article-title>
+          , vol.
+          <volume>2</volume>
+          , pp.
+          <fpage>299</fpage>
+          -
+          <lpage>318</lpage>
+          ,
+          <year>1967</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref14">
+        <mixed-citation>
+          [31]
+          <string-name>
+            <given-names>S. N.</given-names>
+            <surname>Anfinsen</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. P.</given-names>
+            <surname>Doulgeris</surname>
+          </string-name>
+          , and T. Eltoft, “
+          <article-title>Goodnessof-fit tests for multilook polarimetric radar data based on the Mellin transform</article-title>
+          ,
+          <source>” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>49</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>2764</fpage>
+          -
+          <lpage>2781</lpage>
+          ,
+          <year>July 2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref15">
+        <mixed-citation>
+          [32]
+          <string-name>
+            <surname>I. Csisza</surname>
+          </string-name>
+          ´r and P. Shields, Information Theory And Statistics: A Tutorial,
+          <article-title>ser. Foundations and trends in communications and information theory</article-title>
+          . Now Publishers,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref16">
+        <mixed-citation>
+          [33]
+          <string-name>
+            <given-names>A. K.</given-names>
+            <surname>Seghouane</surname>
+          </string-name>
+          and
+          <string-name>
+            <surname>S. I. Amari</surname>
+          </string-name>
+          , “
+          <article-title>The AIC criterion and symmetrizing the Kullback-Leibler divergence</article-title>
+          ,
+          <source>” IEEE Transactions on Neural Networks</source>
+          , vol.
+          <volume>18</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>97</fpage>
+          -
+          <lpage>106</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref17">
+        <mixed-citation>
+          [34]
+          <string-name>
+            <given-names>T.</given-names>
+            <surname>Kailath</surname>
+          </string-name>
+          , “
+          <article-title>The divergence and Bhattacharyya distance measures in signal selection</article-title>
+          ,
+          <source>” IEEE Transactions on Communication Technology</source>
+          , vol.
+          <volume>15</volume>
+          , pp.
+          <fpage>52</fpage>
+          -
+          <lpage>60</lpage>
+          ,
+          <year>February 1967</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref18">
+        <mixed-citation>
+          [35]
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Burbea</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>C.</given-names>
+            <surname>Rao</surname>
+          </string-name>
+          , “
+          <article-title>Entropy differential metric, distance and divergence measures in probability spaces: a unified approach</article-title>
+          ,
+          <source>” Journal of Multivariate Analysis</source>
+          , vol.
+          <volume>12</volume>
+          , pp.
+          <fpage>575</fpage>
+          -
+          <lpage>596</lpage>
+          ,
+          <year>1982</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref19">
+        <mixed-citation>
+          [36]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Jager</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J. A.</given-names>
+            <surname>Wellner</surname>
+          </string-name>
+          , “
+          <article-title>Goodness-of-fit tests via phidivergences,”</article-title>
+          <source>The Annals of Statistics</source>
+          , vol.
+          <volume>35</volume>
+          , no.
+          <issue>5</issue>
+          , pp.
+          <fpage>2018</fpage>
+          -
+          <lpage>2053</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref20">
+        <mixed-citation>
+          [37]
+          <string-name>
+            <given-names>S.</given-names>
+            <surname>Eguchi</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Copas</surname>
+          </string-name>
+          , “
+          <article-title>Interpreting Kullback-Leibler divergence with the Neyman-Pearson lemma</article-title>
+          ,
+          <source>” Journal of Multivariate Analysis</source>
+          , vol.
+          <volume>97</volume>
+          , pp.
+          <fpage>2034</fpage>
+          -
+          <lpage>2040</lpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref21">
+        <mixed-citation>
+          [38]
+          <string-name>
+            <given-names>A.</given-names>
+            <surname>Andai</surname>
+          </string-name>
+          , “
+          <article-title>On the geometry of generalized Gaussian distributions</article-title>
+          ,
+          <source>” Journal of Multivariate Analysis</source>
+          , vol.
+          <volume>100</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>777</fpage>
+          -
+          <lpage>793</lpage>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref22">
+        <mixed-citation>
+          [39]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Neuman</surname>
+          </string-name>
+          , “
+          <article-title>Inequalities involving multivariate convex functions II,”</article-title>
+          <source>Proceedings of the American Mathematical Society</source>
+          , vol.
+          <volume>109</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>965</fpage>
+          -
+          <lpage>974</lpage>
+          ,
+          <year>1990</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref23">
+        <mixed-citation>
+          [40]
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Goudail</surname>
+          </string-name>
+          , P. Re´fre´gier, and G. Delyon, “
+          <article-title>Bhattacharyya distance as a contrast parameter for statistical processing of noisy optical images</article-title>
+          ,
+          <source>” Journal of the Optical Society of America A</source>
+          , vol.
+          <volume>21</volume>
+          , no.
+          <issue>7</issue>
+          , pp.
+          <fpage>1231</fpage>
+          -
+          <lpage>1240</lpage>
+          ,
+          <year>2004</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref24">
+        <mixed-citation>
+          [41]
+          <string-name>
+            <given-names>L.</given-names>
+            <surname>Giet</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Lubrano</surname>
+          </string-name>
+          , “
+          <article-title>A minimum Hellinger distance estimator for stochastic differential equations: An application to statistical inference for continuous time interest rate models</article-title>
+          ,
+          <source>” Computational Statistics &amp; Data Analysis</source>
+          , vol.
+          <volume>52</volume>
+          , no.
+          <issue>6</issue>
+          , pp.
+          <fpage>2945</fpage>
+          -
+          <lpage>2965</lpage>
+          ,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref25">
+        <mixed-citation>
+          [42]
+          <string-name>
+            <given-names>J. S.</given-names>
+            <surname>Lee</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>M. R.</given-names>
+            <surname>Grunes</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>R.</given-names>
+            <surname>Kwok</surname>
+          </string-name>
+          , “
+          <article-title>Classification of multilook polarimetric SAR imagery based on complex Wishart distribution</article-title>
+          ,”
+          <source>International Journal of Remote Sensing</source>
+          , vol.
+          <volume>15</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <fpage>2299</fpage>
+          -
+          <lpage>2311</lpage>
+          ,
+          <year>September 1994</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref26">
+        <mixed-citation>
+          [43]
+          <string-name>
+            <given-names>K. Y.</given-names>
+            <surname>Lee</surname>
+          </string-name>
+          and
+          <string-name>
+            <given-names>T. R.</given-names>
+            <surname>Bretschneider</surname>
+          </string-name>
+          , “
+          <article-title>Derivation of separability measures based on central complex Gaussian and Wishart distributions</article-title>
+          ,”
+          <source>in IEEE International Geoscience and Remote Sensing Symposium (IGARSS)</source>
+          ,
+          <year>July 2011</year>
+          , pp.
+          <fpage>3740</fpage>
+          -
+          <lpage>3743</lpage>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref27">
+        <mixed-citation>
+          [44]
+          <string-name>
+            <surname>A. De Maio</surname>
+          </string-name>
+          and G. Alfano, “
+          <article-title>Polarimetric adaptive detection in non-Gaussian noise</article-title>
+          ,
+          <source>” Signal Processing</source>
+          , vol.
+          <volume>83</volume>
+          , no.
+          <issue>2</issue>
+          , pp.
+          <fpage>297</fpage>
+          -
+          <lpage>306</lpage>
+          ,
+          <year>2003</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref28">
+        <mixed-citation>
+          [45]
+          <string-name>
+            <given-names>European</given-names>
+            <surname>Space</surname>
+          </string-name>
+          <string-name>
+            <surname>Agency</surname>
+          </string-name>
+          ,
+          <source>Polarimetric SAR Data Processing and Educational Tool (POLSARPRO)</source>
+          , 4th ed.
+          <source>European Space Agency</source>
+          ,
+          <year>2009</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref29">
+        <mixed-citation>
+          [46]
+          <string-name>
+            <given-names>C. C.</given-names>
+            <surname>Freitas</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. H.</given-names>
+            <surname>Correia</surname>
+          </string-name>
+          , “
+          <article-title>The polarimetric G distribution for SAR data analysis</article-title>
+          ,
+          <source>” Environmetrics</source>
+          , vol.
+          <volume>16</volume>
+          , no.
+          <issue>1</issue>
+          , pp.
+          <fpage>13</fpage>
+          -
+          <lpage>31</lpage>
+          ,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref30">
+        <mixed-citation>
+          [47]
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. H.</given-names>
+            <surname>Correia</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>C. C.</given-names>
+            <surname>Freitas</surname>
+          </string-name>
+          , “
+          <article-title>Classifying multifrequency fully polarimetric imagery with multiple sources of statistical evidence and contextual information</article-title>
+          ,
+          <source>” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>45</volume>
+          , pp.
+          <fpage>3098</fpage>
+          -
+          <lpage>3109</lpage>
+          ,
+          <year>2007</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref31">
+        <mixed-citation>
+          [48]
+          <string-name>
+            <given-names>R. J.</given-names>
+            <surname>Cintra</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. D. C.</given-names>
+            <surname>Nascimento</surname>
+          </string-name>
+          , “
+          <article-title>Parametric and nonparametric tests for speckled imagery,” Pattern Analysis and Applications</article-title>
+          , in press.
+        </mixed-citation>
+      </ref>
+      <ref id="ref32">
+        <mixed-citation>
+          [49]
+          <string-name>
+            <given-names>A. P.</given-names>
+            <surname>Doulgeris</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>S. N.</given-names>
+            <surname>Anfinsen</surname>
+          </string-name>
+          , and T. Eltoft, “
+          <source>Automated nonGaussian clustering of polarimetric synthetic aperture radar images,” IEEE Transactions on Geoscience and Remote Sensing</source>
+          , vol.
+          <volume>49</volume>
+          , no.
+          <issue>10</issue>
+          , pp.
+          <fpage>3665</fpage>
+          -
+          <lpage>3676</lpage>
+          ,
+          <year>October 2011</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref33">
+        <mixed-citation>
+          [50]
+          <string-name>
+            <given-names>H.</given-names>
+            <surname>Allende</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>J.</given-names>
+            <surname>Galbiati</surname>
+          </string-name>
+          , and L. Pizarro, “
+          <article-title>Mestimators with asymmetric influence functions: the GA0 distribution case</article-title>
+          ,
+          <source>” Journal of Statistical Computation and Simulation</source>
+          , vol.
+          <volume>76</volume>
+          , no.
+          <issue>11</issue>
+          , pp.
+          <fpage>941</fpage>
+          -
+          <lpage>956</lpage>
+          ,
+          <year>2006</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref34">
+        <mixed-citation>
+          [51]
+          <string-name>
+            <given-names>E.</given-names>
+            <surname>Giron</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Cribari-Neto</surname>
+          </string-name>
+          , “
+          <article-title>Nonparametric edge detection in speckled imagery</article-title>
+          ,
+          <source>” Mathematics and Computers in Simulation</source>
+          , vol.
+          <volume>82</volume>
+          , pp.
+          <fpage>2182</fpage>
+          -
+          <lpage>2198</lpage>
+          ,
+          <year>2012</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref35">
+        <mixed-citation>
+          [52]
+          <string-name>
+            <given-names>M.</given-names>
+            <surname>Silva</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Cribari-Neto</surname>
+          </string-name>
+          ,
+          <article-title>and</article-title>
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          , “
+          <article-title>Improved likelihood inference for the roughness parameter of the GA0 distribution</article-title>
+          ,” Environmetrics, vol.
+          <volume>19</volume>
+          , no.
+          <issue>4</issue>
+          , pp.
+          <fpage>347</fpage>
+          -
+          <lpage>368</lpage>
+          ,
+          <year>2008</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref36">
+        <mixed-citation>
+          [53]
+          <string-name>
+            <given-names>K. L. P.</given-names>
+            <surname>Vasconcellos</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>L. B.</given-names>
+            <surname>Silva</surname>
+          </string-name>
+          , “
+          <article-title>Improving estimation in speckled imagery</article-title>
+          ,” Computational Statistics, vol.
+          <volume>20</volume>
+          , no.
+          <issue>3</issue>
+          , pp.
+          <fpage>503</fpage>
+          -
+          <lpage>519</lpage>
+          ,
+          <year>2005</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref37">
+        <mixed-citation>
+          [54]
+          <string-name>
+            <given-names>A. C.</given-names>
+            <surname>Frery</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>F.</given-names>
+            <surname>Cribari-Neto</surname>
+          </string-name>
+          , and
+          <string-name>
+            <given-names>M. O.</given-names>
+            <surname>Souza</surname>
+          </string-name>
+          , “
+          <article-title>Analysis of minute features in speckled imagery with maximum likelihood estimation,”</article-title>
+          <source>EURASIP Journal on Applied Signal Processing</source>
+          , vol.
+          <year>2004</year>
+          , no.
+          <issue>16</issue>
+          , pp.
+          <fpage>2476</fpage>
+          -
+          <lpage>2491</lpage>
+          ,
+          <year>2004</year>
+          . Renato J.
+          <string-name>
+            <surname>Cintra</surname>
+          </string-name>
+          (SM'10)
+          <string-name>
+            <surname>earned his</surname>
+            <given-names>B.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Sc</surname>
+            .,
+            <given-names>M.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Sc</surname>
+            ., and
+            <given-names>D.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Sc</surname>
+          </string-name>
+          . degrees in Electrical Engineering from Universidade Federal de Pernambuco, Brazil, in
+          <year>1999</year>
+          ,
+          <year>2001</year>
+          ,
+          <article-title>and 2005, respectively</article-title>
+          .
+          <source>In</source>
+          <year>2005</year>
+          , he joined the Department of Statistics at UFPE.
+          <source>During</source>
+          <year>2008</year>
+          -2009, he worked at the University of Calgary, Canada,
+          <article-title>as a visiting research fellow. He is also a graduate faculty member of the Department of Electrical</article-title>
+          and Computer Engineering, University of Akron, OH.
+          <article-title>His long term topics of research include theory and methods for digital signal processing</article-title>
+          ,
+          <source>communications systems, and applied mathematics.</source>
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+

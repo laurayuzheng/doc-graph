@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta />
+    <article-meta>
+      <title-group>
+        <article-title>Evaluating aleatoric and epistemic uncertainties of time series deep learning models for soil moisture predictions</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <string-name>Kuai Fang</string-name>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Chaopeng Shen</string-name>
+          <email>cshen@engr.psu.edu</email>
+          <xref ref-type="aff" rid="aff0">0</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>Daniel Kifer</string-name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <aff id="aff0">
+          <label>0</label>
+          <institution>Department of Civil and Environmental Engineering, Pennsylvania State University</institution>
+          ,
+          <addr-line>University Park, Pennsylvania</addr-line>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff1">
+          <label>1</label>
+          <institution>Department of Computer Science and Engineering, Pennsylvania State University, University Park</institution>
+          ,
+          <country country="US">USA</country>
+        </aff>
+        <aff id="aff2">
+          <label>2</label>
+          <institution>Equal contribution</institution>
+        </aff>
+      </contrib-group>
+      <abstract>
+        <p>Soil moisture is an important variable that determines floods, vegetation health, agriculture productivity, and land surface feedbacks to the atmosphere, etc. Accurately modeling soil moisture has important implications in both weather and climate models. The recently available satellitebased observations give us a unique opportunity to build data-driven models to predict soil moisture instead of using land surface models, but previously there was no uncertainty estimate. We tested Monte Carlo dropout (MCD) with an aleatoric term for our long short-term memory models for this problem, and asked if the uncertainty terms behave as they were argued to. We show that the method successfully captures the predictive error after tuning a hyperparameter on a representative training dataset. We show the MCD uncertainty estimate, as previously argued, does detect dissimilarity.</p>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-1">
+      <title>1. Background</title>
+      <p>
+        Soil moisture ( ), quantified by the volumetric fraction of
+soil occupied by water, critically controls various
+environmental and ecosystem processes such as photosynthesis,
+evapotranspiration, runoff, soil respiration, flooding,
+landX atmosphere interactions
+        <xref ref-type="bibr" rid="ref6">(Koster, 2004)</xref>
+        , etc. For climate
+r and weather modeling, soil moisture is typically provided
+a by land surface models (LSM). However, LSMs often
+introduce bias. For example, LSM-simulated moisture tends to
+be high-biased in the arid western CONUS and low-biased
+in wetter eastern US
+        <xref ref-type="bibr" rid="ref13">(Yuan &amp; Quiring, 2017)</xref>
+        , or low-biased
+in wet seasons and high-biased in dry seasons
+        <xref ref-type="bibr" rid="ref12">(Xia et al.,
+2015)</xref>
+        . Prevalent bias with LSM-simulated moisture can
+introduce large errors to downstream applications including
+weather and climate modeling
+        <xref ref-type="bibr" rid="ref8">(Massey et al., 2016)</xref>
+        .
+To reduce such bias, recent work introduced time series
+deep learning (DL) models to learn soil moisture dynamics
+directly from satellite-based observations. Satellites like
+Soil Moisture Active Passive (SMAP) mission
+        <xref ref-type="bibr" rid="ref1">(Entekhabi
+et al., 2010)</xref>
+        now provides near real time monitoring of
+surface soil moisture and such data provide an opportunity for
+data-driven models. It now becomes possible to replace
+certain parts of the LSM functionality using machine learning
+predictions. Our previous work employed long short-term
+memory (LSTM) to predict SMAP soil moisture, given
+meteorological forcings (precipitation, temperature, radiation,
+etc)
+        <xref ref-type="bibr" rid="ref2">(Fang &amp; Shen, 2017)</xref>
+        . They showed that LSTM can
+extend SMAP to spatiotemporally seamless coverage of
+continental US (CONUS) with high fidelity to SMAP. In
+addition, inter-annual trends of root-zone soil moisture were
+surprisingly well captured by LSTM even when the model
+was trained using only three years of data
+        <xref ref-type="bibr" rid="ref3">(Fang et al., 2018)</xref>
+        .
+Despite such progress, few of these studies, or any studies
+utilizing LSTM in the field hydrology to our knowledge,
+addressed model uncertainties. Uncertainty is critical for
+understanding the limitations and data needs of the model
+        <xref ref-type="bibr" rid="ref10">(Pappenberger &amp; Beven, 2006)</xref>
+        . In the context of
+datadriven modeling, uncertainty is often regarded as a
+combination of two elements: aleatoric and epistemic
+uncertainties. Aleatoric uncertainty is due to inherent stochasticity in
+the system. Epistemic uncertainty stems from our lack of
+knowledge (insufficient or biased training data) that could,
+in principle, be known.
+      </p>
+      <p>
+        In this paper we test a recently-proposed uncertainty
+quantification (UQ) framework for DL models: Monte Carlo
+dropout (MCD) with an aleatoric uncertainty term
+        <xref ref-type="bibr" rid="ref5">(Kendall
+&amp; Gal, 2017)</xref>
+        . It was argued that doing Monte Carlo
+dropout with a neural network is equivalent to doing
+variation Bayesian inference in a deep Gaussian Process
+        <xref ref-type="bibr" rid="ref4">(Gal &amp;
+Ghahramani, 2016)</xref>
+        . However, few studies showed definite
+proof that the MCD detects similarity in the input space.
+Due to the approximate derivations in their work, we must
+ask (i) whether this scheme is truly successful at predicting
+errors; and (ii) do the terms behave as proposed, i.e., does
+the epistemic term measures similarity to the training data
+as a Gaussian Process does.
+      </p>
+    </sec>
+    <sec id="sec-2">
+      <title>2. Method</title>
+      <p>
+        MCD with an uncertainty term simultaneously estimates
+aleatoric and epistemic uncertainty. The MCD part
+measures disagreement among members in an ensemble of
+models generated by applying dropout
+        <xref ref-type="bibr" rid="ref11">(Srivastava et al., 2014)</xref>
+        .
+        <xref ref-type="bibr" rid="ref4">Gal &amp; Ghahramani (2016)</xref>
+        proposed that dropout training
+of deep networks was an approximation of training
+Gaussian Processes. Hence, we used dropout during
+prediction to create random ensemble, and used the variability
+of these predictions to quantify the epistemic uncertainty
+( mc). The second is an input-dependent
+heteroscedastic model for observational noise
+        <xref ref-type="bibr" rid="ref5">(Kendall &amp; Gal, 2017)</xref>
+        where a second output unit ( x) can be added to a deep
+network. With a specially-designed loss function, x can
+represent an estimate of the variance of the network’s
+prediction. Finally we combined those two parts of uncertainty
+as c2omb = m2c + x2. The MCD uncertainty estimates
+require calibration by adjusting a hyper-parameter. Our model
+training period was the first year. To avoid over-tuning, we
+searched for a uniform drop out rate value so that the
+uncertainty in the second year matches the magnitude of the
+actual error during that period. We reported metrics from
+the test period (the third year).
+      </p>
+    </sec>
+    <sec id="sec-3">
+      <title>3. Results and Discussion</title>
+      <p>
+        To evaluate the overall quality of the uncertainty estimation,
+we trained a LSTM model to learn SMAP soil moisture
+dynamics for the entire CONUS using one year of data,
+and ran temporal test on another year. After tuning with
+the validation period, we chose a dropout rate of 0.6. As
+Figure 1a-b shows, the spatial pattern of comb agreed more
+or less with the predictive error (quantified by the unbiased
+root-mean-squared error, ubRMSE), and were larger in the
+East than in the West. SMAP signal is adversely impacted
+by large VWC
+        <xref ref-type="bibr" rid="ref9">(O’Neill et al., 2016)</xref>
+        and freezing conditions
+further reduces the amount of training data for surface soil
+moisture
+        <xref ref-type="bibr" rid="ref3">(Fang et al., 2018)</xref>
+        . As a result, the Northeastern
+and Northwestern forests (along the Rocky mountains) had
+the highest ubRMSE. The lowest errors were found on the
+Great Plains and Southeast due to aridity and reduced forest
+cover. The predicted comb automatically captured these
+spatial patterns. This good performance is also evident from
+the high correlation between the comb (Figure 1c) and
+the nearly straight line in the calibration curve (the green
+line in Figure 1d). These results suggest that, for temporal
+prolongation, it is possible to anticipate model predictive
+errors using comb.
+      </p>
+      <p>Do the two uncertainty terms behave as asserted, i.e., does
+the aleatoric term respond to stochasticity in the data and
+does the epistemic term respond to dissimilar cases? To
+answer this question, we examined the behaviors of the
+MCD uncertainty estimates when models are trained on a
+small basin and test on other regions.</p>
+      <p>We trained models on each of the 18 level-2 hydrologic
+cataloging unit (HUC2) basins dividing CONUS and we
+show the mc when the model is tested in other regions.</p>
+      <p>mc is the smallest inside the training region, somewhat
+larger on the neighboring region, and much larger further
+away (Figure 2). This result provides a clear and novel
+evidence that MCD does detect dissimilarity in the input space,
+which manifest as geographic proximity in this case. Note
+our inputs do not have any attribute that directly represents
+location, and therefore the sense of proximity or similarity
+was discovered by the network itself via lands surface
+characteristics such as soil texture and climatology, which are
+auto-correlated.</p>
+      <p>In summary, we evaluated the suitability of the MCD
+method with an aleatoric term for hydrologic datasets, using
+SMAP-based soil moisture product as a test case. Our
+evaluation shows that the proposed scheme can be effective at
+predicting the model error after tuning the dropout rate. Our
+results provide a unique and strong evidence that variational
+sampling via Monte Carlo dropout acts as a dissimilarity
+detector. The aleatoric term was also found to be effective.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <ref id="ref1">
+        <mixed-citation>
+          <string-name>
+            <surname>Entekhabi</surname>
+            ,
+            <given-names>D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Njoku</surname>
+            ,
+            <given-names>E. G.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>O</given-names>
+            <surname>'Neill</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>P. E.</given-names>
+            ,
+            <surname>Kellogg</surname>
+          </string-name>
+          ,
+          <string-name>
+            <given-names>K. H.</given-names>
+            ,
+            <surname>Crow</surname>
+          </string-name>
+          , W. T.,
+          <string-name>
+            <surname>Edelstein</surname>
+            ,
+            <given-names>W. N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Entin</surname>
+            ,
+            <given-names>J. K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Goodman</surname>
+            ,
+            <given-names>S. D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jackson</surname>
+            ,
+            <given-names>T. J.</given-names>
+          </string-name>
+          , Johnson, J.,
+          <string-name>
+            <surname>Kimball</surname>
+            ,
+            <given-names>J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Piepmeier</surname>
+            ,
+            <given-names>J. R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Koster</surname>
+            ,
+            <given-names>R. D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Martin</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>McDonald</surname>
+            ,
+            <given-names>K. C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moghaddam</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Moran</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Reichle</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Shi</surname>
+            ,
+            <given-names>J. C.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Spencer</surname>
+            ,
+            <given-names>M. W.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Thurman</surname>
+            ,
+            <given-names>S. W.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Tsang</surname>
+            ,
+            <given-names>L.</given-names>
+          </string-name>
+          , and Van Zyl,
+          <string-name>
+            <surname>J.</surname>
+          </string-name>
+          <article-title>The soil moisture active passive (SMAP) mission</article-title>
+          .
+          <source>Proceedings of the IEEE</source>
+          ,
+          <volume>98</volume>
+          (
+          <issue>5</issue>
+          ):
+          <fpage>704</fpage>
+          -
+          <lpage>716</lpage>
+          ,
+          <year>2010</year>
+          . ISSN 00189219. doi:
+          <volume>10</volume>
+          .1109/JPROC.
+          <year>2010</year>
+          .
+          <volume>2043918</volume>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref2">
+        <mixed-citation>
+          <string-name>
+            <surname>Fang</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Shen</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          <article-title>Full-flow-regime storage-streamflow correlation patterns provide insights into hydrologic functioning over the continental US</article-title>
+          .
+          <source>Water Resources Research</source>
+          ,
+          <year>2017</year>
+          . doi:
+          <volume>10</volume>
+          .1002/2016WR020283.
+        </mixed-citation>
+      </ref>
+      <ref id="ref3">
+        <mixed-citation>
+          <string-name>
+            <surname>Fang</surname>
+            ,
+            <given-names>K.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Pan</surname>
+            ,
+            <given-names>M.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Shen</surname>
+            ,
+            <given-names>C.</given-names>
+          </string-name>
+          <article-title>The Value of SMAP for Long-Term Soil Moisture Estimation With the Help of Deep Learning</article-title>
+          .
+          <source>IEEE Transactions on Geoscience and Remote Sensing</source>
+          ,
+          <string-name>
+            <surname>PP</surname>
+          </string-name>
+          (Dl):
+          <fpage>1</fpage>
+          -
+          <lpage>13</lpage>
+          ,
+          <year>2018</year>
+          . ISSN 0196-
+          <fpage>2892</fpage>
+          . doi:
+          <volume>10</volume>
+          .1109/TGRS.
+          <year>2018</year>
+          .2872131. URL https:// ieeexplore.ieee.org/document/8497052/.
+        </mixed-citation>
+      </ref>
+      <ref id="ref4">
+        <mixed-citation>
+          <string-name>
+            <surname>Gal</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Ghahramani</surname>
+            ,
+            <given-names>Z.</given-names>
+          </string-name>
+          <article-title>Dropout as a bayesian approximation: Representing model uncertainty in deep learning</article-title>
+          .
+          <source>In Proceedings of The 33rd International Conference on Machine Learning</source>
+          ,
+          <year>2016</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref5">
+        <mixed-citation>
+          <string-name>
+            <surname>Kendall</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Gal</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          <article-title>What uncertainties do we need in bayesian deep learning for computer vision</article-title>
+          ? In
+          <source>Advances in Neural Information Processing Systems (NIPS)</source>
+          ,
+          <year>2017</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref6">
+        <mixed-citation>
+          <string-name>
+            <surname>Koster</surname>
+            ,
+            <given-names>R. D.</given-names>
+          </string-name>
+          <article-title>Regions of Strong Coupling Between Soil Moisture and Precipitation</article-title>
+          . Science,
+          <volume>305</volume>
+          (
+          <issue>5687</issue>
+          ):
+          <fpage>1138</fpage>
+          -
+          <lpage>1140</lpage>
+          , aug
+          <year>2004</year>
+          . ISSN 0036-
+          <fpage>8075</fpage>
+          . doi:
+          <volume>10</volume>
+          .1126/science.
+        </mixed-citation>
+      </ref>
+      <ref id="ref7">
+        <mixed-citation>1100217. URL http://www.sciencemag.org/ cgi/doi/10.1126/science.1100217.</mixed-citation>
+      </ref>
+      <ref id="ref8">
+        <mixed-citation>
+          <string-name>
+            <surname>Massey</surname>
+            ,
+            <given-names>J. D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Steenburgh</surname>
+            ,
+            <given-names>W. J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Knievel</surname>
+          </string-name>
+          , J. C., Cheng, W. Y. Y.,
+          <string-name>
+            <surname>Massey</surname>
+            ,
+            <given-names>J. D.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Steenburgh</surname>
+            ,
+            <given-names>W. J.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Knievel</surname>
+            ,
+            <given-names>J. C.</given-names>
+          </string-name>
+          , and Cheng, W. Y. Y.
+          <article-title>Regional Soil Moisture Biases and Their Influence on WRF Model Temperature Forecasts over the Intermountain West</article-title>
+          .
+          <source>Weather and Forecasting</source>
+          ,
+          <volume>31</volume>
+          (
+          <issue>1</issue>
+          ):
+          <fpage>197</fpage>
+          -
+          <lpage>216</lpage>
+          , feb
+          <year>2016</year>
+          . ISSN 0882-
+          <fpage>8156</fpage>
+          . doi:
+          <volume>10</volume>
+          .1175/
+          <string-name>
+            <surname>WAF-D-</surname>
+          </string-name>
+          15-
+          <issue>0073</issue>
+          . 1. URL http://journals.ametsoc.org/doi/ 10.1175/
+          <string-name>
+            <surname>WAF-D-</surname>
+          </string-name>
+          15-
+          <issue>0073</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref9">
+        <mixed-citation>
+          <string-name>
+            <surname>O'Neill</surname>
+            ,
+            <given-names>P.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Chan</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Njoku</surname>
+            ,
+            <given-names>E.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Jackson</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Bindlish</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <source>SMAP L3 Radiometer Global Daily 36 km EASEGrid Soil Moisture, Version</source>
+          <volume>4</volume>
+          ,
+          <year>2016</year>
+          . URL https:// nsidc.org/data/SPL3SMP/versions/4.
+        </mixed-citation>
+      </ref>
+      <ref id="ref10">
+        <mixed-citation>
+          <string-name>
+            <surname>Pappenberger</surname>
+            ,
+            <given-names>F.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Beven</surname>
+            ,
+            <given-names>K. J.</given-names>
+          </string-name>
+          <article-title>Ignorance is bliss: Or seven reasons not to use uncertainty analysis</article-title>
+          .
+          <source>Water Resources Research</source>
+          ,
+          <volume>42</volume>
+          (
+          <issue>5</issue>
+          ):
+          <fpage>1</fpage>
+          -
+          <lpage>8</lpage>
+          , may
+          <year>2006</year>
+          . ISSN 00431397. doi:
+          <volume>10</volume>
+          .1029/2005WR004820. URL http: //doi.wiley.
+          <source>com/10</source>
+          .1029/2005WR004820.
+        </mixed-citation>
+      </ref>
+      <ref id="ref11">
+        <mixed-citation>
+          <string-name>
+            <surname>Srivastava</surname>
+            ,
+            <given-names>N.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Hinton</surname>
+            ,
+            <given-names>G.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Krizhevsky</surname>
+            ,
+            <given-names>A.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Sutskever</surname>
+            ,
+            <given-names>I.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Salakhutdinov</surname>
+            ,
+            <given-names>R.</given-names>
+          </string-name>
+          <string-name>
+            <surname>Dropout</surname>
+          </string-name>
+          :
+          <article-title>A simple way to prevent neural networks from overfitting</article-title>
+          .
+          <source>Journal of Machine Learning Research</source>
+          ,
+          <volume>15</volume>
+          :
+          <fpage>1929</fpage>
+          -
+          <lpage>1958</lpage>
+          ,
+          <year>2014</year>
+          .
+        </mixed-citation>
+      </ref>
+      <ref id="ref12">
+        <mixed-citation>
+          <string-name>
+            <surname>Xia</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ek</surname>
+            ,
+            <given-names>M. B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ford</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Quiring</surname>
+            ,
+            <given-names>S. M.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Xia</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ek</surname>
+            ,
+            <given-names>M. B.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Wu</surname>
+            ,
+            <given-names>Y.</given-names>
+          </string-name>
+          ,
+          <string-name>
+            <surname>Ford</surname>
+            ,
+            <given-names>T.</given-names>
+          </string-name>
+          , and
+          <string-name>
+            <surname>Quiring</surname>
+            ,
+            <given-names>S. M.</given-names>
+          </string-name>
+          <article-title>Comparison of NLDAS-2 Simulated and NASMD Observed Daily Soil Moisture. Part I: Comparison and Analysis</article-title>
+          .
+          <source>Journal of Hydrometeorology</source>
+          ,
+          <volume>16</volume>
+          (
+          <issue>5</issue>
+          ):
+          <fpage>1962</fpage>
+          -
+          <lpage>1980</lpage>
+          , oct
+          <year>2015</year>
+          .
+          <article-title>ISSN 1525-755X</article-title>
+          . doi:
+          <volume>10</volume>
+          .1175/
+          <string-name>
+            <surname>JHM-D-</surname>
+          </string-name>
+          14-
+          <issue>0096</issue>
+          . 1. URL http://journals.ametsoc.org/doi/ 10.1175/
+          <string-name>
+            <surname>JHM-D-</surname>
+          </string-name>
+          14-
+          <issue>0096</issue>
+          .1.
+        </mixed-citation>
+      </ref>
+      <ref id="ref13">
+        <mixed-citation>
+          <string-name>
+            <surname>Yuan</surname>
+            ,
+            <given-names>S.</given-names>
+          </string-name>
+          and
+          <string-name>
+            <surname>Quiring</surname>
+            ,
+            <given-names>S. M.</given-names>
+          </string-name>
+          <article-title>Evaluation of soil moisture in CMIP5 simulations over the contiguous United States using in situ and satellite observations</article-title>
+          .
+          <source>Hydrology and Earth System Sciences</source>
+          ,
+          <volume>21</volume>
+          (
+          <issue>4</issue>
+          ):
+          <fpage>2203</fpage>
+          -
+          <lpage>2218</lpage>
+          , apr
+          <year>2017</year>
+          . ISSN 1607-
+          <fpage>7938</fpage>
+          . doi:
+          <volume>10</volume>
+          .5194/hess-21-
+          <fpage>2203</fpage>
+          -
+          <lpage>2017</lpage>
+          . URL https://www.hydrol
+          <article-title>-earth-syst-sci</article-title>
+          . net/21/2203/2017/.
+        </mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+
