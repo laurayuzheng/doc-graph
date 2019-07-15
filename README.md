@@ -14,6 +14,9 @@ This one is frequent bigrams:
 This is a sample of TF-IDF word frequency scores based on context for one document:
 ![TD-IDF example](/images/TF-IDF-example.png)
 
+Also, I copied the config from other VisJS graphs so that my network graph would look a little more pleasing. Then, I added colors based on algorithms used in each abstract. This might be a little janky in implementation-- I basically took the argmax of the method that had the highest textual similarity to each abstract. There were 10 algorithms that I tested for, and I think only 4 are represented here, with the majority being neural networks and support vector machines...
+![graph update 7-15-2019](/images/graph-7-15.png)
+
 Conclusions:
 It looks like the frequent bigrams and trigrams yield better intuitive results than the TDIDF-- I think TDIDF somehow rules out machine learning methods as relevant to the context. Might focus on that more as a direction for algorithm extraction this week.
 
