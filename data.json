@@ -2,287 +2,500 @@
     "nodes": [
         {
             "id": 0,
-            "label": "Temporal neural networks for downscaling climate variability * and extremes"
+            "label": "Temporal neural networks for downscaling climate variability * and extremes",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 1,
-            "label": "Towards a Robust Parameterization for Conditioning Facies Models Using"
+            "label": "Towards a Robust Parameterization for Conditioning Facies Models Using",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 2,
-            "label": "Including Physics in Deep Learning -- An example from 4D seismic"
+            "label": "Including Physics in Deep Learning -- An example from 4D seismic",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 3,
-            "label": "Deep learning in remote sensing: a review"
+            "label": "Deep learning in remote sensing: a review",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 4,
-            "label": "Penobscot Dataset: Fostering Machine Learning Development for Seismic"
+            "label": "Penobscot Dataset: Fostering Machine Learning Development for Seismic",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 5,
-            "label": "Using Causal Discovery to Track Information Flow in Spatio-Temporal Data"
+            "label": "Using Causal Discovery to Track Information Flow in Spatio-Temporal Data",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 6,
-            "label": "Machine Learning for the Geosciences: Challenges and Oppor tunities"
+            "label": "Machine Learning for the Geosciences: Challenges and Oppor tunities",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 7,
-            "label": "Semantic Segmentation for Urban Planning Maps based on U-Net"
+            "label": "Semantic Segmentation for Urban Planning Maps based on U-Net",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 8,
-            "label": "Harmonic Exponential Families on Manifolds"
+            "label": "Harmonic Exponential Families on Manifolds",
+            "color": {
+                "background": "rgb(67,229,229)"
+            }
         },
         {
             "id": 9,
-            "label": "A Semi-supervised Spatial Spectral Regularized Manifold Local Scaling"
+            "label": "A Semi-supervised Spatial Spectral Regularized Manifold Local Scaling",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 10,
-            "label": "The Data Big Bang and the Expanding Digital Universe: High-Dimensional,"
+            "label": "The Data Big Bang and the Expanding Digital Universe: High-Dimensional,",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 11,
-            "label": "Predicting Climate Variability over the Indian Region Using Data Mining Strategies"
+            "label": "Predicting Climate Variability over the Indian Region Using Data Mining Strategies",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 12,
-            "label": "Adoption of Machine Learning Techniques in Ecology and Earth Science"
+            "label": "Adoption of Machine Learning Techniques in Ecology and Earth Science",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 13,
-            "label": "A machine learning approach for underwater gas leakage detection"
+            "label": "A machine learning approach for underwater gas leakage detection",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 14,
-            "label": "AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene Classi cation"
+            "label": "AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene Classi cation",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 15,
-            "label": "Structured Priors for Sparse-Representation-Based Hyperspectral Image Classification"
+            "label": "Structured Priors for Sparse-Representation-Based Hyperspectral Image Classification",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 16,
-            "label": "Evaluating aleatoric and epistemic uncertainties of time series deep learning models for soil moisture predictions"
+            "label": "Evaluating aleatoric and epistemic uncertainties of time series deep learning models for soil moisture predictions",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 17,
-            "label": "Disaggregation of Remotely Sensed Soil Moisture in Heterogeneous"
+            "label": "Disaggregation of Remotely Sensed Soil Moisture in Heterogeneous",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 18,
-            "label": "Machine learning phases of matter"
+            "label": "Machine learning phases of matter",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 19,
-            "label": "Large-Scale Sentiment Analysis for News and Blogs"
+            "label": "Large-Scale Sentiment Analysis for News and Blogs",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 20,
-            "label": "Decentralized Flood Forecasting Using Deep Neural Networks"
+            "label": "Decentralized Flood Forecasting Using Deep Neural Networks",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 21,
-            "label": "Deep Learning Based Large-Scale Automatic Satellite Crosswalk"
+            "label": "Deep Learning Based Large-Scale Automatic Satellite Crosswalk",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 22,
-            "label": "Remote Sensor Design for Visual Recognition with Convolutional Neural Networks"
+            "label": "Remote Sensor Design for Visual Recognition with Convolutional Neural Networks",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 23,
-            "label": "Analytic Expressions for Stochastic Distances Between Relaxed Complex Wishart Distributions"
+            "label": "Analytic Expressions for Stochastic Distances Between Relaxed Complex Wishart Distributions",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 24,
-            "label": "Optimal Clustering Framework for Hyperspectral Band Selection"
+            "label": "Optimal Clustering Framework for Hyperspectral Band Selection",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 25,
-            "label": "A New Algorithm of Speckle Filtering using Stochastic Distances"
+            "label": "A New Algorithm of Speckle Filtering using Stochastic Distances",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 26,
-            "label": "Aboveground biomass mapping in French Guiana by combining remote"
+            "label": "Aboveground biomass mapping in French Guiana by combining remote",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 27,
-            "label": "BIN-CT: Urban Waste Collection based on Predicting the Container Fill Level"
+            "label": "BIN-CT: Urban Waste Collection based on Predicting the Container Fill Level",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 28,
-            "label": "Autoencoder-Driven Weather Clustering for Source Estimation during Nuclear EventsI"
+            "label": "Autoencoder-Driven Weather Clustering for Source Estimation during Nuclear EventsI",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 29,
-            "label": "WATER BATHYMETRY MAPPING FROM UAV IMAGERY BASED ON MACHINE LEARNING"
+            "label": "WATER BATHYMETRY MAPPING FROM UAV IMAGERY BASED ON MACHINE LEARNING",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 30,
-            "label": "Applying machine learning to improve simulations of a chaotic dynamical system using empirical error correction"
+            "label": "Applying machine learning to improve simulations of a chaotic dynamical system using empirical error correction",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 31,
-            "label": "Identifying Solar Flare Precursors Using Time Series of SDO/HMI Images and SHARP Parameters"
+            "label": "Identifying Solar Flare Precursors Using Time Series of SDO/HMI Images and SHARP Parameters",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 32,
-            "label": "A N D S E QU EN C E- TO - S EQU EN C E N ET WO R KS"
+            "label": "A N D S E QU EN C E- TO - S EQU EN C E N ET WO R KS",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 33,
-            "label": "CobWeb - a toolbox for automatic tomographic image analysis based on"
+            "label": "CobWeb - a toolbox for automatic tomographic image analysis based on",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 34,
-            "label": "Non-convex regularization in remote sensing"
+            "label": "Non-convex regularization in remote sensing",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 35,
-            "label": "Remote Sensor Design for Visual Recognition with Convolutional Neural"
+            "label": "Remote Sensor Design for Visual Recognition with Convolutional Neural",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 36,
-            "label": "Gaussian process regression for forest attribute estimation from"
+            "label": "Gaussian process regression for forest attribute estimation from",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 37,
-            "label": "AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene"
+            "label": "AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 38,
-            "label": "Recurrent Neural Networks for Multivariate Time Series with Missing"
+            "label": "Recurrent Neural Networks for Multivariate Time Series with Missing",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 39,
-            "label": "Incremental Import Vector Machines for Classifying Hyperspectral Data"
+            "label": "Incremental Import Vector Machines for Classifying Hyperspectral Data",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 40,
-            "label": "Band Selection from Hyperspectral Images Using Attention-based"
+            "label": "Band Selection from Hyperspectral Images Using Attention-based",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 41,
-            "label": "PBBFMM3D: a Parallel Black-Box Fast Multipole Method for Non-oscillatory"
+            "label": "PBBFMM3D: a Parallel Black-Box Fast Multipole Method for Non-oscillatory",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 42,
-            "label": "Machine learning for graph-based representations of three-dimensional"
+            "label": "Machine learning for graph-based representations of three-dimensional",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 43,
-            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models"
+            "label": "Some neural network applications in environmental sciences. Part II: advancing computational efficiency of environmental numerical models",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 44,
-            "label": "A Data-driven Approach to Detecting Precipitation from Meteorological"
+            "label": "A Data-driven Approach to Detecting Precipitation from Meteorological",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 45,
-            "label": "Netherlands Dataset: A New Public Dataset for Machine Learning in"
+            "label": "Netherlands Dataset: A New Public Dataset for Machine Learning in",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 46,
-            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling"
+            "label": "Non-parametric Bayesian mixture of sparse regressions with application towards feature selection for statistical downscaling",
+            "color": {
+                "background": "rgb(67,229,229)"
+            }
         },
         {
             "id": 47,
-            "label": "Deep learning for semantic segmentation of remote sensing images with"
+            "label": "Deep learning for semantic segmentation of remote sensing images with",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 48,
-            "label": "Nonlinear unmixing of hyperspectral images: models and algorithms"
+            "label": "Nonlinear unmixing of hyperspectral images: models and algorithms",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 49,
-            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets"
+            "label": "Application of Deep Convolutional Neural Networks for Detecting Extreme Weather in Climate Datasets",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 50,
-            "label": "Aboveground biomass mapping in French Guiana by combining remote"
+            "label": "Aboveground biomass mapping in French Guiana by combining remote",
+            "color": {
+                "background": "rgb(164,67,229)"
+            }
         },
         {
             "id": 51,
-            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models"
+            "label": "Day-Ahead Hail Prediction Integrating Machine Learning with Storm-Scale Numerical Weather Models",
+            "color": {
+                "background": "rgb(164,67,229)"
+            }
         },
         {
             "id": 52,
-            "label": "Hypothesis Testing in Speckled Data with Stochastic Distances"
+            "label": "Hypothesis Testing in Speckled Data with Stochastic Distances",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 53,
-            "label": "Seismic Bayesian evidential learning: Estimation and uncertainty"
+            "label": "Seismic Bayesian evidential learning: Estimation and uncertainty",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 54,
-            "label": "Deep Recurrent Neural Networks for mapping winter vegetation quality"
+            "label": "Deep Recurrent Neural Networks for mapping winter vegetation quality",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 55,
-            "label": "A Data-Driven Approach for Accurate Rainfall Prediction"
+            "label": "A Data-Driven Approach for Accurate Rainfall Prediction",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 56,
-            "label": "Remote Sensing Image Classification with Large Scale Gaussian Processes"
+            "label": "Remote Sensing Image Classification with Large Scale Gaussian Processes",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 57,
-            "label": "Joint Gaussian Processes for Biophysical Parameter Retrieval"
+            "label": "Joint Gaussian Processes for Biophysical Parameter Retrieval",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 58,
-            "label": "Spatial-Spectral Regularized Local Scaling Cut for Dimensionality"
+            "label": "Spatial-Spectral Regularized Local Scaling Cut for Dimensionality",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 59,
-            "label": "Machine Learning for the Geosciences: Challenges and Opportunities"
+            "label": "Machine Learning for the Geosciences: Challenges and Opportunities",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         },
         {
             "id": 60,
-            "label": "Three dimensional Deep Learning approach for remote sensing image"
+            "label": "Three dimensional Deep Learning approach for remote sensing image",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 61,
-            "label": "High-Dimensional Dependency Structure Learning for Physical Processes"
+            "label": "High-Dimensional Dependency Structure Learning for Physical Processes",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 62,
-            "label": "Disaggregation of SMAP L3 Brightness Temperatures to 9km using Kernel"
+            "label": "Disaggregation of SMAP L3 Brightness Temperatures to 9km using Kernel",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 63,
-            "label": "Social Network Analysis of Scientific Articles Published by Food Policy"
+            "label": "Social Network Analysis of Scientific Articles Published by Food Policy",
+            "color": {
+                "background": "rgb(76,0,255)"
+            }
         },
         {
             "id": 64,
-            "label": "SoilGrids250m: Global gridded soil information based on machine learning"
+            "label": "SoilGrids250m: Global gridded soil information based on machine learning",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 65,
-            "label": "Structured Priors for Sparse-Representation-Based Hyperspectral Image"
+            "label": "Structured Priors for Sparse-Representation-Based Hyperspectral Image",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 66,
-            "label": "Topological descriptors of spatial coherence in a convective boundary"
+            "label": "Topological descriptors of spatial coherence in a convective boundary",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 67,
-            "label": "A Supervised Geometry-Aware Mapping Approach for Classification of"
+            "label": "A Supervised Geometry-Aware Mapping Approach for Classification of",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 68,
-            "label": "SVM-Based Sea-Surface Small Target Detection: A"
+            "label": "SVM-Based Sea-Surface Small Target Detection: A",
+            "color": {
+                "background": "rgb(229,132,67)"
+            }
         },
         {
             "id": 69,
-            "label": "Analytic Expressions for Stochastic Distances Between Relaxed Complex"
+            "label": "Analytic Expressions for Stochastic Distances Between Relaxed Complex",
+            "color": {
+                "background": "rgb(67,229,229)"
+            }
         },
         {
             "id": 70,
-            "label": "Validating Hyperspectral Image Segmentation"
+            "label": "Validating Hyperspectral Image Segmentation",
+            "color": {
+                "background": "rgb(229,197,67)"
+            }
         }
     ],
     "edges": [

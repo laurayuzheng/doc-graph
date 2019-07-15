@@ -1,6 +1,22 @@
 # doc-graph
 doc-graph is a network visualization of publications based on their textual similarities.
 
+#### 7-15-2019 Update
+Tried a different method from this article: https://medium.com/analytics-vidhya/automated-keyword-extraction-from-articles-using-nlp-bfd864f41b34
+Basically tried to extract keywords, and this particular article was interesting because it also dealt with abstracts from (machine learning!!!) papers. Here are example results and pictures I got from implementing this on my project.
+
+This one is frequent trigrams:
+![frequent trigrams](/images/frequent-trigrams.png)
+
+This one is frequent bigrams:
+![frequent bigrams](/images/frequent-bigrams.png)
+
+This is a sample of TF-IDF word frequency scores based on context for one document:
+![TD-IDF example](/images/TF-IDF-example.png)
+
+Conclusions:
+It looks like the frequent bigrams and trigrams yield better intuitive results than the TDIDF-- I think TDIDF somehow rules out machine learning methods as relevant to the context. Might focus on that more as a direction for algorithm extraction this week.
+
 #### 7-12-2019 Update
 Added more documents to consider from arXiv. arXiv came with its own parsed XML that gave a clean title name and "summary", which I'm assuming is equivalent to the abstract. Here's a preview of the updated visualization, with no changes to the configuration in VisJS.
 ![Visualization](/images/7-12-2019-visualization.png)

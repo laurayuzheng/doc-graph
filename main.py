@@ -49,6 +49,8 @@ if (part[2]):
     print('Calculating similarities and creating JSON files... ')
     text_files = glob.glob(txt_path_read)
     similarities = create_json.get_similarities(text_files)
-    create_json.create_json(similarities.A, text_files)
+    method_similarities = create_json.get_method_similarities(text_files)
+    print(method_similarities)
+    create_json.create_json(similarities.A, method_similarities, text_files)
 
 print('Finished!')
