@@ -1,0 +1,23 @@
+Comparison of Deep Neural Networks and Deep Hierarchical Models for
+  Spatio-Temporal Data
+  Spatio-temporal data are ubiquitous in the agricultural, ecological, and
+environmental sciences, and their study is important for understanding and
+predicting a wide variety of processes. One of the difficulties with modeling
+spatial processes that change in time is the complexity of the dependence
+structures that must describe how such a process varies, and the presence of
+high-dimensional complex data sets and large prediction domains. It is
+particularly challenging to specify parameterizations for nonlinear dynamic
+spatio-temporal models (DSTMs) that are simultaneously useful scientifically
+and efficient computationally. Statisticians have developed deep hierarchical
+models that can accommodate process complexity as well as the uncertainties in
+the predictions and inference. However, these models can be expensive and are
+typically application specific. On the other hand, the machine learning
+community has developed alternative "deep learning" approaches for nonlinear
+spatio-temporal modeling. These models are flexible yet are typically not
+implemented in a probabilistic framework. The two paradigms have many things in
+common and suggest hybrid approaches that can benefit from elements of each
+framework. This overview paper presents a brief introduction to the deep
+hierarchical DSTM (DH-DSTM) framework, and deep models in machine learning,
+culminating with the deep neural DSTM (DN-DSTM). Recent approaches that combine
+elements from DH-DSTMs and echo state network DN-DSTMs are presented as
+illustrations.

@@ -1,0 +1,19 @@
+Empirical evaluation of a Q-Learning Algorithm for Model-free Autonomous
+  Soaring
+  Autonomous unpowered flight is a challenge for control and guidance systems:
+all the energy the aircraft might use during flight has to be harvested
+directly from the atmosphere. We investigate the design of an algorithm that
+optimizes the closed-loop control of a glider's bank and sideslip angles, while
+flying in the lower convective layer of the atmosphere in order to increase its
+mission endurance. Using a Reinforcement Learning approach, we demonstrate the
+possibility for real-time adaptation of the glider's behaviour to the
+time-varying and noisy conditions associated with thermal soaring flight. Our
+approach is online, data-based and model-free, hence avoids the pitfalls of
+aerological and aircraft modelling and allow us to deal with uncertainties and
+non-stationarity. Additionally, we put a particular emphasis on keeping low
+computational requirements in order to make on-board execution feasible. This
+article presents the stochastic, time-dependent aerological model used for
+simulation, together with a standard aircraft model. Then we introduce an
+adaptation of a Q-learning algorithm and demonstrate its ability to control the
+aircraft and improve its endurance by exploiting updrafts in non-stationary
+scenarios.

@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3Ageology%20AND%20all%3Amachine%20AND%20all%3Alearning%26id_list%3D%26start%3D0%26max_results%3D100" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:geology AND all:machine AND all:learning&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <id>http://arxiv.org/api/JE2hKeHG1kz4AG3UnpBfRa+ftPE</id>
+  <updated>2019-07-16T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">14</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">100</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1809.06688v1</id>
+    <updated>2018-09-07T05:14:37Z</updated>
+    <published>2018-09-07T05:14:37Z</published>
+    <title>Geology prediction based on operation data of TBM: comparison between
+  deep neural network and statistical learning methods</title>
+    <summary>  Tunnel boring machine (TBM) is a complex engineering system widely used for
+tunnel construction. In view of the complicated construction environments, it
+is necessary to predict geology conditions prior to excavation. In recent
+years, massive operation data of TBM has been recorded, and mining these data
+can provide important references and useful information for designers and
+operators of TBM. In this work, a geology prediction approach is proposed based
+on deep neural network and operation data. It can provide relatively accurate
+geology prediction results ahead of the tunnel face compared with the other
+prediction models based on statistical learning methods. The application case
+study on a tunnel in China shows that the proposed approach can accurately
+estimate the geological conditions prior to excavation, especially for the
+short range ahead of training data. This work can be regarded as a good
+complement to the geophysical prospecting approach during the construction of
+tunnels, and also highlights the applicability and potential of deep neural
+networks for other data mining tasks of TBMs.
+</summary>
+    <author>
+      <name>Maolin Shi</name>
+    </author>
+    <author>
+      <name>Xueguan Song</name>
+    </author>
+    <author>
+      <name>Wei Sun</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">26 pages, 7 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1809.06688v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1809.06688v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.03065v3</id>
+    <updated>2018-07-05T17:56:39Z</updated>
+    <published>2018-02-08T22:41:22Z</published>
+    <title>Generating Realistic Geology Conditioned on Physical Measurements with
+  Generative Adversarial Networks</title>
+    <summary>  An important problem in geostatistics is to build models of the subsurface of
+the Earth given physical measurements at sparse spatial locations. Typically,
+this is done using spatial interpolation methods or by reproducing patterns
+from a reference image. However, these algorithms fail to produce realistic
+patterns and do not exhibit the wide range of uncertainty inherent in the
+prediction of geology. In this paper, we show how semantic inpainting with
+Generative Adversarial Networks can be used to generate varied realizations of
+geology which honor physical measurements while matching the expected
+geological patterns. In contrast to other algorithms, our method scales well
+with the number of data points and mimics a distribution of patterns as opposed
+to a single pattern or image. The generated conditional samples are state of
+the art.
+</summary>
+    <author>
+      <name>Emilien Dupont</name>
+    </author>
+    <author>
+      <name>Tuanfeng Zhang</name>
+    </author>
+    <author>
+      <name>Peter Tilke</name>
+    </author>
+    <author>
+      <name>Lin Liang</name>
+    </author>
+    <author>
+      <name>William Bailey</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Added ICML workshop info, more specific training details and more
+  details on how images are chosen</arxiv:comment>
+    <link href="http://arxiv.org/abs/1802.03065v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.03065v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.03677v2</id>
+    <updated>2019-04-09T08:41:26Z</updated>
+    <published>2019-04-07T16:04:56Z</published>
+    <title>Parametrization of stochastic inputs using generative adversarial
+  networks with application in geology</title>
+    <summary>  We investigate artificial neural networks as a parametrization tool for
+stochastic inputs in numerical simulations. We address parametrization from the
+point of view of emulating the data generating process, instead of explicitly
+constructing a parametric form to preserve predefined statistics of the data.
+This is done by training a neural network to generate samples from the data
+distribution using a recent deep learning technique called generative
+adversarial networks. By emulating the data generating process, the relevant
+statistics of the data are replicated. The method is assessed in subsurface
+flow problems, where effective parametrization of underground properties such
+as permeability is important due to the high dimensionality and presence of
+high spatial correlations. We experiment with realizations of binary
+channelized subsurface permeability and perform uncertainty quantification and
+parameter estimation. Results show that the parametrization using generative
+adversarial networks is very effective in preserving visual realism as well as
+high order statistics of the flow responses, while achieving a dimensionality
+reduction of two orders of magnitude.
+</summary>
+    <author>
+      <name>Shing Chan</name>
+    </author>
+    <author>
+      <name>Ahmed H. Elsheikh</name>
+    </author>
+    <link href="http://arxiv.org/abs/1904.03677v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.03677v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.07659v2</id>
+    <updated>2019-04-10T07:09:35Z</updated>
+    <published>2019-01-12T19:04:58Z</published>
+    <title>A Machine Learning Benchmark for Facies Classification</title>
+    <summary>  The recent interest in using deep learning for seismic interpretation tasks,
+such as facies classification, has been facing a significant obstacle, namely
+the absence of large publicly available annotated datasets for training and
+testing models. As a result, researchers have often resorted to annotating
+their own training and testing data. However, different researchers may
+annotate different classes, or use different train and test splits. In
+addition, it is common for papers that apply machine learning for facies
+classification to not contain quantitative results, and rather rely solely on
+visual inspection of the results. All of these practices have lead to
+subjective results and have greatly hindered the ability to compare different
+machine learning models against each other and understand the advantages and
+disadvantages of each approach.
+  To address these issues, we open-source a fully-annotated 3D geological model
+of the Netherlands F3 Block. This model is based on the study of the 3D seismic
+data in addition to 26 well logs, and is grounded on the careful study of the
+geology of the region. Furthermore, we propose two baseline models for facies
+classification based on a deconvolution network architecture and make their
+codes publicly available. Finally, we propose a scheme for evaluating different
+models on this dataset, and we share the results of our baseline models. In
+addition to making the dataset and the code publicly available, this work helps
+advance research in this area by creating an objective benchmark for comparing
+the results of different machine learning approaches for facies classification.
+</summary>
+    <author>
+      <name>Yazeed Alaudah</name>
+    </author>
+    <author>
+      <name>Patrycja Michalowicz</name>
+    </author>
+    <author>
+      <name>Motaz Alfarraj</name>
+    </author>
+    <author>
+      <name>Ghassan AlRegib</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Submitted to the SEG Interpretation journal</arxiv:comment>
+    <link href="http://arxiv.org/abs/1901.07659v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.07659v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1809.07748v2</id>
+    <updated>2018-09-21T09:31:45Z</updated>
+    <published>2018-09-20T17:33:20Z</published>
+    <title>Exemplar-based synthesis of geology using kernel discrepancies and
+  generative neural networks</title>
+    <summary>  We propose a framework for synthesis of geological images based on an
+exemplar image. We synthesize new realizations such that the discrepancy in the
+patch distribution between the realizations and the exemplar image is
+minimized. Such discrepancy is quantified using a kernel method for two-sample
+test called maximum mean discrepancy. To enable fast synthesis, we train a
+generative neural network in an offline phase to sample realizations
+efficiently during deployment, while also providing a parametrization of the
+synthesis process. We assess the framework on a classical binary image
+representing channelized subsurface reservoirs, finding that the method
+reproduces the visual patterns and spatial statistics (image histogram and
+two-point probability functions) of the exemplar image.
+</summary>
+    <author>
+      <name>Shing Chan</name>
+    </author>
+    <author>
+      <name>Ahmed H. Elsheikh</name>
+    </author>
+    <link href="http://arxiv.org/abs/1809.07748v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1809.07748v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.11834v2</id>
+    <updated>2019-05-03T15:11:32Z</updated>
+    <published>2019-04-26T13:12:40Z</published>
+    <title>DeepFreak: Learning Crystallography Diffraction Patterns with Automated
+  Machine Learning</title>
+    <summary>  Serial crystallography is the field of science that studies the structure and
+properties of crystals via diffraction patterns. In this paper, we introduce a
+new serial crystallography dataset comprised of real and synthetic images; the
+synthetic images are generated through the use of a simulator that is both
+scalable and accurate. The resulting dataset is called DiffraNet, and it is
+composed of 25,457 512x512 grayscale labeled images. We explore several
+computer vision approaches for classification on DiffraNet such as standard
+feature extraction algorithms associated with Random Forests and Support Vector
+Machines but also an end-to-end CNN topology dubbed DeepFreak tailored to work
+on this new dataset. All implementations are publicly available and have been
+fine-tuned using off-the-shelf AutoML optimization tools for a fair comparison.
+Our best model achieves 98.5% accuracy on synthetic images and 94.51% accuracy
+on real images. We believe that the DiffraNet dataset and its classification
+methods will have in the long term a positive impact in accelerating
+discoveries in many disciplines, including chemistry, geology, biology,
+materials science, metallurgy, and physics.
+</summary>
+    <author>
+      <name>Artur Souza</name>
+    </author>
+    <author>
+      <name>Leonardo B. Oliveira</name>
+    </author>
+    <author>
+      <name>Sabine Hollatz</name>
+    </author>
+    <author>
+      <name>Matt Feldman</name>
+    </author>
+    <author>
+      <name>Kunle Olukotun</name>
+    </author>
+    <author>
+      <name>James M. Holton</name>
+    </author>
+    <author>
+      <name>Aina E. Cohen</name>
+    </author>
+    <author>
+      <name>Luigi Nardi</name>
+    </author>
+    <link href="http://arxiv.org/abs/1904.11834v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.11834v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1812.08655v1</id>
+    <updated>2018-12-12T03:56:20Z</updated>
+    <published>2018-12-12T03:56:20Z</published>
+    <title>Surrogate-assisted Bayesian inversion for landscape and basin evolution
+  models</title>
+    <summary>  The complex and computationally expensive features of the forward landscape
+and sedimentary basin evolution models pose a major challenge in the
+development of efficient inference and optimization methods. Bayesian inference
+provides a methodology for estimation and uncertainty quantification of free
+model parameters. In our previous work, parallel tempering Bayeslands was
+developed as a framework for parameter estimation and uncertainty
+quantification for the landscape and basin evolution modelling software
+Badlands. Parallel tempering Bayeslands features high-performance computing
+with dozens of processing cores running in parallel to enhance computational
+efficiency. Although parallel computing is used, the procedure remains
+computationally challenging since thousands of samples need to be drawn and
+evaluated. In large-scale landscape and basin evolution problems, a single
+model evaluation can take from several minutes to hours, and in certain cases,
+even days. Surrogate-assisted optimization has been with successfully applied
+to a number of engineering problems. This motivates its use in optimisation and
+inference methods suited for complex models in geology and geophysics.
+Surrogates can speed up parallel tempering Bayeslands by developing
+computationally inexpensive surrogates to mimic expensive models. In this
+paper, we present an application of surrogate-assisted parallel tempering where
+that surrogate mimics a landscape evolution model including erosion, sediment
+transport and deposition, by estimating the likelihood function that is given
+by the model. We employ a machine learning model as a surrogate that learns
+from the samples generated by the parallel tempering algorithm. The results
+show that the methodology is effective in lowering the overall computational
+cost significantly while retaining the quality of solutions.
+</summary>
+    <author>
+      <name>Rohitash Chandra</name>
+    </author>
+    <author>
+      <name>Danial Azam</name>
+    </author>
+    <author>
+      <name>Arpit Kapoor</name>
+    </author>
+    <author>
+      <name>R. Dietmar Müller</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Under review. arXiv admin note: text overlap with arXiv:1811.08687</arxiv:comment>
+    <link href="http://arxiv.org/abs/1812.08655v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1812.08655v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.11079v2</id>
+    <updated>2019-06-11T15:06:32Z</updated>
+    <published>2019-05-27T09:31:12Z</published>
+    <title>Learning to Discretize: Solving 1D Scalar Conservation Laws via Deep
+  Reinforcement Learning</title>
+    <summary>  Conservation laws are considered to be fundamental laws of nature. It has
+broad application in many fields including physics, chemistry, biology,
+geology, and engineering. Solving the differential equations associated with
+conservation laws is a major branch in computational mathematics. Recent
+success of machine learning, especially deep learning, in areas such as
+computer vision and natural language processing, has attracted a lot of
+attention from the community of computational mathematics and inspired many
+intriguing works in combining machine learning with traditional methods. In
+this paper, we are the first to explore the possibility and benefit of solving
+nonlinear conservation laws using deep reinforcement learning. As a proof of
+concept, we focus on 1-dimensional scalar conservation laws. We deploy the
+machinery of deep reinforcement learning to train a policy network that can
+decide on how the numerical solutions should be approximated in a sequential
+and spatial-temporal adaptive manner. We will show that the problem of solving
+conservation laws can be naturally viewed as a sequential decision making
+process and the numerical schemes learned in such a way can easily enforce
+long-term accuracy. Furthermore, the learned policy network can determine a
+good local discrete approximation based on the current state of the solution,
+which essentially makes the proposed method a meta-learning approach. In other
+words, the proposed method is capable of learning how to discretize for a given
+situation mimicking human experts. Finally, we will provide details on how the
+policy network is trained, how well it performs compared with some
+state-of-the-art numerical solvers such as WENO schemes, and how well it
+generalizes.
+</summary>
+    <author>
+      <name>Yufei Wang</name>
+    </author>
+    <author>
+      <name>Ziju Shen</name>
+    </author>
+    <author>
+      <name>Zichao Long</name>
+    </author>
+    <author>
+      <name>Bin Dong</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">submitted to NeurIPS 2019</arxiv:comment>
+    <link href="http://arxiv.org/abs/1905.11079v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1905.11079v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.05114v2</id>
+    <updated>2019-01-28T22:39:04Z</updated>
+    <published>2018-06-12T16:37:53Z</published>
+    <title>Earthquake Detection in 1-D Time Series Data with Feature Selection and
+  Dictionary Learning</title>
+    <summary>  Earthquakes can be detected by matching spatial patterns or phase properties
+from 1-D seismic waves. Current earthquake detection methods, such as waveform
+correlation and template matching, have difficulty detecting anomalous
+earthquakes that are not similar to other earthquakes. In recent years,
+machine-learning techniques for earthquake detection have been emerging as a
+new active research direction. In this paper, we develop a novel earthquake
+detection method based on dictionary learning. Our detection method first
+generates rich features via signal processing and statistical methods and
+further employs feature selection techniques to choose features that carry the
+most significant information. Based on these selected features, we build a
+dictionary for classifying earthquake events from non-earthquake events. To
+evaluate the performance of our dictionary-based detection methods, we test our
+method on a labquake dataset from Penn State University, which contains
+3,357,566 time series data points with a 400 MHz sampling rate. 1,000
+earthquake events are manually labeled in total, and the length of these
+earthquake events varies from 74 to 7151 data points. Through comparison to
+other detection methods, we show that our feature selection and dictionary
+learning incorporated earthquake detection method achieves an 80.1% prediction
+accuracy and outperforms the baseline methods in earthquake detection,
+including Template Matching (TM) and Support Vector Machine (SVM).
+</summary>
+    <author>
+      <name>Zheng Zhou</name>
+    </author>
+    <author>
+      <name>Youzuo Lin</name>
+    </author>
+    <author>
+      <name>Zhongping Zhang</name>
+    </author>
+    <author>
+      <name>Yue Wu</name>
+    </author>
+    <author>
+      <name>Paul Johnson</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Workshop on Data Mining for Geophysics and Geology, SIAM
+  International Conference on Data Mining 2018</arxiv:comment>
+    <link href="http://arxiv.org/abs/1806.05114v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.05114v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1807.05207v2</id>
+    <updated>2019-07-15T15:54:11Z</updated>
+    <published>2018-07-13T17:46:00Z</published>
+    <title>Parametric generation of conditional geological realizations using
+  generative neural networks</title>
+    <summary>  Deep learning techniques are increasingly being considered for geological
+applications where -- much like in computer vision -- the challenges are
+characterized by high-dimensional spatial data dominated by multipoint
+statistics. In particular, a novel technique called generative adversarial
+networks has been recently studied for geological parametrization and
+synthesis, obtaining very impressive results that are at least qualitatively
+competitive with previous methods. The method obtains a neural network
+parametrization of the geology -- so-called a generator -- that is capable of
+reproducing very complex geological patterns with dimensionality reduction of
+several orders of magnitude. Subsequent works have addressed the conditioning
+task, i.e. using the generator to generate realizations honoring spatial
+observations (hard data). The current approaches, however, do not provide a
+parametrization of the conditional generation process. In this work, we propose
+a method to obtain a parametrization for direct generation of conditional
+realizations. The main idea is to simply extend the existing generator network
+by stacking a second inference network that learns to perform the conditioning.
+This inference network is a neural network trained to sample a posterior
+distribution derived using a Bayesian formulation of the conditioning task. The
+resulting extended neural network thus provides the conditional
+parametrization. Our method is assessed on a benchmark image of binary
+channelized subsurface, obtaining very promising results for a wide variety of
+conditioning configurations.
+</summary>
+    <author>
+      <name>Shing Chan</name>
+    </author>
+    <author>
+      <name>Ahmed H. Elsheikh</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1007/s10596-019-09850-7</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1007/s10596-019-09850-7" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Computational Geosciences (2019)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1807.05207v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1807.05207v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1708.01810v2</id>
+    <updated>2019-04-09T08:01:07Z</updated>
+    <published>2017-08-05T19:07:06Z</published>
+    <title>Parametrization and generation of geological models with generative
+  adversarial networks</title>
+    <summary>  One of the main challenges in the parametrization of geological models is the
+ability to capture complex geological structures often observed in the
+subsurface. In recent years, generative adversarial networks (GAN) were
+proposed as an efficient method for the generation and parametrization of
+complex data, showing state-of-the-art performances in challenging computer
+vision tasks such as reproducing natural images (handwritten digits, human
+faces, etc.). In this work, we study the application of Wasserstein GAN for the
+parametrization of geological models. The effectiveness of the method is
+assessed for uncertainty propagation tasks using several test cases involving
+different permeability patterns and subsurface flow problems. Results show that
+GANs are able to generate samples that preserve the multipoint statistical
+features of the geological models both visually and quantitatively. The
+generated samples reproduce both the geological structures and the flow
+statistics of the reference geology.
+</summary>
+    <author>
+      <name>Shing Chan</name>
+    </author>
+    <author>
+      <name>Ahmed H. Elsheikh</name>
+    </author>
+    <link href="http://arxiv.org/abs/1708.01810v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1708.01810v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1805.05090v1</id>
+    <updated>2018-05-14T09:57:25Z</updated>
+    <published>2018-05-14T09:57:25Z</published>
+    <title>Hyperspectral Data Analysis in R: the hsdar Package</title>
+    <summary>  Hyperspectral remote sensing is a promising tool for a variety of
+applications including ecology, geology, analytical chemistry and medical
+research. This article presents the new \hsdar package for R statistical
+software, which performs a variety of analysis steps taken during a typical
+hyperspectral remote sensing approach. The package introduces a new class for
+efficiently storing large hyperspectral datasets such as hyperspectral cubes
+within R. The package includes several important hyperspectral analysis tools
+such as continuum removal, normalized ratio indices and integrates two widely
+used radiation transfer models. In addition, the package provides methods to
+directly use the functionality of the caret package for machine learning tasks.
+Two case studies demonstrate the package's range of functionality: First, plant
+leaf chlorophyll content is estimated and second, cancer in the human larynx is
+detected from hyperspectral data.
+</summary>
+    <author>
+      <name>Lukas W. Lehnert</name>
+    </author>
+    <author>
+      <name>Hanna Meyer</name>
+    </author>
+    <author>
+      <name>Wolfgang A. Obermeier</name>
+    </author>
+    <author>
+      <name>Brenner Silva</name>
+    </author>
+    <author>
+      <name>Bianca Regeling</name>
+    </author>
+    <author>
+      <name>Jörg Bendix</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.18637/jss.v089.i12</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.18637/jss.v089.i12" rel="related"/>
+    <link href="http://arxiv.org/abs/1805.05090v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1805.05090v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.OT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.OT" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1705.09269v1</id>
+    <updated>2017-05-25T17:25:04Z</updated>
+    <published>2017-05-25T17:25:04Z</published>
+    <title>Geometric Methods for Robust Data Analysis in High Dimension</title>
+    <summary>  Machine learning and data analysis now finds both scientific and industrial
+application in biology, chemistry, geology, medicine, and physics. These
+applications rely on large quantities of data gathered from automated sensors
+and user input. Furthermore, the dimensionality of many datasets is extreme:
+more details are being gathered about single user interactions or sensor
+readings. All of these applications encounter problems with a common theme: use
+observed data to make inferences about the world. Our work obtains the first
+provably efficient algorithms for Independent Component Analysis (ICA) in the
+presence of heavy-tailed data. The main tool in this result is the centroid
+body (a well-known topic in convex geometry), along with optimization and
+random walks for sampling from a convex body. This is the first algorithmic use
+of the centroid body and it is of independent theoretical interest, since it
+effectively replaces the estimation of covariance from samples, and is more
+generally accessible.
+  This reduction relies on a non-linear transformation of samples from such an
+intersection of halfspaces (i.e. a simplex) to samples which are approximately
+from a linearly transformed product distribution. Through this transformation
+of samples, which can be done efficiently, one can then use an ICA algorithm to
+recover the vertices of the intersection of halfspaces.
+  Finally, we again use ICA as an algorithmic primitive to construct an
+efficient solution to the widely-studied problem of learning the parameters of
+a Gaussian mixture model. Our algorithm again transforms samples from a
+Gaussian mixture model into samples which fit into the ICA model and, when
+processed by an ICA algorithm, result in recovery of the mixture parameters.
+Our algorithm is effective even when the number of Gaussians in the mixture
+grows polynomially with the ambient dimension
+</summary>
+    <author>
+      <name>Joseph Anderson</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">180 Pages, 7 Figures, PhD thesis, Ohio State (2017)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1705.09269v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1705.09269v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1709.02885v1</id>
+    <updated>2017-09-09T00:30:42Z</updated>
+    <published>2017-09-09T00:30:42Z</published>
+    <title>Network of Nano-Landers for In-Situ Characterization of Asteroid Impact
+  Studies</title>
+    <summary>  Exploration of asteroids and comets can give insight into the origins of the
+solar system and can be instrumental in planetary defence and in-situ resource
+utilization (ISRU). Asteroids, due to their low gravity are a challenging
+target for surface exploration. Current missions envision performing
+touch-and-go operations over an asteroid surface. In this work, we analyse the
+feasibility of sending scores of nano-landers, each 1 kg in mass and volume of
+1U, or 1000 cm3. These landers would hop, roll and fly over the asteroid
+surface. The landers would include science instruments such as stereo cameras,
+hand-lens imagers and spectrometers to characterize rock composition. A network
+of nano-landers situated on the surface of an asteroid can provide unique and
+very detailed measurements of a spacecraft impacting onto an asteroid surface.
+A full-scale, artificial impact experiment onto an asteroid can help
+characterize its composition and geology and help in the development of
+asteroid deflection techniques intended for planetary defence. Scores of
+nano-landers could provide multiple complementary views of the impact,
+resultant seismic activity and trajectory of the ejecta. The nano-landers can
+analyse the pristine, unearthed regolith shielded from effects of UV and cosmic
+rays and that may be millions of years old. Our approach to formulating this
+mission concepts utilizes automated machine learning techniques in the planning
+and design of space systems. We use a form of Darwinian selection to select and
+identify suitable number of nano-landers, the on-board instruments and control
+system to explore and navigate the asteroid environment. Scenarios are
+generated in simulation and evaluated against quantifiable mission goals such
+as area explored on the asteroid and amount of data recorded from the impact
+event.
+</summary>
+    <author>
+      <name>Himangshu Kalita</name>
+    </author>
+    <author>
+      <name>Erik Asphaug</name>
+    </author>
+    <author>
+      <name>Stephen Schwartz</name>
+    </author>
+    <author>
+      <name>Jekanthan Thangavelautham</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">11 pages, 19 figures appearing in the International Astronautical
+  Congress 2017, Adelaide, Australia</arxiv:comment>
+    <link href="http://arxiv.org/abs/1709.02885v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1709.02885v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

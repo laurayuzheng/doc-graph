@@ -1,0 +1,18 @@
+Estimating regional ground-level PM2.5 directly from satellite
+  top-of-atmosphere reflectance using deep learning
+  Almost all remote sensing atmospheric PM2.5 estimation methods need satellite
+aerosol optical depth (AOD) products, which are often retrieved from
+top-of-atmosphere (TOA) reflectance via an atmospheric radiative transfer
+model. Then, is it possible to estimate ground-level PM2.5 directly from
+satellite TOA reflectance without a physical model? In this study, this
+challenging work are achieved based on a machine learning model. Specifically,
+we establish the relationship between PM2.5, satellite TOA reflectance,
+observation angles, and meteorological factors in a deep learning architecture
+(denoted as Ref-PM modeling). Taking the Wuhan Urban Agglomeration (WUA) as a
+case study, the results demonstrate that compared with the AOD-PM modeling, the
+Ref-PM modeling obtains a competitive performance, with out-of-sample
+cross-validated R2 and RMSE values of 0.87 and 9.89 ug/m3 respectively. Also,
+the TOA-reflectance-derived PM2.5 have a finer resolution and larger spatial
+coverage than the AOD-derived PM2.5. This work updates the traditional
+cognition of remote sensing PM2.5 estimation and has the potential to promote
+the application in atmospheric environmental monitoring.

@@ -1,0 +1,9 @@
+A Deep Neural Network to identify foreshocks in real time
+  Foreshock events provide valuable insight to predict imminent major
+earthquakes. However, it is difficult to identify them in real time. In this
+paper, I propose an algorithm based on deep learning to instantaneously
+classify a seismic waveform as a foreshock, mainshock or an aftershock event
+achieving a high accuracy of 99% in classification. As a result, this is by far
+the most reliable method to predict major earthquakes that are preceded by
+foreshocks. In addition, I discuss methods to create an earthquake dataset that
+is compatible with deep networks.

@@ -1,0 +1,13 @@
+Metrics for Learning in Topological Persistence
+  Persistent homology analysis provides means to capture the connectivity
+structure of data sets in various dimensions. On the mathematical level, by
+defining a metric between the objects that persistence attaches to data sets,
+we can stabilize invariants characterizing these objects. We outline how so
+called contour functions induce relevant metrics for stabilizing the rank
+invariant. On the practical level, the stable ranks are used as fingerprints
+for data. Different choices of contour lead to different stable ranks and the
+topological learning is then the question of finding the optimal contour. We
+outline our analysis pipeline and show how it can enhance classification of
+physical activities data. As our main application we study how stable ranks and
+contours provide robust descriptors of spatial patterns of atmospheric cloud
+fields.

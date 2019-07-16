@@ -1,0 +1,13 @@
+Spatial Patterns of Wind Speed Distributions in Switzerland
+  This paper presents an initial exploration of high frequency records of
+extreme wind speed in two steps. The first consists in finding the suitable
+extreme distribution for $120$ measuring stations in Switzerland, by comparing
+three known distributions: Weibull, Gamma, and Generalized extreme value. This
+comparison serves as a basis for the second step which applies a spatial
+modelling by using Extreme Learning Machine. The aim is to model distribution
+parameters by employing a high dimensional input space of topographical
+information. The knowledge of probability distribution gives a comprehensive
+information and a global overview of wind phenomena. Through this study, a
+flexible and a simple modelling approach is presented, which can be generalized
+to almost extreme environmental data for risk assessment and to model renewable
+energy.

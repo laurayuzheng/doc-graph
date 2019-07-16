@@ -1,0 +1,11 @@
+Gamma/hadron segregation for a ground based imaging atmospheric
+  Cherenkov telescope using machine learning methods: Random Forest leads
+  A detailed case study of $\gamma$-hadron segregation for a ground based
+atmospheric Cherenkov telescope is presented. We have evaluated and compared
+various supervised machine learning methods such as the Random Forest method,
+Artificial Neural Network, Linear Discriminant method, Naive Bayes
+Classifiers,Support Vector Machines as well as the conventional dynamic
+supercut method by simulating triggering events with the Monte Carlo method and
+applied the results to a Cherenkov telescope. It is demonstrated that the
+Random Forest method is the most sensitive machine learning method for
+$\gamma$-hadron segregation.

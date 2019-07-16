@@ -1,0 +1,7 @@
+Constructing an efficient machine learning model for tornado prediction
+  Tornado prediction methods and main mechanisms of tornado genesis were
+analyzed. A model, based on the superposition principle, has been built. For
+efficiency evaluation, the constructed model has been tested on real-life data
+obtained from the University of Oklahoma (USA). It is shown that the
+constructed tornado prediction model is more efficient than all previous
+models.

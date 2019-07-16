@@ -1,0 +1,19 @@
+Improving Orbit Prediction Accuracy through Supervised Machine Learning
+  Due to the lack of information such as the space environment condition and
+resident space objects' (RSOs') body characteristics, current orbit predictions
+that are solely grounded on physics-based models may fail to achieve required
+accuracy for collision avoidance and have led to satellite collisions already.
+This paper presents a methodology to predict RSOs' trajectories with higher
+accuracy than that of the current methods. Inspired by the machine learning
+(ML) theory through which the models are learned based on large amounts of
+observed data and the prediction is conducted without explicitly modeling space
+objects and space environment, the proposed ML approach integrates
+physics-based orbit prediction algorithms with a learning-based process that
+focuses on reducing the prediction errors. Using a simulation-based space
+catalog environment as the test bed, the paper demonstrates three types of
+generalization capability for the proposed ML approach: 1) the ML model can be
+used to improve the same RSO's orbit information that is not available during
+the learning process but shares the same time interval as the training data; 2)
+the ML model can be used to improve predictions of the same RSO at future
+epochs; and 3) the ML model based on a RSO can be applied to other RSOs that
+share some common features.

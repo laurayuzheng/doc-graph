@@ -1,0 +1,22 @@
+Machine Learning Approach to Earthquake Rupture Dynamics
+  Simulating dynamic rupture propagation is challenging due to the
+uncertainties involved in the underlying physics of fault slip, stress
+conditions, and frictional properties of the fault. A trial and error approach
+is often used to determine the unknown parameters describing rupture, but
+running many simulations usually requires human review to determine how to
+adjust parameter values and is thus not very efficient. To reduce the
+computational cost and improve our ability to determine reasonable stress and
+friction parameters, we take advantage of the machine learning approach. We
+develop two models for earthquake rupture propagation using the artificial
+neural network (ANN) and the random forest (RF) algorithms to predict if a
+rupture can break a geometric heterogeneity on a fault. We train the models
+using a database of 1600 dynamic rupture simulations computed numerically.
+Fault geometry, stress conditions, and friction parameters vary in each
+simulation. We cross-validate and test the predictive power of the models using
+an additional 400 simulated ruptures, respectively. Both RF and ANN models
+predict rupture propagation with more than 81% accuracy, and model parameters
+can be used to infer the underlying factors most important for rupture
+propagation. Both of the models are computationally efficient such that the 400
+testings require a fraction of a second, leading to potential applications of
+dynamic rupture that have previously not been possible due to the computational
+demands of physics-based rupture simulations.

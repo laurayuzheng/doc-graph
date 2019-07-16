@@ -1,0 +1,23 @@
+Deep learning electromagnetic inversion with convolutional neural
+  networks
+  Geophysical inversion attempts to estimate the distribution of physical
+properties in the Earth's interior from observations collected at or above the
+surface. Inverse problems are commonly posed as least-squares optimization
+problems in high-dimensional parameter spaces. Existing approaches are largely
+based on deterministic gradient-based methods, which are limited by
+nonlinearity and nonuniqueness of the inverse problem. Probabilistic inversion
+methods, despite their great potential in uncertainty quantification, still
+remain a formidable computational task. In this paper, I explore the potential
+of deep learning methods for electromagnetic inversion. This approach does not
+require calculation of the gradient and provides results instantaneously. Deep
+neural networks based on fully convolutional architecture are trained on large
+synthetic datasets obtained by full 3-D simulations. The performance of the
+method is demonstrated on models of strong practical relevance representing an
+onshore controlled source electromagnetic CO2 monitoring scenario. The
+pre-trained networks can reliably estimate the position and lateral dimensions
+of the anomalies, as well as their resistivity properties. Several fully
+convolutional network architectures are compared in terms of their accuracy,
+generalization, and cost of training. Examples with different survey geometry
+and noise levels confirm the feasibility of the deep learning inversion,
+opening the possibility to estimate the subsurface resistivity distribution in
+real time.

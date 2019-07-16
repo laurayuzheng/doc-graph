@@ -1,0 +1,17 @@
+UBL: an R package for Utility-based Learning
+  This document describes the R package UBL that allows the use of several
+methods for handling utility-based learning problems. Classification and
+regression problems that assume non-uniform costs and/or benefits pose serious
+challenges to predictive analytic tasks. In the context of meteorology,
+finance, medicine, ecology, among many other, specific domain information
+concerning the preference bias of the users must be taken into account to
+enhance the models predictive performance. To deal with this problem, a large
+number of techniques was proposed by the research community for both
+classification and regression tasks. The main goal of UBL package is to
+facilitate the utility-based predictive analytic task by providing a set of
+methods to deal with this type of problems in the R environment. It is a
+versatile tool that provides mechanisms to handle both regression and
+classification (binary and multiclass) tasks. Moreover, UBL package allows the
+user to specify his domain preferences, but it also provides some automatic
+methods that try to infer those preference bias from the domain, considering
+some common known settings.

@@ -1,0 +1,19 @@
+Spectral Image Visualization Using Generative Adversarial Networks
+  Spectral images captured by satellites and radio-telescopes are analyzed to
+obtain information about geological compositions distributions, distant asters
+as well as undersea terrain. Spectral images usually contain tens to hundreds
+of continuous narrow spectral bands and are widely used in various fields. But
+the vast majority of those image signals are beyond the visible range, which
+calls for special visualization technique. The visualizations of spectral
+images shall convey as much information as possible from the original signal
+and facilitate image interpretation. However, most of the existing visualizatio
+methods display spectral images in false colors, which contradict with human's
+experience and expectation. In this paper, we present a novel visualization
+generative adversarial network (GAN) to display spectral images in natural
+colors. To achieve our goal, we propose a loss function which consists of an
+adversarial loss and a structure loss. The adversarial loss pushes our solution
+to the natural image distribution using a discriminator network that is trained
+to differentiate between false-color images and natural-color images. We also
+use a cycle loss as the structure constraint to guarantee structure
+consistency. Experimental results show that our method is able to generate
+structure-preserved and natural-looking visualizations.

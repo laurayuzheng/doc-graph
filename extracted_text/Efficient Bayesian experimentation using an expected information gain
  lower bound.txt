@@ -1,0 +1,20 @@
+Efficient Bayesian experimentation using an expected information gain
+  lower bound
+  Experimental design is crucial for inference where limitations in the data
+collection procedure are present due to cost or other restrictions. Optimal
+experimental designs determine parameters that in some appropriate sense make
+the data the most informative possible. In a Bayesian setting this is
+translated to updating to the best possible posterior. Information theoretic
+arguments have led to the formation of the expected information gain as a
+design criterion. This can be evaluated mainly by Monte Carlo sampling and
+maximized by using stochastic approximation methods, both known for being
+computationally expensive tasks. We propose a framework where a lower bound of
+the expected information gain is used as an alternative design criterion. In
+addition to alleviating the computational burden, this also addresses issues
+concerning estimation bias. The problem of permeability inference in a large
+contaminated area is used to demonstrate the validity of our approach where we
+employ the massively parallel version of the multiphase multicomponent
+simulator TOUGH2 to simulate contaminant transport and a Polynomial Chaos
+approximation of the forward model that further accelerates the objective
+function evaluations. The proposed methodology is demonstrated to a setting
+where field measurements are available.

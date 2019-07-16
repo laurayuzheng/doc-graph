@@ -1,0 +1,8 @@
+Short-term solar irradiance and irradiation forecasts via different time
+  series techniques: A preliminary study
+  This communication is devoted to solar irradiance and irradiation short-term
+forecasts, which are useful for electricity production. Several different time
+series approaches are employed. Our results and the corresponding numerical
+simulations show that techniques which do not need a large amount of historical
+data behave better than those which need them, especially when those data are
+quite noisy.

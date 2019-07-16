@@ -1,0 +1,11 @@
+Constraining strongly-coupled new physics from cosmic rays with machine
+  learning techniques
+  Cosmic rays interacting with the atmosphere allow for the probing of
+fundamental interactions at ultra-high energies. We thus obtain limits on
+strongly-coupled new physics models via their imprints on cosmic ray air
+showers. Using the Monte Carlo event generators Herwig and HERBVI, and the air
+shower simulator CORSIKA, to simulate such processes, we apply machine learning
+algorithms to the simulated observables to discriminate the events arising via
+new physics from the QCD background, before using the signal and background
+discrimination performance to set potential limits on the cross sections of the
+new physics models.

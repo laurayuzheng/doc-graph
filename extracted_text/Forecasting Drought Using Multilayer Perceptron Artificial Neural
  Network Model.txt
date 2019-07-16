@@ -1,0 +1,17 @@
+Forecasting Drought Using Multilayer Perceptron Artificial Neural
+  Network Model
+  These days human beings are facing many environmental challenges due to
+frequently occurring drought hazards. It may have an effect on the countrys
+environment, the community, and industries. Several adverse impacts of drought
+hazard are continued in Pakistan, including other hazards. However, early
+measurement and detection of drought can provide guidance to water resources
+management for employing drought mitigation policies. In this paper, we used a
+multilayer perceptron neural network (MLPNN) algorithm for drought forecasting.
+We applied and tested MLPNN algorithm on monthly time series data of
+Standardized Precipitation Evapotranspiration Index (SPEI) for seventeen
+climatological stations located in Northern Area and KPK (Pakistan). We found
+that MLPNN has potential capability for SPEI drought forecasting based on
+performance measures (i.e., Mean Average Error (MAE), the coefficient of
+correlation R, and Root Mean Square Error (RMSE). Water resources and
+management planner can take necessary action in advance (e.g., in water
+scarcity areas) by using MLPNN model as part of their decision making.

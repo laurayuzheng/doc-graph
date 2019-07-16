@@ -1,0 +1,14 @@
+Automated Ground Truth Estimation of Vulnerable Road Users in Automotive
+  Radar Data Using GNSS
+  Annotating automotive radar data is a difficult task. This article presents
+an automated way of acquiring data labels which uses a highly accurate and
+portable global navigation satellite system (GNSS). The proposed system is
+discussed besides a revision of other label acquisitions techniques and a
+problem description of manual data annotation. The article concludes with a
+systematic comparison of conventional hand labeling and automatic data
+acquisition. The results show clear advantages of the proposed method without a
+relevant loss in labeling accuracy. Minor changes can be observed in the
+measured radar data, but the so introduced bias of the GNSS reference is
+clearly outweighed by the indisputable time savings. Beside data annotation,
+the proposed system can also provide a ground truth for validating object
+tracking or other automated driving system applications.

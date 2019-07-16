@@ -1,0 +1,18 @@
+Biogeography based Satellite Image Classification
+  Biogeography is the study of the geographical distribution of biological
+organisms. The mindset of the engineer is that we can learn from nature.
+Biogeography Based Optimization is a burgeoning nature inspired technique to
+find the optimal solution of the problem. Satellite image classification is an
+important task because it is the only way we can know about the land cover map
+of inaccessible areas. Though satellite images have been classified in past by
+using various techniques, the researchers are always finding alternative
+strategies for satellite image classification so that they may be prepared to
+select the most appropriate technique for the feature extraction task in hand.
+This paper is focused on classification of the satellite image of a particular
+land cover using the theory of Biogeography based Optimization. The original
+BBO algorithm does not have the inbuilt property of clustering which is
+required during image classification. Hence modifications have been proposed to
+the original algorithm and the modified algorithm is used to classify the
+satellite image of a given region. The results indicate that highly accurate
+land cover features can be extracted effectively when the proposed algorithm is
+used.

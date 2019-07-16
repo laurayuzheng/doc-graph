@@ -1,0 +1,17 @@
+Short-Term Predictability of Photovoltaic Production over Italy
+  Photovoltaic (PV) power production increased drastically in Europe throughout
+the last years. About the 6% of electricity in Italy comes from PV and for an
+efficient management of the power grid an accurate and reliable forecasting of
+production would be needed. Starting from a dataset of electricity production
+of 65 Italian solar plants for the years 2011-2012 we investigate the
+possibility to forecast daily production from one to ten days of lead time
+without using on site measurements. Our study is divided in two parts: an
+assessment of the predictability of meteorological variables using weather
+forecasts and an analysis on the application of data-driven modelling in
+predicting solar power production. We calibrate a SVM model using available
+observations and then we force the same model with the predicted variables from
+weather forecasts with a lead time from one to ten days. As expected, solar
+power production is strongly influenced by cloudiness and clear sky, in fact we
+observe that while during summer we obtain a general error under the 10%
+(slightly lower in south Italy), during winter the error is abundantly above
+the 20%.

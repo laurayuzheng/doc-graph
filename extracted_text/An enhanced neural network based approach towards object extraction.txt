@@ -1,0 +1,17 @@
+An enhanced neural network based approach towards object extraction
+  The improvements in spectral and spatial resolution of the satellite images
+have facilitated the automatic extraction and identification of the features
+from satellite images and aerial photographs. An automatic object extraction
+method is presented for extracting and identifying the various objects from
+satellite images and the accuracy of the system is verified with regard to IRS
+satellite images. The system is based on neural network and simulates the
+process of visual interpretation from remote sensing images and hence increases
+the efficiency of image analysis. This approach obtains the basic
+characteristics of the various features and the performance is enhanced by the
+automatic learning approach, intelligent interpretation, and intelligent
+interpolation. The major advantage of the method is its simplicity and that the
+system identifies the features not only based on pixel value but also based on
+the shape, haralick features etc of the objects. Further the system allows
+flexibility for identifying the features within the same category based on size
+and shape. The successful application of the system verified its effectiveness
+and the accuracy of the system were assessed by ground truth verification.

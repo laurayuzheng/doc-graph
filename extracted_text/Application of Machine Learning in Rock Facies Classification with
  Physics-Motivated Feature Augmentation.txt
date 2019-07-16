@@ -1,0 +1,16 @@
+Application of Machine Learning in Rock Facies Classification with
+  Physics-Motivated Feature Augmentation
+  With recent progress in algorithms and the availability of massive amounts of
+computation power, application of machine learning techniques is becoming a hot
+topic in the oil and gas industry. One of the most promising aspects to apply
+machine learning to the upstream field is the rock facies classification in
+reservoir characterization, which is crucial in determining the net pay
+thickness of reservoirs, thus a definitive factor in drilling decision making
+process. For complex machine learning tasks like facies classification, feature
+engineering is often critical. This paper shows the inclusion of
+physics-motivated feature interaction in feature augmentation can further
+improve the capability of machine learning in rock facies classification. We
+demonstrate this approach with the SEG 2016 machine learning contest dataset
+and the top winning algorithms. The improvement is roboust and can be $\sim5\%$
+better than current existing best F-1 score, where F-1 is an evaluation metric
+used to quantify average prediction accuracy.

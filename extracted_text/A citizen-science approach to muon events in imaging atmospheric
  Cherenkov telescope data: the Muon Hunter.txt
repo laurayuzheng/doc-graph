@@ -1,0 +1,15 @@
+A citizen-science approach to muon events in imaging atmospheric
+  Cherenkov telescope data: the Muon Hunter
+  Event classification is a common task in gamma-ray astrophysics. It can be
+treated with rapidly-advancing machine learning algorithms, which have the
+potential to outperform traditional analysis methods. However, a major
+challenge for machine learning models is extracting reliably labelled training
+examples from real data. Citizen science offers a promising approach to tackle
+this challenge.
+  We present "Muon Hunter", a citizen science project hosted on the Zooniverse
+platform, where VERITAS data are classified multiple times by individual users
+in order to select and parameterize muon events, a product from cosmic ray
+induced showers. We use this dataset to train and validate a convolutional
+neural-network model to identify muon events for use in monitoring and
+calibration. The results of this work and our experience of using the
+Zooniverse are presented.

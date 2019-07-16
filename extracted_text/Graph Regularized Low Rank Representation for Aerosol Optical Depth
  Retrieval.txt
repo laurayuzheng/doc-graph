@@ -1,0 +1,14 @@
+Graph Regularized Low Rank Representation for Aerosol Optical Depth
+  Retrieval
+  In this paper, we propose a novel data-driven regression model for aerosol
+optical depth (AOD) retrieval. First, we adopt a low rank representation (LRR)
+model to learn a powerful representation of the spectral response. Then, graph
+regularization is incorporated into the LRR model to capture the local
+structure information and the nonlinear property of the remote-sensing data.
+Since it is easy to acquire the rich satellite-retrieval results, we use them
+as a baseline to construct the graph. Finally, the learned feature
+representation is feeded into support vector machine (SVM) to retrieve AOD.
+Experiments are conducted on two widely used data sets acquired by different
+sensors, and the experimental results show that the proposed method can achieve
+superior performance compared to the physical models and other state-of-the-art
+empirical models.

@@ -1,0 +1,19 @@
+Hierarchical structure and the prediction of missing links in networks
+  Networks have in recent years emerged as an invaluable tool for describing
+and quantifying complex systems in many branches of science. Recent studies
+suggest that networks often exhibit hierarchical organization, where vertices
+divide into groups that further subdivide into groups of groups, and so forth
+over multiple scales. In many cases these groups are found to correspond to
+known functional units, such as ecological niches in food webs, modules in
+biochemical networks (protein interaction networks, metabolic networks, or
+genetic regulatory networks), or communities in social networks. Here we
+present a general technique for inferring hierarchical structure from network
+data and demonstrate that the existence of hierarchy can simultaneously explain
+and quantitatively reproduce many commonly observed topological properties of
+networks, such as right-skewed degree distributions, high clustering
+coefficients, and short path lengths. We further show that knowledge of
+hierarchical structure can be used to predict missing connections in partially
+known networks with high accuracy, and for more general network structures than
+competing techniques. Taken together, our results suggest that hierarchy is a
+central organizing principle of complex networks, capable of offering insight
+into many network phenomena.

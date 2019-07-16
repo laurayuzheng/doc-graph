@@ -1,8 +1,23 @@
-A Data-driven Approach to Detecting Precipitation from Meteorological
-  Sensor Data
-  Precipitation is dependent on a myriad of atmospheric conditions. In this
-paper, we study how certain atmospheric parameters impact the occurrence of
-rainfall. We propose a data-driven, machine-learning based methodology to
-detect precipitation using various meteorological sensor data. Our approach
-achieves a true detection rate of 87.4% and a moderately low false alarm rate
-of 32.2%.
+CobWeb - a toolbox for automatic tomographic image analysis based on
+  machine learning techniques: application and examples
+  In this study, we introduce CobWeb 1.0 which is a graphical user interface
+tailored explicitly for accurate image segmentation and representative
+elementary volume analysis of digital rock images derived from high resolution
+tomography. The CobWeb code is a work package deployed as a series of windows
+executable binaries which use image processing and machine learning libraries
+of MATLAB. The user-friendly interface enables image segmentation and
+cross-validation employing K-means, Fuzzy C-means, least square support vector
+machine, and ensemble classification (bragging and boosting) segmentation
+techniques. A quick region of interest analysis including relative porosity
+trends, pore size distribution, and volume fraction of different phases can be
+performed on different geomaterials. Data can be exported to ParaView, DSI
+Studio (.fib), Microsoft Excel and MATLAB for further visualisation and
+statistical analysis. The efficiency of the new tool was verified using gas
+hydrate-bearing sediment samples and Berea sandstone, both from synchrotron
+tomography datasets, as well as Grosmont carbonate rock X-ray micro-tomographic
+dataset. Despite its high sub-micrometer resolution, the gas hydrate dataset
+was suffering from edge enhancement artefacts. These artefacts were primarily
+normalized by the dual filtering approach using both non-local means and
+anisotropic diffusion filtering. The desired automatic segmentation of the
+phases (brine, sand, and gas hydrate) was thus successfully achieved using the
+dual clustering approach.

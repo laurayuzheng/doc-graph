@@ -1,11 +1,8 @@
-Validating Hyperspectral Image Segmentation
-  Hyperspectral satellite imaging attracts enormous research attention in the
-remote sensing community, hence automated approaches for precise segmentation
-of such imagery are being rapidly developed. In this letter, we share our
-observations on the strategy for validating hyperspectral image segmentation
-algorithms currently followed in the literature, and show that it can lead to
-over-optimistic experimental insights. We introduce a new routine for
-generating segmentation benchmarks, and use it to elaborate ready-to-use
-hyperspectral training-test data partitions. They can be utilized for fair
-validation of new and existing algorithms without any training-test data
-leakage.
+A Data-driven Approach to Detecting Precipitation from Meteorological
+  Sensor Data
+  Precipitation is dependent on a myriad of atmospheric conditions. In this
+paper, we study how certain atmospheric parameters impact the occurrence of
+rainfall. We propose a data-driven, machine-learning based methodology to
+detect precipitation using various meteorological sensor data. Our approach
+achieves a true detection rate of 87.4% and a moderately low false alarm rate
+of 32.2%.

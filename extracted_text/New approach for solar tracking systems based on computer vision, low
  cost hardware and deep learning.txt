@@ -1,0 +1,12 @@
+New approach for solar tracking systems based on computer vision, low
+  cost hardware and deep learning
+  In this work, a new approach for Sun tracking systems is presented. Due to
+the current system limitations regarding costs and operational problems, a new
+approach based on low cost, computer vision open hardware and deep learning has
+been developed. The preliminary tests carried out successfully in Plataforma
+solar de Almeria (PSA), reveal the great potential and show the new approach as
+a good alternative to traditional systems. The proposed approach can provide
+key variables for the Sun tracking system control like cloud movements
+prediction, block and shadow detection, atmospheric attenuation or measures of
+concentrated solar radiation, which can improve the control strategies of the
+system and therefore the system performance.

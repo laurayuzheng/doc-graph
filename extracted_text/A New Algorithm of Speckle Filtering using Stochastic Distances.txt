@@ -1,19 +1,11 @@
-Gaussian process regression for forest attribute estimation from
-  airborne laser scanning data
-  While the analysis of airborne laser scanning (ALS) data often provides
-reliable estimates for certain forest stand attributes -- such as total volume
-or basal area -- there is still room for improvement, especially in estimating
-species-specific attributes. Moreover, while information on the estimate
-uncertainty would be useful in various economic and environmental analyses on
-forests, a computationally feasible framework for uncertainty quantifying in
-ALS is still missing. In this article, the species-specific stand attribute
-estimation and uncertainty quantification (UQ) is approached using Gaussian
-process regression (GPR), which is a nonlinear and nonparametric machine
-learning method. Multiple species-specific stand attributes are estimated
-simultaneously: tree height, stem diameter, stem number, basal area, and stem
-volume. The cross-validation results show that GPR yields on average an
-improvement of 4.6\% in estimate RMSE over a state-of-the-art k-nearest
-neighbors (kNN) implementation, negligible bias and well performing UQ
-(credible intervals), while being computationally fast. The performance
-advantage over kNN and the feasibility of credible intervals persists even when
-smaller training sets are used.
+A New Algorithm of Speckle Filtering using Stochastic Distances
+  This paper presents a new approach for filter design based on stochastic
+distances and tests between distributions. A window is defined around each
+pixel, overlapping samples are compared and only those which pass a
+goodness-of-fit test are used to compute the filtered value. The technique is
+applied to intensity SAR data with homogeneous regions using the Gamma model.
+The proposal is compared with the Lee's filter using a protocol based on Monte
+Carlo. Among the criteria used to quantify the quality of filters, we employ
+the equivalent number of looks, line and edge preservation. Moreover, we also
+assessed the filters by the Universal Image Quality Index and the Pearson's
+correlation on edges regions.

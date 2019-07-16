@@ -1,0 +1,11 @@
+Breaking Cascadia's Silence: Machine Learning Reveals the Constant
+  Chatter of the Megathrust
+  Tectonic faults slip in various manners, ranging from ordinary earthquakes to
+slow slip events to aseismic fault creep. The frequent occurrence of slow
+earthquakes and their sensitivity to stress make them a promising probe of the
+neighboring locked zone where megaquakes take place. This relationship,
+however, remains poorly understood. We show that the Cascadia megathrust is
+continuously broadcasting a tremor-like signal that precisely informs of fault
+displacement rate throughout the slow slip cycle. We posit that this signal
+provides indirect, real-time access to physical properties of the megathrust
+and may ultimately reveal a connection between slow slip and megaquakes.

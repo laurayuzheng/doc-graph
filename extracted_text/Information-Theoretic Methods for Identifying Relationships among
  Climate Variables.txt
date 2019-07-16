@@ -1,0 +1,14 @@
+Information-Theoretic Methods for Identifying Relationships among
+  Climate Variables
+  Information-theoretic quantities, such as entropy, are used to quantify the
+amount of information a given variable provides. Entropies can be used together
+to compute the mutual information, which quantifies the amount of information
+two variables share. However, accurately estimating these quantities from data
+is extremely challenging. We have developed a set of computational techniques
+that allow one to accurately compute marginal and joint entropies. These
+algorithms are probabilistic in nature and thus provide information on the
+uncertainty in our estimates, which enable us to establish statistical
+significance of our findings. We demonstrate these methods by identifying
+relations between cloud data from the International Satellite Cloud Climatology
+Project (ISCCP) and data from other sources, such as equatorial pacific sea
+surface temperatures (SST).

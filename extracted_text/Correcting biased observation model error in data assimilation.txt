@@ -1,0 +1,20 @@
+Correcting biased observation model error in data assimilation
+  While the formulation of most data assimilation schemes assumes an unbiased
+observation model error, in real applications, model error with nontrivial
+biases is unavoidable. A practical example is the error in the radiative
+transfer model (which is used to assimilate satellite measurements) in the
+presence of clouds. As a consequence, many (in fact 99\%) of the cloudy
+observed measurements are not being used although they may contain useful
+information. This paper presents a novel nonparametric Bayesian scheme which is
+able to learn the observation model error distribution and correct the bias in
+incoming observations. This scheme can be used in tandem with any data
+assimilation forecasting system. The proposed model error estimator uses
+nonparametric likelihood functions constructed with data-driven basis functions
+based on the theory of kernel embeddings of conditional distributions developed
+in the machine learning community. Numerically, we show positive results with
+two examples. The first example is designed to produce a bimodality in the
+observation model error (typical of "cloudy" observations) by introducing
+obstructions to the observations which occur randomly in space and time. The
+second example, which is physically more realistic, is to assimilate cloudy
+satellite brightness temperature-like quantities, generated from a stochastic
+cloud model for tropical convection and a simple radiative transfer model.

@@ -1,0 +1,26 @@
+Distinguishing cause from effect using observational data: methods and
+  benchmarks
+  The discovery of causal relationships from purely observational data is a
+fundamental problem in science. The most elementary form of such a causal
+discovery problem is to decide whether X causes Y or, alternatively, Y causes
+X, given joint observations of two variables X, Y. An example is to decide
+whether altitude causes temperature, or vice versa, given only joint
+measurements of both variables. Even under the simplifying assumptions of no
+confounding, no feedback loops, and no selection bias, such bivariate causal
+discovery problems are challenging. Nevertheless, several approaches for
+addressing those problems have been proposed in recent years. We review two
+families of such methods: Additive Noise Methods (ANM) and Information
+Geometric Causal Inference (IGCI). We present the benchmark CauseEffectPairs
+that consists of data for 100 different cause-effect pairs selected from 37
+datasets from various domains (e.g., meteorology, biology, medicine,
+engineering, economy, etc.) and motivate our decisions regarding the "ground
+truth" causal directions of all pairs. We evaluate the performance of several
+bivariate causal discovery methods on these real-world benchmark data and in
+addition on artificially simulated data. Our empirical results on real-world
+data indicate that certain methods are indeed able to distinguish cause from
+effect using only purely observational data, although more benchmark data would
+be needed to obtain statistically significant conclusions. One of the best
+performing methods overall is the additive-noise method originally proposed by
+Hoyer et al. (2009), which obtains an accuracy of 63+-10 % and an AUC of
+0.74+-0.05 on the real-world benchmark. As the main theoretical contribution of
+this work we prove the consistency of that method.

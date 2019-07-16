@@ -1,0 +1,17 @@
+A data-driven approach to precipitation parameterizations using
+  convolutional encoder-decoder neural networks
+  Numerical Weather Prediction (NWP) models represent sub-grid processes using
+parameterizations, which are often complex and a major source of uncertainty in
+weather forecasting. In this work, we devise a simple machine learning (ML)
+methodology to learn parameterizations from basic NWP fields. Specifically, we
+demonstrate how encoder-decoder Convolutional Neural Networks (CNN) can be used
+to derive total precipitation using geopotential height as the only input.
+Several popular neural network architectures, from the field of image
+processing, are considered and a comparison with baseline ML methodologies is
+provided. We use NWP reanalysis data to train different ML models showing how
+encoder-decoder CNNs are able to interpret the spatial information contained in
+the geopotential field to infer total precipitation with a high degree of
+accuracy. We also provide a method to identify the levels of the geopotential
+height that have a higher influence on precipitation through a variable
+selection process. As far as we know, this paper covers the first attempt to
+model NWP parameterizations using CNN methodologies.

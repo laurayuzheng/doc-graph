@@ -1,0 +1,22 @@
+A Novel Universal Solar Energy Predictor
+  Solar energy is one of the most economical and clean sustainable energy
+sources on the planet. However, the solar energy throughput is highly
+unpredictable due to its dependency on a plethora of conditions including
+weather, seasons, and other ecological/environmental conditions. Thus, the
+solar energy prediction is an inevitable necessity to optimize solar energy and
+also to improve the efficiency of solar energy systems. Conventionally, the
+optimization of the solar energy is undertaken by subject matter experts using
+their domain knowledge; although it is impractical for even the experts to tune
+the solar systems on a continuous basis. We strongly believe that the power of
+machine learning can be harnessed to better optimize the solar energy
+production by learning the correlation between various conditions and solar
+energy production from historical data which is typically readily available.
+For this use, this paper predicts the daily total energy generation of an
+installed solar program using the Naive Bayes classifier. In the forecast
+procedure, one year historical dataset including daily moderate temperatures,
+daily total sunshine duration, daily total global solar radiation and daily
+total photovoltaic energy generation parameters are used as the categorical
+valued features. By way of this Naive Bayes program the sensitivity and the
+precision measures are improved for the photovoltaic energy prediction and also
+the consequences of other solar characteristics on the solar energy production
+have been assessed.

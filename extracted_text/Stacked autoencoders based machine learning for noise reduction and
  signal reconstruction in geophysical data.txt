@@ -1,0 +1,20 @@
+Stacked autoencoders based machine learning for noise reduction and
+  signal reconstruction in geophysical data
+  Autoencoders are neural network formulations where the input and output of
+the network are identical and the goal is to identify the hidden representation
+in the provided datasets. Generally, autoencoders project the data nonlinearly
+onto a lower dimensional hidden space, where the important features get
+highlighted and interpretation of the data becomes easier. Recent studies have
+shown that even in the presence of noise in the input data, autoencoders can be
+trained to reconstruct the noisefree component of the data from the
+reduced-dimensional hidden space.
+  In this paper, we explore the application of autoencoders within the scope of
+denoising geophysical datasets using a data-driven methodology. The autoencoder
+formulation is discussed, and a stacked variant of deep autoencoders is
+proposed. The proposed method involves locally training the weights first using
+basic autoencoders, each comprising a single hidden layer. Using these
+initialized weights as starting points in the optimization model, the full
+autoencoder network is then trained in the second step. The applicability of
+denoising autoencoders has been demonstrated on a basic mathematical example
+and several geophysical examples. For all the cases, autoencoders are found to
+significantly reduce the noise in the input data.

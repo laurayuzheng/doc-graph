@@ -1,0 +1,20 @@
+Searching for hot subdwarf stars from the LAMOST spectra. III.
+  classifying the hot subdwarf stars from LAMOST DR4 using deep learning method
+  Hot subdwarf stars are core He burning stars located at the blue end of the
+horizontal branch, also known as the extreme horizontal branch. The properties
+of hot subdwarf stars are important for our understanding of the stellar
+astrophysics, globular clusters and galaxies. The spectra of hot subdwarf stars
+can provide us with the detailed information of the stellar atmospheric
+parameters (such as effective temperature, gravity, and helium abundances),
+which is important to clarify the astrophysical and statistical properties of
+hot subdwarf stars. These properties can provide important constraint on the
+theoretical models of hot subdwarf stars. Searching for hot subdwarf stars from
+the spectra data obtained by the Large Sky Area Multi-Object Fiber
+Spectroscopic Telescope (LAMOST) can significantly enlarge the sample size of
+hot subdwarf stars, and help us better study the nature of hot subdwarf stars.
+In this paper we study a new method of searching for hot subdwarf stars from
+LAMOST spectra using convolutional neural networks and support vector machine
+(CNN+SVM). The experiment on the spectra from LAMOST DR4 shows that CNN+SVM can
+classify the hot subdwarf stars accurately: the accuracy is 88.98$\%$ and the
+recall is 94.38 $\%$. Our research provides a new machine learning tool for
+searching for hot subdwarf stars in large spectroscopic surveys.

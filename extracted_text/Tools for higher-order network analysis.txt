@@ -1,0 +1,15 @@
+Tools for higher-order network analysis
+  Networks are a fundamental model of complex systems throughout the sciences,
+and network datasets are typically analyzed through lower-order connectivity
+patterns described at the level of individual nodes and edges. However,
+higher-order connectivity patterns captured by small subgraphs, also called
+network motifs, describe the fundamental structures that control and mediate
+the behavior of many complex systems. We develop three tools for network
+analysis that use higher-order connectivity patterns to gain new insights into
+network datasets: (1) a framework to cluster nodes into modules based on joint
+participation in network motifs; (2) a generalization of the clustering
+coefficient measurement to investigate higher-order closure patterns; and (3) a
+definition of network motifs for temporal networks and fast algorithms for
+counting them. Using these tools, we analyze data from biology, ecology,
+economics, neuroscience, online social networks, scientific collaborations,
+telecommunications, transportation, and the World Wide Web.

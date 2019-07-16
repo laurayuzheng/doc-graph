@@ -1,0 +1,14 @@
+Generating Realistic Geology Conditioned on Physical Measurements with
+  Generative Adversarial Networks
+  An important problem in geostatistics is to build models of the subsurface of
+the Earth given physical measurements at sparse spatial locations. Typically,
+this is done using spatial interpolation methods or by reproducing patterns
+from a reference image. However, these algorithms fail to produce realistic
+patterns and do not exhibit the wide range of uncertainty inherent in the
+prediction of geology. In this paper, we show how semantic inpainting with
+Generative Adversarial Networks can be used to generate varied realizations of
+geology which honor physical measurements while matching the expected
+geological patterns. In contrast to other algorithms, our method scales well
+with the number of data points and mimics a distribution of patterns as opposed
+to a single pattern or image. The generated conditional samples are state of
+the art.

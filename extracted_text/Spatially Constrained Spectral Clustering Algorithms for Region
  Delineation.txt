@@ -1,0 +1,21 @@
+Spatially Constrained Spectral Clustering Algorithms for Region
+  Delineation
+  Regionalization is the task of dividing up a landscape into homogeneous
+patches with similar properties. Although this task has a wide range of
+applications, it has two notable challenges. First, it is assumed that the
+resulting regions are both homogeneous and spatially contiguous. Second, it is
+well-recognized that landscapes are hierarchical such that fine-scale regions
+are nested wholly within broader-scale regions. To address these two
+challenges, first, we develop a spatially constrained spectral clustering
+framework for region delineation that incorporates the tradeoff between region
+homogeneity and spatial contiguity. The framework uses a flexible, truncated
+exponential kernel to represent the spatial contiguity constraints, which is
+integrated with the landscape feature similarity matrix for region delineation.
+To address the second challenge, we extend the framework to create fine-scale
+regions that are nested within broader-scaled regions using a greedy, recursive
+bisection approach. We present a case study of a terrestrial ecology data set
+in the United States that compares the proposed framework with several baseline
+methods for regionalization. Experimental results suggest that the proposed
+framework for regionalization outperforms the baseline methods, especially in
+terms of balancing region contiguity and homogeneity, as well as creating
+regions of more similar size, which is often a desired trait of regions.

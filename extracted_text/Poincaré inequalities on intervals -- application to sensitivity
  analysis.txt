@@ -1,0 +1,19 @@
+Poincaré inequalities on intervals -- application to sensitivity
+  analysis
+  The development of global sensitivity analysis of numerical model outputs has
+recently raised new issues on 1-dimensional Poincar\'e inequalities. Typically
+two kind of sensitivity indices are linked by a Poincar\'e type inequality,
+which provide upper bounds of the most interpretable index by using the other
+one, cheaper to compute. This allows performing a low-cost screening of
+unessential variables. The efficiency of this screening then highly depends on
+the accuracy of the upper bounds in Poincar\'e inequalities. The novelty in the
+questions concern the wide range of probability distributions involved, which
+are often truncated on intervals. After providing an overview of the existing
+knowledge and techniques, we add some theory about Poincar\'e constants on
+intervals, with improvements for symmetric intervals. Then we exploit the
+spectral interpretation for computing exact value of Poincar\'e constants of
+any admissible distribution on a given interval. We give semi-analytical
+results for some frequent distributions (truncated exponential, triangular,
+truncated normal), and present a numerical method in the general case. Finally,
+an application is made to a hydrological problem, showing the benefits of the
+new results in Poincar\'e inequalities to sensitivity analysis.

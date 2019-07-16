@@ -1,0 +1,15 @@
+DeepRain: ConvLSTM Network for Precipitation Prediction using
+  Multichannel Radar Data
+  Accurate rainfall forecasting is critical because it has a great impact on
+people's social and economic activities. Recent trends on various literatures
+show that Deep Learning (Neural Network) is a promising methodology to tackle
+many challenging tasks. In this study, we introduce a brand-new data-driven
+precipitation prediction model called DeepRain. This model predicts the amount
+of rainfall from weather radar data, which is three-dimensional and
+four-channel data, using convolutional LSTM (ConvLSTM). ConvLSTM is a variant
+of LSTM (Long Short-Term Memory) containing a convolution operation inside the
+LSTM cell. For the experiment, we used radar reflectivity data for a two-year
+period whose input is in a time series format in units of 6 min divided into 15
+records. The output is the predicted rainfall information for the input data.
+Experimental results show that two-stacked ConvLSTM reduced RMSE by 23.0%
+compared to linear regression.

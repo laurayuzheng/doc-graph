@@ -1,0 +1,23 @@
+Hybrid integration of multilayer perceptrons and parametric models for
+  reliability forecasting in the smart grid
+  The reliable power system operation is a major goal for electric utilities,
+which requires the accurate reliability forecasting to minimize the duration of
+power interruptions. Since weather conditions are usually the leading causes
+for power interruptions in the smart grid, especially for its distribution
+networks, this paper comprehensively investigates the combined effect of
+various weather parameters on the reliability performance of distribution
+networks. Specially, a multilayer perceptron (MLP) based framework is proposed
+to forecast the daily numbers of sustained and momentary power interruptions in
+one distribution management area using time series of common weather data.
+First, the parametric regression models are implemented to analyze the
+relationship between the daily numbers of power interruptions and various
+common weather parameters, such as temperature, precipitation, air pressure,
+wind speed, and lightning. The selected weather parameters and corresponding
+parametric models are then integrated as inputs to formulate a MLP neural
+network model to predict the daily numbers of power interruptions. A modified
+extreme learning machine (ELM) based hierarchical learning algorithm is
+introduced for training the formulated model using realtime reliability data
+from an electric utility in Florida and common weather data from National
+Climatic Data Center (NCDC). In addition, the sensitivity analysis is
+implemented to determine the various impacts of different weather parameters on
+the daily numbers of power interruptions.

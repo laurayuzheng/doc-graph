@@ -1,0 +1,8 @@
+Object Detection in Satellite Imagery using 2-Step Convolutional Neural
+  Networks
+  This paper presents an efficient object detection method from satellite
+imagery. Among a number of machine learning algorithms, we proposed a
+combination of two convolutional neural networks (CNN) aimed at high precision
+and high recall, respectively. We validated our models using golf courses as
+target objects. The proposed deep learning method demonstrated higher accuracy
+than previous object identification methods.

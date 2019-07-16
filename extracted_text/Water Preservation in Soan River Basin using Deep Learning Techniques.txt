@@ -1,0 +1,15 @@
+Water Preservation in Soan River Basin using Deep Learning Techniques
+  Water supplies are crucial for the development of living beings. However,
+change in the hydrological process i.e. climate and land usage are the key
+issues. Sustaining water level and accurate estimating for dynamic conditions
+is a critical job for hydrologists, but predicting hydrological extremes is an
+open issue. In this paper, we proposed two deep learning techniques and three
+machine learning algorithms to predict stream flow, given the present climate
+conditions. The results showed that the Recurrent Neural Network (RNN) or Long
+Short-term Memory (LSTM), an artificial neural network based method, outperform
+other conventional and machine-learning algorithms for predicting stream flow.
+Furthermore, we analyzed that stream flow is directly affected by
+precipitation, land usage, and temperature. These indexes are critical, which
+can be used by hydrologists to identify the potential for stream flow. We make
+the dataset publicly available (https://github.com/sadaqat007/Dataset) so that
+others should be able to replicate and build upon the results published.

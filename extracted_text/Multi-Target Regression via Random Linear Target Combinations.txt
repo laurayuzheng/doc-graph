@@ -1,0 +1,16 @@
+Multi-Target Regression via Random Linear Target Combinations
+  Multi-target regression is concerned with the simultaneous prediction of
+multiple continuous target variables based on the same set of input variables.
+It arises in several interesting industrial and environmental application
+domains, such as ecological modelling and energy forecasting. This paper
+presents an ensemble method for multi-target regression that constructs new
+target variables via random linear combinations of existing targets. We discuss
+the connection of our approach with multi-label classification algorithms, in
+particular RA$k$EL, which originally inspired this work, and a family of recent
+multi-label classification algorithms that involve output coding. Experimental
+results on 12 multi-target datasets show that it performs significantly better
+than a strong baseline that learns a single model for each target using
+gradient boosting and compares favourably to multi-objective random forest
+approach, which is a state-of-the-art approach. The experiments further show
+that our approach improves more when stronger unconditional dependencies exist
+among the targets.

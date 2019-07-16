@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3Ahydrology%20AND%20all%3Amachine%20AND%20all%3Alearning%26id_list%3D%26start%3D0%26max_results%3D100" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:hydrology AND all:machine AND all:learning&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <id>http://arxiv.org/api/fhrRwlqoFjwdm5p/VwhCoakxJQQ</id>
+  <updated>2019-07-16T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">16</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">100</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1903.07903v1</id>
+    <updated>2019-03-19T09:38:37Z</updated>
+    <published>2019-03-19T09:38:37Z</published>
+    <title>NeuralHydrology - Interpreting LSTMs in Hydrology</title>
+    <summary>  Despite the huge success of Long Short-Term Memory networks, their
+applications in environmental sciences are scarce. We argue that one reason is
+the difficulty to interpret the internals of trained networks. In this study,
+we look at the application of LSTMs for rainfall-runoff forecasting, one of the
+central tasks in the field of hydrology, in which the river discharge has to be
+predicted from meteorological observations. LSTMs are particularly well-suited
+for this problem since memory cells can represent dynamic reservoirs and
+storages, which are essential components in state-space modelling approaches of
+the hydrological system. On basis of two different catchments, one with snow
+influence and one without, we demonstrate how the trained model can be analyzed
+and interpreted. In the process, we show that the network internally learns to
+represent patterns that are consistent with our qualitative understanding of
+the hydrological system.
+</summary>
+    <author>
+      <name>Frederik Kratzert</name>
+    </author>
+    <author>
+      <name>Mathew Herrnegger</name>
+    </author>
+    <author>
+      <name>Daniel Klotz</name>
+    </author>
+    <author>
+      <name>Sepp Hochreiter</name>
+    </author>
+    <author>
+      <name>Günter Klambauer</name>
+    </author>
+    <link href="http://arxiv.org/abs/1903.07903v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.07903v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.10852v1</id>
+    <updated>2019-06-26T05:26:31Z</updated>
+    <published>2019-06-26T05:26:31Z</published>
+    <title>Water Preservation in Soan River Basin using Deep Learning Techniques</title>
+    <summary>  Water supplies are crucial for the development of living beings. However,
+change in the hydrological process i.e. climate and land usage are the key
+issues. Sustaining water level and accurate estimating for dynamic conditions
+is a critical job for hydrologists, but predicting hydrological extremes is an
+open issue. In this paper, we proposed two deep learning techniques and three
+machine learning algorithms to predict stream flow, given the present climate
+conditions. The results showed that the Recurrent Neural Network (RNN) or Long
+Short-term Memory (LSTM), an artificial neural network based method, outperform
+other conventional and machine-learning algorithms for predicting stream flow.
+Furthermore, we analyzed that stream flow is directly affected by
+precipitation, land usage, and temperature. These indexes are critical, which
+can be used by hydrologists to identify the potential for stream flow. We make
+the dataset publicly available (https://github.com/sadaqat007/Dataset) so that
+others should be able to replicate and build upon the results published.
+</summary>
+    <author>
+      <name>Sadaqat ur Rehman</name>
+    </author>
+    <author>
+      <name>Zhongliang Yang</name>
+    </author>
+    <author>
+      <name>Muhammad Shahid</name>
+    </author>
+    <author>
+      <name>Nan Wei</name>
+    </author>
+    <author>
+      <name>Yongfeng Huang</name>
+    </author>
+    <author>
+      <name>Muhammad Waqas</name>
+    </author>
+    <author>
+      <name>Shanshan Tu</name>
+    </author>
+    <author>
+      <name>Obaid ur Rehman</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">14 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/1906.10852v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.10852v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1902.02308v2</id>
+    <updated>2019-06-21T21:24:04Z</updated>
+    <published>2019-02-06T18:05:41Z</published>
+    <title>Decentralized Flood Forecasting Using Deep Neural Networks</title>
+    <summary>  Predicting flood for any location at times of extreme storms is a
+longstanding problem that has utmost importance in emergency management.
+Conventional methods that aim to predict water levels in streams use advanced
+hydrological models still lack of giving accurate forecasts everywhere. This
+study aims to explore artificial deep neural networks' performance on flood
+prediction. While providing models that can be used in forecasting stream
+stage, this paper presents a dataset that focuses on the connectivity of data
+points on river networks. It also shows that neural networks can be very
+helpful in time-series forecasting as in flood events, and support improving
+existing models through data assimilation.
+</summary>
+    <author>
+      <name>Muhammed Sit</name>
+    </author>
+    <author>
+      <name>Ibrahim Demir</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">7 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1902.02308v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1902.02308v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.02401v1</id>
+    <updated>2019-06-06T03:52:12Z</updated>
+    <published>2019-06-06T03:52:12Z</published>
+    <title>Learning to regularize with a variational autoencoder for hydrologic
+  inverse analysis</title>
+    <summary>  Inverse problems often involve matching observational data using a physical
+model that takes a large number of parameters as input. These problems tend to
+be under-constrained and require regularization to impose additional structure
+on the solution in parameter space. A central difficulty in regularization is
+turning a complex conceptual model of this additional structure into a
+functional mathematical form to be used in the inverse analysis. In this work
+we propose a method of regularization involving a machine learning technique
+known as a variational autoencoder (VAE). The VAE is trained to map a
+low-dimensional set of latent variables with a simple structure to the
+high-dimensional parameter space that has a complex structure. We train a VAE
+on unconditioned realizations of the parameters for a hydrological inverse
+problem. These unconditioned realizations neither rely on the observational
+data used to perform the inverse analysis nor require any forward runs of the
+physical model, thus making the computational cost of generating the training
+data minimal. The central benefit of this approach is that regularization is
+then performed on the latent variables from the VAE, which can be regularized
+simply. A second benefit of this approach is that the VAE reduces the number of
+variables in the optimization problem, thus making gradient-based optimization
+more computationally efficient when adjoint methods are unavailable. After
+performing regularization and optimization on the latent variables, the VAE
+then decodes the problem back to the original parameter space. Our approach
+constitutes a novel framework for regularization and optimization, readily
+applicable to a wide range of inverse problems. We call the approach RegAE.
+</summary>
+    <author>
+      <name>Daniel O'Malley</name>
+    </author>
+    <author>
+      <name>John K. Golden</name>
+    </author>
+    <author>
+      <name>Velimir V. Vesselinov</name>
+    </author>
+    <link href="http://arxiv.org/abs/1906.02401v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.02401v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1902.10733v2</id>
+    <updated>2019-04-18T09:17:04Z</updated>
+    <published>2019-02-27T19:09:13Z</published>
+    <title>Shallow Water Bathymetry Mapping from UAV Imagery based on Machine
+  Learning</title>
+    <summary>  The determination of accurate bathymetric information is a key element for
+near offshore activities, hydrological studies such as coastal engineering
+applications, sedimentary processes, hydrographic surveying as well as
+archaeological mapping and biological research. UAV imagery processed with
+Structure from Motion (SfM) and Multi View Stereo (MVS) techniques can provide
+a low-cost alternative to established shallow seabed mapping techniques
+offering as well the important visual information. Nevertheless, water
+refraction poses significant challenges on depth determination. Till now, this
+problem has been addressed through customized image-based refraction correction
+algorithms or by modifying the collinearity equation. In this paper, in order
+to overcome the water refraction errors, we employ machine learning tools that
+are able to learn the systematic underestimation of the estimated depths. In
+the proposed approach, based on known depth observations from bathymetric LiDAR
+surveys, an SVR model was developed able to estimate more accurately the real
+depths of point clouds derived from SfM-MVS procedures. Experimental results
+over two test sites along with the performed quantitative validation indicated
+the high potential of the developed approach.
+</summary>
+    <author>
+      <name>Panagiotis Agrafiotis</name>
+    </author>
+    <author>
+      <name>Dimitrios Skarlatos</name>
+    </author>
+    <author>
+      <name>Andreas Georgopoulos</name>
+    </author>
+    <author>
+      <name>Konstantinos Karantzalos</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.5194/isprs-archives-XLII-2-W10-9-2019</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.5194/isprs-archives-XLII-2-W10-9-2019" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">8 pages, 9 figures</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Int. Arch. Photogramm. Remote Sens. Spatial Inf. Sci., XLII-2/W10,
+  9-16, 2019</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1902.10733v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1902.10733v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.03883v1</id>
+    <updated>2018-11-09T12:39:53Z</updated>
+    <published>2018-11-09T12:39:53Z</published>
+    <title>Exploiting Capacity of Sewer System Using Unsupervised Learning
+  Algorithms Combined with Dimensionality Reduction</title>
+    <summary>  Exploiting capacity of sewer system using decentralized control is a cost
+effective mean of minimizing the overflow. Given the size of the real sewer
+system, exploiting all the installed control structures in the sewer pipes can
+be challenging. This paper presents a divide and conquer solution to implement
+decentralized control measures based on unsupervised learning algorithms. A
+sewer system is first divided into a number of subcatchments. A series of
+natural and built factors that have the impact on sewer system performance is
+then collected. Clustering algorithms are then applied to grouping
+subcatchments with similar hydraulic hydrologic characteristics. Following
+which, principal component analysis is performed to interpret the main features
+of sub-catchment groups and identify priority control locations. Overflows
+under different control scenarios are compared based on the hydraulic model.
+Simulation results indicate that priority control applied to the most suitable
+cluster could bring the most profitable result.
+</summary>
+    <author>
+      <name>Duo Zhang</name>
+    </author>
+    <author>
+      <name>Geir Lindholm</name>
+    </author>
+    <author>
+      <name>Nicolas Martinez</name>
+    </author>
+    <author>
+      <name>Harsha Ratnaweera</name>
+    </author>
+    <link href="http://arxiv.org/abs/1811.03883v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.03883v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.06368v1</id>
+    <updated>2018-11-09T12:27:28Z</updated>
+    <published>2018-11-09T12:27:28Z</published>
+    <title>DeepCSO: Forecasting of Combined Sewer Overflow at a Citywide Level
+  using Multi-task Deep Learning</title>
+    <summary>  Combined Sewer Overflow (CSO) is a major problem to be addressed by many
+cities. Understanding the behavior of sewer system through proper urban
+hydrological models is an effective method of enhancing sewer system
+management. Conventional deterministic methods, which heavily rely on physical
+principles, is inappropriate for real-time purpose due to their expensive
+computation. On the other hand, data-driven methods have gained huge interests,
+but most studies only focus on modeling a single component of the sewer system
+and supply information at a very abstract level. In this paper, we proposed the
+DeepCSO model, which aims at forecasting CSO events from multiple CSO
+structures simultaneously in near real time at a citywide level. The proposed
+model provided an intermediate methodology that combines the flexibility of
+data-driven methods and the rich information contained in deterministic methods
+while avoiding the drawbacks of these two methods. A comparison of the results
+demonstrated that the deep learning based multi-task model is superior to the
+traditional methods.
+</summary>
+    <author>
+      <name>Duo Zhang</name>
+    </author>
+    <author>
+      <name>Geir Lindholm</name>
+    </author>
+    <author>
+      <name>Harsha Ratnaweera</name>
+    </author>
+    <link href="http://arxiv.org/abs/1811.06368v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.06368v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1902.01933v1</id>
+    <updated>2019-01-31T16:28:16Z</updated>
+    <published>2019-01-31T16:28:16Z</published>
+    <title>Combining Physically-Based Modeling and Deep Learning for Fusing GRACE
+  Satellite Data: Can We Learn from Mismatch?</title>
+    <summary>  Global hydrological and land surface models are increasingly used for
+tracking terrestrial total water storage (TWS) dynamics, but the utility of
+existing models is hampered by conceptual and/or data uncertainties related to
+various underrepresented and unrepresented processes, such as groundwater
+storage. The gravity recovery and climate experiment (GRACE) satellite mission
+provided a valuable independent data source for tracking TWS at regional and
+continental scales. Strong interests exist in fusing GRACE data into global
+hydrological models to improve their predictive performance. Here we develop
+and apply deep convolutional neural network (CNN) models to learn the
+spatiotemporal patterns of mismatch between TWS anomalies (TWSA) derived from
+GRACE and those simulated by NOAH, a widely used land surface model. Once
+trained, our CNN models can be used to correct the NOAH simulated TWSA without
+requiring GRACE data, potentially filling the data gap between GRACE and its
+follow-on mission, GRACE-FO. Our methodology is demonstrated over India, which
+has experienced significant groundwater depletion in recent decades that is
+nevertheless not being captured by the NOAH model. Results show that the CNN
+models significantly improve the match with GRACE TWSA, achieving a
+country-average correlation coefficient of 0.94 and Nash-Sutcliff efficient of
+0.87, or 14\% and 52\% improvement respectively over the original NOAH TWSA. At
+the local scale, the learned mismatch pattern correlates well with the observed
+in situ groundwater storage anomaly data for most parts of India, suggesting
+that deep learning models effectively compensate for the missing groundwater
+component in NOAH for this study region.
+</summary>
+    <author>
+      <name>Alexander Y. Sun</name>
+    </author>
+    <author>
+      <name>Bridget R. Scanlon</name>
+    </author>
+    <author>
+      <name>Zizhan Zhang</name>
+    </author>
+    <author>
+      <name>David Walling</name>
+    </author>
+    <author>
+      <name>Soumendra N. Bhanja</name>
+    </author>
+    <author>
+      <name>Abhijit Mukherjee</name>
+    </author>
+    <author>
+      <name>Zhi Zhong</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1029/2018WR023333</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1029/2018WR023333" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Water Resources Research, 2019</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1902.01933v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1902.01933v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.05885v1</id>
+    <updated>2019-01-17T16:48:56Z</updated>
+    <published>2019-01-17T16:48:56Z</published>
+    <title>A Learning Framework for An Accurate Prediction of Rainfall Rates</title>
+    <summary>  The present work is aimed to examine the potential of advanced machine
+learning strategies to predict the monthly rainfall (precipitation) for the
+Indus Basin, using climatological variables such as air temperature,
+geo-potential height, relative humidity and elevation. In this work, the focus
+is on thirteen geographical locations, called index points, within the basin.
+Arguably, not all of the hydrological components are relevant to the
+precipitation rate, and therefore, need to be filtered out, leading to a
+lower-dimensional feature space. Towards this goal, we adopted the gradient
+boosting method to extract the most contributive features for precipitation
+rate prediction. Five state-of-the-art machine learning methods have then been
+trained where pearson correlation coefficient and mean absolute error have been
+reported as the prediction performance criteria. The Random Forest regression
+model outperformed the other regression models achieving the maximum pearson
+correlation coefficient and minimum mean absolute error for most of the index
+points. Our results suggest the relative humidity (for pressure levels of 300
+mb and 150 mb, respectively), the u-direction wind (for pressure level of 700
+mb), air temperature (for pressure levels of 150 mb and 10 mb, respectively) as
+the top five influencing features for accurate forecasting the precipitation
+rate.
+</summary>
+    <author>
+      <name>Hamidreza Ghasemi Damavandi</name>
+    </author>
+    <author>
+      <name>Reepal Shah</name>
+    </author>
+    <link href="http://arxiv.org/abs/1901.05885v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.05885v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="eess.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1709.03891v1</id>
+    <updated>2017-09-12T14:54:57Z</updated>
+    <published>2017-09-12T14:54:57Z</published>
+    <title>High-Dimensional Dependency Structure Learning for Physical Processes</title>
+    <summary>  In this paper, we consider the use of structure learning methods for
+probabilistic graphical models to identify statistical dependencies in
+high-dimensional physical processes. Such processes are often synthetically
+characterized using PDEs (partial differential equations) and are observed in a
+variety of natural phenomena, including geoscience data capturing atmospheric
+and hydrological phenomena. Classical structure learning approaches such as the
+PC algorithm and variants are challenging to apply due to their high
+computational and sample requirements. Modern approaches, often based on sparse
+regression and variants, do come with finite sample guarantees, but are usually
+highly sensitive to the choice of hyper-parameters, e.g., parameter $\lambda$
+for sparsity inducing constraint or regularization. In this paper, we present
+ACLIME-ADMM, an efficient two-step algorithm for adaptive structure learning,
+which estimates an edge specific parameter $\lambda_{ij}$ in the first step,
+and uses these parameters to learn the structure in the second step. Both steps
+of our algorithm use (inexact) ADMM to solve suitable linear programs, and all
+iterations can be done in closed form in an efficient block parallel manner. We
+compare ACLIME-ADMM with baselines on both synthetic data simulated by partial
+differential equations (PDEs) that model advection-diffusion processes, and
+real data (50 years) of daily global geopotential heights to study information
+flow in the atmosphere. ACLIME-ADMM is shown to be efficient, stable, and
+competitive, usually better than the baselines especially on difficult
+problems. On real data, ACLIME-ADMM recovers the underlying structure of global
+atmospheric circulation, including switches in wind directions at the equator
+and tropics entirely from the data.
+</summary>
+    <author>
+      <name>Jamal Golmohammadi</name>
+    </author>
+    <author>
+      <name>Imme Ebert-Uphoff</name>
+    </author>
+    <author>
+      <name>Sijie He</name>
+    </author>
+    <author>
+      <name>Yi Deng</name>
+    </author>
+    <author>
+      <name>Arindam Banerjee</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">21 pages, 8 figures, International Conference on Data Mining 2017</arxiv:comment>
+    <link href="http://arxiv.org/abs/1709.03891v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1709.03891v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1707.06611v3</id>
+    <updated>2017-09-11T18:38:40Z</updated>
+    <published>2017-07-20T17:06:47Z</published>
+    <title>Prolongation of SMAP to Spatio-temporally Seamless Coverage of
+  Continental US Using a Deep Learning Neural Network</title>
+    <summary>  The Soil Moisture Active Passive (SMAP) mission has delivered valuable
+sensing of surface soil moisture since 2015. However, it has a short time span
+and irregular revisit schedule. Utilizing a state-of-the-art time-series deep
+learning neural network, Long Short-Term Memory (LSTM), we created a system
+that predicts SMAP level-3 soil moisture data with atmospheric forcing,
+model-simulated moisture, and static physiographic attributes as inputs. The
+system removes most of the bias with model simulations and improves predicted
+moisture climatology, achieving small test root-mean-squared error (&lt;0.035) and
+high correlation coefficient &gt;0.87 for over 75\% of Continental United States,
+including the forested Southeast. As the first application of LSTM in
+hydrology, we show the proposed network avoids overfitting and is robust for
+both temporal and spatial extrapolation tests. LSTM generalizes well across
+regions with distinct climates and physiography. With high fidelity to SMAP,
+LSTM shows great potential for hindcasting, data assimilation, and weather
+forecasting.
+</summary>
+    <author>
+      <name>Kuai Fang</name>
+    </author>
+    <author>
+      <name>Chaopeng Shen</name>
+    </author>
+    <author>
+      <name>Daniel Kifer</name>
+    </author>
+    <author>
+      <name>Xiao Yang</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1002/2017GL075619</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1002/2017GL075619" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Geophysical Research Letters, 2017</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1707.06611v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1707.06611v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1712.02162v3</id>
+    <updated>2018-08-24T15:12:46Z</updated>
+    <published>2017-12-06T12:44:27Z</published>
+    <title>A trans-disciplinary review of deep learning research for water
+  resources scientists</title>
+    <summary>  Deep learning (DL), a new-generation of artificial neural network research,
+has transformed industries, daily lives and various scientific disciplines in
+recent years. DL represents significant progress in the ability of neural
+networks to automatically engineer problem-relevant features and capture highly
+complex data distributions. I argue that DL can help address several major new
+and old challenges facing research in water sciences such as
+inter-disciplinarity, data discoverability, hydrologic scaling, equifinality,
+and needs for parameter regionalization. This review paper is intended to
+provide water resources scientists and hydrologists in particular with a simple
+technical overview, trans-disciplinary progress update, and a source of
+inspiration about the relevance of DL to water. The review reveals that various
+physical and geoscientific disciplines have utilized DL to address data
+challenges, improve efficiency, and gain scientific insights. DL is especially
+suited for information extraction from image-like data and sequential data.
+Techniques and experiences presented in other disciplines are of high relevance
+to water research. Meanwhile, less noticed is that DL may also serve as a
+scientific exploratory tool. A new area termed 'AI neuroscience,' where
+scientists interpret the decision process of deep networks and derive insights,
+has been born. This budding sub-discipline has demonstrated methods including
+correlation-based analysis, inversion of network-extracted features,
+reduced-order approximations by interpretable models, and attribution of
+network decisions to inputs. Moreover, DL can also use data to condition
+neurons that mimic problem-specific fundamental organizing units, thus
+revealing emergent behaviors of these units. Vast opportunities exist for DL to
+propel advances in water sciences.
+</summary>
+    <author>
+      <name>Chaopeng Shen</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1029/2018WR022643</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1029/2018WR022643" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Water Resources Research, 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1712.02162v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1712.02162v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.00786v1</id>
+    <updated>2019-01-03T15:17:38Z</updated>
+    <published>2019-01-03T15:17:38Z</published>
+    <title>Towards Global Remote Discharge Estimation: Using the Few to Estimate
+  The Many</title>
+    <summary>  Learning hydrologic models for accurate riverine flood prediction at scale is
+a challenge of great importance. One of the key difficulties is the need to
+rely on in-situ river discharge measurements, which can be quite scarce and
+unreliable, particularly in regions where floods cause the most damage every
+year. Accordingly, in this work we tackle the problem of river discharge
+estimation at different river locations. A core characteristic of the data at
+hand (e.g. satellite measurements) is that we have few measurements for many
+locations, all sharing the same physics that underlie the water discharge. We
+capture this scenario in a simple but powerful common mechanism regression
+(CMR) model with a local component as well as a shared one which captures the
+global discharge mechanism. The resulting learning objective is non-convex, but
+we show that we can find its global optimum by leveraging the power of joining
+local measurements across sites. In particular, using a spectral initialization
+with provable near-optimal accuracy, we can find the optimum using standard
+descent methods. We demonstrate the efficacy of our approach for the problem of
+discharge estimation using simulations.
+</summary>
+    <author>
+      <name>Yotam Gigi</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research and The Hebrew University of Jerusalem Israel</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Gal Elidan</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research and The Hebrew University of Jerusalem Israel</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Avinatan Hassidim</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research and Bar-Ilan University</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Yossi Matias</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Zach Moshe</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Sella Nevo</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Guy Shalev</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Ami Wiesel</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Google Research and The Hebrew University of Jerusalem Israel</arxiv:affiliation>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">The 4-page paper sent to NeurIPS 2018 AI for social good workshop</arxiv:comment>
+    <link href="http://arxiv.org/abs/1901.00786v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.00786v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1612.08544v2</id>
+    <updated>2017-11-13T17:42:12Z</updated>
+    <published>2016-12-27T09:14:16Z</published>
+    <title>Theory-guided Data Science: A New Paradigm for Scientific Discovery from
+  Data</title>
+    <summary>  Data science models, although successful in a number of commercial domains,
+have had limited applicability in scientific problems involving complex
+physical phenomena. Theory-guided data science (TGDS) is an emerging paradigm
+that aims to leverage the wealth of scientific knowledge for improving the
+effectiveness of data science models in enabling scientific discovery. The
+overarching vision of TGDS is to introduce scientific consistency as an
+essential component for learning generalizable models. Further, by producing
+scientifically interpretable models, TGDS aims to advance our scientific
+understanding by discovering novel domain insights. Indeed, the paradigm of
+TGDS has started to gain prominence in a number of scientific disciplines such
+as turbulence modeling, material discovery, quantum chemistry, bio-medical
+science, bio-marker discovery, climate science, and hydrology. In this paper,
+we formally conceptualize the paradigm of TGDS and present a taxonomy of
+research themes in TGDS. We describe several approaches for integrating domain
+knowledge in different research themes using illustrative examples from
+different disciplines. We also highlight some of the promising avenues of novel
+research for realizing the full potential of theory-guided data science.
+</summary>
+    <author>
+      <name>Anuj Karpatne</name>
+    </author>
+    <author>
+      <name>Gowtham Atluri</name>
+    </author>
+    <author>
+      <name>James Faghmous</name>
+    </author>
+    <author>
+      <name>Michael Steinbach</name>
+    </author>
+    <author>
+      <name>Arindam Banerjee</name>
+    </author>
+    <author>
+      <name>Auroop Ganguly</name>
+    </author>
+    <author>
+      <name>Shashi Shekhar</name>
+    </author>
+    <author>
+      <name>Nagiza Samatova</name>
+    </author>
+    <author>
+      <name>Vipin Kumar</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TKDE.2017.2720168</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TKDE.2017.2720168" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Transactions on Knowledge and Data Engineering, 29(10),
+  pp.2318-2331. 2017</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1612.08544v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1612.08544v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1612.03689v1</id>
+    <updated>2016-12-12T14:08:54Z</updated>
+    <published>2016-12-12T14:08:54Z</published>
+    <title>Poincaré inequalities on intervals -- application to sensitivity
+  analysis</title>
+    <summary>  The development of global sensitivity analysis of numerical model outputs has
+recently raised new issues on 1-dimensional Poincar\'e inequalities. Typically
+two kind of sensitivity indices are linked by a Poincar\'e type inequality,
+which provide upper bounds of the most interpretable index by using the other
+one, cheaper to compute. This allows performing a low-cost screening of
+unessential variables. The efficiency of this screening then highly depends on
+the accuracy of the upper bounds in Poincar\'e inequalities. The novelty in the
+questions concern the wide range of probability distributions involved, which
+are often truncated on intervals. After providing an overview of the existing
+knowledge and techniques, we add some theory about Poincar\'e constants on
+intervals, with improvements for symmetric intervals. Then we exploit the
+spectral interpretation for computing exact value of Poincar\'e constants of
+any admissible distribution on a given interval. We give semi-analytical
+results for some frequent distributions (truncated exponential, triangular,
+truncated normal), and present a numerical method in the general case. Finally,
+an application is made to a hydrological problem, showing the benefits of the
+new results in Poincar\'e inequalities to sensitivity analysis.
+</summary>
+    <author>
+      <name>Olivier Roustant</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">FAYOL-EMSE, GdR MASCOT-NUM</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Franck Barthe</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">IMT</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Bertrand Iooss</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">GdR MASCOT-NUM, IMT</arxiv:affiliation>
+    </author>
+    <link href="http://arxiv.org/abs/1612.03689v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1612.03689v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.PR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.TH" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1710.10161v4</id>
+    <updated>2018-05-16T21:29:33Z</updated>
+    <published>2017-10-26T12:49:05Z</published>
+    <title>Development and analysis of a Bayesian water balance model for large
+  lake systems</title>
+    <summary>  Water balance models (WBMs) are often employed to understand regional
+hydrologic cycles over various time scales. Most WBMs, however, are
+physically-based, and few employ state-of-the-art statistical methods to
+reconcile independent input measurement uncertainty and bias. Further, few WBMs
+exist for large lakes, and most large lake WBMs perform additive accounting,
+with minimal consideration towards input data uncertainty. Here, we introduce a
+framework for improving a previously developed large lake statistical water
+balance model (L2SWBM). Focusing on the water balances of Lakes Superior and
+Michigan-Huron, we demonstrate our new analytical framework, identifying
+L2SWBMs from 26 alternatives that adequately close the water balance of the
+lakes with satisfactory computation times compared with the prototype model. We
+expect our new framework will be used to develop water balance models for other
+lakes around the world.
+</summary>
+    <author>
+      <name>Joeseph P. Smith</name>
+    </author>
+    <author>
+      <name>Andrew D. Gronewold</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Final version for ArXiv</arxiv:comment>
+    <link href="http://arxiv.org/abs/1710.10161v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1710.10161v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

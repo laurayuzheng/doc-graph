@@ -1,0 +1,12 @@
+Machine Learning Predicts Laboratory Earthquakes
+  Forecasting fault failure is a fundamental but elusive goal in earthquake
+science. Here we show that by listening to the acoustic signal emitted by a
+laboratory fault, machine learning can predict the time remaining before it
+fails with great accuracy. These predictions are based solely on the
+instantaneous physical characteristics of the acoustical signal, and do not
+make use of its history. Surprisingly, machine learning identifies a signal
+emitted from the fault zone previously thought to be low-amplitude noise that
+enables failure forecasting throughout the laboratory quake cycle. We
+hypothesize that applying this approach to continuous seismic data may lead to
+significant advances in identifying currently unknown signals, in providing new
+insights into fault physics, and in placing bounds on fault failure times.

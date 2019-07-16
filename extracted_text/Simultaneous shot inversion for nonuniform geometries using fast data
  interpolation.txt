@@ -1,0 +1,11 @@
+Simultaneous shot inversion for nonuniform geometries using fast data
+  interpolation
+  Stochastic optimization is key to efficient inversion in PDE-constrained
+optimization. Using 'simultaneous shots', or random superposition of source
+terms, works very well in simple acquisition geometries where all sources see
+all receivers, but this rarely occurs in practice. We develop an approach that
+interpolates data to an ideal acquisition geometry while solving the inverse
+problem using simultaneous shots. The approach is formulated as a joint inverse
+problem, combining ideas from low-rank interpolation with full-waveform
+inversion. Results using synthetic experiments illustrate the flexibility and
+efficiency of the approach.

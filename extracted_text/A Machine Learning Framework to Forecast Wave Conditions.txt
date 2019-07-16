@@ -1,0 +1,15 @@
+A Machine Learning Framework to Forecast Wave Conditions
+  A~machine learning framework is developed to estimate ocean-wave conditions.
+By supervised training of machine learning models on many thousands of
+iterations of a physics-based wave model, accurate representations of
+significant wave heights and period can be used to predict ocean conditions. A
+model of Monterey Bay was used as the example test site; it was forced by
+measured wave conditions, ocean-current nowcasts, and reported winds. These
+input data along with model outputs of spatially variable wave heights and
+characteristic period were aggregated into supervised learning training and
+test data sets, which were supplied to machine learning models. These machine
+learning models replicated wave heights with a root-mean-squared error of 9cm
+and correctly identify over 90% of the characteristic periods for the test-data
+sets. Impressively, transforming model inputs to outputs through matrix
+operations requires only a fraction (<1/1,000) of the computation time compared
+to forecasting with the physics-based model.

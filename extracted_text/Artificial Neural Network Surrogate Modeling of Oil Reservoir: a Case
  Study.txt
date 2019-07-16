@@ -1,0 +1,13 @@
+Artificial Neural Network Surrogate Modeling of Oil Reservoir: a Case
+  Study
+  We develop a data-driven model, introducing recent advances in machine
+learning to reservoir simulation. We use a conventional reservoir modeling tool
+to generate training set and a special ensemble of artificial neural networks
+(ANNs) to build a predictive model. The ANN-based model allows to reproduce the
+time dependence of fluids and pressure distribution within the computational
+cells of the reservoir model. We compare the performance of the ANN-based model
+with conventional reservoir modeling and illustrate that ANN-based model (1) is
+able to capture all the output parameters of the conventional model with very
+high accuracy and (2) demonstrate much higher computational performance. We
+finally elaborate on further options for research and developments within the
+area of reservoir modeling.

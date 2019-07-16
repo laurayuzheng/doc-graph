@@ -1,0 +1,15 @@
+Approximate Variational Inference Based on a Finite Sample of Gaussian
+  Latent Variables
+  Variational methods are employed in situations where exact Bayesian inference
+becomes intractable due to the difficulty in performing certain integrals.
+Typically, variational methods postulate a tractable posterior and formulate a
+lower bound on the desired integral to be approximated, e.g. marginal
+likelihood. The lower bound is then optimised with respect to its free
+parameters, the so called variational parameters. However, this is not always
+possible as for certain integrals it is very challenging (or tedious) to come
+up with a suitable lower bound. Here we propose a simple scheme that overcomes
+some of the awkward cases where the usual variational treatment becomes
+difficult. The scheme relies on a rewriting of the lower bound on the model
+log-likelihood. We demonstrate the proposed scheme on a number of synthetic and
+real examples, as well as on a real geophysical model for which the standard
+variational approaches are inapplicable.

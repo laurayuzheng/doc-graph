@@ -1,0 +1,15 @@
+Short-term forecasting of Italian residential gas demand
+  Natural gas is the most important energy source in Italy: it fuels
+thermoelectric power plants, industrial facilities and domestic heating. Gas
+demand forecasting is a critical task for any energy provider as it impacts on
+pipe reservation and stock planning. In this paper, the one-day-ahead
+forecasting of Italian daily residential gas demand is studied. Five predictors
+are developed and compared: Ridge Regression, Gaussian Process, k-Nearest
+Neighbour, Artificial Neural Network, and Torus Model. Preprocessing and
+feature selection are also discussed in detail. Concerning the prediction
+error, a theoretical bound on the best achievable root mean square error is
+worked out assuming ideal conditions, except for the inaccuracy of
+meteorological temperature forecasts, whose effects are properly propagated.
+The best predictors, namely the Artificial Neural Network and the Gaussian
+Process, achieve an RMSE which is twice the performance limit, suggesting that
+precise predictions of residential gas demand can be achieved at country level.

@@ -1,0 +1,14 @@
+Deep Learning and Data Assimilation for Real-Time Production Prediction
+  in Natural Gas Wells
+  The prediction of the gas production from mature gas wells, due to their
+complex end-of-life behavior, is challenging and crucial for operational
+decision making. In this paper, we apply a modified deep LSTM model for
+prediction of the gas flow rates in mature gas wells, including the
+uncertainties in input parameters. Additionally, due to changes in the system
+in time and in order to increase the accuracy and robustness of the prediction,
+the Ensemble Kalman Filter (EnKF) is used to update the flow rate predictions
+based on new observations. The developed approach was tested on the data from
+two mature gas production wells in which their production is highly dynamic and
+suffering from salt deposition. The results show that the flow predictions
+using the EnKF updated model leads to better Jeffreys' J-divergences than the
+predictions without the EnKF model updating scheme.

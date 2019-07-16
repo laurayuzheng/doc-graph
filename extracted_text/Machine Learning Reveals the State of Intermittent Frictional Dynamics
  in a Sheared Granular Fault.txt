@@ -1,0 +1,16 @@
+Machine Learning Reveals the State of Intermittent Frictional Dynamics
+  in a Sheared Granular Fault
+  Seismogenic plate boundaries are presumed to behave in a similar manner to a
+densely packed granular medium, where fault and blocks systems rapidly
+rearrange the distribution of forces within themselves, as particles do in
+slowly sheared granular systems. We use machine learning and show that
+statistical features of velocity signals from individual particles in a
+simulated sheared granular fault contain information regarding the
+instantaneous global state of intermittent frictional stick-slip dynamics. We
+demonstrate that combining features built from the signals of more particles
+can improve the accuracy of the global model, and discuss the physical basis
+behind decrease in error. We show that the statistical features such as median
+and higher moments of the signals that represent the particle displacement in
+the direction of shearing are among the best predictive features. Our work
+provides novel insights into the applications of machine learning in studying
+frictional processes that take place in geophysical systems.

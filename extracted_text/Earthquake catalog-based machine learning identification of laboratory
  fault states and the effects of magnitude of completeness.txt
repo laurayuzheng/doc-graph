@@ -1,0 +1,12 @@
+Earthquake catalog-based machine learning identification of laboratory
+  fault states and the effects of magnitude of completeness
+  Machine learning regression can predict macroscopic fault properties such as
+shear stress, friction, and time to failure using continuous records of fault
+zone acoustic emissions. Here we show that a similar approach is successful
+using event catalogs derived from the continuous data. Our methods are
+applicable to catalogs of arbitrary scale and magnitude of completeness. We
+investigate how machine learning regression from an event catalog of laboratory
+earthquakes performs as a function of the catalog magnitude of completeness. We
+find that strong model performance requires a sufficiently low magnitude of
+completeness, and below this magnitude of completeness model performance
+saturates.

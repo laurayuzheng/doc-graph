@@ -1,0 +1,17 @@
+Directivity Modes of Earthquake Populations with Unsupervised Learning
+  We present a novel approach for resolving modes of rupture directivity in
+large populations of earthquakes. A seismic spectral decomposition technique is
+used to first produce relative measurements of radiated energy for earthquakes
+in a spatially-compact cluster. The azimuthal distribution of energy for each
+earthquake is then assumed to result from one of several distinct modes of
+rupture propagation. Rather than fitting a kinematic rupture model to determine
+the most likely mode of rupture propagation, we instead treat the modes as
+latent variables and learn them with a Gaussian mixture model. The mixture
+model simultaneously determines the number of events that best identify with
+each mode. The technique is demonstrated on four datasets in California with
+several thousand earthquakes. We show that the datasets naturally decompose
+into distinct rupture propagation modes that correspond to different rupture
+directions, and the fault plane is unambiguously identified for all cases. We
+find that these small earthquakes exhibit unilateral ruptures 53-74% of the
+time on average. The results provide important observational constraints on the
+physics of earthquakes and faults.

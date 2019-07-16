@@ -1,23 +1,22 @@
-Penobscot Dataset: Fostering Machine Learning Development for Seismic
-  Interpretation
-  We have seen in the past years the flourishing of machine and deep learning
-algorithms in several applications such as image classification and
-segmentation, object detection and recognition, among many others. This was
-only possible, in part, because datasets like ImageNet -- with +14 million
-labeled images -- were created and made publicly available, providing
-researches with a common ground to compare their advances and extend the
-state-of-the-art. Although we have seen an increasing interest in machine
-learning in geosciences as well, we will only be able to achieve a significant
-impact in our community if we collaborate to build such a common basis. This is
-even more difficult when it comes to the Oil&Gas industry, in which
-confidentiality and commercial interests often hinder the sharing of datasets
-with others. In this letter, we present the Penobscot interpretation dataset,
-our contribution to the development of machine learning in geosciences, more
-specifically in seismic interpretation. The Penobscot 3D seismic dataset was
-acquired in the Scotian shelf, offshore Nova Scotia, Canada. The data is
-publicly available and comprises pre- and pos-stack data, 5 horizons and well
-logs of 2 wells. However, for the dataset to be of practical use for our tasks,
-we had to reinterpret the seismic, generating 7 horizons separating different
-seismic facies intervals. The interpreted horizons were used to generated
-+100,000 labeled images for inlines and crosslines. To demonstrate the utility
-of our dataset, results of two experiments are presented.
+Using Causal Discovery to Track Information Flow in Spatio-Temporal Data
+  - A Testbed and Experimental Results Using Advection-Diffusion Simulations
+  Causal discovery algorithms based on probabilistic graphical models have
+emerged in geoscience applications for the identification and visualization of
+dynamical processes. The key idea is to learn the structure of a graphical
+model from observed spatio-temporal data, which indicates information flow,
+thus pathways of interactions, in the observed physical system. Studying those
+pathways allows geoscientists to learn subtle details about the underlying
+dynamical mechanisms governing our planet. Initial studies using this approach
+on real-world atmospheric data have shown great potential for scientific
+discovery. However, in these initial studies no ground truth was available, so
+that the resulting graphs have been evaluated only by whether a domain expert
+thinks they seemed physically plausible. This paper seeks to fill this gap. We
+develop a testbed that emulates two dynamical processes dominant in many
+geoscience applications, namely advection and diffusion, in a 2D grid. Then we
+apply the causal discovery based information tracking algorithms to the
+simulation data to study how well the algorithms work for different scenarios
+and to gain a better understanding of the physical meaning of the graph
+results, in particular of instantaneous connections. We make all data sets used
+in this study available to the community as a benchmark.
+  Keywords: Information flow, graphical model, structure learning, causal
+discovery, geoscience.

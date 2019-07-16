@@ -1,17 +1,24 @@
-Seismic Bayesian evidential learning: Estimation and uncertainty
-  quantification of sub-resolution reservoir properties
-  We present a framework that enables estimation of low-dimensional
-sub-resolution reservoir properties directly from seismic data, without
-requiring the solution of a high dimensional seismic inverse problem. Our
-workflow is based on the Bayesian evidential learning approach and exploits
-learning the direct relation between seismic data and reservoir properties to
-efficiently estimate reservoir properties. The theoretical framework we develop
-allows incorporation of non-linear statistical models for seismic estimation
-problems. Uncertainty quantification is performed with Approximate Bayesian
-Computation. With the help of a synthetic example of estimation of reservoir
-net-to-gross and average fluid saturations in sub-resolution thin-sand
-reservoir, several nuances are foregrounded regarding the applicability of
-unsupervised and supervised learning methods for seismic estimation problems.
-Finally, we demonstrate the efficacy of our approach by estimating posterior
-uncertainty of reservoir net-to-gross in sub-resolution thin-sand reservoir
-from an offshore delta dataset using 3D pre-stack seismic data.
+Machine learning for graph-based representations of three-dimensional
+  discrete fracture networks
+  Structural and topological information play a key role in modeling flow and
+transport through fractured rock in the subsurface. Discrete fracture network
+(DFN) computational suites such as dfnWorks are designed to simulate flow and
+transport in such porous media. Flow and transport calculations reveal that a
+small backbone of fractures exists, where most flow and transport occurs.
+Restricting the flowing fracture network to this backbone provides a
+significant reduction in the network's effective size. However, the particle
+tracking simulations needed to determine the reduction are computationally
+intensive. Such methods may be impractical for large systems or for robust
+uncertainty quantification of fracture networks, where thousands of forward
+simulations are needed to bound system behavior.
+  In this paper, we develop an alternative network reduction approach to
+characterizing transport in DFNs, by combining graph theoretical and machine
+learning methods. We consider a graph representation where nodes signify
+fractures and edges denote their intersections. Using random forest and support
+vector machines, we rapidly identify a subnetwork that captures the flow
+patterns of the full DFN, based primarily on node centrality features in the
+graph. Our supervised learning techniques train on particle-tracking backbone
+paths found by dfnWorks, but run in negligible time compared to those
+simulations. We find that our predictions can reduce the network to
+approximately 20% of its original size, while still generating breakthrough
+curves consistent with those of the original network.

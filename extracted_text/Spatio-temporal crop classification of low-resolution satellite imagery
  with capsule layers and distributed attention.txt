@@ -1,0 +1,13 @@
+Spatio-temporal crop classification of low-resolution satellite imagery
+  with capsule layers and distributed attention
+  Land use classification of low resolution spatial imagery is one of the most
+extensively researched fields in remote sensing. Despite significant
+advancements in satellite technology, high resolution imagery lacks global
+coverage and can be prohibitively expensive to procure for extended time
+periods. Accurately classifying land use change without high resolution imagery
+offers the potential to monitor vital aspects of global development agenda
+including climate smart agriculture, drought resistant crops, and sustainable
+land management. Utilizing a combination of capsule layers and long-short term
+memory layers with distributed attention, the present paper achieves
+state-of-the-art accuracy on temporal crop type classification at a 30x30m
+resolution with Sentinel 2 imagery.

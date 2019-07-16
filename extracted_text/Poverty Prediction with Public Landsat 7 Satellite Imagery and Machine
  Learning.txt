@@ -1,0 +1,12 @@
+Poverty Prediction with Public Landsat 7 Satellite Imagery and Machine
+  Learning
+  Obtaining detailed and reliable data about local economic livelihoods in
+developing countries is expensive, and data are consequently scarce. Previous
+work has shown that it is possible to measure local-level economic livelihoods
+using high-resolution satellite imagery. However, such imagery is relatively
+expensive to acquire, often not updated frequently, and is mainly available for
+recent years. We train CNN models on free and publicly available multispectral
+daytime satellite images of the African continent from the Landsat 7 satellite,
+which has collected imagery with global coverage for almost two decades. We
+show that despite these images' lower resolution, we can achieve accuracies
+that exceed previous benchmarks.

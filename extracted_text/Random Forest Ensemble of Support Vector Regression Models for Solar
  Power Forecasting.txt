@@ -1,0 +1,13 @@
+Random Forest Ensemble of Support Vector Regression Models for Solar
+  Power Forecasting
+  To mitigate the uncertainty of variable renewable resources, two
+off-the-shelf machine learning tools are deployed to forecast the solar power
+output of a solar photovoltaic system. The support vector machines generate the
+forecasts and the random forest acts as an ensemble learning method to combine
+the forecasts. The common ensemble technique in wind and solar power
+forecasting is the blending of meteorological data from several sources. In
+this study though, the present and the past solar power forecasts from several
+models, as well as the associated meteorological data, are incorporated into
+the random forest to combine and improve the accuracy of the day-ahead solar
+power forecasts. The performance of the combined model is evaluated over the
+entire year and compared with other combining techniques.

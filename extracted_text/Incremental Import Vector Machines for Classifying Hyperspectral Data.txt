@@ -1,19 +1,20 @@
-Disaggregation of SMAP L3 Brightness Temperatures to 9km using Kernel
-  Machines
-  In this study, a machine learning algorithm is used for disaggregation of
-SMAP brightness temperatures (T$_{\textrm{B}}$) from 36km to 9km. It uses image
-segmentation to cluster the study region based on meteorological and land cover
-similarity, followed by a support vector machine based regression that computes
-the value of the disaggregated T$_{\textrm{B}}$ at all pixels. High resolution
-remote sensing products such as land surface temperature, normalized difference
-vegetation index, enhanced vegetation index, precipitation, soil texture, and
-land-cover were used for disaggregation. The algorithm was implemented in Iowa,
-United States, from April to July 2015, and compared with the SMAP L3_SM_AP
-T$_{\textrm{B}}$ product at 9km. It was found that the disaggregated
-T$_{\textrm{B}}$ were very similar to the SMAP-T$_{\textrm{B}}$ product, even
-for vegetated areas with a mean difference $\leq$ 5K. However, the standard
-deviation of the disaggregation was lower by 7K than that of the AP product.
-The probability density functions of the disaggregated T$_{\textrm{B}}$ were
-similar to the SMAP-T$_{\textrm{B}}$. The results indicate that this algorithm
-may be used for disaggregating T$_{\textrm{B}}$ using complex non-linear
-correlations on a grid.
+Incremental Import Vector Machines for Classifying Hyperspectral Data
+  In this paper we propose an incremental learning strategy for import vector
+machines (IVM), which is a sparse kernel logistic regression approach. We use
+the procedure for the concept of self-training for sequential classification of
+hyperspectral data. The strategy comprises the inclusion of new training
+samples to increase the classification accuracy and the deletion of
+non-informative samples to be memory- and runtime-efficient. Moreover, we
+update the parameters in the incremental IVM model without re-training from
+scratch. Therefore, the incremental classifier is able to deal with large data
+sets. The performance of the IVM in comparison to support vector machines (SVM)
+is evaluated in terms of accuracy and experiments are conducted to assess the
+potential of the probabilistic outputs of the IVM. Experimental results
+demonstrate that the IVM and SVM perform similar in terms of classification
+accuracy. However, the number of import vectors is significantly lower when
+compared to the number of support vectors and thus, the computation time during
+classification can be decreased. Moreover, the probabilities provided by IVM
+are more reliable, when compared to the probabilistic information, derived from
+an SVM's output. In addition, the proposed self-training strategy can increase
+the classification accuracy. Overall, the IVM and the its incremental version
+is worthwhile for the classification of hyperspectral data.

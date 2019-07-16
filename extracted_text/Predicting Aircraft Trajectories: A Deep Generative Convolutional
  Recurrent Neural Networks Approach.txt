@@ -1,0 +1,19 @@
+Predicting Aircraft Trajectories: A Deep Generative Convolutional
+  Recurrent Neural Networks Approach
+  Reliable 4D aircraft trajectory prediction, whether in a real-time setting or
+for analysis of counterfactuals, is important to the efficiency of the aviation
+system. Toward this end, we first propose a highly generalizable efficient
+tree-based matching algorithm to construct image-like feature maps from
+high-fidelity meteorological datasets - wind, temperature and convective
+weather. We then model the track points on trajectories as conditional Gaussian
+mixtures with parameters to be learned from our proposed deep generative model,
+which is an end-to-end convolutional recurrent neural network that consists of
+a long short-term memory (LSTM) encoder network and a mixture density LSTM
+decoder network. The encoder network embeds last-filed flight plan information
+into fixed-size hidden state variables and feeds the decoder network, which
+further learns the spatiotemporal correlations from the historical flight
+tracks and outputs the parameters of Gaussian mixtures. Convolutional layers
+are integrated into the pipeline to learn representations from the
+high-dimension weather features. During the inference process, beam search,
+adaptive Kalman filter, and Rauch-Tung-Striebel smoother algorithms are used to
+prune the variance of generated trajectories.

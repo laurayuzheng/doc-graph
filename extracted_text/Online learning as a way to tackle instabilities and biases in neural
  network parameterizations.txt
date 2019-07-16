@@ -1,0 +1,20 @@
+Online learning as a way to tackle instabilities and biases in neural
+  network parameterizations
+  Over the last couple of years, machine learning parameterizations have
+emerged as a potential way to improve the representation of sub-grid processes
+in atmospheric models. All previous studies created a training dataset from a
+high-resolution simulation, fitted a machine learning algorithms to that
+dataset, and then plugged the trained algorithm into an atmospheric model. The
+resulting online simulations were frequently plagued by instabilities and
+biases. Here, I propose online learning as a way to combat these issues. In
+online learning, the pretrained machine learning parameterization, specifically
+a neural network, is run in parallel with a high-resolution simulation which is
+kept in sync with the neural network-driven atmospheric model through constant
+forcing. This enables the neural network to learn from the tendencies that the
+high-resolution simulation would produce if it experienced the atmospheric
+states the neural network creates. The concept is illustrated using the Lorenz
+96 model, where online learning is able to recover the "true"
+parameterizations. Then I present detailed algorithms for implementing online
+learning in the 3D cloud-resolving model and super-parameterization frameworks.
+Finally, I discuss outstanding challenges and issues not solved by this
+approach.

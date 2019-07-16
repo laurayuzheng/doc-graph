@@ -1,0 +1,16 @@
+Deep Inferential Spatial-Temporal Network for Forecasting Air Pollution
+  Concentrations
+  Air pollution poses a serious threat to human health as well as economic
+development around the world. To meet the increasing demand for accurate
+predictions for air pollutions, we proposed a Deep Inferential Spatial-Temporal
+Network to deal with the complicated non-linear spatial and temporal
+correlations. We forecast three air pollutants (i.e., PM2.5, PM10 and O3) of
+monitoring stations over the next 48 hours, using a hybrid deep learning model
+consists of inferential predictor (inference for regions without air pollution
+readings), spatial predictor (capturing spatial correlations using CNN) and
+temporal predictor (capturing temporal relationship using sequence-to-sequence
+model with simplified attention mechanism). Our proposed model considers
+historical air pollution records and historical meteorological data. We
+evaluate our model on a large-scale dataset containing air pollution records of
+35 monitoring stations and grid meteorological data in Beijing, China. Our
+model outperforms other state-of-art methods in terms of SMAPE and RMSE.

@@ -1,0 +1,19 @@
+Orders-of-magnitude speedup in atmospheric chemistry modeling through
+  neural network-based emulation
+  Chemical transport models (CTMs), which simulate air pollution transport,
+transformation, and removal, are computationally expensive, largely because of
+the computational intensity of the chemical mechanisms: systems of coupled
+differential equations representing atmospheric chemistry. Here we investigate
+the potential for machine learning to reproduce the behavior of a chemical
+mechanism, yet with reduced computational expense. We create a 17-layer
+residual multi-target regression neural network to emulate the Carbon Bond
+Mechanism Z (CBM-Z) gas-phase chemical mechanism. We train the network to match
+CBM-Z predictions of changes in concentrations of 77 chemical species after one
+hour, given a range of chemical and meteorological input conditions, which it
+is able to do with root-mean-square error (RMSE) of less than 1.97 ppb (median
+RMSE = 0.02 ppb), while achieving a 250x computational speedup. An additional
+17x speedup (total 4250x speedup) is achieved by running the neural network on
+a graphics-processing unit (GPU). The neural network is able to reproduce the
+emergent behavior of the chemical system over diurnal cycles using Euler
+integration, but additional work is needed to constrain the propagation of
+errors as simulation time progresses.

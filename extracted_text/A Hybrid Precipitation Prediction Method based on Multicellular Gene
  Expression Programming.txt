@@ -1,0 +1,17 @@
+A Hybrid Precipitation Prediction Method based on Multicellular Gene
+  Expression Programming
+  Prompt and accurate precipitation forecast is very important for development
+management of regional water resource, flood disaster prevention and people's
+daily activity and production plan; however, non-linear and nonstationary
+characteristics of precipitation data and noise seriously affect forecast
+accuracy. This paper combines multicellular gene expression programming with
+more powerful function mining ability and wavelet analysis with more powerful
+denoising and extracting data fine feature capability for precipitation
+forecast modeling, proposing to estimate meteorological precipitation with
+WTGEPRP algorithm. Comparative result for simulation experiment with actual
+precipitation data in Zhengzhou, Nanning and Melbourne in Australia indicated
+that: fitting and forecasting performance of WTGEPRP algorithm is better than
+the algorithm Multicellular Gene Expression Programming-based Hybrid Model for
+Precipitation Prediction Coupled with EMD, Supporting Vector Regression, BP
+Neural Network, Multicellular Gene Expression Programming and Gene Expression
+Programming, and has good application prospect.

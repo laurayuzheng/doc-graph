@@ -134,27 +134,29 @@ X=cv.fit_transform(corpus)
 #sns.set(rc={'figure.figsize':(13,8)})
 #h=sns.barplot(x="Bi-gram", y="Freq", data=top2_df)
 #h.set_xticklabels(h.get_xticklabels(), rotation=45)
-#
-##Most frequently occuring Tri-grams
-#def get_top_n3_words(corpus, n=None):
-#    vec1 = CountVectorizer(ngram_range=(3,3), 
-#           max_features=2000).fit(corpus)
-#    bag_of_words = vec1.transform(corpus)
-#    sum_words = bag_of_words.sum(axis=0) 
-#    words_freq = [(word, sum_words[0, idx]) for word, idx in     
-#                  vec1.vocabulary_.items()]
-#    words_freq =sorted(words_freq, key = lambda x: x[1], 
-#                reverse=True)
-#    return words_freq[:n]
-#top3_words = get_top_n3_words(corpus, n=20)
-#top3_df = pandas.DataFrame(top3_words)
-#top3_df.columns=["Tri-gram", "Freq"]
-#print(top3_df)
-##Barplot of most freq Tri-grams
-#import seaborn as sns
-#sns.set(rc={'figure.figsize':(13,8)})
-#j=sns.barplot(x="Tri-gram", y="Freq", data=top3_df)
-#j.set_xticklabels(j.get_xticklabels(), rotation=45)
+
+#Most frequently occuring Tri-grams
+def get_top_n3_words(corpus, n=None, is_list=True):
+    if not is_list:
+        corpus = [corpus]
+    vec1 = CountVectorizer(ngram_range=(3,3), 
+           max_features=2000).fit(corpus)
+    bag_of_words = vec1.transform(corpus)
+    sum_words = bag_of_words.sum(axis=0) 
+    words_freq = [(word, sum_words[0, idx]) for word, idx in     
+                  vec1.vocabulary_.items()]
+    words_freq =sorted(words_freq, key = lambda x: x[1], 
+                reverse=True)
+    return words_freq[:n]
+top3_words = get_top_n3_words(corpus, n=40)
+top3_df = pandas.DataFrame(top3_words)
+top3_df.columns=["Tri-gram", "Freq"]
+print(top3_df)
+#Barplot of most freq Tri-grams
+import seaborn as sns
+sns.set(rc={'figure.figsize':(13,8)})
+j=sns.barplot(x="Tri-gram", y="Freq", data=top3_df)
+j.set_xticklabels(j.get_xticklabels(), rotation=45)
 
 from sklearn.feature_extraction.text import TfidfTransformer
  
@@ -200,9 +202,15 @@ def extract_topn_from_vector(feature_names, sorted_items, topn=10):
     return results
 #sort the tf-idf vectors by descending order of scores
 sorted_items=sort_coo(tf_idf_vector.tocoo())
-#extract only the top n; n here is 10
-keywords=extract_topn_from_vector(feature_names,sorted_items, topn=10)
- 
+##extract only the top n; n here is 10
+#keywords=extract_topn_from_vector(feature_names,sorted_items, topn=10)
+#toptrigrams = get_top_n3_words(doc,n=10, is_list=False)
+#toptrigramsdf = pandas.DataFrame(toptrigrams)
+#toptrigramsdf.columns=["Tri-gram", "Freq"]
+##print(toptrigrams)
+#sns.set(rc={'figure.figsize':(13,8)})
+#j=sns.barplot(x="Tri-gram", y="Freq", data=toptrigramsdf)
+#j.set_xticklabels(j.get_xticklabels(), rotation=45)
 # now print the results
 print("\nAbstract:")
 print(doc)

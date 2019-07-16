@@ -1,0 +1,16 @@
+Parametric Modelling of Multivariate Count Data Using Probabilistic
+  Graphical Models
+  Multivariate count data are defined as the number of items of different
+categories issued from sampling within a population, which individuals are
+grouped into categories. The analysis of multivariate count data is a recurrent
+and crucial issue in numerous modelling problems, particularly in the fields of
+biology and ecology (where the data can represent, for example, children counts
+associated with multitype branching processes), sociology and econometrics. We
+focus on I) Identifying categories that appear simultaneously, or on the
+contrary that are mutually exclusive. This is achieved by identifying
+conditional independence relationships between the variables; II)Building
+parsimonious parametric models consistent with these relationships; III)
+Characterising and testing the effects of covariates on the joint distribution
+of the counts. To achieve these goals, we propose an approach based on
+graphical probabilistic models, and more specifically partially directed
+acyclic graphs.

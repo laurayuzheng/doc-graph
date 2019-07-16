@@ -1,0 +1,14 @@
+Learning Argo Profiles by using the Signature Method
+  A profile from the Argo ocean observing array is a sequence of
+three-dimensional vectors composed of pressure, salinity, and temperature,
+appearing as a continuous curve in three-dimensional space.The shape of such
+curve is faithfully represented by a path signature, a collection of all the
+iterated integrals. Moreover, the product of two terms of the signature of a
+path can be expressed as a sum of higher order terms. Thanks to this algebraic
+property,a nonlinear function of profile shape can always be represented by a
+weighted linear combination of the iterated integrals,which makes easy to
+perform machine learning of a complicated function of the profile shape. In
+this study, we perform a supervised learning of existing Argo data with quality
+control flags using the signature method, and demonstrate the prediction skill
+by cross-validation. This technique should be a key to realizing an automatic
+quality control of the Argo profile data.

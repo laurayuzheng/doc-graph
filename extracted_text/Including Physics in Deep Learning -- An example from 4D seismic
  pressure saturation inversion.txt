@@ -1,24 +1,11 @@
-Machine learning for graph-based representations of three-dimensional
-  discrete fracture networks
-  Structural and topological information play a key role in modeling flow and
-transport through fractured rock in the subsurface. Discrete fracture network
-(DFN) computational suites such as dfnWorks are designed to simulate flow and
-transport in such porous media. Flow and transport calculations reveal that a
-small backbone of fractures exists, where most flow and transport occurs.
-Restricting the flowing fracture network to this backbone provides a
-significant reduction in the network's effective size. However, the particle
-tracking simulations needed to determine the reduction are computationally
-intensive. Such methods may be impractical for large systems or for robust
-uncertainty quantification of fracture networks, where thousands of forward
-simulations are needed to bound system behavior.
-  In this paper, we develop an alternative network reduction approach to
-characterizing transport in DFNs, by combining graph theoretical and machine
-learning methods. We consider a graph representation where nodes signify
-fractures and edges denote their intersections. Using random forest and support
-vector machines, we rapidly identify a subnetwork that captures the flow
-patterns of the full DFN, based primarily on node centrality features in the
-graph. Our supervised learning techniques train on particle-tracking backbone
-paths found by dfnWorks, but run in negligible time compared to those
-simulations. We find that our predictions can reduce the network to
-approximately 20% of its original size, while still generating breakthrough
-curves consistent with those of the original network.
+Including Physics in Deep Learning -- An example from 4D seismic
+  pressure saturation inversion
+  Geoscience data often have to rely on strong priors in the face of
+uncertainty. Additionally, we often try to detect or model anomalous sparse
+data that can appear as an outlier in machine learning models. These are
+classic examples of imbalanced learning. Approaching these problems can benefit
+from including prior information from physics models or transforming data to a
+beneficial domain. We show an example of including physical information in the
+architecture of a neural network as prior information. We go on to present
+noise injection at training time to successfully transfer the network from
+synthetic data to field data.

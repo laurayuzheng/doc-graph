@@ -1,0 +1,13 @@
+Domain Adaptive Generation of Aircraft on Satellite Imagery via
+  Simulated and Unsupervised Learning
+  Object detection and classification for aircraft are the most important tasks
+in the satellite image analysis. The success of modern detection and
+classification methods has been based on machine learning and deep learning.
+One of the key requirements for those learning processes is huge data to train.
+However, there is an insufficient portion of aircraft since the targets are on
+military action and oper- ation. Considering the characteristics of satellite
+imagery, this paper attempts to provide a framework of the simulated and
+unsupervised methodology without any additional su- pervision or physical
+assumptions. Finally, the qualitative and quantitative analysis revealed a
+potential to replenish insufficient data for machine learning platform for
+satellite image analysis.

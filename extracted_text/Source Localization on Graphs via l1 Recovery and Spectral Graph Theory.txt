@@ -1,0 +1,11 @@
+Source Localization on Graphs via l1 Recovery and Spectral Graph Theory
+  We cast the problem of source localization on graphs as the simultaneous
+problem of sparse recovery and diffusion kernel learning. An l1 regularization
+term enforces the sparsity constraint while we recover the sources of diffusion
+from a single snapshot of the diffusion process. The diffusion kernel is
+estimated by assuming the process to be as generic as the standard heat
+diffusion. We show with synthetic data that we can concomitantly learn the
+diffusion kernel and the sources, given an estimated initialization. We
+validate our model with cholera mortality and atmospheric tracer diffusion
+data, showing also that the accuracy of the solution depends on the
+construction of the graph from the data points.

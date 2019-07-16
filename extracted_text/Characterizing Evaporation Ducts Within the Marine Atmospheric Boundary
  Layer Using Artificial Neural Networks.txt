@@ -1,0 +1,11 @@
+Characterizing Evaporation Ducts Within the Marine Atmospheric Boundary
+  Layer Using Artificial Neural Networks
+  We apply a multilayer perceptron machine learning (ML) regression approach to
+infer electromagnetic (EM) duct heights within the marine atmospheric boundary
+layer (MABL) using sparsely sampled EM propagation data obtained within a
+bistatic context. This paper explains the rational behind the selection of the
+ML network architecture, along with other model hyperparameters, in an effort
+to demystify the process of arriving at a useful ML model. The resulting speed
+of our ML predictions of EM duct heights, using sparse data measurements within
+MABL, indicates the suitability of the proposed method for real-time
+applications.

@@ -1,0 +1,19 @@
+A unified view of generative models for networks: models, methods,
+  opportunities, and challenges
+  Research on probabilistic models of networks now spans a wide variety of
+fields, including physics, sociology, biology, statistics, and machine
+learning. These efforts have produced a diverse ecology of models and methods.
+Despite this diversity, many of these models share a common underlying
+structure: pairwise interactions (edges) are generated with probability
+conditional on latent vertex attributes. Differences between models generally
+stem from different philosophical choices about how to learn from data or
+different empirically-motivated goals. The highly interdisciplinary nature of
+work on these generative models, however, has inhibited the development of a
+unified view of their similarities and differences. For instance, novel
+theoretical models and optimization techniques developed in machine learning
+are largely unknown within the social and biological sciences, which have
+instead emphasized model interpretability. Here, we describe a unified view of
+generative models for networks that draws together many of these disparate
+threads and highlights the fundamental similarities and differences that span
+these fields. We then describe a number of opportunities and challenges for
+future work that are revealed by this view.

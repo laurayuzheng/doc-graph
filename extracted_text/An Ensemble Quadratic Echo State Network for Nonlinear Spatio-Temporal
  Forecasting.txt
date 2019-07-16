@@ -1,0 +1,17 @@
+An Ensemble Quadratic Echo State Network for Nonlinear Spatio-Temporal
+  Forecasting
+  Spatio-temporal data and processes are prevalent across a wide variety of
+scientific disciplines. These processes are often characterized by nonlinear
+time dynamics that include interactions across multiple scales of spatial and
+temporal variability. The data sets associated with many of these processes are
+increasing in size due to advances in automated data measurement, management,
+and numerical simulator output. Non- linear spatio-temporal models have only
+recently seen interest in statistics, but there are many classes of such models
+in the engineering and geophysical sciences. Tradi- tionally, these models are
+more heuristic than those that have been presented in the statistics
+literature, but are often intuitive and quite efficient computationally. We
+show here that with fairly simple, but important, enhancements, the echo state
+net- work (ESN) machine learning approach can be used to generate long-lead
+forecasts of nonlinear spatio-temporal processes, with reasonable uncertainty
+quantification, and at only a fraction of the computational expense of a
+traditional parametric nonlinear spatio-temporal models.

@@ -1,0 +1,14 @@
+NeuralHydrology - Interpreting LSTMs in Hydrology
+  Despite the huge success of Long Short-Term Memory networks, their
+applications in environmental sciences are scarce. We argue that one reason is
+the difficulty to interpret the internals of trained networks. In this study,
+we look at the application of LSTMs for rainfall-runoff forecasting, one of the
+central tasks in the field of hydrology, in which the river discharge has to be
+predicted from meteorological observations. LSTMs are particularly well-suited
+for this problem since memory cells can represent dynamic reservoirs and
+storages, which are essential components in state-space modelling approaches of
+the hydrological system. On basis of two different catchments, one with snow
+influence and one without, we demonstrate how the trained model can be analyzed
+and interpreted. In the process, we show that the network internally learns to
+represent patterns that are consistent with our qualitative understanding of
+the hydrological system.

@@ -1,0 +1,25 @@
+A Bayesian Network approach to County-Level Corn Yield Prediction using
+  historical data and expert knowledge
+  Crop yield forecasting is the methodology of predicting crop yields prior to
+harvest. The availability of accurate yield prediction frameworks have enormous
+implications from multiple standpoints, including impact on the crop commodity
+futures markets, formulation of agricultural policy, as well as crop insurance
+rating. The focus of this work is to construct a corn yield predictor at the
+county scale. Corn yield (forecasting) depends on a complex, interconnected set
+of variables that include economic, agricultural, management and meteorological
+factors. Conventional forecasting is either knowledge-based computer programs
+(that simulate plant-weather-soil-management interactions) coupled with
+targeted surveys or statistical model based. The former is limited by the need
+for painstaking calibration, while the latter is limited to univariate analysis
+or similar simplifying assumptions that fail to capture the complex
+interdependencies affecting yield. In this paper, we propose a data-driven
+approach that is "gray box" i.e. that seamlessly utilizes expert knowledge in
+constructing a statistical network model for corn yield forecasting. Our
+multivariate gray box model is developed on Bayesian network analysis to build
+a Directed Acyclic Graph (DAG) between predictors and yield. Starting from a
+complete graph connecting various carefully chosen variables and yield, expert
+knowledge is used to prune or strengthen edges connecting variables.
+Subsequently the structure (connectivity and edge weights) of the DAG that
+maximizes the likelihood of observing the training data is identified via
+optimization. We curated an extensive set of historical data (1948-2012) for
+each of the 99 counties in Iowa as data to train the model.

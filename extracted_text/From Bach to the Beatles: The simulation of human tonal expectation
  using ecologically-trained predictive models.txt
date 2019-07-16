@@ -1,0 +1,19 @@
+From Bach to the Beatles: The simulation of human tonal expectation
+  using ecologically-trained predictive models
+  Tonal structure is in part conveyed by statistical regularities between
+musical events, and research has shown that computational models reflect tonal
+structure in music by capturing these regularities in schematic constructs like
+pitch histograms. Of the few studies that model the acquisition of perceptual
+learning from musical data, most have employed self-organizing models that
+learn a topology of static descriptions of musical contexts. Also, the stimuli
+used to train these models are often symbolic rather than acoustically faithful
+representations of musical material. In this work we investigate whether
+sequential predictive models of musical memory (specifically, recurrent neural
+networks), trained on audio from commercial CD recordings, induce tonal
+knowledge in a similar manner to listeners (as shown in behavioral studies in
+music perception). Our experiments indicate that various types of recurrent
+neural networks produce musical expectations that clearly convey tonal
+structure. Furthermore, the results imply that although implicit knowledge of
+tonal structure is a necessary condition for accurate musical expectation, the
+most accurate predictive models also use other cues beyond the tonal structure
+of the musical context.

@@ -1,0 +1,17 @@
+Topic Modeling of Behavioral Modes Using Sensor Data
+  The field of Movement Ecology, like so many other fields, is experiencing a
+period of rapid growth in availability of data. As the volume rises,
+traditional methods are giving way to machine learning and data science, which
+are playing an increasingly large part it turning this data into
+science-driving insights. One rich and interesting source is the bio-logger.
+These small electronic wearable devices are attached to animals free to roam in
+their natural habitats, and report back readings from multiple sensors,
+including GPS and accelerometer bursts. A common use of accelerometer data is
+for supervised learning of behavioral modes. However, we need unsupervised
+analysis tools as well, in order to overcome the inherent difficulties of
+obtaining a labeled dataset, which in some cases is either infeasible or does
+not successfully encompass the full repertoire of behavioral modes of interest.
+Here we present a matrix factorization based topic-model method for
+accelerometer bursts, derived using a linear mixture property of patch
+features. Our method is validated via comparison to a labeled dataset, and is
+further compared to standard clustering algorithms.

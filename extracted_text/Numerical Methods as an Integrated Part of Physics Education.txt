@@ -1,0 +1,25 @@
+Numerical Methods as an Integrated Part of Physics Education
+  During the last decade we have witnessed an impressive development in
+so-called interpreted languages and computational environments such as Maple,
+Mathematica, IDL, Matlab etc. Problems which until recently were typically
+solved on mainframe machines and written in computing languages such as Fortran
+or C/C++, can now easily be solved on standard PCs with the bonus of immediate
+visualizations of the results.
+  In our undergraduate programs an often posed question is how to incorporate
+and exploit efficiently these advances in the standard physics and mathematics
+curriculum, without detracting the attention from the classical and basic
+theoretical and experimental topics to be covered. Furthermore, if students are
+trained to use such tools at early stages in their education, do such tools
+really enhance and improve the learning environment? And, perhaps even more
+important, does it lead to a better physics understanding?
+  Here we present one possible approach, where computational topics are
+gradually baked into our undergraduate curriculum in Mathematics and Physics,
+Astronomy and Meteorology. We focus on training our students to use general
+programming tools in solving physics problems, in addition to the classical
+analytic problems. By this approach, the students gain an expertise that they
+can build upon in their future studies and careers. We use mainly Java, Matlab
+and Maple as computational environments. Our students are now capable of
+handling at an early stage in their education more realistic physics problems
+than before. We believe firmly that, in addition to educating modern
+scientists, this promotes a better physics understanding for a majority of the
+students.

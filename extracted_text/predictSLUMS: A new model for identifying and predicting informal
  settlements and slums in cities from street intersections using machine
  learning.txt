@@ -1,0 +1,28 @@
+predictSLUMS: A new model for identifying and predicting informal
+  settlements and slums in cities from street intersections using machine
+  learning
+  Identifying current and future informal regions within cities remains a
+crucial issue for policymakers and governments in developing countries. The
+delineation process of identifying such regions in cities requires a lot of
+resources. While there are various studies that identify informal settlements
+based on satellite image classification, relying on both supervised or
+unsupervised machine learning approaches, these models either require multiple
+input data to function or need further development with regards to precision.
+In this paper, we introduce a novel method for identifying and predicting
+informal settlements using only street intersections data, regardless of the
+variation of urban form, number of floors, materials used for construction or
+street width. With such minimal input data, we attempt to provide planners and
+policy-makers with a pragmatic tool that can aid in identifying informal zones
+in cities. The algorithm of the model is based on spatial statistics and a
+machine learning approach, using Multinomial Logistic Regression (MNL) and
+Artificial Neural Networks (ANN). The proposed model relies on defining
+informal settlements based on two ubiquitous characteristics that these regions
+tend to be filled in with smaller subdivided lots of housing relative to the
+formal areas within the local context, and the paucity of services and
+infrastructure within the boundary of these settlements that require relatively
+bigger lots. We applied the model in five major cities in Egypt and India that
+have spatial structures in which informality is present. These cities are
+Greater Cairo, Alexandria, Hurghada and Minya in Egypt, and Mumbai in India.
+The predictSLUMS model shows high validity and accuracy for identifying and
+predicting informality within the same city the model was trained on or in
+different ones of a similar context.

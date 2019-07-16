@@ -1,0 +1,17 @@
+Shallow Learning for Fluid Flow Reconstruction with Limited Sensors and
+  Limited Data
+  In many applications, it is important to reconstruct a fluid flow field, or
+some other high-dimensional state, from limited measurements and limited data.
+In this work, we propose a shallow neural network-based learning methodology
+for such fluid flow reconstruction. Our approach learns an end-to-end mapping
+between the sensor measurements and the high-dimensional fluid flow field,
+without any heavy preprocessing on the raw data. No prior knowledge is assumed
+to be available, and the estimation method is purely data-driven. We
+demonstrate the performance on three examples in fluid mechanics and
+oceanography, showing that this modern data-driven approach outperforms
+traditional modal approximation techniques which are commonly used for flow
+reconstruction. Not only does the proposed method show superior performance
+characteristics, it can also produce a comparable level of performance with
+traditional methods in the area, using significantly fewer sensors. Thus, the
+mathematical architecture is ideal for emerging global monitoring technologies
+where measurement data are often limited.

@@ -1,0 +1,17 @@
+A Machine Learns to Predict the Stability of Tightly Packed Planetary
+  Systems
+  The requirement that planetary systems be dynamically stable is often used to
+vet new discoveries or set limits on unconstrained masses or orbital elements.
+This is typically carried out via computationally expensive N-body simulations.
+We show that characterizing the complicated and multi-dimensional stability
+boundary of tightly packed systems is amenable to machine learning methods. We
+find that training an XGBoost machine learning algorithm on physically
+motivated features yields an accurate classifier of stability in packed
+systems. On the stability timescale investigated ($10^7$ orbits), it is 3
+orders of magnitude faster than direct N-body simulations. Optimized machine
+learning classifiers for dynamical stability may thus prove useful across the
+discipline, e.g., to characterize the exoplanet sample discovered by the
+upcoming Transiting Exoplanet Survey Satellite (TESS). This proof of concept
+motivates investing computational resources to train algorithms capable of
+predicting stability over longer timescales and over broader regions of phase
+space.

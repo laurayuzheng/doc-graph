@@ -1,0 +1,15 @@
+Expanding the horizon of automated metamaterials discovery via quantum
+  annealing
+  Complexity of materials designed by machine learning is currently limited by
+the inefficiency of classical computers. We show how quantum annealing can be
+incorporated into automated materials discovery and conduct a
+proof-of-principle study on designing complex thermofunctional metamaterials
+consisting of SiO2, SiC, and Poly(methyl methacrylate). Empirical computing
+time of our quantum-classical hybrid algorithm involving a factorization
+machine, a rigorous coupled wave analysis, and a D-Wave 2000Q quantum annealer
+was insensitive to the problem size, while a classical counterpart experienced
+rapid increase. Our method was used to design complex structures of wavelength
+selective radiators showing much better concordance with the thermal
+atmospheric transparency window in comparison to existing human-designed
+alternatives. Our result shows that quantum annealing provides scientists
+gigantic computational power that may change how materials are designed.

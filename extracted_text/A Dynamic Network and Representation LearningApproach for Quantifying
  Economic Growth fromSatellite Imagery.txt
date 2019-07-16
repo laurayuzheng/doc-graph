@@ -1,0 +1,17 @@
+A Dynamic Network and Representation LearningApproach for Quantifying
+  Economic Growth fromSatellite Imagery
+  Quantifying the improvement in human living standard, as well as the city
+growth in developing countries, is a challenging problem due to the lack of
+reliable economic data. Therefore, there is a fundamental need for alternate,
+largely unsupervised, computational methods that can estimate the economic
+conditions in the developing regions. To this end, we propose a new network
+science- and representation learning-based approach that can quantify economic
+indicators and visualize the growth of various regions. More precisely, we
+first create a dynamic network drawn out of high-resolution nightlight
+satellite images. We then demonstrate that using representation learning to
+mine the resulting network, our proposed approach can accurately predict
+spatial gross economic expenditures over large regions. Our method, which
+requires only nightlight images and limited survey data, can capture
+city-growth, as well as how people's living standard is changing; this can
+ultimately facilitate the decision makers' understanding of growth without
+heavily relying on expensive and time-consuming surveys.

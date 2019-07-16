@@ -1,0 +1,16 @@
+A multi-channel approach for automatic microseismic event localization
+  using RANSAC-based arrival time event clustering(RATEC)
+  In the presence of background noise and interference, arrival times picked
+from a surface microseismic data set usually include a number of false picks
+which lead to uncertainty in location estimation. To eliminate false picks and
+improve the accuracy of location estimates, we develop a classification
+algorithm (RATEC) that clusters picked arrival times into event groups based on
+random sampling and fitting moveout curves that approximate hyperbolas. Arrival
+times far from the fitted hyperbolas are classified as false picks and removed
+from the data set prior to location estimation. Simulations of synthetic data
+for a 1-D linear array show that RATEC is robust under different noise
+conditions and generally applicable to various types of media. By generalizing
+the underlying moveout model, RATEC is extended to the case of a 2-D surface
+monitoring array. The effectiveness of event location for the 2-D case is
+demonstrated using a data set collected by a 5200-element dense 2-D array
+deployed for microearthquake monitoring.

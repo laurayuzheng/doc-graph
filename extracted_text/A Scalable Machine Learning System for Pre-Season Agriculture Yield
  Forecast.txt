@@ -1,0 +1,18 @@
+A Scalable Machine Learning System for Pre-Season Agriculture Yield
+  Forecast
+  Yield forecast is essential to agriculture stakeholders and can be obtained
+with the use of machine learning models and data coming from multiple sources.
+Most solutions for yield forecast rely on NDVI (Normalized Difference
+Vegetation Index) data, which is time-consuming to be acquired and processed.
+To bring scalability for yield forecast, in the present paper we describe a
+system that incorporates satellite-derived precipitation and soil properties
+datasets, seasonal climate forecasting data from physical models and other
+sources to produce a pre-season prediction of soybean/maize yield---with no
+need of NDVI data. This system provides significantly useful results by the
+exempting the need for high-resolution remote-sensing data and allowing farmers
+to prepare for adverse climate influence on the crop cycle. In our studies, we
+forecast the soybean and maize yields for Brazil and USA, which corresponded to
+44% of the world's grain production in 2016. Results show the error metrics for
+soybean and maize yield forecasts are comparable to similar systems that only
+provide yield forecast information in the first weeks to months of the crop
+cycle.

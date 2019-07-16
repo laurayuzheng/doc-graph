@@ -1,0 +1,26 @@
+Consistency of random forests
+  Random forests are a learning algorithm proposed by Breiman [Mach. Learn. 45
+(2001) 5--32] that combines several randomized decision trees and aggregates
+their predictions by averaging. Despite its wide usage and outstanding
+practical performance, little is known about the mathematical properties of the
+procedure. This disparity between theory and practice originates in the
+difficulty to simultaneously analyze both the randomization process and the
+highly data-dependent tree structure. In the present paper, we take a step
+forward in forest exploration by proving a consistency result for Breiman's
+[Mach. Learn. 45 (2001) 5--32] original algorithm in the context of additive
+regression models. Our analysis also sheds an interesting light on how random
+forests can nicely adapt to sparsity. 1. Introduction. Random forests are an
+ensemble learning method for classification and regression that constructs a
+number of randomized decision trees during the training phase and predicts by
+averaging the results. Since its publication in the seminal paper of Breiman
+(2001), the procedure has become a major data analysis tool, that performs well
+in practice in comparison with many standard methods. What has greatly
+contributed to the popularity of forests is the fact that they can be applied
+to a wide range of prediction problems and have few parameters to tune. Aside
+from being simple to use, the method is generally recognized for its accuracy
+and its ability to deal with small sample sizes, high-dimensional feature
+spaces and complex data structures. The random forest methodology has been
+successfully involved in many practical problems, including air quality
+prediction (winning code of the EMC data science global hackathon in 2012, see
+http://www.kaggle.com/c/dsg-hackathon), chemoinformatics [Svetnik et al.
+(2003)], ecology [Prasad, Iverson and Liaw (2006), Cutler et al. (2007)], 3D

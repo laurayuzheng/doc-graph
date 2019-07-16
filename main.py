@@ -8,7 +8,7 @@ from py4j.java_gateway import JavaGateway
 from pathlib import Path
 
 # like a switch to control which parts are executed
-part = [0,0,1]
+part = [0,1,1]
 
 parent_directory = os.path.dirname(os.path.realpath(__file__))
 text_path = parent_directory + '/extracted_text/'
@@ -38,11 +38,14 @@ if (part[1]):
         txt_file = Path(os.path.splitext(filename)[0] + '.txt')
         if not txt_file.exists():
             extract_abstract.extract(filename, txt_path_write)
+            
     files = glob.glob(xml_path_read2)
     for filename in files:
-        txt_file = Path(os.path.splitext(filename)[0] + '.txt')
-        if not txt_file.exists():
-            extract_abstract.extract_arXiv(filename, txt_path_write)
+        print(filename)
+        
+        #txt_file = Path(os.path.splitext(filename)[0] + '.txt')
+        #if not txt_file.exists():
+        extract_abstract.extract_arXiv(filename, txt_path_write)
 
 # creating JSON file using create_json module
 if (part[2]):
@@ -51,6 +54,7 @@ if (part[2]):
     similarities = create_json.get_similarities(text_files)
     method_similarities = create_json.get_method_similarities(text_files)
     print(method_similarities)
+    print(text_files[1])
     create_json.create_json(similarities.A, method_similarities, text_files)
 
 print('Finished!')

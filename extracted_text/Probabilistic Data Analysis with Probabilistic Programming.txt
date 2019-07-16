@@ -1,0 +1,18 @@
+Probabilistic Data Analysis with Probabilistic Programming
+  Probabilistic techniques are central to data analysis, but different
+approaches can be difficult to apply, combine, and compare. This paper
+introduces composable generative population models (CGPMs), a computational
+abstraction that extends directed graphical models and can be used to describe
+and compose a broad class of probabilistic data analysis techniques. Examples
+include hierarchical Bayesian models, multivariate kernel methods,
+discriminative machine learning, clustering algorithms, dimensionality
+reduction, and arbitrary probabilistic programs. We also demonstrate the
+integration of CGPMs into BayesDB, a probabilistic programming platform that
+can express data analysis tasks using a modeling language and a structured
+query language. The practical value is illustrated in two ways. First, CGPMs
+are used in an analysis that identifies satellite data records which probably
+violate Kepler's Third Law, by composing causal probabilistic programs with
+non-parametric Bayes in under 50 lines of probabilistic code. Second, for
+several representative data analysis tasks, we report on lines of code and
+accuracy measurements of various CGPMs, plus comparisons with standard baseline
+solutions from Python and MATLAB libraries.

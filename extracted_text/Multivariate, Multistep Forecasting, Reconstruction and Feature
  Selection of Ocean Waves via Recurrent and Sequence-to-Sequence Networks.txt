@@ -1,0 +1,20 @@
+Multivariate, Multistep Forecasting, Reconstruction and Feature
+  Selection of Ocean Waves via Recurrent and Sequence-to-Sequence Networks
+  This article explores the concepts of ocean wave multivariate multistep
+forecasting, reconstruction and feature selection. We introduce recurrent
+neural network frameworks, integrated with Bayesian hyperparameter optimization
+and Elastic Net methods. We consider both short- and long-term forecasts and
+reconstruction, for significant wave height and output power of the ocean
+waves. Sequence-to-sequence neural networks are being developed for the first
+time to reconstruct the missing characteristics of ocean waves based on
+information from nearby wave sensors. Our results indicate that the Adam and
+AMSGrad optimization algorithms are the most robust ones to optimize the
+sequence-to-sequence network. For the case of significant wave height
+reconstruction, we compare the proposed methods with alternatives on a
+well-studied dataset. We show the superiority of the proposed methods
+considering several error metrics. We design a new case study based on
+measurement stations along the east coast of the United States and investigate
+the feature selection concept. Comparisons substantiate the benefit of
+utilizing Elastic Net. Moreover, case study results indicate that when the
+number of features is considerable, having deeper structures improves the
+performance.

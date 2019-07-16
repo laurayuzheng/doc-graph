@@ -1,0 +1,17 @@
+Travel time tomography with adaptive dictionaries
+  We develop a 2D travel time tomography method which regularizes the inversion
+by modeling groups of slowness pixels from discrete slowness maps, called
+patches, as sparse linear combinations of atoms from a dictionary. We propose
+to use dictionary learning during the inversion to adapt dictionaries to
+specific slowness maps. This patch regularization, called the local model, is
+integrated into the overall slowness map, called the global model. The local
+model considers small-scale variations using a sparsity constraint and the
+global model considers larger-scale features constrained using $\ell_2$
+regularization. This strategy in a locally-sparse travel time tomography (LST)
+approach enables simultaneous modeling of smooth and discontinuous slowness
+features. This is in contrast to conventional tomography methods, which
+constrain models to be exclusively smooth or discontinuous. We develop a
+$\textit{maximum a posteriori}$ formulation for LST and exploit the sparsity of
+slowness patches using dictionary learning. The LST approach compares favorably
+with smoothness and total variation regularization methods on densely, but
+irregularly sampled synthetic slowness maps.

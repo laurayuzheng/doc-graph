@@ -1,0 +1,14 @@
+Source localization in an ocean waveguide using supervised machine
+  learning
+  Source localization in ocean acoustics is posed as a machine learning problem
+in which data-driven methods learn source ranges directly from observed
+acoustic data. The pressure received by a vertical linear array is preprocessed
+by constructing a normalized sample covariance matrix (SCM) and used as the
+input. Three machine learning methods (feed-forward neural networks (FNN),
+support vector machines (SVM) and random forests (RF)) are investigated in this
+paper, with focus on the FNN. The range estimation problem is solved both as a
+classification problem and as a regression problem by these three machine
+learning algorithms. The results of range estimation for the Noise09 experiment
+are compared for FNN, SVM, RF and conventional matched-field processing and
+demonstrate the potential of machine learning for underwater source
+localization..

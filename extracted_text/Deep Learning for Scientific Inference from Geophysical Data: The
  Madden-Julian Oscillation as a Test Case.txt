@@ -1,0 +1,17 @@
+Deep Learning for Scientific Inference from Geophysical Data: The
+  Madden-Julian Oscillation as a Test Case
+  Deep learning can recognize complex geophysical phenomena by inferring which
+variables are important for their identification and understanding their
+spatial characteristics.
+  We use a particular mode of multi-scale tropical atmospheric variability, the
+Madden-Julian oscillation (MJO), to study the capabilities of deep learning, a
+form of artificial intelligence and machine learning, in identifying spatial
+geophysical phenomena. The MJO is characterized by its spatial and temporal
+evolution of cloud patterns, and an extensive body of literature has examined
+its defining characteristics. By applying a convolutional neural network (CNN),
+a type of deep learning model, to the task of identifying the state of the MJO,
+we show that deep learning can correctly identify geophysical phenomena by
+"learning" the variables and spatial patterns important to their evolution. In
+a broader sense, these findings suggest that deep learning models are
+interpretable and viable for scientific inference in geoscientific
+applications.

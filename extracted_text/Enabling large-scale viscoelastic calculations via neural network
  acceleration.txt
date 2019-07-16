@@ -1,0 +1,18 @@
+Enabling large-scale viscoelastic calculations via neural network
+  acceleration
+  One of the most significant challenges involved in efforts to understand the
+effects of repeated earthquake cycle activity are the computational costs of
+large-scale viscoelastic earthquake cycle models. Computationally intensive
+viscoelastic codes must be evaluated thousands of times and locations, and as a
+result, studies tend to adopt a few fixed rheological structures and model
+geometries, and examine the predicted time-dependent deformation over short
+(<10 yr) time periods at a given depth after a large earthquake. Training a
+deep neural network to learn a computationally efficient representation of
+viscoelastic solutions, at any time, location, and for a large range of
+rheological structures, allows these calculations to be done quickly and
+reliably, with high spatial and temporal resolution. We demonstrate that this
+machine learning approach accelerates viscoelastic calculations by more than
+50,000%. This magnitude of acceleration will enable the modeling of
+geometrically complex faults over thousands of earthquake cycles across wider
+ranges of model parameters and at larger spatial and temporal scales than have
+been previously possible.

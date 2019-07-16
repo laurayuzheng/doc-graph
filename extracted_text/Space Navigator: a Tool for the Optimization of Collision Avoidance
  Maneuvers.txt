@@ -1,0 +1,12 @@
+Space Navigator: a Tool for the Optimization of Collision Avoidance
+  Maneuvers
+  The number of space objects will grow several times in a few years due to the
+planned launches of constellations of thousands microsatellites. It leads to a
+significant increase in the threat of satellite collisions. Spacecraft must
+undertake collision avoidance maneuvers to mitigate the risk. According to
+publicly available information, conjunction events are now manually handled by
+operators on the Earth. The manual maneuver planning requires qualified
+personnel and will be impractical for constellations of thousands satellites.
+In this paper we propose a new modular autonomous collision avoidance system
+called "Space Navigator". It is based on a novel maneuver optimization approach
+that combines domain knowledge with Reinforcement Learning methods.

@@ -1,0 +1,16 @@
+Parametrization and generation of geological models with generative
+  adversarial networks
+  One of the main challenges in the parametrization of geological models is the
+ability to capture complex geological structures often observed in the
+subsurface. In recent years, generative adversarial networks (GAN) were
+proposed as an efficient method for the generation and parametrization of
+complex data, showing state-of-the-art performances in challenging computer
+vision tasks such as reproducing natural images (handwritten digits, human
+faces, etc.). In this work, we study the application of Wasserstein GAN for the
+parametrization of geological models. The effectiveness of the method is
+assessed for uncertainty propagation tasks using several test cases involving
+different permeability patterns and subsurface flow problems. Results show that
+GANs are able to generate samples that preserve the multipoint statistical
+features of the geological models both visually and quantitatively. The
+generated samples reproduce both the geological structures and the flow
+statistics of the reference geology.

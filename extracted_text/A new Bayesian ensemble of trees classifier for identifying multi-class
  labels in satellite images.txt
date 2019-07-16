@@ -1,0 +1,17 @@
+A new Bayesian ensemble of trees classifier for identifying multi-class
+  labels in satellite images
+  Classification of satellite images is a key component of many remote sensing
+applications. One of the most important products of a raw satellite image is
+the classified map which labels the image pixels into meaningful classes.
+Though several parametric and non-parametric classifiers have been developed
+thus far, accurate labeling of the pixels still remains a challenge. In this
+paper, we propose a new reliable multiclass-classifier for identifying class
+labels of a satellite image in remote sensing applications. The proposed
+multiclass-classifier is a generalization of a binary classifier based on the
+flexible ensemble of regression trees model called Bayesian Additive Regression
+Trees (BART). We used three small areas from the LANDSAT 5 TM image, acquired
+on August 15, 2009 (path/row: 08/29, L1T product, UTM map projection) over
+Kings County, Nova Scotia, Canada to classify the land-use. Several prediction
+accuracy and uncertainty measures have been used to compare the reliability of
+the proposed classifier with the state-of-the-art classifiers in remote
+sensing.

@@ -1,15 +1,14 @@
-Deep Recurrent Neural Networks for mapping winter vegetation quality
-  coverage via multi-temporal SAR Sentinel-1
-  Mapping winter vegetation quality coverage is a challenge problem of remote
-sensing. This is due to the cloud coverage in winter period, leading to use
-radar rather than optical images. The objective of this paper is to provide a
-better understanding of the capabilities of radar Sentinel-1 and deep learning
-concerning about mapping winter vegetation quality coverage. The analysis
-presented in this paper is carried out on multi-temporal Sentinel-1 data over
-the site of La Rochelle, France, during the campaign in December 2016. This
-dataset were processed in order to produce an intensity radar data stack from
-October 2016 to February 2017. Two deep Recurrent Neural Network (RNN) based
-classifier methods were employed. We found that the results of RNNs clearly
-outperformed the classical machine learning approaches (Support Vector Machine
-and Random Forest). This study confirms that the time series radar Sentinel-1
-and RNNs could be exploited for winter vegetation quality cover mapping.
+Harmonic Exponential Families on Manifolds
+  In a range of fields including the geosciences, molecular biology, robotics
+and computer vision, one encounters problems that involve random variables on
+manifolds. Currently, there is a lack of flexible probabilistic models on
+manifolds that are fast and easy to train. We define an extremely flexible
+class of exponential family distributions on manifolds such as the torus,
+sphere, and rotation groups, and show that for these distributions the gradient
+of the log-likelihood can be computed efficiently using a non-commutative
+generalization of the Fast Fourier Transform (FFT). We discuss applications to
+Bayesian camera motion estimation (where harmonic exponential families serve as
+conjugate priors), and modelling of the spatial distribution of earthquakes on
+the surface of the earth. Our experimental results show that harmonic densities
+yield a significantly higher likelihood than the best competing method, while
+being orders of magnitude faster to train.

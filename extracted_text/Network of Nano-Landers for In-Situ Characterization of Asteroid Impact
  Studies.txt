@@ -1,0 +1,27 @@
+Network of Nano-Landers for In-Situ Characterization of Asteroid Impact
+  Studies
+  Exploration of asteroids and comets can give insight into the origins of the
+solar system and can be instrumental in planetary defence and in-situ resource
+utilization (ISRU). Asteroids, due to their low gravity are a challenging
+target for surface exploration. Current missions envision performing
+touch-and-go operations over an asteroid surface. In this work, we analyse the
+feasibility of sending scores of nano-landers, each 1 kg in mass and volume of
+1U, or 1000 cm3. These landers would hop, roll and fly over the asteroid
+surface. The landers would include science instruments such as stereo cameras,
+hand-lens imagers and spectrometers to characterize rock composition. A network
+of nano-landers situated on the surface of an asteroid can provide unique and
+very detailed measurements of a spacecraft impacting onto an asteroid surface.
+A full-scale, artificial impact experiment onto an asteroid can help
+characterize its composition and geology and help in the development of
+asteroid deflection techniques intended for planetary defence. Scores of
+nano-landers could provide multiple complementary views of the impact,
+resultant seismic activity and trajectory of the ejecta. The nano-landers can
+analyse the pristine, unearthed regolith shielded from effects of UV and cosmic
+rays and that may be millions of years old. Our approach to formulating this
+mission concepts utilizes automated machine learning techniques in the planning
+and design of space systems. We use a form of Darwinian selection to select and
+identify suitable number of nano-landers, the on-board instruments and control
+system to explore and navigate the asteroid environment. Scenarios are
+generated in simulation and evaluated against quantifiable mission goals such
+as area explored on the asteroid and amount of data recorded from the impact
+event.

@@ -1,0 +1,24 @@
+Phase 2: DCL System Using Deep Learning Approaches for Land-based or
+  Ship-based Real-Time Recognition and Localization of Marine Mammals - Machine
+  Learning Detection Algorithms
+  Overarching goals for this work aim to advance the state of the art for
+detection, classification and localization (DCL) in the field of bioacoustics.
+This goal is primarily achieved by building a generic framework for
+detection-classification (DC) using a fast, efficient and scalable
+architecture, demonstrating the capabilities of this system using on a variety
+of low-frequency mid-frequency cetacean sounds. Two primary goals are to
+develop transferable technologies for detection and classification in, one: the
+area of advanced algorithms, such as deep learning and other methods; and two:
+advanced systems, capable of real-time and archival processing. For each key
+area, we will focus on producing publications from this work and providing
+tools and software to the community where/when possible. Currently massive
+amounts of acoustic data are being collected by various institutions,
+corporations and national defense agencies. The long-term goal is to provide
+technical capability to analyze the data using automatic algorithms for (DC)
+based on machine intelligence. The goal of the automation is to provide
+effective and efficient mechanisms by which to process large acoustic datasets
+for understanding the bioacoustic behaviors of marine mammals. This capability
+will provide insights into the potential ecological impacts and influences of
+anthropogenic ocean sounds. This work focuses on building technologies using a
+maturity model based on DARPA 6.1 and 6.2 processes, for basic and applied
+research, respectively.

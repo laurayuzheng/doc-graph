@@ -1,0 +1,16 @@
+Countdown Regression: Sharp and Calibrated Survival Predictions
+  Probabilistic survival predictions from models trained with Maximum
+Likelihood Estimation (MLE) can have high, and sometimes unacceptably high
+variance. The field of meteorology, where the paradigm of maximizing sharpness
+subject to calibration is popular, has addressed this problem by using scoring
+rules beyond MLE, such as the Continuous Ranked Probability Score (CRPS). In
+this paper we present the \emph{Survival-CRPS}, a generalization of the CRPS to
+the survival prediction setting, with right-censored and interval-censored
+variants. We evaluate our ideas on the mortality prediction task using two
+different Electronic Health Record (EHR) data sets (STARR and MIMIC-III)
+covering millions of patients, with suitable deep neural network architectures:
+a Recurrent Neural Network (RNN) for STARR and a Fully Connected Network (FCN)
+for MIMIC-III. We compare results between the two scoring rules while keeping
+the network architecture and data fixed, and show that models trained with
+Survival-CRPS result in sharper predictive distributions compared to those
+trained by MLE, while still maintaining calibration.

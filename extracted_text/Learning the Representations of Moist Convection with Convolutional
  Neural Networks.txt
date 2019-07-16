@@ -1,0 +1,13 @@
+Learning the Representations of Moist Convection with Convolutional
+  Neural Networks
+  The representations of atmospheric moist convection in general circulation
+models have been one of the most challenging tasks due to its complexity in
+physical processes, and the interaction between processes under different
+time/spatial scales. This study proposes a new method to predict the effects of
+moist convection on the environment using convolutional neural networks. With
+the help of considering the gradient of physical fields between adjacent grids
+in the grey zone resolution, the effects of moist convection predicted by the
+convolutional neural networks are more realistic compared to the effects
+predicted by other machine learning models. The result also suggests that the
+method proposed in this study has the potential to replace the conventional
+cumulus parameterization in the general circulation models.

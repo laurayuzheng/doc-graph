@@ -1,0 +1,14 @@
+Learning Dynamical Systems from Partial Observations
+  We consider the problem of forecasting complex, nonlinear space-time
+processes when observations provide only partial information of on the system's
+state. We propose a natural data-driven framework, where the system's dynamics
+are modelled by an unknown time-varying differential equation, and the
+evolution term is estimated from the data, using a neural network. Any future
+state can then be computed by placing the associated differential equation in
+an ODE solver. We first evaluate our approach on shallow water and Euler
+simulations. We find that our method not only demonstrates high quality
+long-term forecasts, but also learns to produce hidden states closely
+resembling the true states of the system, without direct supervision on the
+latter. Additional experiments conducted on challenging, state of the art ocean
+simulations further validate our findings, while exhibiting notable
+improvements over classical baselines.

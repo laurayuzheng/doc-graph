@@ -1,0 +1,14 @@
+Forest-based methods and ensemble model output statistics for rainfall
+  ensemble forecasting
+  Rainfall ensemble forecasts have to be skillful for both low precipitation
+and extreme events. We present statistical post-processing methods based on
+Quantile Regression Forests (QRF) and Gradient Forests (GF) with a parametric
+extension for heavy-tailed distributions. Our goal is to improve ensemble
+quality for all types of precipitation events, heavy-tailed included, subject
+to a good overall performance. Our hybrid proposed methods are applied to daily
+51-h forecasts of 6-h accumulated precipitation from 2012 to 2015 over France
+using the M{\'e}t{\'e}o-France ensemble prediction system called PEARP. They
+provide calibrated pre-dictive distributions and compete favourably with
+state-of-the-art methods like Analogs method or Ensemble Model Output
+Statistics. In particular, hybrid forest-based procedures appear to bring an
+added value to the forecast of heavy rainfall.

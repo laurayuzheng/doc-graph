@@ -1,0 +1,15 @@
+LocDyn: Robust Distributed Localization for Mobile Underwater Networks
+  How to self-localize large teams of underwater nodes using only noisy range
+measurements? How to do it in a distributed way, and incorporating dynamics
+into the problem? How to reject outliers and produce trustworthy position
+estimates? The stringent acoustic communication channel and the accuracy needs
+of our geophysical survey application demand faster and more accurate
+localization methods. We approach dynamic localization as a MAP estimation
+problem where the prior encodes dynamics, and we devise a convex relaxation
+method that takes advantage of previous estimates at each measurement
+acquisition step; The algorithm converges at an optimal rate for first order
+methods. LocDyn is distributed: there is no fusion center responsible for
+processing acquired data and the same simple computations are performed for
+each node. LocDyn is accurate: experiments attest to a smaller positioning
+error than a comparable Kalman filter. LocDyn is robust: it rejects outlier
+noise, while the comparing methods succumb in terms of positioning error.

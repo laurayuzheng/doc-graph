@@ -1,0 +1,18 @@
+Eigenvalues of random graphs with cycles
+  Networks and graphs are often studied using the eigenvalues of their
+adjacency matrix, an powerful mathematical tool with applications on fields as
+diverse as systems engineering, ecology, machine learning and neuroscience. As
+in those applications the exact graph structure is not known, researchers
+resort to random graphs to obtain eigenvalue properties from known structural
+features. However, this theory is not intuitive and only few results are known.
+In this paper we tackle this problem through the cycles in a graph. We start by
+deriving a simple relation between eigenvalues and cycle weights and we apply
+it to two structural features: The spectral radius of circulant graphs and the
+eigenvalue distribution of random graphs with motifs. During this study we
+empirically uncover to surprising phenomena: First, circulant directed networks
+have eigenvalues distributed in concentric circles around the origin. Second,
+the eigenvalues of a network with abundance of short cycles are confined to the
+interior of a $\tau$-ellipse --an ellipse with $\tau$ foci-- in the complex
+plane, where $\tau$ is the length of the cycles. Our approach offers an
+intuitive way to study eigenvalues on graphs and in doing so reveals surprising
+connections between random matrix theory and planar geometry.

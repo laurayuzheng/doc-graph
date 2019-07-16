@@ -1,18 +1,19 @@
-Optimal Clustering Framework for Hyperspectral Band Selection
-  Band selection, by choosing a set of representative bands in hyperspectral
-image (HSI), is an effective method to reduce the redundant information without
-compromising the original contents. Recently, various unsupervised band
-selection methods have been proposed, but most of them are based on
-approximation algorithms which can only obtain suboptimal solutions toward a
-specific objective function. This paper focuses on clustering-based band
-selection, and proposes a new framework to solve the above dilemma, claiming
-the following contributions: 1) An optimal clustering framework (OCF), which
-can obtain the optimal clustering result for a particular form of objective
-function under a reasonable constraint. 2) A rank on clusters strategy (RCS),
-which provides an effective criterion to select bands on existing clustering
-structure. 3) An automatic method to determine the number of the required
-bands, which can better evaluate the distinctive information produced by
-certain number of bands. In experiments, the proposed algorithm is compared to
-some state-of-the-art competitors. According to the experimental results, the
-proposed algorithm is robust and significantly outperform the other methods on
-various data sets.
+Spatial-Spectral Regularized Local Scaling Cut for Dimensionality
+  Reduction in Hyperspectral Image Classification
+  Dimensionality reduction (DR) methods have attracted extensive attention to
+provide discriminative information and reduce the computational burden of the
+hyperspectral image (HSI) classification. However, the DR methods face many
+challenges due to limited training samples with high dimensional spectra. To
+address this issue, a graph-based spatial and spectral regularized local
+scaling cut (SSRLSC) for DR of HSI data is proposed. The underlying idea of the
+proposed method is to utilize the information from both the spectral and
+spatial domains to achieve better classification accuracy than its spectral
+domain counterpart. In SSRLSC, a guided filter is initially used to smoothen
+and homogenize the pixels of the HSI data in order to preserve the pixel
+consistency. This is followed by generation of between-class and within-class
+dissimilarity matrices in both spectral and spatial domains by regularized
+local scaling cut (RLSC) and neighboring pixel local scaling cut (NPLSC)
+respectively. Finally, we obtain the projection matrix by optimizing the
+updated spatial-spectral between-class and total-class dissimilarity. The
+effectiveness of the proposed DR algorithm is illustrated with two popular
+real-world HSI datasets.

@@ -1,0 +1,18 @@
+Matrix Product State Based Quantum Classifier
+  In recent years, interest in expressing the success of neural networks to the
+quantum computing has increased significantly. Tensor network theory has become
+increasingly popular and widely used to simulate strongly entangled correlated
+systems. Matrix product state (MPS) is the well-designed class of tensor
+network states, which plays an important role in processing of quantum
+information. In this paper, we have shown that matrix product state as
+one-dimensional array of tensors can be used to classify classical and quantum
+data. We have performed binary classification of classical machine learning
+dataset Iris encoded in a quantum state. Further, we have investigated the
+performance by considering different parameters on the ibmqx4 quantum computer
+and proved that MPS circuits can be used to attain better accuracy. Further,
+the learning ability of MPS quantum classifier is tested to classify
+evapotranspiration ($ET_{o}$) for Patiala meteorological station located in
+Northern Punjab (India), using three years of historical dataset (Agri).
+Furthermore, we have used different performance metrics of classification to
+measure its capability. Finally, the results are plotted and degree of
+correspondence among values of each sample is shown.

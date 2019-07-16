@@ -1,0 +1,17 @@
+Dictionary learning of sound speed profiles
+  To provide constraints on their inversion, ocean sound speed profiles (SSPs)
+often are modeled using empirical orthogonal functions (EOFs). However, this
+regularization, which uses the leading order EOFs with a minimum-energy
+constraint on their coefficients, often yields low resolution SSP estimates. In
+this paper, it is shown that dictionary learning, a form of unsupervised
+machine learning, can improve SSP resolution by generating a dictionary of
+shape functions for sparse processing (e.g. compressive sensing) that optimally
+compress SSPs; both minimizing the reconstruction error and the number of
+coefficients. These learned dictionaries (LDs) are not constrained to be
+orthogonal and thus, fit the given signals such that each signal example is
+approximated using few LD entries. Here, LDs describing SSP observations from
+the HF-97 experiment and the South China Sea are generated using the K-SVD
+algorithm. These LDs better explain SSP variability and require fewer
+coefficients than EOFs, describing much of the variability with one
+coefficient. Thus, LDs improve the resolution of SSP estimates with negligible
+computational burden.

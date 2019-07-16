@@ -1,13 +1,19 @@
-Deep learning for semantic segmentation of remote sensing images with
-  rich spectral content
-  With the rapid development of Remote Sensing acquisition techniques, there is
-a need to scale and improve processing tools to cope with the observed increase
-of both data volume and richness. Among popular techniques in remote sensing,
-Deep Learning gains increasing interest but depends on the quality of the
-training data. Therefore, this paper presents recent Deep Learning approaches
-for fine or coarse land cover semantic segmentation estimation. Various 2D
-architectures are tested and a new 3D model is introduced in order to jointly
-process the spatial and spectral dimensions of the data. Such a set of networks
-enables the comparison of the different spectral fusion schemes. Besides, we
-also assess the use of a " noisy ground truth " (i.e. outdated and low spatial
-resolution labels) for training and testing the networks.
+Recurrent Neural Networks for Multivariate Time Series with Missing
+  Values
+  Multivariate time series data in practical applications, such as health care,
+geoscience, and biology, are characterized by a variety of missing values. In
+time series prediction and other related tasks, it has been noted that missing
+values and their missing patterns are often correlated with the target labels,
+a.k.a., informative missingness. There is very limited work on exploiting the
+missing patterns for effective imputation and improving prediction performance.
+In this paper, we develop novel deep learning models, namely GRU-D, as one of
+the early attempts. GRU-D is based on Gated Recurrent Unit (GRU), a
+state-of-the-art recurrent neural network. It takes two representations of
+missing patterns, i.e., masking and time interval, and effectively incorporates
+them into a deep model architecture so that it not only captures the long-term
+temporal dependencies in time series, but also utilizes the missing patterns to
+achieve better prediction results. Experiments of time series classification
+tasks on real-world clinical datasets (MIMIC-III, PhysioNet) and synthetic
+datasets demonstrate that our models achieve state-of-the-art performance and
+provides useful insights for better understanding and utilization of missing
+values in time series analysis.

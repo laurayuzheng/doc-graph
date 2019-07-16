@@ -1,0 +1,18 @@
+Forward Amortized Inference for Likelihood-Free Variational
+  Marginalization
+  In this paper, we introduce a new form of amortized variational inference by
+using the forward KL divergence in a joint-contrastive variational loss. The
+resulting forward amortized variational inference is a likelihood-free method
+as its gradient can be sampled without bias and without requiring any
+evaluation of either the model joint distribution or its derivatives. We prove
+that our new variational loss is optimized by the exact posterior marginals in
+the fully factorized mean-field approximation, a property that is not shared
+with the more conventional reverse KL inference. Furthermore, we show that
+forward amortized inference can be easily marginalized over large families of
+latent variables in order to obtain a marginalized variational posterior. We
+consider two examples of variational marginalization. In our first example we
+train a Bayesian forecaster for predicting a simplified chaotic model of
+atmospheric convection. In the second example we train an amortized variational
+approximation of a Bayesian optimal classifier by marginalizing over the model
+space. The result is a powerful meta-classification network that can solve
+arbitrary classification problems without further training.

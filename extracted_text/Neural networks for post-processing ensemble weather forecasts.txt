@@ -1,0 +1,21 @@
+Neural networks for post-processing ensemble weather forecasts
+  Ensemble weather predictions require statistical post-processing of
+systematic errors to obtain reliable and accurate probabilistic forecasts.
+Traditionally, this is accomplished with distributional regression models in
+which the parameters of a predictive distribution are estimated from a training
+period. We propose a flexible alternative based on neural networks that can
+incorporate nonlinear relationships between arbitrary predictor variables and
+forecast distribution parameters that are automatically learned in a
+data-driven way rather than requiring pre-specified link functions. In a case
+study of 2-meter temperature forecasts at surface stations in Germany, the
+neural network approach significantly outperforms benchmark post-processing
+methods while being computationally more affordable. Key components to this
+improvement are the use of auxiliary predictor variables and station-specific
+information with the help of embeddings. Furthermore, the trained neural
+network can be used to gain insight into the importance of meteorological
+variables thereby challenging the notion of neural networks as uninterpretable
+black boxes. Our approach can easily be extended to other statistical
+post-processing and forecasting problems. We anticipate that recent advances in
+deep learning combined with the ever-increasing amounts of model and
+observation data will transform the post-processing of numerical weather
+forecasts in the coming decade.

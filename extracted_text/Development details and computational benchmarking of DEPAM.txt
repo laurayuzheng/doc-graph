@@ -1,0 +1,20 @@
+Development details and computational benchmarking of DEPAM
+  In the big data era of observational oceanography, passive acoustics datasets
+are becoming too high volume to be processed on local computers due to their
+processor and memory limitations. As a result there is a current need for our
+community to turn to cloud-based distributed computing. We present a scalable
+computing system for FFT (Fast Fourier Transform)-based features (e.g., Power
+Spectral Density) based on the Apache distributed frameworks Hadoop and Spark.
+These features are at the core of many different types of acoustic analysis
+where the need of processing data at scale with speed is evident, e.g. serving
+as long-term averaged learning representations of soundscapes to identify
+periods of acoustic interest. In addition to provide a complete description of
+our system implementation, we also performed a computational benchmark
+comparing our system to three other Scala-only, Matlab and Python based systems
+in standalone executions, and evaluated its scalability using the speed up
+metric. Our current results are very promising in terms of computational
+performance, as we show that our proposed Hadoop/Spark system performs
+reasonably well on a single node setup comparatively to state-of-the-art
+processing tools used by the PAM community, and that it could also fully
+leverage more intensive cluster resources with a almost-linear scalability
+behaviour above a certain dataset volume.

@@ -1,0 +1,10 @@
+Satellite imagery analysis for operational damage assessment in
+  Emergency situations
+  When major disaster occurs the questions are raised how to estimate the
+damage in time to support the decision making process and relief efforts by
+local authorities or humanitarian teams. In this paper we consider the use of
+Machine Learning and Computer Vision on remote sensing imagery to improve time
+efficiency of assessment of damaged buildings in disaster affected area. We
+propose a general workflow that can be useful in various disaster management
+applications, and demonstrate the use of the proposed workflow for the
+assessment of the damage caused by the wildfires in California in 2017.

@@ -1,0 +1,17 @@
+Data Set From Molisan Regional Seismic Network Events
+  After the earthquake occurred in Molise (Central Italy) on 31st October 2002
+(Ml 5.4, 29 people dead), the local Servizio Regionale per la Protezione Civile
+to ensure a better analysis of local seismic data, through a convention with
+the Istituto Nazionale di Geofisica e Vulcanologia (INGV), promoted the design
+of the Regional Seismic Network (RMSM) and funded its implementation. The 5
+stations of RMSM worked since 2007 to 2013 collecting a large amount of seismic
+data and giving an important contribution to the study of seismic sources
+present in the region and the surrounding territory. This work reports about
+the dataset containing all triggers collected by RMSM since July 2007 to March
+2009, including actual seismic events; among them, all earthquakes events
+recorded in coincidence to Rete Sismica Nazionale Centralizzata (RSNC) of INGV
+have been marked with S and P arrival timestamps. Every trigger has been
+associated to a spectrogram defined into a recorded time vs. frequency domain.
+The main aim of this structured dataset is to be used for further analysis with
+data mining and machine learning techniques on image patterns associated to the
+waveforms.

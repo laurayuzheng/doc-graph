@@ -1,0 +1,6 @@
+A step towards procedural terrain generation with GANs
+  Procedural terrain generation for video games has been traditionally been
+done with smartly designed but handcrafted algorithms that generate heightmaps.
+We propose a first step toward the learning and synthesis of these using recent
+advances in deep generative modelling with openly available satellite imagery
+from NASA.

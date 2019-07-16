@@ -1,0 +1,26 @@
+Ecological non-linear state space model selection via adaptive particle
+  Markov chain Monte Carlo (AdPMCMC)
+  We develop a novel advanced Particle Markov chain Monte Carlo algorithm that
+is capable of sampling from the posterior distribution of non-linear state
+space models for both the unobserved latent states and the unknown model
+parameters. We apply this novel methodology to five population growth models,
+including models with strong and weak Allee effects, and test if it can
+efficiently sample from the complex likelihood surface that is often associated
+with these models. Utilising real and also synthetically generated data sets we
+examine the extent to which observation noise and process error may frustrate
+efforts to choose between these models. Our novel algorithm involves an
+Adaptive Metropolis proposal combined with an SIR Particle MCMC algorithm
+(AdPMCMC). We show that the AdPMCMC algorithm samples complex, high-dimensional
+spaces efficiently, and is therefore superior to standard Gibbs or Metropolis
+Hastings algorithms that are known to converge very slowly when applied to the
+non-linear state space ecological models considered in this paper.
+Additionally, we show how the AdPMCMC algorithm can be used to recursively
+estimate the Bayesian Cram\'er-Rao Lower Bound of Tichavsk\'y (1998). We derive
+expressions for these Cram\'er-Rao Bounds and estimate them for the models
+considered. Our results demonstrate a number of important features of common
+population growth models, most notably their multi-modal posterior surfaces and
+dependence between the static and dynamic parameters. We conclude by sampling
+from the posterior distribution of each of the models, and use Bayes factors to
+highlight how observation noise significantly diminishes our ability to select
+among some of the models, particularly those that are designed to reproduce an
+Allee effect.

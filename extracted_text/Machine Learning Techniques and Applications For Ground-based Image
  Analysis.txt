@@ -1,0 +1,18 @@
+Machine Learning Techniques and Applications For Ground-based Image
+  Analysis
+  Ground-based whole sky cameras have opened up new opportunities for
+monitoring the earth's atmosphere. These cameras are an important complement to
+satellite images by providing geoscientists with cheaper, faster, and more
+localized data. The images captured by whole sky imagers can have high spatial
+and temporal resolution, which is an important pre-requisite for applications
+such as solar energy modeling, cloud attenuation analysis, local weather
+prediction, etc.
+  Extracting valuable information from the huge amount of image data by
+detecting and analyzing the various entities in these images is challenging.
+However, powerful machine learning techniques have become available to aid with
+the image analysis. This article provides a detailed walk-through of recent
+developments in these techniques and their applications in ground-based
+imaging. We aim to bridge the gap between computer vision and remote sensing
+with the help of illustrative examples. We demonstrate the advantages of using
+machine learning techniques in ground-based image analysis via three primary
+applications -- segmentation, classification, and denoising.

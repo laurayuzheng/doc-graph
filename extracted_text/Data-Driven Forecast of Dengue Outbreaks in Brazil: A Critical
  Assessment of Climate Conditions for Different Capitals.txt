@@ -1,0 +1,26 @@
+Data-Driven Forecast of Dengue Outbreaks in Brazil: A Critical
+  Assessment of Climate Conditions for Different Capitals
+  Local climate conditions play a major role in the development of the mosquito
+population responsible for transmitting Dengue Fever. Since the {\em Aedes
+Aegypti} mosquito is also a primary vector for the recent Zika and Chikungunya
+epidemics across the Americas, a detailed monitoring of periods with favorable
+climate conditions for mosquito profusion may improve the timing of
+vector-control efforts and other urgent public health strategies. We apply
+dimensionality reduction techniques and machine-learning algorithms to climate
+time series data and analyze their connection to the occurrence of Dengue
+outbreaks for seven major cities in Brazil. Specifically, we have identified
+two key variables and a period during the annual cycle that are highly
+predictive of epidemic outbreaks. The key variables are the frequency of
+precipitation and temperature during an approximately two month window of the
+winter season preceding the outbreak. Thus simple climate signatures may be
+influencing Dengue outbreaks even months before their occurrence. Some of the
+more challenging datasets required usage of compressive-sensing procedures to
+estimate missing entries for temperature and precipitation records. Our results
+indicate that each Brazilian capital considered has a unique frequency of
+precipitation and temperature signature in the winter preceding a Dengue
+outbreak. Such climate contributions on vector populations are key factors in
+dengue dynamics which could lead to more accurate prediction models and early
+warning systems. Finally, we show that critical temperature and precipitation
+signatures may vary significantly from city to city, suggesting that the
+interplay between climate variables and dengue outbreaks is more complex than
+generally appreciated.

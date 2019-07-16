@@ -1,0 +1,16 @@
+Deep Learning Approach in Automatic Iceberg - Ship Detection with SAR
+  Remote Sensing Data
+  Deep Learning is gaining traction with geophysics community to understand
+subsurface structures, such as fault detection or salt body in seismic data.
+This study describes using deep learning method for iceberg or ship recognition
+with synthetic aperture radar (SAR) data. Drifting icebergs pose a potential
+threat to activities offshore around the Arctic, including for both ship
+navigation and oil rigs. Advancement of satellite imagery using
+weather-independent cross-polarized radar has enabled us to monitor and
+delineate icebergs and ships, however a human component is needed to classify
+the images. Here we present Transfer Learning, a convolutional neural network
+(CNN) designed to work with a limited training data and features, while
+demonstrating its effectiveness in this problem. Key aspect of the approach is
+data augmentation and stacking of multiple outputs, resulted in a significant
+boost in accuracy (logarithmic score of 0.1463). This algorithm has been tested
+through participation at the Statoil/C-Core Kaggle competition.

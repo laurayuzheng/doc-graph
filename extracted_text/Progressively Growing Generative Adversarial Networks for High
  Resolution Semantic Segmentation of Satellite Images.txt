@@ -1,0 +1,10 @@
+Progressively Growing Generative Adversarial Networks for High
+  Resolution Semantic Segmentation of Satellite Images
+  Machine learning has proven to be useful in classification and segmentation
+of images. In this paper, we evaluate a training methodology for pixel-wise
+segmentation on high resolution satellite images using progressive growing of
+generative adversarial networks. We apply our model to segmenting building
+rooftops and compare these results to conventional methods for rooftop
+segmentation. We present our findings using the SpaceNet version 2 dataset.
+Progressive GAN training achieved a test accuracy of 93% compared to 89% for
+traditional GAN training.

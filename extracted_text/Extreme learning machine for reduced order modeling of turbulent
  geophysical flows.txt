@@ -1,0 +1,14 @@
+Extreme learning machine for reduced order modeling of turbulent
+  geophysical flows
+  We investigate the application of artificial neural networks to stabilize
+proper orthogonal decomposition based reduced order models for quasi-stationary
+geophysical turbulent flows. An extreme learning machine concept is introduced
+for computing an eddy-viscosity closure dynamically to incorporate the effects
+of the truncated modes. We consider a four-gyre wind-driven ocean circulation
+problem as our prototype setting to assess the performance of the proposed
+data-driven approach. Our framework provides a significant reduction in
+computational time and effectively retains the dynamics of the full-order model
+during the forward simulation period beyond the training data set. Furthermore,
+we show that the method is robust for larger choices of time steps and can be
+used as an efficient and reliable tool for long time integration of general
+circulation models.

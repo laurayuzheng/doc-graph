@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3Abiogeography%20AND%20all%3Amachine%20AND%20all%3Alearning%26id_list%3D%26start%3D0%26max_results%3D100" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:biogeography AND all:machine AND all:learning&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <id>http://arxiv.org/api/5CGtZ8BSa3SOZdduJHG8Avrho/0</id>
+  <updated>2019-07-16T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">2</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">100</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/0912.1009v1</id>
+    <updated>2009-12-05T12:54:24Z</updated>
+    <published>2009-12-05T12:54:24Z</published>
+    <title>Biogeography based Satellite Image Classification</title>
+    <summary>  Biogeography is the study of the geographical distribution of biological
+organisms. The mindset of the engineer is that we can learn from nature.
+Biogeography Based Optimization is a burgeoning nature inspired technique to
+find the optimal solution of the problem. Satellite image classification is an
+important task because it is the only way we can know about the land cover map
+of inaccessible areas. Though satellite images have been classified in past by
+using various techniques, the researchers are always finding alternative
+strategies for satellite image classification so that they may be prepared to
+select the most appropriate technique for the feature extraction task in hand.
+This paper is focused on classification of the satellite image of a particular
+land cover using the theory of Biogeography based Optimization. The original
+BBO algorithm does not have the inbuilt property of clustering which is
+required during image classification. Hence modifications have been proposed to
+the original algorithm and the modified algorithm is used to classify the
+satellite image of a given region. The results indicate that highly accurate
+land cover features can be extracted effectively when the proposed algorithm is
+used.
+</summary>
+    <author>
+      <name>V. K. Panchal</name>
+    </author>
+    <author>
+      <name>Parminder Singh</name>
+    </author>
+    <author>
+      <name>Navdeep Kaur</name>
+    </author>
+    <author>
+      <name>Harish Kundra</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">6 pages IEEE format, International Journal of Computer Science and
+  Information Security, IJCSIS November 2009, ISSN 1947 5500,
+  http://sites.google.com/site/ijcsis/</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">International Journal of Computer Science and Information
+  Security, IJCSIS, Vol. 6, No. 2, pp. 269-274, November 2009, USA</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/0912.1009v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/0912.1009v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1207.3285v1</id>
+    <updated>2012-07-12T19:00:46Z</updated>
+    <published>2012-07-12T19:00:46Z</published>
+    <title>Biogeography-Based Informative Gene Selection and Cancer Classification
+  Using SVM and Random Forests</title>
+    <summary>  Microarray cancer gene expression data comprise of very high dimensions.
+Reducing the dimensions helps in improving the overall analysis and
+classification performance. We propose two hybrid techniques, Biogeography -
+based Optimization - Random Forests (BBO - RF) and BBO - SVM (Support Vector
+Machines) with gene ranking as a heuristic, for microarray gene expression
+analysis. This heuristic is obtained from information gain filter ranking
+procedure. The BBO algorithm generates a population of candidate subset of
+genes, as part of an ecosystem of habitats, and employs the migration and
+mutation processes across multiple generations of the population to improve the
+classification accuracy. The fitness of each gene subset is assessed by the
+classifiers - SVM and Random Forests. The performances of these hybrid
+techniques are evaluated on three cancer gene expression datasets retrieved
+from the Kent Ridge Biomedical datasets collection and the libSVM data
+repository. Our results demonstrate that genes selected by the proposed
+techniques yield classification accuracies comparable to previously reported
+algorithms.
+</summary>
+    <author>
+      <name>Sarvesh Nikumbh</name>
+    </author>
+    <author>
+      <name>Shameek Ghosh</name>
+    </author>
+    <author>
+      <name>Valadi Jayaraman</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/CEC.2012.6256127</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/CEC.2012.6256127" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">6 pages; Author's copy; Presented at the IEEE World Congress on
+  Computational Intelligence (at IEEE Congress on Evolutionary Computation),
+  Brisbane, Australia, June 2012</arxiv:comment>
+    <link href="http://arxiv.org/abs/1207.3285v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1207.3285v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

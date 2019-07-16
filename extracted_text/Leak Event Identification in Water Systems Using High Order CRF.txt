@@ -1,0 +1,19 @@
+Leak Event Identification in Water Systems Using High Order CRF
+  Today, detection of anomalous events in civil infrastructures (e.g. water
+pipe breaks and leaks) is time consuming and often takes hours or days. Pipe
+breakage as one of the most frequent types of failure of water networks often
+causes community disruptions ranging from temporary interruptions in services
+to extended loss of business and relocation of residents. In this project, we
+design and implement a two-phase approach for leak event identification, which
+leverages dynamic data from multiple information sources including IoT sensing
+data (pressure values and/or flow rates), geophysical data (water systems), and
+human inputs (tweets posted on Twitter). In the approach, a high order
+Conditional Random Field (CRF) is constructed that enforces predictions based
+on IoT observations consistent with human inputs to improve the performance of
+event identifications.
+  Considering the physical water network as a graph, a CRF model is built and
+learned by the Structured Support Vector Machine (SSVM) using node features
+such as water pressure and flow rate. After that, we built the high order CRF
+system by enforcing twitter leakage detection information. An optimal inference
+algorithm is proposed for the adapted high order CRF model. Experimental
+results show the effectiveness of our system.

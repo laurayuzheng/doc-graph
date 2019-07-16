@@ -1,0 +1,7 @@
+Probabilistic design of a molybdenum-base alloy using a neural network
+  An artificial intelligence tool is exploited to discover and characterize a
+new molybdenum-base alloy that is the most likely to simultaneously satisfy
+targets of cost, phase stability, precipitate content, yield stress, and
+hardness. Experimental testing demonstrates that the proposed alloy fulfils the
+computational predictions, and furthermore the physical properties exceed those
+of other commercially available Mo-base alloys for forging-die applications.

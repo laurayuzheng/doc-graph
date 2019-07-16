@@ -1,0 +1,14 @@
+REBEC: Robust Evolutionary-based Calibration Approach for the Numerical
+  Wind Wave Model
+  The adaptation of numerical wind wave models to the local time-spatial
+conditions is a problem that can be solved by using various calibration
+techniques. However, the obtained sets of physical parameters become over-tuned
+to specific events if there is a lack of observations. In this paper, we
+propose a robust evolutionary calibration approach that allows to build the
+stochastic ensemble of perturbed models and use it to achieve the trade-off
+between quality and robustness of the target model. The implemented robust
+ensemble-based evolutionary calibration (REBEC) approach was compared to the
+baseline SPEA2 algorithm in a set of experiments with the SWAN wind wave model
+configuration for the Kara Sea domain. Provided metrics for the set of
+scenarios confirm the effectiveness of the REBEC approach for the majority of
+calibration scenarios.

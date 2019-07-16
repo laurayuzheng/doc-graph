@@ -1,0 +1,14 @@
+Fusion of hyperspectral and ground penetrating radar to estimate soil
+  moisture
+  In this contribution, we investigate the potential of hyperspectral data
+combined with either simulated ground penetrating radar (GPR) or simulated
+(sensor-like) soil-moisture data to estimate soil moisture. We propose two
+simulation approaches to extend a given multi-sensor dataset which contains
+sparse GPR data. In the first approach, simulated GPR data is generated either
+by an interpolation along the time axis or by a machine learning model. The
+second approach includes the simulation of soil-moisture along the GPR profile.
+The soil-moisture estimation is improved significantly by the fusion of
+hyperspectral and GPR data. In contrast, the combination of simulated,
+sensor-like soil-moisture values and hyperspectral data achieves the worst
+regression performance. In conclusion, the estimation of soil moisture with
+hyperspectral and GPR data engages further investigations.

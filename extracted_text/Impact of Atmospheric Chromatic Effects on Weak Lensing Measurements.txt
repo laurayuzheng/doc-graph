@@ -1,0 +1,24 @@
+Impact of Atmospheric Chromatic Effects on Weak Lensing Measurements
+  Current and future imaging surveys will measure cosmic shear with statistical
+precision that demands a deeper understanding of potential systematic biases in
+galaxy shape measurements than has been achieved to date. We use analytic and
+computational techniques to study the impact on shape measurements of two
+atmospheric chromatic effects for ground-based surveys such as the Dark Energy
+Survey and the Large Synoptic Survey Telescope (LSST): (i) atmospheric
+differential chromatic refraction and (ii) wavelength dependence of seeing. We
+investigate the effects of using the point spread function (PSF) measured with
+stars to determine the shapes of galaxies that have different spectral energy
+distributions than the stars. We find that both chromatic effects lead to
+significant biases in galaxy shape measurements for current and future surveys,
+if not corrected. Using simulated galaxy images, we find a form of chromatic
+`model bias' that arises when fitting a galaxy image with a model that has been
+convolved with a stellar, instead of galactic, point spread function. We show
+that both forms of atmospheric chromatic biases can be predicted (and
+corrected) with minimal model bias by applying an ordered set of perturbative
+PSF-level corrections based on machine-learning techniques applied to six-band
+photometry. Catalog-level corrections do not address the model bias. We
+conclude that achieving the ultimate precision for weak lensing from current
+and future ground-based imaging surveys requires a detailed understanding of
+the wavelength dependence of the PSF from the atmosphere, and from other
+sources such as optics and sensors. The source code for this analysis is
+available at https://github.com/DarkEnergyScienceCollaboration/chroma .

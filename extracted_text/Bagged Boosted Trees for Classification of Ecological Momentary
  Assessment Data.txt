@@ -1,0 +1,10 @@
+Bagged Boosted Trees for Classification of Ecological Momentary
+  Assessment Data
+  Ecological Momentary Assessment (EMA) data is organized in multiple levels
+(per-subject, per-day, etc.) and this particular structure should be taken into
+account in machine learning algorithms used in EMA like decision trees and its
+variants. We propose a new algorithm called BBT (standing for Bagged Boosted
+Trees) that is enhanced by a over/under sampling method and can provide better
+estimates for the conditional class probability function. Experimental results
+on a real-world dataset show that BBT can benefit EMA data classification and
+performance.

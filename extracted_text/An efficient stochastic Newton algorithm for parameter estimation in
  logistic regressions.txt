@@ -1,0 +1,14 @@
+An efficient stochastic Newton algorithm for parameter estimation in
+  logistic regressions
+  Logistic regression is a well-known statistical model which is commonly used
+in the situation where the output is a binary random variable. It has a wide
+range of applications including machine learning, public health, social
+sciences, ecology and econometry. In order to estimate the unknown parameters
+of logistic regression with data streams arriving sequentially and at high
+speed, we focus our attention on a recursive stochastic algorithm. More
+precisely, we investigate the asymptotic behavior of a new stochastic Newton
+algorithm. It enables to easily update the estimates when the data arrive
+sequentially and to have research steps in all directions. We establish the
+almost sure convergence of our stochastic Newton algorithm as well as its
+asymptotic normality. All our theoretical results are illustrated by numerical
+experiments.

@@ -1,24 +1,19 @@
-The Data Big Bang and the Expanding Digital Universe: High-Dimensional,
-  Complex and Massive Data Sets in an Inflationary Epoch
-  Recent and forthcoming advances in instrumentation, and giant new surveys,
-are creating astronomical data sets that are not amenable to the methods of
-analysis familiar to astronomers. Traditional methods are often inadequate not
-merely because of the size in bytes of the data sets, but also because of the
-complexity of modern data sets. Mathematical limitations of familiar algorithms
-and techniques in dealing with such data sets create a critical need for new
-paradigms for the representation, analysis and scientific visualization (as
-opposed to illustrative visualization) of heterogeneous, multiresolution data
-across application domains. Some of the problems presented by the new data sets
-have been addressed by other disciplines such as applied mathematics,
-statistics and machine learning and have been utilized by other sciences such
-as space-based geosciences. Unfortunately, valuable results pertaining to these
-problems are mostly to be found only in publications outside of astronomy. Here
-we offer brief overviews of a number of concepts, techniques and developments,
-some "old" and some new. These are generally unknown to most of the
-astronomical community, but are vital to the analysis and visualization of
-complex datasets and images. In order for astronomers to take advantage of the
-richness and complexity of the new era of data, and to be able to identify,
-adopt, and apply new solutions, the astronomical community needs a certain
-degree of awareness and understanding of the new concepts. One of the goals of
-this paper is to help bridge the gap between applied mathematics, artificial
-intelligence and computer science on the one side and astronomy on the other.
+Hypothesis Testing in Speckled Data with Stochastic Distances
+  Images obtained with coherent illumination, as is the case of sonar,
+ultrasound-B, laser and Synthetic Aperture Radar -- SAR, are affected by
+speckle noise which reduces the ability to extract information from the data.
+Specialized techniques are required to deal with such imagery, which has been
+modeled by the G0 distribution and under which regions with different degrees
+of roughness and mean brightness can be characterized by two parameters; a
+third parameter, the number of looks, is related to the overall signal-to-noise
+ratio. Assessing distances between samples is an important step in image
+analysis; they provide grounds of the separability and, therefore, of the
+performance of classification procedures. This work derives and compares eight
+stochastic distances and assesses the performance of hypothesis tests that
+employ them and maximum likelihood estimation. We conclude that tests based on
+the triangular distance have the closest empirical size to the theoretical one,
+while those based on the arithmetic-geometric distances have the best power.
+Since the power of tests based on the triangular distance is close to optimum,
+we conclude that the safest choice is using this distance for hypothesis
+testing, even when compared with classical distances as Kullback-Leibler and
+Bhattacharyya.

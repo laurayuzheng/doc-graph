@@ -1,0 +1,28 @@
+Deep-learning inversion: a next generation seismic velocity-model
+  building method
+  Seismic velocity is one of the most important parameters used in seismic
+exploration. Accurate velocity models are key prerequisites for reverse-time
+migration and other high-resolution seismic imaging techniques. Such velocity
+information has traditionally been derived by tomography or full-waveform
+inversion (FWI), which are time consuming and computationally expensive, and
+they rely heavily on human interaction and quality control. We investigate a
+novel method based on the supervised deep fully convolutional neural network
+(FCN) for velocity-model building (VMB) directly from raw seismograms. Unlike
+the conventional inversion method based on physical models, the supervised
+deep-learning methods are based on big-data training rather than
+prior-knowledge assumptions. During the training stage, the network establishes
+a nonlinear projection from the multi-shot seismic data to the corresponding
+velocity models. During the prediction stage, the trained network can be used
+to estimate the velocity models from the new input seismic data. One key
+characteristic of the deep-learning method is that it can automatically extract
+multi-layer useful features without the need for human-curated activities and
+initial velocity setup. The data-driven method usually requires more time
+during the training stage, and actual predictions take less time, with only
+seconds needed. Therefore, the computational time of geophysical inversions,
+including real-time inversions, can be dramatically reduced once a good
+generalized network is built. By using numerical experiments on synthetic
+models, the promising performances of our proposed method are shown in
+comparison with conventional FWI even when the input data are in more realistic
+scenarios. Discussions on the deep-learning methods, training dataset, lack of
+low frequencies, and advantages and disadvantages of the new method are also
+provided.

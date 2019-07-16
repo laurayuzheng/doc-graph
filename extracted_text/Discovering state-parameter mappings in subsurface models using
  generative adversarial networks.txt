@@ -1,0 +1,18 @@
+Discovering state-parameter mappings in subsurface models using
+  generative adversarial networks
+  A fundamental problem in geophysical modeling is related to the
+identification and approximation of causal structures among physical processes.
+However, resolving the bidirectional mappings between physical parameters and
+model state variables (i.e., solving the forward and inverse problems) is
+challenging, especially when parameter dimensionality is high. Deep learning
+has opened a new door toward knowledge representation and complex pattern
+identification. In particular, the recently introduced generative adversarial
+networks (GANs) hold strong promises in learning cross-domain mappings for
+image translation. This study presents a state-parameter identification GAN
+(SPID-GAN) for simultaneously learning bidirectional mappings between a
+high-dimensional parameter space and the corresponding model state space.
+SPID-GAN is demonstrated using a series of representative problems from
+subsurface flow modeling. Results show that SPID-GAN achieves satisfactory
+performance in identifying the bidirectional state-parameter mappings,
+providing a new deep-learning-based, knowledge representation paradigm for a
+wide array of complex geophysical problems.

@@ -1,0 +1,15 @@
+Development and analysis of a Bayesian water balance model for large
+  lake systems
+  Water balance models (WBMs) are often employed to understand regional
+hydrologic cycles over various time scales. Most WBMs, however, are
+physically-based, and few employ state-of-the-art statistical methods to
+reconcile independent input measurement uncertainty and bias. Further, few WBMs
+exist for large lakes, and most large lake WBMs perform additive accounting,
+with minimal consideration towards input data uncertainty. Here, we introduce a
+framework for improving a previously developed large lake statistical water
+balance model (L2SWBM). Focusing on the water balances of Lakes Superior and
+Michigan-Huron, we demonstrate our new analytical framework, identifying
+L2SWBMs from 26 alternatives that adequately close the water balance of the
+lakes with satisfactory computation times compared with the prototype model. We
+expect our new framework will be used to develop water balance models for other
+lakes around the world.

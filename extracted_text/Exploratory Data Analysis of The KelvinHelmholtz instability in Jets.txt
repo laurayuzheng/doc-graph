@@ -1,0 +1,11 @@
+Exploratory Data Analysis of The KelvinHelmholtz instability in Jets
+  The KelvinHelmholtz (KH) instability is a fundamental wave instability that
+is frequently observed in all kinds of shear layer (jets, wakes, atmospheric
+air currents etc). The study of KH-instability, coherent flow structures has a
+major impact in understanding the fundamentals of fluid dynamics. Therefore
+there is a need for methods that can identify and analyse these structures. In
+this Final assignment, we use machine-learning methods such as Proper
+Orthogonal Decomposition (POD) and Dynamic Mode Decomposition (DMD) to analyse
+the coherent flow structures. We used a 2D co-axial jet as our data, with
+Reynolds number corresponding to Re: 10,000. Results for POD modes and DMD
+modes are discussed and compared.

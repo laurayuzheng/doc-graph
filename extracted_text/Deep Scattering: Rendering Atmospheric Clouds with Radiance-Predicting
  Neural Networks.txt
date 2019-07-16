@@ -1,0 +1,23 @@
+Deep Scattering: Rendering Atmospheric Clouds with Radiance-Predicting
+  Neural Networks
+  We present a technique for efficiently synthesizing images of atmospheric
+clouds using a combination of Monte Carlo integration and neural networks. The
+intricacies of Lorenz-Mie scattering and the high albedo of cloud-forming
+aerosols make rendering of clouds---e.g. the characteristic silverlining and
+the "whiteness" of the inner body---challenging for methods based solely on
+Monte Carlo integration or diffusion theory. We approach the problem
+differently. Instead of simulating all light transport during rendering, we
+pre-learn the spatial and directional distribution of radiant flux from tens of
+cloud exemplars. To render a new scene, we sample visible points of the cloud
+and, for each, extract a hierarchical 3D descriptor of the cloud geometry with
+respect to the shading location and the light source. The descriptor is input
+to a deep neural network that predicts the radiance function for each shading
+configuration. We make the key observation that progressively feeding the
+hierarchical descriptor into the network enhances the network's ability to
+learn faster and predict with high accuracy while using few coefficients. We
+also employ a block design with residual connections to further improve
+performance. A GPU implementation of our method synthesizes images of clouds
+that are nearly indistinguishable from the reference solution within seconds
+interactively. Our method thus represents a viable solution for applications
+such as cloud design and, thanks to its temporal stability, also for
+high-quality production of animated content.

@@ -1,0 +1,22 @@
+Earthquake Detection in 1-D Time Series Data with Feature Selection and
+  Dictionary Learning
+  Earthquakes can be detected by matching spatial patterns or phase properties
+from 1-D seismic waves. Current earthquake detection methods, such as waveform
+correlation and template matching, have difficulty detecting anomalous
+earthquakes that are not similar to other earthquakes. In recent years,
+machine-learning techniques for earthquake detection have been emerging as a
+new active research direction. In this paper, we develop a novel earthquake
+detection method based on dictionary learning. Our detection method first
+generates rich features via signal processing and statistical methods and
+further employs feature selection techniques to choose features that carry the
+most significant information. Based on these selected features, we build a
+dictionary for classifying earthquake events from non-earthquake events. To
+evaluate the performance of our dictionary-based detection methods, we test our
+method on a labquake dataset from Penn State University, which contains
+3,357,566 time series data points with a 400 MHz sampling rate. 1,000
+earthquake events are manually labeled in total, and the length of these
+earthquake events varies from 74 to 7151 data points. Through comparison to
+other detection methods, we show that our feature selection and dictionary
+learning incorporated earthquake detection method achieves an 80.1% prediction
+accuracy and outperforms the baseline methods in earthquake detection,
+including Template Matching (TM) and Support Vector Machine (SVM).

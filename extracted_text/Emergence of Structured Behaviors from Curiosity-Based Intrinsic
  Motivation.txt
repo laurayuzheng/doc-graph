@@ -1,0 +1,18 @@
+Emergence of Structured Behaviors from Curiosity-Based Intrinsic
+  Motivation
+  Infants are experts at playing, with an amazing ability to generate novel
+structured behaviors in unstructured environments that lack clear extrinsic
+reward signals. We seek to replicate some of these abilities with a neural
+network that implements curiosity-driven intrinsic motivation. Using a simple
+but ecologically naturalistic simulated environment in which the agent can move
+and interact with objects it sees, the agent learns a world model predicting
+the dynamic consequences of its actions. Simultaneously, the agent learns to
+take actions that adversarially challenge the developing world model, pushing
+the agent to explore novel and informative interactions with its environment.
+We demonstrate that this policy leads to the self-supervised emergence of a
+spectrum of complex behaviors, including ego motion prediction, object
+attention, and object gathering. Moreover, the world model that the agent
+learns supports improved performance on object dynamics prediction and
+localization tasks. Our results are a proof-of-principle that computational
+models of intrinsic motivation might account for key features of developmental
+visuomotor learning in infants.

@@ -1,0 +1,16 @@
+Open-loop tomography with artificial neural networks on CANARY: on-sky
+  results
+  We present recent results from the initial testing of an Artificial Neural
+Network (ANN) based tomographic reconstructor Complex Atmospheric Reconstructor
+based on Machine lEarNing (CARMEN) on Canary, an Adaptive Optics demonstrator
+operated on the 4.2m William Herschel Telescope, La Palma. The reconstructor
+was compared with contemporaneous data using the Learn and Apply (L&A)
+tomographic reconstructor. We find that the fully optimised L&A tomographic
+reconstructor outperforms CARMEN by approximately 5% in Strehl ratio or 15nm
+rms in wavefront error. We also present results for Canary in Ground Layer
+Adaptive Optics mode to show that the reconstructors are tomographic. The
+results are comparable and this small deficit is attributed to limitations in
+the training data used to build the ANN. Laboratory bench tests show that the
+ANN can out perform L&A under certain conditions, e.g. if the higher layer of a
+model two layer atmosphere was to change in altitude by ~300~m (equivalent to a
+shift of approximately one tenth of a subaperture).

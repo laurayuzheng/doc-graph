@@ -1,0 +1,18 @@
+Towards Global Remote Discharge Estimation: Using the Few to Estimate
+  The Many
+  Learning hydrologic models for accurate riverine flood prediction at scale is
+a challenge of great importance. One of the key difficulties is the need to
+rely on in-situ river discharge measurements, which can be quite scarce and
+unreliable, particularly in regions where floods cause the most damage every
+year. Accordingly, in this work we tackle the problem of river discharge
+estimation at different river locations. A core characteristic of the data at
+hand (e.g. satellite measurements) is that we have few measurements for many
+locations, all sharing the same physics that underlie the water discharge. We
+capture this scenario in a simple but powerful common mechanism regression
+(CMR) model with a local component as well as a shared one which captures the
+global discharge mechanism. The resulting learning objective is non-convex, but
+we show that we can find its global optimum by leveraging the power of joining
+local measurements across sites. In particular, using a spectral initialization
+with provable near-optimal accuracy, we can find the optimum using standard
+descent methods. We demonstrate the efficacy of our approach for the problem of
+discharge estimation using simulations.

@@ -1,0 +1,13 @@
+Stratospheric Aerosol Injection as a Deep Reinforcement Learning Problem
+  As global greenhouse gas emissions continue to rise, the use of stratospheric
+aerosol injection (SAI), a form of solar geoengineering, is increasingly
+considered in order to artificially mitigate climate change effects. However,
+initial research in simulation suggests that naive SAI can have catastrophic
+regional consequences, which may induce serious geostrategic conflicts. Current
+geo-engineering research treats SAI control in low-dimensional approximation
+only. We suggest treating SAI as a high-dimensional control problem, with
+policies trained according to a context-sensitive reward function within the
+Deep Reinforcement Learning (DRL) paradigm. In order to facilitate training in
+simulation, we suggest to emulate HadCM3, a widely used General Circulation
+Model, using deep learning techniques. We believe this is the first application
+of DRL to the climate sciences.

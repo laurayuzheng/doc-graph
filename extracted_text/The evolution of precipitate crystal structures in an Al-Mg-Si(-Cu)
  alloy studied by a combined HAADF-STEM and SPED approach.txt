@@ -1,0 +1,19 @@
+The evolution of precipitate crystal structures in an Al-Mg-Si(-Cu)
+  alloy studied by a combined HAADF-STEM and SPED approach
+  This work presents a detailed investigation into the effect of a low Cu
+addition (0.01 at.%) on precipitation in an Al-0.80Mg-0.85Si alloy during
+ageing. The precipitate crystal structures were assessed by scanning
+transmission electron microscopy combined with a novel scanning precession
+electron diffraction approach, which includes machine learning. The combination
+of techniques enabled evaluation of the atomic arrangement within individual
+precipitates, as well as an improved estimate of precipitate phase fractions at
+each ageing condition, through analysis of a statistically significant number
+of precipitates. Based on the obtained results, the total amount of solute
+atoms locked inside precipitates could be approximated. It was shown that even
+with a Cu content close to impurity levels, the Al-Mg-Si system precipitation
+was significantly affected with overageing. The principal change was due to a
+gradually increasing phase fraction of the Cu-containing Q'-phase, which
+eventually was seen to dominate the precipitate structures. The structural
+overtake could be explained based on a continuous formation of the thermally
+stable Q'-phase, with Cu atomic columns incorporating less Cu than what could
+potentially be accommodated.

@@ -1,0 +1,14 @@
+Tiny-Inception-ResNet-v2: Using Deep Learning for Eliminating Bonded
+  Labors of Brick Kilns in South Asia
+  This paper proposes to employ a Inception-ResNet inspired deep learning
+architecture called Tiny-Inception-ResNet-v2 to eliminate bonded labor by
+identifying brick kilns within "Brick-Kiln-Belt" of South Asia. The framework
+is developed by training a network on the satellite imagery consisting of 11
+different classes of South Asian region. The dataset developed during the
+process includes the geo-referenced images of brick kilns, houses, roads,
+tennis courts, farms, sparse trees, dense trees, orchards, parking lots, parks
+and barren lands. The dataset is made publicly available for further research.
+Our proposed network architecture with very fewer learning parameters
+outperforms all state-of-the-art architectures employed for recognition of
+brick kilns. Our proposed solution would enable regional monitoring and
+evaluation mechanisms for the Sustainable Development Goals.

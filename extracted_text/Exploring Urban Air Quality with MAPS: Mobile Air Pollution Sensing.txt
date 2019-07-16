@@ -1,0 +1,22 @@
+Exploring Urban Air Quality with MAPS: Mobile Air Pollution Sensing
+  Mobile and ubiquitous sensing of urban air quality (AQ) has received
+increased attention as an economically and operationally viable means to survey
+atmospheric environment with high spatial-temporal resolution. A necessary and
+value-added step towards data-driven sustainable urban management is
+fine-granular AQ inference, which estimates grid-level pollutant concentrations
+at every instance of time using AQ data collected from fixed-location and
+mobile sensors. We present the Mobile Air Pollution Sensing (MAPS) framework,
+which consists of data preprocessing, urban feature extraction, and AQ
+inference. This is applied to a case study in Beijing (3,025 square km, 19 June
+- 16 July 2018), where PM2.5 concentrations measured by 28 fixed monitoring
+stations and 15 vehicles are fused to infer hourly PM2.5 concentrations in
+3,025 1km-by-1km grids. Two machine learning structures, namely Deep Feature
+Spatial-Temporal Tree (DFeaST-Tree) and Deep Feature Spatial-Temporal Network
+(DFeaST-Net), are proposed to infer PM2.5 concentrations supported by 62 types
+of urban data that encompass geography, land use, traffic, public, and
+meteorology. This allows us to infer fine-granular PM2.5 concentrations based
+on sparse AQ measurements (less than 5% coverage) with good accuracy
+(SMAPE<15%, R-square>0.9), while accounting for the regional transport of air
+pollutants outside the study area. In-depth discussions are provided on the
+heterogeneity of fixed and mobile data sources, spatial coverage of mobile
+sensing, and importance of urban features for inferring PM2.5 concentrations.

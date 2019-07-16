@@ -1,0 +1,12 @@
+Development of a Forecasting and Warning System on the Ecological
+  Life-Cycle of Sunn Pest
+  We provide a machine learning solution that replaces the traditional methods
+for deciding the pesticide application time of Sunn Pest. We correlate climate
+data with phases of Sunn Pest in its life-cycle and decide whether the fields
+should be sprayed. Our solution includes two groups of prediction models. The
+first group contains decision trees that predict migration time of Sunn Pest
+from winter quarters to wheat fields. The second group contains random forest
+models that predict the nymphal stage percentages of Sunn Pest which is a
+criterion for pesticide application. We trained our models on four years of
+climate data which was collected from Kir\c{s}ehir and Aksaray. The experiments
+show that our promised solution make correct predictions with high accuracies.

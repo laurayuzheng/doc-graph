@@ -1,0 +1,20 @@
+Prospects for the Use of Photosensor Timing Information with Machine
+  Learning Techniques in Background Rejection
+  Recent developments in machine learning (ML) techniques present a promising
+new analysis method for high-speed imaging in astroparticle physics
+experiments, for example with imaging atmospheric Cherenkov telescopes (IACTs).
+In particular, the use of timing information with new machine learning
+techniques provides a novel method for event classification. Previous work in
+this field has utilised images of the integrated charge from IACT camera
+photomultipliers, but the majority of current and upcoming IACT cameras have
+the capacity to read out the entire photosensor waveform following a trigger.
+As the arrival times of Cherenkov photons from extensive air showers (EAS) at
+the camera plane are dependent upon the altitude of their emission, these
+waveforms contain information useful for IACT event classification. In this
+work, we investigate the potential for using these waveforms with ML
+techniques, and find that a highly effective means of utilising their
+information is to create a set of seven additional two dimensional histograms
+of waveform parameters to be fed into the machine learning algorithm along with
+the integrated charge image. This appears to be superior to using only these
+new ML techniques with the waveform integrated charge alone. We also examine
+these timing-based ML techniques in the context of other experiments.

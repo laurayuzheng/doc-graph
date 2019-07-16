@@ -1,0 +1,14 @@
+The Stability of the First Neumann Laplacian Eigenfunction Under Domain
+  Deformations and Applications
+  The robustness of manifold learning methods is often predicated on the
+stability of the Neumann Laplacian eigenfunctions under deformations of the
+assumed underlying domain. Indeed, many manifold learning methods are based on
+approximating the Neumann Laplacian eigenfunctions on a manifold that is
+assumed to underlie data, which is viewed through a source of distortion. In
+this paper, we study the stability of the first Neumann Laplacian eigenfunction
+with respect to deformations of a domain by a diffeomorphism. In particular, we
+are interested in the stability of the first eigenfunction on tall thin domains
+where, intuitively, the first Neumann Laplacian eigenfunction should only
+depend on the length along the domain. We prove a rigorous version of this
+statement and apply it to a machine learning problem in geophysical
+interpretation.

@@ -1,0 +1,10 @@
+Quantification in-the-wild: data-sets and baselines
+  Quantification is the task of estimating the class-distribution of a
+data-set. While typically considered as a parameter estimation problem with
+strict assumptions on the data-set shift, we consider quantification
+in-the-wild, on two large scale data-sets from marine ecology: a survey of
+Caribbean coral reefs, and a plankton time series from Martha's Vineyard
+Coastal Observatory. We investigate several quantification methods from the
+literature and indicate opportunities for future work. In particular, we show
+that a deep neural network can be fine-tuned on a very limited amount of data
+(25 - 100 samples) to outperform alternative methods.

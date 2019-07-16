@@ -1,0 +1,21 @@
+airpred: A Flexible R Package Implementing Methods for Predicting Air
+  Pollution
+  Fine particulate matter (PM$_{2.5}$) is one of the criteria air pollutants
+regulated by the Environmental Protection Agency in the United States. There is
+strong evidence that ambient exposure to (PM$_{2.5}$) increases risk of
+mortality and hospitalization. Large scale epidemiological studies on the
+health effects of PM$_{2.5}$ provide the necessary evidence base for lowering
+the safety standards and inform regulatory policy. However, ambient monitors of
+PM$_{2.5}$ (as well as monitors for other pollutants) are sparsely located
+across the U.S., and therefore studies based only on the levels of PM$_{2.5}$
+measured from the monitors would inevitably exclude large amounts of the
+population. One approach to resolving this issue has been developing models to
+predict local PM$_{2.5}$, NO$_2$, and ozone based on satellite, meteorological,
+and land use data. This process typically relies developing a prediction model
+that relies on large amounts of input data and is highly computationally
+intensive to predict levels of air pollution in unmonitored areas. We have
+developed a flexible R package that allows for environmental health researchers
+to design and train spatio-temporal models capable of predicting multiple
+pollutants, including PM$_{2.5}$. We utilize H2O, an open source big data
+platform, to achieve both performance and scalability when used in conjunction
+with cloud or cluster computing systems.

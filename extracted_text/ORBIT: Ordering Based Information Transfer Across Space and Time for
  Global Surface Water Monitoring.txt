@@ -1,0 +1,20 @@
+ORBIT: Ordering Based Information Transfer Across Space and Time for
+  Global Surface Water Monitoring
+  Many earth science applications require data at both high spatial and
+temporal resolution for effective monitoring of various ecosystem resources.
+Due to practical limitations in sensor design, there is often a trade-off in
+different resolutions of spatio-temporal datasets and hence a single sensor
+alone cannot provide the required information. Various data fusion methods have
+been proposed in the literature that mainly rely on individual timesteps when
+both datasets are available to learn a mapping between features values at
+different resolutions using local relationships between pixels. Earth
+observation data is often plagued with spatially and temporally correlated
+noise, outliers and missing data due to atmospheric disturbances which pose a
+challenge in learning the mapping from a local neighborhood at individual
+timesteps. In this paper, we aim to exploit time-independent global
+relationships between pixels for robust transfer of information across
+different scales. Specifically, we propose a new framework, ORBIT (Ordering
+Based Information Transfer) that uses relative ordering constraint among pixels
+to transfer information across both time and scales. The effectiveness of the
+framework is demonstrated for global surface water monitoring using both
+synthetic and real-world datasets.

@@ -1,0 +1,23 @@
+A mixed model approach to drought prediction using artificial neural
+  networks: Case of an operational drought monitoring environment
+  Droughts, with their increasing frequency of occurrence, continue to
+negatively affect livelihoods and elements at risk. For example, the 2011 in
+drought in east Africa has caused massive losses document to have cost the
+Kenyan economy over $12bn. With the foregoing, the demand for ex-ante drought
+monitoring systems is ever-increasing. The study uses 10 precipitation and
+vegetation variables that are lagged over 1, 2 and 3-month time-steps to
+predict drought situations. In the model space search for the most predictive
+artificial neural network (ANN) model, as opposed to the traditional greedy
+search for the most predictive variables, we use the General Additive Model
+(GAM) approach. Together with a set of assumptions, we thereby reduce the
+cardinality of the space of models. Even though we build a total of 102 GAM
+models, only 21 have R2 greater than 0.7 and are thus subjected to the ANN
+process. The ANN process itself uses the brute-force approach that
+automatically partitions the training data into 10 sub-samples, builds the ANN
+models in these samples and evaluates their performance using multiple metrics.
+The results show the superiority of 1-month lag of the variables as compared to
+longer time lags of 2 and 3 months. The champion ANN model recorded an R2 of
+0.78 in model testing using the out-of-sample data. This illustrates its
+ability to be a good predictor of drought situations 1-month ahead.
+Investigated as a classifier, the champion has a modest accuracy of 66% and a
+multi-class area under the ROC curve (AUROC) of 89.99%

@@ -1,0 +1,20 @@
+A Learning Framework for An Accurate Prediction of Rainfall Rates
+  The present work is aimed to examine the potential of advanced machine
+learning strategies to predict the monthly rainfall (precipitation) for the
+Indus Basin, using climatological variables such as air temperature,
+geo-potential height, relative humidity and elevation. In this work, the focus
+is on thirteen geographical locations, called index points, within the basin.
+Arguably, not all of the hydrological components are relevant to the
+precipitation rate, and therefore, need to be filtered out, leading to a
+lower-dimensional feature space. Towards this goal, we adopted the gradient
+boosting method to extract the most contributive features for precipitation
+rate prediction. Five state-of-the-art machine learning methods have then been
+trained where pearson correlation coefficient and mean absolute error have been
+reported as the prediction performance criteria. The Random Forest regression
+model outperformed the other regression models achieving the maximum pearson
+correlation coefficient and minimum mean absolute error for most of the index
+points. Our results suggest the relative humidity (for pressure levels of 300
+mb and 150 mb, respectively), the u-direction wind (for pressure level of 700
+mb), air temperature (for pressure levels of 150 mb and 10 mb, respectively) as
+the top five influencing features for accurate forecasting the precipitation
+rate.

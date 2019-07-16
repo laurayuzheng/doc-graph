@@ -1,17 +1,16 @@
-Three dimensional Deep Learning approach for remote sensing image
-  classification
-  Recently, a variety of approaches has been enriching the field of Remote
-Sensing (RS) image processing and analysis. Unfortunately, existing methods
-remain limited faced to the rich spatio-spectral content of today's large
-datasets. It would seem intriguing to resort to Deep Learning (DL) based
-approaches at this stage with regards to their ability to offer accurate
-semantic interpretation of the data. However, the specificity introduced by the
-coexistence of spectral and spatial content in the RS datasets widens the scope
-of the challenges presented to adapt DL methods to these contexts. Therefore,
-the aim of this paper is firstly to explore the performance of DL architectures
-for the RS hyperspectral dataset classification and secondly to introduce a new
-three-dimensional DL approach that enables a joint spectral and spatial
-information process. A set of three-dimensional schemes is proposed and
-evaluated. Experimental results based on well knownhyperspectral datasets
-demonstrate that the proposed method is able to achieve a better classification
-rate than state of the art methods with lower computational costs.
+PBBFMM3D: a Parallel Black-Box Fast Multipole Method for Non-oscillatory
+  Kernels
+  This paper presents PBBFMM3D: a parallel black-box fast multipole method that
+accelerates kernel matrix-vector multiplications where the kernel is a
+non-oscillatory function in three dimensions. Such problems arise from a wide
+range of fields, \emph{e.g.,} computational mechanics, geosciences and machine
+learning. While a naive direct evaluation has an $O(N^2)$ complexity in time
+and storage, which is prohibitive for large-scale applications, PBBFMM3D
+reduces the costs to $O(N)$. In contrast to other fast methods that require the
+knowledge of the explicit kernel formula, PBBFMM3D requires only the ability to
+evaluate the kernel. To further accelerate the computation on shared-memory
+machines, the parallelism in PBBFMM3D was analyzed and implemented using
+OpenMP. We show numerical experiments on the accuracy and the parallel
+scalability of PBBFMM3D, as well as its applications to covariance matrix
+computations that are heavily used in parameter estimation techniques, such as
+kriging and Kalman filtering.

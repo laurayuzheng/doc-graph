@@ -1,0 +1,2890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3Aecology%20AND%20all%3Amachine%20AND%20all%3Alearning%26id_list%3D%26start%3D0%26max_results%3D100" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:ecology AND all:machine AND all:learning&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <id>http://arxiv.org/api/1t9iCxP0xXhU/2GyrCh2lEV0SRU</id>
+  <updated>2019-07-16T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">68</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">100</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1812.09138v1</id>
+    <updated>2018-12-21T14:18:56Z</updated>
+    <published>2018-12-21T14:18:56Z</published>
+    <title>Ecological Data Analysis Based on Machine Learning Algorithms</title>
+    <summary>  Classification is an important supervised machine learning method, which is
+necessary and challenging issue for ecological research. It offers a way to
+classify a dataset into subsets that share common patterns. Notably, there are
+many classification algorithms to choose from, each making certain assumptions
+about the data and about how classification should be formed. In this paper, we
+applied eight machine learning classification algorithms such as Decision
+Trees, Random Forest, Artificial Neural Network, Support Vector Machine, Linear
+Discriminant Analysis, k-nearest neighbors, Logistic Regression and Naive Bayes
+on ecological data. The goal of this study is to compare different machine
+learning classification algorithms in ecological dataset. In this analysis we
+have checked the accuracy test among the algorithms. In our study we conclude
+that Linear Discriminant Analysis and k-nearest neighbors are the best methods
+among all other methods
+</summary>
+    <author>
+      <name>Md. Siraj-Ud-Doula</name>
+    </author>
+    <author>
+      <name>Md. Ashad Alam</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">18 pages, 20 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1812.09138v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1812.09138v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1607.01582v1</id>
+    <updated>2016-07-06T12:10:29Z</updated>
+    <published>2016-07-06T12:10:29Z</published>
+    <title>Bagged Boosted Trees for Classification of Ecological Momentary
+  Assessment Data</title>
+    <summary>  Ecological Momentary Assessment (EMA) data is organized in multiple levels
+(per-subject, per-day, etc.) and this particular structure should be taken into
+account in machine learning algorithms used in EMA like decision trees and its
+variants. We propose a new algorithm called BBT (standing for Bagged Boosted
+Trees) that is enhanced by a over/under sampling method and can provide better
+estimates for the conditional class probability function. Experimental results
+on a real-world dataset show that BBT can benefit EMA data classification and
+performance.
+</summary>
+    <author>
+      <name>Gerasimos Spanakis</name>
+    </author>
+    <author>
+      <name>Gerhard Weiss</name>
+    </author>
+    <author>
+      <name>Anne Roefs</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">to be presented at ECAI2016</arxiv:comment>
+    <link href="http://arxiv.org/abs/1607.01582v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1607.01582v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1701.03220v1</id>
+    <updated>2017-01-12T03:31:10Z</updated>
+    <published>2017-01-12T03:31:10Z</published>
+    <title>Predicting the Plant Root-Associated Ecological Niche of 21 Pseudomonas
+  Species Using Machine Learning and Metabolic Modeling</title>
+    <summary>  Plants rarely occur in isolated systems. Bacteria can inhabit either the
+endosphere, the region inside the plant root, or the rhizosphere, the soil
+region just outside the plant root. Our goal is to understand if using genomic
+data and media dependent metabolic model information is better for training
+machine learning of predicting bacterial ecological niche than media
+independent models or pure genome based species trees. We considered three
+machine learning techniques: support vector machine, non-negative matrix
+factorization, and artificial neural networks. In all three machine-learning
+approaches, the media-based metabolic models and flux balance analyses were
+more effective at predicting bacterial niche than the genome or PRMT models.
+Support Vector Machine trained on a minimal media base with Mannose, Proline
+and Valine was most predictive of all models and media types with an f-score of
+0.8 for rhizosphere and 0.97 for endosphere. Thus we can conclude that
+media-based metabolic modeling provides a holistic view of the metabolome,
+allowing machine learning algorithms to highlight the differences between and
+categorize endosphere and rhizosphere bacteria. There was no single media type
+that best highlighted differences between endosphere and rhizosphere bacteria
+metabolism and therefore no single enzyme, reaction, or compound that defined
+whether a bacteria's origin was of the endosphere or rhizosphere.
+</summary>
+    <author>
+      <name>Jennifer Chien</name>
+    </author>
+    <author>
+      <name>Peter Larsen</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">15 pages, keywords: Pseudomonas, SVM, ANN, NMF, FBA, endosphere,
+  rhizosphere, metabolic model, machine learning, KBase Comments: (e.g.: 10
+  pages, 5 figures, conference or other essential info)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1701.03220v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1701.03220v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="q-bio.GN" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.GN" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1803.11266v1</id>
+    <updated>2018-03-29T21:48:11Z</updated>
+    <published>2018-03-29T21:48:11Z</published>
+    <title>Performance evaluation and hyperparameter tuning of statistical and
+  machine-learning models using spatial data</title>
+    <summary>  Machine-learning algorithms have gained popularity in recent years in the
+field of ecological modeling due to their promising results in predictive
+performance of classification problems. While the application of such
+algorithms has been highly simplified in the last years due to their
+well-documented integration in commonly used statistical programming languages
+such as R, there are several practical challenges in the field of ecological
+modeling related to unbiased performance estimation, optimization of algorithms
+using hyperparameter tuning and spatial autocorrelation. We address these
+issues in the comparison of several widely used machine-learning algorithms
+such as Boosted Regression Trees (BRT), k-Nearest Neighbor (WKNN), Random
+Forest (RF) and Support Vector Machine (SVM) to traditional parametric
+algorithms such as logistic regression (GLM) and semi-parametric ones like
+generalized additive models (GAM). Different nested cross-validation methods
+including hyperparameter tuning methods are used to evaluate model performances
+with the aim to receive bias-reduced performance estimates. As a case study the
+spatial distribution of forest disease Diplodia sapinea in the Basque Country
+in Spain is investigated using common environmental variables such as
+temperature, precipitation, soil or lithology as predictors. Results show that
+GAM and RF (mean AUROC estimates 0.708 and 0.699) outperform all other methods
+in predictive accuracy. The effect of hyperparameter tuning saturates at around
+50 iterations for this data set. The AUROC differences between the bias-reduced
+(spatial cross-validation) and overoptimistic (non-spatial cross-validation)
+performance estimates of the GAM and RF are 0.167 (24%) and 0.213 (30%),
+respectively. It is recommended to also use spatial partitioning for
+cross-validation hyperparameter tuning of spatial data.
+</summary>
+    <author>
+      <name>Patrick Schratz</name>
+    </author>
+    <author>
+      <name>Jannes Muenchow</name>
+    </author>
+    <author>
+      <name>Eugenia Iturritxa</name>
+    </author>
+    <author>
+      <name>Jakob Richter</name>
+    </author>
+    <author>
+      <name>Alexander Brenning</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.ecolmodel.2019.06.002</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.ecolmodel.2019.06.002" rel="related"/>
+    <link href="http://arxiv.org/abs/1803.11266v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1803.11266v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1609.04495v1</id>
+    <updated>2016-09-15T02:30:10Z</updated>
+    <published>2016-09-15T02:30:10Z</published>
+    <title>Tsallis Regularized Optimal Transport and Ecological Inference</title>
+    <summary>  Optimal transport is a powerful framework for computing distances between
+probability distributions. We unify the two main approaches to optimal
+transport, namely Monge-Kantorovitch and Sinkhorn-Cuturi, into what we define
+as Tsallis regularized optimal transport (\trot). \trot~interpolates a rich
+family of distortions from Wasserstein to Kullback-Leibler, encompassing as
+well Pearson, Neyman and Hellinger divergences, to name a few. We show that
+metric properties known for Sinkhorn-Cuturi generalize to \trot, and provide
+efficient algorithms for finding the optimal transportation plan with formal
+convergence proofs. We also present the first application of optimal transport
+to the problem of ecological inference, that is, the reconstruction of joint
+distributions from their marginals, a problem of large interest in the social
+sciences. \trot~provides a convenient framework for ecological inference by
+allowing to compute the joint distribution --- that is, the optimal
+transportation plan itself --- when side information is available, which is
+\textit{e.g.} typically what census represents in political science.
+Experiments on data from the 2012 US presidential elections display the
+potential of \trot~in delivering a faithful reconstruction of the joint
+distribution of ethnic groups and voter preferences.
+</summary>
+    <author>
+      <name>Boris Muzellec</name>
+    </author>
+    <author>
+      <name>Richard Nock</name>
+    </author>
+    <author>
+      <name>Giorgio Patrini</name>
+    </author>
+    <author>
+      <name>Frank Nielsen</name>
+    </author>
+    <link href="http://arxiv.org/abs/1609.04495v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1609.04495v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="G.1.6" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1611.03787v1</id>
+    <updated>2016-11-11T17:17:07Z</updated>
+    <published>2016-11-11T17:17:07Z</published>
+    <title>Understanding the 2016 US Presidential Election using ecological
+  inference and distribution regression with census microdata</title>
+    <summary>  We combine fine-grained spatially referenced census data with the vote
+outcomes from the 2016 US presidential election. Using this dataset, we perform
+ecological inference using distribution regression (Flaxman et al, KDD 2015)
+with a multinomial-logit regression so as to model the vote outcome Trump,
+Clinton, Other / Didn't vote as a function of demographic and socioeconomic
+features. Ecological inference allows us to estimate "exit poll" style results
+like what was Trump's support among white women, but for entirely novel
+categories. We also perform exploratory data analysis to understand which
+census variables are predictive of voting for Trump, voting for Clinton, or not
+voting for either. All of our methods are implemented in python and R and are
+available online for replication.
+</summary>
+    <author>
+      <name>Seth Flaxman</name>
+    </author>
+    <author>
+      <name>Dougal Sutherland</name>
+    </author>
+    <author>
+      <name>Yu-Xiang Wang</name>
+    </author>
+    <author>
+      <name>Yee Whye Teh</name>
+    </author>
+    <link href="http://arxiv.org/abs/1611.03787v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1611.03787v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1902.02517v1</id>
+    <updated>2019-02-07T08:22:31Z</updated>
+    <published>2019-02-07T08:22:31Z</published>
+    <title>Model Selection for Simulator-based Statistical Models: A Kernel
+  Approach</title>
+    <summary>  We propose a novel approach to model selection for simulator-based
+statistical models. The proposed approach defines a mixture of candidate
+models, and then iteratively updates the weight coefficients for those models
+as well as the parameters in each model simultaneously; this is done by
+recursively applying Bayes' rule, using the recently proposed kernel recursive
+ABC algorithm. The practical advantage of the method is that it can be used
+even when a modeler lacks appropriate prior knowledge about the parameters in
+each model. We demonstrate the effectiveness of the proposed approach with a
+number of experiments, including model selection for dynamical systems in
+ecology and epidemiology.
+</summary>
+    <author>
+      <name>Takafumi Kajihara</name>
+    </author>
+    <author>
+      <name>Motonobu Kanagawa</name>
+    </author>
+    <author>
+      <name>Yuuki Nakaguchi</name>
+    </author>
+    <author>
+      <name>Kanishka Khandelwal</name>
+    </author>
+    <author>
+      <name>Kenji Fukumiziu</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">32 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/1902.02517v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1902.02517v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1411.4070v1</id>
+    <updated>2014-11-14T22:00:41Z</updated>
+    <published>2014-11-14T22:00:41Z</published>
+    <title>A unified view of generative models for networks: models, methods,
+  opportunities, and challenges</title>
+    <summary>  Research on probabilistic models of networks now spans a wide variety of
+fields, including physics, sociology, biology, statistics, and machine
+learning. These efforts have produced a diverse ecology of models and methods.
+Despite this diversity, many of these models share a common underlying
+structure: pairwise interactions (edges) are generated with probability
+conditional on latent vertex attributes. Differences between models generally
+stem from different philosophical choices about how to learn from data or
+different empirically-motivated goals. The highly interdisciplinary nature of
+work on these generative models, however, has inhibited the development of a
+unified view of their similarities and differences. For instance, novel
+theoretical models and optimization techniques developed in machine learning
+are largely unknown within the social and biological sciences, which have
+instead emphasized model interpretability. Here, we describe a unified view of
+generative models for networks that draws together many of these disparate
+threads and highlights the fundamental similarities and differences that span
+these fields. We then describe a number of opportunities and challenges for
+future work that are revealed by this view.
+</summary>
+    <author>
+      <name>Abigail Z. Jacobs</name>
+    </author>
+    <author>
+      <name>Aaron Clauset</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">10 pages. To appear at the NIPS 2014 Workshop on Networks: From
+  Graphs to Rich Data</arxiv:comment>
+    <link href="http://arxiv.org/abs/1411.4070v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1411.4070v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1206.6414v1</id>
+    <updated>2012-06-27T19:59:59Z</updated>
+    <published>2012-06-27T19:59:59Z</published>
+    <title>The Nonparametric Metadata Dependent Relational Model</title>
+    <summary>  We introduce the nonparametric metadata dependent relational (NMDR) model, a
+Bayesian nonparametric stochastic block model for network data. The NMDR allows
+the entities associated with each node to have mixed membership in an unbounded
+collection of latent communities. Learned regression models allow these
+memberships to depend on, and be predicted from, arbitrary node metadata. We
+develop efficient MCMC algorithms for learning NMDR models from partially
+observed node relationships. Retrospective MCMC methods allow our sampler to
+work directly with the infinite stick-breaking representation of the NMDR,
+avoiding the need for finite truncations. Our results demonstrate recovery of
+useful latent communities from real-world social and ecological networks, and
+the usefulness of metadata in link prediction tasks.
+</summary>
+    <author>
+      <name>Dae Il Kim</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Brown University</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Michael Hughes</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Brown University</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Erik Sudderth</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Brown University</arxiv:affiliation>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Appears in Proceedings of the 29th International Conference on
+  Machine Learning (ICML 2012)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1206.6414v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1206.6414v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.07754v2</id>
+    <updated>2019-05-20T21:35:19Z</updated>
+    <published>2019-04-16T15:14:56Z</published>
+    <title>SOMOSPIE: A modular SOil MOisture SPatial Inference Engine based on data
+  driven decisions</title>
+    <summary>  The current availability of soil moisture data over large areas comes from
+satellite remote sensing technologies (i.e., radar-based systems), but these
+data have coarse resolution and often exhibit large spatial information gaps.
+Where data are too coarse or sparse for a given need (e.g., precision
+agriculture), one can leverage machine-learning techniques coupled with other
+sources of environmental information (e.g., topography) to generate gap-free
+information and at a finer spatial resolution (i.e., increased granularity). To
+this end, we develop a spatial inference engine consisting of modular stages
+for processing spatial environmental data, generating predictions with
+machine-learning techniques, and analyzing these predictions. We demonstrate
+the functionality of this approach and the effects of data processing choices
+via multiple prediction maps over a United States ecological region with a
+highly diverse soil moisture profile (i.e., the Middle Atlantic Coastal
+Plains). The relevance of our work derives from a pressing need to improve the
+spatial representation of soil moisture for applications in environmental
+sciences (e.g., ecological niche modeling, carbon monitoring systems, and other
+Earth system models) and precision agriculture (e.g., optimizing irrigation
+practices and other land management decisions).
+</summary>
+    <author>
+      <name>Danny Rorabaugh</name>
+    </author>
+    <author>
+      <name>Mario Guevara</name>
+    </author>
+    <author>
+      <name>Ricardo Llamas</name>
+    </author>
+    <author>
+      <name>Joy Kitson</name>
+    </author>
+    <author>
+      <name>Rodrigo Vargas</name>
+    </author>
+    <author>
+      <name>Michela Taufer</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">10 pages, 11 figures, 1 table</arxiv:comment>
+    <link href="http://arxiv.org/abs/1904.07754v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.07754v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.07461v1</id>
+    <updated>2018-02-21T08:13:12Z</updated>
+    <published>2018-02-21T08:13:12Z</published>
+    <title>Emergence of Structured Behaviors from Curiosity-Based Intrinsic
+  Motivation</title>
+    <summary>  Infants are experts at playing, with an amazing ability to generate novel
+structured behaviors in unstructured environments that lack clear extrinsic
+reward signals. We seek to replicate some of these abilities with a neural
+network that implements curiosity-driven intrinsic motivation. Using a simple
+but ecologically naturalistic simulated environment in which the agent can move
+and interact with objects it sees, the agent learns a world model predicting
+the dynamic consequences of its actions. Simultaneously, the agent learns to
+take actions that adversarially challenge the developing world model, pushing
+the agent to explore novel and informative interactions with its environment.
+We demonstrate that this policy leads to the self-supervised emergence of a
+spectrum of complex behaviors, including ego motion prediction, object
+attention, and object gathering. Moreover, the world model that the agent
+learns supports improved performance on object dynamics prediction and
+localization tasks. Our results are a proof-of-principle that computational
+models of intrinsic motivation might account for key features of developmental
+visuomotor learning in infants.
+</summary>
+    <author>
+      <name>Nick Haber</name>
+    </author>
+    <author>
+      <name>Damian Mrowca</name>
+    </author>
+    <author>
+      <name>Li Fei-Fei</name>
+    </author>
+    <author>
+      <name>Daniel L. K. Yamins</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">6 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1802.07461v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.07461v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="68" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1605.03661v3</id>
+    <updated>2018-06-06T13:00:53Z</updated>
+    <published>2016-05-12T02:59:40Z</published>
+    <title>Learning Representations for Counterfactual Inference</title>
+    <summary>  Observational studies are rising in importance due to the widespread
+accumulation of data in fields such as healthcare, education, employment and
+ecology. We consider the task of answering counterfactual questions such as,
+"Would this patient have lower blood sugar had she received a different
+medication?". We propose a new algorithmic framework for counterfactual
+inference which brings together ideas from domain adaptation and representation
+learning. In addition to a theoretical justification, we perform an empirical
+comparison with previous approaches to causal inference from observational
+data. Our deep learning algorithm significantly outperforms the previous
+state-of-the-art.
+</summary>
+    <author>
+      <name>Fredrik D. Johansson</name>
+    </author>
+    <author>
+      <name>Uri Shalit</name>
+    </author>
+    <author>
+      <name>David Sontag</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Appeared in ICML 2016</arxiv:comment>
+    <link href="http://arxiv.org/abs/1605.03661v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1605.03661v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.03662v1</id>
+    <updated>2019-01-09T02:29:20Z</updated>
+    <published>2019-01-09T02:29:20Z</published>
+    <title>Individual common dolphin identification via metric embedding learning</title>
+    <summary>  Photo-identification (photo-id) of dolphin individuals is a commonly used
+technique in ecological sciences to monitor state and health of individuals, as
+well as to study the social structure and distribution of a population.
+Traditional photo-id involves a laborious manual process of matching each
+dolphin fin photograph captured in the field to a catalogue of known
+individuals.
+  We examine this problem in the context of open-set recognition and utilise a
+triplet loss function to learn a compact representation of fin images in a
+Euclidean embedding, where the Euclidean distance metric represents fin
+similarity. We show that this compact representation can be successfully learnt
+from a fairly small (in deep learning context) training set and still
+generalise well to out-of-sample identities (completely new dolphin
+individuals), with top-1 and top-5 test set (37 individuals) accuracy of
+$90.5\pm2$ and $93.6\pm1$ percent. In the presence of 1200 distractors, top-1
+accuracy dropped by $12\%$; however, top-5 accuracy saw only a $2.8\%$ drop
+</summary>
+    <author>
+      <name>Soren Bouma</name>
+    </author>
+    <author>
+      <name>Matthew D. M. Pawley</name>
+    </author>
+    <author>
+      <name>Krista Hupman</name>
+    </author>
+    <author>
+      <name>Andrew Gilman</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Published in IVCNZ 2018</arxiv:comment>
+    <link href="http://arxiv.org/abs/1901.03662v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.03662v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.00863v1</id>
+    <updated>2019-03-03T09:02:55Z</updated>
+    <published>2019-03-03T09:02:55Z</published>
+    <title>Bayesian Learning of Conditional Kernel Mean Embeddings for Automatic
+  Likelihood-Free Inference</title>
+    <summary>  In likelihood-free settings where likelihood evaluations are intractable,
+approximate Bayesian computation (ABC) addresses the formidable inference task
+to discover plausible parameters of simulation programs that explain the
+observations. However, they demand large quantities of simulation calls.
+Critically, hyperparameters that determine measures of simulation discrepancy
+crucially balance inference accuracy and sample efficiency, yet are difficult
+to tune. In this paper, we present kernel embedding likelihood-free inference
+(KELFI), a holistic framework that automatically learns model hyperparameters
+to improve inference accuracy given limited simulation budget. By leveraging
+likelihood smoothness with conditional mean embeddings, we nonparametrically
+approximate likelihoods and posteriors as surrogate densities and sample from
+closed-form posterior mean embeddings, whose hyperparameters are learned under
+its approximate marginal likelihood. Our modular framework demonstrates
+improved accuracy and efficiency on challenging inference problems in ecology.
+</summary>
+    <author>
+      <name>Kelvin Hsu</name>
+    </author>
+    <author>
+      <name>Fabio Ramos</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">To appear in the Proceedings of the 22nd International Conference on
+  Artificial Intelligence and Statistics (AISTATS) 2019, Naha, Okinawa, Japan</arxiv:comment>
+    <link href="http://arxiv.org/abs/1903.00863v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.00863v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1810.09583v1</id>
+    <updated>2018-10-22T22:33:44Z</updated>
+    <published>2018-10-22T22:33:44Z</published>
+    <title>Model Selection Techniques -- An Overview</title>
+    <summary>  In the era of big data, analysts usually explore various statistical models
+or machine learning methods for observed data in order to facilitate scientific
+discoveries or gain predictive power. Whatever data and fitting procedures are
+employed, a crucial step is to select the most appropriate model or method from
+a set of candidates. Model selection is a key ingredient in data analysis for
+reliable and reproducible statistical inference or prediction, and thus central
+to scientific studies in fields such as ecology, economics, engineering,
+finance, political science, biology, and epidemiology. There has been a long
+history of model selection techniques that arise from researches in statistics,
+information theory, and signal processing. A considerable number of methods
+have been proposed, following different philosophies and exhibiting varying
+performances. The purpose of this article is to bring a comprehensive overview
+of them, in terms of their motivation, large sample performance, and
+applicability. We provide integrated and practically relevant discussions on
+theoretical properties of state-of- the-art model selection approaches. We also
+share our thoughts on some controversial views on the practice of model
+selection.
+</summary>
+    <author>
+      <name>Jie Ding</name>
+    </author>
+    <author>
+      <name>Vahid Tarokh</name>
+    </author>
+    <author>
+      <name>Yuhong Yang</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/MSP.2018.2867638</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/MSP.2018.2867638" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">accepted by IEEE SIGNAL PROCESSING MAGAZINE</arxiv:comment>
+    <link href="http://arxiv.org/abs/1810.09583v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1810.09583v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="econ.EM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.app-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.01640v1</id>
+    <updated>2019-05-05T09:47:01Z</updated>
+    <published>2019-05-05T09:47:01Z</published>
+    <title>Development of a Forecasting and Warning System on the Ecological
+  Life-Cycle of Sunn Pest</title>
+    <summary>  We provide a machine learning solution that replaces the traditional methods
+for deciding the pesticide application time of Sunn Pest. We correlate climate
+data with phases of Sunn Pest in its life-cycle and decide whether the fields
+should be sprayed. Our solution includes two groups of prediction models. The
+first group contains decision trees that predict migration time of Sunn Pest
+from winter quarters to wheat fields. The second group contains random forest
+models that predict the nymphal stage percentages of Sunn Pest which is a
+criterion for pesticide application. We trained our models on four years of
+climate data which was collected from Kir\c{s}ehir and Aksaray. The experiments
+show that our promised solution make correct predictions with high accuracies.
+</summary>
+    <author>
+      <name>İsmail Balaban</name>
+    </author>
+    <author>
+      <name>Fatih Acun</name>
+    </author>
+    <author>
+      <name>Onur Yiğit Arpalı</name>
+    </author>
+    <author>
+      <name>Furkan Murat</name>
+    </author>
+    <author>
+      <name>Numan Ertuğrul Babaroğlu</name>
+    </author>
+    <author>
+      <name>Emre Akci</name>
+    </author>
+    <author>
+      <name>Mehmet Çulcu</name>
+    </author>
+    <author>
+      <name>Mümtaz Özkan</name>
+    </author>
+    <author>
+      <name>Selim Temizer</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Paper published on 'International Conference &amp; Exhibition on Digital
+  Transformation &amp; Smart Systems', Ankara (2018)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1905.01640v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1905.01640v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.PE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.08325v1</id>
+    <updated>2019-06-19T19:46:28Z</updated>
+    <published>2019-06-19T19:46:28Z</published>
+    <title>GEAR: Geometry-Aware Rényi Information</title>
+    <summary>  Shannon's seminal theory of information has been of paramount importance in
+the development of modern machine learning techniques. However, standard
+information measures deal with probability distributions over an alphabet
+considered as a mere set of symbols and disregard further geometric structure,
+which might be available in the form of a metric or similarity function. We
+advocate the use of a notion of entropy that reflects not only the relative
+abundances of symbols but also the similarities between them, which was
+originally introduced in theoretical ecology to study the diversity of
+biological communities. Echoing this idea, we propose a criterion for comparing
+two probability distributions (possibly degenerate and with non-overlapping
+supports) that takes into account the geometry of the space in which the
+distributions are defined. Our proposal exhibits performance on par with
+state-of-the-art methods based on entropy-regularized optimal transport, but
+enjoys a closed-form expression and thus a lower computational cost. We
+demonstrate the versatility of our proposal via experiments on a broad range of
+domains: computing image barycenters, approximating densities with a collection
+of (super-) samples; summarizing texts; assessing mode coverage; as well as
+training generative models.
+</summary>
+    <author>
+      <name>Jose Gallego</name>
+    </author>
+    <author>
+      <name>Ankit Vani</name>
+    </author>
+    <author>
+      <name>Max Schwarzer</name>
+    </author>
+    <author>
+      <name>Simon Lacoste-Julien</name>
+    </author>
+    <link href="http://arxiv.org/abs/1906.08325v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.08325v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1203.3486v1</id>
+    <updated>2012-03-15T11:17:56Z</updated>
+    <published>2012-03-15T11:17:56Z</published>
+    <title>Combining Spatial and Telemetric Features for Learning Animal Movement
+  Models</title>
+    <summary>  We introduce a new graphical model for tracking radio-tagged animals and
+learning their movement patterns. The model provides a principled way to
+combine radio telemetry data with an arbitrary set of userdefined, spatial
+features. We describe an efficient stochastic gradient algorithm for fitting
+model parameters to data and demonstrate its effectiveness via asymptotic
+analysis and synthetic experiments. We also apply our model to real datasets,
+and show that it outperforms the most popular radio telemetry software package
+used in ecology. We conclude that integration of different data sources under a
+single statistical framework, coupled with appropriate parameter and state
+estimation procedures, produces both accurate location estimates and an
+interpretable statistical model of animal movement.
+</summary>
+    <author>
+      <name>Berk Kapicioglu</name>
+    </author>
+    <author>
+      <name>Robert E. Schapire</name>
+    </author>
+    <author>
+      <name>Martin Wikelski</name>
+    </author>
+    <author>
+      <name>Tamara Broderick</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Appears in Proceedings of the Twenty-Sixth Conference on Uncertainty
+  in Artificial Intelligence (UAI2010)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1203.3486v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1203.3486v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1604.08079v2</id>
+    <updated>2016-07-12T23:08:46Z</updated>
+    <published>2016-04-27T14:13:11Z</published>
+    <title>UBL: an R package for Utility-based Learning</title>
+    <summary>  This document describes the R package UBL that allows the use of several
+methods for handling utility-based learning problems. Classification and
+regression problems that assume non-uniform costs and/or benefits pose serious
+challenges to predictive analytic tasks. In the context of meteorology,
+finance, medicine, ecology, among many other, specific domain information
+concerning the preference bias of the users must be taken into account to
+enhance the models predictive performance. To deal with this problem, a large
+number of techniques was proposed by the research community for both
+classification and regression tasks. The main goal of UBL package is to
+facilitate the utility-based predictive analytic task by providing a set of
+methods to deal with this type of problems in the R environment. It is a
+versatile tool that provides mechanisms to handle both regression and
+classification (binary and multiclass) tasks. Moreover, UBL package allows the
+user to specify his domain preferences, but it also provides some automatic
+methods that try to infer those preference bias from the domain, considering
+some common known settings.
+</summary>
+    <author>
+      <name>Paula Branco</name>
+    </author>
+    <author>
+      <name>Rita P. Ribeiro</name>
+    </author>
+    <author>
+      <name>Luis Torgo</name>
+    </author>
+    <link href="http://arxiv.org/abs/1604.08079v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1604.08079v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.MS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/0810.3525v1</id>
+    <updated>2008-10-20T11:09:15Z</updated>
+    <published>2008-10-20T11:09:15Z</published>
+    <title>The use of entropy to measure structural diversity</title>
+    <summary>  In this paper entropy based methods are compared and used to measure
+structural diversity of an ensemble of 21 classifiers. This measure is mostly
+applied in ecology, whereby species counts are used as a measure of diversity.
+The measures used were Shannon entropy, Simpsons and the Berger Parker
+diversity indexes. As the diversity indexes increased so did the accuracy of
+the ensemble. An ensemble dominated by classifiers with the same structure
+produced poor accuracy. Uncertainty rule from information theory was also used
+to further define diversity. Genetic algorithms were used to find the optimal
+ensemble by using the diversity indices as the cost function. The method of
+voting was used to aggregate the decisions.
+</summary>
+    <author>
+      <name>L. Masisi</name>
+    </author>
+    <author>
+      <name>V. Nelwamondo</name>
+    </author>
+    <author>
+      <name>T. Marwala</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">5 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/0810.3525v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/0810.3525v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.QM" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1809.02440v1</id>
+    <updated>2018-09-07T12:37:50Z</updated>
+    <published>2018-09-07T12:37:50Z</published>
+    <title>Optimizing deep video representation to match brain activity</title>
+    <summary>  The comparison of observed brain activity with the statistics generated by
+artificial intelligence systems is useful to probe brain functional
+organization under ecological conditions. Here we study fMRI activity in ten
+subjects watching color natural movies and compute deep representations of
+these movies with an architecture that relies on optical flow and image
+content. The association of activity in visual areas with the different layers
+of the deep architecture displays complexity-related contrasts across visual
+areas and reveals a striking foveal/peripheral dichotomy.
+</summary>
+    <author>
+      <name>Hugo Richard</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">PARIETAL</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Ana Pinho</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">NEUROSPIN</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Bertrand Thirion</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">PARIETAL</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Guillaume Charpiat</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">TAU</arxiv:affiliation>
+    </author>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">2018 Conference on Cognitive Computational Neuroscience, Sep 2018,
+  Philadelphia, United States</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1809.02440v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1809.02440v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.NC" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1902.08321v1</id>
+    <updated>2019-02-22T00:47:15Z</updated>
+    <published>2019-02-22T00:47:15Z</published>
+    <title>Comparison of Deep Neural Networks and Deep Hierarchical Models for
+  Spatio-Temporal Data</title>
+    <summary>  Spatio-temporal data are ubiquitous in the agricultural, ecological, and
+environmental sciences, and their study is important for understanding and
+predicting a wide variety of processes. One of the difficulties with modeling
+spatial processes that change in time is the complexity of the dependence
+structures that must describe how such a process varies, and the presence of
+high-dimensional complex data sets and large prediction domains. It is
+particularly challenging to specify parameterizations for nonlinear dynamic
+spatio-temporal models (DSTMs) that are simultaneously useful scientifically
+and efficient computationally. Statisticians have developed deep hierarchical
+models that can accommodate process complexity as well as the uncertainties in
+the predictions and inference. However, these models can be expensive and are
+typically application specific. On the other hand, the machine learning
+community has developed alternative "deep learning" approaches for nonlinear
+spatio-temporal modeling. These models are flexible yet are typically not
+implemented in a probabilistic framework. The two paradigms have many things in
+common and suggest hybrid approaches that can benefit from elements of each
+framework. This overview paper presents a brief introduction to the deep
+hierarchical DSTM (DH-DSTM) framework, and deep models in machine learning,
+culminating with the deep neural DSTM (DN-DSTM). Recent approaches that combine
+elements from DH-DSTMs and echo state network DN-DSTMs are presented as
+illustrations.
+</summary>
+    <author>
+      <name>Christopher K. Wikle</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">26 pages, including 6 figures and references</arxiv:comment>
+    <link href="http://arxiv.org/abs/1902.08321v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1902.08321v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1810.12091v1</id>
+    <updated>2018-10-12T12:22:34Z</updated>
+    <published>2018-10-12T12:22:34Z</published>
+    <title>Embedding Geographic Locations for Modelling the Natural Environment
+  using Flickr Tags and Structured Data</title>
+    <summary>  Meta-data from photo-sharing websites such as Flickr can be used to obtain
+rich bag-of-words descriptions of geographic locations, which have proven
+valuable, among others, for modelling and predicting ecological features. One
+important insight from previous work is that the descriptions obtained from
+Flickr tend to be complementary to the structured information that is available
+from traditional scientific resources. To better integrate these two diverse
+sources of information, in this paper we consider a method for learning vector
+space embeddings of geographic locations. We show experimentally that this
+method improves on existing approaches, especially in cases where structured
+information is available.
+</summary>
+    <author>
+      <name>Shelan S. Jeawak</name>
+    </author>
+    <author>
+      <name>Christopher B. Jones</name>
+    </author>
+    <author>
+      <name>Steven Schockaert</name>
+    </author>
+    <link href="http://arxiv.org/abs/1810.12091v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1810.12091v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1708.05712v1</id>
+    <updated>2017-08-17T22:33:35Z</updated>
+    <published>2017-08-17T22:33:35Z</published>
+    <title>Extensions of Morse-Smale Regression with Application to Actuarial
+  Science</title>
+    <summary>  The problem of subgroups is ubiquitous in scientific research (ex. disease
+heterogeneity, spatial distributions in ecology...), and piecewise regression
+is one way to deal with this phenomenon. Morse-Smale regression offers a way to
+partition the regression function based on level sets of a defined function and
+that function's basins of attraction. This topologically-based piecewise
+regression algorithm has shown promise in its initial applications, but the
+current implementation in the literature has been limited to elastic net and
+generalized linear regression. It is possible that nonparametric methods, such
+as random forest or conditional inference trees, may provide better prediction
+and insight through modeling interaction terms and other nonlinear
+relationships between predictors and a given outcome.
+  This study explores the use of several machine learning algorithms within a
+Morse-Smale piecewise regression framework, including boosted regression with
+linear baselearners, homotopy-based LASSO, conditional inference trees, random
+forest, and a wide neural network framework called extreme learning machines.
+Simulations on Tweedie regression problems with varying Tweedie parameter and
+dispersion suggest that many machine learning approaches to Morse-Smale
+piecewise regression improve the original algorithm's performance, particularly
+for outcomes with lower dispersion and linear or a mix of linear and nonlinear
+predictor relationships. On a real actuarial problem, several of these new
+algorithms perform as good as or better than the original Morse-Smale
+regression algorithm, and most provide information on the nature of predictor
+relationships within each partition to provide insight into differences between
+dataset partitions.
+</summary>
+    <author>
+      <name>Colleen M. Farrelly</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">14 pages, 10 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1708.05712v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1708.05712v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1405.6524v1</id>
+    <updated>2014-05-26T09:58:20Z</updated>
+    <published>2014-05-26T09:58:20Z</published>
+    <title>Automatic large-scale classification of bird sounds is strongly improved
+  by unsupervised feature learning</title>
+    <summary>  Automatic species classification of birds from their sound is a computational
+tool of increasing importance in ecology, conservation monitoring and vocal
+communication studies. To make classification useful in practice, it is crucial
+to improve its accuracy while ensuring that it can run at big data scales. Many
+approaches use acoustic measures based on spectrogram-type data, such as the
+Mel-frequency cepstral coefficient (MFCC) features which represent a
+manually-designed summary of spectral information. However, recent work in
+machine learning has demonstrated that features learnt automatically from data
+can often outperform manually-designed feature transforms. Feature learning can
+be performed at large scale and "unsupervised", meaning it requires no manual
+data labelling, yet it can improve performance on "supervised" tasks such as
+classification. In this work we introduce a technique for feature learning from
+large volumes of bird sound recordings, inspired by techniques that have proven
+useful in other domains. We experimentally compare twelve different feature
+representations derived from the Mel spectrum (of which six use this
+technique), using four large and diverse databases of bird vocalisations, with
+a random forest classifier. We demonstrate that MFCCs are of limited power in
+this context, leading to worse performance than the raw Mel spectral data.
+Conversely, we demonstrate that unsupervised feature learning provides a
+substantial boost over MFCCs and Mel spectra without adding computational
+complexity after the model has been trained. The boost is particularly notable
+for single-label classification tasks at large scale. The spectro-temporal
+activations learned through our procedure resemble spectro-temporal receptive
+fields calculated from avian primary auditory forebrain.
+</summary>
+    <author>
+      <name>Dan Stowell</name>
+    </author>
+    <author>
+      <name>Mark D. Plumbley</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.7717/peerj.488</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.7717/peerj.488" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">PeerJ 2:e488, 2014</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1405.6524v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1405.6524v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1206.6439v1</id>
+    <updated>2012-06-27T19:59:59Z</updated>
+    <published>2012-06-27T19:59:59Z</published>
+    <title>Gap Filling in the Plant Kingdom---Trait Prediction Using Hierarchical
+  Probabilistic Matrix Factorization</title>
+    <summary>  Plant traits are a key to understanding and predicting the adaptation of
+ecosystems to environmental changes, which motivates the TRY project aiming at
+constructing a global database for plant traits and becoming a standard
+resource for the ecological community. Despite its unprecedented coverage, a
+large percentage of missing data substantially constrains joint trait analysis.
+Meanwhile, the trait data is characterized by the hierarchical phylogenetic
+structure of the plant kingdom. While factorization based matrix completion
+techniques have been widely used to address the missing data problem,
+traditional matrix factorization methods are unable to leverage the
+phylogenetic structure. We propose hierarchical probabilistic matrix
+factorization (HPMF), which effectively uses hierarchical phylogenetic
+information for trait prediction. We demonstrate HPMF's high accuracy,
+effectiveness of incorporating hierarchical structure and ability to capture
+trait correlation through experiments.
+</summary>
+    <author>
+      <name>Hanhuai Shan</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">University of Minnesota</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Jens Kattge</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Max Planck Institute for Biogeochemistry</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Peter Reich</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">University of Minnesota</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Arindam Banerjee</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">University of Minnesota</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Franziska Schrodt</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">University of Minnesota</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Markus Reichstein</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Max Planck Institute for Biogeochemistry</arxiv:affiliation>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Appears in Proceedings of the 29th International Conference on
+  Machine Learning (ICML 2012)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1206.6439v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1206.6439v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1312.4479v1</id>
+    <updated>2013-12-16T19:38:35Z</updated>
+    <published>2013-12-16T19:38:35Z</published>
+    <title>Parametric Modelling of Multivariate Count Data Using Probabilistic
+  Graphical Models</title>
+    <summary>  Multivariate count data are defined as the number of items of different
+categories issued from sampling within a population, which individuals are
+grouped into categories. The analysis of multivariate count data is a recurrent
+and crucial issue in numerous modelling problems, particularly in the fields of
+biology and ecology (where the data can represent, for example, children counts
+associated with multitype branching processes), sociology and econometrics. We
+focus on I) Identifying categories that appear simultaneously, or on the
+contrary that are mutually exclusive. This is achieved by identifying
+conditional independence relationships between the variables; II)Building
+parsimonious parametric models consistent with these relationships; III)
+Characterising and testing the effects of covariates on the joint distribution
+of the counts. To achieve these goals, we propose an approach based on
+graphical probabilistic models, and more specifically partially directed
+acyclic graphs.
+</summary>
+    <author>
+      <name>Pierre Fernique</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">VP, AGAP</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Jean-Baptiste Durand</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">VP, INRIA Grenoble Rhône-Alpes / LJK Laboratoire Jean Kuntzmann</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Yann Guédon</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">VP, AGAP</arxiv:affiliation>
+    </author>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">3rd Workshop on Algorithmic issues for Inference in Graphical
+  Models - AIGM13, Paris : France (2013)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1312.4479v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1312.4479v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1702.08896v3</id>
+    <updated>2017-11-05T01:52:45Z</updated>
+    <published>2017-02-28T18:33:32Z</published>
+    <title>Hierarchical Implicit Models and Likelihood-Free Variational Inference</title>
+    <summary>  Implicit probabilistic models are a flexible class of models defined by a
+simulation process for data. They form the basis for theories which encompass
+our understanding of the physical world. Despite this fundamental nature, the
+use of implicit models remains limited due to challenges in specifying complex
+latent structure in them, and in performing inferences in such models with
+large data sets. In this paper, we first introduce hierarchical implicit models
+(HIMs). HIMs combine the idea of implicit densities with hierarchical Bayesian
+modeling, thereby defining models via simulators of data with rich hidden
+structure. Next, we develop likelihood-free variational inference (LFVI), a
+scalable variational inference algorithm for HIMs. Key to LFVI is specifying a
+variational family that is also implicit. This matches the model's flexibility
+and allows for accurate approximation of the posterior. We demonstrate diverse
+applications: a large-scale physical simulator for predator-prey populations in
+ecology; a Bayesian generative adversarial network for discrete data; and a
+deep implicit model for text generation.
+</summary>
+    <author>
+      <name>Dustin Tran</name>
+    </author>
+    <author>
+      <name>Rajesh Ranganath</name>
+    </author>
+    <author>
+      <name>David M. Blei</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Appears in Neural Information Processing Systems, 2017</arxiv:comment>
+    <link href="http://arxiv.org/abs/1702.08896v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1702.08896v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.CO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1907.01552v1</id>
+    <updated>2019-07-02T02:14:22Z</updated>
+    <published>2019-07-02T02:14:22Z</published>
+    <title>Forecasting high-dimensional dynamics exploiting suboptimal embeddings</title>
+    <summary>  Delay embedding---a method for reconstructing dynamical systems by delay
+coordinates---is widely used to forecast nonlinear time series as a model-free
+approach. When multivariate time series are observed, several existing
+frameworks can be applied to yield a single forecast combining multiple
+forecasts derived from various embeddings. However, the performance of these
+frameworks is not always satisfactory because they randomly select embeddings
+or use brute force and do not consider the diversity of the embeddings to
+combine. Herein, we develop a forecasting framework that overcomes these
+existing problems. The framework exploits various "suboptimal embeddings"
+obtained by minimizing the in-sample error via combinatorial optimization. The
+framework achieves the best results among existing frameworks for sample toy
+datasets and a real-world flood dataset. We show that the framework is
+applicable to a wide range of data lengths and dimensions. Therefore, the
+framework can be applied to various fields such as neuroscience, ecology,
+finance, fluid dynamics, weather, and disaster prevention.
+</summary>
+    <author>
+      <name>Shunya Okuno</name>
+    </author>
+    <author>
+      <name>Kazuyuki Aihara</name>
+    </author>
+    <author>
+      <name>Yoshito Hirata</name>
+    </author>
+    <link href="http://arxiv.org/abs/1907.01552v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1907.01552v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.07442v2</id>
+    <updated>2018-10-30T20:08:46Z</updated>
+    <published>2018-02-21T07:01:43Z</published>
+    <title>Learning to Play with Intrinsically-Motivated Self-Aware Agents</title>
+    <summary>  Infants are experts at playing, with an amazing ability to generate novel
+structured behaviors in unstructured environments that lack clear extrinsic
+reward signals. We seek to mathematically formalize these abilities using a
+neural network that implements curiosity-driven intrinsic motivation. Using a
+simple but ecologically naturalistic simulated environment in which an agent
+can move and interact with objects it sees, we propose a "world-model" network
+that learns to predict the dynamic consequences of the agent's actions.
+Simultaneously, we train a separate explicit "self-model" that allows the agent
+to track the error map of its own world-model, and then uses the self-model to
+adversarially challenge the developing world-model. We demonstrate that this
+policy causes the agent to explore novel and informative interactions with its
+environment, leading to the generation of a spectrum of complex behaviors,
+including ego-motion prediction, object attention, and object gathering.
+Moreover, the world-model that the agent learns supports improved performance
+on object dynamics prediction, detection, localization and recognition tasks.
+Taken together, our results are initial steps toward creating flexible
+autonomous agents that self-supervise in complex novel physical environments.
+</summary>
+    <author>
+      <name>Nick Haber</name>
+    </author>
+    <author>
+      <name>Damian Mrowca</name>
+    </author>
+    <author>
+      <name>Li Fei-Fei</name>
+    </author>
+    <author>
+      <name>Daniel L. K. Yamins</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">In NIPS 2018. 10 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1802.07442v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.07442v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="68" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1707.06231v1</id>
+    <updated>2017-07-19T16:37:23Z</updated>
+    <published>2017-07-19T16:37:23Z</published>
+    <title>From Bach to the Beatles: The simulation of human tonal expectation
+  using ecologically-trained predictive models</title>
+    <summary>  Tonal structure is in part conveyed by statistical regularities between
+musical events, and research has shown that computational models reflect tonal
+structure in music by capturing these regularities in schematic constructs like
+pitch histograms. Of the few studies that model the acquisition of perceptual
+learning from musical data, most have employed self-organizing models that
+learn a topology of static descriptions of musical contexts. Also, the stimuli
+used to train these models are often symbolic rather than acoustically faithful
+representations of musical material. In this work we investigate whether
+sequential predictive models of musical memory (specifically, recurrent neural
+networks), trained on audio from commercial CD recordings, induce tonal
+knowledge in a similar manner to listeners (as shown in behavioral studies in
+music perception). Our experiments indicate that various types of recurrent
+neural networks produce musical expectations that clearly convey tonal
+structure. Furthermore, the results imply that although implicit knowledge of
+tonal structure is a necessary condition for accurate musical expectation, the
+most accurate predictive models also use other cues beyond the tonal structure
+of the musical context.
+</summary>
+    <author>
+      <name>Carlos Cancino-Chacón</name>
+    </author>
+    <author>
+      <name>Maarten Grachten</name>
+    </author>
+    <author>
+      <name>Kat Agres</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">In Proceedings of the 18th International Society of Music Information
+  Retrieval Conference (ISMIR 2017)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1707.06231v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1707.06231v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.04302v2</id>
+    <updated>2018-05-17T19:01:47Z</updated>
+    <published>2018-02-12T19:02:52Z</published>
+    <title>Evaluating Compositionality in Sentence Embeddings</title>
+    <summary>  An important challenge for human-like AI is compositional semantics. Recent
+research has attempted to address this by using deep neural networks to learn
+vector space embeddings of sentences, which then serve as input to other tasks.
+We present a new dataset for one such task, `natural language inference' (NLI),
+that cannot be solved using only word-level knowledge and requires some
+compositionality. We find that the performance of state of the art sentence
+embeddings (InferSent; Conneau et al., 2017) on our new dataset is poor. We
+analyze the decision rules learned by InferSent and find that they are
+consistent with simple heuristics that are ecologically valid in its training
+dataset. Further, we find that augmenting training with our dataset improves
+test performance on our dataset without loss of performance on the original
+training dataset. This highlights the importance of structured datasets in
+better understanding and improving AI systems.
+</summary>
+    <author>
+      <name>Ishita Dasgupta</name>
+    </author>
+    <author>
+      <name>Demi Guo</name>
+    </author>
+    <author>
+      <name>Andreas Stuhlmüller</name>
+    </author>
+    <author>
+      <name>Samuel J. Gershman</name>
+    </author>
+    <author>
+      <name>Noah D. Goodman</name>
+    </author>
+    <link href="http://arxiv.org/abs/1802.04302v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.04302v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1809.09738v1</id>
+    <updated>2018-09-25T21:55:56Z</updated>
+    <published>2018-09-25T21:55:56Z</published>
+    <title>Optimizing the Human-Machine Partnership with Zooniverse</title>
+    <summary>  Over the past decade, Citizen Science has become a proven method of
+distributed data analysis, enabling research teams from diverse domains to
+solve problems involving large quantities of data with complexity levels which
+require human pattern recognition capabilities. With over 120 projects built
+reaching nearly 1.7 million volunteers, the Zooniverse.org platform has led the
+way in the application of Citizen Science as a method for closing the Big Data
+analysis gap. Since the launch in 2007 of the Galaxy Zoo project, the
+Zooniverse platform has enabled significant contributions across many
+disciplines; e.g., in ecology, humanities, and astronomy. Citizen science as an
+approach to Big Data combines the twin advantages of the ability to scale
+analysis to the size of modern datasets with the ability of humans to make
+serendipitous discoveries. To cope with the larger datasets looming on the
+horizon such as astronomy's Large Synoptic Survey Telescope (LSST) or the 100's
+of TB from ecology projects annually, Zooniverse has been researching a system
+design that is optimized for efficiency in task assignment and incorporating
+human and machine classifiers into the classification engine. By making
+efficient use of smart task assignment and the combination of human and machine
+classifiers, we can achieve greater accuracy and flexibility than has been
+possible to date. We note that creating the most efficient system must consider
+how best to engage and retain volunteers as well as make the most efficient use
+of their classifications. Our work thus focuses on understanding the factors
+that optimize efficiency of the combined human-machine system. This paper
+summarizes some of our research to date on integration of machine learning with
+Zooniverse, while also describing new infrastructure developed on the
+Zooniverse platform to carry out this research.
+</summary>
+    <author>
+      <name>Lucy Fortson</name>
+    </author>
+    <author>
+      <name>Darryl Wright</name>
+    </author>
+    <author>
+      <name>Chris Lintott</name>
+    </author>
+    <author>
+      <name>Laura Trouille</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">3 pages, 1 figure, proceedings for 2018 ACM Collective Intelligence
+  Conference</arxiv:comment>
+    <link href="http://arxiv.org/abs/1809.09738v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1809.09738v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1005.2238v1</id>
+    <updated>2010-05-13T01:28:10Z</updated>
+    <published>2010-05-13T01:28:10Z</published>
+    <title>Ecological non-linear state space model selection via adaptive particle
+  Markov chain Monte Carlo (AdPMCMC)</title>
+    <summary>  We develop a novel advanced Particle Markov chain Monte Carlo algorithm that
+is capable of sampling from the posterior distribution of non-linear state
+space models for both the unobserved latent states and the unknown model
+parameters. We apply this novel methodology to five population growth models,
+including models with strong and weak Allee effects, and test if it can
+efficiently sample from the complex likelihood surface that is often associated
+with these models. Utilising real and also synthetically generated data sets we
+examine the extent to which observation noise and process error may frustrate
+efforts to choose between these models. Our novel algorithm involves an
+Adaptive Metropolis proposal combined with an SIR Particle MCMC algorithm
+(AdPMCMC). We show that the AdPMCMC algorithm samples complex, high-dimensional
+spaces efficiently, and is therefore superior to standard Gibbs or Metropolis
+Hastings algorithms that are known to converge very slowly when applied to the
+non-linear state space ecological models considered in this paper.
+Additionally, we show how the AdPMCMC algorithm can be used to recursively
+estimate the Bayesian Cram\'er-Rao Lower Bound of Tichavsk\'y (1998). We derive
+expressions for these Cram\'er-Rao Bounds and estimate them for the models
+considered. Our results demonstrate a number of important features of common
+population growth models, most notably their multi-modal posterior surfaces and
+dependence between the static and dynamic parameters. We conclude by sampling
+from the posterior distribution of each of the models, and use Bayes factors to
+highlight how observation noise significantly diminishes our ability to select
+among some of the models, particularly those that are designed to reproduce an
+Allee effect.
+</summary>
+    <author>
+      <name>Gareth W. Peters</name>
+    </author>
+    <author>
+      <name>Geoff R. Hosack</name>
+    </author>
+    <author>
+      <name>Keith R. Hayes</name>
+    </author>
+    <link href="http://arxiv.org/abs/1005.2238v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1005.2238v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.CO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1701.01505v2</id>
+    <updated>2018-08-06T18:01:10Z</updated>
+    <published>2017-01-05T23:35:12Z</published>
+    <title>Crime Topic Modeling</title>
+    <summary>  The classification of crime into discrete categories entails a massive loss
+of information. Crimes emerge out of a complex mix of behaviors and situations,
+yet most of these details cannot be captured by singular crime type labels.
+This information loss impacts our ability to not only understand the causes of
+crime, but also how to develop optimal crime prevention strategies. We apply
+machine learning methods to short narrative text descriptions accompanying
+crime records with the goal of discovering ecologically more meaningful latent
+crime classes. We term these latent classes "crime topics" in reference to
+text-based topic modeling methods that produce them. We use topic distributions
+to measure clustering among formally recognized crime types. Crime topics
+replicate broad distinctions between violent and property crime, but also
+reveal nuances linked to target characteristics, situational conditions and the
+tools and methods of attack. Formal crime types are not discrete in topic
+space. Rather, crime types are distributed across a range of crime topics.
+Similarly, individual crime topics are distributed across a range of formal
+crime types. Key ecological groups include identity theft, shoplifting,
+burglary and theft, car crimes and vandalism, criminal threats and confidence
+crimes, and violent crimes. Though not a replacement for formal legal crime
+classifications, crime topics provide a unique window into the heterogeneous
+causal processes underlying crime.
+</summary>
+    <author>
+      <name>Da Kuang</name>
+    </author>
+    <author>
+      <name>P. Jeffrey Brantingham</name>
+    </author>
+    <author>
+      <name>Andrea L. Bertozzi</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1186/s40163-017-0074-0</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1186/s40163-017-0074-0" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">47 pages, 4 tables, 7 figures</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Kuang, D., Brantingham, P. J., &amp; Bertozzi, A. L. (2017). Crime
+  topic modeling. Crime Science, 6(1), 12</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1701.01505v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1701.01505v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1704.01407v3</id>
+    <updated>2017-09-18T16:27:46Z</updated>
+    <published>2017-04-05T13:26:50Z</published>
+    <title>Embodied Artificial Intelligence through Distributed Adaptive Control:
+  An Integrated Framework</title>
+    <summary>  In this paper, we argue that the future of Artificial Intelligence research
+resides in two keywords: integration and embodiment. We support this claim by
+analyzing the recent advances of the field. Regarding integration, we note that
+the most impactful recent contributions have been made possible through the
+integration of recent Machine Learning methods (based in particular on Deep
+Learning and Recurrent Neural Networks) with more traditional ones (e.g.
+Monte-Carlo tree search, goal babbling exploration or addressable memory
+systems). Regarding embodiment, we note that the traditional benchmark tasks
+(e.g. visual classification or board games) are becoming obsolete as
+state-of-the-art learning algorithms approach or even surpass human performance
+in most of them, having recently encouraged the development of first-person 3D
+game platforms embedding realistic physics. Building upon this analysis, we
+first propose an embodied cognitive architecture integrating heterogenous
+sub-fields of Artificial Intelligence into a unified framework. We demonstrate
+the utility of our approach by showing how major contributions of the field can
+be expressed within the proposed framework. We then claim that benchmarking
+environments need to reproduce ecologically-valid conditions for bootstrapping
+the acquisition of increasingly complex cognitive skills through the concept of
+a cognitive arms race between embodied agents.
+</summary>
+    <author>
+      <name>Clément Moulin-Frier</name>
+    </author>
+    <author>
+      <name>Jordi-Ysard Puigbò</name>
+    </author>
+    <author>
+      <name>Xerxes D. Arsiwalla</name>
+    </author>
+    <author>
+      <name>Martì Sanchez-Fibla</name>
+    </author>
+    <author>
+      <name>Paul F. M. J. Verschure</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Updated version of the paper accepted to the ICDL-Epirob 2017
+  conference (Lisbon, Portugal)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1704.01407v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1704.01407v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/0712.4099v3</id>
+    <updated>2009-09-21T00:39:27Z</updated>
+    <published>2007-12-26T04:13:20Z</published>
+    <title>Digital Ecosystems: Optimisation by a Distributed Intelligence</title>
+    <summary>  Can intelligence optimise Digital Ecosystems? How could a distributed
+intelligence interact with the ecosystem dynamics? Can the software components
+that are part of genetic selection be intelligent in themselves, as in an
+adaptive technology? We consider the effect of a distributed intelligence
+mechanism on the evolutionary and ecological dynamics of our Digital Ecosystem,
+which is the digital counterpart of a biological ecosystem for evolving
+software services in a distributed network. We investigate Neural Networks and
+Support Vector Machine for the learning based pattern recognition functionality
+of our distributed intelligence. Simulation results imply that the Digital
+Ecosystem performs better with the application of a distributed intelligence,
+marginally more effectively when powered by Support Vector Machine than Neural
+Networks, and suggest that it can contribute to optimising the operation of our
+Digital Ecosystem.
+</summary>
+    <author>
+      <name>G. Briscoe</name>
+    </author>
+    <author>
+      <name>P. De Wilde</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">12 pages, 14 figures, conference</arxiv:comment>
+    <link href="http://arxiv.org/abs/0712.4099v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/0712.4099v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1602.06335v4</id>
+    <updated>2017-05-26T12:56:42Z</updated>
+    <published>2016-02-16T21:47:57Z</published>
+    <title>A Machine Learning Approach to Forecasting Remotely Sensed Vegetation
+  Health</title>
+    <summary>  Drought threatens food and water security around the world, and this threat
+is likely to become more severe under climate change. High resolution
+predictive information can help farmers, water managers, and others to manage
+the effects of drought. We have created an open source tool to produce
+short-term forecasts of vegetation health at high spatial resolution, using
+data that are global in coverage. The tool automates downloading and processing
+Moderate Resolution Imaging Spectroradiometer (MODIS) datasets, and training
+gradient-boosted machine models on hundreds of millions of observations to
+predict future values of the Enhanced Vegetation Index. We compared the
+predictive power of different sets of variables (raw spectral MODIS data and
+Level-3 MODIS products) in two regions with distinct agro-ecological systems,
+climates, and cloud coverage: Sri Lanka and California. Our tool provides
+considerably greater predictive power on held-out datasets than simpler
+baseline models.
+</summary>
+    <author>
+      <name>John J. Nay</name>
+    </author>
+    <author>
+      <name>Emily Burchfield</name>
+    </author>
+    <author>
+      <name>Jonathan Gilligan</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Code available at http://johnjnay.com/forecastVeg/</arxiv:comment>
+    <link href="http://arxiv.org/abs/1602.06335v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1602.06335v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="q-bio.OT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.OT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1510.04811v2</id>
+    <updated>2015-11-28T07:46:08Z</updated>
+    <published>2015-10-16T08:06:26Z</published>
+    <title>Quantification in-the-wild: data-sets and baselines</title>
+    <summary>  Quantification is the task of estimating the class-distribution of a
+data-set. While typically considered as a parameter estimation problem with
+strict assumptions on the data-set shift, we consider quantification
+in-the-wild, on two large scale data-sets from marine ecology: a survey of
+Caribbean coral reefs, and a plankton time series from Martha's Vineyard
+Coastal Observatory. We investigate several quantification methods from the
+literature and indicate opportunities for future work. In particular, we show
+that a deep neural network can be fine-tuned on a very limited amount of data
+(25 - 100 samples) to outperform alternative methods.
+</summary>
+    <author>
+      <name>Oscar Beijbom</name>
+    </author>
+    <author>
+      <name>Judy Hoffman</name>
+    </author>
+    <author>
+      <name>Evan Yao</name>
+    </author>
+    <author>
+      <name>Trevor Darrell</name>
+    </author>
+    <author>
+      <name>Alberto Rodriguez-Ramirez</name>
+    </author>
+    <author>
+      <name>Manuel Gonzalez-Rivero</name>
+    </author>
+    <author>
+      <name>Ove Hoegh - Guldberg</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">This report was prsented at the NIPS 2015 workshop on Transfer and
+  Multi-Task Learning: Trends and New Perspectives. It is 4 pages + 1 page of
+  references followed by a 6 page appendix</arxiv:comment>
+    <link href="http://arxiv.org/abs/1510.04811v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1510.04811v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1404.5065v1</id>
+    <updated>2014-04-20T19:17:23Z</updated>
+    <published>2014-04-20T19:17:23Z</published>
+    <title>Multi-Target Regression via Random Linear Target Combinations</title>
+    <summary>  Multi-target regression is concerned with the simultaneous prediction of
+multiple continuous target variables based on the same set of input variables.
+It arises in several interesting industrial and environmental application
+domains, such as ecological modelling and energy forecasting. This paper
+presents an ensemble method for multi-target regression that constructs new
+target variables via random linear combinations of existing targets. We discuss
+the connection of our approach with multi-label classification algorithms, in
+particular RA$k$EL, which originally inspired this work, and a family of recent
+multi-label classification algorithms that involve output coding. Experimental
+results on 12 multi-target datasets show that it performs significantly better
+than a strong baseline that learns a single model for each target using
+gradient boosting and compares favourably to multi-objective random forest
+approach, which is a state-of-the-art approach. The experiments further show
+that our approach improves more when stronger unconditional dependencies exist
+among the targets.
+</summary>
+    <author>
+      <name>Grigorios Tsoumakas</name>
+    </author>
+    <author>
+      <name>Eleftherios Spyromitros-Xioufis</name>
+    </author>
+    <author>
+      <name>Aikaterini Vrekou</name>
+    </author>
+    <author>
+      <name>Ioannis Vlahavas</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1007/978-3-662-44845-8_15</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1007/978-3-662-44845-8_15" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">ECML PKDD Proceedings, Part III (2014) 225-240</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1404.5065v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1404.5065v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1710.06943v1</id>
+    <updated>2017-10-18T21:26:41Z</updated>
+    <published>2017-10-18T21:26:41Z</published>
+    <title>First-Person Perceptual Guidance Behavior Decomposition using Active
+  Constraint Classification</title>
+    <summary>  Humans exhibit a wide range of adaptive and robust dynamic motion behavior
+that is yet unmatched by autonomous control systems. These capabilities are
+essential for real-time behavior generation in cluttered environments. Recent
+work suggests that human capabilities rely on task structure learning and
+embedded or ecological cognition in the form of perceptual guidance. This paper
+describes the experimental investigation of the functional elements of human
+motion guidance, focusing on the control and perceptual mechanisms. The motion,
+control, and perceptual data from first-person guidance experiments is
+decomposed into elemental segments based on invariants. These elements are then
+analyzed to determine their functional characteristics. The resulting model
+explains the structure of the agent-environment interaction and provides lawful
+descriptions of specific perceptual guidance and control mechanisms.
+</summary>
+    <author>
+      <name>Andrew Feit</name>
+    </author>
+    <author>
+      <name>Berenice Mettler</name>
+    </author>
+    <link href="http://arxiv.org/abs/1710.06943v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1710.06943v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.01053v1</id>
+    <updated>2018-02-04T00:55:46Z</updated>
+    <published>2018-02-04T00:55:46Z</published>
+    <title>Using Poisson Binomial GLMs to Reveal Voter Preferences</title>
+    <summary>  We present a new modeling technique for solving the problem of ecological
+inference, in which individual-level associations are inferred from labeled
+data available only at the aggregate level. We model aggregate count data as
+arising from the Poisson binomial, the distribution of the sum of independent
+but not identically distributed Bernoulli random variables. We relate
+individual-level probabilities to individual covariates using both a logistic
+regression and a neural network. A normal approximation is derived via the
+Lyapunov Central Limit Theorem, allowing us to efficiently fit these models on
+large datasets. We apply this technique to the problem of revealing voter
+preferences in the 2016 presidential election, fitting a model to a sample of
+over four million voters from the highly contested swing state of Pennsylvania.
+We validate the model at the precinct level via a holdout set, and at the
+individual level using weak labels, finding that the model is predictive and it
+learns intuitively reasonable associations.
+</summary>
+    <author>
+      <name>Evan Rosenman</name>
+    </author>
+    <author>
+      <name>Nitin Viswanathan</name>
+    </author>
+    <link href="http://arxiv.org/abs/1802.01053v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.01053v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.CO" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1810.03077v1</id>
+    <updated>2018-10-07T03:10:57Z</updated>
+    <published>2018-10-07T03:10:57Z</published>
+    <title>DeepGeo: Photo Localization with Deep Neural Network</title>
+    <summary>  In this paper we address the task of determining the geographical location of
+an image, a pertinent problem in learning and computer vision. This research
+was inspired from playing GeoGuessr, a game that tests a humans' ability to
+localize themselves using just images of their surroundings. In particular, we
+wish to investigate how geographical, ecological and man-made features
+generalize for random location prediction. This is framed as a classification
+problem: given images sampled from the USA, the most-probable state among 50 is
+predicted. Previous work uses models extensively trained on large, unfiltered
+online datasets that are primed towards specific locations. To this end, we
+create (and open-source) the 50States10K dataset - with 0.5 million Google
+Street View images of the country. A deep neural network based on the ResNet
+architecture is trained, and four different strategies of incorporating
+low-level cardinality information are presented. This model achieves an
+accuracy 20 times better than chance on a test dataset, which rises to 71.87%
+when taking the best of top-5 guesses. The network also beats human subjects in
+4 out of 5 rounds of GeoGuessr.
+</summary>
+    <author>
+      <name>Sudharshan Suresh</name>
+    </author>
+    <author>
+      <name>Nathaniel Chodosh</name>
+    </author>
+    <author>
+      <name>Montiel Abello</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">7 pages, 9 figures. Pre-print after submission to conference</arxiv:comment>
+    <link href="http://arxiv.org/abs/1810.03077v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1810.03077v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.07830v1</id>
+    <updated>2019-04-16T17:15:15Z</updated>
+    <published>2019-04-16T17:15:15Z</published>
+    <title>Scalable and Efficient Hypothesis Testing with Random Forests</title>
+    <summary>  Throughout the last decade, random forests have established themselves as
+among the most accurate and popular supervised learning methods. While their
+black-box nature has made their mathematical analysis difficult, recent work
+has established important statistical properties like consistency and
+asymptotic normality by considering subsampling in lieu of bootstrapping.
+Though such results open the door to traditional inference procedures, all
+formal methods suggested thus far place severe restrictions on the testing
+framework and their computational overhead precludes their practical scientific
+use. Here we propose a permutation-style testing approach to formally assess
+feature significance. We establish asymptotic validity of the test via
+exchangeability arguments and show that the test maintains high power with
+orders of magnitude fewer computations. As importantly, the procedure scales
+easily to big data settings where large training and testing sets may be
+employed without the need to construct additional models. Simulations and
+applications to ecological data where random forests have recently shown
+promise are provided.
+</summary>
+    <author>
+      <name>Tim Coleman</name>
+    </author>
+    <author>
+      <name>Wei Peng</name>
+    </author>
+    <author>
+      <name>Lucas Mentch</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">52 pages, 10 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1904.07830v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.07830v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1511.05082v1</id>
+    <updated>2015-11-16T18:42:04Z</updated>
+    <published>2015-11-16T18:42:04Z</published>
+    <title>Topic Modeling of Behavioral Modes Using Sensor Data</title>
+    <summary>  The field of Movement Ecology, like so many other fields, is experiencing a
+period of rapid growth in availability of data. As the volume rises,
+traditional methods are giving way to machine learning and data science, which
+are playing an increasingly large part it turning this data into
+science-driving insights. One rich and interesting source is the bio-logger.
+These small electronic wearable devices are attached to animals free to roam in
+their natural habitats, and report back readings from multiple sensors,
+including GPS and accelerometer bursts. A common use of accelerometer data is
+for supervised learning of behavioral modes. However, we need unsupervised
+analysis tools as well, in order to overcome the inherent difficulties of
+obtaining a labeled dataset, which in some cases is either infeasible or does
+not successfully encompass the full repertoire of behavioral modes of interest.
+Here we present a matrix factorization based topic-model method for
+accelerometer bursts, derived using a linear mixture property of patch
+features. Our method is validated via comparison to a labeled dataset, and is
+further compared to standard clustering algorithms.
+</summary>
+    <author>
+      <name>Yehezkel S. Resheff</name>
+    </author>
+    <author>
+      <name>Shay Rotics</name>
+    </author>
+    <author>
+      <name>Ran Nathan</name>
+    </author>
+    <author>
+      <name>Daphna Weinshall</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Invited Extended version of a paper \cite{resheffmatrix} presented at
+  the international conference \textit{Data Science and Advanced Analytics},
+  Paris, France, 19-21 OCtober 2015</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">International Journal of Data Science and Analytics 1.1 (2016):
+  51-60</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1511.05082v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1511.05082v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1605.00972v2</id>
+    <updated>2016-05-05T18:28:21Z</updated>
+    <published>2016-05-03T16:36:30Z</published>
+    <title>Phase 2: DCL System Using Deep Learning Approaches for Land-based or
+  Ship-based Real-Time Recognition and Localization of Marine Mammals - Machine
+  Learning Detection Algorithms</title>
+    <summary>  Overarching goals for this work aim to advance the state of the art for
+detection, classification and localization (DCL) in the field of bioacoustics.
+This goal is primarily achieved by building a generic framework for
+detection-classification (DC) using a fast, efficient and scalable
+architecture, demonstrating the capabilities of this system using on a variety
+of low-frequency mid-frequency cetacean sounds. Two primary goals are to
+develop transferable technologies for detection and classification in, one: the
+area of advanced algorithms, such as deep learning and other methods; and two:
+advanced systems, capable of real-time and archival processing. For each key
+area, we will focus on producing publications from this work and providing
+tools and software to the community where/when possible. Currently massive
+amounts of acoustic data are being collected by various institutions,
+corporations and national defense agencies. The long-term goal is to provide
+technical capability to analyze the data using automatic algorithms for (DC)
+based on machine intelligence. The goal of the automation is to provide
+effective and efficient mechanisms by which to process large acoustic datasets
+for understanding the bioacoustic behaviors of marine mammals. This capability
+will provide insights into the potential ecological impacts and influences of
+anthropogenic ocean sounds. This work focuses on building technologies using a
+maturity model based on DARPA 6.1 and 6.2 processes, for basic and applied
+research, respectively.
+</summary>
+    <author>
+      <name>Peter J. Dugan</name>
+    </author>
+    <author>
+      <name>Christopher W. Clark</name>
+    </author>
+    <author>
+      <name>Yann André LeCun</name>
+    </author>
+    <author>
+      <name>Sofie M. Van Parijs</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">National Oceanic Partnership Program (NOPP) sponsored by ONR and
+  NFWF: N000141210585</arxiv:comment>
+    <link href="http://arxiv.org/abs/1605.00972v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1605.00972v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1609.09353v4</id>
+    <updated>2017-02-21T15:35:11Z</updated>
+    <published>2016-09-28T00:39:47Z</published>
+    <title>Deep Multi-Species Embedding</title>
+    <summary>  Understanding how species are distributed across landscapes over time is a
+fundamental question in biodiversity research. Unfortunately, most species
+distribution models only target a single species at a time, despite strong
+ecological evidence that species are not independently distributed. We propose
+Deep Multi-Species Embedding (DMSE), which jointly embeds vectors corresponding
+to multiple species as well as vectors representing environmental covariates
+into a common high-dimensional feature space via a deep neural network. Applied
+to bird observational data from the citizen science project \textit{eBird}, we
+demonstrate how the DMSE model discovers inter-species relationships to
+outperform single-species distribution models (random forests and SVMs) as well
+as competing multi-label models. Additionally, we demonstrate the benefit of
+using a deep neural network to extract features within the embedding and show
+how they improve the predictive performance of species distribution modelling.
+An important domain contribution of the DMSE model is the ability to discover
+and describe species interactions while simultaneously learning the shared
+habitat preferences among species. As an additional contribution, we provide a
+graphical embedding of hundreds of bird species in the Northeast US.
+</summary>
+    <author>
+      <name>Di Chen</name>
+    </author>
+    <author>
+      <name>Yexiang Xue</name>
+    </author>
+    <author>
+      <name>Shuo Chen</name>
+    </author>
+    <author>
+      <name>Daniel Fink</name>
+    </author>
+    <author>
+      <name>Carla Gomes</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">13 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/1609.09353v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1609.09353v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.PE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1902.06660v2</id>
+    <updated>2019-02-20T17:20:03Z</updated>
+    <published>2019-02-01T03:30:59Z</published>
+    <title>A Novel Universal Solar Energy Predictor</title>
+    <summary>  Solar energy is one of the most economical and clean sustainable energy
+sources on the planet. However, the solar energy throughput is highly
+unpredictable due to its dependency on a plethora of conditions including
+weather, seasons, and other ecological/environmental conditions. Thus, the
+solar energy prediction is an inevitable necessity to optimize solar energy and
+also to improve the efficiency of solar energy systems. Conventionally, the
+optimization of the solar energy is undertaken by subject matter experts using
+their domain knowledge; although it is impractical for even the experts to tune
+the solar systems on a continuous basis. We strongly believe that the power of
+machine learning can be harnessed to better optimize the solar energy
+production by learning the correlation between various conditions and solar
+energy production from historical data which is typically readily available.
+For this use, this paper predicts the daily total energy generation of an
+installed solar program using the Naive Bayes classifier. In the forecast
+procedure, one year historical dataset including daily moderate temperatures,
+daily total sunshine duration, daily total global solar radiation and daily
+total photovoltaic energy generation parameters are used as the categorical
+valued features. By way of this Naive Bayes program the sensitivity and the
+precision measures are improved for the photovoltaic energy prediction and also
+the consequences of other solar characteristics on the solar energy production
+have been assessed.
+</summary>
+    <author>
+      <name>Nirupam Bidikar</name>
+    </author>
+    <author>
+      <name>Kotoju Rajitha</name>
+    </author>
+    <author>
+      <name>P. Usha Supriya</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">added additional results and discussion added new references
+  corrected typos</arxiv:comment>
+    <link href="http://arxiv.org/abs/1902.06660v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1902.06660v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.08451v1</id>
+    <updated>2019-05-21T05:54:10Z</updated>
+    <published>2019-05-21T05:54:10Z</published>
+    <title>Spatially Constrained Spectral Clustering Algorithms for Region
+  Delineation</title>
+    <summary>  Regionalization is the task of dividing up a landscape into homogeneous
+patches with similar properties. Although this task has a wide range of
+applications, it has two notable challenges. First, it is assumed that the
+resulting regions are both homogeneous and spatially contiguous. Second, it is
+well-recognized that landscapes are hierarchical such that fine-scale regions
+are nested wholly within broader-scale regions. To address these two
+challenges, first, we develop a spatially constrained spectral clustering
+framework for region delineation that incorporates the tradeoff between region
+homogeneity and spatial contiguity. The framework uses a flexible, truncated
+exponential kernel to represent the spatial contiguity constraints, which is
+integrated with the landscape feature similarity matrix for region delineation.
+To address the second challenge, we extend the framework to create fine-scale
+regions that are nested within broader-scaled regions using a greedy, recursive
+bisection approach. We present a case study of a terrestrial ecology data set
+in the United States that compares the proposed framework with several baseline
+methods for regionalization. Experimental results suggest that the proposed
+framework for regionalization outperforms the baseline methods, especially in
+terms of balancing region contiguity and homogeneity, as well as creating
+regions of more similar size, which is often a desired trait of regions.
+</summary>
+    <author>
+      <name>Shuai Yuan</name>
+    </author>
+    <author>
+      <name>Pang-Ning Tan</name>
+    </author>
+    <author>
+      <name>Kendra Spence Cheruvelil</name>
+    </author>
+    <author>
+      <name>Sarah M. Collins</name>
+    </author>
+    <author>
+      <name>Patricia A. Soranno</name>
+    </author>
+    <link href="http://arxiv.org/abs/1905.08451v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1905.08451v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.01756v1</id>
+    <updated>2019-06-04T23:54:08Z</updated>
+    <published>2019-06-04T23:54:08Z</published>
+    <title>Slack Channels Ecology in Enterprises: How Employees Collaborate Through
+  Group Chat</title>
+    <summary>  Despite the long history of studying instant messaging usage in
+organizations, we know very little about how today's people participate in
+group chat channels and interact with others. In this short note, we aim to
+update the existing knowledge on how group chat is used in the context of
+today's organizations. We have the privilege of collecting a total of 4300
+publicly available group chat channels in Slack from an R\&amp;D department in a
+multinational IT company. Through qualitative coding of 100 channels, we
+identified 9 channel categories such as project based channels and event
+channels. We further defined a feature metric with 21 features to depict the
+group communication style for these group chat channels, with which we
+successfully trained a machine learning model that can automatically classify a
+given group channel into one of the 9 categories. In addition, we illustrated
+how these communication metrics could be used for analyzing teams'
+collaboration activities. We focused on 117 project teams as we have their
+performance data, and further collected 54 out of the 117 teams' Slack group
+data and generated the communication style metrics for each of them. With these
+data, we are able to build a regression model to reveal the relationship
+between these group communication styles and one indicator of the project team
+performance.
+</summary>
+    <author>
+      <name>Dakuo Wang</name>
+    </author>
+    <author>
+      <name>Haoyu Wang</name>
+    </author>
+    <author>
+      <name>Mo Yu</name>
+    </author>
+    <author>
+      <name>Zahra Ashktorab</name>
+    </author>
+    <author>
+      <name>Ming Tan</name>
+    </author>
+    <link href="http://arxiv.org/abs/1906.01756v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.01756v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1401.0303v4</id>
+    <updated>2015-06-16T10:19:18Z</updated>
+    <published>2014-01-01T16:22:10Z</published>
+    <title>Rediscovery of Good-Turing estimators via Bayesian nonparametrics</title>
+    <summary>  The problem of estimating discovery probabilities originated in the context
+of statistical ecology, and in recent years it has become popular due to its
+frequent appearance in challenging applications arising in genetics,
+bioinformatics, linguistics, designs of experiments, machine learning, etc. A
+full range of statistical approaches, parametric and nonparametric as well as
+frequentist and Bayesian, has been proposed for estimating discovery
+probabilities. In this paper we investigate the relationships between the
+celebrated Good-Turing approach, which is a frequentist nonparametric approach
+developed in the 1940s, and a Bayesian nonparametric approach recently
+introduced in the literature. Specifically, under the assumption of a two
+parameter Poisson-Dirichlet prior, we show that Bayesian nonparametric
+estimators of discovery probabilities are asymptotically equivalent, for a
+large sample size, to suitably smoothed Good-Turing estimators. As a by-product
+of this result, we introduce and investigate a methodology for deriving exact
+and asymptotic credible intervals to be associated with the Bayesian
+nonparametric estimators of discovery probabilities. The proposed methodology
+is illustrated through a comprehensive simulation study and the analysis of
+Expressed Sequence Tags data generated by sequencing a benchmark complementary
+DNA library.
+</summary>
+    <author>
+      <name>Stefano Favaro</name>
+    </author>
+    <author>
+      <name>Bernardo Nipoti</name>
+    </author>
+    <author>
+      <name>Yee Whye Teh</name>
+    </author>
+    <link href="http://arxiv.org/abs/1401.0303v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1401.0303v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1311.3576v2</id>
+    <updated>2014-05-08T15:56:54Z</updated>
+    <published>2013-11-14T16:56:34Z</published>
+    <title>Reproducing kernel Hilbert space based estimation of systems of ordinary
+  differential equations</title>
+    <summary>  Non-linear systems of differential equations have attracted the interest in
+fields like system biology, ecology or biochemistry, due to their flexibility
+and their ability to describe dynamical systems. Despite the importance of such
+models in many branches of science they have not been the focus of systematic
+statistical analysis until recently. In this work we propose a general approach
+to estimate the parameters of systems of differential equations measured with
+noise. Our methodology is based on the maximization of the penalized likelihood
+where the system of differential equations is used as a penalty. To do so, we
+use a Reproducing Kernel Hilbert Space approach that allows to formulate the
+estimation problem as an unconstrained numeric maximization problem easy to
+solve. The proposed method is tested with synthetically simulated data and it
+is used to estimate the unobserved transcription factor CdaR in Steptomyes
+coelicolor using gene expression data of the genes it regulates.
+</summary>
+    <author>
+      <name>Javier González</name>
+    </author>
+    <author>
+      <name>Ivan Vujačić</name>
+    </author>
+    <author>
+      <name>Ernst Wit</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">16 pages, 6 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1311.3576v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1311.3576v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.06820v1</id>
+    <updated>2018-02-19T19:26:48Z</updated>
+    <published>2018-02-19T19:26:48Z</published>
+    <title>Tools for higher-order network analysis</title>
+    <summary>  Networks are a fundamental model of complex systems throughout the sciences,
+and network datasets are typically analyzed through lower-order connectivity
+patterns described at the level of individual nodes and edges. However,
+higher-order connectivity patterns captured by small subgraphs, also called
+network motifs, describe the fundamental structures that control and mediate
+the behavior of many complex systems. We develop three tools for network
+analysis that use higher-order connectivity patterns to gain new insights into
+network datasets: (1) a framework to cluster nodes into modules based on joint
+participation in network motifs; (2) a generalization of the clustering
+coefficient measurement to investigate higher-order closure patterns; and (3) a
+definition of network motifs for temporal networks and fast algorithms for
+counting them. Using these tools, we analyze data from biology, ecology,
+economics, neuroscience, online social networks, scientific collaborations,
+telecommunications, transportation, and the World Wide Web.
+</summary>
+    <author>
+      <name>Austin R. Benson</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Ph.D. Thesis, Stanford University, 2017</arxiv:comment>
+    <link href="http://arxiv.org/abs/1802.06820v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.06820v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cond-mat.stat-mech" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1804.04978v2</id>
+    <updated>2018-08-04T10:36:28Z</updated>
+    <published>2018-04-13T15:01:39Z</published>
+    <title>Eigenvalues of random graphs with cycles</title>
+    <summary>  Networks and graphs are often studied using the eigenvalues of their
+adjacency matrix, an powerful mathematical tool with applications on fields as
+diverse as systems engineering, ecology, machine learning and neuroscience. As
+in those applications the exact graph structure is not known, researchers
+resort to random graphs to obtain eigenvalue properties from known structural
+features. However, this theory is not intuitive and only few results are known.
+In this paper we tackle this problem through the cycles in a graph. We start by
+deriving a simple relation between eigenvalues and cycle weights and we apply
+it to two structural features: The spectral radius of circulant graphs and the
+eigenvalue distribution of random graphs with motifs. During this study we
+empirically uncover to surprising phenomena: First, circulant directed networks
+have eigenvalues distributed in concentric circles around the origin. Second,
+the eigenvalues of a network with abundance of short cycles are confined to the
+interior of a $\tau$-ellipse --an ellipse with $\tau$ foci-- in the complex
+plane, where $\tau$ is the length of the cycles. Our approach offers an
+intuitive way to study eigenvalues on graphs and in doing so reveals surprising
+connections between random matrix theory and planar geometry.
+</summary>
+    <author>
+      <name>Pau Vilimelis Aceituno</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">10 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1804.04978v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1804.04978v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="math.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.PR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="60" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1805.05090v1</id>
+    <updated>2018-05-14T09:57:25Z</updated>
+    <published>2018-05-14T09:57:25Z</published>
+    <title>Hyperspectral Data Analysis in R: the hsdar Package</title>
+    <summary>  Hyperspectral remote sensing is a promising tool for a variety of
+applications including ecology, geology, analytical chemistry and medical
+research. This article presents the new \hsdar package for R statistical
+software, which performs a variety of analysis steps taken during a typical
+hyperspectral remote sensing approach. The package introduces a new class for
+efficiently storing large hyperspectral datasets such as hyperspectral cubes
+within R. The package includes several important hyperspectral analysis tools
+such as continuum removal, normalized ratio indices and integrates two widely
+used radiation transfer models. In addition, the package provides methods to
+directly use the functionality of the caret package for machine learning tasks.
+Two case studies demonstrate the package's range of functionality: First, plant
+leaf chlorophyll content is estimated and second, cancer in the human larynx is
+detected from hyperspectral data.
+</summary>
+    <author>
+      <name>Lukas W. Lehnert</name>
+    </author>
+    <author>
+      <name>Hanna Meyer</name>
+    </author>
+    <author>
+      <name>Wolfgang A. Obermeier</name>
+    </author>
+    <author>
+      <name>Brenner Silva</name>
+    </author>
+    <author>
+      <name>Bianca Regeling</name>
+    </author>
+    <author>
+      <name>Jörg Bendix</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.18637/jss.v089.i12</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.18637/jss.v089.i12" rel="related"/>
+    <link href="http://arxiv.org/abs/1805.05090v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1805.05090v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.OT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.OT" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.07908v1</id>
+    <updated>2019-04-16T18:19:32Z</updated>
+    <published>2019-04-16T18:19:32Z</published>
+    <title>An efficient stochastic Newton algorithm for parameter estimation in
+  logistic regressions</title>
+    <summary>  Logistic regression is a well-known statistical model which is commonly used
+in the situation where the output is a binary random variable. It has a wide
+range of applications including machine learning, public health, social
+sciences, ecology and econometry. In order to estimate the unknown parameters
+of logistic regression with data streams arriving sequentially and at high
+speed, we focus our attention on a recursive stochastic algorithm. More
+precisely, we investigate the asymptotic behavior of a new stochastic Newton
+algorithm. It enables to easily update the estimates when the data arrive
+sequentially and to have research steps in all directions. We establish the
+almost sure convergence of our stochastic Newton algorithm as well as its
+asymptotic normality. All our theoretical results are illustrated by numerical
+experiments.
+</summary>
+    <author>
+      <name>Bernard Bercu</name>
+    </author>
+    <author>
+      <name>Antoine Godichon-Baggioni</name>
+    </author>
+    <author>
+      <name>Bruno Portier</name>
+    </author>
+    <link href="http://arxiv.org/abs/1904.07908v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.07908v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.TH" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.12408v1</id>
+    <updated>2018-11-29T13:52:13Z</updated>
+    <published>2018-11-29T13:52:13Z</published>
+    <title>From Context to Concept: Exploring Semantic Relationships in Music with
+  Word2Vec</title>
+    <summary>  We explore the potential of a popular distributional semantics vector space
+model, word2vec, for capturing meaningful relationships in ecological (complex
+polyphonic) music. More precisely, the skip-gram version of word2vec is used to
+model slices of music from a large corpus spanning eight musical genres. In
+this newly learned vector space, a metric based on cosine distance is able to
+distinguish between functional chord relationships, as well as harmonic
+associations in the music. Evidence, based on cosine distance between
+chord-pair vectors, suggests that an implicit circle-of-fifths exists in the
+vector space. In addition, a comparison between pieces in different keys
+reveals that key relationships are represented in word2vec space. These results
+suggest that the newly learned embedded vector representation does in fact
+capture tonal and harmonic characteristics of music, without receiving explicit
+information about the musical content of the constituent slices. In order to
+investigate whether proximity in the discovered space of embeddings is
+indicative of `semantically-related' slices, we explore a music generation
+task, by automatically replacing existing slices from a given piece of music
+with new slices. We propose an algorithm to find substitute slices based on
+spatial proximity and the pitch class distribution inferred in the chosen
+subspace. The results indicate that the size of the subspace used has a
+significant effect on whether slices belonging to the same key are selected. In
+sum, the proposed word2vec model is able to learn music-vector embeddings that
+capture meaningful tonal and harmonic relationships in music, thereby providing
+a useful tool for exploring musical properties and comparisons across pieces,
+as a potential input representation for deep learning models, and as a music
+generation device.
+</summary>
+    <author>
+      <name>Ching-Hua Chuan</name>
+    </author>
+    <author>
+      <name>Kat Agres</name>
+    </author>
+    <author>
+      <name>Dorien Herremans</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for publication in Neural Computing and Applications,
+  Springer. In Press</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Neural Computing and Applications, Springer. 2019</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1811.12408v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.12408v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.AS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="68Txx, 68Wxx" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1808.04022v1</id>
+    <updated>2018-08-12T23:47:10Z</updated>
+    <published>2018-08-12T23:47:10Z</published>
+    <title>Interpretable Time Series Classification using All-Subsequence Learning
+  and Symbolic Representations in Time and Frequency Domains</title>
+    <summary>  The time series classification literature has expanded rapidly over the last
+decade, with many new classification approaches published each year. The
+research focus has mostly been on improving the accuracy and efficiency of
+classifiers, while their interpretability has been somewhat neglected.
+Classifier interpretability has become a critical constraint for many
+application domains and the introduction of the 'right to explanation' GDPR EU
+legislation in May 2018 is likely to further emphasize the importance of
+explainable learning algorithms. In this work we analyse the state-of-the-art
+for time series classification, and propose new algorithms that aim to maintain
+the classifier accuracy and efficiency, but keep interpretability as a key
+design constraint. We present new time series classification algorithms that
+advance the state-of-the-art by implementing the following three key ideas: (1)
+Multiple resolutions of symbolic approximations: we combine symbolic
+representations obtained using different parameters; (2) Multiple domain
+representations: we combine symbolic approximations in time (e.g., SAX) and
+frequency (e.g., SFA) domains; (3) Efficient navigation of a huge
+symbolic-words space: we adapt a symbolic sequence classifier named SEQL, to
+make it work with multiple domain representations (e.g., SAX-SEQL, SFA-SEQL),
+and use its greedy feature selection strategy to effectively filter the best
+features for each representation. We show that a multi-resolution multi-domain
+linear classifier, SAX-SFA-SEQL, achieves a similar accuracy to the
+state-of-the-art COTE ensemble, and to a recent deep learning method (FCN), but
+uses a fraction of the time required by either COTE or FCN. We discuss the
+accuracy, efficiency and interpretability of our proposed algorithms. To
+further analyse the interpretability aspect of our classifiers, we present a
+case study on an ecology benchmark.
+</summary>
+    <author>
+      <name>Thach Le Nguyen</name>
+    </author>
+    <author>
+      <name>Severin Gsponer</name>
+    </author>
+    <author>
+      <name>Iulia Ilie</name>
+    </author>
+    <author>
+      <name>Georgiana Ifrim</name>
+    </author>
+    <link href="http://arxiv.org/abs/1808.04022v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1808.04022v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.02495v1</id>
+    <updated>2019-01-08T20:08:42Z</updated>
+    <published>2019-01-08T20:08:42Z</published>
+    <title>Presence-absence estimation in audio recordings of tropical frog
+  communities</title>
+    <summary>  One non-invasive way to study frog communities is by analyzing long-term
+samples of acoustic material containing calls. This immense task has been
+optimized by the development of Machine Learning tools to extract ecological
+information. We explored a likelihood-ratio audio detector based on Gaussian
+mixture model classification of 10 frog species, and applied it to estimate
+presence-absence in audio recordings from an actual amphibian monitoring
+performed at Yasun\'i National Park in the Ecuadorian Amazonia. A modified
+filter-bank was used to extract 20 cepstral features that model the spectral
+content of frog calls. Experiments were carried out to investigate the
+hyperparameters and the minimum frog-call time needed to train an accurate GMM
+classifier. With 64 Gaussians and 12 seconds of training time, the classifier
+achieved an average weighted error rate of 0.9% on the 10-fold cross-validation
+for nine species classification, as compared to 3% with MFCC and 1.8% with PLP
+features. For testing, 10 GMMs were trained using all the available
+training-validation dataset to study 23.5 hours in 141, 10-minute long samples
+of unidentified real-world audio recorded at two frog communities in 2001 with
+analog equipment. To evaluate automatic presence-absence estimation, we
+characterized the audio samples with 10 binary variables each corresponding to
+a frog species, and manually labeled a sub-set of 18 samples using headphones.
+A recall of 87.5% and precision of 100% with average accuracy of 96.66%
+suggests good generalization ability of the algorithm, and provides evidence of
+the validity of this approach to study real-world audio recorded in a tropical
+acoustic environment. Finally, we applied the algorithm to the available
+corpus, and show its potentiality to gain insights into the temporal
+reproductive behavior of frogs.
+</summary>
+    <author>
+      <name>Andrés Estrella Terneux</name>
+    </author>
+    <author>
+      <name>Damián Nicolalde</name>
+    </author>
+    <author>
+      <name>Daniel Nicolalde</name>
+    </author>
+    <author>
+      <name>Andrés Merino-Viteri</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">27 pages, 13 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1901.02495v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.02495v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.AS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1405.2881v4</id>
+    <updated>2015-08-08T17:20:57Z</updated>
+    <published>2014-05-12T19:15:32Z</published>
+    <title>Consistency of random forests</title>
+    <summary>  Random forests are a learning algorithm proposed by Breiman [Mach. Learn. 45
+(2001) 5--32] that combines several randomized decision trees and aggregates
+their predictions by averaging. Despite its wide usage and outstanding
+practical performance, little is known about the mathematical properties of the
+procedure. This disparity between theory and practice originates in the
+difficulty to simultaneously analyze both the randomization process and the
+highly data-dependent tree structure. In the present paper, we take a step
+forward in forest exploration by proving a consistency result for Breiman's
+[Mach. Learn. 45 (2001) 5--32] original algorithm in the context of additive
+regression models. Our analysis also sheds an interesting light on how random
+forests can nicely adapt to sparsity. 1. Introduction. Random forests are an
+ensemble learning method for classification and regression that constructs a
+number of randomized decision trees during the training phase and predicts by
+averaging the results. Since its publication in the seminal paper of Breiman
+(2001), the procedure has become a major data analysis tool, that performs well
+in practice in comparison with many standard methods. What has greatly
+contributed to the popularity of forests is the fact that they can be applied
+to a wide range of prediction problems and have few parameters to tune. Aside
+from being simple to use, the method is generally recognized for its accuracy
+and its ability to deal with small sample sizes, high-dimensional feature
+spaces and complex data structures. The random forest methodology has been
+successfully involved in many practical problems, including air quality
+prediction (winning code of the EMC data science global hackathon in 2012, see
+http://www.kaggle.com/c/dsg-hackathon), chemoinformatics [Svetnik et al.
+(2003)], ecology [Prasad, Iverson and Liaw (2006), Cutler et al. (2007)], 3D
+</summary>
+    <author>
+      <name>Erwan Scornet</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LSTA</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Gérard Biau</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LSTA, LPMA</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Jean-Philippe Vert</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">CBIO</arxiv:affiliation>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1214/15-AOS1321</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1214/15-AOS1321" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Annals of Statistics, Institute of Mathematical Statistics (IMS),
+  2015, 43 (4), pp.1716-1741</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1405.2881v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1405.2881v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.TH" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/0811.0484v1</id>
+    <updated>2008-11-04T15:30:37Z</updated>
+    <published>2008-11-04T15:30:37Z</published>
+    <title>Hierarchical structure and the prediction of missing links in networks</title>
+    <summary>  Networks have in recent years emerged as an invaluable tool for describing
+and quantifying complex systems in many branches of science. Recent studies
+suggest that networks often exhibit hierarchical organization, where vertices
+divide into groups that further subdivide into groups of groups, and so forth
+over multiple scales. In many cases these groups are found to correspond to
+known functional units, such as ecological niches in food webs, modules in
+biochemical networks (protein interaction networks, metabolic networks, or
+genetic regulatory networks), or communities in social networks. Here we
+present a general technique for inferring hierarchical structure from network
+data and demonstrate that the existence of hierarchy can simultaneously explain
+and quantitatively reproduce many commonly observed topological properties of
+networks, such as right-skewed degree distributions, high clustering
+coefficients, and short path lengths. We further show that knowledge of
+hierarchical structure can be used to predict missing connections in partially
+known networks with high accuracy, and for more general network structures than
+competing techniques. Taken together, our results suggest that hierarchy is a
+central organizing principle of complex networks, capable of offering insight
+into many network phenomena.
+</summary>
+    <author>
+      <name>Aaron Clauset</name>
+    </author>
+    <author>
+      <name>Cristopher Moore</name>
+    </author>
+    <author>
+      <name>M. E. J. Newman</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1038/nature06830</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1038/nature06830" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">8 pages, 7 figures, 1 table, includes Supplementary Information</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Nature 453, 98 - 101 (2008)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/0811.0484v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/0811.0484v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.MN" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1711.07287v1</id>
+    <updated>2017-11-20T12:45:36Z</updated>
+    <published>2017-11-20T12:45:36Z</published>
+    <title>Non-exchangeable random partition models for microclustering</title>
+    <summary>  Many popular random partition models, such as the Chinese restaurant process
+and its two-parameter extension, fall in the class of exchangeable random
+partitions, and have found wide applicability in model-based clustering,
+population genetics, ecology or network analysis. While the exchangeability
+assumption is sensible in many cases, it has some strong implications. In
+particular, Kingman's representation theorem implies that the size of the
+clusters necessarily grows linearly with the sample size; this feature may be
+undesirable for some applications, as recently pointed out by Miller et al.
+(2015). We present here a flexible class of non-exchangeable random partition
+models which are able to generate partitions whose cluster sizes grow
+sublinearly with the sample size, and where the growth rate is controlled by
+one parameter. Along with this result, we provide the asymptotic behaviour of
+the number of clusters of a given size, and show that the model can exhibit a
+power-law behavior, controlled by another parameter. The construction is based
+on completely random measures and a Poisson embedding of the random partition,
+and inference is performed using a Sequential Monte Carlo algorithm.
+Additionally, we show how the model can also be directly used to generate
+sparse multigraphs with power-law degree distributions and degree sequences
+with sublinear growth. Finally, experiments on real datasets emphasize the
+usefulness of the approach compared to a two-parameter Chinese restaurant
+process.
+</summary>
+    <author>
+      <name>Giuseppe Di Benedetto</name>
+    </author>
+    <author>
+      <name>François Caron</name>
+    </author>
+    <author>
+      <name>Yee Whye Teh</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">20 pages, 18 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1711.07287v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1711.07287v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1712.09440v1</id>
+    <updated>2017-12-21T20:26:37Z</updated>
+    <published>2017-12-21T20:26:37Z</published>
+    <title>The Census and the Second Law: An Entropic Approach to Optimal
+  Apportionment for the U.S. House of Representatives</title>
+    <summary>  The Constitutionally mandated task of assigning Congressional seats to the
+various U.S. States proportional to their represented populations ("according
+to their numbers") has engendered much contention, but rather less consensus.
+Using the same principles of entropic inference that underlie the foundations
+of information theory and statistical thermodynamics, and also enjoy fruitful
+application in image processing, spectral analysis, machine learning,
+econometrics, bioinformatics, and a growing number of other fields, we motivate
+and explore a method for Congressional apportionment based on minimizing
+relative entropy (also known as Kullback-Leibler divergence), or, equivalently,
+maximizing Shannon entropy. In terms of communication theory, we might say that
+the entropic apportionment gives each constituent as equal a voice as possible.
+If we view representational weight as a finite resource to be distributed
+amongst the represented population, the entropic measure is identical with the
+Theil index long employed in economics to measure inequality in the
+distribution of wealth or income, or in ecology to measure the distribution of
+biomass or reproductive fitness. Besides Congressional apportionment, the
+method is also directly applicable to other multi-regional or
+multi-constituency legislatures, to party-list proportional voting systems used
+in various parliamentary elections, and similar settings, where the task is to
+allocate a discrete number of seats or other resources, and the primary goal is
+one of maximal proportionality or equity. In addition, the same entropic
+figure-of-merit can be used in parallel to compare different choices for the
+total number of representatives, and then subsequently to assess different
+Congressional district sizes, after seats are assigned and proposed district
+boundaries drawn.
+</summary>
+    <author>
+      <name>A. E. Charman</name>
+    </author>
+    <link href="http://arxiv.org/abs/1712.09440v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1712.09440v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1710.11304v1</id>
+    <updated>2017-10-31T02:35:13Z</updated>
+    <published>2017-10-31T02:35:13Z</published>
+    <title>Characterizing the structural diversity of complex networks across
+  domains</title>
+    <summary>  The structure of complex networks has been of interest in many scientific and
+engineering disciplines over the decades. A number of studies in the field have
+been focused on finding the common properties among different kinds of networks
+such as heavy-tail degree distribution, small-worldness and modular structure
+and they have tried to establish a theory of structural universality in complex
+networks. However, there is no comprehensive study of network structure across
+a diverse set of domains in order to explain the structural diversity we
+observe in the real-world networks. In this paper, we study 986 real-world
+networks of diverse domains ranging from ecological food webs to online social
+networks along with 575 networks generated from four popular network models.
+Our study utilizes a number of machine learning techniques such as random
+forest and confusion matrix in order to show the relationships among network
+domains in terms of network structure. Our results indicate that there are some
+partitions of network categories in which networks are hard to distinguish
+based purely on network structure. We have found that these partitions of
+network categories tend to have similar underlying functions, constraints
+and/or generative mechanisms of networks even though networks in the same
+partition have different origins, e.g., biological processes, results of
+engineering by human being, etc. This suggests that the origin of a network,
+whether it's biological, technological or social, may not necessarily be a
+decisive factor of the formation of similar network structure. Our findings
+shed light on the possible direction along which we could uncover the hidden
+principles for the structural diversity of complex networks.
+</summary>
+    <author>
+      <name>Kansuke Ikehara</name>
+    </author>
+    <author>
+      <name>Aaron Clauset</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">23 pages, 11 figures, 2 tables; originally published as K. Ikehara,
+  "The Structure of Complex Networks across Domains." MS Thesis, University of
+  Colorado Boulder (2016)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1710.11304v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1710.11304v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.MN" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1711.03410v2</id>
+    <updated>2017-11-13T21:34:30Z</updated>
+    <published>2017-11-09T15:05:59Z</published>
+    <title>Using Phone Sensors and an Artificial Neural Network to Detect Gait
+  Changes During Drinking Episodes in the Natural Environment</title>
+    <summary>  Phone sensors could be useful in assessing changes in gait that occur with
+alcohol consumption. This study determined (1) feasibility of collecting
+gait-related data during drinking occasions in the natural environment, and (2)
+how gait-related features measured by phone sensors relate to estimated blood
+alcohol concentration (eBAC). Ten young adult heavy drinkers were prompted to
+complete a 5-step gait task every hour from 8pm to 12am over four consecutive
+weekends. We collected 3-xis accelerometer, gyroscope, and magnetometer data
+from phone sensors, and computed 24 gait-related features using a sliding
+window technique. eBAC levels were calculated at each time point based on
+Ecological Momentary Assessment (EMA) of alcohol use. We used an artificial
+neural network model to analyze associations between sensor features and eBACs
+in training (70% of the data) and validation and test (30% of the data)
+datasets. We analyzed 128 data points where both eBAC and gait-related sensor
+data was captured, either when not drinking (n=60), while eBAC was ascending
+(n=55) or eBAC was descending (n=13). 21 data points were captured at times
+when the eBAC was greater than the legal limit (0.08 mg/dl). Using a Bayesian
+regularized neural network, gait-related phone sensor features showed a high
+correlation with eBAC (Pearson's r &gt; 0.9), and &gt;95% of estimated eBAC would
+fall between -0.012 and +0.012 of actual eBAC. It is feasible to collect
+gait-related data from smartphone sensors during drinking occasions in the
+natural environment. Sensor-based features can be used to infer gait changes
+associated with elevated blood alcohol content.
+</summary>
+    <author>
+      <name>Brian Suffoletto</name>
+    </author>
+    <author>
+      <name>Pedram Gharani</name>
+    </author>
+    <author>
+      <name>Tammy Chung</name>
+    </author>
+    <author>
+      <name>Hassan Karimi</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.gaitpost.2017.11.019</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.gaitpost.2017.11.019" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Gait Posture 60 (2018) 116-12</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1711.03410v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1711.03410v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1703.05830v5</id>
+    <updated>2017-11-15T19:29:24Z</updated>
+    <published>2017-03-16T21:35:15Z</published>
+    <title>Automatically identifying, counting, and describing wild animals in
+  camera-trap images with deep learning</title>
+    <summary>  Having accurate, detailed, and up-to-date information about the location and
+behavior of animals in the wild would revolutionize our ability to study and
+conserve ecosystems. We investigate the ability to automatically, accurately,
+and inexpensively collect such data, which could transform many fields of
+biology, ecology, and zoology into "big data" sciences. Motion sensor "camera
+traps" enable collecting wildlife pictures inexpensively, unobtrusively, and
+frequently. However, extracting information from these pictures remains an
+expensive, time-consuming, manual task. We demonstrate that such information
+can be automatically extracted by deep learning, a cutting-edge type of
+artificial intelligence. We train deep convolutional neural networks to
+identify, count, and describe the behaviors of 48 species in the
+3.2-million-image Snapshot Serengeti dataset. Our deep neural networks
+automatically identify animals with over 93.8% accuracy, and we expect that
+number to improve rapidly in years to come. More importantly, if our system
+classifies only images it is confident about, our system can automate animal
+identification for 99.3% of the data while still performing at the same 96.6%
+accuracy as that of crowdsourced teams of human volunteers, saving more than
+8.4 years (at 40 hours per week) of human labeling effort (i.e. over 17,000
+hours) on this 3.2-million-image dataset. Those efficiency gains immediately
+highlight the importance of using deep neural networks to automate data
+extraction from camera-trap images. Our results suggest that this technology
+could enable the inexpensive, unobtrusive, high-volume, and even real-time
+collection of a wealth of information about vast numbers of animals in the
+wild.
+</summary>
+    <author>
+      <name>Mohammed Sadegh Norouzzadeh</name>
+    </author>
+    <author>
+      <name>Anh Nguyen</name>
+    </author>
+    <author>
+      <name>Margaret Kosmala</name>
+    </author>
+    <author>
+      <name>Ali Swanson</name>
+    </author>
+    <author>
+      <name>Meredith Palmer</name>
+    </author>
+    <author>
+      <name>Craig Packer</name>
+    </author>
+    <author>
+      <name>Jeff Clune</name>
+    </author>
+    <link href="http://arxiv.org/abs/1703.05830v5" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1703.05830v5" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.04255v2</id>
+    <updated>2018-02-14T13:15:50Z</updated>
+    <published>2018-02-11T11:55:39Z</published>
+    <title>Systems of Global Governance in the Era of Human-Machine Convergence</title>
+    <summary>  Technology is increasingly shaping our social structures and is becoming a
+driving force in altering human biology. Besides, human activities already
+proved to have a significant impact on the Earth system which in turn generates
+complex feedback loops between social and ecological systems. Furthermore,
+since our species evolved relatively fast from small groups of hunter-gatherers
+to large and technology-intensive urban agglomerations, it is not a surprise
+that the major institutions of human society are no longer fit to cope with the
+present complexity. In this note we draw foundational parallelisms between
+neurophysiological systems and ICT-enabled social systems, discussing how
+frameworks rooted in biology and physics could provide heuristic value in the
+design of evolutionary systems relevant to politics and economics. In this
+regard we highlight how the governance of emerging technology (i.e.
+nanotechnology, biotechnology, information technology, and cognitive science),
+and the one of climate change both presently confront us with a number of
+connected challenges. In particular: historically high level of inequality; the
+co-existence of growing multipolar cultural systems in an unprecedentedly
+connected world; the unlikely reaching of the institutional agreements required
+to deviate abnormal trajectories of development. We argue that wise general
+solutions to such interrelated issues should embed the deep understanding of
+how to elicit mutual incentives in the socio-economic subsystems of Earth
+system in order to jointly concur to a global utility function (e.g. avoiding
+the reach of planetary boundaries and widespread social unrest). We leave some
+open questions on how techno-social systems can effectively learn and adapt
+with respect to our understanding of geopolitical complexity.
+</summary>
+    <author>
+      <name>Eugenio Maria Battaglia</name>
+    </author>
+    <author>
+      <name>Jie Mei</name>
+    </author>
+    <author>
+      <name>Guillaume Dumas</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">23 pages, 213 references</arxiv:comment>
+    <link href="http://arxiv.org/abs/1802.04255v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.04255v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.NC" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.10968v1</id>
+    <updated>2019-01-30T17:35:42Z</updated>
+    <published>2019-01-30T17:35:42Z</published>
+    <title>Bootstrapping Robotic Ecological Perception from a Limited Set of
+  Hypotheses Through Interactive Perception</title>
+    <summary>  To solve its task, a robot needs to have the ability to interpret its
+perceptions. In vision, this interpretation is particularly difficult and
+relies on the understanding of the structure of the scene, at least to the
+extent of its task and sensorimotor abilities. A robot with the ability to
+build and adapt this interpretation process according to its own tasks and
+capabilities would push away the limits of what robots can achieve in a non
+controlled environment. A solution is to provide the robot with processes to
+build such representations that are not specific to an environment or a
+situation. A lot of works focus on objects segmentation, recognition and
+manipulation. Defining an object solely on the basis of its visual appearance
+is challenging given the wide range of possible objects and environments.
+Therefore, current works make simplifying assumptions about the structure of a
+scene. Such assumptions reduce the adaptivity of the object extraction process
+to the environments in which the assumption holds. To limit such assumptions,
+we introduce an exploration method aimed at identifying moveable elements in a
+scene without considering the concept of object. By using the interactive
+perception framework, we aim at bootstrapping the acquisition process of a
+representation of the environment with a minimum of context specific
+assumptions. The robotic system builds a perceptual map called relevance map
+which indicates the moveable parts of the current scene. A classifier is
+trained online to predict the category of each region (moveable or
+non-moveable). It is also used to select a region with which to interact, with
+the goal of minimizing the uncertainty of the classification. A specific
+classifier is introduced to fit these needs: the collaborative mixture models
+classifier. The method is tested on a set of scenarios of increasing
+complexity, using both simulations and a PR2 robot.
+</summary>
+    <author>
+      <name>Léni K. Le Goff</name>
+    </author>
+    <author>
+      <name>Ghanim Mukhtar</name>
+    </author>
+    <author>
+      <name>Alexandre Coninx</name>
+    </author>
+    <author>
+      <name>Stéphane Doncieux</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">21 pages, 21 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1901.10968v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.10968v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

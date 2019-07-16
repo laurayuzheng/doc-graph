@@ -1,0 +1,17 @@
+DeepCSO: Forecasting of Combined Sewer Overflow at a Citywide Level
+  using Multi-task Deep Learning
+  Combined Sewer Overflow (CSO) is a major problem to be addressed by many
+cities. Understanding the behavior of sewer system through proper urban
+hydrological models is an effective method of enhancing sewer system
+management. Conventional deterministic methods, which heavily rely on physical
+principles, is inappropriate for real-time purpose due to their expensive
+computation. On the other hand, data-driven methods have gained huge interests,
+but most studies only focus on modeling a single component of the sewer system
+and supply information at a very abstract level. In this paper, we proposed the
+DeepCSO model, which aims at forecasting CSO events from multiple CSO
+structures simultaneously in near real time at a citywide level. The proposed
+model provided an intermediate methodology that combines the flexibility of
+data-driven methods and the rich information contained in deterministic methods
+while avoiding the drawbacks of these two methods. A comparison of the results
+demonstrated that the deep learning based multi-task model is superior to the
+traditional methods.

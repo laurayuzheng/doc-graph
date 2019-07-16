@@ -1,0 +1,17 @@
+Ensemble model aggregation using a computationally lightweight
+  machine-learning model to forecast ocean waves
+  This study investigated an approach to improve the accuracy of
+computationally lightweight surrogate models by updating forecasts based on
+historical accuracy relative to sparse observation data. Using a lightweight,
+ocean-wave forecasting model, we created a large number of model ensembles,
+with perturbed inputs, for a two-year study period. Forecasts were aggregated
+using a machine-learning algorithm that combined forecasts from multiple,
+independent models into a single 'best-estimate' prediction of the true state,
+based on historical performance relative to observations. The framework was
+applied to a case-study site in Monterey Bay, California.
+A~learning-aggregation technique used historical observations and model
+forecasts to calculate a weight for each ensemble member. Weighted ensemble
+predictions were compared to measured wave conditions to evaluate performance
+against present state-of-the-art. Finally, we discuss how this framework, which
+integrates ensemble aggregations and surrogate models, can be used to improve
+forecasting systems and scientific process studies.

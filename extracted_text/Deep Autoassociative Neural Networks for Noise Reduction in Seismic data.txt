@@ -1,0 +1,21 @@
+Deep Autoassociative Neural Networks for Noise Reduction in Seismic data
+  Machine learning is currently a trending topic in various science and
+engineering disciplines, and the field of geophysics is no exception. With the
+advent of powerful computers, it is now possible to train the machine to learn
+complex patterns in the data, which may not be easily realized using the
+traditional methods. Among the various machine learning methods, the artificial
+neural networks (ANNs) have received enormous attention. A variant of ANNs,
+autoassociative neural network (autoNN) tries to learn the reconstruction of
+input itself using backpropagation. In an autoNN, the input and output are the
+same, and an approximation to the identity mapping is obtained in a nonlinear
+setting. AutoNNs have primarily been used to extract sparse internal
+representations of any input and reduce its dimensionality. In this paper, we
+explore the potential of autoNNs in reducing random noise in geophysical data.
+In this paper, the first results of this study are presented. The synthetic
+mathematical example demonstrates the concept of autoNN. For the test seismic
+data, it is observed that autoNN can significantly remove the vertical time-
+and frequency-local noise, however, the resolution of the output signal is
+compromised to a certain extent. Future work includes testing larger examples
+with several different types of noise, and using deep-stacked-autoNNs to
+further reduce the noise, ensuring minimal compromise with the resolution of
+the signal.

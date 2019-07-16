@@ -1,0 +1,17 @@
+Strictly proper kernel scores and characteristic kernels on compact
+  spaces
+  Strictly proper kernel scores are well-known tool in probabilistic
+forecasting, while characteristic kernels have been extensively investigated in
+the machine learning literature. We first show that both notions coincide, so
+that insights from one part of the literature can be used in the other. We then
+show that the metric induced by a characteristic kernel cannot reliably
+distinguish between distributions that are far apart in the total variation
+norm as soon as the underlying space of measures is infinite dimensional. In
+addition, we provide a characterization of characteristic kernels in terms of
+eigenvalues and -functions and apply this characterization to the case of
+continuous kernels on (locally) compact spaces. In the compact case we further
+show that characteristic kernels exist if and only if the space is metrizable.
+As special cases of our general theory we investigate translation-invariant
+kernels on compact Abelian groups and isotropic kernels on spheres. The latter
+are of particular interest for forecast evaluation of probabilistic predictions
+on spherical domains as frequently encountered in meteorology and climatology.

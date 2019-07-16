@@ -1,0 +1,18 @@
+Data-driven Air Quality Characterisation for Urban Environments: a Case
+  Study
+  The economic and social impact of poor air quality in towns and cities is
+increasingly being recognised, together with the need for effective ways of
+creating awareness of real-time air quality levels and their impact on human
+health. With local authority maintained monitoring stations being
+geographically sparse and the resultant datasets also featuring missing labels,
+computational data-driven mechanisms are needed to address the data sparsity
+challenge. In this paper, we propose a machine learning-based method to
+accurately predict the Air Quality Index (AQI), using environmental monitoring
+data together with meteorological measurements. To do so, we develop an air
+quality estimation framework that implements a neural network that is enhanced
+with a novel Non-linear Autoregressive neural network with exogenous input
+(NARX), especially designed for time series prediction. The framework is
+applied to a case study featuring different monitoring sites in London, with
+comparisons against other standard machine-learning based predictive algorithms
+showing the feasibility and robust performance of the proposed method for
+different kinds of areas within an urban region.

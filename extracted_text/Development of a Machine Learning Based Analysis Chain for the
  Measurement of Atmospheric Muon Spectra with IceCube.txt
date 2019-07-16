@@ -1,0 +1,12 @@
+Development of a Machine Learning Based Analysis Chain for the
+  Measurement of Atmospheric Muon Spectra with IceCube
+  High-energy muons from air shower events detected in IceCube are selected
+using state of the art machine learning algorithms. Attributes to distinguish a
+HE-muon event from the background of low-energy muon bundles are selected using
+the mRMR algorithm and the events are classified by a random forest model. In a
+subsequent analysis step the obtained sample is used to reconstruct the
+atmospheric muon energy spectrum, using the unfolding software TRUEE. The
+reconstructed spectrum covers an energy range from $10^4\,$GeV to $10^6\,$GeV.
+The general analysis scheme is presented, including results using the first
+year of data taken with IceCube in its complete configuration with $86$
+instrumented strings.

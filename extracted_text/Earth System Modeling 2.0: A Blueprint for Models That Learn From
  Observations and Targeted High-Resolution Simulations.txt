@@ -1,0 +1,16 @@
+Earth System Modeling 2.0: A Blueprint for Models That Learn From
+  Observations and Targeted High-Resolution Simulations
+  Climate projections continue to be marred by large uncertainties, which
+originate in processes that need to be parameterized, such as clouds,
+convection, and ecosystems. But rapid progress is now within reach. New
+computational tools and methods from data assimilation and machine learning
+make it possible to integrate global observations and local high-resolution
+simulations in an Earth system model (ESM) that systematically learns from
+both. Here we propose a blueprint for such an ESM. We outline how
+parameterization schemes can learn from global observations and targeted
+high-resolution simulations, for example, of clouds and convection, through
+matching low-order statistics between ESMs, observations, and high-resolution
+simulations. We illustrate learning algorithms for ESMs with a simple dynamical
+system that shares characteristics of the climate system; and we discuss the
+opportunities the proposed framework presents and the challenges that remain to
+realize it.

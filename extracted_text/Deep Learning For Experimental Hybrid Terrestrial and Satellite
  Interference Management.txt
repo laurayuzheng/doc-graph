@@ -1,0 +1,15 @@
+Deep Learning For Experimental Hybrid Terrestrial and Satellite
+  Interference Management
+  Interference Management is a vast topic present in many disciplines. The
+majority of wireless standards suffer the drawback of interference intrusion
+and the network efficiency drop due to that. Traditionally, interference
+management has been addressed by proposing signal processing techniques that
+minimize their effects locally. However, the fast evolution of future
+communications makes difficult to adapt to new era. In this paper we propose
+the use of Deep Learning techniques to present a compact system for
+interference management. In particular, we describe two subsystems capable to
+detect the presence of interference, even in high Signal to Interference Ratio
+(SIR), and interference classification in several radio standards. Finally, we
+present results based on real signals captured from terrestrial and satellite
+networks and the conclusions unveil the courageous future of AI and wireless
+communications.

@@ -1,0 +1,18 @@
+Parametrization of stochastic inputs using generative adversarial
+  networks with application in geology
+  We investigate artificial neural networks as a parametrization tool for
+stochastic inputs in numerical simulations. We address parametrization from the
+point of view of emulating the data generating process, instead of explicitly
+constructing a parametric form to preserve predefined statistics of the data.
+This is done by training a neural network to generate samples from the data
+distribution using a recent deep learning technique called generative
+adversarial networks. By emulating the data generating process, the relevant
+statistics of the data are replicated. The method is assessed in subsurface
+flow problems, where effective parametrization of underground properties such
+as permeability is important due to the high dimensionality and presence of
+high spatial correlations. We experiment with realizations of binary
+channelized subsurface permeability and perform uncertainty quantification and
+parameter estimation. Results show that the parametrization using generative
+adversarial networks is very effective in preserving visual realism as well as
+high order statistics of the flow responses, while achieving a dimensionality
+reduction of two orders of magnitude.

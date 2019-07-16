@@ -1,12 +1,15 @@
-Non-convex regularization in remote sensing
-  In this paper, we study the effect of different regularizers and their
-implications in high dimensional image classification and sparse linear
-unmixing. Although kernelization or sparse methods are globally accepted
-solutions for processing data in high dimensions, we present here a study on
-the impact of the form of regularization used and its parametrization. We
-consider regularization via traditional squared (2) and sparsity-promoting (1)
-norms, as well as more unconventional nonconvex regularizers (p and Log Sum
-Penalty). We compare their properties and advantages on several classification
-and linear unmixing tasks and provide advices on the choice of the best
-regularizer for the problem at hand. Finally, we also provide a fully
-functional toolbox for the community.
+Deep Recurrent Neural Networks for mapping winter vegetation quality
+  coverage via multi-temporal SAR Sentinel-1
+  Mapping winter vegetation quality coverage is a challenge problem of remote
+sensing. This is due to the cloud coverage in winter period, leading to use
+radar rather than optical images. The objective of this paper is to provide a
+better understanding of the capabilities of radar Sentinel-1 and deep learning
+concerning about mapping winter vegetation quality coverage. The analysis
+presented in this paper is carried out on multi-temporal Sentinel-1 data over
+the site of La Rochelle, France, during the campaign in December 2016. This
+dataset were processed in order to produce an intensity radar data stack from
+October 2016 to February 2017. Two deep Recurrent Neural Network (RNN) based
+classifier methods were employed. We found that the results of RNNs clearly
+outperformed the classical machine learning approaches (Support Vector Machine
+and Random Forest). This study confirms that the time series radar Sentinel-1
+and RNNs could be exploited for winter vegetation quality cover mapping.

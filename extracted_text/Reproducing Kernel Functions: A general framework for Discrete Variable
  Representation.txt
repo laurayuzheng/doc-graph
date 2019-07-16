@@ -1,0 +1,18 @@
+Reproducing Kernel Functions: A general framework for Discrete Variable
+  Representation
+  Since its introduction, the Discrete Variable Representation (DVR) basis set
+has become an invaluable representation of state vectors and Hermitian
+operators in non-relativistic quantum dynamics and spectroscopy calculations.
+On the other hand reproducing kernel (positive definite) functions have been
+widely employed for a long time to a wide variety of disciplines: detection and
+estimation problems in signal processing; data analysis in statistics;
+generating observational models in machine learning; solving inverse problems
+in geophysics and tomography in general; and in quantum mechanics.
+  In this article it was demonstrated that, starting with the axiomatic
+definition of DVR provided by Littlejohn [1], it is possible to show that the
+space upon which the projection operator, defined in ref [1], projects is a
+Reproducing Kernel Hilbert Space (RKHS) whose associated reproducing kernel
+function can be used to generate DVR points and their corresponding DVR
+functions on any domain manifold (curved or not). It is illustrated how, with
+this idea, one may be able to `neatly' address the long-standing challenge of
+building multidimensional DVR basis functions defined on curved manifolds.

@@ -1,0 +1,20 @@
+Combining machine learning techniques, microanalyses and large
+  geochemical datasets for tephrochronological studies in complex volcanic
+  areas: new age constraints for the Pleistocene magmatism of Central Italy
+  Characterization, correlation and provenance determination of tephra samples
+in sedimentary sections (tephrochronological studies) are powerful tools for
+establishing ages of depositional events, volcanic eruptions, and tephra
+dispersion. Despite the large literature and the advancements in this research
+field, the univocal attribution of tephra deposits to specific volcanic sources
+remains too often elusive. In this contribution, we test the application of a
+machine learning technique named Support Vector Machine to attempt shedding new
+light upon tephra deposits related to one of the most complex and debated
+volcanic regions on Earth: the Pliocene-Pleistocene magmatism in Italy. The
+machine learning algorithm was trained using one of the most comprehensive
+global petrological databases (GEOROC); 17 chemical elements including major
+and selected trace elements were chosen as input parameters. We first show the
+ability of support vector machines in discriminating among different
+Pliocene-Pleistocene volcanic provinces in Italy and then apply the same
+methodology to determine the volcanic source of tephra samples occurring in the
+Caio outcrop, an Early Pleistocene sedimentary section located in Central
+Italy.

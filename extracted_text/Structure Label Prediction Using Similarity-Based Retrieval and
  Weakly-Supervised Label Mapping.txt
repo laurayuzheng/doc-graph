@@ -1,0 +1,23 @@
+Structure Label Prediction Using Similarity-Based Retrieval and
+  Weakly-Supervised Label Mapping
+  Recently, there has been significant interest in various supervised machine
+learning techniques that can help reduce the time and effort consumed by manual
+interpretation workflows. However, most successful supervised machine learning
+algorithms require huge amounts of annotated training data. Obtaining these
+labels for large seismic volumes is a very time-consuming and laborious task.
+We address this problem by presenting a weakly-supervised approach for
+predicting the labels of various seismic structures. By having an interpreter
+select a very small number of exemplar images for every class of subsurface
+structures, we use a novel similarity-based retrieval technique to extract
+thousands of images that contain similar subsurface structures from the seismic
+volume. By assuming that similar images belong to the same class, we obtain
+thousands of image-level labels for these images; we validate this assumption
+in our results section. We then introduce a novel weakly-supervised algorithm
+for mapping these rough image-level labels into more accurate pixel-level
+labels that localize the different subsurface structures within the image. This
+approach dramatically simplifies the process of obtaining labeled data for
+training supervised machine learning algorithms on seismic interpretation
+tasks. Using our method we generate thousands of automatically-labeled images
+from the Netherlands Offshore F3 block with reasonably accurate pixel-level
+labels. We believe this work will allow for more advances in machine
+learning-enabled seismic interpretation.

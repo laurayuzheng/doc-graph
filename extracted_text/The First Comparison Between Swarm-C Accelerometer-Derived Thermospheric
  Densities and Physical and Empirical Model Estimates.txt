@@ -1,0 +1,17 @@
+The First Comparison Between Swarm-C Accelerometer-Derived Thermospheric
+  Densities and Physical and Empirical Model Estimates
+  The first systematic comparison between Swarm-C accelerometer-derived
+thermospheric density and both empirical and physics-based model results using
+multiple model performance metrics is presented. This comparison is performed
+at the satellite's high temporal 10-s resolution, which provides a meaningful
+evaluation of the models' fidelity for orbit prediction and other space weather
+forecasting applications. The comparison against the physical model is
+influenced by the specification of the lower atmospheric forcing, the
+high-latitude ionospheric plasma convection, and solar activity. Some insights
+into the model response to thermosphere-driving mechanisms are obtained through
+a machine learning exercise. The results of this analysis show that the
+short-timescale variations observed by Swarm-C during periods of high solar and
+geomagnetic activity were better captured by the physics-based model than the
+empirical models. It is concluded that Swarm-C data agree well with the
+climatologies inherent within the models and are, therefore, a useful data set
+for further model validation and scientific research.

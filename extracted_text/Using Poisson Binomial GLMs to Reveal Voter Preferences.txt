@@ -1,0 +1,15 @@
+Using Poisson Binomial GLMs to Reveal Voter Preferences
+  We present a new modeling technique for solving the problem of ecological
+inference, in which individual-level associations are inferred from labeled
+data available only at the aggregate level. We model aggregate count data as
+arising from the Poisson binomial, the distribution of the sum of independent
+but not identically distributed Bernoulli random variables. We relate
+individual-level probabilities to individual covariates using both a logistic
+regression and a neural network. A normal approximation is derived via the
+Lyapunov Central Limit Theorem, allowing us to efficiently fit these models on
+large datasets. We apply this technique to the problem of revealing voter
+preferences in the 2016 presidential election, fitting a model to a sample of
+over four million voters from the highly contested swing state of Pennsylvania.
+We validate the model at the precinct level via a holdout set, and at the
+individual level using weak labels, finding that the model is predictive and it
+learns intuitively reasonable associations.

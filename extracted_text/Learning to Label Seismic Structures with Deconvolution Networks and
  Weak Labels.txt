@@ -1,0 +1,20 @@
+Learning to Label Seismic Structures with Deconvolution Networks and
+  Weak Labels
+  Recently, there has been increasing interest in using deep learning
+techniques for various seismic interpretation tasks. However, unlike shallow
+machine learning models, deep learning models are often far more complex and
+can have hundreds of millions of free parameters. This not only means that
+large amounts of computational resources are needed to train these models, but
+more critically, they require vast amounts of labeled training data as well. In
+this work, we show how automatically-generated weak labels can be effectively
+used to overcome this problem and train powerful deep learning models for
+labeling seismic structures in large seismic volumes. To achieve this, we
+automatically generate thousands of weak labels and use them to train a
+deconvolutional network for labeling fault, salt dome, and chaotic regions
+within the Netherlands F3 block. Furthermore, we show how modifying the loss
+function to take into account the weak training labels helps reduce false
+positives in the labeling results. The benefit of this work is that it enables
+the effective training and deployment of deep learning models to various
+seismic interpretation tasks without requiring any manual labeling effort. We
+show excellent results on the Netherlands F3 block, and show how our model
+outperforms other baseline models.

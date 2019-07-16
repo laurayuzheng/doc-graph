@@ -1,0 +1,15 @@
+Recovering gaps in the gamma-ray logging method
+  The gamma-ray logging method is one of the mandatory well logging methods for
+geophysical exploration of wells. However, during the conduct of such a study,
+the sensor, for one reason or another, may stop recording observations in the
+well. If a small number of values are missing, you can restore these values
+using standard methods to fill in gaps like in time series. If data miss a
+large number of values, observations usually are made again, which leads to
+additional financial costs. This work proposes an alternative solution, in the
+form of filling missed observations in data with the help of machine learning
+methods. The main idea of this method is to construct a simple two- layer
+neural network that is trained on data from the well, and then synthesise the
+missing values based on the trained neural network. This work evaluates the
+effectiveness of the proposed method, and gives reasons for the appropriateness
+of using different methods of filling gaps, depending on the number of missed
+values.

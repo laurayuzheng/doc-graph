@@ -1,0 +1,23 @@
+Seismic-Net: A Deep Densely Connected Neural Network to Detect Seismic
+  Events
+  One of the risks of large-scale geologic carbon sequestration is the
+potential migration of fluids out of the storage formations. Accurate and fast
+detection of this fluids migration is not only important but also challenging,
+due to the large subsurface uncertainty and complex governing physics.
+Traditional leakage detection and monitoring techniques rely on geophysical
+observations including seismic. However, the resulting accuracy of these
+methods is limited because of indirect information they provide requiring
+expert interpretation, therefore yielding in-accurate estimates of leakage
+rates and locations. In this work, we develop a novel machine-learning
+detection package, named "Seismic-Net", which is based on the deep densely
+connected neural network. To validate the performance of our proposed leakage
+detection method, we employ our method to a natural analog site at Chimay\'o,
+New Mexico. The seismic events in the data sets are generated because of the
+eruptions of geysers, which is due to the leakage of $\mathrm{CO}_\mathrm{2}$.
+In particular, we demonstrate the efficacy of our Seismic-Net by formulating
+our detection problem as an event detection problem with time series data. A
+fixed-length window is slid throughout the time series data and we build a deep
+densely connected network to classify each window to determine if a geyser
+event is included. Through our numerical tests, we show that our model achieves
+precision/recall as high as 0.889/0.923. Therefore, our Seismic-Net has a great
+potential for detection of $\mathrm{CO}_\mathrm{2}$ leakage.

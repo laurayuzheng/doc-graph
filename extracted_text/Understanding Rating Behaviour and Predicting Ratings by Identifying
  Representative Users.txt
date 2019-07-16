@@ -1,0 +1,16 @@
+Understanding Rating Behaviour and Predicting Ratings by Identifying
+  Representative Users
+  Online user reviews describing various products and services are now abundant
+on the web. While the information conveyed through review texts and ratings is
+easily comprehensible, there is a wealth of hidden information in them that is
+not immediately obvious. In this study, we unlock this hidden value behind user
+reviews to understand the various dimensions along which users rate products.
+We learn a set of users that represent each of these dimensions and use their
+ratings to predict product ratings. Specifically, we work with restaurant
+reviews to identify users whose ratings are influenced by dimensions like
+'Service', 'Atmosphere' etc. in order to predict restaurant ratings and
+understand the variation in rating behaviour across different cuisines. While
+previous approaches to obtaining product ratings require either a large number
+of user ratings or a few review texts, we show that it is possible to predict
+ratings with few user ratings and no review text. Our experiments show that our
+approach outperforms other conventional methods by 16-27% in terms of RMSE.

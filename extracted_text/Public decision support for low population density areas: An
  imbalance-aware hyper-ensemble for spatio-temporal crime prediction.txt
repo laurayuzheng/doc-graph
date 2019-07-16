@@ -1,0 +1,16 @@
+Public decision support for low population density areas: An
+  imbalance-aware hyper-ensemble for spatio-temporal crime prediction
+  Crime events are known to reveal spatio-temporal patterns, which can be used
+for predictive modeling and subsequent decision support. While the focus has
+hitherto been placed on areas with high population density, we address the
+challenging undertaking of predicting crime hotspots in regions with low
+population densities and highly unequally-distributed crime.This results in a
+severe sparsity (i.e., class imbalance) of the outcome variable, which impedes
+predictive modeling. To alleviate this, we develop machine learning models for
+spatio-temporal prediction that are specifically adjusted for an imbalanced
+distribution of the class labels and test them in an actual setting with
+state-of-the-art predictors (i.e., socio-economic, geographical, temporal,
+meteorological, and crime variables in fine resolution). The proposed
+imbalance-aware hyper-ensemble increases the hit ratio considerably from 18.1%
+to 24.6% when aiming for the top 5% of hotspots, and from 53.1% to 60.4% when
+aiming for the top 20% of hotspots.

@@ -1,0 +1,11 @@
+On monitoring development indicators using high resolution satellite
+  images
+  We develop a machine learning based tool for accurate prediction of
+socio-economic indicators from daytime satellite imagery. The diverse set of
+indicators are often not intuitively related to observable features in
+satellite images, and are not even always well correlated with each other. Our
+predictive tool is more accurate than using night light as a proxy, and can be
+used to predict missing data, smooth out noise in surveys, monitor development
+progress of a region, and flag potential anomalies. Finally, we use predicted
+variables to do robustness analysis of a regression study of high rate of
+stunting in India.

@@ -1,0 +1,26 @@
+Extensions of Morse-Smale Regression with Application to Actuarial
+  Science
+  The problem of subgroups is ubiquitous in scientific research (ex. disease
+heterogeneity, spatial distributions in ecology...), and piecewise regression
+is one way to deal with this phenomenon. Morse-Smale regression offers a way to
+partition the regression function based on level sets of a defined function and
+that function's basins of attraction. This topologically-based piecewise
+regression algorithm has shown promise in its initial applications, but the
+current implementation in the literature has been limited to elastic net and
+generalized linear regression. It is possible that nonparametric methods, such
+as random forest or conditional inference trees, may provide better prediction
+and insight through modeling interaction terms and other nonlinear
+relationships between predictors and a given outcome.
+  This study explores the use of several machine learning algorithms within a
+Morse-Smale piecewise regression framework, including boosted regression with
+linear baselearners, homotopy-based LASSO, conditional inference trees, random
+forest, and a wide neural network framework called extreme learning machines.
+Simulations on Tweedie regression problems with varying Tweedie parameter and
+dispersion suggest that many machine learning approaches to Morse-Smale
+piecewise regression improve the original algorithm's performance, particularly
+for outcomes with lower dispersion and linear or a mix of linear and nonlinear
+predictor relationships. On a real actuarial problem, several of these new
+algorithms perform as good as or better than the original Morse-Smale
+regression algorithm, and most provide information on the nature of predictor
+relationships within each partition to provide insight into differences between
+dataset partitions.

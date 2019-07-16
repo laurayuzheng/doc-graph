@@ -1,14 +1,25 @@
-Harmonic Exponential Families on Manifolds
-  In a range of fields including the geosciences, molecular biology, robotics
-and computer vision, one encounters problems that involve random variables on
-manifolds. Currently, there is a lack of flexible probabilistic models on
-manifolds that are fast and easy to train. We define an extremely flexible
-class of exponential family distributions on manifolds such as the torus,
-sphere, and rotation groups, and show that for these distributions the gradient
-of the log-likelihood can be computed efficiently using a non-commutative
-generalization of the Fast Fourier Transform (FFT). We discuss applications to
-Bayesian camera motion estimation (where harmonic exponential families serve as
-conjugate priors), and modelling of the spatial distribution of earthquakes on
-the surface of the earth. Our experimental results show that harmonic densities
-yield a significantly higher likelihood than the best competing method, while
-being orders of magnitude faster to train.
+High-Dimensional Dependency Structure Learning for Physical Processes
+  In this paper, we consider the use of structure learning methods for
+probabilistic graphical models to identify statistical dependencies in
+high-dimensional physical processes. Such processes are often synthetically
+characterized using PDEs (partial differential equations) and are observed in a
+variety of natural phenomena, including geoscience data capturing atmospheric
+and hydrological phenomena. Classical structure learning approaches such as the
+PC algorithm and variants are challenging to apply due to their high
+computational and sample requirements. Modern approaches, often based on sparse
+regression and variants, do come with finite sample guarantees, but are usually
+highly sensitive to the choice of hyper-parameters, e.g., parameter $\lambda$
+for sparsity inducing constraint or regularization. In this paper, we present
+ACLIME-ADMM, an efficient two-step algorithm for adaptive structure learning,
+which estimates an edge specific parameter $\lambda_{ij}$ in the first step,
+and uses these parameters to learn the structure in the second step. Both steps
+of our algorithm use (inexact) ADMM to solve suitable linear programs, and all
+iterations can be done in closed form in an efficient block parallel manner. We
+compare ACLIME-ADMM with baselines on both synthetic data simulated by partial
+differential equations (PDEs) that model advection-diffusion processes, and
+real data (50 years) of daily global geopotential heights to study information
+flow in the atmosphere. ACLIME-ADMM is shown to be efficient, stable, and
+competitive, usually better than the baselines especially on difficult
+problems. On real data, ACLIME-ADMM recovers the underlying structure of global
+atmospheric circulation, including switches in wind directions at the equator
+and tropics entirely from the data.

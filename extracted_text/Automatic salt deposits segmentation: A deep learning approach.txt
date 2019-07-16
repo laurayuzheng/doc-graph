@@ -1,0 +1,14 @@
+Automatic salt deposits segmentation: A deep learning approach
+  One of the most important applications of seismic reflection is the
+hydrocarbon exploration which is closely related to salt deposits analysis.
+This problem is very important even nowadays due to it's non-linear nature.
+Taking into account the recent developments in deep learning networks TGS-NOPEC
+Geophysical Company hosted the Kaggle competition for salt deposits
+segmentation problem in seismic image data. In this paper, we demonstrate the
+great performance of several novel deep learning techniques merged into a
+single neural network which achieved the 27th place (top 1%) in the mentioned
+competition. Using a U-Net with ResNeXt-50 encoder pre-trained on ImageNet as
+our base architecture, we implemented Spatial-Channel Squeeze & Excitation,
+Lovasz loss, CoordConv and Hypercolumn methods. The source code for our
+solution is made publicly available at
+https://github.com/K-Mike/Automatic-salt-deposits-segmentation.

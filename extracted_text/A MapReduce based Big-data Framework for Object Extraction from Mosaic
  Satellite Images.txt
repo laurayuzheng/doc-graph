@@ -1,0 +1,13 @@
+A MapReduce based Big-data Framework for Object Extraction from Mosaic
+  Satellite Images
+  We propose a framework stitching of vector representations of large scale
+raster mosaic images in distributed computing model. In this way, the negative
+effect of the lack of resources of the central system and scalability problem
+can be eliminated. The product obtained by this study can be used in
+applications requiring spatial and temporal analysis on big satellite map
+images. This study also shows that big data frameworks are not only used in
+applications of text-based data mining and machine learning algorithms, but
+also used in applications of algorithms in image processing. The effectiveness
+of the product realized with this project is also going to be proven by
+scalability and performance tests performed on real world LandSat-8 satellite
+images.

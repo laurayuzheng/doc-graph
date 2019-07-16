@@ -1,0 +1,13 @@
+Driving Digital Rock towards Machine Learning: predicting permeability
+  with Gradient Boosting and Deep Neural Networks
+  We present a research study aimed at testing of applicability of machine
+learning techniques for prediction of permeability of digitized rock samples.
+We prepare a training set containing 3D images of sandstone samples imaged with
+X-ray microtomography and corresponding permeability values simulated with Pore
+Network approach. We also use Minkowski functionals and Deep Learning-based
+descriptors of 3D images and 2D slices as input features for predictive model
+training and prediction. We compare predictive power of various feature sets
+and methods. The later include Gradient Boosting and various architectures of
+Deep Neural Networks (DNN). The results demonstrate applicability of machine
+learning for image-based permeability prediction and open a new area of Digital
+Rock research.

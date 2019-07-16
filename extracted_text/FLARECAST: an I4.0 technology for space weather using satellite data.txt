@@ -1,0 +1,8 @@
+FLARECAST: an I4.0 technology for space weather using satellite data
+  'Flare Likelihood and Region Eruption Forecasting (FLARECAST)' is a Horizon
+2020 project, which realized a technological platform for machine learning
+algorithms, with the objective of providing the space weather community with a
+prediction service for solar flares. This paper describes the FLARECAST service
+and shows how the methods implemented in the platform allow both flare
+prediction and a quantitative assessment of how the information contained in
+the space data utilized in the analysis may impact the forecasting process.

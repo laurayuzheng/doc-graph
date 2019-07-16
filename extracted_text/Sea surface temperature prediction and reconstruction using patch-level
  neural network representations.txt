@@ -1,0 +1,17 @@
+Sea surface temperature prediction and reconstruction using patch-level
+  neural network representations
+  The forecasting and reconstruction of ocean and atmosphere dynamics from
+satellite observation time series are key challenges. While model-driven
+representations remain the classic approaches, data-driven representations
+become more and more appealing to benefit from available large-scale
+observation and simulation datasets. In this work we investigate the relevance
+of recently introduced bilinear residual neural network representations, which
+mimic numerical integration schemes such as Runge-Kutta, for the forecasting
+and assimilation of geophysical fields from satellite-derived remote sensing
+data. As a case-study, we consider satellite-derived Sea Surface Temperature
+time series off South Africa, which involves intense and complex upper ocean
+dynamics. Our numerical experiments demonstrate that the proposed patch-level
+neural-network-based representations outperform other data-driven models,
+including analog schemes, both in terms of forecasting and missing data
+interpolation performance with a relative gain up to 50\% for highly dynamic
+areas.

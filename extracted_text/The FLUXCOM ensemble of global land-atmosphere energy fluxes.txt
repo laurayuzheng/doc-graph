@@ -1,0 +1,17 @@
+The FLUXCOM ensemble of global land-atmosphere energy fluxes
+  Although a key driver of Earth's climate system, global land-atmosphere
+energy fluxes are poorly constrained. Here we use machine learning to merge
+energy flux measurements from FLUXNET eddy covariance towers with remote
+sensing and meteorological data to estimate net radiation, latent and sensible
+heat and their uncertainties. The resulting FLUXCOM database comprises 147
+global gridded products in two setups: (1) 0.0833${\deg}$ resolution using
+MODIS remote sensing data (RS) and (2) 0.5${\deg}$ resolution using remote
+sensing and meteorological data (RS+METEO). Within each setup we use a full
+factorial design across machine learning methods, forcing datasets and energy
+balance closure corrections. For RS and RS+METEO setups respectively, we
+estimate 2001-2013 global (${\pm}$ 1 standard deviation) net radiation as
+75.8${\pm}$1.4 ${W\ m^{-2}}$ and 77.6${\pm}$2 ${W\ m^{-2}}$, sensible heat as
+33${\pm}$4 ${W\ m^{-2}}$ and 36${\pm}$5 ${W\ m^{-2}}$, and evapotranspiration
+as 75.6${\pm}$10 ${\times}$ 10$^3$ ${km^3\ yr^{-1}}$ and 76${\pm}$6 ${\times}$
+10$^3$ ${km^3\ yr^{-1}}$. FLUXCOM products are suitable to quantify global
+land-atmosphere interactions and benchmark land surface model simulations.

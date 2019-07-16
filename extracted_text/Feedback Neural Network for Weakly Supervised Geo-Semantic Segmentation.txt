@@ -1,0 +1,11 @@
+Feedback Neural Network for Weakly Supervised Geo-Semantic Segmentation
+  Learning from weakly-supervised data is one of the main challenges in machine
+learning and computer vision, especially for tasks such as image semantic
+segmentation where labeling is extremely expensive and subjective. In this
+paper, we propose a novel neural network architecture to perform
+weakly-supervised learning by suppressing irrelevant neuron activations. It
+localizes objects of interest by learning from image-level categorical labels
+in an end-to-end manner. We apply this algorithm to a practical challenge of
+transforming satellite images into a map of settlements and individual
+buildings. Experimental results show that the proposed algorithm achieves
+superior performance and efficiency when compared with various baseline models.

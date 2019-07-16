@@ -1,0 +1,14 @@
+Automatic classification of K2 pulsating stars using machine learning
+  techniques
+  The second mission of the NASA Kepler satellite, K2, has collected hundreds
+of thousands of lightcurves for stars close to the ecliptic plane. This new
+sample could increase the number of known pulsating stars and then improve our
+understanding of those stars. For the moment only a few stars have been
+properly classified and published. In this work, we present a method to
+automaticly classify K2 pulsating stars using a Machine Learning technique
+called Random Forest. The objective is to sort out the stars in four classes:
+red giant (RG), main-sequence Solar-like stars (SL), classical pulsators (PULS)
+and Other. To do this we use the effective temperatures and the luminosities of
+the stars as well as the FliPer features, that measures the amount of power
+contained in the power spectral density. The classifier now retrieves the right
+classification for more than 80% of the stars.

@@ -1,0 +1,16 @@
+Recovering Thermodynamics from Spectral Profiles observed by IRIS: A
+  Machine and Deep Learning Approach
+  Inversion codes allow reconstructing a model atmosphere from observations.
+With the inclusion of optically thick lines that form in the solar
+chromosphere, such modelling is computationally very expensive because a
+non-LTE evaluation of the radiation field is required. In this study, we
+combine the results provided by these traditional methods with machine and deep
+learning techniques to obtain similar-quality results in an easy-touse, much
+faster way. We have applied these new methods to Mg II h&k lines observed by
+IRIS. As a result, we are able to reconstruct the thermodynamic state
+(temperature, line-of-sight velocity, non-thermal velocities, electron density,
+etc.) in the chromosphere and upper photosphere of an area equivalent to an
+active region in a few CPU minutes, speeding up the process by a factor of
+$10^5$-$10^6$. The open-source code accompanying this paper will allow the
+community to use IRIS observations to open a new window to a host of solar
+phenomena.

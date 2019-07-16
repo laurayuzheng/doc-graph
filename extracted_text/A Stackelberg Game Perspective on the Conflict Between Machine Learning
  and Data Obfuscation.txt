@@ -1,0 +1,20 @@
+A Stackelberg Game Perspective on the Conflict Between Machine Learning
+  and Data Obfuscation
+  Data is the new oil; this refrain is repeated extensively in the age of
+internet tracking, machine learning, and data analytics. As data collection
+becomes more personal and pervasive, however, public pressure is mounting for
+privacy protection. In this atmosphere, developers have created applications to
+add noise to user attributes visible to tracking algorithms. This creates a
+strategic interaction between trackers and users when incentives to maintain
+privacy and improve accuracy are misaligned. In this paper, we conceptualize
+this conflict through an N+1-player, augmented Stackelberg game. First a
+machine learner declares a privacy protection level, and then users respond by
+choosing their own perturbation amounts. We use the general frameworks of
+differential privacy and empirical risk minimization to quantify the utility
+components due to privacy and accuracy, respectively. In equilibrium, each user
+perturbs her data independently, which leads to a high net loss in accuracy. To
+remedy this scenario, we show that the learner improves his utility by
+proactively perturbing the data himself. While other work in this area has
+studied privacy markets and mechanism design for truthful reporting of user
+information, we take a different viewpoint by considering both user and learner
+perturbation.

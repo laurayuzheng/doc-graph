@@ -1,0 +1,17 @@
+Deep learning tutorial for denoising
+  We herein introduce deep learning to seismic noise attenuation. Compared with
+traditional seismic noise attenuation algorithms that depend on signal models
+and their corresponding prior assumptions, a deep neural network is trained
+based on a large training set, where the inputs are the raw datasets and the
+corresponding outputs are the desired clean data. After the completion of
+training, the deep learning method achieves adaptive denoising with no
+requirements of (i) accurate modeling of the signal and noise, and (ii) optimal
+parameters tuning. We call this intelligent denoising. We use a convolutional
+neural network as the basic tool for deep learning. The training set is
+generated with manually added noise in random and linear noise attenuation, and
+with the wave equation in the multiple attenuation. Stochastic gradient descent
+is used to solve the optimal parameters for the convolutional neural network.
+The runtime of deep learning on a graphics processing unit for denoising has
+the same order as the $f-x$ deconvolutional method. Synthetic and field results
+show the potential applications of deep learning in the automation of random
+noise attenuation with unknown variance, linear noise, and multiples.

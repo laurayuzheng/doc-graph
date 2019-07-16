@@ -1,0 +1,16 @@
+Bayesian Learning of Conditional Kernel Mean Embeddings for Automatic
+  Likelihood-Free Inference
+  In likelihood-free settings where likelihood evaluations are intractable,
+approximate Bayesian computation (ABC) addresses the formidable inference task
+to discover plausible parameters of simulation programs that explain the
+observations. However, they demand large quantities of simulation calls.
+Critically, hyperparameters that determine measures of simulation discrepancy
+crucially balance inference accuracy and sample efficiency, yet are difficult
+to tune. In this paper, we present kernel embedding likelihood-free inference
+(KELFI), a holistic framework that automatically learns model hyperparameters
+to improve inference accuracy given limited simulation budget. By leveraging
+likelihood smoothness with conditional mean embeddings, we nonparametrically
+approximate likelihoods and posteriors as surrogate densities and sample from
+closed-form posterior mean embeddings, whose hyperparameters are learned under
+its approximate marginal likelihood. Our modular framework demonstrates
+improved accuracy and efficiency on challenging inference problems in ecology.

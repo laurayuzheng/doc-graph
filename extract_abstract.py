@@ -27,9 +27,7 @@ def extract_arXiv(filename, write_path):
     abstracts = soup.find_all('summary')
 
     for i in range(0,len(abstracts)):
-        file_no_extension = os.path.basename(filename) # base name, no path
-        file_no_extension = os.path.splitext(file_no_extension)[0] # no ext.
-        file = open(write_path + titles[i].get_text() + '.txt','w')
+        file = open(write_path + titles[i+1].get_text().replace("/", "").replace("?","") + '.txt','w')
 
         file.write(titles[i+1].get_text())
         file.write('\n')

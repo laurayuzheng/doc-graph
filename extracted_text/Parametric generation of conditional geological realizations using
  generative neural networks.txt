@@ -1,0 +1,24 @@
+Parametric generation of conditional geological realizations using
+  generative neural networks
+  Deep learning techniques are increasingly being considered for geological
+applications where -- much like in computer vision -- the challenges are
+characterized by high-dimensional spatial data dominated by multipoint
+statistics. In particular, a novel technique called generative adversarial
+networks has been recently studied for geological parametrization and
+synthesis, obtaining very impressive results that are at least qualitatively
+competitive with previous methods. The method obtains a neural network
+parametrization of the geology -- so-called a generator -- that is capable of
+reproducing very complex geological patterns with dimensionality reduction of
+several orders of magnitude. Subsequent works have addressed the conditioning
+task, i.e. using the generator to generate realizations honoring spatial
+observations (hard data). The current approaches, however, do not provide a
+parametrization of the conditional generation process. In this work, we propose
+a method to obtain a parametrization for direct generation of conditional
+realizations. The main idea is to simply extend the existing generator network
+by stacking a second inference network that learns to perform the conditioning.
+This inference network is a neural network trained to sample a posterior
+distribution derived using a Bayesian formulation of the conditioning task. The
+resulting extended neural network thus provides the conditional
+parametrization. Our method is assessed on a benchmark image of binary
+channelized subsurface, obtaining very promising results for a wide variety of
+conditioning configurations.

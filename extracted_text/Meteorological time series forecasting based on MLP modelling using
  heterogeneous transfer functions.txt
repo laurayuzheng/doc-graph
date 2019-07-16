@@ -1,0 +1,11 @@
+Meteorological time series forecasting based on MLP modelling using
+  heterogeneous transfer functions
+  In this paper, we propose to study four meteorological and seasonal time
+series coupled with a multi-layer perceptron (MLP) modeling. We chose to
+combine two transfer functions for the nodes of the hidden layer, and to use a
+temporal indicator (time index as input) in order to take into account the
+seasonal aspect of the studied time series. The results of the prediction
+concern two years of measurements and the learning step, eight independent
+years. We show that this methodology can improve the accuracy of meteorological
+data estimation compared to a classical MLP modelling with a homogenous
+transfer function.

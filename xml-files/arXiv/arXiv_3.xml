@@ -1,0 +1,1850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3Aclimate%20OR%20all%3Aprecipitation%20AND%20all%3Amachine%20AND%20all%3Alearning%26id_list%3D%26start%3D0%26max_results%3D100" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:climate OR all:precipitation AND all:machine AND all:learning&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <id>http://arxiv.org/api/wY3qx7c+U7byoXfBGzDze2fW2P8</id>
+  <updated>2019-07-16T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">41</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">100</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1701.00166v1</id>
+    <updated>2016-12-31T20:55:47Z</updated>
+    <published>2016-12-31T20:55:47Z</published>
+    <title>Data-Driven Forecast of Dengue Outbreaks in Brazil: A Critical
+  Assessment of Climate Conditions for Different Capitals</title>
+    <summary>  Local climate conditions play a major role in the development of the mosquito
+population responsible for transmitting Dengue Fever. Since the {\em Aedes
+Aegypti} mosquito is also a primary vector for the recent Zika and Chikungunya
+epidemics across the Americas, a detailed monitoring of periods with favorable
+climate conditions for mosquito profusion may improve the timing of
+vector-control efforts and other urgent public health strategies. We apply
+dimensionality reduction techniques and machine-learning algorithms to climate
+time series data and analyze their connection to the occurrence of Dengue
+outbreaks for seven major cities in Brazil. Specifically, we have identified
+two key variables and a period during the annual cycle that are highly
+predictive of epidemic outbreaks. The key variables are the frequency of
+precipitation and temperature during an approximately two month window of the
+winter season preceding the outbreak. Thus simple climate signatures may be
+influencing Dengue outbreaks even months before their occurrence. Some of the
+more challenging datasets required usage of compressive-sensing procedures to
+estimate missing entries for temperature and precipitation records. Our results
+indicate that each Brazilian capital considered has a unique frequency of
+precipitation and temperature signature in the winter preceding a Dengue
+outbreak. Such climate contributions on vector populations are key factors in
+dengue dynamics which could lead to more accurate prediction models and early
+warning systems. Finally, we show that critical temperature and precipitation
+signatures may vary significantly from city to city, suggesting that the
+interplay between climate variables and dengue outbreaks is more complex than
+generally appreciated.
+</summary>
+    <author>
+      <name>Lucas Stolerman</name>
+    </author>
+    <author>
+      <name>Pedro Maia</name>
+    </author>
+    <author>
+      <name>J. Nathan Kutz</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">29 pages, 12 figures, 8 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/1701.00166v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1701.00166v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="q-bio.QM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.QM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1702.04018v1</id>
+    <updated>2017-02-13T23:20:22Z</updated>
+    <published>2017-02-13T23:20:22Z</published>
+    <title>Intercomparison of Machine Learning Methods for Statistical Downscaling:
+  The Case of Daily and Extreme Precipitation</title>
+    <summary>  Statistical downscaling of global climate models (GCMs) allows researchers to
+study local climate change effects decades into the future. A wide range of
+statistical models have been applied to downscaling GCMs but recent advances in
+machine learning have not been explored. In this paper, we compare four
+fundamental statistical methods, Bias Correction Spatial Disaggregation (BCSD),
+Ordinary Least Squares, Elastic-Net, and Support Vector Machine, with three
+more advanced machine learning methods, Multi-task Sparse Structure Learning
+(MSSL), BCSD coupled with MSSL, and Convolutional Neural Networks to downscale
+daily precipitation in the Northeast United States. Metrics to evaluate of each
+method's ability to capture daily anomalies, large scale climate shifts, and
+extremes are analyzed. We find that linear methods, led by BCSD, consistently
+outperform non-linear approaches. The direct application of state-of-the-art
+machine learning methods to statistical downscaling does not provide
+improvements over simpler, longstanding approaches.
+</summary>
+    <author>
+      <name>Thomas Vandal</name>
+    </author>
+    <author>
+      <name>Evan Kodra</name>
+    </author>
+    <author>
+      <name>Auroop R Ganguly</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">20 pages, 6 figures, 3 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/1702.04018v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1702.04018v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.11037v2</id>
+    <updated>2018-09-28T16:45:18Z</updated>
+    <published>2018-06-28T15:30:48Z</published>
+    <title>Using machine learning to parameterize moist convection: potential for
+  modeling of climate, climate change and extreme events</title>
+    <summary>  The parameterization of moist convection contributes to uncertainty in
+climate modeling and numerical weather prediction. Machine learning (ML) can be
+used to learn new parameterizations directly from high-resolution model output,
+but it remains poorly understood how such parameterizations behave when fully
+coupled in a general circulation model (GCM) and whether they are useful for
+simulations of climate change or extreme events. Here, we focus on these issues
+using idealized tests in which an ML-based parameterization is trained on
+output from a conventional parameterization and its performance is assessed in
+simulations with a GCM. We use an ensemble of decision trees (random forest) as
+the ML algorithm, and this has the advantage that it automatically ensures
+conservation of energy and non-negativity of surface precipitation. The GCM
+with the ML convective parameterization runs stably and accurately captures
+important climate statistics including precipitation extremes without the need
+for special training on extremes. Climate change between a control climate and
+a warm climate is not captured if the ML parameterization is only trained on
+the control climate, but it is captured if the training includes samples from
+both climates. Remarkably, climate change is also captured when training only
+on the warm climate, and this is because the extratropics of the warm climate
+provides training samples for the tropics of the control climate. In addition
+to being potentially useful for the simulation of climate, we show that ML
+parameterizations can be interrogated to provide diagnostics of the interaction
+between convection and the large-scale environment.
+</summary>
+    <author>
+      <name>Paul A. O'Gorman</name>
+    </author>
+    <author>
+      <name>John G. Dwyer</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1029/2018MS001351</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1029/2018MS001351" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Paper submitted to Journal of Advances in Modeling Earth Systems
+  (second revision with minor changes)</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Journal of Advances in Modeling Earth Systems, 10, 2548-2563, 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1806.11037v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.11037v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1701.08840v1</id>
+    <updated>2017-01-30T21:56:18Z</updated>
+    <published>2017-01-30T21:56:18Z</published>
+    <title>Spatial Projection of Multiple Climate Variables using Hierarchical
+  Multitask Learning</title>
+    <summary>  Future projection of climate is typically obtained by combining outputs from
+multiple Earth System Models (ESMs) for several climate variables such as
+temperature and precipitation. While IPCC has traditionally used a simple model
+output average, recent work has illustrated potential advantages of using a
+multitask learning (MTL) framework for projections of individual climate
+variables. In this paper we introduce a framework for hierarchical multitask
+learning (HMTL) with two levels of tasks such that each super-task, i.e., task
+at the top level, is itself a multitask learning problem over sub-tasks. For
+climate projections, each super-task focuses on projections of specific climate
+variables spatially using an MTL formulation. For the proposed HMTL approach, a
+group lasso regularization is added to couple parameters across the
+super-tasks, which in the climate context helps exploit relationships among the
+behavior of different climate variables at a given spatial location. We show
+that some recent works on MTL based on learning task dependency structures can
+be viewed as special cases of HMTL. Experiments on synthetic and real climate
+data show that HMTL produces better results than decoupled MTL methods applied
+separately on the super-tasks and HMTL significantly outperforms baselines for
+climate projection.
+</summary>
+    <author>
+      <name>André R. Gonçalves</name>
+    </author>
+    <author>
+      <name>Arindam Banerjee</name>
+    </author>
+    <author>
+      <name>Fernando J. Von Zuben</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for the 31st AAAI Conference on Artificial Intelligence
+  (AAAI-17)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1701.08840v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1701.08840v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1809.07394v3</id>
+    <updated>2019-05-22T10:16:23Z</updated>
+    <published>2018-09-19T20:08:26Z</published>
+    <title>Improving Subseasonal Forecasting in the Western U.S. with Machine
+  Learning</title>
+    <summary>  Water managers in the western United States (U.S.) rely on longterm forecasts
+of temperature and precipitation to prepare for droughts and other wet weather
+extremes. To improve the accuracy of these longterm forecasts, the U.S. Bureau
+of Reclamation and the National Oceanic and Atmospheric Administration (NOAA)
+launched the Subseasonal Climate Forecast Rodeo, a year-long real-time
+forecasting challenge in which participants aimed to skillfully predict
+temperature and precipitation in the western U.S. two to four weeks and four to
+six weeks in advance. Here we present and evaluate our machine learning
+approach to the Rodeo and release our SubseasonalRodeo dataset, collected to
+train and evaluate our forecasting system.
+  Our system is an ensemble of two regression models. The first integrates the
+diverse collection of meteorological measurements and dynamic model forecasts
+in the SubseasonalRodeo dataset and prunes irrelevant predictors using a
+customized multitask model selection procedure. The second uses only historical
+measurements of the target variable (temperature or precipitation) and
+introduces multitask nearest neighbor features into a weighted local linear
+regression. Each model alone is significantly more accurate than the debiased
+operational U.S. Climate Forecasting System (CFSv2), and our ensemble skill
+exceeds that of the top Rodeo competitor for each target variable and forecast
+horizon. Moreover, over 2011-2018, an ensemble of our regression models and
+debiased CFSv2 improves debiased CFSv2 skill by 40-50% for temperature and
+129-169% for precipitation. We hope that both our dataset and our methods will
+help to advance the state of the art in subseasonal forecasting.
+</summary>
+    <author>
+      <name>Jessica Hwang</name>
+    </author>
+    <author>
+      <name>Paulo Orenstein</name>
+    </author>
+    <author>
+      <name>Judah Cohen</name>
+    </author>
+    <author>
+      <name>Karl Pfeiffer</name>
+    </author>
+    <author>
+      <name>Lester Mackey</name>
+    </author>
+    <link href="http://arxiv.org/abs/1809.07394v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1809.07394v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.10852v1</id>
+    <updated>2019-06-26T05:26:31Z</updated>
+    <published>2019-06-26T05:26:31Z</published>
+    <title>Water Preservation in Soan River Basin using Deep Learning Techniques</title>
+    <summary>  Water supplies are crucial for the development of living beings. However,
+change in the hydrological process i.e. climate and land usage are the key
+issues. Sustaining water level and accurate estimating for dynamic conditions
+is a critical job for hydrologists, but predicting hydrological extremes is an
+open issue. In this paper, we proposed two deep learning techniques and three
+machine learning algorithms to predict stream flow, given the present climate
+conditions. The results showed that the Recurrent Neural Network (RNN) or Long
+Short-term Memory (LSTM), an artificial neural network based method, outperform
+other conventional and machine-learning algorithms for predicting stream flow.
+Furthermore, we analyzed that stream flow is directly affected by
+precipitation, land usage, and temperature. These indexes are critical, which
+can be used by hydrologists to identify the potential for stream flow. We make
+the dataset publicly available (https://github.com/sadaqat007/Dataset) so that
+others should be able to replicate and build upon the results published.
+</summary>
+    <author>
+      <name>Sadaqat ur Rehman</name>
+    </author>
+    <author>
+      <name>Zhongliang Yang</name>
+    </author>
+    <author>
+      <name>Muhammad Shahid</name>
+    </author>
+    <author>
+      <name>Nan Wei</name>
+    </author>
+    <author>
+      <name>Yongfeng Huang</name>
+    </author>
+    <author>
+      <name>Muhammad Waqas</name>
+    </author>
+    <author>
+      <name>Shanshan Tu</name>
+    </author>
+    <author>
+      <name>Obaid ur Rehman</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">14 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/1906.10852v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.10852v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.04731v3</id>
+    <updated>2018-09-07T08:28:05Z</updated>
+    <published>2018-06-12T19:29:25Z</published>
+    <title>Deep learning to represent sub-grid processes in climate models</title>
+    <summary>  The representation of nonlinear sub-grid processes, especially clouds, has
+been a major source of uncertainty in climate models for decades.
+Cloud-resolving models better represent many of these processes and can now be
+run globally but only for short-term simulations of at most a few years because
+of computational limitations. Here we demonstrate that deep learning can be
+used to capture many advantages of cloud-resolving modeling at a fraction of
+the computational cost. We train a deep neural network to represent all
+atmospheric sub-grid processes in a climate model by learning from a
+multi-scale model in which convection is treated explicitly. The trained neural
+network then replaces the traditional sub-grid parameterizations in a global
+general circulation model in which it freely interacts with the resolved
+dynamics and the surface-flux scheme. The prognostic multi-year simulations are
+stable and closely reproduce not only the mean climate of the cloud-resolving
+simulation but also key aspects of variability, including precipitation
+extremes and the equatorial wave spectrum. Furthermore, the neural network
+approximately conserves energy despite not being explicitly instructed to.
+Finally, we show that the neural network parameterization generalizes to new
+surface forcing patterns but struggles to cope with temperatures far outside
+its training manifold. Our results show the feasibility of using deep learning
+for climate model parameterization. In a broader context, we anticipate that
+data-driven Earth System Model development could play a key role in reducing
+climate prediction uncertainty in the coming decade.
+</summary>
+    <author>
+      <name>Stephan Rasp</name>
+    </author>
+    <author>
+      <name>Michael S. Pritchard</name>
+    </author>
+    <author>
+      <name>Pierre Gentine</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">View official PNAS version at https://doi.org/10.1073/pnas.1810286115</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Proceedings of the National Academy of Sciences Sep 2018,
+  201810286; DOI: 10.1073/pnas.1810286115</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1806.04731v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.04731v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1711.02316v1</id>
+    <updated>2017-11-07T07:08:54Z</updated>
+    <published>2017-11-07T07:08:54Z</published>
+    <title>DeepRain: ConvLSTM Network for Precipitation Prediction using
+  Multichannel Radar Data</title>
+    <summary>  Accurate rainfall forecasting is critical because it has a great impact on
+people's social and economic activities. Recent trends on various literatures
+show that Deep Learning (Neural Network) is a promising methodology to tackle
+many challenging tasks. In this study, we introduce a brand-new data-driven
+precipitation prediction model called DeepRain. This model predicts the amount
+of rainfall from weather radar data, which is three-dimensional and
+four-channel data, using convolutional LSTM (ConvLSTM). ConvLSTM is a variant
+of LSTM (Long Short-Term Memory) containing a convolution operation inside the
+LSTM cell. For the experiment, we used radar reflectivity data for a two-year
+period whose input is in a time series format in units of 6 min divided into 15
+records. The output is the predicted rainfall information for the input data.
+Experimental results show that two-stacked ConvLSTM reduced RMSE by 23.0%
+compared to linear regression.
+</summary>
+    <author>
+      <name>Seongchan Kim</name>
+    </author>
+    <author>
+      <name>Seungkyun Hong</name>
+    </author>
+    <author>
+      <name>Minsu Joh</name>
+    </author>
+    <author>
+      <name>Sa-kwang Song</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Climate Informatics Workshop 2017</arxiv:comment>
+    <link href="http://arxiv.org/abs/1711.02316v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1711.02316v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.04742v2</id>
+    <updated>2018-05-24T16:35:23Z</updated>
+    <published>2018-02-13T17:07:13Z</published>
+    <title>Quantifying Uncertainty in Discrete-Continuous and Skewed Data with
+  Bayesian Deep Learning</title>
+    <summary>  Deep Learning (DL) methods have been transforming computer vision with
+innovative adaptations to other domains including climate change. For DL to
+pervade Science and Engineering (S&amp;E) applications where risk management is a
+core component, well-characterized uncertainty estimates must accompany
+predictions. However, S&amp;E observations and model-simulations often follow
+heavily skewed distributions and are not well modeled with DL approaches, since
+they usually optimize a Gaussian, or Euclidean, likelihood loss. Recent
+developments in Bayesian Deep Learning (BDL), which attempts to capture
+uncertainties from noisy observations, aleatoric, and from unknown model
+parameters, epistemic, provide us a foundation. Here we present a
+discrete-continuous BDL model with Gaussian and lognormal likelihoods for
+uncertainty quantification (UQ). We demonstrate the approach by developing UQ
+estimates on `DeepSD', a super-resolution based DL model for Statistical
+Downscaling (SD) in climate applied to precipitation, which follows an
+extremely skewed distribution. We find that the discrete-continuous models
+outperform a basic Gaussian distribution in terms of predictive accuracy and
+uncertainty calibration. Furthermore, we find that the lognormal distribution,
+which can handle skewed distributions, produces quality uncertainty estimates
+at the extremes. Such results may be important across S&amp;E, as well as other
+domains such as finance and economics, where extremes are often of significant
+interest. Furthermore, to our knowledge, this is the first UQ model in SD where
+both aleatoric and epistemic uncertainties are characterized.
+</summary>
+    <author>
+      <name>Thomas Vandal</name>
+    </author>
+    <author>
+      <name>Evan Kodra</name>
+    </author>
+    <author>
+      <name>Jennifer Dy</name>
+    </author>
+    <author>
+      <name>Sangram Ganguly</name>
+    </author>
+    <author>
+      <name>Ramakrishna Nemani</name>
+    </author>
+    <author>
+      <name>Auroop R. Ganguly</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1145/3219819.3219996</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1145/3219819.3219996" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">10 Pages</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">The 24th ACM SIGKDD International Conference on Knowledge
+  Discovery &amp; Data Mining, August 19--23, 2018, London, United Kingdom</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1802.04742v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.04742v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1803.10705v1</id>
+    <updated>2018-03-28T16:16:14Z</updated>
+    <published>2018-03-28T16:16:14Z</published>
+    <title>Semi-supervised learning for structured regression on partially observed
+  attributed graphs</title>
+    <summary>  Conditional probabilistic graphical models provide a powerful framework for
+structured regression in spatio-temporal datasets with complex correlation
+patterns. However, in real-life applications a large fraction of observations
+is often missing, which can severely limit the representational power of these
+models. In this paper we propose a Marginalized Gaussian Conditional Random
+Fields (m-GCRF) structured regression model for dealing with missing labels in
+partially observed temporal attributed graphs. This method is aimed at learning
+with both labeled and unlabeled parts and effectively predicting future values
+in a graph. The method is even capable of learning from nodes for which the
+response variable is never observed in history, which poses problems for many
+state-of-the-art models that can handle missing data. The proposed model is
+characterized for various missingness mechanisms on 500 synthetic graphs. The
+benefits of the new method are also demonstrated on a challenging application
+for predicting precipitation based on partial observations of climate variables
+in a temporal graph that spans the entire continental US. We also show that the
+method can be useful for optimizing the costs of data collection in climate
+applications via active reduction of the number of weather stations to
+consider. In experiments on these real-world and synthetic datasets we show
+that the proposed model is consistently more accurate than alternative
+semi-supervised structured models, as well as models that either use imputation
+to deal with missing values or simply ignore them altogether.
+</summary>
+    <author>
+      <name>Jelena Stojanovic</name>
+    </author>
+    <author>
+      <name>Milos Jovanovic</name>
+    </author>
+    <author>
+      <name>Djordje Gligorijevic</name>
+    </author>
+    <author>
+      <name>Zoran Obradovic</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Proceedings of the 2015 SIAM International Conference on Data Mining
+  (SDM 2015) Vancouver, Canada, April 30 - May 02, 2015</arxiv:comment>
+    <link href="http://arxiv.org/abs/1803.10705v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1803.10705v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.09244v2</id>
+    <updated>2018-10-15T22:27:53Z</updated>
+    <published>2018-06-25T01:05:19Z</published>
+    <title>A Scalable Machine Learning System for Pre-Season Agriculture Yield
+  Forecast</title>
+    <summary>  Yield forecast is essential to agriculture stakeholders and can be obtained
+with the use of machine learning models and data coming from multiple sources.
+Most solutions for yield forecast rely on NDVI (Normalized Difference
+Vegetation Index) data, which is time-consuming to be acquired and processed.
+To bring scalability for yield forecast, in the present paper we describe a
+system that incorporates satellite-derived precipitation and soil properties
+datasets, seasonal climate forecasting data from physical models and other
+sources to produce a pre-season prediction of soybean/maize yield---with no
+need of NDVI data. This system provides significantly useful results by the
+exempting the need for high-resolution remote-sensing data and allowing farmers
+to prepare for adverse climate influence on the crop cycle. In our studies, we
+forecast the soybean and maize yields for Brazil and USA, which corresponded to
+44% of the world's grain production in 2016. Results show the error metrics for
+soybean and maize yield forecasts are comparable to similar systems that only
+provide yield forecast information in the first weeks to months of the crop
+cycle.
+</summary>
+    <author>
+      <name>Igor Oliveira</name>
+    </author>
+    <author>
+      <name>Renato L. F. Cunha</name>
+    </author>
+    <author>
+      <name>Bruno Silva</name>
+    </author>
+    <author>
+      <name>Marco A. S. Netto</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">8 pages, 5 figures, Submitted to 14th IEEE eScience</arxiv:comment>
+    <link href="http://arxiv.org/abs/1806.09244v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.09244v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1411.7508v1</id>
+    <updated>2014-11-27T09:26:09Z</updated>
+    <published>2014-11-27T09:26:09Z</published>
+    <title>Forecasting the Colorado River Discharge Using an Artificial Neural
+  Network (ANN) Approach</title>
+    <summary>  Artificial Neural Network (ANN) based model is a computational approach
+commonly used for modeling the complex relationships between input and output
+parameters. Prediction of the flow rate of a river is a requisite for any
+successful water resource management and river basin planning. In the current
+survey, the effectiveness of an Artificial Neural Network was examined to
+predict the Colorado River discharge. In this modeling process, an ANN model
+was used to relate the discharge of the Colorado River to such parameters as
+the amount of precipitation, ambient temperature and snowpack level at a
+specific time of the year. The model was able to precisely study the impact of
+climatic parameters on the flow rate of the Colorado River.
+</summary>
+    <author>
+      <name>Amirhossein Mehrkesh</name>
+    </author>
+    <author>
+      <name>Maryam Ahmadi</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">11 pages, 4 figures and 5 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/1411.7508v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1411.7508v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.08852v1</id>
+    <updated>2019-04-01T09:36:05Z</updated>
+    <published>2019-04-01T09:36:05Z</published>
+    <title>A Hybrid Precipitation Prediction Method based on Multicellular Gene
+  Expression Programming</title>
+    <summary>  Prompt and accurate precipitation forecast is very important for development
+management of regional water resource, flood disaster prevention and people's
+daily activity and production plan; however, non-linear and nonstationary
+characteristics of precipitation data and noise seriously affect forecast
+accuracy. This paper combines multicellular gene expression programming with
+more powerful function mining ability and wavelet analysis with more powerful
+denoising and extracting data fine feature capability for precipitation
+forecast modeling, proposing to estimate meteorological precipitation with
+WTGEPRP algorithm. Comparative result for simulation experiment with actual
+precipitation data in Zhengzhou, Nanning and Melbourne in Australia indicated
+that: fitting and forecasting performance of WTGEPRP algorithm is better than
+the algorithm Multicellular Gene Expression Programming-based Hybrid Model for
+Precipitation Prediction Coupled with EMD, Supporting Vector Regression, BP
+Neural Network, Multicellular Gene Expression Programming and Gene Expression
+Programming, and has good application prospect.
+</summary>
+    <author>
+      <name>Hongya Li</name>
+    </author>
+    <author>
+      <name>Yuzhong Peng</name>
+    </author>
+    <author>
+      <name>Chuyan Deng</name>
+    </author>
+    <author>
+      <name>Yonghua Pan</name>
+    </author>
+    <author>
+      <name>Daoqing Gong</name>
+    </author>
+    <author>
+      <name>Hao Zhang</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">in Chinese</arxiv:comment>
+    <link href="http://arxiv.org/abs/1906.08852v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.08852v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1805.11910v1</id>
+    <updated>2018-05-30T11:52:12Z</updated>
+    <published>2018-05-30T11:52:12Z</published>
+    <title>The evolution of precipitate crystal structures in an Al-Mg-Si(-Cu)
+  alloy studied by a combined HAADF-STEM and SPED approach</title>
+    <summary>  This work presents a detailed investigation into the effect of a low Cu
+addition (0.01 at.%) on precipitation in an Al-0.80Mg-0.85Si alloy during
+ageing. The precipitate crystal structures were assessed by scanning
+transmission electron microscopy combined with a novel scanning precession
+electron diffraction approach, which includes machine learning. The combination
+of techniques enabled evaluation of the atomic arrangement within individual
+precipitates, as well as an improved estimate of precipitate phase fractions at
+each ageing condition, through analysis of a statistically significant number
+of precipitates. Based on the obtained results, the total amount of solute
+atoms locked inside precipitates could be approximated. It was shown that even
+with a Cu content close to impurity levels, the Al-Mg-Si system precipitation
+was significantly affected with overageing. The principal change was due to a
+gradually increasing phase fraction of the Cu-containing Q'-phase, which
+eventually was seen to dominate the precipitate structures. The structural
+overtake could be explained based on a continuous formation of the thermally
+stable Q'-phase, with Cu atomic columns incorporating less Cu than what could
+potentially be accommodated.
+</summary>
+    <author>
+      <name>Jonas K. Sunde</name>
+    </author>
+    <author>
+      <name>Calin D. Marioara</name>
+    </author>
+    <author>
+      <name>Antonius T. J. van Helvoort</name>
+    </author>
+    <author>
+      <name>Randi Holmestad</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.matchar.2018.05.031</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.matchar.2018.05.031" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">13 pages, 10 figures, 2 tables</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Materials Characterization 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1805.11910v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1805.11910v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1506.04214v2</id>
+    <updated>2015-09-19T11:02:03Z</updated>
+    <published>2015-06-13T03:19:24Z</published>
+    <title>Convolutional LSTM Network: A Machine Learning Approach for
+  Precipitation Nowcasting</title>
+    <summary>  The goal of precipitation nowcasting is to predict the future rainfall
+intensity in a local region over a relatively short period of time. Very few
+previous studies have examined this crucial and challenging weather forecasting
+problem from the machine learning perspective. In this paper, we formulate
+precipitation nowcasting as a spatiotemporal sequence forecasting problem in
+which both the input and the prediction target are spatiotemporal sequences. By
+extending the fully connected LSTM (FC-LSTM) to have convolutional structures
+in both the input-to-state and state-to-state transitions, we propose the
+convolutional LSTM (ConvLSTM) and use it to build an end-to-end trainable model
+for the precipitation nowcasting problem. Experiments show that our ConvLSTM
+network captures spatiotemporal correlations better and consistently
+outperforms FC-LSTM and the state-of-the-art operational ROVER algorithm for
+precipitation nowcasting.
+</summary>
+    <author>
+      <name>Xingjian Shi</name>
+    </author>
+    <author>
+      <name>Zhourong Chen</name>
+    </author>
+    <author>
+      <name>Hao Wang</name>
+    </author>
+    <author>
+      <name>Dit-Yan Yeung</name>
+    </author>
+    <author>
+      <name>Wai-kin Wong</name>
+    </author>
+    <author>
+      <name>Wang-chun Woo</name>
+    </author>
+    <link href="http://arxiv.org/abs/1506.04214v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1506.04214v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1810.05004v1</id>
+    <updated>2018-10-03T19:12:03Z</updated>
+    <published>2018-10-03T19:12:03Z</published>
+    <title>Hybrid integration of multilayer perceptrons and parametric models for
+  reliability forecasting in the smart grid</title>
+    <summary>  The reliable power system operation is a major goal for electric utilities,
+which requires the accurate reliability forecasting to minimize the duration of
+power interruptions. Since weather conditions are usually the leading causes
+for power interruptions in the smart grid, especially for its distribution
+networks, this paper comprehensively investigates the combined effect of
+various weather parameters on the reliability performance of distribution
+networks. Specially, a multilayer perceptron (MLP) based framework is proposed
+to forecast the daily numbers of sustained and momentary power interruptions in
+one distribution management area using time series of common weather data.
+First, the parametric regression models are implemented to analyze the
+relationship between the daily numbers of power interruptions and various
+common weather parameters, such as temperature, precipitation, air pressure,
+wind speed, and lightning. The selected weather parameters and corresponding
+parametric models are then integrated as inputs to formulate a MLP neural
+network model to predict the daily numbers of power interruptions. A modified
+extreme learning machine (ELM) based hierarchical learning algorithm is
+introduced for training the formulated model using realtime reliability data
+from an electric utility in Florida and common weather data from National
+Climatic Data Center (NCDC). In addition, the sensitivity analysis is
+implemented to determine the various impacts of different weather parameters on
+the daily numbers of power interruptions.
+</summary>
+    <author>
+      <name>Longfei Wei</name>
+    </author>
+    <author>
+      <name>Arif I. Sarwat</name>
+    </author>
+    <link href="http://arxiv.org/abs/1810.05004v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1810.05004v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.05885v1</id>
+    <updated>2019-01-17T16:48:56Z</updated>
+    <published>2019-01-17T16:48:56Z</published>
+    <title>A Learning Framework for An Accurate Prediction of Rainfall Rates</title>
+    <summary>  The present work is aimed to examine the potential of advanced machine
+learning strategies to predict the monthly rainfall (precipitation) for the
+Indus Basin, using climatological variables such as air temperature,
+geo-potential height, relative humidity and elevation. In this work, the focus
+is on thirteen geographical locations, called index points, within the basin.
+Arguably, not all of the hydrological components are relevant to the
+precipitation rate, and therefore, need to be filtered out, leading to a
+lower-dimensional feature space. Towards this goal, we adopted the gradient
+boosting method to extract the most contributive features for precipitation
+rate prediction. Five state-of-the-art machine learning methods have then been
+trained where pearson correlation coefficient and mean absolute error have been
+reported as the prediction performance criteria. The Random Forest regression
+model outperformed the other regression models achieving the maximum pearson
+correlation coefficient and minimum mean absolute error for most of the index
+points. Our results suggest the relative humidity (for pressure levels of 300
+mb and 150 mb, respectively), the u-direction wind (for pressure level of 700
+mb), air temperature (for pressure levels of 150 mb and 10 mb, respectively) as
+the top five influencing features for accurate forecasting the precipitation
+rate.
+</summary>
+    <author>
+      <name>Hamidreza Ghasemi Damavandi</name>
+    </author>
+    <author>
+      <name>Reepal Shah</name>
+    </author>
+    <link href="http://arxiv.org/abs/1901.05885v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.05885v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="eess.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1805.01950v1</id>
+    <updated>2018-05-04T22:16:16Z</updated>
+    <published>2018-05-04T22:16:16Z</published>
+    <title>A Data-driven Approach to Detecting Precipitation from Meteorological
+  Sensor Data</title>
+    <summary>  Precipitation is dependent on a myriad of atmospheric conditions. In this
+paper, we study how certain atmospheric parameters impact the occurrence of
+rainfall. We propose a data-driven, machine-learning based methodology to
+detect precipitation using various meteorological sensor data. Our approach
+achieves a true detection rate of 87.4% and a moderately low false alarm rate
+of 32.2%.
+</summary>
+    <author>
+      <name>Shilpa Manandhar</name>
+    </author>
+    <author>
+      <name>Soumyabrata Dev</name>
+    </author>
+    <author>
+      <name>Yee Hui Lee</name>
+    </author>
+    <author>
+      <name>Yu Song Meng</name>
+    </author>
+    <author>
+      <name>Stefan Winkler</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Published in Proc. IEEE International Geoscience and Remote Sensing
+  Symposium (IGARSS), 2018</arxiv:comment>
+    <link href="http://arxiv.org/abs/1805.01950v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1805.01950v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.00503v4</id>
+    <updated>2018-10-17T18:59:37Z</updated>
+    <published>2018-06-01T18:35:50Z</published>
+    <title>Machine learning materials physics: Surrogate optimization and
+  multi-fidelity algorithms predict precipitate morphology in an alternative to
+  phase field dynamics</title>
+    <summary>  Machine learning has been effective at detecting patterns and predicting the
+response of systems that behave free of natural laws. Examples include learning
+crowd dynamics, recommender systems and autonomous mobility. There also have
+been applications to the search for new materials that bear relations to big
+data classification problems. However, when it comes to physical systems
+governed by conservation laws, the role of machine learning has been more
+limited. Here, we present our recent work in exploring the role of machine
+learning methods in discovering, or aiding, the search for physics.
+Specifically, we focus on using machine learning algorithms to represent
+high-dimensional free energy surfaces with the goal of identifying precipitate
+morphologies in alloy systems. Traditionally, this problem has been approached
+by combining phase field models, which impose first-order dynamics, with
+elasticity, to traverse a free energy landscape in search of minima.
+Equilibrium precipitate morphologies occur at these minima. Here, we exploit
+the machine learning methods to represent high-dimensional data, combined with
+surrogate optimization, sensitivity analysis and multifidelity modelling as an
+alternate framework to explore phenomena controlled by energy extremization.
+This combination of data-driven methods offers an alternative to the imposition
+of first-order dynamics via phase field methods, and represents one approach to
+machine learning materials physics.
+</summary>
+    <author>
+      <name>Gregory Teichert</name>
+    </author>
+    <author>
+      <name>Krishna Garikipati</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.cma.2018.10.025</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.cma.2018.10.025" rel="related"/>
+    <link href="http://arxiv.org/abs/1806.00503v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.00503v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.05037v1</id>
+    <updated>2019-05-13T13:51:51Z</updated>
+    <published>2019-05-13T13:51:51Z</published>
+    <title>Precipitation nowcasting using a stochastic variational frame predictor
+  with learned prior distribution</title>
+    <summary>  We propose the use of a stochastic variational frame prediction deep neural
+network with a learned prior distribution trained on two-dimensional rain radar
+reflectivity maps for precipitation nowcasting with lead times of up to 2 1/2
+hours. We present a comparison to a standard convolutional LSTM network and
+assess the evolution of the structural similarity index for both methods. Case
+studies are presented that illustrate that the novel methodology can yield
+meaningful forecasts without excessive blur for the time horizons of interest.
+</summary>
+    <author>
+      <name>Alexander Bihlo</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">7 pages, 3 figures, release version</arxiv:comment>
+    <link href="http://arxiv.org/abs/1905.05037v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1905.05037v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.10274v1</id>
+    <updated>2019-03-25T12:44:35Z</updated>
+    <published>2019-03-25T12:44:35Z</published>
+    <title>A data-driven approach to precipitation parameterizations using
+  convolutional encoder-decoder neural networks</title>
+    <summary>  Numerical Weather Prediction (NWP) models represent sub-grid processes using
+parameterizations, which are often complex and a major source of uncertainty in
+weather forecasting. In this work, we devise a simple machine learning (ML)
+methodology to learn parameterizations from basic NWP fields. Specifically, we
+demonstrate how encoder-decoder Convolutional Neural Networks (CNN) can be used
+to derive total precipitation using geopotential height as the only input.
+Several popular neural network architectures, from the field of image
+processing, are considered and a comparison with baseline ML methodologies is
+provided. We use NWP reanalysis data to train different ML models showing how
+encoder-decoder CNNs are able to interpret the spatial information contained in
+the geopotential field to infer total precipitation with a high degree of
+accuracy. We also provide a method to identify the levels of the geopotential
+height that have a higher influence on precipitation through a variable
+selection process. As far as we know, this paper covers the first attempt to
+model NWP parameterizations using CNN methodologies.
+</summary>
+    <author>
+      <name>Pablo Rozas Larraondo</name>
+    </author>
+    <author>
+      <name>Luigi J. Renzullo</name>
+    </author>
+    <author>
+      <name>Inaki Inza</name>
+    </author>
+    <author>
+      <name>Jose A. Lozano</name>
+    </author>
+    <link href="http://arxiv.org/abs/1903.10274v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.10274v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="86-08" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="I.4.9; I.6.6; J.2" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1207.4142v1</id>
+    <updated>2012-07-11T14:54:25Z</updated>
+    <published>2012-07-11T14:54:25Z</published>
+    <title>Conditional Chow-Liu Tree Structures for Modeling Discrete-Valued Vector
+  Time Series</title>
+    <summary>  We consider the problem of modeling discrete-valued vector time series data
+using extensions of Chow-Liu tree models to capture both dependencies across
+time and dependencies across variables. Conditional Chow-Liu tree models are
+introduced, as an extension to standard Chow-Liu trees, for modeling
+conditional rather than joint densities. We describe learning algorithms for
+such models and show how they can be used to learn parsimonious representations
+for the output distributions in hidden Markov models. These models are applied
+to the important problem of simulating and forecasting daily precipitation
+occurrence for networks of rain stations. To demonstrate the effectiveness of
+the models, we compare their performance versus a number of alternatives using
+historical precipitation data from Southwestern Australia and the Western
+United States. We illustrate how the structure and parameters of the models can
+be used to provide an improved meteorological interpretation of such data.
+</summary>
+    <author>
+      <name>Sergey Kirshner</name>
+    </author>
+    <author>
+      <name>Padhraic Smyth</name>
+    </author>
+    <author>
+      <name>Andrew Robertson</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Appears in Proceedings of the Twentieth Conference on Uncertainty in
+  Artificial Intelligence (UAI2004)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1207.4142v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1207.4142v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1711.10937v1</id>
+    <updated>2017-11-29T16:17:17Z</updated>
+    <published>2017-11-29T16:17:17Z</published>
+    <title>Forest-based methods and ensemble model output statistics for rainfall
+  ensemble forecasting</title>
+    <summary>  Rainfall ensemble forecasts have to be skillful for both low precipitation
+and extreme events. We present statistical post-processing methods based on
+Quantile Regression Forests (QRF) and Gradient Forests (GF) with a parametric
+extension for heavy-tailed distributions. Our goal is to improve ensemble
+quality for all types of precipitation events, heavy-tailed included, subject
+to a good overall performance. Our hybrid proposed methods are applied to daily
+51-h forecasts of 6-h accumulated precipitation from 2012 to 2015 over France
+using the M{\'e}t{\'e}o-France ensemble prediction system called PEARP. They
+provide calibrated pre-dictive distributions and compete favourably with
+state-of-the-art methods like Analogs method or Ensemble Model Output
+Statistics. In particular, hybrid forest-based procedures appear to bring an
+added value to the forecast of heavy rainfall.
+</summary>
+    <author>
+      <name>Maxime Taillardat</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">CNRM</arxiv:affiliation>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LSCE</arxiv:affiliation>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">ICJ</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Anne-Laure Fougères</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">ICJ</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Philippe Naveau</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LSCE</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Olivier Mestre</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">CNRM</arxiv:affiliation>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1175/WAF-D-18-0149.1</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1175/WAF-D-18-0149.1" rel="related"/>
+    <link href="http://arxiv.org/abs/1711.10937v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1711.10937v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.TH" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.05496v1</id>
+    <updated>2019-06-13T06:07:57Z</updated>
+    <published>2019-06-13T06:07:57Z</published>
+    <title>An image-driven machine learning approach to kinetic modeling of a
+  discontinuous precipitation reaction</title>
+    <summary>  Micrograph quantification is an essential component of several materials
+science studies. Machine learning methods, in particular convolutional neural
+networks, have previously demonstrated performance in image recognition tasks
+across several disciplines (e.g. materials science, medical imaging, facial
+recognition). Here, we apply these well-established methods to develop an
+approach to microstructure quantification for kinetic modeling of a
+discontinuous precipitation reaction in a case study on the uranium-molybdenum
+system. Prediction of material processing history based on image data
+(classification), calculation of area fraction of phases present in the
+micrographs (segmentation), and kinetic modeling from segmentation results were
+performed. Results indicate that convolutional neural networks represent
+microstructure image data well, and segmentation using the k-means clustering
+algorithm yields results that agree well with manually annotated images.
+Classification accuracies of original and segmented images are both 94\% for a
+5-class classification problem. Kinetic modeling results agree well with
+previously reported data using manual thresholding. The image quantification
+and kinetic modeling approach developed and presented here aims to reduce
+researcher bias introduced into the characterization process, and allows for
+leveraging information in limited image data sets.
+</summary>
+    <author>
+      <name>Elizabeth Kautz</name>
+    </author>
+    <author>
+      <name>Wufei Ma</name>
+    </author>
+    <author>
+      <name>Saumyadeep Jana</name>
+    </author>
+    <author>
+      <name>Arun Devaraj</name>
+    </author>
+    <author>
+      <name>Vineet Joshi</name>
+    </author>
+    <author>
+      <name>Bülent Yener</name>
+    </author>
+    <author>
+      <name>Daniel Lewis</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">30 pages, 8 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1906.05496v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.05496v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.app-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.app-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1710.02605v4</id>
+    <updated>2018-09-03T08:17:54Z</updated>
+    <published>2017-10-06T23:09:47Z</published>
+    <title>Combined Machine Learning and CALPHAD Approach for Discovering
+  Processing-Structure Relationships in Soft Magnetic Alloys</title>
+    <summary>  We aim to investigate relationships between select processing parameters or
+inputs (composition, temperature, annealing time) and two structural
+parameters, specifically, the mean radius and volume fraction of the Fe$_3$Si
+nanocrystals. To this end, we have deviced a combined CALPHAD and machine
+learning approach that led to well-calibrated metamodels able to predict
+structural parameters quickly and accurately for any desired inputs. In order
+to generate data for the mean radius and volume fraction of Fe$_3$Si
+nanocrystals, we have used a precipitation model based in the software
+Thermocalc to perform annealing simulations at a set of temperatures
+(490-550~\degree C) and for varying Fe and Si concentrations (Fe$_{72.89
++x}$Si$_{16.21-x}$B$_{6.90}$Nb$_{3}$Cu$_{1}$, $-3\leq x \leq 3$ atomic \%).
+Thereafter, we used the data to develop metamodels for the mean radius and
+volume fraction via the \emph{k}-Nearest Neighbour algorithm. The metamodels
+are shown to reproduce closely the trends obtained from the precipitation model
+over the entire annealing timescale. Our further analysis via parallel
+coordinate charts shows the effect of composition, temperature, and annealing
+time, and helps identify combinations thereof that lead to the desired mean
+radius and volume fraction for the nanocrystalline phase. This approach
+utilizes experimental (thermodynamic and kinetic) databases from the CALPHAD
+approach so as to capture the physics of nucleation and growth, while the
+machine learning algorithm provides the robustness needed to analyze the
+effects of processing parameters for this complex precipitation problem. This
+work contributes to understanding the linkages between processing parameters
+and desired microstructural characteristics (crystal size and volume fraction)
+responsible for achieving targeted properties, and illustrates ways to reduce
+the time from alloy discovery to deployment.
+</summary>
+    <author>
+      <name>Rajesh Jha</name>
+    </author>
+    <author>
+      <name>Nirupam Chakraborti</name>
+    </author>
+    <author>
+      <name>David Diercks</name>
+    </author>
+    <author>
+      <name>Aaron Stebner</name>
+    </author>
+    <author>
+      <name>Cristian V. Ciobanu</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.commatsci.2018.04.008</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.commatsci.2018.04.008" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">10 pages, 15 figures</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Computational Materials Science 150(2018), 202-211</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1710.02605v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1710.02605v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1803.11266v1</id>
+    <updated>2018-03-29T21:48:11Z</updated>
+    <published>2018-03-29T21:48:11Z</published>
+    <title>Performance evaluation and hyperparameter tuning of statistical and
+  machine-learning models using spatial data</title>
+    <summary>  Machine-learning algorithms have gained popularity in recent years in the
+field of ecological modeling due to their promising results in predictive
+performance of classification problems. While the application of such
+algorithms has been highly simplified in the last years due to their
+well-documented integration in commonly used statistical programming languages
+such as R, there are several practical challenges in the field of ecological
+modeling related to unbiased performance estimation, optimization of algorithms
+using hyperparameter tuning and spatial autocorrelation. We address these
+issues in the comparison of several widely used machine-learning algorithms
+such as Boosted Regression Trees (BRT), k-Nearest Neighbor (WKNN), Random
+Forest (RF) and Support Vector Machine (SVM) to traditional parametric
+algorithms such as logistic regression (GLM) and semi-parametric ones like
+generalized additive models (GAM). Different nested cross-validation methods
+including hyperparameter tuning methods are used to evaluate model performances
+with the aim to receive bias-reduced performance estimates. As a case study the
+spatial distribution of forest disease Diplodia sapinea in the Basque Country
+in Spain is investigated using common environmental variables such as
+temperature, precipitation, soil or lithology as predictors. Results show that
+GAM and RF (mean AUROC estimates 0.708 and 0.699) outperform all other methods
+in predictive accuracy. The effect of hyperparameter tuning saturates at around
+50 iterations for this data set. The AUROC differences between the bias-reduced
+(spatial cross-validation) and overoptimistic (non-spatial cross-validation)
+performance estimates of the GAM and RF are 0.167 (24%) and 0.213 (30%),
+respectively. It is recommended to also use spatial partitioning for
+cross-validation hyperparameter tuning of spatial data.
+</summary>
+    <author>
+      <name>Patrick Schratz</name>
+    </author>
+    <author>
+      <name>Jannes Muenchow</name>
+    </author>
+    <author>
+      <name>Eugenia Iturritxa</name>
+    </author>
+    <author>
+      <name>Jakob Richter</name>
+    </author>
+    <author>
+      <name>Alexander Brenning</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.ecolmodel.2019.06.002</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.ecolmodel.2019.06.002" rel="related"/>
+    <link href="http://arxiv.org/abs/1803.11266v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1803.11266v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1907.04816v1</id>
+    <updated>2019-07-10T16:29:55Z</updated>
+    <published>2019-07-10T16:29:55Z</published>
+    <title>A Data-Driven Approach for Accurate Rainfall Prediction</title>
+    <summary>  In recent years, there has been growing interest in using Precipitable Water
+Vapor (PWV) derived from Global Positioning System (GPS) signal delays to
+predict rainfall. However, the occurrence of rainfall is dependent on a myriad
+of atmospheric parameters. This paper proposes a systematic approach to analyze
+various parameters that affect precipitation in the atmosphere. Different
+ground-based weather features like Temperature, Relative Humidity, Dew Point,
+Solar Radiation, PWV along with Seasonal and Diurnal variables are identified,
+and a detailed feature correlation study is presented. While all features play
+a significant role in rainfall classification, only a few of them, such as PWV,
+Solar Radiation, Seasonal and Diurnal features, stand out for rainfall
+prediction. Based on these findings, an optimum set of features are used in a
+data-driven machine learning algorithm for rainfall prediction. The
+experimental evaluation using a four-year (2012-2015) database shows a true
+detection rate of 80.4%, a false alarm rate of 20.3%, and an overall accuracy
+of 79.6%. Compared to the existing literature, our method significantly reduces
+the false alarm rates.
+</summary>
+    <author>
+      <name>Shilpa Manandhar</name>
+    </author>
+    <author>
+      <name>Soumyabrata Dev</name>
+    </author>
+    <author>
+      <name>Yee Hui Lee</name>
+    </author>
+    <author>
+      <name>Yu Song Meng</name>
+    </author>
+    <author>
+      <name>Stefan Winkler</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Published in IEEE Transactions on Geoscience and Remote Sensing, 2019</arxiv:comment>
+    <link href="http://arxiv.org/abs/1907.04816v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1907.04816v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1803.00879v1</id>
+    <updated>2018-03-02T15:11:49Z</updated>
+    <published>2018-03-02T15:11:49Z</published>
+    <title>Probabilistic design of a molybdenum-base alloy using a neural network</title>
+    <summary>  An artificial intelligence tool is exploited to discover and characterize a
+new molybdenum-base alloy that is the most likely to simultaneously satisfy
+targets of cost, phase stability, precipitate content, yield stress, and
+hardness. Experimental testing demonstrates that the proposed alloy fulfils the
+computational predictions, and furthermore the physical properties exceed those
+of other commercially available Mo-base alloys for forging-die applications.
+</summary>
+    <author>
+      <name>B. D. Conduit</name>
+    </author>
+    <author>
+      <name>N. G. Jones</name>
+    </author>
+    <author>
+      <name>H. J. Stone</name>
+    </author>
+    <author>
+      <name>G. J. Conduit</name>
+    </author>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Scripta Materialia 146, 82 (2018)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1803.00879v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1803.00879v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.10773v1</id>
+    <updated>2019-06-25T22:37:39Z</updated>
+    <published>2019-06-25T22:37:39Z</published>
+    <title>Are Adversarial Perturbations a Showstopper for ML-Based CAD? A Case
+  Study on CNN-Based Lithographic Hotspot Detection</title>
+    <summary>  There is substantial interest in the use of machine learning (ML) based
+techniques throughout the electronic computer-aided design (CAD) flow,
+particularly those based on deep learning. However, while deep learning methods
+have surpassed state-of-the-art performance in several applications, they have
+exhibited intrinsic susceptibility to adversarial perturbations --- small but
+deliberate alterations to the input of a neural network, precipitating
+incorrect predictions. In this paper, we seek to investigate whether
+adversarial perturbations pose risks to ML-based CAD tools, and if so, how
+these risks can be mitigated. To this end, we use a motivating case study of
+lithographic hotspot detection, for which convolutional neural networks (CNN)
+have shown great promise. In this context, we show the first adversarial
+perturbation attacks on state-of-the-art CNN-based hotspot detectors;
+specifically, we show that small (on average 0.5% modified area), functionality
+preserving and design-constraint satisfying changes to a layout can nonetheless
+trick a CNN-based hotspot detector into predicting the modified layout as
+hotspot free (with up to 99.7% success). We propose an adversarial retraining
+strategy to improve the robustness of CNN-based hotspot detection and show that
+this strategy significantly improves robustness (by a factor of ~3) against
+adversarial attacks without compromising classification accuracy.
+</summary>
+    <author>
+      <name>Kang Liu</name>
+    </author>
+    <author>
+      <name>Haoyu Yang</name>
+    </author>
+    <author>
+      <name>Yuzhe Ma</name>
+    </author>
+    <author>
+      <name>Benjamin Tan</name>
+    </author>
+    <author>
+      <name>Bei Yu</name>
+    </author>
+    <author>
+      <name>Evangeline F. Y. Young</name>
+    </author>
+    <author>
+      <name>Ramesh Karri</name>
+    </author>
+    <author>
+      <name>Siddharth Garg</name>
+    </author>
+    <link href="http://arxiv.org/abs/1906.10773v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.10773v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1701.08716v2</id>
+    <updated>2017-03-24T18:14:26Z</updated>
+    <published>2017-01-25T17:07:33Z</published>
+    <title>Does Weather Matter? Causal Analysis of TV Logs</title>
+    <summary>  Weather affects our mood and behaviors, and many aspects of our life. When it
+is sunny, most people become happier; but when it rains, some people get
+depressed. Despite this evidence and the abundance of data, weather has mostly
+been overlooked in the machine learning and data science research. This work
+presents a causal analysis of how weather affects TV watching patterns. We show
+that some weather attributes, such as pressure and precipitation, cause major
+changes in TV watching patterns. To the best of our knowledge, this is the
+first large-scale causal study of the impact of weather on TV watching
+patterns.
+</summary>
+    <author>
+      <name>Shi Zong</name>
+    </author>
+    <author>
+      <name>Branislav Kveton</name>
+    </author>
+    <author>
+      <name>Shlomo Berkovsky</name>
+    </author>
+    <author>
+      <name>Azin Ashkan</name>
+    </author>
+    <author>
+      <name>Nikos Vlassis</name>
+    </author>
+    <author>
+      <name>Zheng Wen</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Companion of the 26th International World Wide Web Conference</arxiv:comment>
+    <link href="http://arxiv.org/abs/1701.08716v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1701.08716v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.11576v1</id>
+    <updated>2019-04-17T08:25:02Z</updated>
+    <published>2019-04-17T08:25:02Z</published>
+    <title>Forecasting Drought Using Multilayer Perceptron Artificial Neural
+  Network Model</title>
+    <summary>  These days human beings are facing many environmental challenges due to
+frequently occurring drought hazards. It may have an effect on the countrys
+environment, the community, and industries. Several adverse impacts of drought
+hazard are continued in Pakistan, including other hazards. However, early
+measurement and detection of drought can provide guidance to water resources
+management for employing drought mitigation policies. In this paper, we used a
+multilayer perceptron neural network (MLPNN) algorithm for drought forecasting.
+We applied and tested MLPNN algorithm on monthly time series data of
+Standardized Precipitation Evapotranspiration Index (SPEI) for seventeen
+climatological stations located in Northern Area and KPK (Pakistan). We found
+that MLPNN has potential capability for SPEI drought forecasting based on
+performance measures (i.e., Mean Average Error (MAE), the coefficient of
+correlation R, and Root Mean Square Error (RMSE). Water resources and
+management planner can take necessary action in advance (e.g., in water
+scarcity areas) by using MLPNN model as part of their decision making.
+</summary>
+    <author>
+      <name>Zulifqar Ali</name>
+    </author>
+    <author>
+      <name>Ijaz Hussain</name>
+    </author>
+    <author>
+      <name>Muhammad Faisal</name>
+    </author>
+    <author>
+      <name>Hafiza Mamona Nazir</name>
+    </author>
+    <author>
+      <name>Tajammal Hussain</name>
+    </author>
+    <author>
+      <name>Muhammad Yousaf Shad</name>
+    </author>
+    <author>
+      <name>Alaa Mohamd Shoukry</name>
+    </author>
+    <author>
+      <name>Showkat Hussain Gani</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1155/2017/5681308</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1155/2017/5681308" rel="related"/>
+    <link href="http://arxiv.org/abs/1904.11576v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.11576v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1402.6552v1</id>
+    <updated>2014-02-26T14:29:33Z</updated>
+    <published>2014-02-26T14:29:33Z</published>
+    <title>Renewable Energy Prediction using Weather Forecasts for Optimal
+  Scheduling in HPC Systems</title>
+    <summary>  The objective of the GreenPAD project is to use green energy (wind, solar and
+biomass) for powering data-centers that are used to run HPC jobs. As a part of
+this it is important to predict the Renewable (Wind) energy for efficient
+scheduling (executing jobs that require higher energy when there is more green
+energy available and vice-versa). For predicting the wind energy we first
+analyze the historical data to find a statistical model that gives relation
+between wind energy and weather attributes. Then we use this model based on the
+weather forecast data to predict the green energy availability in the future.
+Using the green energy prediction obtained from the statistical model we are
+able to precompute job schedules for maximizing the green energy utilization in
+the future. We propose a model which uses live weather data in addition to
+machine learning techniques (which can predict future deviations in weather
+conditions based on current deviations from the forecast) to make on-the-fly
+changes to the precomputed schedule (based on green energy prediction).
+  For this we first analyze the data using histograms and simple statistical
+tools such as correlation. In addition we build (correlation) regression model
+for finding the relation between wind energy availability and weather
+attributes (temperature, cloud cover, air pressure, wind speed / direction,
+precipitation and sunshine). We also analyze different algorithms and machine
+learning techniques for optimizing the job schedules for maximizing the green
+energy utilization.
+</summary>
+    <author>
+      <name>Ankur Sahai</name>
+    </author>
+    <link href="http://arxiv.org/abs/1402.6552v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1402.6552v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1802.08055v1</id>
+    <updated>2018-02-20T09:11:30Z</updated>
+    <published>2018-02-20T09:11:30Z</published>
+    <title>A Learning Based Approach for Uncertainty Analysis in Numerical Weather
+  Prediction Models</title>
+    <summary>  Complex numerical weather prediction models incorporate a variety of physical
+processes, each described by multiple alternative physical schemes with
+specific parameters. The selection of the physical schemes and the choice of
+the corresponding physical parameters during model configuration can
+significantly impact the accuracy of model forecasts. There is no combination
+of physical schemes that works best for all times, at all locations, and under
+all conditions. It is therefore of considerable interest to understand the
+interplay between the choice of physics and the accuracy of the resulting
+forecasts under different conditions. This paper demonstrates the use of
+machine learning techniques to study the uncertainty in numerical weather
+prediction models due to the interaction of multiple physical processes. The
+first problem addressed herein is the estimation of systematic model errors in
+output quantities of interest at future times, and the use of this information
+to improve the model forecasts. The second problem considered is the
+identification of those specific physical processes that contribute most to the
+forecast uncertainty in the quantity of interest under specified meteorological
+conditions.
+  The discrepancies between model results and observations at past times are
+used to learn the relationships between the choice of physical processes and
+the resulting forecast errors. Numerical experiments are carried out with the
+Weather Research and Forecasting (WRF) model. The output quantity of interest
+is the model precipitation, a variable that is both extremely important and
+very challenging to forecast. The physical processes under consideration
+include various micro-physics schemes, cumulus parameterizations, short wave,
+and long wave radiation schemes. The experiments demonstrate the strong
+potential of machine learning approaches to aid the study of model errors.
+</summary>
+    <author>
+      <name>Azam Moosavi</name>
+    </author>
+    <author>
+      <name>Vishwas Rao</name>
+    </author>
+    <author>
+      <name>Adrian Sandu</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">23 pages, 5 figures, 4 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/1802.08055v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1802.08055v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.07490v3</id>
+    <updated>2019-04-21T05:11:19Z</updated>
+    <published>2018-11-19T04:07:49Z</published>
+    <title>Memory In Memory: A Predictive Neural Network for Learning Higher-Order
+  Non-Stationarity from Spatiotemporal Dynamics</title>
+    <summary>  Natural spatiotemporal processes can be highly non-stationary in many ways,
+e.g. the low-level non-stationarity such as spatial correlations or temporal
+dependencies of local pixel values; and the high-level variations such as the
+accumulation, deformation or dissipation of radar echoes in precipitation
+forecasting. From Cramer's Decomposition, any non-stationary process can be
+decomposed into deterministic, time-variant polynomials, plus a zero-mean
+stochastic term. By applying differencing operations appropriately, we may turn
+time-variant polynomials into a constant, making the deterministic component
+predictable. However, most previous recurrent neural networks for
+spatiotemporal prediction do not use the differential signals effectively, and
+their relatively simple state transition functions prevent them from learning
+too complicated variations in spacetime. We propose the Memory In Memory (MIM)
+networks and corresponding recurrent blocks for this purpose. The MIM blocks
+exploit the differential signals between adjacent recurrent states to model the
+non-stationary and approximately stationary properties in spatiotemporal
+dynamics with two cascaded, self-renewed memory modules. By stacking multiple
+MIM blocks, we could potentially handle higher-order non-stationarity. The MIM
+networks achieve the state-of-the-art results on four spatiotemporal prediction
+tasks across both synthetic and real-world datasets. We believe that the
+general idea of this work can be potentially applied to other time-series
+forecasting tasks.
+</summary>
+    <author>
+      <name>Yunbo Wang</name>
+    </author>
+    <author>
+      <name>Jianjin Zhang</name>
+    </author>
+    <author>
+      <name>Hongyu Zhu</name>
+    </author>
+    <author>
+      <name>Mingsheng Long</name>
+    </author>
+    <author>
+      <name>Jianmin Wang</name>
+    </author>
+    <author>
+      <name>Philip S Yu</name>
+    </author>
+    <link href="http://arxiv.org/abs/1811.07490v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.07490v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1901.04927v1</id>
+    <updated>2019-01-10T20:16:56Z</updated>
+    <published>2019-01-10T20:16:56Z</published>
+    <title>A mixed model approach to drought prediction using artificial neural
+  networks: Case of an operational drought monitoring environment</title>
+    <summary>  Droughts, with their increasing frequency of occurrence, continue to
+negatively affect livelihoods and elements at risk. For example, the 2011 in
+drought in east Africa has caused massive losses document to have cost the
+Kenyan economy over $12bn. With the foregoing, the demand for ex-ante drought
+monitoring systems is ever-increasing. The study uses 10 precipitation and
+vegetation variables that are lagged over 1, 2 and 3-month time-steps to
+predict drought situations. In the model space search for the most predictive
+artificial neural network (ANN) model, as opposed to the traditional greedy
+search for the most predictive variables, we use the General Additive Model
+(GAM) approach. Together with a set of assumptions, we thereby reduce the
+cardinality of the space of models. Even though we build a total of 102 GAM
+models, only 21 have R2 greater than 0.7 and are thus subjected to the ANN
+process. The ANN process itself uses the brute-force approach that
+automatically partitions the training data into 10 sub-samples, builds the ANN
+models in these samples and evaluates their performance using multiple metrics.
+The results show the superiority of 1-month lag of the variables as compared to
+longer time lags of 2 and 3 months. The champion ANN model recorded an R2 of
+0.78 in model testing using the out-of-sample data. This illustrates its
+ability to be a good predictor of drought situations 1-month ahead.
+Investigated as a classifier, the champion has a modest accuracy of 66% and a
+multi-class area under the ROC curve (AUROC) of 89.99%
+</summary>
+    <author>
+      <name>Chrisgone Adede</name>
+    </author>
+    <author>
+      <name>Robert Oboko</name>
+    </author>
+    <author>
+      <name>Peter Wagacha</name>
+    </author>
+    <author>
+      <name>Clement Atzberger</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">18 pages, 13 figures and 6 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/1901.04927v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1901.04927v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1601.05350v2</id>
+    <updated>2016-02-11T00:24:46Z</updated>
+    <published>2016-01-20T17:55:30Z</published>
+    <title>Disaggregation of SMAP L3 Brightness Temperatures to 9km using Kernel
+  Machines</title>
+    <summary>  In this study, a machine learning algorithm is used for disaggregation of
+SMAP brightness temperatures (T$_{\textrm{B}}$) from 36km to 9km. It uses image
+segmentation to cluster the study region based on meteorological and land cover
+similarity, followed by a support vector machine based regression that computes
+the value of the disaggregated T$_{\textrm{B}}$ at all pixels. High resolution
+remote sensing products such as land surface temperature, normalized difference
+vegetation index, enhanced vegetation index, precipitation, soil texture, and
+land-cover were used for disaggregation. The algorithm was implemented in Iowa,
+United States, from April to July 2015, and compared with the SMAP L3_SM_AP
+T$_{\textrm{B}}$ product at 9km. It was found that the disaggregated
+T$_{\textrm{B}}$ were very similar to the SMAP-T$_{\textrm{B}}$ product, even
+for vegetated areas with a mean difference $\leq$ 5K. However, the standard
+deviation of the disaggregation was lower by 7K than that of the AP product.
+The probability density functions of the disaggregated T$_{\textrm{B}}$ were
+similar to the SMAP-T$_{\textrm{B}}$. The results indicate that this algorithm
+may be used for disaggregating T$_{\textrm{B}}$ using complex non-linear
+correlations on a grid.
+</summary>
+    <author>
+      <name>Subit Chakrabarti</name>
+    </author>
+    <author>
+      <name>Tara Bongiovanni</name>
+    </author>
+    <author>
+      <name>Jasmeet Judge</name>
+    </author>
+    <author>
+      <name>Anand Rangarajan</name>
+    </author>
+    <author>
+      <name>Sanjay Ranka</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">14 Pages, 8 Figures, Submitted to IEEE Geoscience and Remote Sensing
+  Letters</arxiv:comment>
+    <link href="http://arxiv.org/abs/1601.05350v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1601.05350v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1810.00746v3</id>
+    <updated>2019-01-18T08:09:47Z</updated>
+    <published>2018-10-01T15:02:54Z</published>
+    <title>Bayesian Prediction of Future Street Scenes using Synthetic Likelihoods</title>
+    <summary>  For autonomous agents to successfully operate in the real world, the ability
+to anticipate future scene states is a key competence. In real-world scenarios,
+future states become increasingly uncertain and multi-modal, particularly on
+long time horizons. Dropout based Bayesian inference provides a computationally
+tractable, theoretically well grounded approach to learn likely
+hypotheses/models to deal with uncertain futures and make predictions that
+correspond well to observations -- are well calibrated. However, it turns out
+that such approaches fall short to capture complex real-world scenes, even
+falling behind in accuracy when compared to the plain deterministic approaches.
+This is because the used log-likelihood estimate discourages diversity. In this
+work, we propose a novel Bayesian formulation for anticipating future scene
+states which leverages synthetic likelihoods that encourage the learning of
+diverse models to accurately capture the multi-modal nature of future scene
+states. We show that our approach achieves accurate state-of-the-art
+predictions and calibrated probabilities through extensive experiments for
+scene anticipation on Cityscapes dataset. Moreover, we show that our approach
+generalizes across diverse tasks such as digit generation and precipitation
+forecasting.
+</summary>
+    <author>
+      <name>Apratim Bhattacharyya</name>
+    </author>
+    <author>
+      <name>Mario Fritz</name>
+    </author>
+    <author>
+      <name>Bernt Schiele</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">To appear in ICLR 2019. arXiv admin note: text overlap with
+  arXiv:1806.06939</arxiv:comment>
+    <link href="http://arxiv.org/abs/1810.00746v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1810.00746v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1609.07912v1</id>
+    <updated>2016-09-26T10:19:02Z</updated>
+    <published>2016-09-26T10:19:02Z</published>
+    <title>Construction Safety Risk Modeling and Simulation</title>
+    <summary>  By building on a recently introduced genetic-inspired attribute-based
+conceptual framework for safety risk analysis, we propose a novel methodology
+to compute construction univariate and bivariate construction safety risk at a
+situational level. Our fully data-driven approach provides construction
+practitioners and academicians with an easy and automated way of extracting
+valuable empirical insights from databases of unstructured textual injury
+reports. By applying our methodology on an attribute and outcome dataset
+directly obtained from 814 injury reports, we show that the frequency-magnitude
+distribution of construction safety risk is very similar to that of natural
+phenomena such as precipitation or earthquakes. Motivated by this observation,
+and drawing on state-of-the-art techniques in hydroclimatology and insurance,
+we introduce univariate and bivariate nonparametric stochastic safety risk
+generators, based on Kernel Density Estimators and Copulas. These generators
+enable the user to produce large numbers of synthetic safety risk values
+faithfully to the original data, allowing safetyrelated decision-making under
+uncertainty to be grounded on extensive empirical evidence. Just like the
+accurate modeling and simulation of natural phenomena such as wind or
+streamflow is indispensable to successful structure dimensioning or water
+reservoir management, we posit that improving construction safety calls for the
+accurate modeling, simulation, and assessment of safety risk. The underlying
+assumption is that like natural phenomena, construction safety may benefit from
+being studied in an empirical and quantitative way rather than qualitatively
+which is the current industry standard. Finally, a side but interesting finding
+is that attributes related to high energy levels and to human error emerge as
+strong risk shapers on the dataset we used to illustrate our methodology.
+</summary>
+    <author>
+      <name>Antoine J. -P. Tixier</name>
+    </author>
+    <author>
+      <name>Matthew R. Hallowell</name>
+    </author>
+    <author>
+      <name>Balaji Rajagopalan</name>
+    </author>
+    <link href="http://arxiv.org/abs/1609.07912v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1609.07912v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.PR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.02982v1</id>
+    <updated>2019-03-07T15:21:44Z</updated>
+    <published>2019-03-07T15:21:44Z</published>
+    <title>Correction of Electron Back-scattered Diffraction datasets using an
+  evolutionary algorithm</title>
+    <summary>  In materials science and particularly electron microscopy, Electron
+Back-scatter Diffraction (EBSD) is a common and powerful mapping technique for
+collecting local crystallographic data at the sub-micron scale. The quality of
+the reconstruction of the maps is critical to study the spatial distribution of
+phases and crystallographic orientation relationships between phases, a key
+interest in materials science. However, EBSD data is known to suffer from
+distortions that arise from several instrument and detector artifacts. In this
+paper, we present an unsupervised method that corrects those distortions, and
+enables or enhances phase differentiation in EBSD data. The method uses a
+segmented electron image of the phases of interest (laths, precipitates, voids,
+inclusions) gathered using detectors that generate less distorted data, of the
+same area than the EBSD map, and then searches for the best transformation to
+correct the distortions of the initial EBSD data. To do so, the Covariance
+Matrix Adaptation Evolution Strategy (CMA-ES) is implemented to distort the
+EBSD until it matches the reference electron image. Fast and versatile, this
+method does not require any human annotation and can be applied to large
+datasets and wide areas, where the distortions are important. Besides, this
+method requires very little assumption concerning the shape of the distortion
+function. Some application examples in multiphase materials with feature sizes
+down to 1 $\mu$m are presented, including a Titanium alloy and a Nickel-base
+superalloy.
+</summary>
+    <author>
+      <name>Florian Strub</name>
+    </author>
+    <author>
+      <name>Marie-Agathe Charpagne</name>
+    </author>
+    <author>
+      <name>Tresa M. Pollock</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">This short paper target an audience working in Machine Learning. A
+  long version of this paper exists towards people working in Materials (more
+  experiments, more experimental details and analysis), namely arXiv:1903.02988</arxiv:comment>
+    <link href="http://arxiv.org/abs/1903.02982v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.02982v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ins-det" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1501.07680v2</id>
+    <updated>2016-01-20T20:33:08Z</updated>
+    <published>2015-01-30T07:09:09Z</published>
+    <title>Disaggregation of Remotely Sensed Soil Moisture in Heterogeneous
+  Landscapes using Holistic Structure based Models</title>
+    <summary>  In this study, a novel machine learning algorithm is presented for
+disaggregation of satellite soil moisture (SM) based on self-regularized
+regressive models (SRRM) using high-resolution correlated information from
+auxiliary sources. It includes regularized clustering that assigns soft
+memberships to each pixel at fine-scale followed by a kernel regression that
+computes the value of the desired variable at all pixels. Coarse-scale remotely
+sensed SM were disaggregated from 10km to 1km using land cover, precipitation,
+land surface temperature, leaf area index, and in-situ observations of SM. This
+algorithm was evaluated using multi-scale synthetic observations in NC Florida
+for heterogeneous agricultural land covers. It was found that the root mean
+square error (RMSE) for 96% of the pixels was less than 0.02 $m^3/m^3$. The
+clusters generated represented the data well and reduced the RMSE by upto 40%
+during periods of high heterogeneity in land-cover and meteorological
+conditions. The Kullback Leibler divergence (KLD) between the true SM and the
+disaggregated estimates is close to 0, for both vegetated and baresoil
+landcovers. The disaggregated estimates were compared to those generated by the
+Principle of Relevant Information (PRI) method. The RMSE for the PRI
+disaggregated estimates is higher than the RMSE for the SRRM on each day of the
+season. The KLD of the disaggregated estimates generated by the SRRM is at
+least four orders of magnitude lower than those for the PRI disaggregated
+estimates, while the computational time needed was reduced by three times. The
+results indicate that the SRRM can be used for disaggregating SM with complex
+non-linear correlations on a grid with high accuracy.
+</summary>
+    <author>
+      <name>Subit Chakrabarti</name>
+    </author>
+    <author>
+      <name>Jasmeet Judge</name>
+    </author>
+    <author>
+      <name>Anand Rangarajan</name>
+    </author>
+    <author>
+      <name>Sanjay Ranka</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2016.2547389</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2016.2547389" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">28 pages, 14 figures, submitted to IEEE Transactions on Geoscience
+  and Remote Sensing</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Trans. Geosci. Remote Sens. 54 (2008) 4629-4641</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1501.07680v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1501.07680v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="68" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.02988v2</id>
+    <updated>2019-03-08T14:24:17Z</updated>
+    <published>2019-03-07T15:26:28Z</published>
+    <title>Accurate reconstruction of EBSD datasets by a multimodal data approach
+  using an evolutionary algorithm</title>
+    <summary>  A new method has been developed for the correction of the distortions and/or
+enhanced phase differentiation in Electron Backscatter Diffraction (EBSD) data.
+Using a multi-modal data approach, the method uses segmented images of the
+phase of interest (laths, precipitates, voids, inclusions) on images gathered
+by backscattered or secondary electrons of the same area as the EBSD map. The
+proposed approach then search for the best transformation to correct their
+relative distortions and recombines the data in a new EBSD file. Speckles of
+the features of interest are first segmented in both the EBSD and image data
+modes. The speckle extracted from the EBSD data is then meshed, and the
+Covariance Matrix Adaptation Evolution Strategy (CMA-ES) is implemented to
+distort the mesh until the speckles superimpose. The quality of the matching is
+quantified via a score that is linked to the number of overlapping pixels in
+the speckles. The locations of the points of the distorted mesh are compared to
+those of the initial positions to create pairs of matching points that are used
+to calculate the polynomial function that describes the distortion the best.
+This function is then applied to un-distort the EBSD data, and the phase
+information is inferred using the data of the segmented speckle. Fast and
+versatile, this method does not require any human annotation and can be applied
+to large datasets and wide areas. Besides, this method requires very few
+assumptions concerning the shape of the distortion function. It can be used for
+the single compensation of the distortions or combined with the phase
+differentiation. The accuracy of this method is of the order of the pixel size.
+Some application examples in multiphase materials with feature sizes down to 1
+$\mu$m are presented, including Ti-6Al-4V Titanium alloy, Rene 65 and additive
+manufactured Inconel 718 Nickel-base superalloys.
+</summary>
+    <author>
+      <name>Marie-Agathe Charpagne</name>
+    </author>
+    <author>
+      <name>Florian Strub</name>
+    </author>
+    <author>
+      <name>Tresa M. Pollock</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.matchar.2019.01.033</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.matchar.2019.01.033" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">A short version of this paper exists towards people working in
+  Machine Learning, namely arxiv:1903.02982</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Materials Characterization, 2019</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1903.02988v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.02988v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ins-det" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

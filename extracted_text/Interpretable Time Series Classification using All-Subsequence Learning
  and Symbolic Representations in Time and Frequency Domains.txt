@@ -1,0 +1,28 @@
+Interpretable Time Series Classification using All-Subsequence Learning
+  and Symbolic Representations in Time and Frequency Domains
+  The time series classification literature has expanded rapidly over the last
+decade, with many new classification approaches published each year. The
+research focus has mostly been on improving the accuracy and efficiency of
+classifiers, while their interpretability has been somewhat neglected.
+Classifier interpretability has become a critical constraint for many
+application domains and the introduction of the 'right to explanation' GDPR EU
+legislation in May 2018 is likely to further emphasize the importance of
+explainable learning algorithms. In this work we analyse the state-of-the-art
+for time series classification, and propose new algorithms that aim to maintain
+the classifier accuracy and efficiency, but keep interpretability as a key
+design constraint. We present new time series classification algorithms that
+advance the state-of-the-art by implementing the following three key ideas: (1)
+Multiple resolutions of symbolic approximations: we combine symbolic
+representations obtained using different parameters; (2) Multiple domain
+representations: we combine symbolic approximations in time (e.g., SAX) and
+frequency (e.g., SFA) domains; (3) Efficient navigation of a huge
+symbolic-words space: we adapt a symbolic sequence classifier named SEQL, to
+make it work with multiple domain representations (e.g., SAX-SEQL, SFA-SEQL),
+and use its greedy feature selection strategy to effectively filter the best
+features for each representation. We show that a multi-resolution multi-domain
+linear classifier, SAX-SFA-SEQL, achieves a similar accuracy to the
+state-of-the-art COTE ensemble, and to a recent deep learning method (FCN), but
+uses a fraction of the time required by either COTE or FCN. We discuss the
+accuracy, efficiency and interpretability of our proposed algorithms. To
+further analyse the interpretability aspect of our classifiers, we present a
+case study on an ecology benchmark.

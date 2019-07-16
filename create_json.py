@@ -5,7 +5,7 @@ import spacy
 import numpy
 
 directory = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
-THRESHOLD = 0.2
+THRESHOLD = 0.1
 methods = ['generative adversarial','naive bayes','random forest',
 'support vector', 'linear regression','logistic regression',
 'k-means clustering','nearest neighbors','convolutional neural network',

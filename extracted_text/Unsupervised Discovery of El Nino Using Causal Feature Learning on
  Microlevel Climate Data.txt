@@ -1,0 +1,16 @@
+Unsupervised Discovery of El Nino Using Causal Feature Learning on
+  Microlevel Climate Data
+  We show that the climate phenomena of El Nino and La Nina arise naturally as
+states of macro-variables when our recent causal feature learning framework
+(Chalupka 2015, Chalupka 2016) is applied to micro-level measures of zonal wind
+(ZW) and sea surface temperatures (SST) taken over the equatorial band of the
+Pacific Ocean. The method identifies these unusual climate states on the basis
+of the relation between ZW and SST patterns without any input about past
+occurrences of El Nino or La Nina. The simpler alternatives of (i) clustering
+the SST fields while disregarding their relationship with ZW patterns, or (ii)
+clustering the joint ZW-SST patterns, do not discover El Nino. We discuss the
+degree to which our method supports a causal interpretation and use a
+low-dimensional toy example to explain its success over other clustering
+approaches. Finally, we propose a new robust and scalable alternative to our
+original algorithm (Chalupka 2016), which circumvents the need for
+high-dimensional density learning.

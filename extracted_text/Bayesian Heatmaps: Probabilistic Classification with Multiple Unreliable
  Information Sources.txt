@@ -1,0 +1,22 @@
+Bayesian Heatmaps: Probabilistic Classification with Multiple Unreliable
+  Information Sources
+  Unstructured data from diverse sources, such as social media and aerial
+imagery, can provide valuable up-to-date information for intelligent situation
+assessment. Mining these different information sources could bring major
+benefits to applications such as situation awareness in disaster zones and
+mapping the spread of diseases. Such applications depend on classifying the
+situation across a region of interest, which can be depicted as a spatial
+"heatmap". Annotating unstructured data using crowdsourcing or automated
+classifiers produces individual classifications at sparse locations that
+typically contain many errors. We propose a novel Bayesian approach that models
+the relevance, error rates and bias of each information source, enabling us to
+learn a spatial Gaussian Process classifier by aggregating data from multiple
+sources with varying reliability and relevance. Our method does not require
+gold-labelled data and can make predictions at any location in an area of
+interest given only sparse observations. We show empirically that our approach
+can handle noisy and biased data sources, and that simultaneously inferring
+reliability and transferring information between neighbouring reports leads to
+more accurate predictions. We demonstrate our method on two real-world problems
+from disaster response, showing how our approach reduces the amount of
+crowdsourced data required and can be used to generate valuable heatmap
+visualisations from SMS messages and satellite images.

@@ -60,13 +60,14 @@ def bag_of_words(processed_docs):
     #print_bow_doc(dictionary,bow_doc_0)
 
     tfidf = models.TfidfModel(bow_corpus)
+    #print(tfidf)
     corpus_tfidf = tfidf[bow_corpus]
-    #for doc in corpus_tfidf:
+    # for doc in corpus_tfidf:
     #    pprint(doc)
     #    break
 
     lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=10,
-                                id2word=dictionary, passes=10, workers=4)
+                                id2word=dictionary, passes=100, workers=20)
     for idx, topic in lda_model.print_topics(-1):
         print('Topic: {} \nWords: {}'.format(idx, topic))
 

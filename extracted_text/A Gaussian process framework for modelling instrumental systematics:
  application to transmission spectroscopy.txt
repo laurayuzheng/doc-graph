@@ -1,0 +1,19 @@
+A Gaussian process framework for modelling instrumental systematics:
+  application to transmission spectroscopy
+  Transmission spectroscopy, which consists of measuring the
+wavelength-dependent absorption of starlight by a planet's atmosphere during a
+transit, is a powerful probe of atmospheric composition. However, the expected
+signal is typically orders of magnitude smaller than instrumental systematics,
+and the results are crucially dependent on the treatment of the latter. In this
+paper, we propose a new method to infer transit parameters in the presence of
+systematic noise using Gaussian processes, a technique widely used in the
+machine learning community for Bayesian regression and classification problems.
+Our method makes use of auxiliary information about the state of the
+instrument, but does so in a non-parametric manner, without imposing a specific
+dependence of the systematics on the instrumental parameters, and naturally
+allows for the correlated nature of the noise. We give an example application
+of the method to archival NICMOS transmission spectroscopy of the hot Jupiter
+HD 189733, which goes some way towards reconciling the controversy surrounding
+this dataset in the literature. Finally, we provide an appendix giving a
+general introduction to Gaussian processes for regression, in order to
+encourage their application to a wider range of problems.

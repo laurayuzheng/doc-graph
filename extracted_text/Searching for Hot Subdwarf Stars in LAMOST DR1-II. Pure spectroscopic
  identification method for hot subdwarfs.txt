@@ -1,0 +1,18 @@
+Searching for Hot Subdwarf Stars in LAMOST DR1-II. Pure spectroscopic
+  identification method for hot subdwarfs
+  Employing a new machine learning method, named hierarchical extreme learning
+machine (HELM) algorithm, we identified 56 hot subdwarf stars in the first data
+release (DR1) of the Large Sky Area Multi-Object Fibre Spectroscopic Telescope
+(LAMOST) survey. The atmospheric parameters of the stars are obtained by
+fitting the profiles of hydrogen (H) Balmer lines and helium (He) lines with
+synthetic spectra calculated from non-Local Thermodynamic Equilibrium (NLTE)
+model atmospheres. Five He-rich hot subdwarf stars were found in our sample
+with their log(nHe/nH) > -1 , while 51 stars are He-poor sdB, sdO and sdOB
+stars. We also confirmed the two He sequences of hot subdwarf stars found by
+Edelmann et al. (2003) in Teff - log(nHe/nH) diagram. The HELM algorithm works
+directly on the observed spectroscopy and is able to filter out spectral
+properties without supplementary photometric data. The results presented in
+this study demonstrate that the HELM algorithm is a reliable method to search
+for hot subdwarf stars after a suitable training is performed, and it is also
+suitable to search for other objects which have obvious features in their
+spectra or images.

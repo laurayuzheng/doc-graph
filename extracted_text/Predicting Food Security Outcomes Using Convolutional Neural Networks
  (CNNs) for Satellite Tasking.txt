@@ -1,0 +1,10 @@
+Predicting Food Security Outcomes Using Convolutional Neural Networks
+  (CNNs) for Satellite Tasking
+  Obtaining reliable data describing local Food Security Metrics (FSM) at a
+granularity that is informative to policy-makers requires expensive and
+logistically difficult surveys, particularly in the developing world. We train
+a CNN on publicly available satellite data describing land cover classification
+and use both transfer learning and direct training to build a model for FSM
+prediction purely from satellite imagery data. We then propose efficient
+tasking algorithms for high resolution satellite assets via transfer learning,
+Markovian search algorithms, and Bayesian networks.

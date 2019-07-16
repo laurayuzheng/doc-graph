@@ -1,0 +1,14 @@
+Digital Ecosystems: Optimisation by a Distributed Intelligence
+  Can intelligence optimise Digital Ecosystems? How could a distributed
+intelligence interact with the ecosystem dynamics? Can the software components
+that are part of genetic selection be intelligent in themselves, as in an
+adaptive technology? We consider the effect of a distributed intelligence
+mechanism on the evolutionary and ecological dynamics of our Digital Ecosystem,
+which is the digital counterpart of a biological ecosystem for evolving
+software services in a distributed network. We investigate Neural Networks and
+Support Vector Machine for the learning based pattern recognition functionality
+of our distributed intelligence. Simulation results imply that the Digital
+Ecosystem performs better with the application of a distributed intelligence,
+marginally more effectively when powered by Support Vector Machine than Neural
+Networks, and suggest that it can contribute to optimising the operation of our
+Digital Ecosystem.

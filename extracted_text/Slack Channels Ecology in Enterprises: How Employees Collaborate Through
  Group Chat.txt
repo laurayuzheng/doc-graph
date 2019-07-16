@@ -1,0 +1,21 @@
+Slack Channels Ecology in Enterprises: How Employees Collaborate Through
+  Group Chat
+  Despite the long history of studying instant messaging usage in
+organizations, we know very little about how today's people participate in
+group chat channels and interact with others. In this short note, we aim to
+update the existing knowledge on how group chat is used in the context of
+today's organizations. We have the privilege of collecting a total of 4300
+publicly available group chat channels in Slack from an R\&D department in a
+multinational IT company. Through qualitative coding of 100 channels, we
+identified 9 channel categories such as project based channels and event
+channels. We further defined a feature metric with 21 features to depict the
+group communication style for these group chat channels, with which we
+successfully trained a machine learning model that can automatically classify a
+given group channel into one of the 9 categories. In addition, we illustrated
+how these communication metrics could be used for analyzing teams'
+collaboration activities. We focused on 117 project teams as we have their
+performance data, and further collected 54 out of the 117 teams' Slack group
+data and generated the communication style metrics for each of them. With these
+data, we are able to build a regression model to reveal the relationship
+between these group communication styles and one indicator of the project team
+performance.

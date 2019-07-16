@@ -1,0 +1,21 @@
+A Deep Learning Approach for Forecasting Air Pollution in South Korea
+  Using LSTM
+  Tackling air pollution is an imperative problem in South Korea, especially in
+urban areas, over the last few years. More specially, South Korea has joined
+the ranks of the world's most polluted countries alongside with other Asian
+capitals, such as Beijing or Delhi. Much research is being conducted in
+environmental science to evaluate the dangerous impact of particulate matters
+on public health. Besides that, deterministic models of air pollutant behavior
+are also generated; however, this is both complex and often inaccurate. On the
+contrary, deep recurrent neural network reveals potent potential on forecasting
+out-comes of time-series data and has become more prevalent. This paper uses
+Recurrent Neural Network (RNN) with Long Short-Term Memory units as a framework
+for leveraging knowledge from time-series data of air pollution and
+meteorological information in Daegu, Seoul, Beijing, and Shenyang.
+Additionally, we use encoder-decoder model, which is similar to machine
+comprehension problems, as a crucial part of our prediction machine. Finally,
+we investigate the prediction accuracy of various configurations. Our
+experiments prevent the efficiency of integrating multiple layers of RNN on
+prediction model when forecasting far timesteps ahead. This research is a
+significant motivation for not only continuing researching on urban air quality
+but also help the government leverage that insight to enact beneficial policies

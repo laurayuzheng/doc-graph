@@ -1,0 +1,17 @@
+A Deterministic Self-Organizing Map Approach and its Application on
+  Satellite Data based Cloud Type Classification
+  A self-organizing map (SOM) is a type of competitive artificial neural
+network, which projects the high-dimensional input space of the training
+samples into a low-dimensional space with the topology relations preserved.
+This makes SOMs supportive of organizing and visualizing complex data sets and
+have been pervasively used among numerous disciplines with different
+applications. Notwithstanding its wide applications, the self-organizing map is
+perplexed by its inherent randomness, which produces dissimilar SOM patterns
+even when being trained on identical training samples with the same parameters
+every time, and thus causes usability concerns for other domain practitioners
+and precludes more potential users from exploring SOM based applications in a
+broader spectrum. Motivated by this practical concern, we propose a
+deterministic approach as a supplement to the standard self-organizing map. In
+accordance with the theoretical design, the experimental results with satellite
+cloud data demonstrate the effective and efficient organization as well as
+simplification capabilities of the proposed approach.

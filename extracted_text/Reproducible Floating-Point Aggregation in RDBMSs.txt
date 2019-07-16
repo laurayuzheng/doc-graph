@@ -1,0 +1,26 @@
+Reproducible Floating-Point Aggregation in RDBMSs
+  Industry-grade database systems are expected to produce the same result if
+the same query is repeatedly run on the same input. However, the numerous
+sources of non-determinism in modern systems make reproducible results
+difficult to achieve. This is particularly true if floating-point numbers are
+involved, where the order of the operations affects the final result.
+  As part of a larger effort to extend database engines with data
+representations more suitable for machine learning and scientific applications,
+in this paper we explore the problem of making relational GroupBy over
+floating-point formats bit-reproducible, i.e., ensuring any execution of the
+operator produces the same result up to every single bit. To that aim, we first
+propose a numeric data type that can be used as drop-in replacement for other
+number formats and is---unlike standard floating-point formats---associative.
+We use this data type to make state-of-the-art GroupBy operators reproducible,
+but this approach incurs a slowdown between 4x and 12x compared to the same
+operator using conventional database number formats. We thus explore how to
+modify existing GroupBy algorithms to make them bit-reproducible and efficient.
+By using vectorized summation on batches and carefully balancing batch size,
+cache footprint, and preprocessing costs, we are able to reduce the slowdown
+due to reproducibility to a factor between 1.9x and 2.4x of aggregation in
+isolation and to a mere 2.7% of end-to-end query performance even on
+aggregation-intensive queries in MonetDB. We thereby provide a solid basis for
+supporting more reproducible operations directly in relational engines.
+  This document is an extended version of an article currently in print for the
+proceedings of ICDE'18 with the same title and by the same authors. The main
+additions are more implementation details and experiments.

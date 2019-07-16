@@ -1,0 +1,20 @@
+Workflow-Driven Distributed Machine Learning in CHASE-CI: A Cognitive
+  Hardware and Software Ecosystem Community Infrastructure
+  The advances in data, computing and networking over the last two decades led
+to a shift in many application domains that includes machine learning on big
+data as a part of the scientific process, requiring new capabilities for
+integrated and distributed hardware and software infrastructure. This paper
+contributes a workflow-driven approach for dynamic data-driven application
+development on top of a new kind of networked Cyberinfrastructure called
+CHASE-CI. In particular, we present: 1) The architecture for CHASE-CI, a
+network of distributed fast GPU appliances for machine learning and storage
+managed through Kubernetes on the high-speed (10-100Gbps) Pacific Research
+Platform (PRP); 2) A machine learning software containerization approach and
+libraries required for turning such a network into a distributed computer for
+big data analysis; 3) An atmospheric science case study that can only be made
+scalable with an infrastructure like CHASE-CI; 4) Capabilities for virtual
+cluster management for data communication and analysis in a dynamically
+scalable fashion, and visualization across the network in specialized
+visualization facilities in near real-time; and, 5) A step-by-step workflow and
+performance measurement approach that enables taking advantage of the dynamic
+architecture of the CHASE-CI network and container management infrastructure.

@@ -1,0 +1,12 @@
+The Fog of War: A Machine Learning Approach to Forecasting Weather on
+  Mars
+  For over a decade, scientists at NASA's Jet Propulsion Laboratory (JPL) have
+been recording measurements from the Martian surface as a part of the Mars
+Exploration Rovers mission. One quantity of interest has been the opacity of
+Mars's atmosphere for its importance in day-to-day estimations of the amount of
+power available to the rover from its solar arrays. This paper proposes the use
+of neural networks as a method for forecasting Martian atmospheric opacity that
+is more effective than the current empirical model. The more accurate
+prediction provided by these networks would allow operators at JPL to make more
+accurate predictions of the amount of energy available to the rover when they
+plan activities for coming sols.

@@ -1,0 +1,11 @@
+Decentralized Flood Forecasting Using Deep Neural Networks
+  Predicting flood for any location at times of extreme storms is a
+longstanding problem that has utmost importance in emergency management.
+Conventional methods that aim to predict water levels in streams use advanced
+hydrological models still lack of giving accurate forecasts everywhere. This
+study aims to explore artificial deep neural networks' performance on flood
+prediction. While providing models that can be used in forecasting stream
+stage, this paper presents a dataset that focuses on the connectivity of data
+points on river networks. It also shows that neural networks can be very
+helpful in time-series forecasting as in flood events, and support improving
+existing models through data assimilation.

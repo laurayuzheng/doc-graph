@@ -1,0 +1,15 @@
+Remote sensing image regression for heterogeneous change detection
+  Change detection in heterogeneous multitemporal satellite images is an
+emerging topic in remote sensing. In this paper we propose a framework, based
+on image regression, to perform change detection in heterogeneous multitemporal
+satellite images, which has become a main topic in remote sensing. Our method
+learns a transformation to map the first image to the domain of the other
+image, and vice versa. Four regression methods are selected to carry out the
+transformation: Gaussian processes, support vector machines, random forests,
+and a recently proposed kernel regression method called homogeneous pixel
+transformation. To evaluate not only potentials and limitations of our
+framework, but also the pros and cons of each regression method, we perform
+experiments on two data sets. The results indicates that random forests achieve
+good performance, are fast and robust to hyperparameters, whereas the
+homogeneous pixel transformation method can achieve better accuracy at the cost
+of a higher complexity.

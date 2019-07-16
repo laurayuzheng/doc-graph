@@ -1,0 +1,17 @@
+Estimating the Physical State of a Laboratory Slow Slipping Fault from
+  Seismic Signals
+  Over the last two decades, strain and GPS measurements have shown that slow
+slip on earthquake faults is a widespread phenomenon. Slow slip is also
+inferred from correlated small amplitude seismic signals known as nonvolcanic
+tremor and low frequency earthquakes (LFEs). Slow slip has been reproduced in
+laboratory and simulation studies, however the fundamental physics of these
+phenomena and their relationship to dynamic earthquake rupture remains poorly
+understood. Here we show that, in a laboratory setting, continuous seismic
+waves are imprinted with fundamental signatures of the fault's physical state.
+Using machine learning on continuous seismic waves, we can infer several bulk
+characteristics of the fault (friction, shear displacement, gouge thickness),
+at any time during the slow slip cycle. This analysis also allows us to infer
+many properties of the future behavior of the fault, including the time
+remaining before the next slow slip event. Our work suggests that by applying
+machine learning approaches to continuous seismic data, new insight into the
+physics of slow slip could be obtained in Earth.

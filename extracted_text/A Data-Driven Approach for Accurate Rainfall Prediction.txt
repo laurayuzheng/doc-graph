@@ -1,24 +1,17 @@
-A Semi-supervised Spatial Spectral Regularized Manifold Local Scaling
-  Cut With HGF for Dimensionality Reduction of Hyperspectral Images
-  Hyperspectral images (HSI) contain a wealth of information over hundreds of
-contiguous spectral bands, making it possible to classify materials through
-subtle spectral discrepancies. However, the classification of this rich
-spectral information is accompanied by the challenges like high dimensionality,
-singularity, limited training samples, lack of labeled data samples,
-heteroscedasticity and nonlinearity. To address these challenges, we propose a
-semi-supervised graph based dimensionality reduction method named
-`semi-supervised spatial spectral regularized manifold local scaling cut'
-(S3RMLSC). The underlying idea of the proposed method is to exploit the limited
-labeled information from both the spectral and spatial domains along with the
-abundant unlabeled samples to facilitate the classification task by retaining
-the original distribution of the data. In S3RMLSC, a hierarchical guided filter
-(HGF) is initially used to smoothen the pixels of the HSI data to preserve the
-spatial pixel consistency. This step is followed by the construction of linear
-patches from the nonlinear manifold by using the maximal linear patch (MLP)
-criterion. Then the inter-patch and intra-patch dissimilarity matrices are
-constructed in both spectral and spatial domains by regularized manifold local
-scaling cut (RMLSC) and neighboring pixel manifold local scaling cut (NPMLSC)
-respectively. Finally, we obtain the projection matrix by optimizing the
-updated semi-supervised spatial-spectral between-patch and total-patch
-dissimilarity. The effectiveness of the proposed DR algorithm is illustrated
-with publicly available real-world HSI datasets.
+A Data-Driven Approach for Accurate Rainfall Prediction
+  In recent years, there has been growing interest in using Precipitable Water
+Vapor (PWV) derived from Global Positioning System (GPS) signal delays to
+predict rainfall. However, the occurrence of rainfall is dependent on a myriad
+of atmospheric parameters. This paper proposes a systematic approach to analyze
+various parameters that affect precipitation in the atmosphere. Different
+ground-based weather features like Temperature, Relative Humidity, Dew Point,
+Solar Radiation, PWV along with Seasonal and Diurnal variables are identified,
+and a detailed feature correlation study is presented. While all features play
+a significant role in rainfall classification, only a few of them, such as PWV,
+Solar Radiation, Seasonal and Diurnal features, stand out for rainfall
+prediction. Based on these findings, an optimum set of features are used in a
+data-driven machine learning algorithm for rainfall prediction. The
+experimental evaluation using a four-year (2012-2015) database shows a true
+detection rate of 80.4%, a false alarm rate of 20.3%, and an overall accuracy
+of 79.6%. Compared to the existing literature, our method significantly reduces
+the false alarm rates.

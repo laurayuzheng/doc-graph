@@ -1,0 +1,13 @@
+A machine learning approach for underwater gas leakage detection
+  Underwater gas reservoirs are used in many situations. In particular, Carbon
+Capture and Storage (CCS) facilities that are currently being developed intend
+to store greenhouse gases inside geological formations in the deep sea. In
+these formations, however, the gas might percolate, leaking back to the water
+and eventually to the atmosphere. The early detection of such leaks is
+therefore tantamount to any underwater CCS project. In this work, we propose to
+use Passive Acoustic Monitoring (PAM) and a machine learning approach to design
+efficient detectors that can signal the presence of a leakage. We use data
+obtained from simulation experiments off the Brazilian shore, and show that the
+detection based on classification algorithms achieve good performance. We also
+propose a smoothing strategy based on Hidden Markov Models in order to
+incorporate previous knowledge about the probabilities of leakage occurrences.

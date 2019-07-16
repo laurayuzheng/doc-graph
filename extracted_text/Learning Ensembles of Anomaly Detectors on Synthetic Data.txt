@@ -1,0 +1,8 @@
+Learning Ensembles of Anomaly Detectors on Synthetic Data
+  The main aim of this work is to develop and implement an automatic anomaly
+detection algorithm for meteorological time-series. To achieve this goal we
+develop an approach to constructing an ensemble of anomaly detectors in
+combination with adaptive threshold selection based on artificially generated
+anomalies. We demonstrate the efficiency of the proposed method by integrating
+the corresponding implementation into ``Minimax-94'' road weather information
+system.

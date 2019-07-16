@@ -1,0 +1,19 @@
+Can learning from natural image denoising be used for seismic data
+  interpolation?
+  We propose a convolutional neural network (CNN) denoising based method for
+seismic data interpolation. It provides a simple and efficient way to break
+though the lack problem of geophysical training labels that are often required
+by deep learning methods. The new method consists of two steps: (1) Train a set
+of CNN denoisers from natural image clean-noisy pairs to learn denoising; (2)
+Integrate the trained CNN denoisers into project onto convex set (POCS)
+framework to perform seismic data interpolation. The method alleviates the
+demanding of seismic big data with similar features as applications of
+end-to-end deep learning on seismic data interpolation. Additionally, the
+proposed method is flexible for many cases of traces missing because missing
+cases are not involved in the training step, and thus it is of plug-and-play
+nature. These indicate the high generalizability of our approach and the
+reduction of the need of the problem-specific training. Primary results on
+synthetic and field data show promising interpolation performances of the
+presented CNN-POCS method in terms of signal-to-noise ratio, de-aliasing and
+weak-feature reconstruction, in comparison with traditional $f$-$x$ prediction
+filtering and curvelet transform based POCS methods.

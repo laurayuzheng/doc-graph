@@ -1,0 +1,14 @@
+Seismic data denoising and deblending using deep learning
+  An important step of seismic data processing is removing noise, including
+interference due to simultaneous and blended sources, from the recorded data.
+Traditional methods are time-consuming to apply as they often require manual
+choosing of parameters to obtain good results. We use deep learning, with a
+U-net model incorporating a ResNet architecture pretrained on ImageNet and
+further trained on synthetic seismic data, to perform this task. The method is
+applied to common offset gathers, with adjacent offset gathers of the gather
+being denoised provided as additional input channels. Here we show that this
+approach leads to a method that removes noise from several datasets recorded in
+different parts of the world with moderate success. We find that providing
+three adjacent offset gathers on either side of the gather being denoised is
+most effective. As this method does not require parameters to be chosen, it is
+more automated than traditional methods.

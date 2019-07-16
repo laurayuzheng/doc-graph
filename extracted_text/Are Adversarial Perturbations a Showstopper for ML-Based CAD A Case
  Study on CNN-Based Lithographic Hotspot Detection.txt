@@ -1,0 +1,21 @@
+Are Adversarial Perturbations a Showstopper for ML-Based CAD? A Case
+  Study on CNN-Based Lithographic Hotspot Detection
+  There is substantial interest in the use of machine learning (ML) based
+techniques throughout the electronic computer-aided design (CAD) flow,
+particularly those based on deep learning. However, while deep learning methods
+have surpassed state-of-the-art performance in several applications, they have
+exhibited intrinsic susceptibility to adversarial perturbations --- small but
+deliberate alterations to the input of a neural network, precipitating
+incorrect predictions. In this paper, we seek to investigate whether
+adversarial perturbations pose risks to ML-based CAD tools, and if so, how
+these risks can be mitigated. To this end, we use a motivating case study of
+lithographic hotspot detection, for which convolutional neural networks (CNN)
+have shown great promise. In this context, we show the first adversarial
+perturbation attacks on state-of-the-art CNN-based hotspot detectors;
+specifically, we show that small (on average 0.5% modified area), functionality
+preserving and design-constraint satisfying changes to a layout can nonetheless
+trick a CNN-based hotspot detector into predicting the modified layout as
+hotspot free (with up to 99.7% success). We propose an adversarial retraining
+strategy to improve the robustness of CNN-based hotspot detection and show that
+this strategy significantly improves robustness (by a factor of ~3) against
+adversarial attacks without compromising classification accuracy.

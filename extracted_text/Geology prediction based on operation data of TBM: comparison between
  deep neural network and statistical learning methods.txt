@@ -1,0 +1,17 @@
+Geology prediction based on operation data of TBM: comparison between
+  deep neural network and statistical learning methods
+  Tunnel boring machine (TBM) is a complex engineering system widely used for
+tunnel construction. In view of the complicated construction environments, it
+is necessary to predict geology conditions prior to excavation. In recent
+years, massive operation data of TBM has been recorded, and mining these data
+can provide important references and useful information for designers and
+operators of TBM. In this work, a geology prediction approach is proposed based
+on deep neural network and operation data. It can provide relatively accurate
+geology prediction results ahead of the tunnel face compared with the other
+prediction models based on statistical learning methods. The application case
+study on a tunnel in China shows that the proposed approach can accurately
+estimate the geological conditions prior to excavation, especially for the
+short range ahead of training data. This work can be regarded as a good
+complement to the geophysical prospecting approach during the construction of
+tunnels, and also highlights the applicability and potential of deep neural
+networks for other data mining tasks of TBMs.

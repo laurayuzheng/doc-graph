@@ -1,0 +1,22 @@
+Applying machine learning to improve simulations of a chaotic dynamical
+  system using empirical error correction
+  Dynamical weather and climate prediction models underpin many studies of the
+Earth system and hold the promise of being able to make robust projections of
+future climate change based on physical laws. However, simulations from these
+models still show many differences compared with observations. Machine learning
+has been applied to solve certain prediction problems with great success, and
+recently it's been proposed that this could replace the role of
+physically-derived dynamical weather and climate models to give better quality
+simulations. Here, instead, a framework using machine learning together with
+physically-derived models is tested, in which it is learnt how to correct the
+errors of the latter from timestep to timestep. This maintains the physical
+understanding built into the models, whilst allowing performance improvements,
+and also requires much simpler algorithms and less training data. This is
+tested in the context of simulating the chaotic Lorenz '96 system, and it is
+shown that the approach yields models that are stable and that give both
+improved skill in initialised predictions and better long-term climate
+statistics. Improvements in long-term statistics are smaller than for single
+time-step tendencies, however, indicating that it would be valuable to develop
+methods that target improvements on longer time scales. Future strategies for
+the development of this approach and possible applications to making progress
+on important scientific problems are discussed.

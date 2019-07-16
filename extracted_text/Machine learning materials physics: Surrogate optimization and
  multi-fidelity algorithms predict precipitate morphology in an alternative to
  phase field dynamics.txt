@@ -1,0 +1,23 @@
+Machine learning materials physics: Surrogate optimization and
+  multi-fidelity algorithms predict precipitate morphology in an alternative to
+  phase field dynamics
+  Machine learning has been effective at detecting patterns and predicting the
+response of systems that behave free of natural laws. Examples include learning
+crowd dynamics, recommender systems and autonomous mobility. There also have
+been applications to the search for new materials that bear relations to big
+data classification problems. However, when it comes to physical systems
+governed by conservation laws, the role of machine learning has been more
+limited. Here, we present our recent work in exploring the role of machine
+learning methods in discovering, or aiding, the search for physics.
+Specifically, we focus on using machine learning algorithms to represent
+high-dimensional free energy surfaces with the goal of identifying precipitate
+morphologies in alloy systems. Traditionally, this problem has been approached
+by combining phase field models, which impose first-order dynamics, with
+elasticity, to traverse a free energy landscape in search of minima.
+Equilibrium precipitate morphologies occur at these minima. Here, we exploit
+the machine learning methods to represent high-dimensional data, combined with
+surrogate optimization, sensitivity analysis and multifidelity modelling as an
+alternate framework to explore phenomena controlled by energy extremization.
+This combination of data-driven methods offers an alternative to the imposition
+of first-order dynamics via phase field methods, and represents one approach to
+machine learning materials physics.

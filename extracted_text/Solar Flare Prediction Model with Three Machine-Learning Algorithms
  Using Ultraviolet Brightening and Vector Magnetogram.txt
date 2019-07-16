@@ -1,0 +1,24 @@
+Solar Flare Prediction Model with Three Machine-Learning Algorithms
+  Using Ultraviolet Brightening and Vector Magnetogram
+  We developed a flare prediction model using machine learning, which is
+optimized to predict the maximum class of flares occurring in the following 24
+h. Machine learning is used to devise algorithms that can learn from and make
+decisions on a huge amount of data. We used solar observation data during the
+period 2010-2015, such as vector magnetogram, ultraviolet (UV) emission, and
+soft X-ray emission taken by the Solar Dynamics Observatory and the
+Geostationary Operational Environmental Satellite. We detected active regions
+from the full-disk magnetogram, from which 60 features were extracted with
+their time differentials, including magnetic neutral lines, the current
+helicity, the UV brightening, and the flare history. After standardizing the
+feature database, we fully shuffled and randomly separated it into two for
+training and testing. To investigate which algorithm is best for flare
+prediction, we compared three machine learning algorithms: the support vector
+machine (SVM), k-nearest neighbors (k-NN), and extremely randomized trees
+(ERT). The prediction score, the true skill statistic (TSS), was higher than
+0.9 with a fully shuffled dataset, which is higher than that for human
+forecasts. It was found that k-NN has the highest performance among the three
+algorithms. The ranking of the feature importance showed that the previous
+flare activity is most effective, followed by the length of magnetic neutral
+lines, the unsigned magnetic flux, the area of UV brightening, and the time
+differentials of features over 24 h, all of which are strongly correlated with
+the flux emergence dynamics in an active region.

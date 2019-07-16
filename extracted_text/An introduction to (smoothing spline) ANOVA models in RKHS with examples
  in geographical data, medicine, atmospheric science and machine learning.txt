@@ -1,0 +1,9 @@
+An introduction to (smoothing spline) ANOVA models in RKHS with examples
+  in geographical data, medicine, atmospheric science and machine learning
+  Smoothing Spline ANOVA (SS-ANOVA) models in reproducing kernel Hilbert spaces
+(RKHS) provide a very general framework for data analysis, modeling and
+learning in a variety of fields. Discrete, noisy scattered, direct and indirect
+observations can be accommodated with multiple inputs and multiple possibly
+correlated outputs and a variety of meaningful structures. The purpose of this
+paper is to give a brief overview of the approach and describe and contrast a
+series of applications, while noting some recent results.

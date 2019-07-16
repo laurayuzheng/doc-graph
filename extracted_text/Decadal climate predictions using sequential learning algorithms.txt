@@ -1,0 +1,14 @@
+Decadal climate predictions using sequential learning algorithms
+  Ensembles of climate models are commonly used to improve climate predictions
+and assess the uncertainties associated with them. Weighting the models
+according to their performances holds the promise of further improving their
+predictions. Here, we use an ensemble of decadal climate predictions to
+demonstrate the ability of sequential learning algorithms (SLAs) to reduce the
+forecast errors and reduce the uncertainties. Three different SLAs are
+considered, and their performances are compared with those of an equally
+weighted ensemble, a linear regression and the climatology. Predictions of four
+different variables--the surface temperature, the zonal and meridional wind,
+and pressure--are considered. The spatial distributions of the performances are
+presented, and the statistical significance of the improvements achieved by the
+SLAs is tested. Based on the performances of the SLAs, we propose one to be
+highly suitable for the improvement of decadal climate predictions.

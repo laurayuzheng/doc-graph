@@ -1,0 +1,14 @@
+Hyperspectral Data Analysis in R: the hsdar Package
+  Hyperspectral remote sensing is a promising tool for a variety of
+applications including ecology, geology, analytical chemistry and medical
+research. This article presents the new \hsdar package for R statistical
+software, which performs a variety of analysis steps taken during a typical
+hyperspectral remote sensing approach. The package introduces a new class for
+efficiently storing large hyperspectral datasets such as hyperspectral cubes
+within R. The package includes several important hyperspectral analysis tools
+such as continuum removal, normalized ratio indices and integrates two widely
+used radiation transfer models. In addition, the package provides methods to
+directly use the functionality of the caret package for machine learning tasks.
+Two case studies demonstrate the package's range of functionality: First, plant
+leaf chlorophyll content is estimated and second, cancer in the human larynx is
+detected from hyperspectral data.

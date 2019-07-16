@@ -1,0 +1,14 @@
+Ecological Data Analysis Based on Machine Learning Algorithms
+  Classification is an important supervised machine learning method, which is
+necessary and challenging issue for ecological research. It offers a way to
+classify a dataset into subsets that share common patterns. Notably, there are
+many classification algorithms to choose from, each making certain assumptions
+about the data and about how classification should be formed. In this paper, we
+applied eight machine learning classification algorithms such as Decision
+Trees, Random Forest, Artificial Neural Network, Support Vector Machine, Linear
+Discriminant Analysis, k-nearest neighbors, Logistic Regression and Naive Bayes
+on ecological data. The goal of this study is to compare different machine
+learning classification algorithms in ecological dataset. In this analysis we
+have checked the accuracy test among the algorithms. In our study we conclude
+that Linear Discriminant Analysis and k-nearest neighbors are the best methods
+among all other methods

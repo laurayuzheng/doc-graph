@@ -1,0 +1,20 @@
+Meta-modeling game for deriving theoretical-consistent,
+  micro-structural-based traction-separation laws via deep reinforcement
+  learning
+  This paper presents a new meta-modeling framework to employ deep
+reinforcement learning (DRL) to generate mechanical constitutive models for
+interfaces. The constitutive models are conceptualized as information flow in
+directed graphs. The process of writing constitutive models are simplified as a
+sequence of forming graph edges with the goal of maximizing the model score (a
+function of accuracy, robustness and forward prediction quality). Thus
+meta-modeling can be formulated as a Markov decision process with well-defined
+states, actions, rules, objective functions, and rewards. By using neural
+networks to estimate policies and state values, the computer agent is able to
+efficiently self-improve the constitutive model it generated through
+self-playing, in the same way AlphaGo Zero (the algorithm that outplayed the
+world champion in the game of Go)improves its gameplay. Our numerical examples
+show that this automated meta-modeling framework not only produces models which
+outperform existing cohesive models on benchmark traction-separation data but
+is also capable of detecting hidden mechanisms among micro-structural features
+and incorporating them in constitutive models to improve the forward prediction
+accuracy, which are difficult tasks to do manually.

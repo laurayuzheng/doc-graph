@@ -1,0 +1,25 @@
+Combining Physically-Based Modeling and Deep Learning for Fusing GRACE
+  Satellite Data: Can We Learn from Mismatch?
+  Global hydrological and land surface models are increasingly used for
+tracking terrestrial total water storage (TWS) dynamics, but the utility of
+existing models is hampered by conceptual and/or data uncertainties related to
+various underrepresented and unrepresented processes, such as groundwater
+storage. The gravity recovery and climate experiment (GRACE) satellite mission
+provided a valuable independent data source for tracking TWS at regional and
+continental scales. Strong interests exist in fusing GRACE data into global
+hydrological models to improve their predictive performance. Here we develop
+and apply deep convolutional neural network (CNN) models to learn the
+spatiotemporal patterns of mismatch between TWS anomalies (TWSA) derived from
+GRACE and those simulated by NOAH, a widely used land surface model. Once
+trained, our CNN models can be used to correct the NOAH simulated TWSA without
+requiring GRACE data, potentially filling the data gap between GRACE and its
+follow-on mission, GRACE-FO. Our methodology is demonstrated over India, which
+has experienced significant groundwater depletion in recent decades that is
+nevertheless not being captured by the NOAH model. Results show that the CNN
+models significantly improve the match with GRACE TWSA, achieving a
+country-average correlation coefficient of 0.94 and Nash-Sutcliff efficient of
+0.87, or 14\% and 52\% improvement respectively over the original NOAH TWSA. At
+the local scale, the learned mismatch pattern correlates well with the observed
+in situ groundwater storage anomaly data for most parts of India, suggesting
+that deep learning models effectively compensate for the missing groundwater
+component in NOAH for this study region.

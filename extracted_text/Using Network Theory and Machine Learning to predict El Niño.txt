@@ -1,0 +1,13 @@
+Using Network Theory and Machine Learning to predict El Niño
+  The skill of current predictions of the warm phase of the El Ni\~no Southern
+Oscillation (ENSO) reduces significantly beyond a lag of six months. In this
+paper, we aim to increase this prediction skill at lags up to one year. The new
+method to do so combines a classical Autoregressive Integrated Moving Average
+technique with a modern machine learning approach (through an Artificial Neural
+Network). The attributes in such a neural network are derived from topological
+properties of Climate Networks and are tested on both a Zebiak-Cane-type model
+and observations. For predictions up to six months ahead, the results of the
+hybrid model give a better skill than the CFSv2 ensemble prediction by the
+National Centers for Environmental Prediction (NCEP). Moreover, results for a
+twelve month lead time prediction have a similar skill as the shorter lead time
+predictions.

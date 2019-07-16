@@ -1,0 +1,18 @@
+Kernel embedding of maps for sequential Bayesian inference: The
+  variational mapping particle filter
+  In this work, a novel sequential Monte Carlo filter is introduced which aims
+at efficient sampling of high-dimensional state spaces with a limited number of
+particles. Particles are pushed forward from the prior to the posterior density
+using a sequence of mappings that minimizes the Kullback-Leibler divergence
+between the posterior and the sequence of intermediate densities. The sequence
+of mappings represents a gradient flow. A key ingredient of the mappings is
+that they are embedded in a reproducing kernel Hilbert space, which allows for
+a practical and efficient algorithm. The embedding provides a direct means to
+calculate the gradient of the Kullback-Leibler divergence leading to quick
+convergence using well-known gradient-based stochastic optimization algorithms.
+Evaluation of the method is conducted in the chaotic Lorenz-63 system, the
+Lorenz-96 system, which is a coarse prototype of atmospheric dynamics, and an
+epidemic model that describes cholera dynamics. No resampling is required in
+the mapping particle filter even for long recursive sequences. The number of
+effective particles remains close to the total number of particles in all the
+experiments.

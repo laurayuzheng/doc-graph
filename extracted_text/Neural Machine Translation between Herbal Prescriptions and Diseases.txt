@@ -1,0 +1,16 @@
+Neural Machine Translation between Herbal Prescriptions and Diseases
+  The current study applies deep learning to herbalism. Toward the goal, we
+acquired the de-identified health insurance reimbursements that were claimed in
+a 10-year period from 2004 to 2013 in the National Health Insurance Database of
+Taiwan, the total number of reimbursement records equaling 340 millions. Two
+artificial intelligence techniques were applied to the dataset: residual
+convolutional neural network multitask classifier and attention-based recurrent
+neural network. The former works to translate from herbal prescriptions to
+diseases; and the latter from diseases to herbal prescriptions. Analysis of the
+classification results indicates that herbal prescriptions are specific to:
+anatomy, pathophysiology, sex and age of the patient, and season and year of
+the prescription. Further analysis identifies temperature and gross domestic
+product as the meteorological and socioeconomic factors that are associated
+with herbal prescriptions. Analysis of the neural machine transitional result
+indicates that the recurrent neural network learnt not only syntax but also
+semantics of diseases and herbal prescriptions.

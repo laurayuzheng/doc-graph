@@ -1,0 +1,24 @@
+Geographically and temporally weighted neural networks for
+  satellite-based mapping of ground-level PM2.5
+  The integration of satellite-derived aerosol optical depth (AOD) and
+station-measured PM2.5 provides a promising approach for obtaining spatial
+PM2.5 data. Several spatiotemporal models, which considered spatial and
+temporal heterogeneities of AOD-PM2.5 relationship, have been widely adopted
+for PM2.5 estimation. However, they generally described the complex AOD-PM2.5
+relationship based on a linear hypothesis. Previous machine learning models
+yielded great superiorities for fitting the nonlinear AOD-PM2.5 relationship,
+but seldom allowed for its spatiotemporal variations. To simultaneously
+consider the nonlinearity and spatiotemporal heterogeneities of AOD-PM2.5
+relationship, geographically and temporally weighted neural networks (GTWNNs)
+were developed for satellite-based estimation of ground-level PM2.5 in this
+study. Using satellite AOD products, NDVI data, and meteorological factors over
+China as input, GTWNNs were set up with station PM2.5 measurements. Then the
+spatial PM2.5 data of those locations with no ground stations could be
+obtained. The proposed GTWNNs have achieved a better performance compared with
+previous spatiotemporal models, i.e., daily geographically weighted regression
+and geographically and temporally weighted regression. The sample-based and
+site-based cross-validation R2 values of GTWNNs are 0.80 and 0.79,
+respectively. On this basis, the spatial PM2.5 data with a resolution of 0.1
+degree were generated in China. This study implemented the combination of
+geographical law and neural networks, and improved the accuracy of
+satellite-based PM2.5 estimation.

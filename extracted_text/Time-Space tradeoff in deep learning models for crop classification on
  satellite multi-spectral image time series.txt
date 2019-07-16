@@ -1,0 +1,12 @@
+Time-Space tradeoff in deep learning models for crop classification on
+  satellite multi-spectral image time series
+  In this article, we investigate several structured deep learning models for
+crop type classification on multi-spectral time series. In particular, our aim
+is to assess the respective importance of spatial and temporal structures in
+such data. With this objective, we consider several designs of convolutional,
+recurrent, and hybrid neural networks, and assess their performance on a large
+dataset of freely available Sentinel-2 imagery. We find that the
+best-performing approaches are hybrid configurations for which most of the
+parameters (up to 90%) are allocated to modeling the temporal structure of the
+data. Our results thus constitute a set of guidelines for the design of bespoke
+deep learning models for crop type classification.

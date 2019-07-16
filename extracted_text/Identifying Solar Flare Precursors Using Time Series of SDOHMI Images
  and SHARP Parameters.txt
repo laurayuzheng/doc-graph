@@ -1,0 +1,18 @@
+Identifying Solar Flare Precursors Using Time Series of SDO/HMI Images
+  and SHARP Parameters
+  We present several methods towards construction of precursors, which show
+great promise towards early predictions, of solar flare events in this paper. A
+data pre-processing pipeline is built to extract useful data from multiple
+sources (Geostationary Operational Environmental Satellites (GOES) and Solar
+Dynamics Observatory (SDO)/Helioseismic and Magnetic Imager (HMI) to prepare
+inputs for machine learning algorithms. Two classification models are
+presented: classification of flares from quiet times for active regions and
+classification of strong versus weak flare events. We adopt deep learning
+algorithms to capture both the spatial and temporal information from HMI
+magnetogram data. Effective feature extraction and feature selection with raw
+magnetogram data using deep learning and statistical algorithms enable us to
+train classification models to achieve almost as good performance as using
+active region parameters provided in HMI/Space-Weather HMI-Active Region Patch
+(SHARP) data files. The results show great promise towards accurate, reliable,
+and timely predictions of solar flare events. The use of Atmospheric Imaging
+Assembly (AIA) data will be the topic of future studies.

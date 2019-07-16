@@ -1,0 +1,20 @@
+Automatic Seismic Salt Interpretation with Deep Convolutional Neural
+  Networks
+  One of the most crucial tasks in seismic reflection imaging is to identify
+the salt bodies with high precision. Traditionally, this is accomplished by
+visually picking the salt/sediment boundaries, which requires a great amount of
+manual work and may introduce systematic bias. With recent progress of deep
+learning algorithm and growing computational power, a great deal of efforts
+have been made to replace human effort with machine power in salt body
+interpretation. Currently, the method of Convolutional neural networks (CNN) is
+revolutionizing the computer vision field and has been a hot topic in the image
+analysis. In this paper, the benefits of CNN-based classification are
+demonstrated by using a state-of-art network structure U-Net, along with the
+residual learning framework ResNet, to delineate salt body with high precision.
+Network adjustments, including the Exponential Linear Units (ELU) activation
+function, the Lov\'{a}sz-Softmax loss function, and stratified $K$-fold
+cross-validation, have been deployed to further improve the prediction
+accuracy. The preliminary result using SEG Advanced Modeling (SEAM) data shows
+good agreement between the predicted salt body and manually interpreted salt
+body, especially in areas with weak reflections. This indicates the great
+potential of applying CNN for salt-related interpretations.

@@ -1,11 +1,13 @@
-Including Physics in Deep Learning -- An example from 4D seismic
-  pressure saturation inversion
-  Geoscience data often have to rely on strong priors in the face of
-uncertainty. Additionally, we often try to detect or model anomalous sparse
-data that can appear as an outlier in machine learning models. These are
-classic examples of imbalanced learning. Approaching these problems can benefit
-from including prior information from physics models or transforming data to a
-beneficial domain. We show an example of including physical information in the
-architecture of a neural network as prior information. We go on to present
-noise injection at training time to successfully transfer the network from
-synthetic data to field data.
+Deep learning in remote sensing: a review
+  Standing at the paradigm shift towards data-intensive science, machine
+learning techniques are becoming increasingly important. In particular, as a
+major breakthrough in the field, deep learning has proven as an extremely
+powerful tool in many fields. Shall we embrace deep learning as the key to all?
+Or, should we resist a 'black-box' solution? There are controversial opinions
+in the remote sensing community. In this article, we analyze the challenges of
+using deep learning for remote sensing data analysis, review the recent
+advances, and provide resources to make deep learning in remote sensing
+ridiculously simple to start with. More importantly, we advocate remote sensing
+scientists to bring their expertise into deep learning, and use it as an
+implicit general model to tackle unprecedented large-scale influential
+challenges, such as climate change and urbanization.

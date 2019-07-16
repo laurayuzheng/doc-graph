@@ -1,0 +1,14 @@
+Petrophysical Property Estimation from Seismic Data Using Recurrent
+  Neural Networks
+  Reservoir characterization involves the estimation petrophysical properties
+from well-log data and seismic data. Estimating such properties is a
+challenging task due to the non-linearity and heterogeneity of the subsurface.
+Various attempts have been made to estimate petrophysical properties using
+machine learning techniques such as feed-forward neural networks and support
+vector regression (SVR). Recent advances in machine learning have shown
+promising results for recurrent neural networks (RNN) in modeling complex
+sequential data such as videos and speech signals. In this work, we propose an
+algorithm for property estimation from seismic data using recurrent neural
+networks. An applications of the proposed workflow to estimate density and
+p-wave impedance using seismic data shows promising results compared to
+feed-forward neural networks.

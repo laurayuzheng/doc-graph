@@ -1,0 +1,15 @@
+A novel prestack sparse azimuthal AVO inversion
+  In this paper we demonstrate a new algorithm for sparse prestack azimuthal
+AVO inversion. A novel Euclidean prior model is developed to at once respect
+sparseness in the layered earth and smoothness in the model of reflectivity.
+Recognizing that methods of artificial intelligence and Bayesian computation
+are finding an every increasing role in augmenting the process of
+interpretation and analysis of geophysical data, we derive a generalized
+matrix-variate model of reflectivity in terms of orthogonal basis functions,
+subject to sparse constraints. This supports a direct application of machine
+learning methods, in a way that can be mapped back onto the physical principles
+known to govern reflection seismology. As a demonstration we present an
+application of these methods to the Marcellus shale. Attributes extracted using
+the azimuthal inversion are clustered using an unsupervised learning algorithm.
+Interpretation of the clusters is performed in the context of the Ruger model
+of azimuthal AVO.

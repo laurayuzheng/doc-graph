@@ -1,0 +1,23 @@
+Sparse-promoting Full Waveform Inversion based on Online Orthonormal
+  Dictionary Learning
+  Full waveform inversion (FWI) delivers high-resolution images of the
+subsurface by minimizing iteratively the misfit between the recorded and
+calculated seismic data. It has been attacked successfully with the
+Gauss-Newton method and sparsity promoting regularization based on fixed
+multiscale transforms that permit significant subsampling of the seismic data
+when the model perturbation at each FWI data-fitting iteration can be
+represented with sparse coefficients. Rather than using analytical transforms
+with predefined dictionaries to achieve sparse representation, we introduce an
+adaptive transform called the Sparse Orthonormal Transform (SOT) whose
+dictionary is learned from many small training patches taken from the model
+perturbations in previous iterations. The patch-based dictionary is constrained
+to be orthonormal and trained with an online approach to provide the best
+sparse representation of the complex features and variations of the entire
+model perturbation. The complexity of the training method is proportional to
+the cube of the number of samples in one small patch. By incorporating both
+compressive subsampling and the adaptive SOT-based representation into the
+Gauss-Newton least-squares problem for each FWI iteration, the model
+perturbation can be recovered after an l1-norm sparsity constraint is applied
+on the SOT coefficients. Numerical experiments on synthetic models demonstrate
+that the SOT-based sparsity promoting regularization can provide robust FWI
+results with reduced computation.

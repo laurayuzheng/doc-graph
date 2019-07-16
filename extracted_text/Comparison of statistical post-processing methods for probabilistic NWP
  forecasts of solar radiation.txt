@@ -1,0 +1,25 @@
+Comparison of statistical post-processing methods for probabilistic NWP
+  forecasts of solar radiation
+  The increased usage of solar energy places additional importance on forecasts
+of solar radiation. Solar panel power production is primarily driven by the
+amount of solar radiation and it is therefore important to have accurate
+forecasts of solar radiation. Accurate forecasts that also give information on
+the forecast uncertainties can help users of solar energy to make better solar
+radiation based decisions related to the stability of the electrical grid. To
+achieve this, we apply statistical post-processing techniques that determine
+relationships between observations of global radiation (made within the KNMI
+network of automatic weather stations in the Netherlands) and forecasts of
+various meteorological variables from the numerical weather prediction (NWP)
+model HARMONIE-AROME (HA) and the atmospheric composition model CAMS. Those
+relationships are used to produce probabilistic forecasts of global radiation.
+We compare 7 different statistical post-processing methods, consisting of two
+parametric and five non-parametric methods. We find that all methods are able
+to generate probabilistic forecasts that improve the raw global radiation
+forecast from HA according to the root mean squared error (on the median) and
+the potential economic value. Additionally, we show how important the
+predictors are in the different regression methods. We also compare the
+regression methods using various probabilistic scoring metrics, namely the
+continuous ranked probability skill score, the Brier skill score and
+reliability diagrams. We find that quantile regression and generalized random
+forests generally perform best. In (near) clear sky conditions the
+non-parametric methods have more skill than the parametric ones.

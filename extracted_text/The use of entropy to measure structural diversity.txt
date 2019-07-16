@@ -1,0 +1,11 @@
+The use of entropy to measure structural diversity
+  In this paper entropy based methods are compared and used to measure
+structural diversity of an ensemble of 21 classifiers. This measure is mostly
+applied in ecology, whereby species counts are used as a measure of diversity.
+The measures used were Shannon entropy, Simpsons and the Berger Parker
+diversity indexes. As the diversity indexes increased so did the accuracy of
+the ensemble. An ensemble dominated by classifiers with the same structure
+produced poor accuracy. Uncertainty rule from information theory was also used
+to further define diversity. Genetic algorithms were used to find the optimal
+ensemble by using the diversity indices as the cost function. The method of
+voting was used to aggregate the decisions.

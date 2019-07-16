@@ -1,0 +1,2135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3Ageoscience%20AND%20all%3Amachine%20AND%20all%3Alearning%26id_list%3D%26start%3D0%26max_results%3D100" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:geoscience AND all:machine AND all:learning&amp;id_list=&amp;start=0&amp;max_results=100</title>
+  <id>http://arxiv.org/api/wPIaPLvtUHfgOQx/sUmdpMgStnU</id>
+  <updated>2019-07-16T00:00:00-04:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">46</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">100</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1711.04708v1</id>
+    <updated>2017-11-13T17:16:38Z</updated>
+    <published>2017-11-13T17:16:38Z</published>
+    <title>Machine Learning for the Geosciences: Challenges and Opportunities</title>
+    <summary>  Geosciences is a field of great societal relevance that requires solutions to
+several urgent problems facing our humanity and the planet. As geosciences
+enters the era of big data, machine learning (ML) -- that has been widely
+successful in commercial domains -- offers immense potential to contribute to
+problems in geosciences. However, problems in geosciences have several unique
+challenges that are seldom found in traditional applications, requiring novel
+problem formulations and methodologies in machine learning. This article
+introduces researchers in the machine learning (ML) community to these
+challenges offered by geoscience problems and the opportunities that exist for
+advancing both machine learning and geosciences. We first highlight typical
+sources of geoscience data and describe their properties that make it
+challenging to use traditional machine learning techniques. We then describe
+some of the common categories of geoscience problems where machine learning can
+play a role, and discuss some of the existing efforts and promising directions
+for methodological development in machine learning. We conclude by discussing
+some of the emerging research themes in machine learning that are applicable
+across all problems in the geosciences, and the importance of a deep
+collaboration between machine learning and geosciences for synergistic
+advancements in both disciplines.
+</summary>
+    <author>
+      <name>Anuj Karpatne</name>
+    </author>
+    <author>
+      <name>Imme Ebert-Uphoff</name>
+    </author>
+    <author>
+      <name>Sai Ravela</name>
+    </author>
+    <author>
+      <name>Hassan Ali Babaie</name>
+    </author>
+    <author>
+      <name>Vipin Kumar</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Under review at IEEE Transactions on Knowledge and Data Engineering</arxiv:comment>
+    <link href="http://arxiv.org/abs/1711.04708v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1711.04708v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1512.08279v1</id>
+    <updated>2015-12-27T21:42:06Z</updated>
+    <published>2015-12-27T21:42:06Z</published>
+    <title>Using Causal Discovery to Track Information Flow in Spatio-Temporal Data
+  - A Testbed and Experimental Results Using Advection-Diffusion Simulations</title>
+    <summary>  Causal discovery algorithms based on probabilistic graphical models have
+emerged in geoscience applications for the identification and visualization of
+dynamical processes. The key idea is to learn the structure of a graphical
+model from observed spatio-temporal data, which indicates information flow,
+thus pathways of interactions, in the observed physical system. Studying those
+pathways allows geoscientists to learn subtle details about the underlying
+dynamical mechanisms governing our planet. Initial studies using this approach
+on real-world atmospheric data have shown great potential for scientific
+discovery. However, in these initial studies no ground truth was available, so
+that the resulting graphs have been evaluated only by whether a domain expert
+thinks they seemed physically plausible. This paper seeks to fill this gap. We
+develop a testbed that emulates two dynamical processes dominant in many
+geoscience applications, namely advection and diffusion, in a 2D grid. Then we
+apply the causal discovery based information tracking algorithms to the
+simulation data to study how well the algorithms work for different scenarios
+and to gain a better understanding of the physical meaning of the graph
+results, in particular of instantaneous connections. We make all data sets used
+in this study available to the community as a benchmark.
+  Keywords: Information flow, graphical model, structure learning, causal
+discovery, geoscience.
+</summary>
+    <author>
+      <name>Imme Ebert-Uphoff</name>
+    </author>
+    <author>
+      <name>Yi Deng</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">40 pages, 19 figures, 2 tables</arxiv:comment>
+    <link href="http://arxiv.org/abs/1512.08279v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1512.08279v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.12060v1</id>
+    <updated>2019-03-21T19:10:14Z</updated>
+    <published>2019-03-21T19:10:14Z</published>
+    <title>Penobscot Dataset: Fostering Machine Learning Development for Seismic
+  Interpretation</title>
+    <summary>  We have seen in the past years the flourishing of machine and deep learning
+algorithms in several applications such as image classification and
+segmentation, object detection and recognition, among many others. This was
+only possible, in part, because datasets like ImageNet -- with +14 million
+labeled images -- were created and made publicly available, providing
+researches with a common ground to compare their advances and extend the
+state-of-the-art. Although we have seen an increasing interest in machine
+learning in geosciences as well, we will only be able to achieve a significant
+impact in our community if we collaborate to build such a common basis. This is
+even more difficult when it comes to the Oil&amp;Gas industry, in which
+confidentiality and commercial interests often hinder the sharing of datasets
+with others. In this letter, we present the Penobscot interpretation dataset,
+our contribution to the development of machine learning in geosciences, more
+specifically in seismic interpretation. The Penobscot 3D seismic dataset was
+acquired in the Scotian shelf, offshore Nova Scotia, Canada. The data is
+publicly available and comprises pre- and pos-stack data, 5 horizons and well
+logs of 2 wells. However, for the dataset to be of practical use for our tasks,
+we had to reinterpret the seismic, generating 7 horizons separating different
+seismic facies intervals. The interpreted horizons were used to generated
++100,000 labeled images for inlines and crosslines. To demonstrate the utility
+of our dataset, results of two experiments are presented.
+</summary>
+    <author>
+      <name>Lais Baroni</name>
+    </author>
+    <author>
+      <name>Reinaldo Mozart Silva</name>
+    </author>
+    <author>
+      <name>Rodrigo S. Ferreira</name>
+    </author>
+    <author>
+      <name>Daniel Civitarese</name>
+    </author>
+    <author>
+      <name>Daniela Szwarcman</name>
+    </author>
+    <author>
+      <name>Emilio Vital Brazil</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">5 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1903.12060v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.12060v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DL" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.00770v1</id>
+    <updated>2019-03-26T13:12:14Z</updated>
+    <published>2019-03-26T13:12:14Z</published>
+    <title>Netherlands Dataset: A New Public Dataset for Machine Learning in
+  Seismic Interpretation</title>
+    <summary>  Machine learning and, more specifically, deep learning algorithms have seen
+remarkable growth in their popularity and usefulness in the last years. This is
+arguably due to three main factors: powerful computers, new techniques to train
+deeper networks and larger datasets. Although the first two are readily
+available in modern computers and ML libraries, the last one remains a
+challenge for many domains. It is a fact that big data is a reality in almost
+all fields nowadays, and geosciences are not an exception. However, to achieve
+the success of general-purpose applications such as ImageNet - for which there
+are +14 million labeled images for 1000 target classes - we not only need more
+data, we need more high-quality labeled data. When it comes to the Oil&amp;Gas
+industry, confidentiality issues hamper even more the sharing of datasets. In
+this work, we present the Netherlands interpretation dataset, a contribution to
+the development of machine learning in seismic interpretation. The Netherlands
+F3 dataset acquisition was carried out in the North Sea, Netherlands offshore.
+The data is publicly available and contains pos-stack data, 8 horizons and well
+logs of 4 wells. For the purposes of our machine learning tasks, the original
+dataset was reinterpreted, generating 9 horizons separating different seismic
+facies intervals. The interpreted horizons were used to generate approximatelly
+190,000 labeled images for inlines and crosslines. Finally, we present two deep
+learning applications in which the proposed dataset was employed and produced
+compelling results.
+</summary>
+    <author>
+      <name>Reinaldo Mozart Silva</name>
+    </author>
+    <author>
+      <name>Lais Baroni</name>
+    </author>
+    <author>
+      <name>Rodrigo S. Ferreira</name>
+    </author>
+    <author>
+      <name>Daniel Civitarese</name>
+    </author>
+    <author>
+      <name>Daniela Szwarcman</name>
+    </author>
+    <author>
+      <name>Emilio Vital Brazil</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">5 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1904.00770v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.00770v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1803.11046v3</id>
+    <updated>2018-04-09T00:28:36Z</updated>
+    <published>2018-03-29T13:13:57Z</published>
+    <title>CobWeb - a toolbox for automatic tomographic image analysis based on
+  machine learning techniques: application and examples</title>
+    <summary>  In this study, we introduce CobWeb 1.0 which is a graphical user interface
+tailored explicitly for accurate image segmentation and representative
+elementary volume analysis of digital rock images derived from high resolution
+tomography. The CobWeb code is a work package deployed as a series of windows
+executable binaries which use image processing and machine learning libraries
+of MATLAB. The user-friendly interface enables image segmentation and
+cross-validation employing K-means, Fuzzy C-means, least square support vector
+machine, and ensemble classification (bragging and boosting) segmentation
+techniques. A quick region of interest analysis including relative porosity
+trends, pore size distribution, and volume fraction of different phases can be
+performed on different geomaterials. Data can be exported to ParaView, DSI
+Studio (.fib), Microsoft Excel and MATLAB for further visualisation and
+statistical analysis. The efficiency of the new tool was verified using gas
+hydrate-bearing sediment samples and Berea sandstone, both from synchrotron
+tomography datasets, as well as Grosmont carbonate rock X-ray micro-tomographic
+dataset. Despite its high sub-micrometer resolution, the gas hydrate dataset
+was suffering from edge enhancement artefacts. These artefacts were primarily
+normalized by the dual filtering approach using both non-local means and
+anisotropic diffusion filtering. The desired automatic segmentation of the
+phases (brine, sand, and gas hydrate) was thus successfully achieved using the
+dual clustering approach.
+</summary>
+    <author>
+      <name>Swarup Chauhan</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Institute of Applied Geosciences, University of Technology, Darmstadt, Germany</arxiv:affiliation>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Institute for Geosciences, Johannes Gutenberg-University, Mainz, Germany</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Kathleen Sell</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Institute for Geosciences, Johannes Gutenberg-University, Mainz, Germany</arxiv:affiliation>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">igem - Institute for Geothermal Ressource Management, Bingen, Germany</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Frieder Enzmann</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Institute for Geosciences, Johannes Gutenberg-University, Mainz, Germany</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Wolfram Rühaak</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Federal Institute for Geosciences and Natural Resources</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Thorsten Wille</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">APS Antriebs-, Prüf- und Steuertechnik GmbH, Göttingen-Rosdorf, Germany</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Ingo Sass</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Institute of Applied Geosciences, University of Technology, Darmstadt, Germany</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Michael Kersten</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Institute for Geosciences, Johannes Gutenberg-University, Mainz, Germany</arxiv:affiliation>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">29 pages (article + appendix). 16 figures (8 Article/8 Appendix)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1803.11046v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1803.11046v3" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1805.01950v1</id>
+    <updated>2018-05-04T22:16:16Z</updated>
+    <published>2018-05-04T22:16:16Z</published>
+    <title>A Data-driven Approach to Detecting Precipitation from Meteorological
+  Sensor Data</title>
+    <summary>  Precipitation is dependent on a myriad of atmospheric conditions. In this
+paper, we study how certain atmospheric parameters impact the occurrence of
+rainfall. We propose a data-driven, machine-learning based methodology to
+detect precipitation using various meteorological sensor data. Our approach
+achieves a true detection rate of 87.4% and a moderately low false alarm rate
+of 32.2%.
+</summary>
+    <author>
+      <name>Shilpa Manandhar</name>
+    </author>
+    <author>
+      <name>Soumyabrata Dev</name>
+    </author>
+    <author>
+      <name>Yee Hui Lee</name>
+    </author>
+    <author>
+      <name>Yu Song Meng</name>
+    </author>
+    <author>
+      <name>Stefan Winkler</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Published in Proc. IEEE International Geoscience and Remote Sensing
+  Symposium (IGARSS), 2018</arxiv:comment>
+    <link href="http://arxiv.org/abs/1805.01950v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1805.01950v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.03707v1</id>
+    <updated>2018-11-08T22:59:40Z</updated>
+    <published>2018-11-08T22:59:40Z</published>
+    <title>Validating Hyperspectral Image Segmentation</title>
+    <summary>  Hyperspectral satellite imaging attracts enormous research attention in the
+remote sensing community, hence automated approaches for precise segmentation
+of such imagery are being rapidly developed. In this letter, we share our
+observations on the strategy for validating hyperspectral image segmentation
+algorithms currently followed in the literature, and show that it can lead to
+over-optimistic experimental insights. We introduce a new routine for
+generating segmentation benchmarks, and use it to elaborate ready-to-use
+hyperspectral training-test data partitions. They can be utilized for fair
+validation of new and existing algorithms without any training-test data
+leakage.
+</summary>
+    <author>
+      <name>Jakub Nalepa</name>
+    </author>
+    <author>
+      <name>Michal Myller</name>
+    </author>
+    <author>
+      <name>Michal Kawulok</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/LGRS.2019.2895697</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/LGRS.2019.2895697" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Submitted to IEEE Geoscience and Remote Sensing Letters</arxiv:comment>
+    <link href="http://arxiv.org/abs/1811.03707v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.03707v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1710.03959v1</id>
+    <updated>2017-10-11T08:35:05Z</updated>
+    <published>2017-10-11T08:35:05Z</published>
+    <title>Deep learning in remote sensing: a review</title>
+    <summary>  Standing at the paradigm shift towards data-intensive science, machine
+learning techniques are becoming increasingly important. In particular, as a
+major breakthrough in the field, deep learning has proven as an extremely
+powerful tool in many fields. Shall we embrace deep learning as the key to all?
+Or, should we resist a 'black-box' solution? There are controversial opinions
+in the remote sensing community. In this article, we analyze the challenges of
+using deep learning for remote sensing data analysis, review the recent
+advances, and provide resources to make deep learning in remote sensing
+ridiculously simple to start with. More importantly, we advocate remote sensing
+scientists to bring their expertise into deep learning, and use it as an
+implicit general model to tackle unprecedented large-scale influential
+challenges, such as climate change and urbanization.
+</summary>
+    <author>
+      <name>Xiao Xiang Zhu</name>
+    </author>
+    <author>
+      <name>Devis Tuia</name>
+    </author>
+    <author>
+      <name>Lichao Mou</name>
+    </author>
+    <author>
+      <name>Gui-Song Xia</name>
+    </author>
+    <author>
+      <name>Liangpei Zhang</name>
+    </author>
+    <author>
+      <name>Feng Xu</name>
+    </author>
+    <author>
+      <name>Friedrich Fraundorfer</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/MGRS.2017.2762307</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/MGRS.2017.2762307" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for publication IEEE Geoscience and Remote Sensing Magazine</arxiv:comment>
+    <link href="http://arxiv.org/abs/1710.03959v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1710.03959v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.02254v1</id>
+    <updated>2019-04-03T22:14:08Z</updated>
+    <published>2019-04-03T22:14:08Z</published>
+    <title>Including Physics in Deep Learning -- An example from 4D seismic
+  pressure saturation inversion</title>
+    <summary>  Geoscience data often have to rely on strong priors in the face of
+uncertainty. Additionally, we often try to detect or model anomalous sparse
+data that can appear as an outlier in machine learning models. These are
+classic examples of imbalanced learning. Approaching these problems can benefit
+from including prior information from physics models or transforming data to a
+beneficial domain. We show an example of including physical information in the
+architecture of a neural network as prior information. We go on to present
+noise injection at training time to successfully transfer the network from
+synthetic data to field data.
+</summary>
+    <author>
+      <name>Jesper Sören Dramsch</name>
+    </author>
+    <author>
+      <name>Gustavo Corte</name>
+    </author>
+    <author>
+      <name>Hamed Amini</name>
+    </author>
+    <author>
+      <name>Colin MacBeth</name>
+    </author>
+    <author>
+      <name>Mikael Lüthje</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.3997/2214-4609.201901967</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.3997/2214-4609.201901967" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">5 pages, 5 figures, workshop, extended abstract, EAGE 2019 Workshop
+  Programme, European Association of Geoscientists and Engineers</arxiv:comment>
+    <link href="http://arxiv.org/abs/1904.02254v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.02254v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1705.09866v4</id>
+    <updated>2018-01-30T01:40:56Z</updated>
+    <published>2017-05-27T21:12:23Z</published>
+    <title>Machine learning for graph-based representations of three-dimensional
+  discrete fracture networks</title>
+    <summary>  Structural and topological information play a key role in modeling flow and
+transport through fractured rock in the subsurface. Discrete fracture network
+(DFN) computational suites such as dfnWorks are designed to simulate flow and
+transport in such porous media. Flow and transport calculations reveal that a
+small backbone of fractures exists, where most flow and transport occurs.
+Restricting the flowing fracture network to this backbone provides a
+significant reduction in the network's effective size. However, the particle
+tracking simulations needed to determine the reduction are computationally
+intensive. Such methods may be impractical for large systems or for robust
+uncertainty quantification of fracture networks, where thousands of forward
+simulations are needed to bound system behavior.
+  In this paper, we develop an alternative network reduction approach to
+characterizing transport in DFNs, by combining graph theoretical and machine
+learning methods. We consider a graph representation where nodes signify
+fractures and edges denote their intersections. Using random forest and support
+vector machines, we rapidly identify a subnetwork that captures the flow
+patterns of the full DFN, based primarily on node centrality features in the
+graph. Our supervised learning techniques train on particle-tracking backbone
+paths found by dfnWorks, but run in negligible time compared to those
+simulations. We find that our predictions can reduce the network to
+approximately 20% of its original size, while still generating breakthrough
+curves consistent with those of the original network.
+</summary>
+    <author>
+      <name>Manuel Valera</name>
+    </author>
+    <author>
+      <name>Zhengyang Guo</name>
+    </author>
+    <author>
+      <name>Priscilla Kelly</name>
+    </author>
+    <author>
+      <name>Sean Matz</name>
+    </author>
+    <author>
+      <name>Vito Adrian Cantu</name>
+    </author>
+    <author>
+      <name>Allon G. Percus</name>
+    </author>
+    <author>
+      <name>Jeffrey D. Hyman</name>
+    </author>
+    <author>
+      <name>Gowri Srinivasan</name>
+    </author>
+    <author>
+      <name>Hari S. Viswanathan</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1007/s10596-018-9720-1</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1007/s10596-018-9720-1" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Computational Geosciences (2018)</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Computational Geosciences 22, 695-710 (2018)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1705.09866v4" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1705.09866v4" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1905.05508v1</id>
+    <updated>2019-05-14T10:41:53Z</updated>
+    <published>2019-05-14T10:41:53Z</published>
+    <title>Seismic Bayesian evidential learning: Estimation and uncertainty
+  quantification of sub-resolution reservoir properties</title>
+    <summary>  We present a framework that enables estimation of low-dimensional
+sub-resolution reservoir properties directly from seismic data, without
+requiring the solution of a high dimensional seismic inverse problem. Our
+workflow is based on the Bayesian evidential learning approach and exploits
+learning the direct relation between seismic data and reservoir properties to
+efficiently estimate reservoir properties. The theoretical framework we develop
+allows incorporation of non-linear statistical models for seismic estimation
+problems. Uncertainty quantification is performed with Approximate Bayesian
+Computation. With the help of a synthetic example of estimation of reservoir
+net-to-gross and average fluid saturations in sub-resolution thin-sand
+reservoir, several nuances are foregrounded regarding the applicability of
+unsupervised and supervised learning methods for seismic estimation problems.
+Finally, we demonstrate the efficacy of our approach by estimating posterior
+uncertainty of reservoir net-to-gross in sub-resolution thin-sand reservoir
+from an offshore delta dataset using 3D pre-stack seismic data.
+</summary>
+    <author>
+      <name>Anshuman Pradhan</name>
+    </author>
+    <author>
+      <name>Tapan Mukerji</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Submitted to Computational Geosciences</arxiv:comment>
+    <link href="http://arxiv.org/abs/1905.05508v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1905.05508v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.geo-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1401.3818v1</id>
+    <updated>2014-01-16T03:21:26Z</updated>
+    <published>2014-01-16T03:21:26Z</published>
+    <title>Structured Priors for Sparse-Representation-Based Hyperspectral Image
+  Classification</title>
+    <summary>  Pixel-wise classification, where each pixel is assigned to a predefined
+class, is one of the most important procedures in hyperspectral image (HSI)
+analysis. By representing a test pixel as a linear combination of a small
+subset of labeled pixels, a sparse representation classifier (SRC) gives rather
+plausible results compared with that of traditional classifiers such as the
+support vector machine (SVM). Recently, by incorporating additional structured
+sparsity priors, the second generation SRCs have appeared in the literature and
+are reported to further improve the performance of HSI. These priors are based
+on exploiting the spatial dependencies between the neighboring pixels, the
+inherent structure of the dictionary, or both. In this paper, we review and
+compare several structured priors for sparse-representation-based HSI
+classification. We also propose a new structured prior called the low rank
+group prior, which can be considered as a modification of the low rank prior.
+Furthermore, we will investigate how different structured priors improve the
+result for the HSI classification.
+</summary>
+    <author>
+      <name>Xiaoxia Sun</name>
+    </author>
+    <author>
+      <name>Qing Qu</name>
+    </author>
+    <author>
+      <name>Nasser M. Nasrabadi</name>
+    </author>
+    <author>
+      <name>Trac D. Tran</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/LGRS.2013.2290531</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/LGRS.2013.2290531" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Geoscience and Remote Sensing Letter</arxiv:comment>
+    <link href="http://arxiv.org/abs/1401.3818v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1401.3818v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1606.01865v2</id>
+    <updated>2016-11-07T20:51:29Z</updated>
+    <published>2016-06-06T19:08:41Z</published>
+    <title>Recurrent Neural Networks for Multivariate Time Series with Missing
+  Values</title>
+    <summary>  Multivariate time series data in practical applications, such as health care,
+geoscience, and biology, are characterized by a variety of missing values. In
+time series prediction and other related tasks, it has been noted that missing
+values and their missing patterns are often correlated with the target labels,
+a.k.a., informative missingness. There is very limited work on exploiting the
+missing patterns for effective imputation and improving prediction performance.
+In this paper, we develop novel deep learning models, namely GRU-D, as one of
+the early attempts. GRU-D is based on Gated Recurrent Unit (GRU), a
+state-of-the-art recurrent neural network. It takes two representations of
+missing patterns, i.e., masking and time interval, and effectively incorporates
+them into a deep model architecture so that it not only captures the long-term
+temporal dependencies in time series, but also utilizes the missing patterns to
+achieve better prediction results. Experiments of time series classification
+tasks on real-world clinical datasets (MIMIC-III, PhysioNet) and synthetic
+datasets demonstrate that our models achieve state-of-the-art performance and
+provides useful insights for better understanding and utilization of missing
+values in time series analysis.
+</summary>
+    <author>
+      <name>Zhengping Che</name>
+    </author>
+    <author>
+      <name>Sanjay Purushotham</name>
+    </author>
+    <author>
+      <name>Kyunghyun Cho</name>
+    </author>
+    <author>
+      <name>David Sontag</name>
+    </author>
+    <author>
+      <name>Yan Liu</name>
+    </author>
+    <link href="http://arxiv.org/abs/1606.01865v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1606.01865v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1712.01600v1</id>
+    <updated>2017-12-05T12:25:43Z</updated>
+    <published>2017-12-05T12:25:43Z</published>
+    <title>Deep learning for semantic segmentation of remote sensing images with
+  rich spectral content</title>
+    <summary>  With the rapid development of Remote Sensing acquisition techniques, there is
+a need to scale and improve processing tools to cope with the observed increase
+of both data volume and richness. Among popular techniques in remote sensing,
+Deep Learning gains increasing interest but depends on the quality of the
+training data. Therefore, this paper presents recent Deep Learning approaches
+for fine or coarse land cover semantic segmentation estimation. Various 2D
+architectures are tested and a new 3D model is introduced in order to jointly
+process the spatial and spectral dimensions of the data. Such a set of networks
+enables the comparison of the different spectral fusion schemes. Besides, we
+also assess the use of a " noisy ground truth " (i.e. outdated and low spatial
+resolution labels) for training and testing the networks.
+</summary>
+    <author>
+      <name>A Hamida</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">IPNL</arxiv:affiliation>
+    </author>
+    <author>
+      <name>A. Benoît</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">IPNL</arxiv:affiliation>
+    </author>
+    <author>
+      <name>P. Lambert</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LISTIC</arxiv:affiliation>
+    </author>
+    <author>
+      <name>L Klein</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">ONERA</arxiv:affiliation>
+    </author>
+    <author>
+      <name>C Amar</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">ONERA</arxiv:affiliation>
+    </author>
+    <author>
+      <name>N. Audebert</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">ONERA</arxiv:affiliation>
+    </author>
+    <author>
+      <name>S. Lefèvre</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">VALORIA</arxiv:affiliation>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE International Geoscience and Remote Sensing Symposium, Jul 2017,
+  Fort Worth, United States. 2017</arxiv:comment>
+    <link href="http://arxiv.org/abs/1712.01600v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1712.01600v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1711.05197v1</id>
+    <updated>2017-11-14T17:03:51Z</updated>
+    <published>2017-11-14T17:03:51Z</published>
+    <title>Joint Gaussian Processes for Biophysical Parameter Retrieval</title>
+    <summary>  Solving inverse problems is central to geosciences and remote sensing.
+Radiative transfer models (RTMs) represent mathematically the physical laws
+which govern the phenomena in remote sensing applications (forward models). The
+numerical inversion of the RTM equations is a challenging and computationally
+demanding problem, and for this reason, often the application of a nonlinear
+statistical regression is preferred. In general, regression models predict the
+biophysical parameter of interest from the corresponding received radiance.
+However, this approach does not employ the physical information encoded in the
+RTMs. An alternative strategy, which attempts to include the physical
+knowledge, consists in learning a regression model trained using data simulated
+by an RTM code. In this work, we introduce a nonlinear nonparametric regression
+model which combines the benefits of the two aforementioned approaches. The
+inversion is performed taking into account jointly both real observations and
+RTM-simulated data. The proposed Joint Gaussian Process (JGP) provides a solid
+framework for exploiting the regularities between the two types of data. The
+JGP automatically detects the relative quality of the simulated and real data,
+and combines them accordingly. This occurs by learning an additional
+hyper-parameter w.r.t. a standard GP model, and fitting parameters through
+maximizing the pseudo-likelihood of the real observations. The resulting scheme
+is both simple and robust, i.e., capable of adapting to different scenarios.
+The advantages of the JGP method compared to benchmark strategies are shown
+considering RTM-simulated and real observations in different experiments.
+Specifically, we consider leaf area index (LAI) retrieval from Landsat data
+combined with simulated data generated by the PROSAIL model.
+</summary>
+    <author>
+      <name>Daniel Heestermans Svendsen</name>
+    </author>
+    <author>
+      <name>Luca Martino</name>
+    </author>
+    <author>
+      <name>Manuel Campos-Taberner</name>
+    </author>
+    <author>
+      <name>Francisco Javier García-Haro</name>
+    </author>
+    <author>
+      <name>Gustau Camps-Valls</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2017.2767205</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2017.2767205" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">21 pages single column, Accepted for publication in IEEE Transactions
+  on Geoscience and Remote Sensing</arxiv:comment>
+    <link href="http://arxiv.org/abs/1711.05197v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1711.05197v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1710.00575v2</id>
+    <updated>2017-10-03T10:40:11Z</updated>
+    <published>2017-10-02T10:51:47Z</published>
+    <title>Remote Sensing Image Classification with Large Scale Gaussian Processes</title>
+    <summary>  Current remote sensing image classification problems have to deal with an
+unprecedented amount of heterogeneous and complex data sources. Upcoming
+missions will soon provide large data streams that will make land cover/use
+classification difficult. Machine learning classifiers can help at this, and
+many methods are currently available. A popular kernel classifier is the
+Gaussian process classifier (GPC), since it approaches the classification
+problem with a solid probabilistic treatment, thus yielding confidence
+intervals for the predictions as well as very competitive results to
+state-of-the-art neural networks and support vector machines. However, its
+computational cost is prohibitive for large scale applications, and constitutes
+the main obstacle precluding wide adoption. This paper tackles this problem by
+introducing two novel efficient methodologies for Gaussian Process (GP)
+classification. We first include the standard random Fourier features
+approximation into GPC, which largely decreases its computational cost and
+permits large scale remote sensing image classification. In addition, we
+propose a model which avoids randomly sampling a number of Fourier frequencies,
+and alternatively learns the optimal ones within a variational Bayes approach.
+The performance of the proposed methods is illustrated in complex problems of
+cloud detection from multispectral imagery and infrared sounding data.
+Excellent empirical results support the proposal in both computational cost and
+accuracy.
+</summary>
+    <author>
+      <name>Pablo Morales-Alvarez</name>
+    </author>
+    <author>
+      <name>Adrian Perez-Suay</name>
+    </author>
+    <author>
+      <name>Rafael Molina</name>
+    </author>
+    <author>
+      <name>Gustau Camps-Valls</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2017.2758922</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2017.2758922" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">11 pages, 6 figures, Accepted for publication in IEEE Transactions on
+  Geoscience and Remote Sensing; added the IEEE copyright statement</arxiv:comment>
+    <link href="http://arxiv.org/abs/1710.00575v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1710.00575v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1709.03891v1</id>
+    <updated>2017-09-12T14:54:57Z</updated>
+    <published>2017-09-12T14:54:57Z</published>
+    <title>High-Dimensional Dependency Structure Learning for Physical Processes</title>
+    <summary>  In this paper, we consider the use of structure learning methods for
+probabilistic graphical models to identify statistical dependencies in
+high-dimensional physical processes. Such processes are often synthetically
+characterized using PDEs (partial differential equations) and are observed in a
+variety of natural phenomena, including geoscience data capturing atmospheric
+and hydrological phenomena. Classical structure learning approaches such as the
+PC algorithm and variants are challenging to apply due to their high
+computational and sample requirements. Modern approaches, often based on sparse
+regression and variants, do come with finite sample guarantees, but are usually
+highly sensitive to the choice of hyper-parameters, e.g., parameter $\lambda$
+for sparsity inducing constraint or regularization. In this paper, we present
+ACLIME-ADMM, an efficient two-step algorithm for adaptive structure learning,
+which estimates an edge specific parameter $\lambda_{ij}$ in the first step,
+and uses these parameters to learn the structure in the second step. Both steps
+of our algorithm use (inexact) ADMM to solve suitable linear programs, and all
+iterations can be done in closed form in an efficient block parallel manner. We
+compare ACLIME-ADMM with baselines on both synthetic data simulated by partial
+differential equations (PDEs) that model advection-diffusion processes, and
+real data (50 years) of daily global geopotential heights to study information
+flow in the atmosphere. ACLIME-ADMM is shown to be efficient, stable, and
+competitive, usually better than the baselines especially on difficult
+problems. On real data, ACLIME-ADMM recovers the underlying structure of global
+atmospheric circulation, including switches in wind directions at the equator
+and tropics entirely from the data.
+</summary>
+    <author>
+      <name>Jamal Golmohammadi</name>
+    </author>
+    <author>
+      <name>Imme Ebert-Uphoff</name>
+    </author>
+    <author>
+      <name>Sijie He</name>
+    </author>
+    <author>
+      <name>Yi Deng</name>
+    </author>
+    <author>
+      <name>Arindam Banerjee</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">21 pages, 8 figures, International Conference on Data Mining 2017</arxiv:comment>
+    <link href="http://arxiv.org/abs/1709.03891v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1709.03891v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1606.07289v1</id>
+    <updated>2016-06-23T12:36:01Z</updated>
+    <published>2016-06-23T12:36:01Z</published>
+    <title>Non-convex regularization in remote sensing</title>
+    <summary>  In this paper, we study the effect of different regularizers and their
+implications in high dimensional image classification and sparse linear
+unmixing. Although kernelization or sparse methods are globally accepted
+solutions for processing data in high dimensions, we present here a study on
+the impact of the form of regularization used and its parametrization. We
+consider regularization via traditional squared (2) and sparsity-promoting (1)
+norms, as well as more unconventional nonconvex regularizers (p and Log Sum
+Penalty). We compare their properties and advantages on several classification
+and linear unmixing tasks and provide advices on the choice of the best
+regularizer for the problem at hand. Finally, we also provide a fully
+functional toolbox for the community.
+</summary>
+    <author>
+      <name>Devis Tuia</name>
+    </author>
+    <author>
+      <name>Remi Flamary</name>
+    </author>
+    <author>
+      <name>Michel Barlaud</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2016.2585201</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2016.2585201" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">11 pages, 11 figures</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Geoscience and Remote Sensing, IEEE Transactions on, 2016</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1606.07289v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1606.07289v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1505.04413v2</id>
+    <updated>2015-05-20T20:08:41Z</updated>
+    <published>2015-05-17T16:27:14Z</published>
+    <title>Harmonic Exponential Families on Manifolds</title>
+    <summary>  In a range of fields including the geosciences, molecular biology, robotics
+and computer vision, one encounters problems that involve random variables on
+manifolds. Currently, there is a lack of flexible probabilistic models on
+manifolds that are fast and easy to train. We define an extremely flexible
+class of exponential family distributions on manifolds such as the torus,
+sphere, and rotation groups, and show that for these distributions the gradient
+of the log-likelihood can be computed efficiently using a non-commutative
+generalization of the Fast Fourier Transform (FFT). We discuss applications to
+Bayesian camera motion estimation (where harmonic exponential families serve as
+conjugate priors), and modelling of the spatial distribution of earthquakes on
+the surface of the earth. Our experimental results show that harmonic densities
+yield a significantly higher likelihood than the best competing method, while
+being orders of magnitude faster to train.
+</summary>
+    <author>
+      <name>Taco S. Cohen</name>
+    </author>
+    <author>
+      <name>Max Welling</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">fixed typo</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Proceedings of the International Conference on Machine Learning,
+  2015</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1505.04413v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1505.04413v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1708.03694v1</id>
+    <updated>2017-08-11T20:28:07Z</updated>
+    <published>2017-08-11T20:28:07Z</published>
+    <title>Deep Recurrent Neural Networks for mapping winter vegetation quality
+  coverage via multi-temporal SAR Sentinel-1</title>
+    <summary>  Mapping winter vegetation quality coverage is a challenge problem of remote
+sensing. This is due to the cloud coverage in winter period, leading to use
+radar rather than optical images. The objective of this paper is to provide a
+better understanding of the capabilities of radar Sentinel-1 and deep learning
+concerning about mapping winter vegetation quality coverage. The analysis
+presented in this paper is carried out on multi-temporal Sentinel-1 data over
+the site of La Rochelle, France, during the campaign in December 2016. This
+dataset were processed in order to produce an intensity radar data stack from
+October 2016 to February 2017. Two deep Recurrent Neural Network (RNN) based
+classifier methods were employed. We found that the results of RNNs clearly
+outperformed the classical machine learning approaches (Support Vector Machine
+and Random Forest). This study confirms that the time series radar Sentinel-1
+and RNNs could be exploited for winter vegetation quality cover mapping.
+</summary>
+    <author>
+      <name>Dinh Ho Tong Minh</name>
+    </author>
+    <author>
+      <name>Dino Ienco</name>
+    </author>
+    <author>
+      <name>Raffaele Gaetano</name>
+    </author>
+    <author>
+      <name>Nathalie Lalande</name>
+    </author>
+    <author>
+      <name>Emile Ndikumana</name>
+    </author>
+    <author>
+      <name>Faycal Osman</name>
+    </author>
+    <author>
+      <name>Pierre Maurel</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">In submission to IEEE Geoscience and Remote Sensing Letters</arxiv:comment>
+    <link href="http://arxiv.org/abs/1708.03694v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1708.03694v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1807.02682v1</id>
+    <updated>2018-07-07T15:57:50Z</updated>
+    <published>2018-07-07T15:57:50Z</published>
+    <title>A Supervised Geometry-Aware Mapping Approach for Classification of
+  Hyperspectral Images</title>
+    <summary>  The lack of proper class discrimination among the Hyperspectral (HS) data
+points poses a potential challenge in HS classification. To address this issue,
+this paper proposes an optimal geometry-aware transformation for enhancing the
+classification accuracy. The underlying idea of this method is to obtain a
+linear projection matrix by solving a nonlinear objective function based on the
+intrinsic geometrical structure of the data. The objective function is
+constructed to quantify the discrimination between the points from dissimilar
+classes on the projected data space. Then the obtained projection matrix is
+used to linearly map the data to more discriminative space. The effectiveness
+of the proposed transformation is illustrated with three benchmark real-world
+HS data sets. The experiments reveal that the classification and dimensionality
+reduction methods on the projected discriminative space outperform their
+counterpart in the original space.
+</summary>
+    <author>
+      <name>Ramanarayan Mohanty</name>
+    </author>
+    <author>
+      <name>S L Happy</name>
+    </author>
+    <author>
+      <name>Aurobinda Routray</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/LGRS.2018.2804888</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/LGRS.2018.2804888" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Geoscience and Remote Sensing Letters, Volume-15, Issue-4,
+  Pages-582-586, 27 February 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1807.02682v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1807.02682v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1809.10862v2</id>
+    <updated>2018-10-01T03:00:11Z</updated>
+    <published>2018-09-28T05:32:45Z</published>
+    <title>Semantic Segmentation for Urban Planning Maps based on U-Net</title>
+    <summary>  The automatic digitizing of paper maps is a significant and challenging task
+for both academia and industry. As an important procedure of map digitizing,
+the semantic segmentation section mainly relies on manual visual interpretation
+with low efficiency. In this study, we select urban planning maps as a
+representative sample and investigate the feasibility of utilizing U-shape
+fully convolutional based architecture to perform end-to-end map semantic
+segmentation. The experimental results obtained from the test area in Shibuya
+district, Tokyo, demonstrate that our proposed method could achieve a very high
+Jaccard similarity coefficient of 93.63% and an overall accuracy of 99.36%. For
+implementation on GPGPU and cuDNN, the required processing time for the whole
+Shibuya district can be less than three minutes. The results indicate the
+proposed method can serve as a viable tool for urban planning map semantic
+segmentation task with high accuracy and efficiency.
+</summary>
+    <author>
+      <name>Zhiling Guo</name>
+    </author>
+    <author>
+      <name>Hiroaki Shengoku</name>
+    </author>
+    <author>
+      <name>Guangming Wu</name>
+    </author>
+    <author>
+      <name>Qi Chen</name>
+    </author>
+    <author>
+      <name>Wei Yuan</name>
+    </author>
+    <author>
+      <name>Xiaodan Shi</name>
+    </author>
+    <author>
+      <name>Xiaowei Shao</name>
+    </author>
+    <author>
+      <name>Yongwei Xu</name>
+    </author>
+    <author>
+      <name>Ryosuke Shibasaki</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">4 pages, 3 figures, conference, International Geoscience and Remote
+  Sensing Symposium (IGARSS 2018), Jul 2018, Valencia, Spain</arxiv:comment>
+    <link href="http://arxiv.org/abs/1809.10862v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1809.10862v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.02667v1</id>
+    <updated>2018-10-24T19:32:48Z</updated>
+    <published>2018-10-24T19:32:48Z</published>
+    <title>Band Selection from Hyperspectral Images Using Attention-based
+  Convolutional Neural Networks</title>
+    <summary>  This paper introduces new attention-based convolutional neural networks for
+selecting bands from hyperspectral images. The proposed approach re-uses
+convolutional activations at different depths, identifying the most informative
+regions of the spectrum with the help of gating mechanisms. Our attention
+techniques are modular and easy to implement, and they can be seamlessly
+trained end-to-end using gradient descent. Our rigorous experiments showed that
+deep models equipped with the attention mechanism deliver high-quality
+classification, and repeatedly identify significant bands in the training data,
+permitting the creation of refined and extremely compact sets that retain the
+most meaningful features.
+</summary>
+    <author>
+      <name>Pablo Ribalta Lorenzo</name>
+    </author>
+    <author>
+      <name>Lukasz Tulczyjew</name>
+    </author>
+    <author>
+      <name>Michal Marcinkiewicz</name>
+    </author>
+    <author>
+      <name>Jakub Nalepa</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Paper submitted to IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING</arxiv:comment>
+    <link href="http://arxiv.org/abs/1811.02667v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.02667v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1812.08047v1</id>
+    <updated>2018-12-07T04:13:31Z</updated>
+    <published>2018-12-07T04:13:31Z</published>
+    <title>Spatial-Spectral Regularized Local Scaling Cut for Dimensionality
+  Reduction in Hyperspectral Image Classification</title>
+    <summary>  Dimensionality reduction (DR) methods have attracted extensive attention to
+provide discriminative information and reduce the computational burden of the
+hyperspectral image (HSI) classification. However, the DR methods face many
+challenges due to limited training samples with high dimensional spectra. To
+address this issue, a graph-based spatial and spectral regularized local
+scaling cut (SSRLSC) for DR of HSI data is proposed. The underlying idea of the
+proposed method is to utilize the information from both the spectral and
+spatial domains to achieve better classification accuracy than its spectral
+domain counterpart. In SSRLSC, a guided filter is initially used to smoothen
+and homogenize the pixels of the HSI data in order to preserve the pixel
+consistency. This is followed by generation of between-class and within-class
+dissimilarity matrices in both spectral and spatial domains by regularized
+local scaling cut (RLSC) and neighboring pixel local scaling cut (NPLSC)
+respectively. Finally, we obtain the projection matrix by optimizing the
+updated spatial-spectral between-class and total-class dissimilarity. The
+effectiveness of the proposed DR algorithm is illustrated with two popular
+real-world HSI datasets.
+</summary>
+    <author>
+      <name>Ramanarayan Mohanty</name>
+    </author>
+    <author>
+      <name>S L Happy</name>
+    </author>
+    <author>
+      <name>Aurobinda Routray</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/LGRS.2018.2885809</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/LGRS.2018.2885809" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">arXiv admin note: text overlap with arXiv:1811.08223</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Geoscience and Remote Sensing Letters, 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1812.08047v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1812.08047v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1904.13036v1</id>
+    <updated>2019-04-30T03:26:44Z</updated>
+    <published>2019-04-30T03:26:44Z</published>
+    <title>Optimal Clustering Framework for Hyperspectral Band Selection</title>
+    <summary>  Band selection, by choosing a set of representative bands in hyperspectral
+image (HSI), is an effective method to reduce the redundant information without
+compromising the original contents. Recently, various unsupervised band
+selection methods have been proposed, but most of them are based on
+approximation algorithms which can only obtain suboptimal solutions toward a
+specific objective function. This paper focuses on clustering-based band
+selection, and proposes a new framework to solve the above dilemma, claiming
+the following contributions: 1) An optimal clustering framework (OCF), which
+can obtain the optimal clustering result for a particular form of objective
+function under a reasonable constraint. 2) A rank on clusters strategy (RCS),
+which provides an effective criterion to select bands on existing clustering
+structure. 3) An automatic method to determine the number of the required
+bands, which can better evaluate the distinctive information produced by
+certain number of bands. In experiments, the proposed algorithm is compared to
+some state-of-the-art competitors. According to the experimental results, the
+proposed algorithm is robust and significantly outperform the other methods on
+various data sets.
+</summary>
+    <author>
+      <name>Qi Wang</name>
+    </author>
+    <author>
+      <name>Fahong Zhang</name>
+    </author>
+    <author>
+      <name>Xuelong Li</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2018.2828161</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2018.2828161" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Trans. Geoscience and Remote Sensing, vol. 56, no. 10, pp.
+  5910-5922, 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1904.13036v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1904.13036v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1706.09302v2</id>
+    <updated>2017-07-05T12:58:35Z</updated>
+    <published>2017-06-28T14:06:24Z</published>
+    <title>Deep Learning Based Large-Scale Automatic Satellite Crosswalk
+  Classification</title>
+    <summary>  High-resolution satellite imagery have been increasingly used on remote
+sensing classification problems. One of the main factors is the availability of
+this kind of data. Even though, very little effort has been placed on the zebra
+crossing classification problem. In this letter, crowdsourcing systems are
+exploited in order to enable the automatic acquisition and annotation of a
+large-scale satellite imagery database for crosswalks related tasks. Then, this
+dataset is used to train deep-learning-based models in order to accurately
+classify satellite images that contains or not zebra crossings. A novel dataset
+with more than 240,000 images from 3 continents, 9 countries and more than 20
+cities was used in the experiments. Experimental results showed that freely
+available crowdsourcing data can be used to accurately (97.11%) train robust
+models to perform crosswalk classification on a global scale.
+</summary>
+    <author>
+      <name>Rodrigo F. Berriel</name>
+    </author>
+    <author>
+      <name>Andre Teixeira Lopes</name>
+    </author>
+    <author>
+      <name>Alberto F. de Souza</name>
+    </author>
+    <author>
+      <name>Thiago Oliveira-Santos</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/LGRS.2017.2719863</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/LGRS.2017.2719863" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">5 pages, 3 figures, accepted by IEEE Geoscience and Remote Sensing
+  Letters</arxiv:comment>
+    <link href="http://arxiv.org/abs/1706.09302v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1706.09302v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.09677v1</id>
+    <updated>2019-06-24T00:43:32Z</updated>
+    <published>2019-06-24T00:43:32Z</published>
+    <title>Remote Sensor Design for Visual Recognition with Convolutional Neural
+  Networks</title>
+    <summary>  While deep learning technologies for computer vision have developed rapidly
+since 2012, modeling of remote sensing systems has remained focused around
+human vision. In particular, remote sensing systems are usually constructed to
+optimize sensing cost-quality trade-offs with respect to human image
+interpretability. While some recent studies have explored remote sensing system
+design as a function of simple computer vision algorithm performance, there has
+been little work relating this design to the state-of-the-art in computer
+vision: deep learning with convolutional neural networks. We develop
+experimental systems to conduct this analysis, showing results with modern deep
+learning algorithms and recent overhead image data. Our results are compared to
+standard image quality measurements based on human visual perception, and we
+conclude not only that machine and human interpretability differ significantly,
+but that computer vision performance is largely self-consistent across a range
+of disparate conditions. This research is presented as a cornerstone for a new
+generation of sensor design systems which focus on computer algorithm
+performance instead of human visual perception.
+</summary>
+    <author>
+      <name>Lucas Jaffe</name>
+    </author>
+    <author>
+      <name>Michael Zelinski</name>
+    </author>
+    <author>
+      <name>Wesam Sakla</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for publication in IEEE Transactions on Geoscience and
+  Remote Sensing</arxiv:comment>
+    <link href="http://arxiv.org/abs/1906.09677v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.09677v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.IV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1903.02153v1</id>
+    <updated>2019-03-06T03:33:18Z</updated>
+    <published>2019-03-06T03:33:18Z</published>
+    <title>PBBFMM3D: a Parallel Black-Box Fast Multipole Method for Non-oscillatory
+  Kernels</title>
+    <summary>  This paper presents PBBFMM3D: a parallel black-box fast multipole method that
+accelerates kernel matrix-vector multiplications where the kernel is a
+non-oscillatory function in three dimensions. Such problems arise from a wide
+range of fields, \emph{e.g.,} computational mechanics, geosciences and machine
+learning. While a naive direct evaluation has an $O(N^2)$ complexity in time
+and storage, which is prohibitive for large-scale applications, PBBFMM3D
+reduces the costs to $O(N)$. In contrast to other fast methods that require the
+knowledge of the explicit kernel formula, PBBFMM3D requires only the ability to
+evaluate the kernel. To further accelerate the computation on shared-memory
+machines, the parallelism in PBBFMM3D was analyzed and implemented using
+OpenMP. We show numerical experiments on the accuracy and the parallel
+scalability of PBBFMM3D, as well as its applications to covariance matrix
+computations that are heavily used in parameter estimation techniques, such as
+kriging and Kalman filtering.
+</summary>
+    <author>
+      <name>Ruoxi Wang</name>
+    </author>
+    <author>
+      <name>Chao Chen</name>
+    </author>
+    <author>
+      <name>Jonghyun Lee</name>
+    </author>
+    <author>
+      <name>Eric Darve</name>
+    </author>
+    <link href="http://arxiv.org/abs/1903.02153v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1903.02153v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.MS" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MS" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.05824v1</id>
+    <updated>2018-06-15T06:35:47Z</updated>
+    <published>2018-06-15T06:35:47Z</published>
+    <title>Three dimensional Deep Learning approach for remote sensing image
+  classification</title>
+    <summary>  Recently, a variety of approaches has been enriching the field of Remote
+Sensing (RS) image processing and analysis. Unfortunately, existing methods
+remain limited faced to the rich spatio-spectral content of today's large
+datasets. It would seem intriguing to resort to Deep Learning (DL) based
+approaches at this stage with regards to their ability to offer accurate
+semantic interpretation of the data. However, the specificity introduced by the
+coexistence of spectral and spatial content in the RS datasets widens the scope
+of the challenges presented to adapt DL methods to these contexts. Therefore,
+the aim of this paper is firstly to explore the performance of DL architectures
+for the RS hyperspectral dataset classification and secondly to introduce a new
+three-dimensional DL approach that enables a joint spectral and spatial
+information process. A set of three-dimensional schemes is proposed and
+evaluated. Experimental results based on well knownhyperspectral datasets
+demonstrate that the proposed method is able to achieve a better classification
+rate than state of the art methods with lower computational costs.
+</summary>
+    <author>
+      <name>Amina Ben Hamida</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LISTIC</arxiv:affiliation>
+    </author>
+    <author>
+      <name>A Benoit</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LISTIC</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Patrick Lambert</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LISTIC</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Chokri Ben Amar</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">REGIM</arxiv:affiliation>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2018.2818945</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2018.2818945" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Transactions on Geoscience and Remote Sensing, Institute of
+  Electrical and Electronics Engineers, 2018, pp.1 - 15</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1806.05824v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.05824v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1807.05207v2</id>
+    <updated>2019-07-15T15:54:11Z</updated>
+    <published>2018-07-13T17:46:00Z</published>
+    <title>Parametric generation of conditional geological realizations using
+  generative neural networks</title>
+    <summary>  Deep learning techniques are increasingly being considered for geological
+applications where -- much like in computer vision -- the challenges are
+characterized by high-dimensional spatial data dominated by multipoint
+statistics. In particular, a novel technique called generative adversarial
+networks has been recently studied for geological parametrization and
+synthesis, obtaining very impressive results that are at least qualitatively
+competitive with previous methods. The method obtains a neural network
+parametrization of the geology -- so-called a generator -- that is capable of
+reproducing very complex geological patterns with dimensionality reduction of
+several orders of magnitude. Subsequent works have addressed the conditioning
+task, i.e. using the generator to generate realizations honoring spatial
+observations (hard data). The current approaches, however, do not provide a
+parametrization of the conditional generation process. In this work, we propose
+a method to obtain a parametrization for direct generation of conditional
+realizations. The main idea is to simply extend the existing generator network
+by stacking a second inference network that learns to perform the conditioning.
+This inference network is a neural network trained to sample a posterior
+distribution derived using a Bayesian formulation of the conditioning task. The
+resulting extended neural network thus provides the conditional
+parametrization. Our method is assessed on a benchmark image of binary
+channelized subsurface, obtaining very promising results for a wide variety of
+conditioning configurations.
+</summary>
+    <author>
+      <name>Shing Chan</name>
+    </author>
+    <author>
+      <name>Ahmed H. Elsheikh</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1007/s10596-019-09850-7</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1007/s10596-019-09850-7" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">Computational Geosciences (2019)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1807.05207v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1807.05207v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1812.06900v1</id>
+    <updated>2018-12-17T17:12:14Z</updated>
+    <published>2018-12-17T17:12:14Z</published>
+    <title>Towards a Robust Parameterization for Conditioning Facies Models Using
+  Deep Variational Autoencoders and Ensemble Smoother</title>
+    <summary>  The literature about history matching is vast and despite the impressive
+number of methods proposed and the significant progresses reported in the last
+decade, conditioning reservoir models to dynamic data is still a challenging
+task. Ensemble-based methods are among the most successful and efficient
+techniques currently available for history matching. These methods are usually
+able to achieve reasonable data matches, especially if an iterative formulation
+is employed. However, they sometimes fail to preserve the geological realism of
+the model, which is particularly evident in reservoir with complex facies
+distributions. This occurs mainly because of the Gaussian assumptions inherent
+in these methods. This fact has encouraged an intense research activity to
+develop parameterizations for facies history matching. Despite the large number
+of publications, the development of robust parameterizations for facies remains
+an open problem.
+  Deep learning techniques have been delivering impressive results in a number
+of different areas and the first applications in data assimilation in
+geoscience have started to appear in literature. The present paper reports the
+current results of our investigations on the use of deep neural networks
+towards the construction of a continuous parameterization of facies which can
+be used for data assimilation with ensemble methods. Specifically, we use a
+convolutional variational autoencoder and the ensemble smoother with multiple
+data assimilation. We tested the parameterization in three synthetic
+history-matching problems with channelized facies. We focus on this type of
+facies because they are among the most challenging to preserve after the
+assimilation of data. The parameterization showed promising results
+outperforming previous methods and generating well-defined channelized facies.
+</summary>
+    <author>
+      <name>Smith W. A. Canchumuni</name>
+    </author>
+    <author>
+      <name>Alexandre A. Emerick</name>
+    </author>
+    <author>
+      <name>Marco Aurélio C. Pacheco</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">32 pages, 24 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1812.06900v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1812.06900v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1304.1875v2</id>
+    <updated>2013-07-18T14:01:41Z</updated>
+    <published>2013-04-06T10:21:56Z</published>
+    <title>Nonlinear unmixing of hyperspectral images: models and algorithms</title>
+    <summary>  When considering the problem of unmixing hyperspectral images, most of the
+literature in the geoscience and image processing areas relies on the widely
+used linear mixing model (LMM). However, the LMM may be not valid and other
+nonlinear models need to be considered, for instance, when there are
+multi-scattering effects or intimate interactions. Consequently, over the last
+few years, several significant contributions have been proposed to overcome the
+limitations inherent in the LMM. In this paper, we present an overview of
+recent advances in nonlinear unmixing modeling.
+</summary>
+    <author>
+      <name>Nicolas Dobigeon</name>
+    </author>
+    <author>
+      <name>Jean-Yves Tourneret</name>
+    </author>
+    <author>
+      <name>Cédric Richard</name>
+    </author>
+    <author>
+      <name>José C. M. Bermudez</name>
+    </author>
+    <author>
+      <name>Stephen McLaughlin</name>
+    </author>
+    <author>
+      <name>Alfred O. Hero</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/MSP.2013.2279274</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/MSP.2013.2279274" rel="related"/>
+    <link href="http://arxiv.org/abs/1304.1875v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1304.1875v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1304.5417v1</id>
+    <updated>2013-04-19T13:38:59Z</updated>
+    <published>2013-04-19T13:38:59Z</published>
+    <title>Analytic Expressions for Stochastic Distances Between Relaxed Complex
+  Wishart Distributions</title>
+    <summary>  The scaled complex Wishart distribution is a widely used model for multilook
+full polarimetric SAR data whose adequacy has been attested in the literature.
+Classification, segmentation, and image analysis techniques which depend on
+this model have been devised, and many of them employ some type of
+dissimilarity measure. In this paper we derive analytic expressions for four
+stochastic distances between relaxed scaled complex Wishart distributions in
+their most general form and in important particular cases. Using these
+distances, inequalities are obtained which lead to new ways of deriving the
+Bartlett and revised Wishart distances. The expressiveness of the four analytic
+distances is assessed with respect to the variation of parameters. Such
+distances are then used for deriving new tests statistics, which are proved to
+have asymptotic chi-square distribution. Adopting the test size as a comparison
+criterion, a sensitivity study is performed by means of Monte Carlo experiments
+suggesting that the Bhattacharyya statistic outperforms all the others. The
+power of the tests is also assessed. Applications to actual data illustrate the
+discrimination and homogeneity identification capabilities of these distances.
+</summary>
+    <author>
+      <name>Alejandro C. Frery</name>
+    </author>
+    <author>
+      <name>Abraão D. C. Nascimento</name>
+    </author>
+    <author>
+      <name>Renato J. Cintra</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for publication in the IEEE Transactions on Geoscience and
+  Remote Sensing journal</arxiv:comment>
+    <link href="http://arxiv.org/abs/1304.5417v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1304.5417v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1308.6487v1</id>
+    <updated>2013-08-29T14:56:01Z</updated>
+    <published>2013-08-29T14:56:01Z</published>
+    <title>A New Algorithm of Speckle Filtering using Stochastic Distances</title>
+    <summary>  This paper presents a new approach for filter design based on stochastic
+distances and tests between distributions. A window is defined around each
+pixel, overlapping samples are compared and only those which pass a
+goodness-of-fit test are used to compute the filtered value. The technique is
+applied to intensity SAR data with homogeneous regions using the Gamma model.
+The proposal is compared with the Lee's filter using a protocol based on Monte
+Carlo. Among the criteria used to quantify the quality of filters, we employ
+the equivalent number of looks, line and edge preservation. Moreover, we also
+assessed the filters by the Universal Image Quality Index and the Pearson's
+correlation on edges regions.
+</summary>
+    <author>
+      <name>Leonardo Torres</name>
+    </author>
+    <author>
+      <name>Tamer Cavalcante</name>
+    </author>
+    <author>
+      <name>Alejandro C. Frery</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for publication on the proceedings of the IEEE Geoscience
+  and Remote Sensing Symposium (IGARSS 2012), to be published in IEEE Press.
+  Available: http://www.igarss2012.org/Papers/viewpapers.asp?papernum=4877</arxiv:comment>
+    <link href="http://arxiv.org/abs/1308.6487v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1308.6487v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.09440v2</id>
+    <updated>2019-01-22T10:14:43Z</updated>
+    <published>2018-06-25T13:17:35Z</published>
+    <title>Gaussian process regression for forest attribute estimation from
+  airborne laser scanning data</title>
+    <summary>  While the analysis of airborne laser scanning (ALS) data often provides
+reliable estimates for certain forest stand attributes -- such as total volume
+or basal area -- there is still room for improvement, especially in estimating
+species-specific attributes. Moreover, while information on the estimate
+uncertainty would be useful in various economic and environmental analyses on
+forests, a computationally feasible framework for uncertainty quantifying in
+ALS is still missing. In this article, the species-specific stand attribute
+estimation and uncertainty quantification (UQ) is approached using Gaussian
+process regression (GPR), which is a nonlinear and nonparametric machine
+learning method. Multiple species-specific stand attributes are estimated
+simultaneously: tree height, stem diameter, stem number, basal area, and stem
+volume. The cross-validation results show that GPR yields on average an
+improvement of 4.6\% in estimate RMSE over a state-of-the-art k-nearest
+neighbors (kNN) implementation, negligible bias and well performing UQ
+(credible intervals), while being computationally fast. The performance
+advantage over kNN and the feasibility of credible intervals persists even when
+smaller training sets are used.
+</summary>
+    <author>
+      <name>Petri Varvia</name>
+    </author>
+    <author>
+      <name>Timo Lähivaara</name>
+    </author>
+    <author>
+      <name>Matti Maltamo</name>
+    </author>
+    <author>
+      <name>Petteri Packalen</name>
+    </author>
+    <author>
+      <name>Aku Seppänen</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2018.2883495</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2018.2883495" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Accepted for publication in IEEE Transactions on Geoscience and
+  Remote Sensing</arxiv:comment>
+    <link href="http://arxiv.org/abs/1806.09440v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1806.09440v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.05251v1</id>
+    <updated>2018-11-13T12:30:49Z</updated>
+    <published>2018-11-13T12:30:49Z</published>
+    <title>SVM-Based Sea-Surface Small Target Detection: A
+  False-Alarm-Rate-Controllable Approach</title>
+    <summary>  In this letter, we consider the varying detection environments to address the
+problem of detecting small targets within sea clutter. We first extract three
+simple yet practically discriminative features from the returned signals in the
+time and frequency domains and then fuse them into a 3-D feature space. Based
+on the constructed space, we then adopt and elegantly modify the support vector
+machine (SVM) to design a learning-based detector that enfolds the false alarm
+rate (FAR). Most importantly, our proposed detector can flexibly control the
+FAR by simply adjusting two introduced parameters, which facilitates to
+regulate detector's sensitivity to the outliers incurred by the sea spikes and
+to fairly evaluate the performance of different detection algorithms.
+Experimental results demonstrate that our proposed detector significantly
+improves the detection probability over several existing classical detectors in
+both low signal to clutter ratio (SCR) (up to 58%) and low FAR (up to 40%)
+cases.
+</summary>
+    <author>
+      <name>Yuzhou Li</name>
+    </author>
+    <author>
+      <name>Pengcheng Xie</name>
+    </author>
+    <author>
+      <name>Zeshen Tang</name>
+    </author>
+    <author>
+      <name>Tao Jiang</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">5 pages, 4 figures, 1 table, submitted to IEEE Geoscience and Remote
+  Sensing Letters (GRSL)</arxiv:comment>
+    <link href="http://arxiv.org/abs/1811.05251v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.05251v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.IT" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1906.02993v1</id>
+    <updated>2019-06-07T09:59:54Z</updated>
+    <published>2019-06-07T09:59:54Z</published>
+    <title>Topological descriptors of spatial coherence in a convective boundary
+  layer</title>
+    <summary>  The interaction between a turbulent convective boundary layer (CBL) and the
+underlying land surface is an important research problem in the geosciences. In
+order to model this interaction adequately, it is necessary to develop tools
+which can describe it quantitatively. Commonly employed methods, such as bulk
+flow statistics, are known to be insufficient for this task, especially when
+land surfaces with equal aggregate statistics but different spatial patterns
+are involved. While geometrical properties of the surface forcing have a strong
+influence on flow structure, it is precisely those properties that get
+neglected when computing bulk statistics. Here, we present a set of descriptors
+based on low-level topological information (i.\,e. connectivity), and show how
+these can be used both in the structural analysis of the CBL and in modeling
+its response to differences in surface forcing. The topological property of
+connectivity is not only easier to compute than its higher-dimensional
+homological counterparts, but also has a natural relation to the physical
+concept of a coherent structure.
+</summary>
+    <author>
+      <name>José Licón-Saláiz</name>
+    </author>
+    <author>
+      <name>Cedrick Ansorge</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">16 pages, 9 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/1906.02993v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1906.02993v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.data-an" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1907.04816v1</id>
+    <updated>2019-07-10T16:29:55Z</updated>
+    <published>2019-07-10T16:29:55Z</published>
+    <title>A Data-Driven Approach for Accurate Rainfall Prediction</title>
+    <summary>  In recent years, there has been growing interest in using Precipitable Water
+Vapor (PWV) derived from Global Positioning System (GPS) signal delays to
+predict rainfall. However, the occurrence of rainfall is dependent on a myriad
+of atmospheric parameters. This paper proposes a systematic approach to analyze
+various parameters that affect precipitation in the atmosphere. Different
+ground-based weather features like Temperature, Relative Humidity, Dew Point,
+Solar Radiation, PWV along with Seasonal and Diurnal variables are identified,
+and a detailed feature correlation study is presented. While all features play
+a significant role in rainfall classification, only a few of them, such as PWV,
+Solar Radiation, Seasonal and Diurnal features, stand out for rainfall
+prediction. Based on these findings, an optimum set of features are used in a
+data-driven machine learning algorithm for rainfall prediction. The
+experimental evaluation using a four-year (2012-2015) database shows a true
+detection rate of 80.4%, a false alarm rate of 20.3%, and an overall accuracy
+of 79.6%. Compared to the existing literature, our method significantly reduces
+the false alarm rates.
+</summary>
+    <author>
+      <name>Shilpa Manandhar</name>
+    </author>
+    <author>
+      <name>Soumyabrata Dev</name>
+    </author>
+    <author>
+      <name>Yee Hui Lee</name>
+    </author>
+    <author>
+      <name>Yu Song Meng</name>
+    </author>
+    <author>
+      <name>Stefan Winkler</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Published in IEEE Transactions on Geoscience and Remote Sensing, 2019</arxiv:comment>
+    <link href="http://arxiv.org/abs/1907.04816v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1907.04816v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.ao-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1811.08223v1</id>
+    <updated>2018-11-20T12:56:39Z</updated>
+    <published>2018-11-20T12:56:39Z</published>
+    <title>A Semi-supervised Spatial Spectral Regularized Manifold Local Scaling
+  Cut With HGF for Dimensionality Reduction of Hyperspectral Images</title>
+    <summary>  Hyperspectral images (HSI) contain a wealth of information over hundreds of
+contiguous spectral bands, making it possible to classify materials through
+subtle spectral discrepancies. However, the classification of this rich
+spectral information is accompanied by the challenges like high dimensionality,
+singularity, limited training samples, lack of labeled data samples,
+heteroscedasticity and nonlinearity. To address these challenges, we propose a
+semi-supervised graph based dimensionality reduction method named
+`semi-supervised spatial spectral regularized manifold local scaling cut'
+(S3RMLSC). The underlying idea of the proposed method is to exploit the limited
+labeled information from both the spectral and spatial domains along with the
+abundant unlabeled samples to facilitate the classification task by retaining
+the original distribution of the data. In S3RMLSC, a hierarchical guided filter
+(HGF) is initially used to smoothen the pixels of the HSI data to preserve the
+spatial pixel consistency. This step is followed by the construction of linear
+patches from the nonlinear manifold by using the maximal linear patch (MLP)
+criterion. Then the inter-patch and intra-patch dissimilarity matrices are
+constructed in both spectral and spatial domains by regularized manifold local
+scaling cut (RMLSC) and neighboring pixel manifold local scaling cut (NPMLSC)
+respectively. Finally, we obtain the projection matrix by optimizing the
+updated semi-supervised spatial-spectral between-patch and total-patch
+dissimilarity. The effectiveness of the proposed DR algorithm is illustrated
+with publicly available real-world HSI datasets.
+</summary>
+    <author>
+      <name>Ramanarayan Mohanty</name>
+    </author>
+    <author>
+      <name>SL Happy</name>
+    </author>
+    <author>
+      <name>Aurobinda Routray</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2018.2884771</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2018.2884771" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Transaction on Geoscience and Remote Sensing, 2018</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1811.08223v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1811.08223v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1601.05350v2</id>
+    <updated>2016-02-11T00:24:46Z</updated>
+    <published>2016-01-20T17:55:30Z</published>
+    <title>Disaggregation of SMAP L3 Brightness Temperatures to 9km using Kernel
+  Machines</title>
+    <summary>  In this study, a machine learning algorithm is used for disaggregation of
+SMAP brightness temperatures (T$_{\textrm{B}}$) from 36km to 9km. It uses image
+segmentation to cluster the study region based on meteorological and land cover
+similarity, followed by a support vector machine based regression that computes
+the value of the disaggregated T$_{\textrm{B}}$ at all pixels. High resolution
+remote sensing products such as land surface temperature, normalized difference
+vegetation index, enhanced vegetation index, precipitation, soil texture, and
+land-cover were used for disaggregation. The algorithm was implemented in Iowa,
+United States, from April to July 2015, and compared with the SMAP L3_SM_AP
+T$_{\textrm{B}}$ product at 9km. It was found that the disaggregated
+T$_{\textrm{B}}$ were very similar to the SMAP-T$_{\textrm{B}}$ product, even
+for vegetated areas with a mean difference $\leq$ 5K. However, the standard
+deviation of the disaggregation was lower by 7K than that of the AP product.
+The probability density functions of the disaggregated T$_{\textrm{B}}$ were
+similar to the SMAP-T$_{\textrm{B}}$. The results indicate that this algorithm
+may be used for disaggregating T$_{\textrm{B}}$ using complex non-linear
+correlations on a grid.
+</summary>
+    <author>
+      <name>Subit Chakrabarti</name>
+    </author>
+    <author>
+      <name>Tara Bongiovanni</name>
+    </author>
+    <author>
+      <name>Jasmeet Judge</name>
+    </author>
+    <author>
+      <name>Anand Rangarajan</name>
+    </author>
+    <author>
+      <name>Sanjay Ranka</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">14 Pages, 8 Figures, Submitted to IEEE Geoscience and Remote Sensing
+  Letters</arxiv:comment>
+    <link href="http://arxiv.org/abs/1601.05350v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1601.05350v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1708.05966v1</id>
+    <updated>2017-08-20T13:59:00Z</updated>
+    <published>2017-08-20T13:59:00Z</published>
+    <title>Incremental Import Vector Machines for Classifying Hyperspectral Data</title>
+    <summary>  In this paper we propose an incremental learning strategy for import vector
+machines (IVM), which is a sparse kernel logistic regression approach. We use
+the procedure for the concept of self-training for sequential classification of
+hyperspectral data. The strategy comprises the inclusion of new training
+samples to increase the classification accuracy and the deletion of
+non-informative samples to be memory- and runtime-efficient. Moreover, we
+update the parameters in the incremental IVM model without re-training from
+scratch. Therefore, the incremental classifier is able to deal with large data
+sets. The performance of the IVM in comparison to support vector machines (SVM)
+is evaluated in terms of accuracy and experiments are conducted to assess the
+potential of the probabilistic outputs of the IVM. Experimental results
+demonstrate that the IVM and SVM perform similar in terms of classification
+accuracy. However, the number of import vectors is significantly lower when
+compared to the number of support vectors and thus, the computation time during
+classification can be decreased. Moreover, the probabilities provided by IVM
+are more reliable, when compared to the probabilistic information, derived from
+an SVM's output. In addition, the proposed self-training strategy can increase
+the classification accuracy. Overall, the IVM and the its incremental version
+is worthwhile for the classification of hyperspectral data.
+</summary>
+    <author>
+      <name>Ribana Roscher</name>
+    </author>
+    <author>
+      <name>Björn Waske</name>
+    </author>
+    <author>
+      <name>Wolfgang Förstner</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2012.2184292</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2012.2184292" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Transactions on Geoscience and Remote Sensing, Vol.50, No.09,
+  September 2012, 3463-3473</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1708.05966v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1708.05966v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1608.05167v1</id>
+    <updated>2016-08-18T04:20:45Z</updated>
+    <published>2016-08-18T04:20:45Z</published>
+    <title>AID: A Benchmark Dataset for Performance Evaluation of Aerial Scene
+  Classification</title>
+    <summary>  Aerial scene classification, which aims to automatically label an aerial
+image with a specific semantic category, is a fundamental problem for
+understanding high-resolution remote sensing imagery. In recent years, it has
+become an active task in remote sensing area and numerous algorithms have been
+proposed for this task, including many machine learning and data-driven
+approaches. However, the existing datasets for aerial scene classification like
+UC-Merced dataset and WHU-RS19 are with relatively small sizes, and the results
+on them are already saturated. This largely limits the development of scene
+classification algorithms. This paper describes the Aerial Image Dataset (AID):
+a large-scale dataset for aerial scene classification. The goal of AID is to
+advance the state-of-the-arts in scene classification of remote sensing images.
+For creating AID, we collect and annotate more than ten thousands aerial scene
+images. In addition, a comprehensive review of the existing aerial scene
+classification techniques as well as recent widely-used deep learning methods
+is given. Finally, we provide a performance analysis of typical aerial scene
+classification and deep learning approaches on AID, which can be served as the
+baseline results on this benchmark.
+</summary>
+    <author>
+      <name>Gui-Song Xia</name>
+    </author>
+    <author>
+      <name>Jingwen Hu</name>
+    </author>
+    <author>
+      <name>Fan Hu</name>
+    </author>
+    <author>
+      <name>Baoguang Shi</name>
+    </author>
+    <author>
+      <name>Xiang Bai</name>
+    </author>
+    <author>
+      <name>Yanfei Zhong</name>
+    </author>
+    <author>
+      <name>Liangpei Zhang</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2017.2685945</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2017.2685945" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Transactions on Geoscience and Remote Sensing, Vol. 55, No.7,
+  pp.3965-3981 (July 2017)</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1608.05167v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1608.05167v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1207.2959v1</id>
+    <updated>2012-07-12T13:45:41Z</updated>
+    <published>2012-07-12T13:45:41Z</published>
+    <title>Hypothesis Testing in Speckled Data with Stochastic Distances</title>
+    <summary>  Images obtained with coherent illumination, as is the case of sonar,
+ultrasound-B, laser and Synthetic Aperture Radar -- SAR, are affected by
+speckle noise which reduces the ability to extract information from the data.
+Specialized techniques are required to deal with such imagery, which has been
+modeled by the G0 distribution and under which regions with different degrees
+of roughness and mean brightness can be characterized by two parameters; a
+third parameter, the number of looks, is related to the overall signal-to-noise
+ratio. Assessing distances between samples is an important step in image
+analysis; they provide grounds of the separability and, therefore, of the
+performance of classification procedures. This work derives and compares eight
+stochastic distances and assesses the performance of hypothesis tests that
+employ them and maximum likelihood estimation. We conclude that tests based on
+the triangular distance have the closest empirical size to the theoretical one,
+while those based on the arithmetic-geometric distances have the best power.
+Since the power of tests based on the triangular distance is close to optimum,
+we conclude that the safest choice is using this distance for hypothesis
+testing, even when compared with classical distances as Kullback-Leibler and
+Bhattacharyya.
+</summary>
+    <author>
+      <name>Abraão D. C. Nascimento</name>
+    </author>
+    <author>
+      <name>Renato J. Cintra</name>
+    </author>
+    <author>
+      <name>Alejandro C. Frery</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2009.2025498</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2009.2025498" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Transactions on Geoscience and Remote Sensing, vol. 48, p.
+  373-385, 2010</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1207.2959v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1207.2959v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GR" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1003.0879v1</id>
+    <updated>2010-03-03T19:29:04Z</updated>
+    <published>2010-03-03T19:29:04Z</published>
+    <title>The Data Big Bang and the Expanding Digital Universe: High-Dimensional,
+  Complex and Massive Data Sets in an Inflationary Epoch</title>
+    <summary>  Recent and forthcoming advances in instrumentation, and giant new surveys,
+are creating astronomical data sets that are not amenable to the methods of
+analysis familiar to astronomers. Traditional methods are often inadequate not
+merely because of the size in bytes of the data sets, but also because of the
+complexity of modern data sets. Mathematical limitations of familiar algorithms
+and techniques in dealing with such data sets create a critical need for new
+paradigms for the representation, analysis and scientific visualization (as
+opposed to illustrative visualization) of heterogeneous, multiresolution data
+across application domains. Some of the problems presented by the new data sets
+have been addressed by other disciplines such as applied mathematics,
+statistics and machine learning and have been utilized by other sciences such
+as space-based geosciences. Unfortunately, valuable results pertaining to these
+problems are mostly to be found only in publications outside of astronomy. Here
+we offer brief overviews of a number of concepts, techniques and developments,
+some "old" and some new. These are generally unknown to most of the
+astronomical community, but are vital to the analysis and visualization of
+complex datasets and images. In order for astronomers to take advantage of the
+richness and complexity of the new era of data, and to be able to identify,
+adopt, and apply new solutions, the astronomical community needs a certain
+degree of awareness and understanding of the new concepts. One of the goals of
+this paper is to help bridge the gap between applied mathematics, artificial
+intelligence and computer science on the one side and astronomy on the other.
+</summary>
+    <author>
+      <name>Meyer Z. Pesenson</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">California Institute of Technology</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Isaac Z. Pesenson</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">Temple University</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Bruce McCollum</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">California Institute of Technology</arxiv:affiliation>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1155/2010/350891</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1155/2010/350891" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">24 pages, 8 Figures, 1 Table. Accepted for publication: "Advances in
+  Astronomy, special issue "Robotic Astronomy"</arxiv:comment>
+    <link href="http://arxiv.org/abs/1003.0879v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1003.0879v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="astro-ph.IM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="astro-ph.IM" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1501.07680v2</id>
+    <updated>2016-01-20T20:33:08Z</updated>
+    <published>2015-01-30T07:09:09Z</published>
+    <title>Disaggregation of Remotely Sensed Soil Moisture in Heterogeneous
+  Landscapes using Holistic Structure based Models</title>
+    <summary>  In this study, a novel machine learning algorithm is presented for
+disaggregation of satellite soil moisture (SM) based on self-regularized
+regressive models (SRRM) using high-resolution correlated information from
+auxiliary sources. It includes regularized clustering that assigns soft
+memberships to each pixel at fine-scale followed by a kernel regression that
+computes the value of the desired variable at all pixels. Coarse-scale remotely
+sensed SM were disaggregated from 10km to 1km using land cover, precipitation,
+land surface temperature, leaf area index, and in-situ observations of SM. This
+algorithm was evaluated using multi-scale synthetic observations in NC Florida
+for heterogeneous agricultural land covers. It was found that the root mean
+square error (RMSE) for 96% of the pixels was less than 0.02 $m^3/m^3$. The
+clusters generated represented the data well and reduced the RMSE by upto 40%
+during periods of high heterogeneity in land-cover and meteorological
+conditions. The Kullback Leibler divergence (KLD) between the true SM and the
+disaggregated estimates is close to 0, for both vegetated and baresoil
+landcovers. The disaggregated estimates were compared to those generated by the
+Principle of Relevant Information (PRI) method. The RMSE for the PRI
+disaggregated estimates is higher than the RMSE for the SRRM on each day of the
+season. The KLD of the disaggregated estimates generated by the SRRM is at
+least four orders of magnitude lower than those for the PRI disaggregated
+estimates, while the computational time needed was reduced by three times. The
+results indicate that the SRRM can be used for disaggregating SM with complex
+non-linear correlations on a grid with high accuracy.
+</summary>
+    <author>
+      <name>Subit Chakrabarti</name>
+    </author>
+    <author>
+      <name>Jasmeet Judge</name>
+    </author>
+    <author>
+      <name>Anand Rangarajan</name>
+    </author>
+    <author>
+      <name>Sanjay Ranka</name>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1109/TGRS.2016.2547389</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1109/TGRS.2016.2547389" rel="related"/>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">28 pages, 14 figures, submitted to IEEE Transactions on Geoscience
+  and Remote Sensing</arxiv:comment>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">IEEE Trans. Geosci. Remote Sens. 54 (2008) 4629-4641</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1501.07680v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1501.07680v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="68" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1610.04371v1</id>
+    <updated>2016-10-14T08:53:48Z</updated>
+    <published>2016-10-14T08:53:48Z</published>
+    <title>Aboveground biomass mapping in French Guiana by combining remote
+  sensing, forest inventories and environmental data</title>
+    <summary>  Mapping forest aboveground biomass (AGB) has become an important task,
+particularly for the reporting of carbon stocks and changes. AGB can be mapped
+using synthetic aperture radar data (SAR) or passive optical data. However,
+these data are insensitive to high AGB levels (\textgreater{}150 Mg/ha, and
+\textgreater{}300 Mg/ha for P-band), which are commonly found in tropical
+forests. Studies have mapped the rough variations in AGB by combining optical
+and environmental data at regional and global scales. Nevertheless, these maps
+cannot represent local variations in AGB in tropical forests. In this paper, we
+hypothesize that the problem of misrepresenting local variations in AGB and AGB
+estimation with good precision occurs because of both methodological limits
+(signal saturation or dilution bias) and a lack of adequate calibration data in
+this range of AGB values. We test this hypothesis by developing a calibrated
+regression model to predict variations in high AGB values (mean
+\textgreater{}300 Mg/ha) in French Guiana by a methodological approach for
+spatial extrapolation with data from the optical geoscience laser altimeter
+system (GLAS), forest inventories, radar, optics, and environmental variables
+for spatial inter-and extrapolation. Given their higher point count, GLAS data
+allow a wider coverage of AGB values. We find that the metrics from GLAS
+footprints are correlated with field AGB estimations (R 2 =0.54, RMSE=48.3
+Mg/ha) with no bias for high values. First, predictive models, including
+remote-sensing, environmental variables and spatial correlation functions,
+allow us to obtain "wall-to-wall" AGB maps over French Guiana with an RMSE for
+the in situ AGB estimates of ~51 Mg/ha and R${}^2$=0.48 at a 1-km grid size. We
+conclude that a calibrated regression model based on GLAS with dependent
+environmental data can produce good AGB predictions even for high AGB values if
+the calibration data fit the AGB range. We also demonstrate that small temporal
+and spatial mismatches between field data and GLAS footprints are not a problem
+for regional and global calibrated regression models because field data aim to
+predict large and deep tendencies in AGB variations from environmental
+gradients and do not aim to represent high but stochastic and temporally
+limited variations from forest dynamics. Thus, we advocate including a greater
+variety of data, even if less precise and shifted, to better represent high AGB
+values in global models and to improve the fitting of these models for high
+values.
+</summary>
+    <author>
+      <name>Ibrahim Fayad</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UMR TETIS</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Nicolas Baghdadi</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UMR TETIS</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Stéphane Guitet</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">INRA, UMR AMAP</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Jean-Stéphane Bailly</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">LISAH</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Bruno Hérault</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">ECOFOG</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Valéry Gond</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UMR TETIS</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Mahmoud Hajj</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UMR TETIS</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Dinh Ho Tong Minh</name>
+      <arxiv:affiliation xmlns:arxiv="http://arxiv.org/schemas/atom">UMR TETIS</arxiv:affiliation>
+    </author>
+    <arxiv:doi xmlns:arxiv="http://arxiv.org/schemas/atom">10.1016/j.jag.2016.07.015</arxiv:doi>
+    <link title="doi" href="http://dx.doi.org/10.1016/j.jag.2016.07.015" rel="related"/>
+    <arxiv:journal_ref xmlns:arxiv="http://arxiv.org/schemas/atom">International Journal of Applied Earth Observation and
+  Geoinformation, Elsevier, 2016, 52, pp.502 - 514</arxiv:journal_ref>
+    <link href="http://arxiv.org/abs/1610.04371v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1610.04371v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.AP" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

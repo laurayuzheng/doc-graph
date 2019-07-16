@@ -1,0 +1,12 @@
+Autoencoder-Driven Weather Clustering for Source Estimation during
+  Nuclear Events
+  Emergency response applications for nuclear or radiological events can be
+significantly improved via deep feature learning due to the hidden complexity
+of the data and models involved. In this paper we present a novel methodology
+for rapid source estimation during radiological releases based on deep feature
+extraction and weather clustering. Atmospheric dispersions are then calculated
+based on identified predominant weather patterns and are matched against
+simulated incidents indicated by radiation readings on the ground. We evaluate
+the accuracy of our methods over multiple years of weather reanalysis data in
+the European region. We juxtapose these results with deep classification
+convolution networks and discuss advantages and disadvantages.

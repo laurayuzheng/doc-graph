@@ -1,0 +1,14 @@
+First-Person Perceptual Guidance Behavior Decomposition using Active
+  Constraint Classification
+  Humans exhibit a wide range of adaptive and robust dynamic motion behavior
+that is yet unmatched by autonomous control systems. These capabilities are
+essential for real-time behavior generation in cluttered environments. Recent
+work suggests that human capabilities rely on task structure learning and
+embedded or ecological cognition in the form of perceptual guidance. This paper
+describes the experimental investigation of the functional elements of human
+motion guidance, focusing on the control and perceptual mechanisms. The motion,
+control, and perceptual data from first-person guidance experiments is
+decomposed into elemental segments based on invariants. These elements are then
+analyzed to determine their functional characteristics. The resulting model
+explains the structure of the agent-environment interaction and provides lawful
+descriptions of specific perceptual guidance and control mechanisms.

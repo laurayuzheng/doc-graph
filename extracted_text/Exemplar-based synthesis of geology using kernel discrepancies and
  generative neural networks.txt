@@ -1,0 +1,13 @@
+Exemplar-based synthesis of geology using kernel discrepancies and
+  generative neural networks
+  We propose a framework for synthesis of geological images based on an
+exemplar image. We synthesize new realizations such that the discrepancy in the
+patch distribution between the realizations and the exemplar image is
+minimized. Such discrepancy is quantified using a kernel method for two-sample
+test called maximum mean discrepancy. To enable fast synthesis, we train a
+generative neural network in an offline phase to sample realizations
+efficiently during deployment, while also providing a parametrization of the
+synthesis process. We assess the framework on a classical binary image
+representing channelized subsurface reservoirs, finding that the method
+reproduces the visual patterns and spatial statistics (image histogram and
+two-point probability functions) of the exemplar image.

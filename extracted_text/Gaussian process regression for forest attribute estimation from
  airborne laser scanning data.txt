@@ -1,16 +1,19 @@
-SVM-Based Sea-Surface Small Target Detection: A
-  False-Alarm-Rate-Controllable Approach
-  In this letter, we consider the varying detection environments to address the
-problem of detecting small targets within sea clutter. We first extract three
-simple yet practically discriminative features from the returned signals in the
-time and frequency domains and then fuse them into a 3-D feature space. Based
-on the constructed space, we then adopt and elegantly modify the support vector
-machine (SVM) to design a learning-based detector that enfolds the false alarm
-rate (FAR). Most importantly, our proposed detector can flexibly control the
-FAR by simply adjusting two introduced parameters, which facilitates to
-regulate detector's sensitivity to the outliers incurred by the sea spikes and
-to fairly evaluate the performance of different detection algorithms.
-Experimental results demonstrate that our proposed detector significantly
-improves the detection probability over several existing classical detectors in
-both low signal to clutter ratio (SCR) (up to 58%) and low FAR (up to 40%)
-cases.
+Gaussian process regression for forest attribute estimation from
+  airborne laser scanning data
+  While the analysis of airborne laser scanning (ALS) data often provides
+reliable estimates for certain forest stand attributes -- such as total volume
+or basal area -- there is still room for improvement, especially in estimating
+species-specific attributes. Moreover, while information on the estimate
+uncertainty would be useful in various economic and environmental analyses on
+forests, a computationally feasible framework for uncertainty quantifying in
+ALS is still missing. In this article, the species-specific stand attribute
+estimation and uncertainty quantification (UQ) is approached using Gaussian
+process regression (GPR), which is a nonlinear and nonparametric machine
+learning method. Multiple species-specific stand attributes are estimated
+simultaneously: tree height, stem diameter, stem number, basal area, and stem
+volume. The cross-validation results show that GPR yields on average an
+improvement of 4.6\% in estimate RMSE over a state-of-the-art k-nearest
+neighbors (kNN) implementation, negligible bias and well performing UQ
+(credible intervals), while being computationally fast. The performance
+advantage over kNN and the feasibility of credible intervals persists even when
+smaller training sets are used.

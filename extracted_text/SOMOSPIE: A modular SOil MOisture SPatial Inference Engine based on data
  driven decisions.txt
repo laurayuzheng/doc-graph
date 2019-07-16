@@ -1,0 +1,20 @@
+SOMOSPIE: A modular SOil MOisture SPatial Inference Engine based on data
+  driven decisions
+  The current availability of soil moisture data over large areas comes from
+satellite remote sensing technologies (i.e., radar-based systems), but these
+data have coarse resolution and often exhibit large spatial information gaps.
+Where data are too coarse or sparse for a given need (e.g., precision
+agriculture), one can leverage machine-learning techniques coupled with other
+sources of environmental information (e.g., topography) to generate gap-free
+information and at a finer spatial resolution (i.e., increased granularity). To
+this end, we develop a spatial inference engine consisting of modular stages
+for processing spatial environmental data, generating predictions with
+machine-learning techniques, and analyzing these predictions. We demonstrate
+the functionality of this approach and the effects of data processing choices
+via multiple prediction maps over a United States ecological region with a
+highly diverse soil moisture profile (i.e., the Middle Atlantic Coastal
+Plains). The relevance of our work derives from a pressing need to improve the
+spatial representation of soil moisture for applications in environmental
+sciences (e.g., ecological niche modeling, carbon monitoring systems, and other
+Earth system models) and precision agriculture (e.g., optimizing irrigation
+practices and other land management decisions).

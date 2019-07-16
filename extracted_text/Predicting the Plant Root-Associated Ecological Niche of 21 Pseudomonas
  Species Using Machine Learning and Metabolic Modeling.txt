@@ -1,0 +1,21 @@
+Predicting the Plant Root-Associated Ecological Niche of 21 Pseudomonas
+  Species Using Machine Learning and Metabolic Modeling
+  Plants rarely occur in isolated systems. Bacteria can inhabit either the
+endosphere, the region inside the plant root, or the rhizosphere, the soil
+region just outside the plant root. Our goal is to understand if using genomic
+data and media dependent metabolic model information is better for training
+machine learning of predicting bacterial ecological niche than media
+independent models or pure genome based species trees. We considered three
+machine learning techniques: support vector machine, non-negative matrix
+factorization, and artificial neural networks. In all three machine-learning
+approaches, the media-based metabolic models and flux balance analyses were
+more effective at predicting bacterial niche than the genome or PRMT models.
+Support Vector Machine trained on a minimal media base with Mannose, Proline
+and Valine was most predictive of all models and media types with an f-score of
+0.8 for rhizosphere and 0.97 for endosphere. Thus we can conclude that
+media-based metabolic modeling provides a holistic view of the metabolome,
+allowing machine learning algorithms to highlight the differences between and
+categorize endosphere and rhizosphere bacteria. There was no single media type
+that best highlighted differences between endosphere and rhizosphere bacteria
+metabolism and therefore no single enzyme, reaction, or compound that defined
+whether a bacteria's origin was of the endosphere or rhizosphere.
