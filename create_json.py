@@ -5,7 +5,7 @@ import spacy
 import numpy
 
 directory = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
-THRESHOLD = 0.1
+THRESHOLD = 0.2
 methods = ['generative adversarial','naive bayes','random forest',
 'support vector', 'linear regression','logistic regression',
 'k-means clustering','nearest neighbors','convolutional neural network',
@@ -87,15 +87,15 @@ def create_json(m, m2, text_files):
         title = open(text_files[i]).readline().rstrip()
         method = m2[i]
         color = color_dict.get(method,'')
-        nodes.append({'id':i, 'label':title, 'color':{'background':color}})
+        nodes.append({'id':i, 'name':title, 'cluster':int(method)})
 
         for j in range(0,i):    # only need until i, since it is triangular
             if m[i][j] >= THRESHOLD:
-                edges.append({'from':i, 'to':j})          #, 'weight':m[i][j]})
+                edges.append({'source':i, 'target':j})          #, 'weight':m[i][j]})
 
     data = {'nodes':nodes, 'edges':edges}
 
-    with open('data.json', 'w', encoding='utf-8') as f:
+    with open('data2.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 #if __name__ == '__main__':
