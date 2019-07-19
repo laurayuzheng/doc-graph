@@ -8,105 +8,81 @@ Created on Tue Jul 16 13:57:46 2019
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 import glob
-import spacy
-import numpy
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
 
 directory = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
 THRESHOLD = 0.2
+ML = ['machine learning']
 types = ['classification', 'regression']
 methods = ['convolutional neural network CNN','support vector SVM','deep neural network DNN',
-           'recurrent neural network RNN','temporal neural network TNN','random forest']
+           'recurrent neural network RNN','temporal neural network TNN','random forest','naive bayes','clustering']
 sciences = ['geomorphology','soil','hydrology','meterology','climatology','biogeography',
             'geology','geophysics','ecology','oceanography','limnology','glaciology',
             'meteorology','precipitation','atmospheric']
+characteristics = ['heterogeneity','high dimensionality','amorphous boundaries','lack of ground truth','noise']
 
-#def get_method_similarities(text_files):
-#    ''' Description:
-#        - gets the similarity between a method and the text
-#
-#        Parameters:
-#        - (string) text_files --> list of paths to text file
-#
-#        Returns:
-#        - float array that indicates which method (index) is most similar. same size as input
-#    '''
-#    nlp = spacy.load('en_core_web_lg')
-#    documents = [open(f).read() for f in text_files]
-#    result = []
-#    for doc in documents:
-#        similarities = []
-#        for i in range(0,len(methods)):
-#            doc_temp = nlp(doc)
-#            doc2 = nlp(methods[i])
-#            doc1 = nlp(' '.join([str(t) for t in doc_temp if not t.is_stop]))
-#            similarities.append(doc1.similarity(doc2))
-#        #print(similarities)
-#        result.append(methods[numpy.argmax(similarities)])
-#
-#    return result
-#
-#def get_sciences_similarities(text_files):
-#    ''' Description:
-#        - gets the similarity between a science and the text
-#
-#        Parameters:
-#        - (string) text_files --> list of paths to text file
-#
-#        Returns:
-#        - float array that indicates which method (index) is most similar. same size as input
-#    '''
-#    nlp = spacy.load('en_core_web_lg')
-#    documents = [open(f).read() for f in text_files]
-#    result = []
-#    for doc in documents:
-#        similarities = []
-#        for i in range(0,len(sciences)):
-#            doc_temp = nlp(doc)
-#            doc2 = nlp(sciences[i])
-#            doc2 = nlp('deep neural network')
-#            doc3 = nlp('temporal neural network')
-#            doc1 = nlp(' '.join([str(t) for t in doc_temp if not t.is_stop]))
-#            print(doc1)
-#            print(doc2)
-#            print(doc1.similarity(doc2))
-#            print(doc1.similarity(doc3))
-#            return
-#            similarities.append(doc1.similarity(doc2))
-#        #print(similarities)
-#        result.append(sciences[numpy.argmax(similarities)])
-#
-#    return result
+def get_label(text_files):
+    augmented_list = [open(t).read() for t in text_files] + methods
+    sims = get_cosine_sim(augmented_list)[:len(text_files), -len(methods):]
+    result = []
+    result = [np.argmax(t) if max(t)>0 else -1 for t in sims]
+    #print(result)
+    return result
+    
+def get_relatedness(phrase_list, text_files):
+    augmented_list = [open(t).read() for t in text_files] + phrase_list
+    sims = get_cosine_sim(augmented_list)[:len(text_files), -len(phrase_list):]
+    return sims
 
-from collections import Counter
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 def get_cosine_sim(text_files): 
     vectors = [t for t in get_vectors(text_files)]
     return cosine_similarity(vectors)
     
 def get_vectors(text_files):
-    #text = [t for t in strs]
+    #text = [t for t in strs]a
     vectorizer = CountVectorizer(text_files)
     vectorizer.fit(text_files)
     return vectorizer.transform(text_files).toarray()
 
-def get_sciences_similarities(text_files):
-    sciences2 = [open(t).read() for t in text_files] + sciences
-    science_sim = get_cosine_sim(sciences2)[:len(text_files), -len(sciences):]
-    return science_sim
 
 if __name__ == "__main__":
-    doc_num = 33
+    doc_num = 448
     text_files = glob.glob(directory + '*.txt')
-    doc_sciences = get_sciences_similarities(text_files)
-    for i in range(0,len(doc_sciences)):
-        print("document " + str(i) + ": ")
-        if max(doc_sciences[i]) != 0:
-            print(sciences[numpy.argmax(doc_sciences[i])])
-        else:
-            print("no earth science detectable")
-        print()
-    print("document " + str(doc_num) + ": " + open(text_files[doc_num]).read())
+    column_names = ML + sciences + types + characteristics + ['label']
+    print(column_names)
+    master_matrix = []
+    machine_learning_matrix = get_relatedness(ML,text_files)
+    types_matrix = get_relatedness(types,text_files)
+    sciences_matrix = get_relatedness(sciences, text_files)
+    characteristics_matrix = get_relatedness(characteristics, text_files)
+    label_array = get_label(text_files)
+    
+    for i in range(0,len(types_matrix)):
+        #print(np.append(np.append(sciences_matrix[i],types_matrix[i]),characteristics_matrix[i]))
+        #print(types_matrix[i])
+        #print(characteristics_matrix[i])
+        data_row = np.append(machine_learning_matrix[i],sciences_matrix[i])
+        data_row = np.append(data_row, types_matrix[i])
+        data_row = np.append(data_row, characteristics_matrix[i])
+        data_row = np.append(data_row, [label_array[i]])
+
+        #data_row = np.array(np.append(np.append(sciences_matrix[i],types_matrix[i]),characteristics_matrix[i]))
+        #data_row = np.append(data_row,[label_array[i]])
+        master_matrix.append(data_row)
+    
+    #print(master_matrix)
+    df = pd.DataFrame(data=master_matrix, columns=column_names)
+    #df['index'] = np.arange(len(df))
+    rows_drop = df[(df['machine learning'] == 0) | (df['label'] == -1)].index
+    df.drop(rows_drop, inplace=True)
+    df.to_csv('data.csv', encoding='utf-8', index=False)
+    #print(df
+    
+    
+    #print("document " + str(doc_num) + ": " + open(text_files[doc_num]).read())
     
     #print(get_sciences_similarities(text_files))
     #print(get_method_similarities(text_files))
