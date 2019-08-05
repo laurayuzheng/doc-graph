@@ -10,7 +10,7 @@ doc-graph is a network visualization of publications based on their textual simi
   * [main.py](#main.py)
   * [text-extractor/src/text-extractor/TextExtractor.java](#text-extractor/src/text-extractor/TextExtractor.java)
   * [extract_abstract.py](#extract_abstract.py)
-  * [bulk_download.py](#_abstract-collection-alternative:-bulk_download.py_)
+  * [bulk_download.py](#abstract-collection-alternative:-bulk_download.py)
   * [create_json.py](#create_json.py)
   * [visualiz/index.html](#visualiz/index.html)
 3. [Folder Descriptions](#iii.-folder-descriptions)
