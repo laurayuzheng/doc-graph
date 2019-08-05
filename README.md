@@ -10,7 +10,7 @@ doc-graph is a network visualization of publications based on their textual simi
   * [main.py](#main.py)
   * [text-extractor/src/text-extractor/TextExtractor.java](#text-extractor/src/text-extractor/TextExtractor.java)
   * [extract_abstract.py](#extract_abstract.py)
-  * [bulk_download.py](#alternative-to-textextractor-&-extract_abstract:-bulk_download.py)
+  * [bulk_download.py](#abstract-collection-alternative:-bulk_download.py)
   * [create_json.py](#create_json.py)
   * [visualiz/index.html](#visualiz/index.html)
 3. [Folder Descriptions](#iii.-folder-descriptions)
@@ -97,7 +97,7 @@ doc-graph is a network visualization of publications based on their textual simi
   * uses BeautifulSoup to extract abstracts from XML files
   * if abstract tag does not exist, takes contents of the first paragraph <p> tag
 
-### _Alternative to TextExtractor & extract_abstract: bulk_download.py_
+### _Abstract Collection Alternative: bulk_download.py_
   * mass downloads titles and abstracts from arXiv based on queries in the URL
   * contains URLs pertaining to machine learning and earth science
     * URLs lead to XML page, which is parsed for its info, similar to extract_abstract.py
