@@ -1,10 +1,32 @@
 # doc-graph
 doc-graph is a network visualization of publications based on their textual similarities.
 
+## Table of Contents
+1. [Getting Started](#i.-getting-started)
+  * [Overview](#overview)
+  * [Running TextExtractor.java](#running-textextractor.java)
+  * [Installing Dependences](#installing-dependencies)
+2. [File Descriptions](#ii.-file-descriptions)
+  * [main.py](#main.py)
+  * [text-extractor/src/text-extractor/TextExtractor.java](#text-extractor/src/text-extractor/TextExtractor.java)
+  * [extract_abstract.py](#extract_abstract.py)
+  * [bulk_download.py](#alternative-to-textextractor-&-extract_abstract:-bulk_download.py)
+  * [create_json.py](#create_json.py)
+  * [visualiz/index.html](#visualiz/index.html)
+3. [Folder Descriptions](#iii.-folder-descriptions)
+  * [Papers](#papers)
+  * [xml-files](#xml-files)
+  * [extracted-text](#extracted-text)
+  * [visualiz](#visualiz)
+  * [NLP](#nlp)
+4. [General Notes](#iv.-general-notes)
+5. [Resources for NLP](#v.-resources-for-nlp)
+6. [Updates](#vi.-updates)
+
 ## I. Getting Started
 ### Overview
 
-![Framework](/images/framework.png)
+![Framework](images/framework.png)
 
 * *Note: TextExtractor.java needs to be running as main.py is executed. See next section for details.*
 * to simply run the project as-is, run these files:
@@ -101,7 +123,6 @@ doc-graph is a network visualization of publications based on their textual simi
 ### Papers
 * contains PDF files of publications downloaded from the internet
 
-## Updates
 ### xml-files
 * contains XML files that are parsed from PDFs
 * organized based on source: Cermine or arXiv
@@ -124,6 +145,13 @@ doc-graph is a network visualization of publications based on their textual simi
 * Java code *is* a Maven project.
 
 ## V. Resources for NLP
+* Libraries
+  * [Sci-kit Learn](https://scikit-learn.org/stable/)
+  * [Spacy](https://spacy.io/)
+  * [NLTK](https://www.nltk.org/)
+* Deep Learning
+  * [Keras](https://keras.io/)
+  * [XGBoost](https://xgboost.readthedocs.io/en/latest/)
 * Text Classification
   * https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/
 * Keyword Extraction
@@ -133,28 +161,28 @@ doc-graph is a network visualization of publications based on their textual simi
 
 ## VI. Updates
 #### 8-5-2019 Update
-Lots happened. Switched to AlchemyJS. Here's the preview: ![alchemy example](/images/alchemy_example.png)
-Next step: Extracting meaningful analysis from the graph. 
+Lots happened. Switched to AlchemyJS. Here's the preview: ![alchemy example](images/alchemy_example.png)
+Next step: Extracting meaningful analysis from the graph.
 
 #### 7-15-2019 Update
-Tried a different method from this article: https://medium.com/analytics-vidhya/automated-keyword-extraction-from-articles-using-nlp-bfd864f41b34
+Tried a different method from [this article](https://medium.com/analytics-vidhya/automated-keyword-extraction-from-articles-using-nlp-bfd864f41b34).
 Basically tried to extract keywords, and this particular article was interesting because it also dealt with abstracts from (machine learning!!!) papers. Here are example results and pictures I got from implementing this on my project.
 
 This one is frequent trigrams:
-![frequent trigrams](/images/frequent-trigrams.png)
+![frequent trigrams](images/frequent-trigrams.png)
 
 This one is frequent bigrams:
-![frequent bigrams](/images/frequent-bigrams.png)
+![frequent bigrams](images/frequent-bigrams.png)
 
 This is a sample of TF-IDF word frequency scores based on context for one document:
-![TD-IDF example](/images/TF-IDF-example.png)
+![TD-IDF example](images/TF-IDF-example.png)
 
 Also, I copied the config from other VisJS graphs so that my network graph would look a little more pleasing. Then, I added colors based on algorithms used in each abstract. This might be a little janky in implementation-- I basically took the argmax of the method that had the highest textual similarity to each abstract. There were 10 algorithms that I tested for, and I think only 4 are represented here, with the majority being neural networks and support vector machines...
-![graph update 7-15-2019](/images/graph-7-15.png)
+![graph update 7-15-2019](images/graph-7-15.png)
 
 Conclusions:
 It looks like the frequent bigrams and trigrams yield better intuitive results than the TDIDF-- I think TDIDF somehow rules out machine learning methods as relevant to the context. Might focus on that more as a direction for algorithm extraction this week.
 
 #### 7-12-2019 Update
 Added more documents to consider from arXiv. arXiv came with its own parsed XML that gave a clean title name and "summary", which I'm assuming is equivalent to the abstract. Here's a preview of the updated visualization, with no changes to the configuration in VisJS.
-![Visualization](/images/7-12-2019-visualization.png)
+![Visualization](images/7-12-2019-visualization.png)
