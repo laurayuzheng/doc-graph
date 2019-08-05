@@ -8,7 +8,7 @@ directory = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
 THRESHOLD = 0.2
 methods = ['generative adversarial','naive bayes','random forest',
 'support vector', 'linear regression','logistic regression',
-'k-means clustering','nearest neighbors','convolutional neural network',
+'k means','nearest neighbors','convolutional neural network',
 'recurrent neural network']
 
 color_dict = {
@@ -62,13 +62,17 @@ def get_method_similarities(text_files):
             doc1 = nlp(' '.join([str(t) for t in doc_temp if not t.is_stop]))
             similarities.append(doc1.similarity(doc2))
         #print(similarities)
-        result.append(numpy.argmax(similarities))
+        if max(similarities) == 0:
+            result.append(-1)
+            print()
+        else:
+            result.append(numpy.argmax(similarities))
 
     return result
 
 # how to construct data? need use a dictionary from pairwise_similarity above
 # arguments: m for similarity matrix
-def create_json(m, m2, text_files):
+def create_json(m, m2, text_files, filename):
     ''' Description:
         - creates json file using python, loads it into a json file for vis.js
 
@@ -95,7 +99,7 @@ def create_json(m, m2, text_files):
 
     data = {'nodes':nodes, 'edges':edges}
 
-    with open('data2.json', 'w', encoding='utf-8') as f:
+    with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 #if __name__ == '__main__':
