@@ -132,6 +132,10 @@ doc-graph is a network visualization of publications based on their textual simi
   * https://www.datacamp.com/community/tutorials/decision-tree-classification-python
 
 ## VI. Updates
+#### 8-5-2019 Update
+Lots happened. Switched to AlchemyJS. Here's the preview: ![alchemy example](/images/alchemy_example.png)
+Next step: Extracting meaningful analysis from the graph. 
+
 #### 7-15-2019 Update
 Tried a different method from this article: https://medium.com/analytics-vidhya/automated-keyword-extraction-from-articles-using-nlp-bfd864f41b34
 Basically tried to extract keywords, and this particular article was interesting because it also dealt with abstracts from (machine learning!!!) papers. Here are example results and pictures I got from implementing this on my project.
