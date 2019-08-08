@@ -1,3 +1,8 @@
+''' This file downloads an XML file containing titles and abstracts of publications.
+The XML file is retrieved based on a query to arXiv, indicated by keywords in the URLs below.
+The keywords here are simply machine learning and keywords from Earth Science areas.
+'''
+
 import urllib.request
 from bs4 import BeautifulSoup
 

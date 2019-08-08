@@ -1,4 +1,8 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
+''' This file is responsible for calculating similarities and creating a JSON file containing all the graph data.
+Graph data includes nodes and edges. Edges are only included if it exceeds threshold value.
+'''
+
+rom sklearn.feature_extraction.text import TfidfVectorizer
 import glob
 import json
 import spacy
@@ -6,11 +10,14 @@ import numpy
 
 directory = '/Users/laurazheng/Desktop/NASA Project/doc-graph/extracted_text/'
 THRESHOLD = 0.2
+
+# methods list is just a list of keywords to check for similarity
 methods = ['generative adversarial','naive bayes','random forest',
 'support vector', 'linear regression','logistic regression',
 'k means','nearest neighbors','convolutional neural network',
 'recurrent neural network']
 
+# originally for cluster colors, now the cluster colors are controlled by AlchemyJS
 color_dict = {
     0: 'rgb(229,67,132)',
     1: 'rgb(67,229,132)',

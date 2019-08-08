@@ -1,3 +1,7 @@
+''' The main file that executes modules for application. Represents the whole process
+Each part can be controlled by the part list below-- certain parts can be switched off.
+'''
+
 import create_json
 import extract_abstract
 import bulk_download

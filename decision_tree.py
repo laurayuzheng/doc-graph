@@ -1,3 +1,7 @@
+''' Sample decision tree implementation.
+Tried to design feature vectors off of similarity to keywords, but it proved to be ineffective.
+'''
+
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn.model_selection import train_test_split # Import train_test_split function
